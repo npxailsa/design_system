@@ -27,6 +27,8 @@ export interface LabelProps {
   dropdown?: boolean;
   /** Additional CSS class names */
   className?: string;
+  /** Inline styles */
+  style?: React.CSSProperties;
 }
 
 export const Label: React.FC<LabelProps> = ({
