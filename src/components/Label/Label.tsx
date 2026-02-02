@@ -41,6 +41,7 @@ export const Label: React.FC<LabelProps> = ({
   align = 'left',
   dropdown = false,
   className,
+  style,
 }) => {
   const labelClasses = [
     styles.label,
@@ -54,7 +55,7 @@ export const Label: React.FC<LabelProps> = ({
     .join(' ');
 
   return (
-    <label className={labelClasses}>
+    <label className={labelClasses} style={style}>
       {leadingIcon && (
         <span className={styles['leading-icon']}>
           <FilledIconsNameAccountCategoryUser />
