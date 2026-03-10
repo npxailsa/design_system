@@ -54,6 +54,48 @@
   font-style: italic;
 }
 
+@font-face {
+  font-family: "Calibri";
+  src: url("https://cdn.builder.io/o/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2Fc9b5a5f8deee47a5b99f69f3eeda6c9b?alt=media&token=be0a5fff-1d33-4e08-a499-f095b2f3fd8d&apiKey=c7a3c3953c0a4f43bcdc32733cba23f5") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Calibri";
+  src: url("https://cdn.builder.io/o/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2Fa716e6af09ec40b4a4fa0a867e9c2b86?alt=media&token=827651da-4686-4976-af4e-2e54dac0c414&apiKey=c7a3c3953c0a4f43bcdc32733cba23f5") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Calibri";
+  src: url("https://cdn.builder.io/o/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2F2309751d6bc942d7aef789880d20bc58?alt=media&token=d46788ac-ef56-4d81-a074-5ef55ababde2&apiKey=c7a3c3953c0a4f43bcdc32733cba23f5") format("opentype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Calibri";
+  src: url("https://cdn.builder.io/o/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2F2c38f940c2b049f2b705d0f5a09e0b0b?alt=media&token=cdab6a22-e3cb-44dd-9208-ddc79cccea7d&apiKey=c7a3c3953c0a4f43bcdc32733cba23f5") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Calibri";
+  src: url("https://cdn.builder.io/o/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2Fdeadd018667342febaa8b4183cc7448b?alt=media&token=bfbce164-8e78-47d5-b453-7c0e5b8b5dfe&apiKey=c7a3c3953c0a4f43bcdc32733cba23f5") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Calibri";
+  src: url("https://cdn.builder.io/o/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2F6458e7fec9204f358b2314ff599b401c?alt=media&token=cc87957d-593c-492d-85e6-7e3422346e23&apiKey=c7a3c3953c0a4f43bcdc32733cba23f5") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+}
+
 :root {
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
