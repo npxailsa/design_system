@@ -4,7 +4,7 @@
   "description": "A React and TypeScript design system with Storybook",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "storybook dev -p 6006",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
