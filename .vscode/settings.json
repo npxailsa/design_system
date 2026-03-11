@@ -1,4 +1,5 @@
 {
     "geminicodeassist.agentDebugMode": true,
-    "geminicodeassist.inlineSuggestions.nextEditPredictions": true
+    "geminicodeassist.inlineSuggestions.nextEditPredictions": true,
+    "chat.agent.enabled": false
 }
