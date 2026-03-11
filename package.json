@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build-storybook:gh-pages": "storybook build --output-dir storybook-static --base-url /design_system/"
+    "build-storybook:gh-pages": "storybook build --output-dir storybook-static"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
