@@ -29,13 +29,11 @@ jobs:
         run: npm install --legacy-peer-deps
 
       - name: Build Storybook
-        run: npm run build-storybook:gh-pages
+        run: npx storybook build --output-dir storybook-static
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: storybook-static
           branch: gh-pages
-"scripts": {
-  "build-storybook:gh-pages": "npx storybook build --output-dir storybook-static"
-}
+          
