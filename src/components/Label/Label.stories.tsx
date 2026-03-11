@@ -7,7 +7,6 @@ import SettingsIcon from '@mui/icons-material/Settings';
 const meta: Meta<typeof Label> = {
   title: 'Components/Label',
   component: Label,
-  tags: ['autodocs'],
   argTypes: {
     size: {
       control: 'select',
