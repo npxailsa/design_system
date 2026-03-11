@@ -1,0 +1,53 @@
+import { Meta, Story, Canvas, Controls } from '@storybook/blocks';
+import * as LabelStories from './Label.stories';
+
+<Meta of={LabelStories} />
+
+# Label Component
+
+The `Label` component is a versatile text display component that supports icons, alignment, and dropdown split functionality.
+
+## Usage
+
+```tsx
+import { Label } from './components/Label';
+import MailIcon from '@mui/icons-material/Mail';
+
+<Label size="large" weight="bold" leadingIcon={MailIcon}>
+  Email Support
+</Label>
+```
+
+## Props
+
+<Controls />
+
+## Component API
+
+The `Label` component is highly configurable with several props to control its appearance and behavior:
+
+- **children**: The text to display. Defaults to 'Label'.
+- **size**: Controls font size, line height, gap, and icon sizes. Supports 'large', 'default', 'small', 'x-small', '2x-small'.
+- **weight**: Controls the font weight. Supports 'bold', 'medium', 'light', 'thin'.
+- **align**: Controls the text and content alignment within the container. Supports 'left', 'centre', 'right'.
+- **dropdown**: If true, displays a vertical divider and a chevron-down icon.
+- **leadingIcon**: A Material UI icon to display before the text. Defaults to `PersonIcon`. Pass `null` to hide.
+- **showTrailingIcon**: If true, displays an `ArrowForwardIcon` after the text.
+
+## Examples
+
+### Sizes
+
+<Canvas of={LabelStories.Sizes} />
+
+### Weights
+
+<Canvas of={LabelStories.Weights} />
+
+### With Dropdown
+
+<Canvas of={LabelStories.WithDropdown} />
+
+### Alignment
+
+<Canvas of={LabelStories.Alignments} />
