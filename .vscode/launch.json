@@ -1,0 +1,15 @@
+{
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Run Chromatic",
+            "program": "${workspaceFolder}/node_modules/.bin/chromatic",
+            "args": [
+                "--project-token=chpt_44a4334f119931"
+            ],
+            "cwd": "${workspaceFolder}",
+            "internalConsoleOptions": "neverOpen"
+        }
+    ]
+}

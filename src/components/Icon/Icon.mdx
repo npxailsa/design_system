@@ -7,6 +7,10 @@ import * as IconStories from './Icon.stories';
 
 The Icon system in our design system is powered by [Material UI Icons](https://mui.com/material-ui/material-icons/). This provides thousands of consistent, high-quality icons ready to be used in your application.
 
+## Sizing and Inheritance
+
+Our `Icon` component is designed to work seamlessly within parent components like `Label`. When a named size (e.g., 'small', 'large') is provided, the icon automatically sets its font size to `inherit`. This allows it to take the precise size defined by our design tokens or parent component CSS classes, ensuring perfect scaling alongside text.
+
 ## Usage
 
 To use an icon, import the `Icon` component and a specific icon from `@mui/icons-material`.

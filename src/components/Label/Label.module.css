@@ -1,0 +1,97 @@
+.labelContainer {
+  display: flex;
+  align-items: center;
+  color: var(--color-base-black);
+  font-family: var(--type-typeface-label), sans-serif;
+  letter-spacing: var(--type-letter-spacing-label);
+  gap: var(--spacing-sizing-4px); /* Default gap, will be overridden by size classes */
+  position: relative;
+}
+
+/* Alignments */
+.align-left {
+  justify-content: flex-start;
+}
+
+.align-centre {
+  justify-content: center;
+  text-align: center;
+}
+
+.align-right {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+/* Weights */
+.weight-bold {
+  font-weight: var(--type-weight-bold);
+}
+
+.weight-medium {
+  font-weight: var(--type-weight-medium);
+}
+
+.weight-light {
+  font-weight: var(--type-weight-light);
+}
+
+.weight-thin {
+  font-weight: var(--type-weight-thin);
+}
+
+/* Sizes */
+.size-large {
+  font-size: var(--type-size-primary-scale-label-lg);
+  line-height: var(--type-line-height-label-lg);
+  gap: var(--spacing-sizing-8px);
+  --divider-height: var(--type-line-height-label-lg);
+}
+
+.size-default {
+  font-size: var(--type-size-primary-scale-label);
+  line-height: var(--type-line-height-label);
+  gap: var(--spacing-sizing-6px);
+  --divider-height: var(--type-line-height-label);
+}
+
+.size-small {
+  font-size: var(--type-size-primary-scale-label-sm);
+  line-height: var(--type-line-height-label-sm);
+  gap: var(--spacing-sizing-4px);
+  --divider-height: var(--type-line-height-label-sm);
+}
+
+.size-x-small {
+  font-size: var(--type-size-primary-scale-label-xs);
+  line-height: var(--type-line-height-label-xs);
+  gap: var(--spacing-sizing-4px);
+  --divider-height: var(--type-line-height-label-xs);
+}
+
+.size-2x-small {
+  font-size: var(--type-size-primary-scale-label-xxs);
+  line-height: var(--type-line-height-label-xxs);
+  gap: var(--spacing-sizing-2px);
+  --divider-height: var(--type-line-height-label-xxs);
+}
+
+/* Dropdown / Split */
+.split {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sizing-4px);
+  align-self: stretch;
+  position: relative;
+}
+
+.splitDivider {
+  width: 1px;
+  background: var(--color-blue-gray-50);
+  opacity: 0.5;
+  height: var(--divider-height, 20px);
+}
+
+.labelText {
+  display: inline-block;
+}
