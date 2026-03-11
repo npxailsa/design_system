@@ -48,24 +48,24 @@ export const Label: React.FC<LabelProps> = ({
     <div className={containerClasses}>
       {/* Leading Icon */}
       {LeadingIconInput && (
-        <Icon icon={LeadingIconInput} size={size === '2x-small' ? '2x-small' : size === 'x-small' ? 'x-small' : size === 'small' ? 'small' : size === 'large' ? 'large' : 'default'} />
+        <Icon icon={LeadingIconInput} size={size} />
       )}
 
       {/* Label Text */}
-      <div className={styles.labelText}>{children}</div>
+      <span className={styles.labelText}>{children}</span>
 
       {/* Trailing Icon (Arrow Right) */}
       {showTrailingIcon && (
-        <Icon icon={ArrowForwardIcon} size={size === '2x-small' ? '2x-small' : size === 'x-small' ? 'x-small' : size === 'small' ? 'small' : size === 'large' ? 'large' : 'default'} />
+        <Icon icon={ArrowForwardIcon} size={size} />
       )}
 
       {/* Dropdown / Split section */}
       {dropdown && (
         <div className={styles.split}>
           <div className={styles.splitDivider} />
-          <Icon 
-            icon={KeyboardArrowDownIcon} 
-            size={size === '2x-small' ? '2x-small' : size === 'x-small' ? 'x-small' : size === 'small' ? 'small' : size === 'large' ? 'large' : 'default'} 
+          <Icon
+            icon={KeyboardArrowDownIcon}
+            size={size}
             className={styles.chevronIcon}
           />
         </div>

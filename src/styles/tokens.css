@@ -31,6 +31,8 @@
   /* Label Component Tokens */
   --color-base-black: #1C1C1C;
   --type-typeface-archivo: Archivo;
+  --type-typeface-ginger: "F37 Ginger", sans-serif;
+  --type-typeface-calibri: Calibri, sans-serif;
 
   /* Label size scale */
   --type-size-label-xxs: 10px;

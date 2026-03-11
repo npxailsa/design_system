@@ -2,8 +2,9 @@
   display: flex;
   align-items: center;
   color: var(--color-base-black);
-  font-family: var(--type-typeface-archivo), sans-serif;
+  font-family: var(--type-typeface-ginger), sans-serif;
   letter-spacing: var(--type-letter-spacing-label);
+  gap: var(--spacing-sizing-4px);
   position: relative;
 }
 
@@ -43,37 +44,36 @@
 .size-large {
   font-size: var(--type-size-label-lg);
   line-height: var(--type-line-height-label-lg);
-  gap: var(--spacing-sizing-8px);
+  --divider-height: var(--type-line-height-label-lg);
 }
 
 .size-default {
   font-size: var(--type-size-label);
   line-height: var(--type-line-height-label);
-  gap: var(--spacing-sizing-6px);
+  --divider-height: var(--type-line-height-label);
 }
 
 .size-small {
   font-size: var(--type-size-label-sm);
   line-height: var(--type-line-height-label-sm);
-  gap: var(--spacing-sizing-4px);
+  --divider-height: var(--type-line-height-label-sm);
 }
 
 .size-x-small {
   font-size: var(--type-size-label-xs);
   line-height: var(--type-line-height-label-xs);
-  gap: var(--spacing-sizing-4px);
+  --divider-height: var(--type-line-height-label-xs);
 }
 
 .size-2x-small {
   font-size: var(--type-size-label-xxs);
   line-height: var(--type-line-height-label-xxs);
-  gap: var(--spacing-sizing-2px);
+  --divider-height: var(--type-line-height-label-xxs);
 }
 
 /* Dropdown / Split */
 .split {
   display: flex;
-  padding-left: var(--spacing-sizing-2px);
   align-items: center;
   gap: var(--spacing-sizing-4px);
   align-self: stretch;
@@ -84,9 +84,9 @@
   width: 1px;
   background: var(--color-blue-gray-50);
   opacity: 0.5;
-  height: 100%; /* Should match the parent container height */
+  height: var(--divider-height, 20px);
 }
 
-.chevronIcon {
-  opacity: 0.6;
+.labelText {
+  display: inline-block;
 }
