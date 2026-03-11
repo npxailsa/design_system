@@ -33,15 +33,15 @@
   --type-typeface-archivo: Archivo;
   --type-typeface-ginger: "F37 Ginger", sans-serif;
   --type-typeface-calibri: Calibri, sans-serif;
+  --type-typeface-label: var(--type-typeface-ginger);
 
-  /* Label size scale */
-  --type-size-label-xxs: 10px;
-  --type-size-label-xs: 12px;
-  --type-size-label-sm: 14px;
-  --type-size-label: 16px;
-  --type-size-label-lg: 18px;
+  /* Primary Scale Label Typography (Figma Compliant) */
+  --type-size-primary-scale-label-xxs: 10px;
+  --type-size-primary-scale-label-xs: 12px;
+  --type-size-primary-scale-label-sm: 14px;
+  --type-size-primary-scale-label: 16px;
+  --type-size-primary-scale-label-lg: 18px;
 
-  /* Label line heights */
   --type-line-height-label-xxs: 14px;
   --type-line-height-label-xs: 14px;
   --type-line-height-label-sm: 16px;

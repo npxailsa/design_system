@@ -44,7 +44,8 @@ export const Icon: React.FC<IconProps> = ({
   const sizeClassName = isNamedSize ? styles[`icon_${size.replace('-', '_')}`] : '';
 
   // Handle 'inherit' and numeric values via the fontSize prop or sx
-  const fontSize = size === 'inherit' ? 'inherit' : (typeof size === 'number' ? undefined : undefined);
+  // Named sizes should also use 'inherit' so they take the font-size from our CSS module classes
+  const fontSize = (isNamedSize || size === 'inherit') ? 'inherit' : undefined;
   const customStyle = typeof size === 'number' ? { fontSize: `${size}px`, ...sx } : sx;
 
   return (
