@@ -1,0 +1,30 @@
+:root {
+  /* Icon Sizing Tokens */
+  --icon-size-2x-small: 10px;
+  --icon-size-x-small: 12px;
+  --icon-size-small: 14px;
+  --icon-size-default: 16px;
+  --icon-size-large: 18px;
+  --icon-size-x-large: 24px;
+  --icon-size-2x-large: 48px;
+
+  /* Basic Colors from NPX Design System */
+  --color-primary: #646cff;
+  --color-primary-hover: #535bf2;
+  --color-secondary: #213547;
+  --color-background-dark: #242424;
+  --color-background-light: #ffffff;
+  --color-text-dark: rgba(255, 255, 255, 0.87);
+  --color-text-light: #213547;
+  --color-button-dark: #1a1a1a;
+  --color-button-light: #f9f9f9;
+  --color-text-muted: #666;
+
+  /* Spacing and Border Tokens */
+  --spacing-small: 0.5rem;
+  --spacing-medium: 1rem;
+  --spacing-large: 2rem;
+  --border-radius-small: 4px;
+  --border-radius-medium: 8px;
+  --border-color-light: #eee;
+}
