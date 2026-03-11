@@ -39,12 +39,12 @@ export const Icon: React.FC<IconProps> = ({
 }) => {
   // Determine if we are using a named size from our module.css
   const isNamedSize = typeof size === 'string' && size !== 'inherit';
-  
+
   // Map size prop to the corresponding CSS module class
-  const sizeClassName = isNamedSize ? styles[`icon_${size.replace('-', '_')}`] : '';
+  const sizeClassName = isNamedSize ? styles[`icon_${size.replace(/-/g, '_')}`] : '';
 
   // Handle 'inherit' and numeric values via the fontSize prop or sx
-  const fontSize = size === 'inherit' ? 'inherit' : (typeof size === 'number' ? undefined : undefined);
+  const fontSize = (isNamedSize || size === 'inherit') ? 'inherit' : undefined;
   const customStyle = typeof size === 'number' ? { fontSize: `${size}px`, ...sx } : sx;
 
   return (
