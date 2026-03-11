@@ -36,3 +36,6 @@ jobs:
         with:
           folder: storybook-static
           branch: gh-pages
+"scripts": {
+  "build-storybook:gh-pages": "npx storybook build --output-dir storybook-static"
+}
