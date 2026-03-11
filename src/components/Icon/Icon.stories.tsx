@@ -21,7 +21,7 @@ import {
 } from '@mui/icons-material';
 
 const meta: Meta<typeof Icon> = {
-  title: 'Components/Icon',
+  title: 'Foundations/Icon',
   component: Icon,
   argTypes: {
     icon: {
@@ -73,38 +73,35 @@ export const Default: Story = {
  * Demonstrates the various predefined sizes available in the design system.
  */
 export const Sizes: Story = {
-  render: (args) => (
-    <div style={{ display: 'flex', gap: '2rem', alignItems: 'center', flexWrap: 'wrap' }}>
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
-        <Icon {...args} size="2x-small" />
-        <span style={{ fontSize: '0.75rem' }}>2x-small (10px)</span>
+  render: (args) => {
+    const sizes: { name: IconSize; label: string }[] = [
+      { name: '2x-small', label: '2x-small (10px)' },
+      { name: 'x-small', label: 'x-small (12px)' },
+      { name: 'small', label: 'small (14px)' },
+      { name: 'default', label: 'default (16px)' },
+      { name: 'large', label: 'large (18px)' },
+      { name: 'x-large', label: 'x-large (24px)' },
+      { name: '2x-large', label: '2x-large (48px)' },
+    ];
+
+    return (
+      <div style={{ display: 'flex', gap: '2.5rem', alignItems: 'flex-end', flexWrap: 'wrap' }}>
+        {sizes.map((size) => (
+          <div key={size.name} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+            <Icon {...args} size={size.name} />
+            <span style={{
+              fontSize: 'var(--font-size-xs)',
+              fontFamily: 'var(--font-family-secondary)',
+              color: 'var(--color-text-muted)',
+              fontWeight: 'var(--font-weight-medium)'
+            }}>
+              {size.label}
+            </span>
+          </div>
+        ))}
       </div>
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
-        <Icon {...args} size="x-small" />
-        <span style={{ fontSize: '0.75rem' }}>x-small (12px)</span>
-      </div>
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
-        <Icon {...args} size="small" />
-        <span style={{ fontSize: '0.75rem' }}>small (14px)</span>
-      </div>
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
-        <Icon {...args} size="default" />
-        <span style={{ fontSize: '0.75rem' }}>default (16px)</span>
-      </div>
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
-        <Icon {...args} size="large" />
-        <span style={{ fontSize: '0.75rem' }}>large (18px)</span>
-      </div>
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
-        <Icon {...args} size="x-large" />
-        <span style={{ fontSize: '0.75rem' }}>x-large (24px)</span>
-      </div>
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
-        <Icon {...args} size="2x-large" />
-        <span style={{ fontSize: '0.75rem' }}>2x-large (48px)</span>
-      </div>
-    </div>
-  ),
+    );
+  },
 };
 
 /**
@@ -156,10 +153,19 @@ export const Gallery: Story = {
             alignItems: 'center',
             padding: 'var(--spacing-medium)',
             border: '1px solid var(--border-color-light)',
-            borderRadius: 'var(--border-radius-medium)'
+            borderRadius: 'var(--border-radius-medium)',
+            backgroundColor: 'var(--color-background-light)'
           }}>
-            <Icon icon={icon.component} size="large" />
-            <span style={{ marginTop: '0.75rem', fontSize: '0.875rem', color: 'var(--color-text-muted)' }}>{icon.name}</span>
+            <Icon icon={icon.component} size="large" color="primary" />
+            <span style={{
+              marginTop: '0.75rem',
+              fontSize: 'var(--font-size-sm)',
+              fontFamily: 'var(--font-family-secondary)',
+              color: 'var(--color-text-muted)',
+              fontWeight: 'var(--font-weight-medium)'
+            }}>
+              {icon.name}
+            </span>
           </div>
         ))}
       </div>
