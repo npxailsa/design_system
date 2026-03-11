@@ -21,7 +21,7 @@ import {
 } from '@mui/icons-material';
 
 const meta: Meta<typeof Icon> = {
-  title: 'Components/Icon',
+  title: 'Foundations/Icon',
   component: Icon,
   argTypes: {
     icon: {
