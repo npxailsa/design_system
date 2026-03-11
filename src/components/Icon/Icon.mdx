@@ -1,0 +1,59 @@
+import { Meta, Controls, Primary, Story, Canvas } from '@storybook/blocks';
+import * as IconStories from './Icon.stories';
+
+<Meta of={IconStories} />
+
+# Icon System
+
+The Icon system in our design system is powered by [Material UI Icons](https://mui.com/material-ui/material-icons/). This provides thousands of consistent, high-quality icons ready to be used in your application.
+
+## Usage
+
+To use an icon, import the `Icon` component and a specific icon from `@mui/icons-material`.
+
+```tsx
+import { Icon } from './components/Icon';
+import HomeIcon from '@mui/icons-material/Home';
+
+const MyComponent = () => (
+  <Icon icon={HomeIcon} color="primary" size="medium" />
+);
+```
+
+## Props
+
+<Controls />
+
+## Custom Sizes
+
+You can pass a specific number (in pixels) to the `size` prop for custom sizing.
+
+<Canvas of={IconStories.Sizes} />
+
+## Colors
+
+Icons can use the Material UI theme colors such as `primary`, `secondary`, `error`, etc.
+
+<Canvas of={IconStories.Colors} />
+
+## Finding Icons
+
+You can find all available icons in the [Material UI Icon Search](https://mui.com/material-ui/material-icons/). Simply find the name of the icon and import it from `@mui/icons-material`.
+
+For example:
+- `Home` -> `import HomeIcon from '@mui/icons-material/Home'`
+- `Favorite` -> `import FavoriteIcon from '@mui/icons-material/Favorite'`
+- `Settings` -> `import SettingsIcon from '@mui/icons-material/Settings'`
+
+## Best Practices
+
+- **Clarity**: Use icons that are easily recognizable and clearly represent their action or state.
+- **Consistency**: Use the same icon for the same action across the entire application.
+- **Accessibility**: Provide descriptive `aria-label` props for icons that are not accompanied by text.
+- **Grouping**: When using multiple icons together, ensure they have consistent sizing and spacing.
+
+## Common Icons Gallery
+
+Below is a collection of some of the most commonly used icons in our projects.
+
+<Canvas of={IconStories.Gallery} />
