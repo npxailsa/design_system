@@ -1,25 +1,41 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import Icon from './Icon';
-import * as Icons from '@mui/icons-material';
+import {
+  Home as HomeIcon,
+  Search as SearchIcon,
+  Settings as SettingsIcon,
+  Favorite as FavoriteIcon,
+  Mail as MailIcon,
+  Delete as DeleteIcon,
+  Add as AddIcon,
+  CheckCircle as CheckCircleIcon,
+  Menu as MenuIcon,
+  Close as CloseIcon,
+  ArrowBack as ArrowBackIcon,
+  ArrowForward as ArrowForwardIcon,
+  Notifications as NotificationsIcon,
+  Person as PersonIcon,
+  Warning as WarningIcon,
+  Error as ErrorIcon,
+} from '@mui/icons-material';
 
 const meta: Meta<typeof Icon> = {
   title: 'Components/Icon',
   component: Icon,
-  tags: ['autodocs'],
   argTypes: {
     icon: {
       description: 'The Material UI icon component to render.',
       options: ['Home', 'Search', 'Settings', 'Favorite', 'Mail', 'Delete', 'Add', 'CheckCircle'],
       mapping: {
-        Home: Icons.Home,
-        Search: Icons.Search,
-        Settings: Icons.Settings,
-        Favorite: Icons.Favorite,
-        Mail: Icons.Mail,
-        Delete: Icons.Delete,
-        Add: Icons.Add,
-        CheckCircle: Icons.CheckCircle,
+        Home: HomeIcon,
+        Search: SearchIcon,
+        Settings: SettingsIcon,
+        Favorite: FavoriteIcon,
+        Mail: MailIcon,
+        Delete: DeleteIcon,
+        Add: AddIcon,
+        CheckCircle: CheckCircleIcon,
       },
       control: { type: 'select' },
     },
@@ -35,7 +51,7 @@ const meta: Meta<typeof Icon> = {
     },
   },
   args: {
-    icon: Icons.Home,
+    icon: HomeIcon,
     size: 'medium',
     color: 'inherit',
   },
@@ -49,7 +65,7 @@ type Story = StoryObj<typeof Icon>;
  */
 export const Default: Story = {
   args: {
-    icon: Icons.Home,
+    icon: HomeIcon,
   },
 };
 
@@ -90,34 +106,34 @@ export const Colors: Story = {
 export const Gallery: Story = {
   render: () => {
     const commonIcons = [
-      { name: 'Home', component: Icons.Home },
-      { name: 'Search', component: Icons.Search },
-      { name: 'Settings', component: Icons.Settings },
-      { name: 'Favorite', component: Icons.Favorite },
-      { name: 'Mail', component: Icons.Mail },
-      { name: 'Delete', component: Icons.Delete },
-      { name: 'Add', component: Icons.Add },
-      { name: 'Check', component: Icons.CheckCircle },
-      { name: 'Menu', component: Icons.Menu },
-      { name: 'Close', component: Icons.Close },
-      { name: 'ArrowBack', component: Icons.ArrowBack },
-      { name: 'ArrowForward', component: Icons.ArrowForward },
-      { name: 'Notifications', component: Icons.Notifications },
-      { name: 'Person', component: Icons.Person },
-      { name: 'Warning', component: Icons.Warning },
-      { name: 'Error', component: Icons.Error },
+      { name: 'Home', component: HomeIcon },
+      { name: 'Search', component: SearchIcon },
+      { name: 'Settings', component: SettingsIcon },
+      { name: 'Favorite', component: FavoriteIcon },
+      { name: 'Mail', component: MailIcon },
+      { name: 'Delete', component: DeleteIcon },
+      { name: 'Add', component: AddIcon },
+      { name: 'Check', component: CheckCircleIcon },
+      { name: 'Menu', component: MenuIcon },
+      { name: 'Close', component: CloseIcon },
+      { name: 'ArrowBack', component: ArrowBackIcon },
+      { name: 'ArrowForward', component: ArrowForwardIcon },
+      { name: 'Notifications', component: NotificationsIcon },
+      { name: 'Person', component: PersonIcon },
+      { name: 'Warning', component: WarningIcon },
+      { name: 'Error', component: ErrorIcon },
     ];
 
     return (
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))', gap: '2rem' }}>
         {commonIcons.map((icon) => (
-          <div key={icon.name} style={{ 
-            display: 'flex', 
-            flexDirection: 'column', 
-            alignItems: 'center', 
-            padding: '1rem', 
-            border: '1px solid #eee', 
-            borderRadius: '8px' 
+          <div key={icon.name} style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            padding: '1rem',
+            border: '1px solid #eee',
+            borderRadius: '8px'
           }}>
             <Icon icon={icon.component} size="large" />
             <span style={{ marginTop: '0.75rem', fontSize: '0.875rem', color: '#666' }}>{icon.name}</span>
