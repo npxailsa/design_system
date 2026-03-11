@@ -36,4 +36,5 @@ jobs:
         with:
           folder: storybook-static
           branch: gh-pages
-          clean: true          folder: storybook-static
+          clean: true;
+          
