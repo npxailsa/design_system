@@ -1,56 +1,56 @@
 @import "./styles/tokens.css";
 
 @font-face {
-  font-family: "F37 Ginger";
+  font-family: "F37 Ginger Pro";
   src: url("https://cdn.builder.io/o/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2Fd525095aae784aafa14be656590ea69c?alt=media&token=a19ba8d0-0d25-47af-b15b-437aa861e887&apiKey=c7a3c3953c0a4f43bcdc32733cba23f5") format("opentype");
   font-weight: 100;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "F37 Ginger";
+  font-family: "F37 Ginger Pro";
   src: url("https://cdn.builder.io/o/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2Faab26eacfbf74bb5aa7b735a005b7d61?alt=media&token=21d10b80-4faf-4a0f-bb15-9eecc4e11258&apiKey=c7a3c3953c0a4f43bcdc32733cba23f5") format("opentype");
   font-weight: 100;
   font-style: italic;
 }
 
 @font-face {
-  font-family: "F37 Ginger";
+  font-family: "F37 Ginger Pro";
   src: url("https://cdn.builder.io/o/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2F8f00ba6313ab4e7d99ffc2282c3e3b5a?alt=media&token=07be5f81-f59f-4e06-a2c2-097ef98f2c32&apiKey=c7a3c3953c0a4f43bcdc32733cba23f5") format("opentype");
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "F37 Ginger";
+  font-family: "F37 Ginger Pro";
   src: url("https://cdn.builder.io/o/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2F413b1787c48c4260bd3346fdfa5ce24e?alt=media&token=83d355a0-391f-474c-80f7-4818c41b1d3e&apiKey=c7a3c3953c0a4f43bcdc32733cba23f5") format("opentype");
   font-weight: 300;
   font-style: italic;
 }
 
 @font-face {
-  font-family: "F37 Ginger";
+  font-family: "F37 Ginger Pro";
   src: url("https://cdn.builder.io/o/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2Fa579c7bcb759422ca9c8a4ee44f85328?alt=media&token=1d12fa7d-e395-4320-81b4-710c8bbd5b01&apiKey=c7a3c3953c0a4f43bcdc32733cba23f5") format("opentype");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "F37 Ginger";
+  font-family: "F37 Ginger Pro";
   src: url("https://cdn.builder.io/o/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2Ff1a197ddc3324755bd11a782dc2befc4?alt=media&token=a16b9cea-7200-45fd-a6dd-a76433dac66f&apiKey=c7a3c3953c0a4f43bcdc32733cba23f5") format("opentype");
   font-weight: 400;
   font-style: italic;
 }
 
 @font-face {
-  font-family: "F37 Ginger";
+  font-family: "F37 Ginger Pro";
   src: url("https://cdn.builder.io/o/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2Fd3174b92d8b240f6baafdbc5899af89b?alt=media&token=cb10dbbc-9ee8-475f-9c9c-d581d98e4577&apiKey=c7a3c3953c0a4f43bcdc32733cba23f5") format("opentype");
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "F37 Ginger";
+  font-family: "F37 Ginger Pro";
   src: url("https://cdn.builder.io/o/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2F1d4b1829841b45c280a622f060a1c49c?alt=media&token=bd434eb5-0d11-4099-bbd0-059bd1ea40b6&apiKey=c7a3c3953c0a4f43bcdc32733cba23f5") format("opentype");
   font-weight: 700;
   font-style: italic;
@@ -100,9 +100,38 @@
 
 :root {
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: var(--color-text-dark);
+  background-color: var(--color-background-dark);
+  font-family: var(--font-family-primary);
+  line-height: var(--line-height-base);
 }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-primary);
+  line-height: var(--line-height-tight);
+  margin-top: 0;
+}
+
+/* Utility Classes used in App.tsx */
+.min-h-screen { min-height: 100vh; }
+.bg-gradient-to-br { background: linear-gradient(to bottom right, var(--tw-gradient-stops)); }
+.from-blue-50 { --tw-gradient-from: #eff6ff; --tw-gradient-to: rgb(239 246 255 / 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+.to-indigo-100 { --tw-gradient-to: #e0e7ff; }
+.flex { display: flex; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.text-center { text-align: center; }
+.text-4xl { font-size: var(--font-size-4xl); }
+.text-lg { font-size: var(--font-size-lg); }
+.font-bold { font-weight: var(--font-weight-bold); }
+.text-gray-800 { color: #1f2937; }
+.text-gray-600 { color: #4b5563; }
+.mb-8 { margin-bottom: 2rem; }
 
 a {
   font-weight: 500;
@@ -137,8 +166,8 @@ button:focus-visible {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: var(--color-text-light);
+    background-color: var(--color-background-light);
   }
   
   a:hover {
