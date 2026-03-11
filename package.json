@@ -20,7 +20,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-  "@chromatic-com/storybook": "^3.0.0",
+    "@chromatic-com/storybook": "^3.0.0",
     "storybook": "^10.2.17",
     "@storybook/addon-essentials": "^10.2.17",
     "@storybook/addon-interactions": "^10.2.17",
