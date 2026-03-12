@@ -1,4 +1,4 @@
-import{j as e}from"./jsx-runtime-ti0h7CZl.js";import{useMDXComponents as r}from"./index-DhuKuDhy.js";import{M as c,C as t,a as s}from"./blocks-B1e_kHAf.js";import{I as l,S as a,C as d,G as h}from"./Icon.stories-B67KQbDj.js";import"./iframe-ZIm1cGDU.js";import"./preload-helper-C1FmrZbK.js";import"./index-CAsqSgY_.js";import"./index-DTAMEIXK.js";import"./Settings-CVubDidZ.js";function o(i){const n={a:"a",code:"code",h1:"h1",h2:"h2",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...r(),...i.components};return e.jsxs(e.Fragment,{children:[e.jsx(c,{of:l}),`
+import{j as e}from"./jsx-runtime-ZL7ds4td.js";import{useMDXComponents as r}from"./index-CKtbaTaK.js";import{M as c,C as t,a as s}from"./blocks-PTqLo9jp.js";import{I as l,S as a,C as d,G as h}from"./Icon.stories-BAb1N1fj.js";import"./iframe-B2lkY0L_.js";import"./preload-helper-C1FmrZbK.js";import"./index-85vnRdeI.js";import"./Settings-BeNdxpOY.js";function o(i){const n={a:"a",code:"code",h1:"h1",h2:"h2",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...r(),...i.components};return e.jsxs(e.Fragment,{children:[e.jsx(c,{of:l}),`
 `,e.jsx(n.h1,{id:"icon-system",children:"Icon System"}),`
 `,e.jsxs(n.p,{children:["The Icon system in our design system is powered by ",e.jsx(n.a,{href:"https://mui.com/material-ui/material-icons/",rel:"nofollow",children:"Material UI Icons"}),". This provides thousands of consistent, high-quality icons ready to be used in your application."]}),`
 `,e.jsx(n.h2,{id:"sizing-and-inheritance",children:"Sizing and Inheritance"}),`
@@ -37,4 +37,4 @@ const MyComponent = () => (
 `]}),`
 `,e.jsx(n.h2,{id:"common-icons-gallery",children:"Common Icons Gallery"}),`
 `,e.jsx(n.p,{children:"Below is a collection of some of the most commonly used icons in our projects."}),`
-`,e.jsx(s,{of:h})]})}function C(i={}){const{wrapper:n}={...r(),...i.components};return n?e.jsx(n,{...i,children:e.jsx(o,{...i})}):o(i)}export{C as default};
+`,e.jsx(s,{of:h})]})}function I(i={}){const{wrapper:n}={...r(),...i.components};return n?e.jsx(n,{...i,children:e.jsx(o,{...i})}):o(i)}export{I as default};

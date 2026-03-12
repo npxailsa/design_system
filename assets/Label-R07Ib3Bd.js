@@ -1,4 +1,4 @@
-import{j as n}from"./jsx-runtime-ti0h7CZl.js";import{useMDXComponents as o}from"./index-DhuKuDhy.js";import{M as l,C as r,a as i}from"./index-BIJigueG.js";import{L as a,S as d,W as c,a as h,A as p}from"./Label.stories-BBPMXWaH.js";import"./iframe-ZIm1cGDU.js";import"./preload-helper-C1FmrZbK.js";import"./index-CAsqSgY_.js";import"./index-DTAMEIXK.js";import"./Settings-CVubDidZ.js";function t(s){const e={code:"code",h1:"h1",h2:"h2",h3:"h3",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...o(),...s.components};return n.jsxs(n.Fragment,{children:[n.jsx(l,{of:a}),`
+import{j as n}from"./jsx-runtime-ZL7ds4td.js";import{useMDXComponents as o}from"./index-CKtbaTaK.js";import{M as l,C as r,a as i}from"./blocks-PTqLo9jp.js";import{L as a,S as d,W as c,a as h,A as p}from"./Label.stories-DsvoeIeu.js";import"./iframe-B2lkY0L_.js";import"./preload-helper-C1FmrZbK.js";import"./index-85vnRdeI.js";import"./Settings-BeNdxpOY.js";function t(s){const e={code:"code",h1:"h1",h2:"h2",h3:"h3",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...o(),...s.components};return n.jsxs(n.Fragment,{children:[n.jsx(l,{of:a}),`
 `,n.jsx(e.h1,{id:"label-component",children:"Label Component"}),`
 `,n.jsxs(e.p,{children:["The ",n.jsx(e.code,{children:"Label"})," component is a versatile text display component that supports icons, alignment, and dropdown split functionality. It uses the ",n.jsx(e.strong,{children:"F37 Ginger Pro"})," font family as its primary typeface, ensuring a modern and clean aesthetic that matches our design system."]}),`
 `,n.jsx(e.h2,{id:"typography-and-scaling",children:"Typography and Scaling"}),`
@@ -41,4 +41,4 @@ import MailIcon from '@mui/icons-material/Mail';
 `,n.jsx(e.h3,{id:"with-dropdown",children:"With Dropdown"}),`
 `,n.jsx(i,{of:h}),`
 `,n.jsx(e.h3,{id:"alignment",children:"Alignment"}),`
-`,n.jsx(i,{of:p})]})}function I(s={}){const{wrapper:e}={...o(),...s.components};return e?n.jsx(e,{...s,children:n.jsx(t,{...s})}):t(s)}export{I as default};
+`,n.jsx(i,{of:p})]})}function b(s={}){const{wrapper:e}={...o(),...s.components};return e?n.jsx(e,{...s,children:n.jsx(t,{...s})}):t(s)}export{b as default};
