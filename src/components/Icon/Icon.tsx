@@ -62,7 +62,7 @@ export const Icon: React.FC<IconProps> = ({
   return (
     <IconComponent
       className={`${styles.icon} ${className || ''}`}
-      fontSize="inherit"
+      fontSize={isNamedSize || typeof size === 'number' ? undefined : (size === 'inherit' ? 'inherit' : undefined)}
       sx={iconSx}
       {...props}
     />
