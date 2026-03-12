@@ -24,12 +24,7 @@ const config: StorybookConfig = {
       'vitest',
       '@vitest/runner',
       '@vitest/browser',
-      '@storybook/addon-vitest',
-      '@mui/icons-material/Person',
-      '@mui/icons-material/Mail',
-      '@mui/icons-material/Settings',
-      '@mui/icons-material/ArrowForward',
-      '@mui/icons-material/KeyboardArrowDown'
+      '@storybook/addon-vitest'
     ];
     return config;
   }
