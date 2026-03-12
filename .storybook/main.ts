@@ -20,11 +20,14 @@ const config: StorybookConfig = {
     config.optimizeDeps.include = [
       ...(config.optimizeDeps.include || []),
       '@mui/material',
-      '@mui/icons-material',
       'vitest',
       '@vitest/runner',
       '@vitest/browser',
       '@storybook/addon-vitest'
+    ];
+    config.optimizeDeps.exclude = [
+      ...(config.optimizeDeps.exclude || []),
+      '@mui/icons-material'
     ];
     return config;
   }
