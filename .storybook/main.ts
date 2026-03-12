@@ -20,15 +20,21 @@ const config: StorybookConfig = {
     config.optimizeDeps.include = [
       ...(config.optimizeDeps.include || []),
       '@mui/material',
+      '@mui/icons-material',
+      '@emotion/react',
+      '@emotion/styled',
+      'hoist-non-react-statics',
       'vitest',
       '@vitest/runner',
       '@vitest/browser',
       '@storybook/addon-vitest'
     ];
-    config.optimizeDeps.exclude = [
-      ...(config.optimizeDeps.exclude || []),
-      '@mui/icons-material'
-    ];
+    config.build = config.build || {};
+    config.build.commonjsOptions = {
+      ...(config.build.commonjsOptions || {}),
+      include: [/hoist-non-react-statics/, /node_modules/],
+    };
+    // Removed exclude for icons-material as it caused runtime errors with its dependencies
     return config;
   }
 };
