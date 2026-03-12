@@ -9,6 +9,10 @@
 }
 
 /* Fonts */
+.font-archivo {
+  --type-typeface-label: var(--type-typeface-archivo);
+}
+
 .font-ginger {
   --type-typeface-label: var(--type-typeface-ginger);
 }

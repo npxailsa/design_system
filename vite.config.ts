@@ -11,16 +11,48 @@ const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(file
 export default defineConfig({
   plugins: [react()],
   resolve: {
-    alias: {
-      'storybook/internal/theming': 'storybook/theming',
-      'storybook/internal/components': 'storybook/internal/components', // this one seems to exist
-      'storybook/internal/client-logger': 'storybook/internal/client-logger',
-      'storybook/internal/csf': 'storybook/internal/csf',
-      'storybook/internal/preview-api': 'storybook/internal/preview-api',
-      'storybook/internal/docs-tools': 'storybook/internal/docs-tools',
-      'storybook/internal/core-events': 'storybook/internal/core-events',
-      'storybook/internal/channels': 'storybook/internal/channels',
-    }
+    alias: [
+      {
+        find: /^file:\/\/.*\/node_modules\/@storybook\/addon-docs\/dist\/mdx-react-shim\.js$/,
+        replacement: path.join(dirname, 'node_modules/@storybook/addon-docs/dist/mdx-react-shim.js')
+      },
+      {
+        find: '@storybook/addon-docs/dist/mdx-react-shim.js',
+        replacement: path.join(dirname, 'node_modules/@storybook/addon-docs/dist/mdx-react-shim.js')
+      },
+      {
+        find: 'storybook/internal/theming',
+        replacement: 'storybook/theming'
+      },
+      {
+        find: 'storybook/internal/components',
+        replacement: 'storybook/internal/components'
+      },
+      {
+        find: 'storybook/internal/client-logger',
+        replacement: 'storybook/internal/client-logger'
+      },
+      {
+        find: 'storybook/internal/csf',
+        replacement: 'storybook/internal/csf'
+      },
+      {
+        find: 'storybook/internal/preview-api',
+        replacement: 'storybook/internal/preview-api'
+      },
+      {
+        find: 'storybook/internal/docs-tools',
+        replacement: 'storybook/internal/docs-tools'
+      },
+      {
+        find: 'storybook/internal/core-events',
+        replacement: 'storybook/internal/core-events'
+      },
+      {
+        find: 'storybook/internal/channels',
+        replacement: 'storybook/internal/channels'
+      }
+    ]
   },
   server: {
     port: 3000,
