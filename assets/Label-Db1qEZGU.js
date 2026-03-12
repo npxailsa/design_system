@@ -1,6 +1,6 @@
-import{j as n}from"./jsx-runtime-BYYWji4R.js";import{useMDXComponents as o}from"./index-DUy19JZU.js";import"./blocks-BWByelzo.js";import{L as l,S as r,W as a,a as c,A as h}from"./Label.stories-DzqmL4In.js";import{M as d,C as p,a as i}from"./index-CmmkqSPq.js";import"./index-ClcD9ViR.js";import"./_commonjsHelpers-Cpj98o6Y.js";import"./Settings-WiyIbRwu.js";import"./iframe-CRP0dkNA.js";import"./index-BUAr5TKG.js";import"./index-Bhelpi4i.js";function t(s){const e={code:"code",h1:"h1",h2:"h2",h3:"h3",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...o(),...s.components};return n.jsxs(n.Fragment,{children:[n.jsx(d,{of:l}),`
+import{j as n}from"./jsx-runtime-BYYWji4R.js";import{useMDXComponents as o}from"./index-DUy19JZU.js";import{M as l,C as r,a as i}from"./index-BD2poKbj.js";import{L as a,S as c,W as d,a as h,A as p}from"./Label.stories-BT8QNi_P.js";import"./index-ClcD9ViR.js";import"./_commonjsHelpers-Cpj98o6Y.js";import"./iframe-DUxRKVU7.js";import"./index-BUAr5TKG.js";import"./index-Bhelpi4i.js";import"./Settings-WiyIbRwu.js";function t(s){const e={code:"code",h1:"h1",h2:"h2",h3:"h3",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...o(),...s.components};return n.jsxs(n.Fragment,{children:[n.jsx(l,{of:a}),`
 `,n.jsx(e.h1,{id:"label-component",children:"Label Component"}),`
-`,n.jsxs(e.p,{children:["The ",n.jsx(e.code,{children:"Label"})," component is a versatile text display component that supports icons, alignment, and dropdown split functionality. It uses the ",n.jsx(e.strong,{children:"F37 Ginger"})," font family as its primary typeface, ensuring a modern and clean aesthetic that matches our design system."]}),`
+`,n.jsxs(e.p,{children:["The ",n.jsx(e.code,{children:"Label"})," component is a versatile text display component that supports icons, alignment, and dropdown split functionality. It uses the ",n.jsx(e.strong,{children:"Archivo"})," font family as its primary typeface, ensuring a modern and clean aesthetic that matches our design system."]}),`
 `,n.jsx(e.h2,{id:"typography-and-scaling",children:"Typography and Scaling"}),`
 `,n.jsx(e.p,{children:"The component is built using Figma-compliant design tokens. Each size variant scales the text, the icons, and the spacing (gap) between elements proportionally:"}),`
 `,n.jsxs(e.ul,{children:[`
@@ -19,7 +19,7 @@ import MailIcon from '@mui/icons-material/Mail';
 </Label>
 `})}),`
 `,n.jsx(e.h2,{id:"props",children:"Props"}),`
-`,n.jsx(p,{}),`
+`,n.jsx(r,{}),`
 `,n.jsx(e.h2,{id:"component-api",children:"Component API"}),`
 `,n.jsxs(e.p,{children:["The ",n.jsx(e.code,{children:"Label"})," component is highly configurable with several props to control its appearance and behavior:"]}),`
 `,n.jsxs(e.ul,{children:[`
@@ -28,15 +28,17 @@ import MailIcon from '@mui/icons-material/Mail';
 `,n.jsxs(e.li,{children:[n.jsx(e.strong,{children:"weight"}),": Controls the font weight. Supports 'bold', 'medium', 'light', 'thin'."]}),`
 `,n.jsxs(e.li,{children:[n.jsx(e.strong,{children:"align"}),": Controls the text and content alignment within the container. Supports 'left', 'centre', 'right'."]}),`
 `,n.jsxs(e.li,{children:[n.jsx(e.strong,{children:"dropdown"}),": If true, displays a vertical divider and a chevron-down icon."]}),`
-`,n.jsxs(e.li,{children:[n.jsx(e.strong,{children:"leadingIcon"}),": A Material UI icon to display before the text. Defaults to ",n.jsx(e.code,{children:"PersonIcon"}),". Pass ",n.jsx(e.code,{children:"null"})," to hide."]}),`
+`,n.jsxs(e.li,{children:[n.jsx(e.strong,{children:"leadingIcon"}),": A Material UI icon to display before the text. Defaults to ",n.jsx(e.code,{children:"PersonIcon"}),"."]}),`
+`,n.jsxs(e.li,{children:[n.jsx(e.strong,{children:"showLeadingIcon"}),": If true, displays the leading icon."]}),`
 `,n.jsxs(e.li,{children:[n.jsx(e.strong,{children:"showTrailingIcon"}),": If true, displays an ",n.jsx(e.code,{children:"ArrowForwardIcon"})," after the text."]}),`
+`,n.jsxs(e.li,{children:[n.jsx(e.strong,{children:"showSplit"}),": If true, displays the split divider and chevron (only when ",n.jsx(e.code,{children:"dropdown"})," is true)."]}),`
 `]}),`
 `,n.jsx(e.h2,{id:"examples",children:"Examples"}),`
 `,n.jsx(e.h3,{id:"sizes",children:"Sizes"}),`
-`,n.jsx(i,{of:r}),`
-`,n.jsx(e.h3,{id:"weights",children:"Weights"}),`
-`,n.jsx(i,{of:a}),`
-`,n.jsx(e.h3,{id:"with-dropdown",children:"With Dropdown"}),`
 `,n.jsx(i,{of:c}),`
+`,n.jsx(e.h3,{id:"weights",children:"Weights"}),`
+`,n.jsx(i,{of:d}),`
+`,n.jsx(e.h3,{id:"with-dropdown",children:"With Dropdown"}),`
+`,n.jsx(i,{of:h}),`
 `,n.jsx(e.h3,{id:"alignment",children:"Alignment"}),`
-`,n.jsx(i,{of:h})]})}function L(s={}){const{wrapper:e}={...o(),...s.components};return e?n.jsx(e,{...s,children:n.jsx(t,{...s})}):t(s)}export{L as default};
+`,n.jsx(i,{of:p})]})}function L(s={}){const{wrapper:e}={...o(),...s.components};return e?n.jsx(e,{...s,children:n.jsx(t,{...s})}):t(s)}export{L as default};

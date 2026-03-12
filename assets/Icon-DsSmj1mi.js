@@ -1,4 +1,4 @@
-import{j as e}from"./jsx-runtime-BYYWji4R.js";import{useMDXComponents as r}from"./index-DUy19JZU.js";import"./blocks-BWByelzo.js";import{I as c,S as t,C as l,G as a}from"./Icon.stories-BmZVyvre.js";import{M as d,C as h,a as s}from"./index-CmmkqSPq.js";import"./index-ClcD9ViR.js";import"./_commonjsHelpers-Cpj98o6Y.js";import"./Settings-WiyIbRwu.js";import"./iframe-CRP0dkNA.js";import"./index-BUAr5TKG.js";import"./index-Bhelpi4i.js";function o(i){const n={a:"a",code:"code",h1:"h1",h2:"h2",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...r(),...i.components};return e.jsxs(e.Fragment,{children:[e.jsx(d,{of:c}),`
+import{j as e}from"./jsx-runtime-BYYWji4R.js";import{useMDXComponents as r}from"./index-DUy19JZU.js";import{M as c,C as t,a as s}from"./index-BD2poKbj.js";import{I as l,S as a,C as d,G as h}from"./Icon.stories-BmZVyvre.js";import"./index-ClcD9ViR.js";import"./_commonjsHelpers-Cpj98o6Y.js";import"./iframe-DUxRKVU7.js";import"./index-BUAr5TKG.js";import"./index-Bhelpi4i.js";import"./Settings-WiyIbRwu.js";function o(i){const n={a:"a",code:"code",h1:"h1",h2:"h2",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...r(),...i.components};return e.jsxs(e.Fragment,{children:[e.jsx(c,{of:l}),`
 `,e.jsx(n.h1,{id:"icon-system",children:"Icon System"}),`
 `,e.jsxs(n.p,{children:["The Icon system in our design system is powered by ",e.jsx(n.a,{href:"https://mui.com/material-ui/material-icons/",rel:"nofollow",children:"Material UI Icons"}),". This provides thousands of consistent, high-quality icons ready to be used in your application."]}),`
 `,e.jsx(n.h2,{id:"sizing-and-inheritance",children:"Sizing and Inheritance"}),`
@@ -13,13 +13,13 @@ const MyComponent = () => (
 );
 `})}),`
 `,e.jsx(n.h2,{id:"props",children:"Props"}),`
-`,e.jsx(h,{}),`
+`,e.jsx(t,{}),`
 `,e.jsx(n.h2,{id:"custom-sizes",children:"Custom Sizes"}),`
 `,e.jsxs(n.p,{children:["You can pass a specific number (in pixels) to the ",e.jsx(n.code,{children:"size"})," prop for custom sizing."]}),`
-`,e.jsx(s,{of:t}),`
+`,e.jsx(s,{of:a}),`
 `,e.jsx(n.h2,{id:"colors",children:"Colors"}),`
 `,e.jsxs(n.p,{children:["Icons can use the Material UI theme colors such as ",e.jsx(n.code,{children:"primary"}),", ",e.jsx(n.code,{children:"secondary"}),", ",e.jsx(n.code,{children:"error"}),", etc."]}),`
-`,e.jsx(s,{of:l}),`
+`,e.jsx(s,{of:d}),`
 `,e.jsx(n.h2,{id:"finding-icons",children:"Finding Icons"}),`
 `,e.jsxs(n.p,{children:["You can find all available icons in the ",e.jsx(n.a,{href:"https://mui.com/material-ui/material-icons/",rel:"nofollow",children:"Material UI Icon Search"}),". Simply find the name of the icon and import it from ",e.jsx(n.code,{children:"@mui/icons-material"}),"."]}),`
 `,e.jsx(n.p,{children:"For example:"}),`
@@ -37,4 +37,4 @@ const MyComponent = () => (
 `]}),`
 `,e.jsx(n.h2,{id:"common-icons-gallery",children:"Common Icons Gallery"}),`
 `,e.jsx(n.p,{children:"Below is a collection of some of the most commonly used icons in our projects."}),`
-`,e.jsx(s,{of:a})]})}function S(i={}){const{wrapper:n}={...r(),...i.components};return n?e.jsx(n,{...i,children:e.jsx(o,{...i})}):o(i)}export{S as default};
+`,e.jsx(s,{of:h})]})}function z(i={}){const{wrapper:n}={...r(),...i.components};return n?e.jsx(n,{...i,children:e.jsx(o,{...i})}):o(i)}export{z as default};
