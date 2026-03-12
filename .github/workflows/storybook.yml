@@ -1,34 +1,40 @@
-name: Deploy Storybook
+name: Deploy Storybook to GitHub Pages
 
 on:
   push:
     branches:
-      - main # Or your default branch
+      - main
+  workflow_dispatch:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v4 
         with:
-          node-version: 20
-          cache: 'npm'
+          node-version: '24'
+          # Removed the npm cache to prevent it from restoring a broken state
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Clean install dependencies
+        run: |
+          rm -rf node_modules package-lock.json
+          npm install --legacy-peer-deps --include=dev
 
       - name: Build Storybook
-        run: npm run build-storybook:gh-pages
+        run: npx storybook build --output-dir storybook-static
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./storybook-static
+          folder: storybook-static
+          branch: gh-pages
