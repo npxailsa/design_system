@@ -14,6 +14,19 @@ const config: StorybookConfig = {
     "@storybook/addon-themes",
     "@storybook/addon-vitest"
   ],
-  "framework": "@storybook/react-vite"
+  "framework": "@storybook/react-vite",
+  async viteFinal(config) {
+    config.optimizeDeps = config.optimizeDeps || {};
+    config.optimizeDeps.include = [
+      ...(config.optimizeDeps.include || []),
+      '@mui/material',
+      '@mui/icons-material/Person',
+      '@mui/icons-material/Mail',
+      '@mui/icons-material/Settings',
+      '@mui/icons-material/ArrowForward',
+      '@mui/icons-material/KeyboardArrowDown'
+    ];
+    return config;
+  }
 };
 export default config;
