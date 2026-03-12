@@ -18,7 +18,7 @@ const meta: Meta<typeof Label> = {
     },
     font: {
       control: 'select',
-      options: ['archivo', 'ginger', 'calibri'],
+      options: ['ginger', 'calibri'],
     },
     align: {
       control: 'select',
@@ -99,10 +99,6 @@ export const Alignments: Story = {
 export const Fonts: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-      <div>
-        <h4 style={{ margin: '0 0 10px 0' }}>Archivo (Figma)</h4>
-        <Label font="archivo">The quick brown fox jumps over the lazy dog</Label>
-      </div>
       <div>
         <h4 style={{ margin: '0 0 10px 0' }}>Ginger Pro (Primary)</h4>
         <Label font="ginger">The quick brown fox jumps over the lazy dog</Label>

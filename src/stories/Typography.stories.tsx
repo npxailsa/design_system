@@ -8,13 +8,7 @@ const TypographyDemo = () => {
         <h2 style={{ borderBottom: '1px solid #ccc', paddingBottom: '10px' }}>Font Families</h2>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <div>
-            <p style={{ color: '#666', marginBottom: '5px' }}>Primary: Archivo (--type-typeface-archivo)</p>
-            <p style={{ fontFamily: 'var(--type-typeface-archivo)', fontSize: '24px' }}>
-              The quick brown fox jumps over the lazy dog. 1234567890
-            </p>
-          </div>
-          <div>
-            <p style={{ color: '#666', marginBottom: '5px' }}>Alternative: F37 Ginger Pro (--font-family-primary)</p>
+            <p style={{ color: '#666', marginBottom: '5px' }}>Primary: F37 Ginger Pro (--font-family-primary)</p>
             <p style={{ fontFamily: 'var(--font-family-primary)', fontSize: '24px' }}>
               The quick brown fox jumps over the lazy dog. 1234567890
             </p>
@@ -25,17 +19,6 @@ const TypographyDemo = () => {
               The quick brown fox jumps over the lazy dog. 1234567890
             </p>
           </div>
-        </div>
-      </section>
-
-      <section>
-        <h2 style={{ borderBottom: '1px solid #ccc', paddingBottom: '10px' }}>Font Weights (Archivo)</h2>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-          <p style={{ fontFamily: 'var(--type-typeface-archivo)', fontWeight: 100 }}>Thin (100): Pack my box with five dozen liquor jugs.</p>
-          <p style={{ fontFamily: 'var(--type-typeface-archivo)', fontWeight: 300 }}>Light (300): Pack my box with five dozen liquor jugs.</p>
-          <p style={{ fontFamily: 'var(--type-typeface-archivo)', fontWeight: 400 }}>Regular (400): Pack my box with five dozen liquor jugs.</p>
-          <p style={{ fontFamily: 'var(--type-typeface-archivo)', fontWeight: 500 }}>Medium (500): Pack my box with five dozen liquor jugs.</p>
-          <p style={{ fontFamily: 'var(--type-typeface-archivo)', fontWeight: 700 }}>Bold (700): Pack my box with five dozen liquor jugs.</p>
         </div>
       </section>
 
