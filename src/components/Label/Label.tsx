@@ -12,14 +12,20 @@ export interface LabelProps {
   size?: 'large' | 'default' | 'small' | 'x-small' | '2x-small';
   /** Font weight */
   weight?: 'bold' | 'medium' | 'light' | 'thin';
+  /** Font family variant */
+  font?: 'ginger' | 'calibri' | 'archivo';
   /** Text and content alignment */
   align?: 'left' | 'centre' | 'right';
   /** Shows dropdown split + chevron-down icon after trailing icon */
   dropdown?: boolean;
   /** Optional leading icon (MUI icon component). Pass null/undefined to hide. */
   leadingIcon?: React.ElementType;
+  /** Whether to show the leading icon */
+  showLeadingIcon?: boolean;
   /** Whether to show the trailing arrow-right icon */
   showTrailingIcon?: boolean;
+  /** Whether to show the split divider and chevron (only if dropdown is true) */
+  showSplit?: boolean;
   className?: string;
 }
 
@@ -30,16 +36,20 @@ export const Label: React.FC<LabelProps> = ({
   children = 'Label',
   size = 'default',
   weight = 'medium',
+  font = 'archivo',
   align = 'left',
   dropdown = false,
   leadingIcon: LeadingIconInput = PersonIcon,
+  showLeadingIcon = true,
   showTrailingIcon = true,
+  showSplit = true,
   className = '',
 }) => {
   const containerClasses = [
     styles.labelContainer,
     styles[`size-${size}`],
     styles[`weight-${weight}`],
+    styles[`font-${font}`],
     styles[`align-${align}`],
     className,
   ].join(' ');
@@ -47,7 +57,7 @@ export const Label: React.FC<LabelProps> = ({
   return (
     <div className={containerClasses}>
       {/* Leading Icon */}
-      {LeadingIconInput && (
+      {showLeadingIcon && LeadingIconInput && (
         <Icon icon={LeadingIconInput} size={size} />
       )}
 
@@ -60,7 +70,7 @@ export const Label: React.FC<LabelProps> = ({
       )}
 
       {/* Dropdown / Split section */}
-      {dropdown && (
+      {dropdown && showSplit && (
         <div className={styles.split}>
           <div className={styles.splitDivider} />
           <Icon

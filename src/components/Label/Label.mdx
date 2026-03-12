@@ -5,7 +5,7 @@ import * as LabelStories from './Label.stories';
 
 # Label Component
 
-The `Label` component is a versatile text display component that supports icons, alignment, and dropdown split functionality. It uses the **F37 Ginger** font family as its primary typeface, ensuring a modern and clean aesthetic that matches our design system.
+The `Label` component is a versatile text display component that supports icons, alignment, and dropdown split functionality. It uses the **F37 Ginger Pro** font family as its primary typeface, ensuring a modern and clean aesthetic that matches our design system.
 
 ## Typography and Scaling
 
@@ -41,8 +41,10 @@ The `Label` component is highly configurable with several props to control its a
 - **weight**: Controls the font weight. Supports 'bold', 'medium', 'light', 'thin'.
 - **align**: Controls the text and content alignment within the container. Supports 'left', 'centre', 'right'.
 - **dropdown**: If true, displays a vertical divider and a chevron-down icon.
-- **leadingIcon**: A Material UI icon to display before the text. Defaults to `PersonIcon`. Pass `null` to hide.
+- **leadingIcon**: A Material UI icon to display before the text. Defaults to `PersonIcon`.
+- **showLeadingIcon**: If true, displays the leading icon.
 - **showTrailingIcon**: If true, displays an `ArrowForwardIcon` after the text.
+- **showSplit**: If true, displays the split divider and chevron (only when `dropdown` is true).
 
 ## Examples
 

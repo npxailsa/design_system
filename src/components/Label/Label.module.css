@@ -8,6 +8,19 @@
   position: relative;
 }
 
+/* Fonts */
+.font-archivo {
+  --type-typeface-label: var(--type-typeface-archivo);
+}
+
+.font-ginger {
+  --type-typeface-label: var(--type-typeface-ginger);
+}
+
+.font-calibri {
+  --type-typeface-label: var(--type-typeface-calibri);
+}
+
 /* Alignments */
 .align-left {
   justify-content: flex-start;
@@ -48,6 +61,11 @@
   --divider-height: var(--type-line-height-label-lg);
 }
 
+.size-large.weight-thin {
+  /* Thin variant at large size uses font-size for divider height instead of line-height */
+  --divider-height: var(--type-size-primary-scale-label-lg);
+}
+
 .size-default {
   font-size: var(--type-size-primary-scale-label);
   line-height: var(--type-line-height-label);
@@ -80,6 +98,7 @@
 .split {
   display: flex;
   align-items: center;
+  padding-left: var(--spacing-sizing-2px);
   gap: var(--spacing-sizing-4px);
   align-self: stretch;
   position: relative;
@@ -90,6 +109,10 @@
   background: var(--color-blue-gray-50);
   opacity: 0.5;
   height: var(--divider-height, 20px);
+}
+
+.chevronIcon {
+  opacity: 0.6;
 }
 
 .labelText {

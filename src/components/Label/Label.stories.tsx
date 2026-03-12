@@ -1,11 +1,11 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import Label from './Label';
 import PersonIcon from '@mui/icons-material/Person';
 import MailIcon from '@mui/icons-material/Mail';
 import SettingsIcon from '@mui/icons-material/Settings';
 
 const meta: Meta<typeof Label> = {
-  title: 'Components/Label',
+  title: 'Foundations/Label',
   component: Label,
   argTypes: {
     size: {
@@ -15,6 +15,10 @@ const meta: Meta<typeof Label> = {
     weight: {
       control: 'select',
       options: ['bold', 'medium', 'light', 'thin'],
+    },
+    font: {
+      control: 'select',
+      options: ['archivo', 'ginger', 'calibri'],
     },
     align: {
       control: 'select',
@@ -29,6 +33,18 @@ const meta: Meta<typeof Label> = {
         Settings: SettingsIcon,
         None: null,
       },
+    },
+    showLeadingIcon: {
+      control: 'boolean',
+    },
+    showTrailingIcon: {
+      control: 'boolean',
+    },
+    dropdown: {
+      control: 'boolean',
+    },
+    showSplit: {
+      control: 'boolean',
     },
   },
 };
@@ -80,6 +96,25 @@ export const Alignments: Story = {
   ),
 };
 
+export const Fonts: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+      <div>
+        <h4 style={{ margin: '0 0 10px 0' }}>Archivo (Figma)</h4>
+        <Label font="archivo">The quick brown fox jumps over the lazy dog</Label>
+      </div>
+      <div>
+        <h4 style={{ margin: '0 0 10px 0' }}>Ginger Pro (Primary)</h4>
+        <Label font="ginger">The quick brown fox jumps over the lazy dog</Label>
+      </div>
+      <div>
+        <h4 style={{ margin: '0 0 10px 0' }}>Calibri (Secondary)</h4>
+        <Label font="calibri">The quick brown fox jumps over the lazy dog</Label>
+      </div>
+    </div>
+  ),
+};
+
 export const WithDropdown: Story = {
   args: {
     children: 'Dropdown Label',
@@ -89,7 +124,7 @@ export const WithDropdown: Story = {
   },
 };
 
-export const FullMatrix: Story = {
+export const DropdownMatrix: Story = {
   render: () => {
     const sizes = ['large', 'default', 'small', 'x-small', '2x-small'] as const;
     const weights = ['bold', 'medium', 'light', 'thin'] as const;
@@ -98,9 +133,9 @@ export const FullMatrix: Story = {
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '40px' }}>
         {weights.map((weight) => (
           <div key={weight} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-            <h4 style={{ margin: '0 0 10px 0', textTransform: 'capitalize' }}>{weight}</h4>
+            <h4 style={{ margin: '0 0 10px 0', textTransform: 'capitalize' }}>{weight} Dropdown</h4>
             {sizes.map((size) => (
-              <Label key={`${weight}-${size}`} size={size} weight={weight}>
+              <Label key={`${weight}-${size}`} size={size} weight={weight} dropdown showSplit>
                 {size} {weight}
               </Label>
             ))}
@@ -109,4 +144,17 @@ export const FullMatrix: Story = {
       </div>
     );
   },
+};
+
+export const IconToggles: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+      <Label showLeadingIcon={true} showTrailingIcon={true}>Both Icons</Label>
+      <Label showLeadingIcon={true} showTrailingIcon={false}>Leading Only</Label>
+      <Label showLeadingIcon={false} showTrailingIcon={true}>Trailing Only</Label>
+      <Label showLeadingIcon={false} showTrailingIcon={false}>No Icons</Label>
+      <Label dropdown showSplit={true}>With Split</Label>
+      <Label dropdown showSplit={false}>Dropdown No Split</Label>
+    </div>
+  ),
 };

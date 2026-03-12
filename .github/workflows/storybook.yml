@@ -23,17 +23,18 @@ jobs:
         uses: actions/setup-node@v4 
         with:
           node-version: '24'
-          cache: 'npm'
+          # Removed the npm cache to prevent it from restoring a broken state
 
-      - name: Install dependencies
-        run: npm install --legacy-peer-deps
+      - name: Clean install dependencies
+        run: |
+          rm -rf node_modules package-lock.json
+          npm install --legacy-peer-deps --include=dev
 
       - name: Build Storybook
-        run: npm storybook build --output-dir storybook-static
+        run: npx storybook build --output-dir storybook-static
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: storybook-static
           branch: gh-pages
-          

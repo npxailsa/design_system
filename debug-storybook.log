@@ -1,0 +1,19 @@
+[13:33:04.676] [INFO] storybook v10.2.17
+[13:33:05.311] [DEBUG] Getting package.json info for /root/app/code/package.json...
+[13:33:06.597] [DEBUG] Serving static files from [36mnode_modules/@chromatic-com/storybook/assets[39m at [36m/addon-visual-tests-assets[39m
+[13:33:06.597] [INFO] Starting...
+[13:33:06.628] [WARN] unable to find package.json for @mui/icons-material
+[13:33:07.560] [DEBUG] Starting preview..
+[13:33:07.585] [ERROR] Failed to build the preview
+[13:33:07.586] [ERROR] Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vitest' imported from ./node_modules/@storybook/addon-vitest/dist/vitest-plugin/index.js
+    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:301:9)
+    at packageResolve (node:internal/modules/esm/resolve:764:81)
+    at moduleResolve (node:internal/modules/esm/resolve:855:18)
+    at defaultResolve (node:internal/modules/esm/resolve:988:11)
+    at nextResolve (node:internal/modules/esm/hooks:769:28)
+    at AsyncLoaderHooksOnLoaderHookWorker.resolve (node:internal/modules/esm/hooks:265:30)
+    at MessagePort.handleMessage (node:internal/modules/esm/worker:251:24)
+    at [nodejs.internal.kHybridDispatch] (node:internal/event_target:843:20)
+    at MessagePort.<anonymous> (node:internal/per_context/messageport:23:28)
+[13:33:07.588] [WARN] Broken build, fix the error above.
+You may need to refresh the browser.

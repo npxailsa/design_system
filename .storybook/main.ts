@@ -1,21 +1,32 @@
-import type { StorybookConfig } from "@storybook/react-vite";
+import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
-  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
-  addons: [
-    "@storybook/addon-onboarding",
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@chromatic-com/storybook",
-    "@storybook/addon-interactions",
+  "stories": [
+    "../src/**/*.mdx",
+    "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"
   ],
-  framework: {
-    name: "@storybook/react-vite",
-    options: {},
-  },
-  docs: {
-    autodocs: "tag",
-  },
+  "addons": [
+    "@chromatic-com/storybook",
+    "@storybook/addon-a11y",
+    "@storybook/addon-docs",
+    "@storybook/addon-links",
+    "@storybook/addon-onboarding",
+    "@storybook/addon-themes",
+    "@storybook/addon-vitest"
+  ],
+  "framework": "@storybook/react-vite",
+  async viteFinal(config) {
+    config.optimizeDeps = config.optimizeDeps || {};
+    config.optimizeDeps.include = [
+      ...(config.optimizeDeps.include || []),
+      '@mui/material',
+      '@mui/icons-material/Person',
+      '@mui/icons-material/Mail',
+      '@mui/icons-material/Settings',
+      '@mui/icons-material/ArrowForward',
+      '@mui/icons-material/KeyboardArrowDown'
+    ];
+    return config;
+  }
 };
-
 export default config;
