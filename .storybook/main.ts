@@ -20,6 +20,7 @@ const config: StorybookConfig = {
     config.optimizeDeps.include = [
       ...(config.optimizeDeps.include || []),
       '@mui/material',
+      '@mui/icons-material',
       '@mui/icons-material/Person',
       '@mui/icons-material/Mail',
       '@mui/icons-material/Settings',
