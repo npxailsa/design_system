@@ -1,56 +1,56 @@
 @import "./styles/tokens.css";
 
 @font-face {
-  font-family: "F37 Ginger";
+  font-family: "F37 Ginger Pro";
   src: url("https://cdn.builder.io/o/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2Fefcd49798cf74abaa5485ee630e91cdc?alt=media&token=501eb44e-85a2-4ed3-b039-29b501502ecc&apiKey=c7a3c3953c0a4f43bcdc32733cba23f5") format("woff");
   font-weight: 100;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "F37 Ginger";
+  font-family: "F37 Ginger Pro";
   src: url("https://cdn.builder.io/o/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2F266bd5324df4431c93fb68b3909fe8e0?alt=media&token=16d0c5e4-fa24-413c-a152-5aa276c77043&apiKey=c7a3c3953c0a4f43bcdc32733cba23f5") format("woff");
   font-weight: 100;
   font-style: italic;
 }
 
 @font-face {
-  font-family: "F37 Ginger";
+  font-family: "F37 Ginger Pro";
   src: url("https://cdn.builder.io/o/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2Fee3cc78f2eda4541bcb85b32d5078551?alt=media&token=aebed465-6c7e-47ca-93db-a4413bda1b6a&apiKey=c7a3c3953c0a4f43bcdc32733cba23f5") format("woff");
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "F37 Ginger";
+  font-family: "F37 Ginger Pro";
   src: url("https://cdn.builder.io/o/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2Fc18ef556e05d4bb0b18e49b2b0f2bea3?alt=media&token=b8164c60-fa5e-406e-a313-ffc6b27c3ad3&apiKey=c7a3c3953c0a4f43bcdc32733cba23f5") format("woff");
   font-weight: 300;
   font-style: italic;
 }
 
 @font-face {
-  font-family: "F37 Ginger";
+  font-family: "F37 Ginger Pro";
   src: url("https://cdn.builder.io/o/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2Ffad45eb7a96541d3913907129e79408e?alt=media&token=5b16da38-5337-4ed2-a616-3b677e51e78e&apiKey=c7a3c3953c0a4f43bcdc32733cba23f5") format("woff");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "F37 Ginger";
+  font-family: "F37 Ginger Pro";
   src: url("https://cdn.builder.io/o/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2F688e92cdd3b3458699418ecbc2a3b3ed?alt=media&token=e8cfa9f7-2c3f-44c2-a98e-512734ce3717&apiKey=c7a3c3953c0a4f43bcdc32733cba23f5") format("woff");
   font-weight: 400;
   font-style: italic;
 }
 
 @font-face {
-  font-family: "F37 Ginger";
+  font-family: "F37 Ginger Pro";
   src: url("https://cdn.builder.io/o/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2F874b958dc1e7476f99b29871d12bb63c?alt=media&token=905ef4e1-b4eb-4a74-9bbb-d90795b697d7&apiKey=c7a3c3953c0a4f43bcdc32733cba23f5") format("woff");
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "F37 Ginger";
+  font-family: "F37 Ginger Pro";
   src: url("https://cdn.builder.io/o/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2F2ef370faac4e4ec98c888975d02abcd1?alt=media&token=fd51b178-510a-44eb-b707-4a0d3c0fab0b&apiKey=c7a3c3953c0a4f43bcdc32733cba23f5") format("woff");
   font-weight: 700;
   font-style: italic;

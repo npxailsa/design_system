@@ -16,6 +16,10 @@ const meta: Meta<typeof Label> = {
       control: 'select',
       options: ['bold', 'medium', 'light', 'thin'],
     },
+    font: {
+      control: 'select',
+      options: ['ginger', 'calibri'],
+    },
     align: {
       control: 'select',
       options: ['left', 'centre', 'right'],
@@ -88,6 +92,21 @@ export const Alignments: Story = {
       <Label align="left">Left Aligned</Label>
       <Label align="centre">Centre Aligned</Label>
       <Label align="right">Right Aligned</Label>
+    </div>
+  ),
+};
+
+export const Fonts: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+      <div>
+        <h4 style={{ margin: '0 0 10px 0' }}>Ginger Pro (Primary)</h4>
+        <Label font="ginger">The quick brown fox jumps over the lazy dog</Label>
+      </div>
+      <div>
+        <h4 style={{ margin: '0 0 10px 0' }}>Calibri (Secondary)</h4>
+        <Label font="calibri">The quick brown fox jumps over the lazy dog</Label>
+      </div>
     </div>
   ),
 };

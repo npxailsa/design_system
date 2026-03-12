@@ -9,7 +9,7 @@
   --icon-size-2x-large: 48px;
 
   /* Typography Tokens */
-  --font-family-primary: "F37 Ginger", sans-serif;
+  --font-family-primary: "F37 Ginger Pro", sans-serif;
   --font-family-secondary: "Calibri", sans-serif;
 
   --font-size-xs: 0.75rem;
@@ -53,7 +53,7 @@
   /* Label Component Tokens */
   --color-base-black: #1C1C1C;
   --type-typeface-archivo: Archivo;
-  --type-typeface-ginger: "F37 Ginger", sans-serif;
+  --type-typeface-ginger: "F37 Ginger Pro", sans-serif;
   --type-typeface-calibri: Calibri, sans-serif;
   --type-typeface-label: var(--type-typeface-ginger);
 

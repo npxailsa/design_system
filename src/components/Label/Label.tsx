@@ -12,6 +12,8 @@ export interface LabelProps {
   size?: 'large' | 'default' | 'small' | 'x-small' | '2x-small';
   /** Font weight */
   weight?: 'bold' | 'medium' | 'light' | 'thin';
+  /** Font family variant */
+  font?: 'ginger' | 'calibri';
   /** Text and content alignment */
   align?: 'left' | 'centre' | 'right';
   /** Shows dropdown split + chevron-down icon after trailing icon */
@@ -34,6 +36,7 @@ export const Label: React.FC<LabelProps> = ({
   children = 'Label',
   size = 'default',
   weight = 'medium',
+  font = 'ginger',
   align = 'left',
   dropdown = false,
   leadingIcon: LeadingIconInput = PersonIcon,
@@ -46,6 +49,7 @@ export const Label: React.FC<LabelProps> = ({
     styles.labelContainer,
     styles[`size-${size}`],
     styles[`weight-${weight}`],
+    styles[`font-${font}`],
     styles[`align-${align}`],
     className,
   ].join(' ');

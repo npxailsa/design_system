@@ -8,6 +8,15 @@
   position: relative;
 }
 
+/* Fonts */
+.font-ginger {
+  --type-typeface-label: var(--type-typeface-ginger);
+}
+
+.font-calibri {
+  --type-typeface-label: var(--type-typeface-calibri);
+}
+
 /* Alignments */
 .align-left {
   justify-content: flex-start;
