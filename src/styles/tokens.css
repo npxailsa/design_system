@@ -55,7 +55,7 @@
   --type-typeface-archivo: Archivo;
   --type-typeface-ginger: "F37 Ginger", sans-serif;
   --type-typeface-calibri: Calibri, sans-serif;
-  --type-typeface-label: var(--type-typeface-ginger);
+  --type-typeface-label: var(--type-typeface-archivo);
 
   /* Primary Scale Label Typography (Figma Compliant) */
   --type-size-primary-scale-label-xxs: 10px;

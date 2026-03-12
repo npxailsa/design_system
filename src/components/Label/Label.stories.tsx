@@ -30,6 +30,18 @@ const meta: Meta<typeof Label> = {
         None: null,
       },
     },
+    showLeadingIcon: {
+      control: 'boolean',
+    },
+    showTrailingIcon: {
+      control: 'boolean',
+    },
+    dropdown: {
+      control: 'boolean',
+    },
+    showSplit: {
+      control: 'boolean',
+    },
   },
 };
 
@@ -89,7 +101,7 @@ export const WithDropdown: Story = {
   },
 };
 
-export const FullMatrix: Story = {
+export const DropdownMatrix: Story = {
   render: () => {
     const sizes = ['large', 'default', 'small', 'x-small', '2x-small'] as const;
     const weights = ['bold', 'medium', 'light', 'thin'] as const;
@@ -98,9 +110,9 @@ export const FullMatrix: Story = {
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '40px' }}>
         {weights.map((weight) => (
           <div key={weight} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-            <h4 style={{ margin: '0 0 10px 0', textTransform: 'capitalize' }}>{weight}</h4>
+            <h4 style={{ margin: '0 0 10px 0', textTransform: 'capitalize' }}>{weight} Dropdown</h4>
             {sizes.map((size) => (
-              <Label key={`${weight}-${size}`} size={size} weight={weight}>
+              <Label key={`${weight}-${size}`} size={size} weight={weight} dropdown showSplit>
                 {size} {weight}
               </Label>
             ))}
@@ -109,4 +121,17 @@ export const FullMatrix: Story = {
       </div>
     );
   },
+};
+
+export const IconToggles: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+      <Label showLeadingIcon={true} showTrailingIcon={true}>Both Icons</Label>
+      <Label showLeadingIcon={true} showTrailingIcon={false}>Leading Only</Label>
+      <Label showLeadingIcon={false} showTrailingIcon={true}>Trailing Only</Label>
+      <Label showLeadingIcon={false} showTrailingIcon={false}>No Icons</Label>
+      <Label dropdown showSplit={true}>With Split</Label>
+      <Label dropdown showSplit={false}>Dropdown No Split</Label>
+    </div>
+  ),
 };

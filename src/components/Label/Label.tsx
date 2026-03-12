@@ -18,8 +18,12 @@ export interface LabelProps {
   dropdown?: boolean;
   /** Optional leading icon (MUI icon component). Pass null/undefined to hide. */
   leadingIcon?: React.ElementType;
+  /** Whether to show the leading icon */
+  showLeadingIcon?: boolean;
   /** Whether to show the trailing arrow-right icon */
   showTrailingIcon?: boolean;
+  /** Whether to show the split divider and chevron (only if dropdown is true) */
+  showSplit?: boolean;
   className?: string;
 }
 
@@ -33,7 +37,9 @@ export const Label: React.FC<LabelProps> = ({
   align = 'left',
   dropdown = false,
   leadingIcon: LeadingIconInput = PersonIcon,
+  showLeadingIcon = true,
   showTrailingIcon = true,
+  showSplit = true,
   className = '',
 }) => {
   const containerClasses = [
@@ -47,7 +53,7 @@ export const Label: React.FC<LabelProps> = ({
   return (
     <div className={containerClasses}>
       {/* Leading Icon */}
-      {LeadingIconInput && (
+      {showLeadingIcon && LeadingIconInput && (
         <Icon icon={LeadingIconInput} size={size} />
       )}
 
@@ -60,7 +66,7 @@ export const Label: React.FC<LabelProps> = ({
       )}
 
       {/* Dropdown / Split section */}
-      {dropdown && (
+      {dropdown && showSplit && (
         <div className={styles.split}>
           <div className={styles.splitDivider} />
           <Icon

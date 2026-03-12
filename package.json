@@ -4,10 +4,10 @@
   "description": "A React and TypeScript design system with Storybook",
   "type": "module",
   "scripts": {
-    "dev": "storybook dev -p 6006 --ci",
+    "dev": "storybook dev -p 6006 --ci --no-open",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "storybook dev -p 6006 --no-open",
     "build-storybook": "storybook build",
     "build-storybook:gh-pages": "storybook build --output-dir storybook-static && touch storybook-static/.nojekyll"
   },
