@@ -33,6 +33,7 @@ const config: StorybookConfig = {
     config.build.commonjsOptions = {
       ...(config.build.commonjsOptions || {}),
       include: [/hoist-non-react-statics/, /node_modules/],
+      transformMixedEsModules: true,
     };
     // Removed exclude for icons-material as it caused runtime errors with its dependencies
     return config;

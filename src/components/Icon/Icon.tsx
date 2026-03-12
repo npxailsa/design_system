@@ -37,21 +37,33 @@ export const Icon: React.FC<IconProps> = ({
   sx,
   ...props
 }) => {
-  // Determine if we are using a named size from our module.css
+  // Map named sizes to CSS variables
+  const sizeMap: Record<string, string> = {
+    '2x-small': 'var(--icon-size-2x-small)',
+    'x-small': 'var(--icon-size-x-small)',
+    'small': 'var(--icon-size-small)',
+    'default': 'var(--icon-size-default)',
+    'large': 'var(--icon-size-large)',
+    'x-large': 'var(--icon-size-x-large)',
+    '2x-large': 'var(--icon-size-2x-large)',
+  };
+
   const isNamedSize = typeof size === 'string' && size !== 'inherit';
 
-  // Map size prop to the corresponding CSS module class
-  const sizeClassName = isNamedSize ? styles[`icon_${size.replace(/-/g, '_')}`] : '';
-
-  // Handle 'inherit' and numeric values via the fontSize prop or sx
-  const fontSize = (isNamedSize || size === 'inherit') ? 'inherit' : undefined;
-  const customStyle = typeof size === 'number' ? { fontSize: `${size}px`, ...sx } : sx;
+  // Apply size via sx prop. We use fontSize: 'inherit' on the component
+  // to ensure it picks up the size we set in sx.
+  const iconSx = {
+    ...sx,
+    fontSize: typeof size === 'number'
+      ? `${size}px`
+      : (isNamedSize ? sizeMap[size] : sx?.fontSize)
+  };
 
   return (
     <IconComponent
-      className={`${styles.icon} ${sizeClassName} ${className || ''}`}
-      fontSize={fontSize}
-      sx={customStyle}
+      className={`${styles.icon} ${className || ''}`}
+      fontSize="inherit"
+      sx={iconSx}
       {...props}
     />
   );

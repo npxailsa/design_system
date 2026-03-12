@@ -5,32 +5,3 @@
   flex-shrink: 0;
   vertical-align: middle;
 }
-
-/* Named Sizes */
-.icon_2x_small {
-  font-size: var(--icon-size-2x-small);
-}
-
-.icon_x_small {
-  font-size: var(--icon-size-x-small);
-}
-
-.icon_small {
-  font-size: var(--icon-size-small);
-}
-
-.icon_default {
-  font-size: var(--icon-size-default);
-}
-
-.icon_large {
-  font-size: var(--icon-size-large);
-}
-
-.icon_x_large {
-  font-size: var(--icon-size-x-large);
-}
-
-.icon_2x_large {
-  font-size: var(--icon-size-2x-large);
-}

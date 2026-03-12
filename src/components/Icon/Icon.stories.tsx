@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
-import Icon from './Icon';
+import Icon, { IconSize } from './Icon';
 import {
   Home as HomeIcon,
   Search as SearchIcon,
