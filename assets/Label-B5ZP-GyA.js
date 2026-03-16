@@ -1,6 +1,14 @@
-import{j as n,M as o,C as r,a as i}from"./iframe-C383Kmv9.js";import{useMDXComponents as l}from"./index-MZ2OX-8H.js";import{L as a,S as d,W as c,a as h,A as x}from"./Label.stories-CY6gRMwW.js";import"./preload-helper-Dp1pzeXC.js";import"./Settings-CldN3BFC.js";function t(s){const e={code:"code",h1:"h1",h2:"h2",h3:"h3",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...l(),...s.components};return n.jsxs(n.Fragment,{children:[n.jsx(o,{of:a}),`
+import{j as n}from"./iframe-DfT_QpF6.js";import{useMDXComponents as t}from"./index-DdYE1CSZ.js";import{M as l,C as r,a as s}from"./index-tw1elFwc.js";import{L as a,S as c,W as d,a as h,A as x}from"./Label.stories-C8sRM7Lo.js";import"./preload-helper-Dp1pzeXC.js";import"./Person-B5yTPy-m.js";function o(i){const e={code:"code",h1:"h1",h2:"h2",h3:"h3",li:"li",ol:"ol",p:"p",pre:"pre",strong:"strong",ul:"ul",...t(),...i.components};return n.jsxs(n.Fragment,{children:[n.jsx(l,{of:a}),`
 `,n.jsx(e.h1,{id:"label-component",children:"Label Component"}),`
 `,n.jsxs(e.p,{children:["The ",n.jsx(e.code,{children:"Label"})," component is a versatile text display component that supports icons, alignment, and dropdown split functionality. It uses the ",n.jsx(e.strong,{children:"F37 Ginger Pro"})," font family as its primary typeface, ensuring a modern and clean aesthetic that matches our design system."]}),`
+`,n.jsx(e.h2,{id:"anatomy",children:"Anatomy"}),`
+`,n.jsxs(e.p,{children:["The ",n.jsx(e.code,{children:"Label"})," component consists of the following elements:"]}),`
+`,n.jsxs(e.ol,{children:[`
+`,n.jsxs(e.li,{children:[n.jsx(e.strong,{children:"Leading Icon (Optional)"}),": A Material UI icon placed before the text to provide visual context."]}),`
+`,n.jsxs(e.li,{children:[n.jsx(e.strong,{children:"Label Text"}),": The main content of the component, using design-system-specific typography scales."]}),`
+`,n.jsxs(e.li,{children:[n.jsx(e.strong,{children:"Trailing Icon (Optional)"}),": Typically an arrow or chevron indicating an action or navigation."]}),`
+`,n.jsxs(e.li,{children:[n.jsx(e.strong,{children:"Dropdown Split (Optional)"}),": A vertical divider followed by a chevron-down icon, used to indicate a split-button or dropdown functionality."]}),`
+`]}),`
 `,n.jsx(e.h2,{id:"typography-and-scaling",children:"Typography and Scaling"}),`
 `,n.jsx(e.p,{children:"The component is built using Figma-compliant design tokens. Each size variant scales the text, the icons, and the spacing (gap) between elements proportionally:"}),`
 `,n.jsxs(e.ul,{children:[`
@@ -35,10 +43,10 @@ import MailIcon from '@mui/icons-material/Mail';
 `]}),`
 `,n.jsx(e.h2,{id:"examples",children:"Examples"}),`
 `,n.jsx(e.h3,{id:"sizes",children:"Sizes"}),`
-`,n.jsx(i,{of:d}),`
+`,n.jsx(s,{of:c}),`
 `,n.jsx(e.h3,{id:"weights",children:"Weights"}),`
-`,n.jsx(i,{of:c}),`
+`,n.jsx(s,{of:d}),`
 `,n.jsx(e.h3,{id:"with-dropdown",children:"With Dropdown"}),`
-`,n.jsx(i,{of:h}),`
+`,n.jsx(s,{of:h}),`
 `,n.jsx(e.h3,{id:"alignment",children:"Alignment"}),`
-`,n.jsx(i,{of:x})]})}function f(s={}){const{wrapper:e}={...l(),...s.components};return e?n.jsx(e,{...s,children:n.jsx(t,{...s})}):t(s)}export{f as default};
+`,n.jsx(s,{of:x})]})}function y(i={}){const{wrapper:e}={...t(),...i.components};return e?n.jsx(e,{...i,children:n.jsx(o,{...i})}):o(i)}export{y as default};

@@ -1,6 +1,13 @@
-import{j as e,M as r,C as t,a as s}from"./iframe-C383Kmv9.js";import{useMDXComponents as c}from"./index-MZ2OX-8H.js";import{I as l,S as a,C as d,G as h}from"./Icon.stories-Dl1SyLR9.js";import"./preload-helper-Dp1pzeXC.js";import"./Settings-CldN3BFC.js";function o(i){const n={a:"a",code:"code",h1:"h1",h2:"h2",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...c(),...i.components};return e.jsxs(e.Fragment,{children:[e.jsx(r,{of:l}),`
+import{j as e}from"./iframe-DfT_QpF6.js";import{useMDXComponents as r}from"./index-DdYE1CSZ.js";import{M as c,C as t,a as s}from"./index-tw1elFwc.js";import{I as l,S as a,C as d,G as h}from"./Icon.stories--Yy8XcWq.js";import"./preload-helper-Dp1pzeXC.js";import"./Person-B5yTPy-m.js";function o(i){const n={a:"a",code:"code",h1:"h1",h2:"h2",li:"li",ol:"ol",p:"p",pre:"pre",strong:"strong",ul:"ul",...r(),...i.components};return e.jsxs(e.Fragment,{children:[e.jsx(c,{of:l}),`
 `,e.jsx(n.h1,{id:"icon-system",children:"Icon System"}),`
 `,e.jsxs(n.p,{children:["The Icon system in our design system is powered by ",e.jsx(n.a,{href:"https://mui.com/material-ui/material-icons/",rel:"nofollow",children:"Material UI Icons"}),". This provides thousands of consistent, high-quality icons ready to be used in your application."]}),`
+`,e.jsx(n.h2,{id:"anatomy",children:"Anatomy"}),`
+`,e.jsx(n.p,{children:"Our icons are atomic components that consist of a single SVG element. They are designed to:"}),`
+`,e.jsxs(n.ol,{children:[`
+`,e.jsxs(n.li,{children:[e.jsx(n.strong,{children:"Inherit Size"}),": By default, icons inherit their size from the parent container's font size."]}),`
+`,e.jsxs(n.li,{children:[e.jsx(n.strong,{children:"Use Token-Based Sizing"}),": We provide a set of named sizes (e.g., ",e.jsx(n.code,{children:"small"}),", ",e.jsx(n.code,{children:"large"}),") that map to specific pixel values defined in our design tokens."]}),`
+`,e.jsxs(n.li,{children:[e.jsx(n.strong,{children:"Use Theme Colors"}),": Icons can be colored using the Material UI theme palette (e.g., ",e.jsx(n.code,{children:"primary"}),", ",e.jsx(n.code,{children:"secondary"}),", ",e.jsx(n.code,{children:"error"}),")."]}),`
+`]}),`
 `,e.jsx(n.h2,{id:"sizing-and-inheritance",children:"Sizing and Inheritance"}),`
 `,e.jsxs(n.p,{children:["Our ",e.jsx(n.code,{children:"Icon"})," component is designed to work seamlessly within parent components like ",e.jsx(n.code,{children:"Label"}),". When a named size (e.g., 'small', 'large') is provided, the icon automatically sets its font size to ",e.jsx(n.code,{children:"inherit"}),". This allows it to take the precise size defined by our design tokens or parent component CSS classes, ensuring perfect scaling alongside text."]}),`
 `,e.jsx(n.h2,{id:"usage",children:"Usage"}),`
@@ -37,4 +44,4 @@ const MyComponent = () => (
 `]}),`
 `,e.jsx(n.h2,{id:"common-icons-gallery",children:"Common Icons Gallery"}),`
 `,e.jsx(n.p,{children:"Below is a collection of some of the most commonly used icons in our projects."}),`
-`,e.jsx(s,{of:h})]})}function f(i={}){const{wrapper:n}={...c(),...i.components};return n?e.jsx(n,{...i,children:e.jsx(o,{...i})}):o(i)}export{f as default};
+`,e.jsx(s,{of:h})]})}function f(i={}){const{wrapper:n}={...r(),...i.components};return n?e.jsx(n,{...i,children:e.jsx(o,{...i})}):o(i)}export{f as default};
