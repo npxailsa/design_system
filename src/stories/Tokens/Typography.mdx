@@ -1,0 +1,74 @@
+import { Meta, Typeset } from "@storybook/blocks";
+
+<Meta title="Tokens/Typography" />
+
+# Typography
+
+Our typography system is designed for readability and hierarchy. We use two main font families: **F37 Ginger Pro** for primary branding and **Calibri** for secondary text.
+
+## Font Families
+
+- **Primary**: `F37 Ginger Pro`, sans-serif (`--font-family-primary`)
+- **Secondary**: `Calibri`, sans-serif (`--font-family-secondary`)
+
+## Font Weights
+
+- **Light**: 300 (`--font-weight-light`)
+- **Regular**: 400 (`--font-weight-regular`)
+- **Medium**: 500 (`--font-weight-medium`)
+- **Bold**: 700 (`--font-weight-bold`)
+
+## Font Sizes
+
+<Typeset
+  fontSizes={[
+    '12px',
+    '14px',
+    '16px',
+    '18px',
+    '20px',
+    '24px',
+    '30px',
+    '36px',
+  ]}
+  fontWeight={400}
+  sampleText="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+  fontFamily="var(--font-family-primary)"
+/>
+
+## Label Typography (Primary Scale)
+
+Special typography scale for our Label components.
+
+<Typeset
+  fontSizes={[
+    '10px',
+    '12px',
+    '14px',
+    '16px',
+    '18px',
+  ]}
+  fontWeight={500}
+  sampleText="Label Primary Scale"
+  fontFamily="var(--type-typeface-label)"
+/>
+
+## Usage
+
+When using typography in your components, always refer to the CSS variables defined in `tokens.css`.
+
+```css
+.my-title {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+}
+
+.my-text {
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-base);
+}
+```

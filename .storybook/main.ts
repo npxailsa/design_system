@@ -19,7 +19,6 @@ const config: StorybookConfig = {
     config.optimizeDeps.include = [
       ...(config.optimizeDeps.include || []),
       '@mui/material',
-      '@mui/icons-material',
       '@emotion/react',
       '@emotion/styled',
       'hoist-non-react-statics',

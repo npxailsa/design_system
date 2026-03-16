@@ -1,24 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
 import Icon, { IconSize } from './Icon';
-import {
-  Home as HomeIcon,
-  Search as SearchIcon,
-  Settings as SettingsIcon,
-  Favorite as FavoriteIcon,
-  Mail as MailIcon,
-  Delete as DeleteIcon,
-  Add as AddIcon,
-  CheckCircle as CheckCircleIcon,
-  Menu as MenuIcon,
-  Close as CloseIcon,
-  ArrowBack as ArrowBackIcon,
-  ArrowForward as ArrowForwardIcon,
-  Notifications as NotificationsIcon,
-  Person as PersonIcon,
-  Warning as WarningIcon,
-  Error as ErrorIcon,
-} from '@mui/icons-material';
+import HomeIcon from '@mui/icons-material/Home';
+import SearchIcon from '@mui/icons-material/Search';
+import SettingsIcon from '@mui/icons-material/Settings';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import MailIcon from '@mui/icons-material/Mail';
+import DeleteIcon from '@mui/icons-material/Delete';
+import AddIcon from '@mui/icons-material/Add';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import PersonIcon from '@mui/icons-material/Person';
+import WarningIcon from '@mui/icons-material/Warning';
+import ErrorIcon from '@mui/icons-material/Error';
 
 const meta: Meta<typeof Icon> = {
   title: 'Foundations/Icon',

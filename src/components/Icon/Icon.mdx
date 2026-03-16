@@ -1,4 +1,4 @@
-import { Meta, Controls, Primary, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { Meta, Controls, Primary, Story, Canvas } from '@storybook/blocks';
 import * as IconStories from './Icon.stories';
 
 <Meta of={IconStories} />
@@ -6,6 +6,14 @@ import * as IconStories from './Icon.stories';
 # Icon System
 
 The Icon system in our design system is powered by [Material UI Icons](https://mui.com/material-ui/material-icons/). This provides thousands of consistent, high-quality icons ready to be used in your application.
+
+## Anatomy
+
+Our icons are atomic components that consist of a single SVG element. They are designed to:
+
+1.  **Inherit Size**: By default, icons inherit their size from the parent container's font size.
+2.  **Use Token-Based Sizing**: We provide a set of named sizes (e.g., `small`, `large`) that map to specific pixel values defined in our design tokens.
+3.  **Use Theme Colors**: Icons can be colored using the Material UI theme palette (e.g., `primary`, `secondary`, `error`).
 
 ## Sizing and Inheritance
 

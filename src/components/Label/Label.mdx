@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, Controls } from '@storybook/blocks';
 import * as LabelStories from './Label.stories';
 
 <Meta of={LabelStories} />
@@ -6,6 +6,15 @@ import * as LabelStories from './Label.stories';
 # Label Component
 
 The `Label` component is a versatile text display component that supports icons, alignment, and dropdown split functionality. It uses the **F37 Ginger Pro** font family as its primary typeface, ensuring a modern and clean aesthetic that matches our design system.
+
+## Anatomy
+
+The `Label` component consists of the following elements:
+
+1.  **Leading Icon (Optional)**: A Material UI icon placed before the text to provide visual context.
+2.  **Label Text**: The main content of the component, using design-system-specific typography scales.
+3.  **Trailing Icon (Optional)**: Typically an arrow or chevron indicating an action or navigation.
+4.  **Dropdown Split (Optional)**: A vertical divider followed by a chevron-down icon, used to indicate a split-button or dropdown functionality.
 
 ## Typography and Scaling
 

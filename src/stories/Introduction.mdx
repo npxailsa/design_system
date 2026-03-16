@@ -1,0 +1,62 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Introduction" />
+
+# Design System
+
+Welcome to the official documentation for our Design System. This system provides a unified set of components, tokens, and guidelines to help you build consistent and accessible user interfaces.
+
+---
+
+## What is this?
+
+This design system is built using React and Material UI, with custom tokens that define our brand's visual identity. It includes:
+
+- **Tokens**: Fundamental building blocks (colors, typography, spacing).
+- **Components**: Reusable UI elements built with accessibility and performance in mind.
+- **Patterns**: Guidelines on how to combine components to solve common UI problems.
+
+## Getting Started
+
+### For Designers
+
+We use Figma to design all our components and patterns. If you're a designer, check out our Figma library to start designing with our components.
+
+- **[Figma Library](https://figma.com)**
+- **[Design Guidelines](https://example.com)**
+
+### For Developers
+
+To start using the design system in your project, install the package:
+
+```bash
+npm install design-system
+```
+
+Then, wrap your application with the ThemeProvider to apply the global styles and theme:
+
+```tsx
+import { ThemeProvider } from 'design-system';
+
+function App() {
+  return (
+    <ThemeProvider>
+      <YourApp />
+    </ThemeProvider>
+  );
+}
+```
+
+## Resources
+
+- **[GitHub Repository](https://github.com/npxailsa/design_system)**
+- **[Storybook Examples](https://example.com/storybook)**
+
+---
+
+## Support
+
+If you have questions or need help, please reach out to the design system team.
+
+- **Slack**: #design-system
+- **GitHub Issues**: [Open a new issue](https://github.com/npxailsa/design_system/issues)
