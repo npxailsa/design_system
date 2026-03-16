@@ -1,20 +1,20 @@
 .labelContainer {
   display: flex;
   align-items: center;
-  color: var(--color-base-black);
-  font-family: var(--type-typeface-label), sans-serif;
-  letter-spacing: var(--type-letter-spacing-label);
-  gap: var(--spacing-sizing-4px); /* Default gap, will be overridden by size classes */
+  color: var(--label-text-color);
+  font-family: var(--label-font-family), sans-serif;
+  letter-spacing: var(--label-letter-spacing);
+  gap: var(--label-gap-default);
   position: relative;
 }
 
 /* Fonts */
 .font-ginger {
-  --type-typeface-label: var(--type-typeface-ginger);
+  --label-font-family: var(--global-font-secondary);
 }
 
-.font-calibri {
-  --type-typeface-label: var(--type-typeface-calibri);
+.font-archivo {
+  --label-font-family: var(--global-font-primary);
 }
 
 /* Alignments */
@@ -34,81 +34,81 @@
 
 /* Weights */
 .weight-bold {
-  font-weight: var(--type-weight-bold);
+  font-weight: var(--label-weight-bold);
 }
 
 .weight-medium {
-  font-weight: var(--type-weight-medium);
+  font-weight: var(--label-weight-medium);
 }
 
 .weight-light {
-  font-weight: var(--type-weight-light);
+  font-weight: var(--label-weight-light);
 }
 
 .weight-thin {
-  font-weight: var(--type-weight-thin);
+  font-weight: var(--label-weight-thin);
 }
 
 /* Sizes */
 .size-large {
-  font-size: var(--type-size-primary-scale-label-lg);
-  line-height: var(--type-line-height-label-lg);
-  gap: var(--spacing-sizing-8px);
-  --divider-height: var(--type-line-height-label-lg);
+  font-size: var(--label-size-large);
+  line-height: var(--label-line-height-large);
+  gap: var(--label-gap-large);
+  --divider-height: var(--label-line-height-large);
 }
 
 .size-large.weight-thin {
   /* Thin variant at large size uses font-size for divider height instead of line-height */
-  --divider-height: var(--type-size-primary-scale-label-lg);
+  --divider-height: var(--label-size-large);
 }
 
 .size-default {
-  font-size: var(--type-size-primary-scale-label);
-  line-height: var(--type-line-height-label);
-  gap: var(--spacing-sizing-6px);
-  --divider-height: var(--type-line-height-label);
+  font-size: var(--label-size-default);
+  line-height: var(--label-line-height-default);
+  gap: var(--label-gap-default);
+  --divider-height: var(--label-line-height-default);
 }
 
 .size-small {
-  font-size: var(--type-size-primary-scale-label-sm);
-  line-height: var(--type-line-height-label-sm);
-  gap: var(--spacing-sizing-4px);
-  --divider-height: var(--type-line-height-label-sm);
+  font-size: var(--label-size-small);
+  line-height: var(--label-line-height-small);
+  gap: var(--label-gap-small);
+  --divider-height: var(--label-line-height-small);
 }
 
 .size-x-small {
-  font-size: var(--type-size-primary-scale-label-xs);
-  line-height: var(--type-line-height-label-xs);
-  gap: var(--spacing-sizing-4px);
-  --divider-height: var(--type-line-height-label-xs);
+  font-size: var(--label-size-x-small);
+  line-height: var(--label-line-height-x-small);
+  gap: var(--label-gap-x-small);
+  --divider-height: var(--label-line-height-x-small);
 }
 
 .size-2x-small {
-  font-size: var(--type-size-primary-scale-label-xxs);
-  line-height: var(--type-line-height-label-xxs);
-  gap: var(--spacing-sizing-2px);
-  --divider-height: var(--type-line-height-label-xxs);
+  font-size: var(--label-size-2x-small);
+  line-height: var(--label-line-height-2x-small);
+  gap: var(--label-gap-2x-small);
+  --divider-height: var(--label-line-height-2x-small);
 }
 
 /* Dropdown / Split */
 .split {
   display: flex;
   align-items: center;
-  padding-left: var(--spacing-sizing-2px);
-  gap: var(--spacing-sizing-4px);
+  padding-left: var(--global-spacing-2px);
+  gap: var(--global-spacing-4px);
   align-self: stretch;
   position: relative;
 }
 
 .splitDivider {
-  width: 1px;
-  background: var(--color-blue-gray-50);
-  opacity: 0.5;
+  width: var(--label-dropdown-split-width);
+  background: var(--label-divider-color);
+  opacity: var(--label-dropdown-split-opacity);
   height: var(--divider-height, 20px);
 }
 
 .chevronIcon {
-  opacity: 0.6;
+  opacity: var(--label-dropdown-chevron-opacity);
 }
 
 .labelText {

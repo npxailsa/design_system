@@ -18,7 +18,7 @@ const meta: Meta<typeof Label> = {
     },
     font: {
       control: 'select',
-      options: ['ginger', 'calibri'],
+      options: ['archivo', 'ginger'],
     },
     align: {
       control: 'select',
@@ -100,12 +100,12 @@ export const Fonts: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
       <div>
-        <h4 style={{ margin: '0 0 10px 0' }}>Ginger Pro (Primary)</h4>
-        <Label font="ginger">The quick brown fox jumps over the lazy dog</Label>
+        <h4 style={{ margin: '0 0 10px 0' }}>Archivo (Primary)</h4>
+        <Label font="archivo">The quick brown fox jumps over the lazy dog</Label>
       </div>
       <div>
-        <h4 style={{ margin: '0 0 10px 0' }}>Calibri (Secondary)</h4>
-        <Label font="calibri">The quick brown fox jumps over the lazy dog</Label>
+        <h4 style={{ margin: '0 0 10px 0' }}>Ginger Pro (Secondary)</h4>
+        <Label font="ginger">The quick brown fox jumps over the lazy dog</Label>
       </div>
     </div>
   ),
@@ -142,15 +142,50 @@ export const DropdownMatrix: Story = {
   },
 };
 
-export const IconToggles: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-      <Label showLeadingIcon={true} showTrailingIcon={true}>Both Icons</Label>
-      <Label showLeadingIcon={true} showTrailingIcon={false}>Leading Only</Label>
-      <Label showLeadingIcon={false} showTrailingIcon={true}>Trailing Only</Label>
-      <Label showLeadingIcon={false} showTrailingIcon={false}>No Icons</Label>
-      <Label dropdown showSplit={true}>With Split</Label>
-      <Label dropdown showSplit={false}>Dropdown No Split</Label>
-    </div>
-  ),
+export const VariantMatrix: Story = {
+  render: () => {
+    const sizes = ['large', 'default', 'small', 'x-small', '2x-small'] as const;
+    const weights = ['bold', 'medium', 'light', 'thin'] as const;
+    const alignments = ['left', 'centre', 'right'] as const;
+    const dropdowns = [false, true] as const;
+
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
+        {weights.map((weight) => (
+          <div key={weight}>
+            <h3 style={{ borderBottom: '2px solid #333', paddingBottom: '10px', textTransform: 'capitalize' }}>
+              Weight: {weight}
+            </h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
+              {alignments.map((align) => (
+                <div key={align} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                  <h4 style={{ color: '#666', textTransform: 'capitalize' }}>Align: {align}</h4>
+                  {dropdowns.map((isDropdown) => (
+                    <div key={`${isDropdown}`} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                      <h5 style={{ margin: 0, fontSize: '12px', color: '#999' }}>
+                        Dropdown: {isDropdown ? 'True' : 'False'}
+                      </h5>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', border: '1px dashed #ccc', padding: '10px' }}>
+                        {sizes.map((size) => (
+                          <Label
+                            key={`${weight}-${align}-${isDropdown}-${size}`}
+                            size={size}
+                            weight={weight}
+                            align={align}
+                            dropdown={isDropdown}
+                          >
+                            {size} Label
+                          </Label>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  },
 };

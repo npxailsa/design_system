@@ -3,21 +3,28 @@
    ========================================================================== */
 
 :root {
-  /* Colors */
+  /* Colors - Base Palette */
   --global-color-black: #1C1C1C;
   --global-color-white: #FFFFFF;
   --global-color-blue-gray-50: #D6D9DA;
-  
-  /* Typography */
+
+  /* Typography - Typefaces */
   --global-font-primary: "Archivo", -apple-system, Roboto, Helvetica, sans-serif;
-  --global-font-secondary: "F37 Ginger Pro", sans-serif;
-  
-  /* Spacing / Sizing */
+  --global-font-secondary: "Ginger Pro", -apple-system, Roboto, Helvetica, sans-serif;
+
+  /* Spacing / Sizing - Scale */
   --global-spacing-2px: 2px;
   --global-spacing-4px: 4px;
   --global-spacing-6px: 6px;
   --global-spacing-8px: 8px;
-  
+  --global-spacing-10px: 10px;
+  --global-spacing-12px: 12px;
+  --global-spacing-14px: 14px;
+  --global-spacing-16px: 16px;
+  --global-spacing-18px: 18px;
+  --global-spacing-20px: 20px;
+  --global-spacing-24px: 24px;
+
   /* Letter Spacing */
   --global-letter-spacing: 0.15px;
 
@@ -28,14 +35,12 @@
   --global-weight-bold: 700;
 
   /* ==========================================================================
-     BRAND LAYER: Semantic Tokens
+     BRAND LAYER: Semantic Tokens (Penta - Default)
      ========================================================================== */
-  
+
   --brand-text-main: var(--global-color-black);
   --brand-icon-main: var(--global-color-black);
   --brand-border-main: var(--global-color-blue-gray-50);
-  
-  /* Defaults for Penta Brand */
   --brand-primary: #646cff;
   --brand-primary-hover: #535bf2;
   --brand-secondary: #213547;
@@ -43,7 +48,7 @@
   /* ==========================================================================
      COMPONENT LAYER: Label (Component-Specific Tokens)
      ========================================================================== */
-  
+
   --label-font-family: var(--global-font-primary);
   --label-text-color: var(--brand-text-main);
   --label-icon-color: var(--brand-icon-main);
@@ -51,25 +56,25 @@
   --label-letter-spacing: var(--global-letter-spacing);
 
   /* Label Sizes (Font Size) */
-  --label-size-2x-small: 10px;
-  --label-size-x-small: 12px;
-  --label-size-small: 14px;
-  --label-size-default: 16px;
-  --label-size-large: 18px;
+  --label-size-2x-small: var(--global-spacing-10px);
+  --label-size-x-small: var(--global-spacing-12px);
+  --label-size-small: var(--global-spacing-14px);
+  --label-size-default: var(--global-spacing-16px);
+  --label-size-large: var(--global-spacing-18px);
 
   /* Label Line Heights */
-  --label-line-height-2x-small: 14px;
-  --label-line-height-x-small: 14px;
-  --label-line-height-small: 16px;
-  --label-line-height-default: 20px;
-  --label-line-height-large: 24px;
+  --label-line-height-2x-small: var(--global-spacing-14px);
+  --label-line-height-x-small: var(--global-spacing-14px);
+  --label-line-height-small: var(--global-spacing-16px);
+  --label-line-height-default: var(--global-spacing-20px);
+  --label-line-height-large: var(--global-spacing-24px);
 
   /* Label Gaps (Gap between icon and text) */
-  --label-gap-2x-small: 2px;
-  --label-gap-x-small: 4px;
-  --label-gap-small: 4px;
-  --label-gap-default: 6px;
-  --label-gap-large: 8px;
+  --label-gap-2x-small: var(--global-spacing-2px);
+  --label-gap-x-small: var(--global-spacing-4px);
+  --label-gap-small: var(--global-spacing-4px);
+  --label-gap-default: var(--global-spacing-6px);
+  --label-gap-large: var(--global-spacing-8px);
 
   /* Label Weights */
   --label-weight-thin: var(--global-weight-thin);
@@ -78,42 +83,32 @@
   --label-weight-bold: var(--global-weight-bold);
 
   /* Icon Sizes (Matches Label sizes) */
-  --icon-size-2x-small: var(--label-size-2x-small);
-  --icon-size-x-small: var(--label-size-x-small);
-  --icon-size-small: var(--label-size-small);
-  --icon-size-default: var(--label-size-default);
-  --icon-size-large: var(--label-size-large);
+  --icon-size-2x-small: var(--global-spacing-10px);
+  --icon-size-x-small: var(--global-spacing-12px);
+  --icon-size-small: var(--global-spacing-14px);
+  --icon-size-default: var(--global-spacing-16px);
+  --icon-size-large: var(--global-spacing-18px);
 
   /* Dropdown Specifics */
   --label-dropdown-split-width: 1px;
   --label-dropdown-split-opacity: 0.5;
   --label-dropdown-chevron-opacity: 0.6;
+  --label-dropdown-split-gap: var(--global-spacing-4px);
+  --label-dropdown-padding-left: var(--global-spacing-2px);
 }
 
 /* ==========================================================================
-   MULTI-CLIENT THEME SUPPORT (Brand Overrides)
+   BRAND OVERRIDES: Horizon
    ========================================================================== */
 
 [data-theme="horizon"] {
   --brand-primary: #00bcd4;
   --brand-secondary: #0097a7;
-  /* Add horizon-specific label tokens if any */
+  --brand-text-main: #2C2C2C; /* Slightly softer black for Horizon */
+  /* Component tokens automatically update because they reference brand tokens */
 }
 
-@font-face {
-  font-family: 'F37 Ginger Pro';
-  src: url('https://cdn.builder.io/o/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2Ffad45eb7a96541d3913907129e79408e?alt=media&token=5b16da38-5337-4ed2-a616-3b677e51e78e&apiKey=c7a3c3953c0a4f43bcdc32733cba23f5') format('woff');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'F37 Ginger Pro';
-  src: url('https://cdn.builder.io/o/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2F874b958dc1e7476f99b29871d12bb63c?alt=media&token=905ef4e1-b4eb-4a74-9bbb-d90795b697d7&apiKey=c7a3c3953c0a4f43bcdc32733cba23f5') format('woff');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
+/* Font Loading */
 @font-face {
   font-family: 'Archivo';
   src: url('https://fonts.gstatic.com/s/archivo/v19/8n3782sSy_o7jr6kaT1O87rVByU20VLu.woff2') format('woff2');
