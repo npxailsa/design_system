@@ -15,7 +15,7 @@ export interface LabelProps {
   /** Font family variant */
   font?: 'ginger' | 'archivo';
   /** Text and content alignment */
-  align?: 'left' | 'center' | 'right';
+  align?: 'left' | 'centre' | 'right';
   /** Shows dropdown split + chevron-down icon after trailing icon */
   dropdown?: boolean;
   /** Semantic HTML element to render */
@@ -39,7 +39,7 @@ export interface LabelProps {
 export const Label: React.FC<LabelProps> = ({
   children = 'Label',
   size = 'default',
-  weight = 'medium',
+  weight = 'bold',
   font = 'archivo',
   align = 'left',
   dropdown = false,

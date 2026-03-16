@@ -9,8 +9,8 @@
   --global-color-blue-gray-50: #D6D9DA;
 
   /* Typography - Typefaces */
-  --font-family-primary: "F37 Ginger Pro", sans-serif;
-  --font-family-secondary: "Calibri", sans-serif;
+  --font-family-primary: "Archivo", sans-serif;
+  --font-family-secondary: "F37 Ginger Pro", sans-serif;
   --global-font-primary: var(--font-family-primary);
   --global-font-secondary: var(--font-family-secondary);
 

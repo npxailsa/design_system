@@ -34,7 +34,7 @@
 
 /* Fonts */
 .font-ginger {
-  --local-font-family: var(--global-font-primary);
+  --local-font-family: var(--global-font-secondary);
 }
 
 .font-archivo {
@@ -46,7 +46,7 @@
   justify-content: flex-start;
 }
 
-.align-center {
+.align-centre {
   justify-content: center;
   text-align: center;
 }
