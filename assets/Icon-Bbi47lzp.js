@@ -1,4 +1,4 @@
-import{j as e}from"./iframe-DfT_QpF6.js";import{useMDXComponents as r}from"./index-DdYE1CSZ.js";import{M as c,C as t,a as s}from"./index-tw1elFwc.js";import{I as l,S as a,C as d,G as h}from"./Icon.stories--Yy8XcWq.js";import"./preload-helper-Dp1pzeXC.js";import"./Person-B5yTPy-m.js";function o(i){const n={a:"a",code:"code",h1:"h1",h2:"h2",li:"li",ol:"ol",p:"p",pre:"pre",strong:"strong",ul:"ul",...r(),...i.components};return e.jsxs(e.Fragment,{children:[e.jsx(c,{of:l}),`
+import{j as e,M as c,C as t,a as s}from"./iframe-nW7zCA-X.js";import{useMDXComponents as r}from"./index-C4n3Pvej.js";import{I as l,S as a,C as d,G as h}from"./Icon.stories-BxWbgO7P.js";import"./preload-helper-Dp1pzeXC.js";import"./Person-BFrISOUP.js";function o(i){const n={a:"a",code:"code",h1:"h1",h2:"h2",li:"li",ol:"ol",p:"p",pre:"pre",strong:"strong",ul:"ul",...r(),...i.components};return e.jsxs(e.Fragment,{children:[e.jsx(c,{of:l}),`
 `,e.jsx(n.h1,{id:"icon-system",children:"Icon System"}),`
 `,e.jsxs(n.p,{children:["The Icon system in our design system is powered by ",e.jsx(n.a,{href:"https://mui.com/material-ui/material-icons/",rel:"nofollow",children:"Material UI Icons"}),". This provides thousands of consistent, high-quality icons ready to be used in your application."]}),`
 `,e.jsx(n.h2,{id:"anatomy",children:"Anatomy"}),`
@@ -44,4 +44,4 @@ const MyComponent = () => (
 `]}),`
 `,e.jsx(n.h2,{id:"common-icons-gallery",children:"Common Icons Gallery"}),`
 `,e.jsx(n.p,{children:"Below is a collection of some of the most commonly used icons in our projects."}),`
-`,e.jsx(s,{of:h})]})}function f(i={}){const{wrapper:n}={...r(),...i.components};return n?e.jsx(n,{...i,children:e.jsx(o,{...i})}):o(i)}export{f as default};
+`,e.jsx(s,{of:h})]})}function g(i={}){const{wrapper:n}={...r(),...i.components};return n?e.jsx(n,{...i,children:e.jsx(o,{...i})}):o(i)}export{g as default};

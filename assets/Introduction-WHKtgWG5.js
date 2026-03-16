@@ -1,12 +1,13 @@
-import{j as e}from"./iframe-DfT_QpF6.js";import{useMDXComponents as r}from"./index-DdYE1CSZ.js";import{M as t}from"./index-tw1elFwc.js";import"./preload-helper-Dp1pzeXC.js";function i(s){const n={a:"a",code:"code",h1:"h1",h2:"h2",h3:"h3",hr:"hr",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...r(),...s.components};return e.jsxs(e.Fragment,{children:[e.jsx(t,{title:"Introduction"}),`
+import{j as e,M as o}from"./iframe-nW7zCA-X.js";import{useMDXComponents as r}from"./index-C4n3Pvej.js";import"./preload-helper-Dp1pzeXC.js";function i(s){const n={a:"a",code:"code",h1:"h1",h2:"h2",h3:"h3",hr:"hr",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...r(),...s.components};return e.jsxs(e.Fragment,{children:[e.jsx(o,{title:"Introduction"}),`
 `,e.jsx(n.h1,{id:"design-system",children:"Design System"}),`
 `,e.jsx(n.p,{children:"Welcome to the official documentation for our Design System. This system provides a unified set of components, tokens, and guidelines to help you build consistent and accessible user interfaces."}),`
 `,e.jsx(n.hr,{}),`
 `,e.jsx(n.h2,{id:"what-is-this",children:"What is this?"}),`
 `,e.jsx(n.p,{children:"This design system is built using React and Material UI, with custom tokens that define our brand's visual identity. It includes:"}),`
 `,e.jsxs(n.ul,{children:[`
-`,e.jsxs(n.li,{children:[e.jsx(n.strong,{children:"Tokens"}),": Fundamental building blocks (colors, typography, spacing)."]}),`
+`,e.jsxs(n.li,{children:[e.jsx(n.strong,{children:"Tokens"}),": Fundamental building blocks (",e.jsx(n.a,{href:"/docs/tokens-colors--docs",children:"Colors"}),", ",e.jsx(n.a,{href:"/docs/tokens-typography--docs",children:"Typography"}),", spacing)."]}),`
 `,e.jsxs(n.li,{children:[e.jsx(n.strong,{children:"Components"}),": Reusable UI elements built with accessibility and performance in mind."]}),`
+`,e.jsxs(n.li,{children:[e.jsx(n.strong,{children:"Icon Gallery"}),": A collection of over 50 MUI icons available in our system (",e.jsx(n.a,{href:"/docs/foundations-icon--gallery",children:"Gallery"}),")."]}),`
 `,e.jsxs(n.li,{children:[e.jsx(n.strong,{children:"Patterns"}),": Guidelines on how to combine components to solve common UI problems."]}),`
 `]}),`
 `,e.jsx(n.h2,{id:"getting-started",children:"Getting Started"}),`
