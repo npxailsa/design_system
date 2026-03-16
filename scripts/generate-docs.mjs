@@ -18,7 +18,7 @@ function capitalize(str) {
  * Generates the MDX template for a component.
  */
 function generateMDXTemplate(componentName) {
-  return `import { Meta, Controls, Canvas } from "@storybook/blocks";
+  return `import { Meta, Controls, Canvas } from "@storybook/addon-docs/blocks";
 import * as ${componentName}Stories from "./${componentName}.stories";
 
 <Meta of={${componentName}Stories} />

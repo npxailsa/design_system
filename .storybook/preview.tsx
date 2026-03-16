@@ -1,5 +1,5 @@
 import { Preview } from "@storybook/react-vite";
-import { DocsContainer } from "@storybook/blocks";
+import { DocsContainer } from "@storybook/addon-docs/blocks";
 import { TabContainer } from "storybook-addon-docs-tabs";
 import '../src/index.css';
 import React from 'react';
