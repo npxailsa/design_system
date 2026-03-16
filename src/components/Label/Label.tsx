@@ -15,9 +15,13 @@ export interface LabelProps {
   /** Font family variant */
   font?: 'ginger' | 'archivo';
   /** Text and content alignment */
-  align?: 'left' | 'centre' | 'right';
+  align?: 'left' | 'center' | 'right';
   /** Shows dropdown split + chevron-down icon after trailing icon */
   dropdown?: boolean;
+  /** Semantic HTML element to render */
+  component?: 'label' | 'span' | 'div';
+  /** ARIA label for accessibility */
+  ariaLabel?: string;
   /** Optional leading icon (MUI icon component). Pass null/undefined to hide. */
   leadingIcon?: React.ElementType;
   /** Whether to show the leading icon */
@@ -39,6 +43,8 @@ export const Label: React.FC<LabelProps> = ({
   font = 'archivo',
   align = 'left',
   dropdown = false,
+  component: Component = 'div',
+  ariaLabel,
   leadingIcon: LeadingIconInput = PersonIcon,
   showLeadingIcon = true,
   showTrailingIcon = true,
@@ -55,7 +61,7 @@ export const Label: React.FC<LabelProps> = ({
   ].join(' ');
 
   return (
-    <div className={containerClasses}>
+    <Component className={containerClasses} aria-label={ariaLabel}>
       {/* Leading Icon */}
       {showLeadingIcon && LeadingIconInput && (
         <Icon icon={LeadingIconInput} size={size} />
@@ -80,7 +86,7 @@ export const Label: React.FC<LabelProps> = ({
           />
         </div>
       )}
-    </div>
+    </Component>
   );
 };
 

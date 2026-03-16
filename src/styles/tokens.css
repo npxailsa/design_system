@@ -9,7 +9,10 @@
   --global-color-blue-gray-50: #D6D9DA;
 
   /* Typography - Typefaces */
-  --global-font-primary: "Archivo", -apple-system, Roboto, Helvetica, sans-serif;
+  --font-family-primary: "F37 Ginger Pro", sans-serif;
+  --font-family-secondary: "Calibri", sans-serif;
+  --global-font-primary: var(--font-family-primary);
+  --global-font-secondary: var(--font-family-secondary);
 
   /* Spacing / Sizing - Scale */
   --global-spacing-2px: 2px;

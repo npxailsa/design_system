@@ -34,7 +34,7 @@
 
 /* Fonts */
 .font-ginger {
-  --local-font-family: var(--global-font-secondary, "Ginger", sans-serif);
+  --local-font-family: var(--global-font-primary);
 }
 
 .font-archivo {
@@ -46,7 +46,7 @@
   justify-content: flex-start;
 }
 
-.align-centre {
+.align-center {
   justify-content: center;
   text-align: center;
 }
