@@ -1,4 +1,4 @@
-import{j as n}from"./jsx-runtime-mIcqMbRZ.js";import{useMDXComponents as o}from"./index-pnYCoKVO.js";import{M as l,C as r,a as i}from"./blocks-DmuAIBTS.js";import{L as a,S as d,W as c,a as h,A as p}from"./Label.stories-CNcrBdFI.js";import"./iframe-Cd-WYPWx.js";import"./preload-helper-Dp1pzeXC.js";import"./index-CGcS0c-D.js";import"./Settings-C0UZgS6v.js";function t(s){const e={code:"code",h1:"h1",h2:"h2",h3:"h3",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...o(),...s.components};return n.jsxs(n.Fragment,{children:[n.jsx(l,{of:a}),`
+import{j as n,M as o,C as r,a as i}from"./iframe-C383Kmv9.js";import{useMDXComponents as l}from"./index-MZ2OX-8H.js";import{L as a,S as d,W as c,a as h,A as x}from"./Label.stories-CY6gRMwW.js";import"./preload-helper-Dp1pzeXC.js";import"./Settings-CldN3BFC.js";function t(s){const e={code:"code",h1:"h1",h2:"h2",h3:"h3",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...l(),...s.components};return n.jsxs(n.Fragment,{children:[n.jsx(o,{of:a}),`
 `,n.jsx(e.h1,{id:"label-component",children:"Label Component"}),`
 `,n.jsxs(e.p,{children:["The ",n.jsx(e.code,{children:"Label"})," component is a versatile text display component that supports icons, alignment, and dropdown split functionality. It uses the ",n.jsx(e.strong,{children:"F37 Ginger Pro"})," font family as its primary typeface, ensuring a modern and clean aesthetic that matches our design system."]}),`
 `,n.jsx(e.h2,{id:"typography-and-scaling",children:"Typography and Scaling"}),`
@@ -41,4 +41,4 @@ import MailIcon from '@mui/icons-material/Mail';
 `,n.jsx(e.h3,{id:"with-dropdown",children:"With Dropdown"}),`
 `,n.jsx(i,{of:h}),`
 `,n.jsx(e.h3,{id:"alignment",children:"Alignment"}),`
-`,n.jsx(i,{of:p})]})}function b(s={}){const{wrapper:e}={...o(),...s.components};return e?n.jsx(e,{...s,children:n.jsx(t,{...s})}):t(s)}export{b as default};
+`,n.jsx(i,{of:x})]})}function f(s={}){const{wrapper:e}={...l(),...s.components};return e?n.jsx(e,{...s,children:n.jsx(t,{...s})}):t(s)}export{f as default};
