@@ -17,6 +17,40 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import PersonIcon from '@mui/icons-material/Person';
 import WarningIcon from '@mui/icons-material/Warning';
 import ErrorIcon from '@mui/icons-material/Error';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import EmailIcon from '@mui/icons-material/Email';
+import StarIcon from '@mui/icons-material/Star';
+import ShareIcon from '@mui/icons-material/Share';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import PauseIcon from '@mui/icons-material/Pause';
+import StopIcon from '@mui/icons-material/Stop';
+import SkipNextIcon from '@mui/icons-material/SkipNext';
+import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
+import RefreshIcon from '@mui/icons-material/Refresh';
+import EditIcon from '@mui/icons-material/Edit';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import LockIcon from '@mui/icons-material/Lock';
+import LockOpenIcon from '@mui/icons-material/LockOpen';
+import HelpIcon from '@mui/icons-material/Help';
+import InfoIcon from '@mui/icons-material/Info';
+import CheckIcon from '@mui/icons-material/Check';
+import CancelIcon from '@mui/icons-material/Cancel';
+import DownloadIcon from '@mui/icons-material/Download';
+import UploadIcon from '@mui/icons-material/Upload';
+import CloudIcon from '@mui/icons-material/Cloud';
+import CameraAltIcon from '@mui/icons-material/CameraAlt';
+import ImageIcon from '@mui/icons-material/Image';
+import VideoCallIcon from '@mui/icons-material/VideoCall';
+import MicIcon from '@mui/icons-material/Mic';
+import MicOffIcon from '@mui/icons-material/MicOff';
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
+import VolumeOffIcon from '@mui/icons-material/VolumeOff';
+import BluetoothIcon from '@mui/icons-material/Bluetooth';
+import WifiIcon from '@mui/icons-material/Wifi';
+import BatteryFullIcon from '@mui/icons-material/BatteryFull';
+import BluetoothConnectedIcon from '@mui/icons-material/BluetoothConnected';
 
 const meta: Meta<typeof Icon> = {
   title: 'Foundations/Icon',
@@ -24,7 +58,7 @@ const meta: Meta<typeof Icon> = {
   argTypes: {
     icon: {
       description: 'The Material UI icon component to render.',
-      options: ['Home', 'Search', 'Settings', 'Favorite', 'Mail', 'Delete', 'Add', 'CheckCircle'],
+      options: ['Home', 'Search', 'Settings', 'Favorite', 'Mail', 'Delete', 'Add', 'CheckCircle', 'Menu', 'Close', 'Person', 'Warning', 'Info', 'Star', 'Edit'],
       mapping: {
         Home: HomeIcon,
         Search: SearchIcon,
@@ -34,6 +68,13 @@ const meta: Meta<typeof Icon> = {
         Delete: DeleteIcon,
         Add: AddIcon,
         CheckCircle: CheckCircleIcon,
+        Menu: MenuIcon,
+        Close: CloseIcon,
+        Person: PersonIcon,
+        Warning: WarningIcon,
+        Info: InfoIcon,
+        Star: StarIcon,
+        Edit: EditIcon,
       },
       control: { type: 'select' },
     },
@@ -131,7 +172,7 @@ export const Gallery: Story = {
       { name: 'Mail', component: MailIcon },
       { name: 'Delete', component: DeleteIcon },
       { name: 'Add', component: AddIcon },
-      { name: 'Check', component: CheckCircleIcon },
+      { name: 'CheckCircle', component: CheckCircleIcon },
       { name: 'Menu', component: MenuIcon },
       { name: 'Close', component: CloseIcon },
       { name: 'ArrowBack', component: ArrowBackIcon },
@@ -140,10 +181,44 @@ export const Gallery: Story = {
       { name: 'Person', component: PersonIcon },
       { name: 'Warning', component: WarningIcon },
       { name: 'Error', component: ErrorIcon },
+      { name: 'AccountCircle', component: AccountCircleIcon },
+      { name: 'ShoppingCart', component: ShoppingCartIcon },
+      { name: 'Email', component: EmailIcon },
+      { name: 'Star', component: StarIcon },
+      { name: 'Share', component: ShareIcon },
+      { name: 'PlayArrow', component: PlayArrowIcon },
+      { name: 'Pause', component: PauseIcon },
+      { name: 'Stop', component: StopIcon },
+      { name: 'SkipNext', component: SkipNextIcon },
+      { name: 'SkipPrevious', component: SkipPreviousIcon },
+      { name: 'Refresh', component: RefreshIcon },
+      { name: 'Edit', component: EditIcon },
+      { name: 'Visibility', component: VisibilityIcon },
+      { name: 'VisibilityOff', component: VisibilityOffIcon },
+      { name: 'Lock', component: LockIcon },
+      { name: 'LockOpen', component: LockOpenIcon },
+      { name: 'Help', component: HelpIcon },
+      { name: 'Info', component: InfoIcon },
+      { name: 'Check', component: CheckIcon },
+      { name: 'Cancel', component: CancelIcon },
+      { name: 'Download', component: DownloadIcon },
+      { name: 'Upload', component: UploadIcon },
+      { name: 'Cloud', component: CloudIcon },
+      { name: 'CameraAlt', component: CameraAltIcon },
+      { name: 'Image', component: ImageIcon },
+      { name: 'VideoCall', component: VideoCallIcon },
+      { name: 'Mic', component: MicIcon },
+      { name: 'MicOff', component: MicOffIcon },
+      { name: 'VolumeUp', component: VolumeUpIcon },
+      { name: 'VolumeOff', component: VolumeOffIcon },
+      { name: 'Bluetooth', component: BluetoothIcon },
+      { name: 'Wifi', component: WifiIcon },
+      { name: 'BatteryFull', component: BatteryFullIcon },
+      { name: 'BluetoothConnected', component: BluetoothConnectedIcon },
     ];
 
     return (
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))', gap: 'var(--spacing-large)' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: 'var(--spacing-large)' }}>
         {commonIcons.map((icon) => (
           <div key={icon.name} style={{
             display: 'flex',
@@ -160,7 +235,8 @@ export const Gallery: Story = {
               fontSize: 'var(--font-size-sm)',
               fontFamily: 'var(--font-family-secondary)',
               color: 'var(--color-text-muted)',
-              fontWeight: 'var(--font-weight-medium)'
+              fontWeight: 'var(--font-weight-medium)',
+              textAlign: 'center'
             }}>
               {icon.name}
             </span>

@@ -5,13 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "storybook dev -p 6006 --config-dir .storybook --ci --no-open --loglevel debug",
-    "build": "tsc && vite build",
+    "build": "NODE_OPTIONS=--max-old-space-size=4096 tsc && NODE_OPTIONS=--max-old-space-size=4096 vite build",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006 --config-dir .storybook",
-    "build-storybook": "storybook build",
-    "build-storybook:gh-pages": "storybook build --output-dir storybook-static && touch storybook-static/.nojekyll",
+    "build-storybook": "npm run docs:generate && NODE_OPTIONS=--max-old-space-size=4096 storybook build",
+    "build-storybook:gh-pages": "npm run docs:generate && NODE_OPTIONS=--max-old-space-size=4096 storybook build --output-dir storybook-static && touch storybook-static/.nojekyll",
     "docs:generate": "node scripts/generate-docs.mjs",
-    "chromatic": "npx chromatic --project-token=chpt_44a4334f1199317"
+    "chromatic": "NODE_OPTIONS=--max-old-space-size=4096 npx chromatic --project-token=chpt_44a4334f1199317"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -32,7 +32,7 @@
     "@storybook/addon-links": "10.2.17",
     "@storybook/addon-themes": "10.2.17",
     "@storybook/addon-vitest": "^10.2.17",
-    "@storybook/blocks": "^8.6.14",
+    "@storybook/blocks": "^10.2.17",
     "@storybook/react": "10.2.17",
     "@storybook/react-vite": "10.2.17",
     "@storybook/test-runner": "^0.24.2",
