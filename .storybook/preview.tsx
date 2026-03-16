@@ -1,6 +1,5 @@
 import { Preview } from "@storybook/react-vite";
 import { DocsContainer } from "@storybook/addon-docs/blocks";
-import { TabContainer } from "storybook-addon-docs-tabs";
 import '../src/index.css';
 import React from 'react';
 
@@ -53,13 +52,9 @@ const preview: Preview = {
     docs: {
       container: ({ children, context }: any) => (
         <DocsContainer context={context}>
-          <TabContainer
-            context={context}
-            footerElement={<Footer />}
-            additionalHeaderElement={<Header />}
-          >
-            {children}
-          </TabContainer>
+          <Header />
+          {children}
+          <Footer />
         </DocsContainer>
       ),
     },
