@@ -12,6 +12,7 @@
     "build-storybook": "npm run docs:generate && NODE_OPTIONS=--max-old-space-size=4096 storybook build",
     "build-storybook:gh-pages": "npm run docs:generate && NODE_OPTIONS=--max-old-space-size=4096 storybook build --output-dir storybook-static && touch storybook-static/.nojekyll",
     "docs:generate": "node scripts/generate-docs.mjs",
+    "docs:check": "ls src/components/**/*.mdx",
     "chromatic": "NODE_OPTIONS=--max-old-space-size=4096 npx chromatic --project-token=chpt_44a4334f1199317"
   },
   "dependencies": {

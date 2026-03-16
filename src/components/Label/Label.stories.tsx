@@ -3,6 +3,7 @@ import Label from './Label';
 import PersonIcon from '@mui/icons-material/Person';
 import MailIcon from '@mui/icons-material/Mail';
 import SettingsIcon from '@mui/icons-material/Settings';
+import React from 'react';
 
 const meta: Meta<typeof Label> = {
   title: 'Foundations/Label',
@@ -47,10 +48,91 @@ const meta: Meta<typeof Label> = {
       control: 'boolean',
     },
   },
+  decorators: [
+    (Story) => (
+      <div style={{ padding: '20px' }}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
+
+/**
+ * Helper component to render a matrix of variants for a specific weight
+ */
+const WeightMatrix = ({ weight }: { weight: 'bold' | 'medium' | 'light' | 'thin' }) => {
+  const sizes = ['large', 'default', 'small', 'x-small', '2x-small'] as const;
+  const alignments = ['left', 'centre', 'right'] as const;
+  const dropdownStates = [false, true] as const;
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+        <h2 style={{ margin: 0, textTransform: 'uppercase', letterSpacing: '1px' }}>
+          {weight} weight variants
+        </h2>
+        <div style={{ height: '2px', flexGrow: 1, backgroundColor: '#eee' }} />
+      </div>
+
+      <div style={{ overflowX: 'auto' }}>
+        <table style={{ borderCollapse: 'collapse', width: '100%', minWidth: '1000px' }}>
+          <thead>
+            <tr>
+              <th style={headerCellStyle}>Size</th>
+              {alignments.map((align) => (
+                <React.Fragment key={align}>
+                  <th style={headerCellStyle}>{align}</th>
+                  <th style={headerCellStyle}>{align} + Dropdown</th>
+                </React.Fragment>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {sizes.map((size) => (
+              <tr key={size} style={{ borderBottom: '1px solid #f0f0f0' }}>
+                <td style={{ ...cellStyle, fontWeight: 'bold', color: '#666', width: '100px' }}>
+                  {size}
+                </td>
+                {alignments.map((align) => (
+                  <React.Fragment key={align}>
+                    <td style={cellStyle}>
+                      <Label size={size} weight={weight} align={align} dropdown={false}>
+                        Label
+                      </Label>
+                    </td>
+                    <td style={cellStyle}>
+                      <Label size={size} weight={weight} align={align} dropdown={true}>
+                        Label
+                      </Label>
+                    </td>
+                  </React.Fragment>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};
+
+const headerCellStyle: React.CSSProperties = {
+  textAlign: 'left',
+  padding: '12px',
+  color: '#999',
+  fontSize: '12px',
+  textTransform: 'uppercase',
+  borderBottom: '2px solid #eee',
+};
+
+const cellStyle: React.CSSProperties = {
+  padding: '16px 12px',
+};
+
+// --- Basic Stories ---
 
 export const Default: Story = {
   args: {
@@ -88,104 +170,104 @@ export const Weights: Story = {
 
 export const Alignments: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', width: '300px', border: '1px solid #eee', padding: '10px' }}>
-      <Label align="left">Left Aligned</Label>
-      <Label align="centre">Centre Aligned</Label>
-      <Label align="right">Right Aligned</Label>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', width: '400px', border: '1px dashed #eee', padding: '20px' }}>
+      <div>
+        <span style={{ fontSize: '12px', color: '#999' }}>Left</span>
+        <Label align="left">Left Aligned</Label>
+      </div>
+      <div>
+        <span style={{ fontSize: '12px', color: '#999' }}>Centre</span>
+        <Label align="centre">Centre Aligned</Label>
+      </div>
+      <div>
+        <span style={{ fontSize: '12px', color: '#999' }}>Right</span>
+        <Label align="right">Right Aligned</Label>
+      </div>
     </div>
   ),
 };
 
-export const Fonts: Story = {
+// --- Comprehensive Variant Matrix Stories (120 Variants) ---
+
+/**
+ * Bold variants systematic overview
+ */
+export const BoldVariants: Story = {
+  name: 'Systematic: Bold (30 variants)',
+  render: () => <WeightMatrix weight="bold" />,
+};
+
+/**
+ * Medium variants systematic overview
+ */
+export const MediumVariants: Story = {
+  name: 'Systematic: Medium (30 variants)',
+  render: () => <WeightMatrix weight="medium" />,
+};
+
+/**
+ * Light variants systematic overview
+ */
+export const LightVariants: Story = {
+  name: 'Systematic: Light (30 variants)',
+  render: () => <WeightMatrix weight="light" />,
+};
+
+/**
+ * Thin variants systematic overview
+ */
+export const ThinVariants: Story = {
+  name: 'Systematic: Thin (30 variants)',
+  render: () => <WeightMatrix weight="thin" />,
+};
+
+/**
+ * Comprehensive overview of all 120 variants
+ */
+export const AllVariants: Story = {
+  name: 'Full Matrix (120 variants)',
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-      <div>
-        <h4 style={{ margin: '0 0 10px 0' }}>Archivo (Primary)</h4>
-        <Label font="archivo">The quick brown fox jumps over the lazy dog</Label>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '80px' }}>
+      <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+        <h1 style={{ margin: 0 }}>Label Component Variant Matrix</h1>
+        <p style={{ color: '#666' }}>5 Sizes × 4 Weights × 3 Alignments × 2 Dropdown States = 120 Variants</p>
       </div>
-      <div>
-        <h4 style={{ margin: '0 0 10px 0' }}>Ginger Pro (Secondary)</h4>
-        <Label font="ginger">The quick brown fox jumps over the lazy dog</Label>
-      </div>
+      <WeightMatrix weight="bold" />
+      <WeightMatrix weight="medium" />
+      <WeightMatrix weight="light" />
+      <WeightMatrix weight="thin" />
     </div>
   ),
 };
+
+// --- Brand Switching Demo ---
 
 export const WithDropdown: Story = {
   args: {
-    children: 'Dropdown Label',
     dropdown: true,
-    size: 'default',
-    weight: 'bold',
   },
 };
 
-export const DropdownMatrix: Story = {
-  render: () => {
-    const sizes = ['large', 'default', 'small', 'x-small', '2x-small'] as const;
-    const weights = ['bold', 'medium', 'light', 'thin'] as const;
-
-    return (
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '40px' }}>
-        {weights.map((weight) => (
-          <div key={weight} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-            <h4 style={{ margin: '0 0 10px 0', textTransform: 'capitalize' }}>{weight} Dropdown</h4>
-            {sizes.map((size) => (
-              <Label key={`${weight}-${size}`} size={size} weight={weight} dropdown showSplit>
-                {size} {weight}
-              </Label>
-            ))}
-          </div>
-        ))}
+export const BrandComparison: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
+      <div data-theme="penta" style={{ padding: '20px', border: '1px solid #eee', borderRadius: '8px' }}>
+        <h3 style={{ marginTop: 0, color: '#999', fontSize: '12px' }}>PENTA BRAND (Default)</h3>
+        <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+          <Label size="large" weight="bold">Large Bold</Label>
+          <Label size="default" weight="medium" dropdown>Dropdown</Label>
+          <Label size="small" weight="light">Small Light</Label>
+        </div>
       </div>
-    );
-  },
-};
 
-export const VariantMatrix: Story = {
-  render: () => {
-    const sizes = ['large', 'default', 'small', 'x-small', '2x-small'] as const;
-    const weights = ['bold', 'medium', 'light', 'thin'] as const;
-    const alignments = ['left', 'centre', 'right'] as const;
-    const dropdowns = [false, true] as const;
-
-    return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
-        {weights.map((weight) => (
-          <div key={weight}>
-            <h3 style={{ borderBottom: '2px solid #333', paddingBottom: '10px', textTransform: 'capitalize' }}>
-              Weight: {weight}
-            </h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
-              {alignments.map((align) => (
-                <div key={align} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-                  <h4 style={{ color: '#666', textTransform: 'capitalize' }}>Align: {align}</h4>
-                  {dropdowns.map((isDropdown) => (
-                    <div key={`${isDropdown}`} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                      <h5 style={{ margin: 0, fontSize: '12px', color: '#999' }}>
-                        Dropdown: {isDropdown ? 'True' : 'False'}
-                      </h5>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', border: '1px dashed #ccc', padding: '10px' }}>
-                        {sizes.map((size) => (
-                          <Label
-                            key={`${weight}-${align}-${isDropdown}-${size}`}
-                            size={size}
-                            weight={weight}
-                            align={align}
-                            dropdown={isDropdown}
-                          >
-                            {size} Label
-                          </Label>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
+      <div data-theme="horizon" style={{ padding: '20px', border: '1px solid #eee', borderRadius: '8px', backgroundColor: '#f4f5f7' }}>
+        <h3 style={{ marginTop: 0, color: '#999', fontSize: '12px' }}>HORIZON BRAND</h3>
+        <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+          <Label size="large" weight="bold">Large Bold</Label>
+          <Label size="default" weight="medium" dropdown>Dropdown</Label>
+          <Label size="small" weight="light">Small Light</Label>
+        </div>
       </div>
-    );
-  },
+    </div>
+  ),
 };

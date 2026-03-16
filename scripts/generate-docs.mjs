@@ -18,10 +18,10 @@ function capitalize(str) {
  * Generates the MDX template for a component.
  */
 function generateMDXTemplate(componentName) {
-  return `import { Meta, Controls, Canvas } from "@storybook/addon-docs/blocks";
+  return `import { Meta, Controls, Canvas, Story } from "@storybook/addon-docs/blocks";
 import * as ${componentName}Stories from "./${componentName}.stories";
 
-<Meta of={${componentName}Stories} />
+<Meta of={${componentName}Stories} title="Foundations/${componentName}" />
 
 # ${componentName}
 
@@ -39,6 +39,8 @@ const MyComponent = () => (
 
 ## API
 
+The component accepts the following props:
+
 <Controls />
 
 ## Examples
@@ -47,19 +49,44 @@ const MyComponent = () => (
 
 <Canvas of={${componentName}Stories.Default} />
 
-[Additional examples and variations can be showcased here.]
+## Systematic Variants
+
+This section showcases the systematic application of variants across sizes, weights, and states.
+
+<Canvas of={${componentName}Stories.AllVariants} />
+
+## Design System Integration
+
+### Brand Comparison (Multi-Client)
+
+Our design system supports multiple brands (Penta, Horizon). Below is a comparison of how the component renders across different brand themes.
+
+<Canvas of={${componentName}Stories.BrandComparison} />
+
+### Design Tokens
+
+The component uses the following design tokens for styling:
+
+| Token Name | Description | Default Value (Penta) |
+| :--- | :--- | :--- |
+| \`--${componentName.toLowerCase()}-text-color\` | Primary text color | \`var(--brand-text-main)\` |
+| \`--${componentName.toLowerCase()}-font-family\` | Font family | \`var(--global-font-primary)\` |
+| \`--${componentName.toLowerCase()}-size-default\` | Default font size | \`16px\` |
+| \`--${componentName.toLowerCase()}-weight-bold\` | Bold font weight | \`700\` |
+| \`--${componentName.toLowerCase()}-divider-color\` | Dropdown divider color | \`var(--brand-border-main)\` |
 
 ## Guidelines
 
 ### Best Practices
-- [List best practices for using this component.]
+- Use component tokens for overrides rather than hardcoded values.
+- Ensure appropriate contrast ratios when switching between brands.
 
 ### Accessibility
 - [Describe accessibility considerations and features.]
 
 ### Dos and Don'ts
-- **Do:** [Recommended usage.]
-- **Don't:** [Avoided usage.]
+- **Do:** Use the \`size\` prop to ensure consistent scaling.
+- **Don't:** Overwrite internal component styles directly; use the token system.
 `;
 }
 

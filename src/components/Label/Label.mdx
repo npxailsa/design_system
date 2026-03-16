@@ -1,61 +1,36 @@
-import { Meta, Story, Canvas, Controls } from '@storybook/addon-docs/blocks';
-import * as LabelStories from './Label.stories';
+import { Meta, Controls, Canvas } from "@storybook/addon-docs/blocks";
+import * as LabelStories from "./Label.stories";
 
-<Meta of={LabelStories} />
+<Meta of={LabelStories} title="Foundations/Label" />
 
-# Label Component
+# Label
 
-The `Label` component is a versatile text display component that supports icons, alignment, and dropdown split functionality. It uses the **F37 Ginger Pro** font family as its primary typeface, ensuring a modern and clean aesthetic that matches our design system.
-
-## Anatomy
-
-The `Label` component consists of the following elements:
-
-1.  **Leading Icon (Optional)**: A Material UI icon placed before the text to provide visual context.
-2.  **Label Text**: The main content of the component, using design-system-specific typography scales.
-3.  **Trailing Icon (Optional)**: Typically an arrow or chevron indicating an action or navigation.
-4.  **Dropdown Split (Optional)**: A vertical divider followed by a chevron-down icon, used to indicate a split-button or dropdown functionality.
-
-## Typography and Scaling
-
-The component is built using Figma-compliant design tokens. Each size variant scales the text, the icons, and the spacing (gap) between elements proportionally:
-
-- **large**: 18px text, 18px icon, 8px gap.
-- **default**: 16px text, 16px icon, 6px gap.
-- **small**: 14px text, 14px icon, 4px gap.
-- **x-small**: 12px text, 12px icon, 4px gap.
-- **2x-small**: 10px text, 10px icon, 2px gap.
+The `Label` component is a core building block of the design system, used to display text with optional icons and dropdown split functionality. It is designed to be highly systematic, with 120 possible variants based on size, weight, alignment, and state.
 
 ## Usage
 
 ```tsx
-import { Label } from './components/Label';
-import MailIcon from '@mui/icons-material/Mail';
+import { Label } from './Label';
+import PersonIcon from '@mui/icons-material/Person';
 
-<Label size="large" weight="bold" leadingIcon={MailIcon}>
-  Email Support
-</Label>
+const MyComponent = () => (
+  <Label size="default" weight="bold" leadingIcon={PersonIcon}>
+    Example Label
+  </Label>
+);
 ```
 
-## Props
+## API
+
+The component accepts the following props:
 
 <Controls />
 
-## Component API
-
-The `Label` component is highly configurable with several props to control its appearance and behavior:
-
-- **children**: The text to display. Defaults to 'Label'.
-- **size**: Controls font size, line height, gap, and icon sizes. Supports 'large', 'default', 'small', 'x-small', '2x-small'.
-- **weight**: Controls the font weight. Supports 'bold', 'medium', 'light', 'thin'.
-- **align**: Controls the text and content alignment within the container. Supports 'left', 'centre', 'right'.
-- **dropdown**: If true, displays a vertical divider and a chevron-down icon.
-- **leadingIcon**: A Material UI icon to display before the text. Defaults to `PersonIcon`.
-- **showLeadingIcon**: If true, displays the leading icon.
-- **showTrailingIcon**: If true, displays an `ArrowForwardIcon` after the text.
-- **showSplit**: If true, displays the split divider and chevron (only when `dropdown` is true).
-
 ## Examples
+
+### Default
+
+<Canvas of={LabelStories.Default} />
 
 ### Sizes
 
@@ -72,3 +47,46 @@ The `Label` component is highly configurable with several props to control its a
 ### Alignment
 
 <Canvas of={LabelStories.Alignments} />
+
+## Systematic Variants
+
+This section showcases the systematic application of variants across all 5 sizes, 4 weights, 3 alignments, and 2 dropdown states.
+
+### Full Matrix (120 Variants)
+
+<Canvas of={LabelStories.AllVariants} />
+
+## Design System Integration
+
+### Brand Comparison (Multi-Client)
+
+Our design system supports multiple brands (Penta, Horizon). Below is a comparison of how the component renders across different brand themes using the token system.
+
+<Canvas of={LabelStories.BrandComparison} />
+
+### Design Tokens
+
+The component uses the following design tokens for styling, which are defined in `src/styles/tokens.css`:
+
+| Token Name | Description | Default Value (Penta) |
+| :--- | :--- | :--- |
+| `--label-text-color` | Primary text color | `var(--brand-text-main)` |
+| `--label-font-family` | Font family | `var(--global-font-primary)` (Archivo) |
+| `--label-size-default` | Default font size | `16px` |
+| `--label-weight-bold` | Bold font weight | `700` |
+| `--label-divider-color` | Dropdown divider color | `var(--brand-border-main)` |
+
+## Guidelines
+
+### Best Practices
+- Use the `size` prop to ensure consistent scaling.
+- Ensure appropriate contrast ratios when switching between brands.
+- Use component tokens for overrides rather than hardcoded values.
+
+### Accessibility
+- Ensure labels have sufficient color contrast (WCAG 2.1 AA).
+- If an icon carries unique meaning, ensure appropriate ARIA labels are provided via children or parent components.
+
+### Dos and Don'ts
+- **Do:** Use systematic weights (bold, medium, light, thin) for consistent hierarchy.
+- **Don't:** Overwrite internal component styles directly; use the token system.
