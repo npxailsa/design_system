@@ -12,7 +12,7 @@
   --local-gap: var(--label-gap-default);
   --local-font-size: var(--label-size-default);
   --local-line-height: var(--label-line-height-default);
-  --local-weight: var(--label-weight-medium);
+  --local-weight: var(--label-weight-bold);
   --local-divider-height: var(--label-line-height-default);
 
   display: flex;
@@ -25,6 +25,7 @@
   line-height: var(--local-line-height);
   font-weight: var(--local-weight);
   position: relative;
+  width: fit-content;
 }
 
 /* Ensure icons use the component icon color token */

@@ -22,11 +22,13 @@ export interface LabelProps {
   component?: 'label' | 'span' | 'div';
   /** ARIA label for accessibility */
   ariaLabel?: string;
-  /** Optional leading icon (MUI icon component). Pass null/undefined to hide. */
+  /** Optional leading icon (MUI icon component). */
   leadingIcon?: React.ElementType;
   /** Whether to show the leading icon */
   showLeadingIcon?: boolean;
-  /** Whether to show the trailing arrow-right icon */
+  /** Optional trailing icon (MUI icon component). Defaults to ArrowForwardIcon. */
+  trailingIcon?: React.ElementType;
+  /** Whether to show the trailing icon */
   showTrailingIcon?: boolean;
   /** Whether to show the split divider and chevron (only if dropdown is true) */
   showSplit?: boolean;
@@ -46,6 +48,7 @@ export const Label: React.FC<LabelProps> = ({
   component: Component = 'div',
   ariaLabel,
   leadingIcon: LeadingIconInput = PersonIcon,
+  trailingIcon: TrailingIconInput = ArrowForwardIcon,
   showLeadingIcon = true,
   showTrailingIcon = true,
   showSplit = true,
@@ -70,9 +73,9 @@ export const Label: React.FC<LabelProps> = ({
       {/* Label Text */}
       <span className={styles.labelText}>{children}</span>
 
-      {/* Trailing Icon (Arrow Right) */}
-      {showTrailingIcon && (
-        <Icon icon={ArrowForwardIcon} size={size} />
+      {/* Trailing Icon */}
+      {showTrailingIcon && TrailingIconInput && (
+        <Icon icon={TrailingIconInput} size={size} />
       )}
 
       {/* Dropdown / Split section */}
