@@ -52,18 +52,25 @@ export const Icon: React.FC<IconProps> = ({
 
   // Apply size via sx prop. We use fontSize: 'inherit' on the component
   // to ensure it picks up the size we set in sx.
-  const iconSx = {
-    ...sx,
+  const iconSx: any = {
+    ...(typeof sx === 'object' ? sx : {}),
     fontSize: typeof size === 'number'
       ? `${size}px`
-      : (isNamedSize ? sizeMap[size] : sx?.fontSize)
+      : (isNamedSize ? sizeMap[size] : undefined)
   };
+
+  // If sx is a function, we handle it by wrapping it or just applying our override
+  // But for simplicity in a design system wrapper, we usually expect an object
+  // or we handle the function case.
+  const finalSx = typeof sx === 'function'
+    ? (theme: any) => ({ ...sx(theme), fontSize: iconSx.fontSize })
+    : iconSx;
 
   return (
     <IconComponent
       className={`${styles.icon} ${className || ''}`}
       fontSize={isNamedSize || typeof size === 'number' ? undefined : (size === 'inherit' ? 'inherit' : undefined)}
-      sx={iconSx}
+      sx={finalSx}
       {...props}
     />
   );
