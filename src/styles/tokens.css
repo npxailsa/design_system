@@ -145,8 +145,8 @@
      GLOBAL LAYER: Typography
      ========================================================================== */
   /* Typefaces */
-  --font-family-primary: "Archivo", sans-serif;
-  --font-family-secondary: "F37 Ginger Pro", sans-serif;
+  --font-family-primary: "F37 Ginger Pro", sans-serif;
+  --font-family-secondary: "Calibri", sans-serif;
   --global-font-primary: var(--font-family-primary);
   --global-font-secondary: var(--font-family-secondary);
 
@@ -230,35 +230,11 @@
   --global-type-letter-spacing-secondary-body-sm: -0.15px;
   --global-type-letter-spacing-secondary-footnote: 0.2px;
 
-  /* Default Brand Assignment (Penta) */
+  /* Default Brand Assignment (NPX Design System) */
   --brand-font-primary: var(--global-font-primary);
   --brand-font-secondary: var(--global-font-secondary);
-  --brand-primary: var(--global-color-base-black);
-  --brand-secondary: var(--global-color-secondary-navy);
-  --brand-text-main: var(--global-color-base-black);
-  --brand-icon-main: var(--global-color-base-black);
-  --brand-border-main: var(--global-color-neutral-gray-200);
-}
 
-/* ==========================================================================
-   BRAND LAYER: Brand-Specific Overrides
-   ========================================================================== */
-
-[data-theme="penta"] {
-  --brand-font-primary: var(--global-font-primary);
-  --brand-font-secondary: var(--global-font-secondary);
-  --brand-primary: var(--global-color-base-black);
-  --brand-text-main: var(--global-color-base-black);
-  --brand-icon-main: var(--global-color-base-black);
-  --brand-border-main: var(--global-color-neutral-gray-200);
-}
-
-[data-theme="horizon"] {
-  /* Typefaces */
-  --brand-font-primary: "F37 Ginger", sans-serif;
-  --brand-font-secondary: "Calibri", sans-serif;
-
-  /* Colors from brand_design_tokens.json (cnl-design-system) */
+  /* Colors from brand_design_tokens.json */
   /* Blue scale */
   --brand-blue: #3776ce;
   --brand-blue-dark: #182b47;
@@ -321,6 +297,7 @@
 
   /* Semantic Mappings */
   --brand-primary: var(--brand-blue);
+  --brand-secondary: var(--global-color-secondary-navy);
   --brand-text-main: var(--brand-blue-gray-dark);
   --brand-icon-main: var(--brand-blue-gray-dark);
   --brand-border-main: var(--brand-blue-gray-50);
@@ -382,6 +359,118 @@
 }
 
 /* Font Loading */
+@font-face {
+  font-family: 'F37 Ginger Pro';
+  src: url('/sb-static/sb-typefaces/f37-ginger-thin.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'F37 Ginger Pro';
+  src: url('/sb-static/sb-typefaces/f37-ginger-thin-italic.woff') format('woff');
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'F37 Ginger Pro';
+  src: url('/sb-static/sb-typefaces/f37-ginger-light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'F37 Ginger Pro';
+  src: url('/sb-static/sb-typefaces/f37-ginger-light-italic.woff') format('woff');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'F37 Ginger Pro';
+  src: url('/sb-static/sb-typefaces/f37-ginger.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'F37 Ginger Pro';
+  src: url('/sb-static/sb-typefaces/f37-ginger-italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'F37 Ginger Pro';
+  src: url('/sb-static/sb-typefaces/f37-ginger-bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'F37 Ginger Pro';
+  src: url('/sb-static/sb-typefaces/f37-ginger-bold-italic.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Calibri';
+  src: url('/sb-static/sb-typefaces/Calibri_Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Calibri';
+  src: url('/sb-static/sb-typefaces/Calibri_Light_Italic.woff') format('woff');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Calibri';
+  src: url('/sb-static/sb-typefaces/Calibri.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Calibri';
+  src: url('/sb-static/sb-typefaces/Calibri_Italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Calibri';
+  src: url('/sb-static/sb-typefaces/Calibri_Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Calibri';
+  src: url('/sb-static/sb-typefaces/Calibri_Bold_Italic.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
 @font-face {
   font-family: 'Archivo';
   src: url('https://fonts.gstatic.com/s/archivo/v19/8n3782sSy_o7jr6kaT1O87rVByU20VLu.woff2') format('woff2');

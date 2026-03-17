@@ -14,6 +14,12 @@ const config: StorybookConfig = {
     "@storybook/addon-vitest"
   ],
   "framework": "@storybook/react-vite",
+  "staticDirs": [
+    {
+      "from": "../storybook-static/sb-typefaces",
+      "to": "/sb-static/sb-typefaces"
+    }
+  ],
   async viteFinal(config) {
     config.optimizeDeps = config.optimizeDeps || {};
     config.optimizeDeps.include = [

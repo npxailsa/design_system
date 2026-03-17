@@ -247,27 +247,3 @@ export const WithDropdown: Story = {
     dropdown: true,
   },
 };
-
-export const BrandComparison: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-40px)' }}>
-      <div data-theme="penta" style={{ padding: 'var(--global-spacing-sizing-20px)', border: 'var(--global-spacing-stroke-1px) solid var(--global-color-neutral-gray-200)', borderRadius: 'var(--global-spacing-radius-8px)' }}>
-        <h3 style={{ marginTop: 0, color: 'var(--global-color-neutral-gray-400)', fontSize: 'var(--global-type-size-primary-label-xs)' }}>PENTA BRAND (Default)</h3>
-        <div style={{ display: 'flex', gap: 'var(--global-spacing-sizing-20px)', alignItems: 'center' }}>
-          <Label size="large" weight="bold">Large Bold</Label>
-          <Label size="default" weight="medium" dropdown>Dropdown</Label>
-          <Label size="small" weight="light">Small Light</Label>
-        </div>
-      </div>
-
-      <div data-theme="horizon" style={{ padding: 'var(--global-spacing-sizing-20px)', border: 'var(--global-spacing-stroke-1px) solid var(--brand-border-main)', borderRadius: 'var(--global-spacing-radius-8px)', backgroundColor: 'var(--brand-gray-light-50)' }}>
-        <h3 style={{ marginTop: 0, color: 'var(--global-color-neutral-gray-400)', fontSize: 'var(--global-type-size-primary-label-xs)' }}>HORIZON BRAND</h3>
-        <div style={{ display: 'flex', gap: 'var(--global-spacing-sizing-20px)', alignItems: 'center' }}>
-          <Label size="large" weight="bold">Large Bold</Label>
-          <Label size="default" weight="medium" dropdown>Dropdown</Label>
-          <Label size="small" weight="light">Small Light</Label>
-        </div>
-      </div>
-    </div>
-  ),
-};
