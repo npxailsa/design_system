@@ -3,6 +3,31 @@ import { DocsContainer } from "@storybook/addon-docs/blocks";
 import '../src/index.css';
 import React from 'react';
 
+// Suppress the ResizeObserver loop error as it is often a benign warning in Storybook
+// that can be triggered by complex layouts or many component variants.
+if (typeof window !== 'undefined') {
+  const originalError = window.console.error;
+  window.console.error = (...args: any[]) => {
+    if (
+      typeof args[0] === 'string' &&
+      args[0].includes('ResizeObserver loop completed with undelivered notifications')
+    ) {
+      return;
+    }
+    originalError.apply(window.console, args);
+  };
+
+  window.addEventListener('error', (e) => {
+    if (e.message === 'ResizeObserver loop completed with undelivered notifications') {
+      const resizeObserverErr = document.getElementById('webpack-dev-server-client-overlay-error');
+      if (resizeObserverErr) {
+        resizeObserverErr.style.display = 'none';
+      }
+      e.stopImmediatePropagation();
+    }
+  });
+}
+
 const Header = () => (
   <div style={{
     padding: 'var(--spacing-small) var(--spacing-medium)',
