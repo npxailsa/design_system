@@ -1,0 +1,1381 @@
+[
+  {
+    "global-design-tokens": {
+      "modes": {
+        "Mode 1": {
+          "color": {
+            "base": {
+              "black": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#1c1c1c"
+              },
+              "white": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#ffffff"
+              },
+              "peach-cream-50": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#fffaf2"
+              },
+              "peach-cream-100": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#fff4e5"
+              },
+              "peach-cream-200": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#e6dcce"
+              },
+              "overlay": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "rgba(28, 28, 28, 0.45)"
+              }
+            },
+            "secondary": {
+              "navy": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#3a3282"
+              },
+              "navy-mid": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#565296"
+              },
+              "navy-light": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#c8d2e4"
+              },
+              "blue-gray": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#61607c"
+              },
+              "blue-gray-light": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#c8c7d1"
+              }
+            },
+            "neutral": {
+              "gray": {
+                "gray-50": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#f9fafb"
+                },
+                "gray-100": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#f3f4f6"
+                },
+                "gray-200": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#e5e7eb"
+                },
+                "gray-300": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#d2d5da"
+                },
+                "gray-400": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#9ca3af"
+                },
+                "gray-500": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#6d7280"
+                },
+                "gray-600": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#4b5563"
+                },
+                "gray-700": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#374151"
+                },
+                "gray-800": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#1f2937"
+                },
+                "gray-900": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#111827"
+                }
+              }
+            },
+            "status": {
+              "red": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#ce2031"
+              },
+              "red-light": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#fbebeb"
+              },
+              "green": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#96f78d"
+              },
+              "dark-green": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#227f1a"
+              },
+              "green-light": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#f2fff1"
+              },
+              "orange": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#f4a403"
+              },
+              "dark-orange": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#d07c06"
+              },
+              "orange-light": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#fef4da"
+              },
+              "info-blue": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#366f97"
+              },
+              "info-blue-light": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#f5fcff"
+              },
+              "purple": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#5d2c82"
+              },
+              "purple-light": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#fbf7ff"
+              }
+            }
+          },
+          "spacing": {
+            "sizing": {
+              "0px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 0
+              },
+              "1px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 1
+              },
+              "2px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This scale is a limited set of space values that can be used to lay out UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from 0px to 400px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": 2
+              },
+              "4px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This scale is a limited set of space values that can be used to lay out UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from 0px to 400px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": 4
+              },
+              "6px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This scale is a limited set of space values that can be used to lay out UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from 0px to 400px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": 6
+              },
+              "8px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This scale is a limited set of space values that can be used to lay out UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from 0px to 400px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": 8
+              },
+              "12px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This scale is a limited set of space values that can be used to lay out UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from 0px to 400px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": 12
+              },
+              "16px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This scale is a limited set of space values that can be used to lay out UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from 0px to 400px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": 16
+              },
+              "20px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This scale is a limited set of space values that can be used to lay out UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from 0px to 400px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": 20
+              },
+              "24px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This scale is a limited set of space values that can be used to lay out UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from 0px to 400px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": 24
+              },
+              "28px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This scale is a limited set of space values that can be used to lay out UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from 0px to 400px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": 28
+              },
+              "32px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This scale is a limited set of space values that can be used to lay out UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from 0px to 400px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": 32
+              },
+              "36px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This scale is a limited set of space values that can be used to lay out UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from 0px to 400px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": 36
+              },
+              "40px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This scale is a limited set of space values that can be used to lay out UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from 0px to 400px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": 40
+              },
+              "44px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This scale is a limited set of space values that can be used to lay out UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from 0px to 400px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": 44
+              },
+              "48px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This scale is a limited set of space values that can be used to lay out UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from 0px to 400px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": 48
+              },
+              "52px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This scale is a limited set of space values that can be used to lay out UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from 0px to 400px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": 52
+              },
+              "56px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This scale is a limited set of space values that can be used to lay out UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from 0px to 400px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": 56
+              },
+              "60px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This scale is a limited set of space values that can be used to lay out UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from 0px to 400px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": 60
+              },
+              "64px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This scale is a limited set of space values that can be used to lay out UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from 0px to 400px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": 64
+              },
+              "72px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This scale is a limited set of space values that can be used to lay out UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from 0px to 400px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": 72
+              },
+              "80px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This scale is a limited set of space values that can be used to lay out UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from 0px to 400px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": 80
+              },
+              "100px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This scale is a limited set of space values that can be used to lay out UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from 0px to 400px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": 100
+              },
+              "120px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This scale is a limited set of space values that can be used to lay out UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from 0px to 400px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": 120
+              },
+              "140px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This scale is a limited set of space values that can be used to lay out UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from 0px to 400px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": 140
+              },
+              "160px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This scale is a limited set of space values that can be used to lay out UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from 0px to 400px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": 160
+              },
+              "180px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This scale is a limited set of space values that can be used to lay out UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from 0px to 400px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": 180
+              },
+              "200px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This scale is a limited set of space values that can be used to lay out UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from 0px to 400px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": 200
+              },
+              "240px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This scale is a limited set of space values that can be used to lay out UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from 0px to 400px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": 240
+              },
+              "280px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This scale is a limited set of space values that can be used to lay out UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from 0px to 400px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": 280
+              },
+              "320px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This scale is a limited set of space values that can be used to lay out UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from 0px to 400px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": 320
+              },
+              "360px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This scale is a limited set of space values that can be used to lay out UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from 0px to 400px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": 360
+              },
+              "400px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This scale is a limited set of space values that can be used to lay out UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from 0px to 400px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": 400
+              },
+              "-2px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This negative scale is a limited set of space values that can be used to overlap the lay out of UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from -2px to -80px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": -2
+              },
+              "-4px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This negative scale is a limited set of space values that can be used to overlap the lay out of UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from -2px to -80px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": -4
+              },
+              "-8px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This negative scale is a limited set of space values that can be used to overlap the lay out of UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from -2px to -80px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": -8
+              },
+              "-12px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This negative scale is a limited set of space values that can be used to overlap the lay out of UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from -2px to -80px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": -12
+              },
+              "-16px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This negative scale is a limited set of space values that can be used to overlap the lay out of UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from -2px to -80px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": -16
+              },
+              "-20px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This negative scale is a limited set of space values that can be used to overlap the lay out of UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from -2px to -80px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": -20
+              },
+              "-24px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This negative scale is a limited set of space values that can be used to overlap the lay out of UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from -2px to -80px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": -24
+              },
+              "-28px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This negative scale is a limited set of space values that can be used to overlap the lay out of UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from -2px to -80px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": -28
+              },
+              "-32px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This negative scale is a limited set of space values that can be used to overlap the lay out of UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from -2px to -80px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": -32
+              },
+              "-36px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This negative scale is a limited set of space values that can be used to overlap the lay out of UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from -2px to -80px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": -36
+              },
+              "-40px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This negative scale is a limited set of space values that can be used to overlap the lay out of UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from -2px to -80px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": -40
+              },
+              "-60px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This negative scale is a limited set of space values that can be used to overlap the lay out of UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from -2px to -80px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": -60
+              },
+              "-80px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Building off of the 8px base unit, the main foundation of our spacing system is the spacing scale. This negative scale is a limited set of space values that can be used to overlap the lay out of UI elements in a consistent way.\n\nEach spacing value is a multiple of the base unit and ranges from -2px to -80px to allow for flexibility while still maintaining consistency across different layouts.",
+                "$type": "float",
+                "$value": -80
+              }
+            },
+            "radius": {
+              "0px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 0
+              },
+              "2px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 2
+              },
+              "4px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 4
+              },
+              "6px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 6
+              },
+              "8px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 8
+              },
+              "12px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 12
+              },
+              "16px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 16
+              },
+              "20px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 20
+              },
+              "24px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 24
+              },
+              "28px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 28
+              },
+              "32px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 32
+              },
+              "36px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 36
+              },
+              "40px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 40
+              },
+              "44px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 44
+              },
+              "48px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 48
+              },
+              "52px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 52
+              },
+              "60px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 60
+              },
+              "80px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 80
+              },
+              "99999px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 99999
+              }
+            },
+            "stroke": {
+              "0px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 0
+              },
+              "0-5px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 0.5
+              },
+              "1px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 1
+              },
+              "2px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 2
+              },
+              "3px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 3
+              },
+              "4px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 4
+              },
+              "5px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 5
+              },
+              "6px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 6
+              },
+              "7px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 7
+              },
+              "8px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 8
+              },
+              "9px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 9
+              },
+              "10px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 10
+              },
+              "12px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 12
+              },
+              "16px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 16
+              },
+              "20px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 20
+              },
+              "32px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 32
+              },
+              "40px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 40
+              }
+            }
+          },
+          "type": {
+            "size": {
+              "primary-scale": {
+                "heading-1": {
+                  "$scopes": [
+                    "FONT_SIZE"
+                  ],
+                  "$type": "float",
+                  "$value": 36
+                },
+                "heading-2": {
+                  "$scopes": [
+                    "FONT_SIZE"
+                  ],
+                  "$type": "float",
+                  "$value": 32
+                },
+                "heading-3": {
+                  "$scopes": [
+                    "FONT_SIZE"
+                  ],
+                  "$type": "float",
+                  "$value": 28
+                },
+                "heading-4": {
+                  "$scopes": [
+                    "FONT_SIZE"
+                  ],
+                  "$type": "float",
+                  "$value": 24
+                },
+                "heading-5": {
+                  "$scopes": [
+                    "FONT_SIZE"
+                  ],
+                  "$type": "float",
+                  "$value": 19
+                },
+                "title": {
+                  "$scopes": [
+                    "FONT_SIZE"
+                  ],
+                  "$type": "float",
+                  "$value": 32
+                },
+                "subtitle": {
+                  "$scopes": [
+                    "FONT_SIZE"
+                  ],
+                  "$type": "float",
+                  "$value": 24
+                },
+                "label": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "float",
+                  "$value": 16
+                },
+                "label-lg": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "float",
+                  "$value": 18
+                },
+                "label-sm": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "float",
+                  "$value": 14
+                },
+                "label-xs": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "float",
+                  "$value": 12
+                },
+                "label-xxs": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "float",
+                  "$value": 10
+                },
+                "footnote": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "float",
+                  "$value": 13
+                },
+                "stats": {
+                  "$scopes": [
+                    "WIDTH_HEIGHT",
+                    "EFFECT_FLOAT",
+                    "OPACITY",
+                    "FONT_SIZE",
+                    "LINE_HEIGHT",
+                    "LETTER_SPACING",
+                    "PARAGRAPH_SPACING",
+                    "PARAGRAPH_INDENT",
+                    "FONT_VARIATIONS"
+                  ],
+                  "$type": "float",
+                  "$value": 72
+                }
+              },
+              "secondary-scale": {
+                "heading-4": {
+                  "$scopes": [
+                    "FONT_SIZE"
+                  ],
+                  "$type": "float",
+                  "$value": 20
+                },
+                "heading-5": {
+                  "$scopes": [
+                    "FONT_SIZE"
+                  ],
+                  "$type": "float",
+                  "$value": 19
+                },
+                "title": {
+                  "$scopes": [
+                    "FONT_SIZE"
+                  ],
+                  "$type": "float",
+                  "$value": 32
+                },
+                "subtitle": {
+                  "$scopes": [
+                    "FONT_SIZE"
+                  ],
+                  "$type": "float",
+                  "$value": 24
+                },
+                "body": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "float",
+                  "$value": 16
+                },
+                "body-lg": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "float",
+                  "$value": 18
+                },
+                "body-sm": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "float",
+                  "$value": 14
+                },
+                "footnote": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "float",
+                  "$value": 13
+                }
+              }
+            },
+            "weight": {
+              "thin": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 100
+              },
+              "light": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 300
+              },
+              "default": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 400
+              },
+              "medium": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 500
+              },
+              "semibold": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 600
+              },
+              "bold": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 700
+              },
+              "extra-bold": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 800
+              }
+            },
+            "line-height": {
+              "heading-1": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 38
+              },
+              "heading-2": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 34
+              },
+              "heading-3": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 28
+              },
+              "heading-4": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 24
+              },
+              "heading-5": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 24
+              },
+              "title": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 36
+              },
+              "subtitle": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 26
+              },
+              "body": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 20
+              },
+              "body-lg": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 22
+              },
+              "body-sm": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 16
+              },
+              "label": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 20
+              },
+              "label-lg": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 24
+              },
+              "label-sm": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 16
+              },
+              "label-xs": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 14
+              },
+              "label-xxs": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 14
+              },
+              "footnote": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 15
+              },
+              "stats": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "float",
+                "$value": 68
+              }
+            },
+            "letter-spacing": {
+              "primary-scale": {
+                "heading-1": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "float",
+                  "$value": -1
+                },
+                "heading-2": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "float",
+                  "$value": -1
+                },
+                "heading-3": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "float",
+                  "$value": -0.5
+                },
+                "heading-4": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "float",
+                  "$value": -0.25
+                },
+                "heading-5": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "float",
+                  "$value": -0.15000000596046448
+                },
+                "title": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "float",
+                  "$value": -0.15000000596046448
+                },
+                "subtitle": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "float",
+                  "$value": -0.15000000596046448
+                },
+                "label": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "float",
+                  "$value": 0.15000000596046448
+                },
+                "label-lg": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "float",
+                  "$value": 0.15000000596046448
+                },
+                "label-sm": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "float",
+                  "$value": 0.15000000596046448
+                },
+                "label-xs": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "float",
+                  "$value": 0.15000000596046448
+                },
+                "label-xxs": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "float",
+                  "$value": 0.15000000596046448
+                },
+                "footnote": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "float",
+                  "$value": 0.20000000298023224
+                },
+                "stats": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "float",
+                  "$value": -2.25
+                }
+              },
+              "secondary-scale": {
+                "heading-4": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "float",
+                  "$value": 0.3499999940395355
+                },
+                "heading-5": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "float",
+                  "$value": 0.5
+                },
+                "title": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "float",
+                  "$value": 0.5
+                },
+                "subtitle": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "float",
+                  "$value": 0.5
+                },
+                "body": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "float",
+                  "$value": 0.05000000074505806
+                },
+                "body-lg": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "float",
+                  "$value": -0.15000000596046448
+                },
+                "body-sm": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "float",
+                  "$value": -0.15000000596046448
+                },
+                "footnote": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "float",
+                  "$value": 0.20000000298023224
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+]

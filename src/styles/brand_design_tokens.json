@@ -1,0 +1,370 @@
+[
+  {
+    "cnl-design-system": {
+      "modes": {
+        "Mode 1": {
+          "type": {
+            "typeface": {
+              "ginger-pro": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "string",
+                "$value": "F37 Ginger"
+              },
+              "calibri": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "string",
+                "$value": "Calibri"
+              }
+            }
+          },
+          "color": {
+            "primary": {
+              "blue": {
+                "blue": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#3776ce"
+                },
+                "dark-blue": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#182b47"
+                },
+                "blue-25": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#f2f7ff"
+                },
+                "blue-50": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#dae6f7"
+                },
+                "blue-100": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#c2d5f1"
+                },
+                "blue-200": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#a3c0eb"
+                },
+                "blue-300": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#84aae4"
+                },
+                "blue-400": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#6695dd"
+                }
+              },
+              "blue-gray": {
+                "blue-gray": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#304047"
+                },
+                "dark-blue-gray": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#182024"
+                },
+                "blue-gray-50": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#d6d9da"
+                },
+                "blue-gray-100": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#b7c6cb"
+                },
+                "blue-gray-200": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#9eacb5"
+                },
+                "blue-gray-300": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#758084"
+                },
+                "blue-gray-400": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#536066"
+                }
+              },
+              "light-blue": {
+                "sky-blue": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#00b2eb"
+                },
+                "dark-sky-blue": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#026281"
+                },
+                "sky-blue-50": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#ccf0fb"
+                },
+                "sky-blue-100": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#aae5f8"
+                },
+                "sky-blue-200": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#80d9f5"
+                },
+                "sky-blue-300": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#55ccf2"
+                },
+                "sky-blue-400": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#2abfee"
+                }
+              },
+              "green": {
+                "green": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#9ec738"
+                },
+                "dark-green": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#435518"
+                },
+                "green-50": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#eef5db"
+                },
+                "green-100": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#deecba"
+                },
+                "green-200": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#d6e7aa"
+                },
+                "green-300": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#cee39a"
+                },
+                "green-400": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#aed059"
+                }
+              }
+            },
+            "additional-gray": {
+              "dark": {
+                "dark-gray-default": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#5c5e60"
+                },
+                "dark-gray-25": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#b4b5b5"
+                },
+                "dark-gray-50": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#8b8b8b"
+                },
+                "dark-gray-100": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#4d4e50"
+                },
+                "dark-gray-200": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#3d3f40"
+                },
+                "dark-gray-300": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#2e2f30"
+                },
+                "dark-gray-400": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#1f1f20"
+                }
+              },
+              "light": {
+                "light-gray-default": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#e8ebeb"
+                },
+                "light-gray-50": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#f9fafa"
+                },
+                "light-gray-100": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#f0f2f2"
+                },
+                "light-gray-200": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#d2d7d7"
+                },
+                "light-gray-300": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#b3bdbd"
+                },
+                "light-gray-400": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#95a3a3"
+                },
+                "light-gray-600": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#5c6a6a"
+                }
+              }
+            },
+            "status": {
+              "rose": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#fcabb3"
+              },
+              "note-mid": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#dfbff8"
+              },
+              "edit": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#b1cbde"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+]
