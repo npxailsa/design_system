@@ -9,13 +9,13 @@ The minimum requirement for Storybook is version 10.2.17
 Remove any addons that do not work with the Storybook version, but ask me first. I want to confirm there are no dependencies you are not aware of. 
 When removeing addons that don't work with Storybook version 10.2.17, also remove any other mention of that addon in the rest of the design system.
 "Global Design Tokens" global_design_tokens and "Brand Design Tokens" brand_design_tokens should be kept in distinctly separate JSON files. Do NOT deviate from this rule. Any new design tokens should be created in the "Global Design Tokens" file, unless they are a brand colour or typeface.
-Please use the attached design token files JSON for all components that are put into the design system - past, present, and future. Also, make sure we keep the following in mind:
-"Global Design Tokens" global_design_tokens and "Brand Design Tokens" brand_design_tokens should be kept in distinctly separate JSON files. Do NOT deviate from this rule. Any new design tokens should be created in the "Global Design Tokens" file, unless they are a brand colour or typeface.
-Take the "color" tokens and apply them across every color currently in the design system. Replace any hardcoded values with the relative design tokens.
-Take the “spacing/sizing” tokens and apply them across all padding, gaps, fixed heights/lengths/widths, margin, overlap, sizing - where needed - gutter, light, spacing or gap in between elements or components.
-Use "color" tokens for "Tokens" > "Colors" within the design system. Ensure any future colors, components or elements are brought into the design system using design tokens.
-Use “spacing/stroke” for any strokes, borders, blurs, spreads, noise, density, splay, frost, dispersion, depth, and refraction.
-Use “spacing/radius” for the radius or radii of or within any component, element, or image.
-Update the documentation for the design system every time a new update is pushed for a token, element, component. Use the current documentation template for the type/layout/amount of content of the documentation; it's wonderful. Do not change it.
-When pushing an update of a token, element, or component, ensure that the documentation is updated referencing any changes that will affect the user, the component, or the design token. Please ensure you include full design token names in any documentation provided for the individual assets, so the reader can know how to use the atom.
 
+Please use the design tokens for all components that are put into the design system - past, present, and future. Also, make sure we keep the following in mind:
+  "Global Design Tokens" global_design_tokens and "Brand Design Tokens" brand_design_tokens should be kept in distinctly separate JSON files. Do NOT deviate from this rule. Any new design tokens should be created in the "Global Design Tokens" file, unless they are a brand colour or typeface.
+  Take the "color" tokens and apply them across every color currently in the design system. Replace any hardcoded values with the relative design tokens.
+  Take the “spacing/sizing” tokens and apply them across all padding, gaps, fixed heights/lengths/widths, margin, overlap, sizing - where needed - gutter, light, spacing or gap in between elements or components.
+  Use "color" tokens for "Tokens" > "Colors" within the design system. Ensure any future colors, components or elements are brought into the design system using design tokens.
+  Use “spacing/stroke” for any strokes, borders, blurs, spreads, noise, density, splay, frost, dispersion, depth, and refraction.
+  Use “spacing/radius” for the radius or radii of or within any component, element, or image.
+  Update the documentation for the design system every time a new update is pushed for a token, element, component. Use the current documentation template for the type/layout/amount of content of the documentation; it's wonderful. Do not change it.
+  When pushing an update of a token, element, or component, ensure that the documentation is updated referencing any changes that will affect the user, the component, or the design token. Please ensure you include full design token names in any documentation provided for the individual assets, so the reader can know how to use the atom.
