@@ -8,3 +8,4 @@ Follow the documentation styles and approaches of these design systems:
 The minimum requirement for Storybook is version 10.2.17
 Remove any addons that do not work with the Storybook version, but ask me first. I want to confirm there are no dependencies you are not aware of. 
 When removeing addons that don't work with Storybook version 10.2.17, also remove any other mention of that addon in the rest of the design system.
+"Global Design Tokens" (global_design_tokens) and "Brand Design Tokens" (brand_design_tokens) should be kept in distinctly separate JSON files. Do NOT deviate from this rule. Any new design tokens should be created in the "Global Design Tokens" file, unless they are a brand colour or typeface.
