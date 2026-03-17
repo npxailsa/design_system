@@ -1,4 +1,4 @@
-import{j as n,M as o,T as r}from"./iframe-Dpc7MxzP.js";import{useMDXComponents as t}from"./index-D-SZCxAJ.js";import"./preload-helper-Dp1pzeXC.js";function s(i){const e={code:"code",h1:"h1",h2:"h2",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...t(),...i.components};return n.jsxs(n.Fragment,{children:[n.jsx(o,{title:"Tokens/Typography"}),`
+import{j as n,M as o,T as r}from"./iframe-CYtfCAo4.js";import{useMDXComponents as t}from"./index-BLV198ur.js";import"./preload-helper-Dp1pzeXC.js";function s(i){const e={code:"code",h1:"h1",h2:"h2",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...t(),...i.components};return n.jsxs(n.Fragment,{children:[n.jsx(o,{title:"Tokens/Typography"}),`
 `,n.jsx(e.h1,{id:"typography",children:"Typography"}),`
 `,n.jsxs(e.p,{children:["Our typography system is designed for readability and hierarchy. We use two main font families: ",n.jsx(e.strong,{children:"F37 Ginger Pro"})," for primary branding and ",n.jsx(e.strong,{children:"Calibri"})," for secondary text."]}),`
 `,n.jsx(e.h2,{id:"font-families",children:"Font Families"}),`
