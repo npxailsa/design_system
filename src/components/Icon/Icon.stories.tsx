@@ -120,19 +120,19 @@ export const Sizes: Story = {
       { name: 'default', label: 'default (16px)' },
       { name: 'large', label: 'large (18px)' },
       { name: 'x-large', label: 'x-large (24px)' },
-      { name: '2x-large', label: '2x-large (48px)' },
+      { name: '2x-large', label: '2x-large (32px)' },
     ];
 
     return (
-      <div style={{ display: 'flex', gap: '2.5rem', alignItems: 'flex-end', flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', gap: 'var(--global-spacing-sizing-40px)', alignItems: 'flex-end', flexWrap: 'wrap', padding: 'var(--global-spacing-sizing-20px)' }}>
         {sizes.map((size) => (
-          <div key={size.name} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+          <div key={size.name} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'var(--global-spacing-sizing-16px)' }}>
             <Icon {...args} size={size.name} />
             <span style={{
-              fontSize: 'var(--font-size-xs)',
-              fontFamily: 'var(--font-family-secondary)',
-              color: 'var(--color-text-muted)',
-              fontWeight: 'var(--font-weight-medium)'
+              fontSize: 'var(--global-type-size-primary-label-xs)',
+              fontFamily: 'var(--brand-font-secondary)',
+              color: 'var(--global-color-neutral-gray-500)',
+              fontWeight: 'var(--global-type-weight-medium)'
             }}>
               {size.label}
             </span>
@@ -148,7 +148,7 @@ export const Sizes: Story = {
  */
 export const Colors: Story = {
   render: (args) => (
-    <div style={{ display: 'flex', gap: '2rem' }}>
+    <div style={{ display: 'flex', gap: 'var(--global-spacing-sizing-32px)', padding: 'var(--global-spacing-sizing-20px)' }}>
       <Icon {...args} color="primary" />
       <Icon {...args} color="secondary" />
       <Icon {...args} color="error" />
@@ -218,24 +218,24 @@ export const Gallery: Story = {
     ];
 
     return (
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: 'var(--spacing-large)' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: 'var(--global-spacing-sizing-24px)', padding: 'var(--global-spacing-sizing-20px)' }}>
         {commonIcons.map((icon) => (
           <div key={icon.name} style={{
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            padding: 'var(--spacing-medium)',
-            border: '1px solid var(--border-color-light)',
-            borderRadius: 'var(--border-radius-medium)',
-            backgroundColor: 'var(--color-background-light)'
+            padding: 'var(--global-spacing-sizing-16px)',
+            border: 'var(--global-spacing-stroke-1px) solid var(--global-color-neutral-gray-200)',
+            borderRadius: 'var(--global-spacing-radius-8px)',
+            backgroundColor: 'var(--global-color-neutral-gray-50)'
           }}>
             <Icon icon={icon.component} size="large" color="primary" />
             <span style={{
-              marginTop: '0.75rem',
-              fontSize: 'var(--font-size-sm)',
-              fontFamily: 'var(--font-family-secondary)',
-              color: 'var(--color-text-muted)',
-              fontWeight: 'var(--font-weight-medium)',
+              marginTop: 'var(--global-spacing-sizing-12px)',
+              fontSize: 'var(--global-type-size-primary-label-sm)',
+              fontFamily: 'var(--brand-font-secondary)',
+              color: 'var(--global-color-neutral-gray-600)',
+              fontWeight: 'var(--global-type-weight-medium)',
               textAlign: 'center'
             }}>
               {icon.name}

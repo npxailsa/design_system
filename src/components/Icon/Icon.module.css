@@ -4,4 +4,5 @@
   justify-content: center;
   flex-shrink: 0;
   vertical-align: middle;
+  color: var(--brand-icon-main);
 }

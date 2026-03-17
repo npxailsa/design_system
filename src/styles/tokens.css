@@ -3,44 +3,241 @@
    ========================================================================== */
 
 :root {
-  /* Colors - Base Palette */
-  --global-color-black: #1C1C1C;
-  --global-color-white: #FFFFFF;
-  --global-color-blue-gray-50: #D6D9DA;
+  /* ==========================================================================
+     GLOBAL LAYER: Colors (Base Palette)
+     ========================================================================== */
+  --global-color-base-black: #1c1c1c;
+  --global-color-base-white: #ffffff;
+  --global-color-base-peach-cream-50: #fffaf2;
+  --global-color-base-peach-cream-100: #fff4e5;
+  --global-color-base-peach-cream-200: #e6dcce;
+  --global-color-base-overlay: rgba(28, 28, 28, 0.45);
 
-  /* Typography - Typefaces */
+  /* Secondary Colors */
+  --global-color-secondary-navy: #3a3282;
+  --global-color-secondary-navy-mid: #565296;
+  --global-color-secondary-navy-light: #c8d2e4;
+  --global-color-secondary-blue-gray: #61607c;
+  --global-color-secondary-blue-gray-light: #c8c7d1;
+
+  /* Neutral Colors (Gray Scale) */
+  --global-color-neutral-gray-50: #f9fafb;
+  --global-color-neutral-gray-100: #f3f4f6;
+  --global-color-neutral-gray-200: #e5e7eb;
+  --global-color-neutral-gray-300: #d2d5da;
+  --global-color-neutral-gray-400: #9ca3af;
+  --global-color-neutral-gray-500: #6d7280;
+  --global-color-neutral-gray-600: #4b5563;
+  --global-color-neutral-gray-700: #374151;
+  --global-color-neutral-gray-800: #1f2937;
+  --global-color-neutral-gray-900: #111827;
+
+  /* Status Colors */
+  --global-color-status-red: #ce2031;
+  --global-color-status-red-light: #fbebeb;
+  --global-color-status-green: #96f78d;
+  --global-color-status-dark-green: #227f1a;
+  --global-color-status-green-light: #f2fff1;
+  --global-color-status-orange: #f4a403;
+  --global-color-status-dark-orange: #d07c06;
+  --global-color-status-orange-light: #fef4da;
+  --global-color-status-info-blue: #366f97;
+  --global-color-status-info-blue-light: #f5fcff;
+  --global-color-status-purple: #5d2c82;
+  --global-color-status-purple-light: #fbf7ff;
+
+  /* ==========================================================================
+     GLOBAL LAYER: Spacing / Sizing (Scale)
+     ========================================================================== */
+  --global-spacing-sizing-0px: 0px;
+  --global-spacing-sizing-1px: 1px;
+  --global-spacing-sizing-2px: 2px;
+  --global-spacing-sizing-4px: 4px;
+  --global-spacing-sizing-6px: 6px;
+  --global-spacing-sizing-8px: 8px;
+  --global-spacing-sizing-10px: 10px;
+  --global-spacing-sizing-12px: 12px;
+  --global-spacing-sizing-14px: 14px;
+  --global-spacing-sizing-16px: 16px;
+  --global-spacing-sizing-18px: 18px;
+  --global-spacing-sizing-20px: 20px;
+  --global-spacing-sizing-24px: 24px;
+  --global-spacing-sizing-28px: 28px;
+  --global-spacing-sizing-32px: 32px;
+  --global-spacing-sizing-36px: 36px;
+  --global-spacing-sizing-40px: 40px;
+  --global-spacing-sizing-44px: 44px;
+  --global-spacing-sizing-48px: 48px;
+  --global-spacing-sizing-52px: 52px;
+  --global-spacing-sizing-56px: 56px;
+  --global-spacing-sizing-60px: 60px;
+  --global-spacing-sizing-64px: 64px;
+  --global-spacing-sizing-72px: 72px;
+  --global-spacing-sizing-80px: 80px;
+  --global-spacing-sizing-100px: 100px;
+  --global-spacing-sizing-120px: 120px;
+  --global-spacing-sizing-140px: 140px;
+  --global-spacing-sizing-160px: 160px;
+  --global-spacing-sizing-180px: 180px;
+  --global-spacing-sizing-200px: 200px;
+  --global-spacing-sizing-240px: 240px;
+  --global-spacing-sizing-280px: 280px;
+  --global-spacing-sizing-320px: 320px;
+  --global-spacing-sizing-360px: 360px;
+  --global-spacing-sizing-400px: 400px;
+
+  /* Negative Sizing */
+  --global-spacing-sizing-neg-2px: -2px;
+  --global-spacing-sizing-neg-4px: -4px;
+  --global-spacing-sizing-neg-8px: -8px;
+  --global-spacing-sizing-neg-12px: -12px;
+  --global-spacing-sizing-neg-16px: -16px;
+  --global-spacing-sizing-neg-20px: -20px;
+  --global-spacing-sizing-neg-24px: -24px;
+  --global-spacing-sizing-neg-28px: -28px;
+  --global-spacing-sizing-neg-32px: -32px;
+  --global-spacing-sizing-neg-36px: -36px;
+  --global-spacing-sizing-neg-40px: -40px;
+  --global-spacing-sizing-neg-60px: -60px;
+  --global-spacing-sizing-neg-80px: -80px;
+
+  /* Radius */
+  --global-spacing-radius-0px: 0px;
+  --global-spacing-radius-2px: 2px;
+  --global-spacing-radius-4px: 4px;
+  --global-spacing-radius-6px: 6px;
+  --global-spacing-radius-8px: 8px;
+  --global-spacing-radius-12px: 12px;
+  --global-spacing-radius-16px: 16px;
+  --global-spacing-radius-20px: 20px;
+  --global-spacing-radius-24px: 24px;
+  --global-spacing-radius-28px: 28px;
+  --global-spacing-radius-32px: 32px;
+  --global-spacing-radius-36px: 36px;
+  --global-spacing-radius-40px: 40px;
+  --global-spacing-radius-44px: 44px;
+  --global-spacing-radius-48px: 48px;
+  --global-spacing-radius-52px: 52px;
+  --global-spacing-radius-60px: 60px;
+  --global-spacing-radius-80px: 80px;
+  --global-spacing-radius-full: 99999px;
+
+  /* Stroke */
+  --global-spacing-stroke-0px: 0px;
+  --global-spacing-stroke-0-5px: 0.5px;
+  --global-spacing-stroke-1px: 1px;
+  --global-spacing-stroke-2px: 2px;
+  --global-spacing-stroke-3px: 3px;
+  --global-spacing-stroke-4px: 4px;
+  --global-spacing-stroke-5px: 5px;
+  --global-spacing-stroke-6px: 6px;
+  --global-spacing-stroke-7px: 7px;
+  --global-spacing-stroke-8px: 8px;
+  --global-spacing-stroke-9px: 9px;
+  --global-spacing-stroke-10px: 10px;
+  --global-spacing-stroke-12px: 12px;
+  --global-spacing-stroke-16px: 16px;
+  --global-spacing-stroke-20px: 20px;
+  --global-spacing-stroke-32px: 32px;
+  --global-spacing-stroke-40px: 40px;
+
+  /* ==========================================================================
+     GLOBAL LAYER: Typography
+     ========================================================================== */
+  /* Typefaces */
   --font-family-primary: "Archivo", sans-serif;
   --font-family-secondary: "F37 Ginger Pro", sans-serif;
   --global-font-primary: var(--font-family-primary);
   --global-font-secondary: var(--font-family-secondary);
 
-  /* Spacing / Sizing - Scale */
-  --global-spacing-2px: 2px;
-  --global-spacing-4px: 4px;
-  --global-spacing-6px: 6px;
-  --global-spacing-8px: 8px;
-  --global-spacing-10px: 10px;
-  --global-spacing-12px: 12px;
-  --global-spacing-14px: 14px;
-  --global-spacing-16px: 16px;
-  --global-spacing-18px: 18px;
-  --global-spacing-20px: 20px;
-  --global-spacing-24px: 24px;
-
   /* Font Weights */
-  --global-weight-thin: 100;
-  --global-weight-light: 300;
-  --global-weight-medium: 500;
-  --global-weight-bold: 700;
+  --global-type-weight-thin: 100;
+  --global-type-weight-light: 300;
+  --global-type-weight-default: 400;
+  --global-type-weight-medium: 500;
+  --global-type-weight-semibold: 600;
+  --global-type-weight-bold: 700;
+  --global-type-weight-extra-bold: 800;
 
-  /* Letter Spacing */
-  --global-letter-spacing: 0.15px;
+  /* Type Sizes - Primary Scale */
+  --global-type-size-primary-heading-1: 36px;
+  --global-type-size-primary-heading-2: 32px;
+  --global-type-size-primary-heading-3: 28px;
+  --global-type-size-primary-heading-4: 24px;
+  --global-type-size-primary-heading-5: 19px;
+  --global-type-size-primary-title: 32px;
+  --global-type-size-primary-subtitle: 24px;
+  --global-type-size-primary-label: 16px;
+  --global-type-size-primary-label-lg: 18px;
+  --global-type-size-primary-label-sm: 14px;
+  --global-type-size-primary-label-xs: 12px;
+  --global-type-size-primary-label-xxs: 10px;
+  --global-type-size-primary-footnote: 13px;
+  --global-type-size-primary-stats: 72px;
+
+  /* Type Sizes - Secondary Scale */
+  --global-type-size-secondary-heading-4: 20px;
+  --global-type-size-secondary-heading-5: 19px;
+  --global-type-size-secondary-title: 32px;
+  --global-type-size-secondary-subtitle: 24px;
+  --global-type-size-secondary-body: 16px;
+  --global-type-size-secondary-body-lg: 18px;
+  --global-type-size-secondary-body-sm: 14px;
+  --global-type-size-secondary-footnote: 13px;
+
+  /* Line Heights */
+  --global-type-line-height-heading-1: 38px;
+  --global-type-line-height-heading-2: 34px;
+  --global-type-line-height-heading-3: 28px;
+  --global-type-line-height-heading-4: 24px;
+  --global-type-line-height-heading-5: 24px;
+  --global-type-line-height-title: 36px;
+  --global-type-line-height-subtitle: 26px;
+  --global-type-line-height-body: 20px;
+  --global-type-line-height-body-lg: 22px;
+  --global-type-line-height-body-sm: 16px;
+  --global-type-line-height-label: 20px;
+  --global-type-line-height-label-lg: 24px;
+  --global-type-line-height-label-sm: 16px;
+  --global-type-line-height-label-xs: 14px;
+  --global-type-line-height-label-xxs: 14px;
+  --global-type-line-height-footnote: 15px;
+  --global-type-line-height-stats: 68px;
+
+  /* Letter Spacing - Primary Scale */
+  --global-type-letter-spacing-primary-heading-1: -1px;
+  --global-type-letter-spacing-primary-heading-2: -1px;
+  --global-type-letter-spacing-primary-heading-3: -0.5px;
+  --global-type-letter-spacing-primary-heading-4: -0.25px;
+  --global-type-letter-spacing-primary-heading-5: -0.15px;
+  --global-type-letter-spacing-primary-title: -0.15px;
+  --global-type-letter-spacing-primary-subtitle: -0.15px;
+  --global-type-letter-spacing-primary-label: 0.15px;
+  --global-type-letter-spacing-primary-label-lg: 0.15px;
+  --global-type-letter-spacing-primary-label-sm: 0.15px;
+  --global-type-letter-spacing-primary-label-xs: 0.15px;
+  --global-type-letter-spacing-primary-label-xxs: 0.15px;
+  --global-type-letter-spacing-primary-footnote: 0.2px;
+  --global-type-letter-spacing-primary-stats: -2.25px;
+
+  /* Letter Spacing - Secondary Scale */
+  --global-type-letter-spacing-secondary-heading-4: 0.35px;
+  --global-type-letter-spacing-secondary-heading-5: 0.5px;
+  --global-type-letter-spacing-secondary-title: 0.5px;
+  --global-type-letter-spacing-secondary-subtitle: 0.5px;
+  --global-type-letter-spacing-secondary-body: 0.05px;
+  --global-type-letter-spacing-secondary-body-lg: -0.15px;
+  --global-type-letter-spacing-secondary-body-sm: -0.15px;
+  --global-type-letter-spacing-secondary-footnote: 0.2px;
 
   /* Default Brand Assignment (Penta) */
-  --brand-text-main: var(--global-color-black);
-  --brand-icon-main: var(--global-color-black);
-  --brand-border-main: var(--global-color-blue-gray-50);
-  --brand-primary: var(--global-color-black);
+  --brand-font-primary: var(--global-font-primary);
+  --brand-font-secondary: var(--global-font-secondary);
+  --brand-primary: var(--global-color-base-black);
+  --brand-secondary: var(--global-color-secondary-navy);
+  --brand-text-main: var(--global-color-base-black);
+  --brand-icon-main: var(--global-color-base-black);
+  --brand-border-main: var(--global-color-neutral-gray-200);
 }
 
 /* ==========================================================================
@@ -48,17 +245,85 @@
    ========================================================================== */
 
 [data-theme="penta"] {
-  --brand-primary: #1C1C1C;
-  --brand-text-main: var(--global-color-black);
-  --brand-icon-main: var(--global-color-black);
-  --brand-border-main: var(--global-color-blue-gray-50);
+  --brand-font-primary: var(--global-font-primary);
+  --brand-font-secondary: var(--global-font-secondary);
+  --brand-primary: var(--global-color-base-black);
+  --brand-text-main: var(--global-color-base-black);
+  --brand-icon-main: var(--global-color-base-black);
+  --brand-border-main: var(--global-color-neutral-gray-200);
 }
 
 [data-theme="horizon"] {
-  --brand-primary: #0052CC;
-  --brand-text-main: #091E42;
-  --brand-icon-main: #091E42;
-  --brand-border-main: #DFE1E6;
+  /* Typefaces */
+  --brand-font-primary: "F37 Ginger", sans-serif;
+  --brand-font-secondary: "Calibri", sans-serif;
+
+  /* Colors from brand_design_tokens.json (cnl-design-system) */
+  /* Blue scale */
+  --brand-blue: #3776ce;
+  --brand-blue-dark: #182b47;
+  --brand-blue-25: #f2f7ff;
+  --brand-blue-50: #dae6f7;
+  --brand-blue-100: #c2d5f1;
+  --brand-blue-200: #a3c0eb;
+  --brand-blue-300: #84aae4;
+  --brand-blue-400: #6695dd;
+
+  /* Blue-Gray scale */
+  --brand-blue-gray: #304047;
+  --brand-blue-gray-dark: #182024;
+  --brand-blue-gray-50: #d6d9da;
+  --brand-blue-gray-100: #b7c6cb;
+  --brand-blue-gray-200: #9eacb5;
+  --brand-blue-gray-300: #758084;
+  --brand-blue-gray-400: #536066;
+
+  /* Sky Blue scale */
+  --brand-sky-blue: #00b2eb;
+  --brand-sky-blue-dark: #026281;
+  --brand-sky-blue-50: #ccf0fb;
+  --brand-sky-blue-100: #aae5f8;
+  --brand-sky-blue-200: #80d9f5;
+  --brand-sky-blue-300: #55ccf2;
+  --brand-sky-blue-400: #2abfee;
+
+  /* Green scale */
+  --brand-green: #9ec738;
+  --brand-green-dark: #435518;
+  --brand-green-50: #eef5db;
+  --brand-green-100: #deecba;
+  --brand-green-200: #d6e7aa;
+  --brand-green-300: #cee39a;
+  --brand-green-400: #aed059;
+
+  /* Additional Gray scale - Dark */
+  --brand-gray-dark-default: #5c5e60;
+  --brand-gray-dark-25: #b4b5b5;
+  --brand-gray-dark-50: #8b8b8b;
+  --brand-gray-dark-100: #4d4e50;
+  --brand-gray-dark-200: #3d3f40;
+  --brand-gray-dark-300: #2e2f30;
+  --brand-gray-dark-400: #1f1f20;
+
+  /* Additional Gray scale - Light */
+  --brand-gray-light-default: #e8ebeb;
+  --brand-gray-light-50: #f9fafa;
+  --brand-gray-light-100: #f0f2f2;
+  --brand-gray-light-200: #d2d7d7;
+  --brand-gray-light-300: #b3bdbd;
+  --brand-gray-light-400: #95a3a3;
+  --brand-gray-light-600: #5c6a6a;
+
+  /* Status Colors */
+  --brand-status-rose: #fcabb3;
+  --brand-status-note-mid: #dfbff8;
+  --brand-status-edit: #b1cbde;
+
+  /* Semantic Mappings */
+  --brand-primary: var(--brand-blue);
+  --brand-text-main: var(--brand-blue-gray-dark);
+  --brand-icon-main: var(--brand-blue-gray-dark);
+  --brand-border-main: var(--brand-blue-gray-50);
 }
 
 /* ==========================================================================
@@ -66,52 +331,54 @@
    ========================================================================== */
 
 :root {
-  --label-font-family: var(--global-font-primary);
+  --label-font-family: var(--brand-font-primary);
   --label-text-color: var(--brand-text-main);
   --label-icon-color: var(--brand-icon-main);
   --label-divider-color: var(--brand-border-main);
-  --label-letter-spacing: var(--global-letter-spacing);
+  --label-letter-spacing: var(--global-type-letter-spacing-primary-label);
 
   /* Label Sizes (Font Size) */
-  --label-size-2x-small: var(--global-spacing-10px);
-  --label-size-x-small: var(--global-spacing-12px);
-  --label-size-small: var(--global-spacing-14px);
-  --label-size-default: var(--global-spacing-16px);
-  --label-size-large: var(--global-spacing-18px);
+  --label-size-2x-small: var(--global-type-size-primary-label-xxs);
+  --label-size-x-small: var(--global-type-size-primary-label-xs);
+  --label-size-small: var(--global-type-size-primary-label-sm);
+  --label-size-default: var(--global-type-size-primary-label);
+  --label-size-large: var(--global-type-size-primary-label-lg);
 
   /* Label Line Heights */
-  --label-line-height-2x-small: var(--global-spacing-14px);
-  --label-line-height-x-small: var(--global-spacing-14px);
-  --label-line-height-small: var(--global-spacing-16px);
-  --label-line-height-default: var(--global-spacing-20px);
-  --label-line-height-large: var(--global-spacing-24px);
+  --label-line-height-2x-small: var(--global-type-line-height-label-xxs);
+  --label-line-height-x-small: var(--global-type-line-height-label-xs);
+  --label-line-height-small: var(--global-type-line-height-label-sm);
+  --label-line-height-default: var(--global-type-line-height-label);
+  --label-line-height-large: var(--global-type-line-height-label-lg);
 
   /* Label Gaps */
-  --label-gap-2x-small: var(--global-spacing-2px);
-  --label-gap-x-small: var(--global-spacing-4px);
-  --label-gap-small: var(--global-spacing-4px);
-  --label-gap-default: var(--global-spacing-6px);
-  --label-gap-large: var(--global-spacing-8px);
+  --label-gap-2x-small: var(--global-spacing-sizing-2px);
+  --label-gap-x-small: var(--global-spacing-sizing-4px);
+  --label-gap-small: var(--global-spacing-sizing-4px);
+  --label-gap-default: var(--global-spacing-sizing-6px);
+  --label-gap-large: var(--global-spacing-sizing-8px);
 
   /* Label Weights */
-  --label-weight-thin: var(--global-weight-thin);
-  --label-weight-light: var(--global-weight-light);
-  --label-weight-medium: var(--global-weight-medium);
-  --label-weight-bold: var(--global-weight-bold);
+  --label-weight-thin: var(--global-type-weight-thin);
+  --label-weight-light: var(--global-type-weight-light);
+  --label-weight-medium: var(--global-type-weight-medium);
+  --label-weight-bold: var(--global-type-weight-bold);
 
   /* Icon Sizes */
-  --icon-size-2x-small: var(--global-spacing-10px);
-  --icon-size-x-small: var(--global-spacing-12px);
-  --icon-size-small: var(--global-spacing-14px);
-  --icon-size-default: var(--global-spacing-16px);
-  --icon-size-large: var(--global-spacing-18px);
+  --icon-size-2x-small: var(--global-spacing-sizing-10px);
+  --icon-size-x-small: var(--global-spacing-sizing-12px);
+  --icon-size-small: var(--global-spacing-sizing-14px);
+  --icon-size-default: var(--global-spacing-sizing-16px);
+  --icon-size-large: var(--global-spacing-sizing-18px);
+  --icon-size-x-large: var(--global-spacing-sizing-24px);
+  --icon-size-2x-large: var(--global-spacing-sizing-32px);
 
   /* Dropdown Specifics */
-  --label-dropdown-split-width: 1px;
+  --label-dropdown-split-width: var(--global-spacing-stroke-1px);
   --label-dropdown-split-opacity: 0.5;
   --label-dropdown-chevron-opacity: 0.6;
-  --label-dropdown-split-gap: var(--global-spacing-4px);
-  --label-dropdown-padding-left: var(--global-spacing-2px);
+  --label-dropdown-split-gap: var(--global-spacing-sizing-4px);
+  --label-dropdown-padding-left: var(--global-spacing-sizing-2px);
 }
 
 /* Font Loading */

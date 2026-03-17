@@ -2,64 +2,96 @@ import { Meta, ColorPalette, ColorItem } from "@storybook/addon-docs/blocks";
 
 <Meta title="Tokens/Colors" />
 
-# Colors
+# Design Tokens: Colors
 
-Our color palette is designed to be accessible and consistent across all platforms. We use a set of primary and secondary colors, along with functional colors for status and feedback.
+Our color palette is structured into three layers: **Global** (primitives), **Brand** (contextual aliases), and **Component** (semantic). Always prefer using component or brand tokens over global ones.
+
+## Global Palette (Primitives)
+
+Foundational color values used to build the rest of the system.
 
 <ColorPalette>
   <ColorItem
-    title="Primary"
-    subtitle="Main brand colors"
+    title="Base Colors"
+    subtitle="Essential foundations"
     colors={{ 
-      Primary: '#646cff', 
-      Hover: '#535bf2' 
+      "Black": 'var(--global-color-base-black)', 
+      "White": 'var(--global-color-base-white)',
+      "Overlay": 'var(--global-color-base-overlay)'
     }}
   />
   <ColorItem
-    title="Secondary"
-    subtitle="Secondary brand colors"
+    title="Peach Cream Scale"
+    subtitle="Secondary brand foundations"
     colors={{ 
-      Secondary: '#213547' 
+      "50": 'var(--global-color-base-peach-cream-50)', 
+      "100": 'var(--global-color-base-peach-cream-100)',
+      "200": 'var(--global-color-base-peach-cream-200)'
     }}
   />
   <ColorItem
-    title="Background"
-    subtitle="Surface colors"
+    title="Navy Scale"
+    subtitle="Secondary primary scale"
     colors={{ 
-      Dark: '#242424', 
-      Light: '#ffffff',
-      "Button Dark": '#1a1a1a',
-      "Button Light": '#f9f9f9'
+      "Navy": 'var(--global-color-secondary-navy)', 
+      "Mid": 'var(--global-color-secondary-navy-mid)',
+      "Light": 'var(--global-color-secondary-navy-light)'
     }}
   />
   <ColorItem
-    title="Text"
-    subtitle="Typography colors"
+    title="Neutral Gray Scale"
+    subtitle="Used for backgrounds, borders, and text"
     colors={{ 
-      Dark: 'rgba(255, 255, 255, 0.87)', 
-      Light: '#213547',
-      Muted: '#666',
-      Black: '#1C1C1C'
+      "50": 'var(--global-color-neutral-gray-50)', 
+      "100": 'var(--global-color-neutral-gray-100)',
+      "200": 'var(--global-color-neutral-gray-200)',
+      "300": 'var(--global-color-neutral-gray-300)',
+      "400": 'var(--global-color-neutral-gray-400)',
+      "500": 'var(--global-color-neutral-gray-500)',
+      "600": 'var(--global-color-neutral-gray-600)',
+      "700": 'var(--global-color-neutral-gray-700)',
+      "800": 'var(--global-color-neutral-gray-800)',
+      "900": 'var(--global-color-neutral-gray-900)'
     }}
   />
   <ColorItem
-    title="Borders & Dividers"
-    subtitle="Layout elements"
+    title="Status Colors"
+    subtitle="Functional feedback colors"
     colors={{ 
-      Light: '#eee',
-      "Blue Gray 50": '#D6D9DA'
+      "Red": 'var(--global-color-status-red)', 
+      "Green": 'var(--global-color-status-green)',
+      "Orange": 'var(--global-color-status-orange)',
+      "Info Blue": 'var(--global-color-status-info-blue)',
+      "Purple": 'var(--global-color-status-purple)'
+    }}
+  />
+</ColorPalette>
+
+## Brand Aliases
+
+These tokens change based on the active theme (`[data-theme="penta"]` or `[data-theme="horizon"]`).
+
+<ColorPalette>
+  <ColorItem
+    title="Core Semantic Mappings"
+    subtitle="Primary brand aliases"
+    colors={{ 
+      "Primary": 'var(--brand-primary)', 
+      "Text Main": 'var(--brand-text-main)',
+      "Icon Main": 'var(--brand-icon-main)',
+      "Border Main": 'var(--brand-border-main)'
     }}
   />
 </ColorPalette>
 
 ## Usage
 
-When using colors in your components, always refer to the CSS variables defined in `tokens.css`.
+When using colors in your components, always refer to the design tokens defined in `tokens.css`.
 
 ```css
 .my-component {
-  background-color: var(--color-primary);
-  color: var(--color-text-light);
-  border: 1px solid var(--border-color-light);
+  background-color: var(--global-color-base-white);
+  color: var(--brand-text-main);
+  border: var(--global-spacing-stroke-1px) solid var(--brand-border-main);
 }
 ```

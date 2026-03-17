@@ -19,7 +19,7 @@ const meta: Meta<typeof Label> = {
     },
     font: {
       control: 'select',
-      options: ['archivo', 'ginger'],
+      options: ['primary', 'secondary'],
     },
     align: {
       control: 'select',
@@ -50,7 +50,7 @@ const meta: Meta<typeof Label> = {
   },
   decorators: [
     (Story) => (
-      <div style={{ padding: '20px' }}>
+      <div style={{ padding: 'var(--global-spacing-sizing-20px)' }}>
         <Story />
       </div>
     ),
@@ -69,12 +69,12 @@ const WeightMatrix = ({ weight }: { weight: 'bold' | 'medium' | 'light' | 'thin'
   const dropdownStates = [false, true] as const;
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-        <h2 style={{ margin: 0, textTransform: 'uppercase', letterSpacing: '1px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-40px)' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--global-spacing-sizing-20px)' }}>
+        <h2 style={{ margin: 0, textTransform: 'uppercase', letterSpacing: 'var(--global-spacing-sizing-1px)' }}>
           {weight} weight variants
         </h2>
-        <div style={{ height: '2px', flexGrow: 1, backgroundColor: '#eee' }} />
+        <div style={{ height: 'var(--global-spacing-stroke-2px)', flexGrow: 1, backgroundColor: 'var(--global-color-neutral-gray-200)' }} />
       </div>
 
       <div style={{ overflowX: 'auto' }}>
@@ -92,8 +92,8 @@ const WeightMatrix = ({ weight }: { weight: 'bold' | 'medium' | 'light' | 'thin'
           </thead>
           <tbody>
             {sizes.map((size) => (
-              <tr key={size} style={{ borderBottom: '1px solid #f0f0f0' }}>
-                <td style={{ ...cellStyle, fontWeight: 'bold', color: '#666', width: '100px' }}>
+              <tr key={size} style={{ borderBottom: 'var(--global-spacing-stroke-1px) solid var(--global-color-neutral-gray-100)' }}>
+                <td style={{ ...cellStyle, fontWeight: 'var(--global-type-weight-bold)', color: 'var(--global-color-neutral-gray-600)', width: '100px' }}>
                   {size}
                 </td>
                 {alignments.map((align) => (
@@ -121,15 +121,15 @@ const WeightMatrix = ({ weight }: { weight: 'bold' | 'medium' | 'light' | 'thin'
 
 const headerCellStyle: React.CSSProperties = {
   textAlign: 'left',
-  padding: '12px',
-  color: '#999',
-  fontSize: '12px',
+  padding: 'var(--global-spacing-sizing-12px)',
+  color: 'var(--global-color-neutral-gray-400)',
+  fontSize: 'var(--global-type-size-primary-label-xs)',
   textTransform: 'uppercase',
-  borderBottom: '2px solid #eee',
+  borderBottom: 'var(--global-spacing-stroke-2px) solid var(--global-color-neutral-gray-200)',
 };
 
 const cellStyle: React.CSSProperties = {
-  padding: '16px 12px',
+  padding: 'var(--global-spacing-sizing-16px) var(--global-spacing-sizing-12px)',
 };
 
 // --- Basic Stories ---
@@ -147,7 +147,7 @@ export const Default: Story = {
 
 export const Sizes: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-20px)' }}>
       <Label size="large">Large Label</Label>
       <Label size="default">Default Label</Label>
       <Label size="small">Small Label</Label>
@@ -159,7 +159,7 @@ export const Sizes: Story = {
 
 export const Weights: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-20px)' }}>
       <Label weight="bold">Bold Weight</Label>
       <Label weight="medium">Medium Weight</Label>
       <Label weight="light">Light Weight</Label>
@@ -170,17 +170,17 @@ export const Weights: Story = {
 
 export const Alignments: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', width: '400px', border: '1px dashed #eee', padding: '20px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-20px)', width: '400px', border: 'var(--global-spacing-stroke-1px) dashed var(--global-color-neutral-gray-200)', padding: 'var(--global-spacing-sizing-20px)' }}>
       <div>
-        <span style={{ fontSize: '12px', color: '#999' }}>Left</span>
+        <span style={{ fontSize: 'var(--global-type-size-primary-label-xs)', color: 'var(--global-color-neutral-gray-400)' }}>Left</span>
         <Label align="left">Left Aligned</Label>
       </div>
       <div>
-        <span style={{ fontSize: '12px', color: '#999' }}>Centre</span>
+        <span style={{ fontSize: 'var(--global-type-size-primary-label-xs)', color: 'var(--global-color-neutral-gray-400)' }}>Centre</span>
         <Label align="centre">Centre Aligned</Label>
       </div>
       <div>
-        <span style={{ fontSize: '12px', color: '#999' }}>Right</span>
+        <span style={{ fontSize: 'var(--global-type-size-primary-label-xs)', color: 'var(--global-color-neutral-gray-400)' }}>Right</span>
         <Label align="right">Right Aligned</Label>
       </div>
     </div>
@@ -227,10 +227,10 @@ export const ThinVariants: Story = {
 export const AllVariants: Story = {
   name: 'Full Matrix (120 variants)',
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '80px' }}>
-      <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-80px)' }}>
+      <div style={{ textAlign: 'center', marginBottom: 'var(--global-spacing-sizing-20px)' }}>
         <h1 style={{ margin: 0 }}>Label Component Variant Matrix</h1>
-        <p style={{ color: '#666' }}>5 Sizes × 4 Weights × 3 Alignments × 2 Dropdown States = 120 Variants</p>
+        <p style={{ color: 'var(--global-color-neutral-gray-600)' }}>5 Sizes × 4 Weights × 3 Alignments × 2 Dropdown States = 120 Variants</p>
       </div>
       <WeightMatrix weight="bold" />
       <WeightMatrix weight="medium" />
@@ -250,19 +250,19 @@ export const WithDropdown: Story = {
 
 export const BrandComparison: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
-      <div data-theme="penta" style={{ padding: '20px', border: '1px solid #eee', borderRadius: '8px' }}>
-        <h3 style={{ marginTop: 0, color: '#999', fontSize: '12px' }}>PENTA BRAND (Default)</h3>
-        <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-40px)' }}>
+      <div data-theme="penta" style={{ padding: 'var(--global-spacing-sizing-20px)', border: 'var(--global-spacing-stroke-1px) solid var(--global-color-neutral-gray-200)', borderRadius: 'var(--global-spacing-radius-8px)' }}>
+        <h3 style={{ marginTop: 0, color: 'var(--global-color-neutral-gray-400)', fontSize: 'var(--global-type-size-primary-label-xs)' }}>PENTA BRAND (Default)</h3>
+        <div style={{ display: 'flex', gap: 'var(--global-spacing-sizing-20px)', alignItems: 'center' }}>
           <Label size="large" weight="bold">Large Bold</Label>
           <Label size="default" weight="medium" dropdown>Dropdown</Label>
           <Label size="small" weight="light">Small Light</Label>
         </div>
       </div>
 
-      <div data-theme="horizon" style={{ padding: '20px', border: '1px solid #eee', borderRadius: '8px', backgroundColor: '#f4f5f7' }}>
-        <h3 style={{ marginTop: 0, color: '#999', fontSize: '12px' }}>HORIZON BRAND</h3>
-        <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+      <div data-theme="horizon" style={{ padding: 'var(--global-spacing-sizing-20px)', border: 'var(--global-spacing-stroke-1px) solid var(--brand-border-main)', borderRadius: 'var(--global-spacing-radius-8px)', backgroundColor: 'var(--brand-gray-light-50)' }}>
+        <h3 style={{ marginTop: 0, color: 'var(--global-color-neutral-gray-400)', fontSize: 'var(--global-type-size-primary-label-xs)' }}>HORIZON BRAND</h3>
+        <div style={{ display: 'flex', gap: 'var(--global-spacing-sizing-20px)', alignItems: 'center' }}>
           <Label size="large" weight="bold">Large Bold</Label>
           <Label size="default" weight="medium" dropdown>Dropdown</Label>
           <Label size="small" weight="light">Small Light</Label>

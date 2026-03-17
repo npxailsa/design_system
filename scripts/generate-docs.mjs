@@ -65,28 +65,31 @@ Our design system supports multiple brands (Penta, Horizon). Below is a comparis
 
 ### Design Tokens
 
-The component uses the following design tokens for styling:
+The component uses the following design tokens for styling, which are defined in \`src/styles/tokens.css\`:
 
 | Token Name | Description | Default Value (Penta) |
 | :--- | :--- | :--- |
 | \`--${componentName.toLowerCase()}-text-color\` | Primary text color | \`var(--brand-text-main)\` |
-| \`--${componentName.toLowerCase()}-font-family\` | Font family | \`var(--global-font-primary)\` |
-| \`--${componentName.toLowerCase()}-size-default\` | Default font size | \`16px\` |
-| \`--${componentName.toLowerCase()}-weight-bold\` | Bold font weight | \`700\` |
+| \`--${componentName.toLowerCase()}-font-family\` | Font family | \`var(--brand-font-primary)\` |
+| \`--${componentName.toLowerCase()}-size-default\` | Default font size | \`var(--global-type-size-primary-label)\` |
+| \`--${componentName.toLowerCase()}-weight-bold\` | Bold font weight | \`var(--global-type-weight-bold)\` |
 | \`--${componentName.toLowerCase()}-divider-color\` | Dropdown divider color | \`var(--brand-border-main)\` |
 
 ## Guidelines
 
 ### Best Practices
-- Use component tokens for overrides rather than hardcoded values.
-- Ensure appropriate contrast ratios when switching between brands.
+- Use component or brand design tokens for all styling overrides. Always prefer tokens over hardcoded values.
+- Maintain consistent spacing by using global spacing/sizing tokens (e.g., \`var(--global-spacing-sizing-8px)\`).
+- Ensure appropriate color contrast ratios (WCAG 2.1 AA) when switching between brands.
 
 ### Accessibility
-- [Describe accessibility considerations and features.]
+- Provide descriptive ARIA labels for functional components or decorative elements that carry meaning.
+- All interactive components should be keyboard accessible and follow WAI-ARIA patterns.
 
 ### Dos and Don'ts
-- **Do:** Use the \`size\` prop to ensure consistent scaling.
-- **Don't:** Overwrite internal component styles directly; use the token system.
+- **Do:** Use the \`size\` and \`weight\` props to maintain design system consistency.
+- **Don't:** Override component styles with hardcoded pixel values; use the mapped CSS tokens instead.
+- **Do:** Reference full token names in documentation for transparency and developer ease of use.
 `;
 }
 

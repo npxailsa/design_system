@@ -12,8 +12,8 @@ export interface LabelProps {
   size?: 'large' | 'default' | 'small' | 'x-small' | '2x-small';
   /** Font weight */
   weight?: 'bold' | 'medium' | 'light' | 'thin';
-  /** Font family variant */
-  font?: 'ginger' | 'archivo';
+  /** Font family variant — 'primary' or 'secondary' as defined in brand tokens. */
+  font?: 'primary' | 'secondary';
   /** Text and content alignment */
   align?: 'left' | 'centre' | 'right';
   /** Shows dropdown split + chevron-down icon after trailing icon */
@@ -42,7 +42,7 @@ export const Label: React.FC<LabelProps> = ({
   children = 'Label',
   size = 'default',
   weight = 'bold',
-  font = 'archivo',
+  font = 'primary',
   align = 'left',
   dropdown = false,
   component: Component = 'div',

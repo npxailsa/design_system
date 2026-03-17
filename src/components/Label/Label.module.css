@@ -34,12 +34,12 @@
 }
 
 /* Fonts */
-.font-ginger {
-  --local-font-family: var(--global-font-secondary);
+.font-secondary {
+  --local-font-family: var(--brand-font-secondary);
 }
 
-.font-archivo {
-  --local-font-family: var(--global-font-primary);
+.font-primary {
+  --local-font-family: var(--brand-font-primary);
 }
 
 /* Alignments */
