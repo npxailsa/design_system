@@ -1,4 +1,4 @@
-import{j as e,M as o}from"./iframe-DlROoSAR.js";import{useMDXComponents as r}from"./index-BOWTDeBV.js";import"./preload-helper-Dp1pzeXC.js";function i(s){const n={a:"a",code:"code",h1:"h1",h2:"h2",h3:"h3",hr:"hr",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...r(),...s.components};return e.jsxs(e.Fragment,{children:[e.jsx(o,{title:"Introduction"}),`
+import{j as e,M as o}from"./iframe-aEoKiTRh.js";import{useMDXComponents as r}from"./index-CqMiBpm1.js";import"./preload-helper-Dp1pzeXC.js";function i(s){const n={a:"a",code:"code",h1:"h1",h2:"h2",h3:"h3",hr:"hr",img:"img",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...r(),...s.components};return e.jsxs(e.Fragment,{children:[e.jsx(o,{title:"Introduction"}),`
 `,e.jsx(n.h1,{id:"design-system",children:"Design System"}),`
 `,e.jsx(n.p,{children:"Welcome to the official documentation for our Design System. This system provides a unified set of components, tokens, and guidelines to help you build consistent and accessible user interfaces."}),`
 `,e.jsx(n.hr,{}),`
@@ -10,6 +10,7 @@ import{j as e,M as o}from"./iframe-DlROoSAR.js";import{useMDXComponents as r}fro
 `,e.jsxs(n.li,{children:[e.jsx(n.strong,{children:"Icon Gallery"}),": A collection of over 50 MUI icons available in our system (",e.jsx(n.a,{href:"/docs/foundations-icon--gallery",children:"Gallery"}),")."]}),`
 `,e.jsxs(n.li,{children:[e.jsx(n.strong,{children:"Patterns"}),": Guidelines on how to combine components to solve common UI problems."]}),`
 `]}),`
+`,e.jsx(n.p,{children:e.jsx(n.img,{src:"https://storybook.js.org/docs-assets/10.2/writing-stories/naming-hierarchy-sidebar-anatomy.png",alt:"Sidebar Anatomy"})}),`
 `,e.jsx(n.h2,{id:"getting-started",children:"Getting Started"}),`
 `,e.jsx(n.h3,{id:"for-designers",children:"For Designers"}),`
 `,e.jsx(n.p,{children:"We use Figma to design all our components and patterns. If you're a designer, check out our Figma library to start designing with our components."}),`

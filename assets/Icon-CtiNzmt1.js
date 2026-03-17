@@ -1,4 +1,4 @@
-import{j as e,M as c,C as t,a as s}from"./iframe-DlROoSAR.js";import{useMDXComponents as r}from"./index-BOWTDeBV.js";import{I as l,S as a,C as d,G as h}from"./Icon.stories-CArrFcR2.js";import"./preload-helper-Dp1pzeXC.js";import"./Person-Cggy1LPQ.js";function o(i){const n={a:"a",code:"code",h1:"h1",h2:"h2",li:"li",ol:"ol",p:"p",pre:"pre",strong:"strong",ul:"ul",...r(),...i.components};return e.jsxs(e.Fragment,{children:[e.jsx(c,{of:l}),`
+import{j as e,M as r,C as l,a as s}from"./iframe-aEoKiTRh.js";import{useMDXComponents as c}from"./index-CqMiBpm1.js";import{I as a,S as t,C as d,G as h}from"./Icon.stories-DTNa01Yg.js";import"./preload-helper-Dp1pzeXC.js";import"./Person-C0gvX9yc.js";function o(i){const n={a:"a",code:"code",h1:"h1",h2:"h2",h3:"h3",li:"li",ol:"ol",p:"p",pre:"pre",strong:"strong",ul:"ul",...c(),...i.components};return e.jsxs(e.Fragment,{children:[e.jsx(r,{of:a}),`
 `,e.jsx(n.h1,{id:"icon-system",children:"Icon System"}),`
 `,e.jsxs(n.p,{children:["The Icon system in our design system is powered by ",e.jsx(n.a,{href:"https://mui.com/material-ui/material-icons/",rel:"nofollow",children:"Material UI Icons"}),". This provides thousands of consistent, high-quality icons ready to be used in your application."]}),`
 `,e.jsx(n.h2,{id:"anatomy",children:"Anatomy"}),`
@@ -20,10 +20,22 @@ const MyComponent = () => (
 );
 `})}),`
 `,e.jsx(n.h2,{id:"props",children:"Props"}),`
-`,e.jsx(t,{}),`
+`,e.jsx(l,{}),`
+`,e.jsx(n.h3,{id:"design-tokens",children:"Design Tokens"}),`
+`,e.jsxs(n.p,{children:["The component uses the following design tokens for styling, which are defined in ",e.jsx(n.code,{children:"src/styles/tokens.css"}),":"]}),`
+`,e.jsxs(n.p,{children:[`| Token Name | Description | Default Value (Penta) |
+| :--- | :--- | :--- |
+| `,e.jsx(n.code,{children:"--brand-icon-main"})," | Primary icon color | ",e.jsx(n.code,{children:"var(--global-color-base-black)"}),` |
+| `,e.jsx(n.code,{children:"--icon-size-2x-small"})," | 2x-small icon size | ",e.jsx(n.code,{children:"var(--global-spacing-sizing-10px)"}),` |
+| `,e.jsx(n.code,{children:"--icon-size-x-small"})," | x-small icon size | ",e.jsx(n.code,{children:"var(--global-spacing-sizing-12px)"}),` |
+| `,e.jsx(n.code,{children:"--icon-size-small"})," | small icon size | ",e.jsx(n.code,{children:"var(--global-spacing-sizing-14px)"}),` |
+| `,e.jsx(n.code,{children:"--icon-size-default"})," | default icon size | ",e.jsx(n.code,{children:"var(--global-spacing-sizing-16px)"}),` |
+| `,e.jsx(n.code,{children:"--icon-size-large"})," | large icon size | ",e.jsx(n.code,{children:"var(--global-spacing-sizing-18px)"}),` |
+| `,e.jsx(n.code,{children:"--icon-size-x-large"})," | x-large icon size | ",e.jsx(n.code,{children:"var(--global-spacing-sizing-24px)"}),` |
+| `,e.jsx(n.code,{children:"--icon-size-2x-large"})," | 2x-large icon size | ",e.jsx(n.code,{children:"var(--global-spacing-sizing-32px)"})," |"]}),`
 `,e.jsx(n.h2,{id:"custom-sizes",children:"Custom Sizes"}),`
 `,e.jsxs(n.p,{children:["You can pass a specific number (in pixels) to the ",e.jsx(n.code,{children:"size"})," prop for custom sizing."]}),`
-`,e.jsx(s,{of:a}),`
+`,e.jsx(s,{of:t}),`
 `,e.jsx(n.h2,{id:"colors",children:"Colors"}),`
 `,e.jsxs(n.p,{children:["Icons can use the Material UI theme colors such as ",e.jsx(n.code,{children:"primary"}),", ",e.jsx(n.code,{children:"secondary"}),", ",e.jsx(n.code,{children:"error"}),", etc."]}),`
 `,e.jsx(s,{of:d}),`
@@ -44,4 +56,4 @@ const MyComponent = () => (
 `]}),`
 `,e.jsx(n.h2,{id:"common-icons-gallery",children:"Common Icons Gallery"}),`
 `,e.jsx(n.p,{children:"Below is a collection of some of the most commonly used icons in our projects."}),`
-`,e.jsx(s,{of:h})]})}function g(i={}){const{wrapper:n}={...r(),...i.components};return n?e.jsx(n,{...i,children:e.jsx(o,{...i})}):o(i)}export{g as default};
+`,e.jsx(s,{of:h})]})}function u(i={}){const{wrapper:n}={...c(),...i.components};return n?e.jsx(n,{...i,children:e.jsx(o,{...i})}):o(i)}export{u as default};
