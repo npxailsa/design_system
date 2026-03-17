@@ -1,2 +1,8 @@
 MUI is the base of our components. 
-You must ALWAYS use the design tokens / variables instead. 
+You must ALWAYS use the design tokens / variables instead of hard-coded numbers. 
+Every time a component is built, updated, edited, you MUST update or create the relative documentation for it. 
+Follow the documentation styles and approaches of these design systems: 
+  Wanda by Wonderflow (https://design.wonderflow.ai/get-started/documentation/get-started/introduction)
+  Base by Uber (https://base.uber.com/6d2425e9f/p/294ab4-base-design-system)
+  Spectrum by Adobe (https://spectrum.adobe.com/)
+  
