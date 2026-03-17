@@ -55,5 +55,8 @@
     "vite": "^6.0.0",
     "vitest": "4.1.0",
     "yaml": "^2.8.2"
+  },
+  "overrides": {
+    "@storybook/blocks": "$@storybook/blocks"
   }
 }

@@ -5,4 +5,6 @@ Follow the documentation styles and approaches of these design systems:
   Wanda by Wonderflow (https://design.wonderflow.ai/get-started/documentation/get-started/introduction)
   Base by Uber (https://base.uber.com/6d2425e9f/p/294ab4-base-design-system)
   Spectrum by Adobe (https://spectrum.adobe.com/)
-  
+The minimum requirement for Storybook is version 10.2.17
+Remove any addons that do not work with the Storybook version, but ask me first. I want to confirm there are no dependencies you are not aware of. 
+When removeing addons that don't work with Storybook version 10.2.17, also remove any other mention of that addon in the rest of the design system.
