@@ -72,6 +72,8 @@
 
 .weight-thin {
   --local-weight: var(--label-weight-thin);
+  leading-trim: both;
+  text-edge: cap;
 }
 
 /* Sizes */

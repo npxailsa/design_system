@@ -298,8 +298,8 @@
   /* Semantic Mappings */
   --brand-primary: var(--brand-blue);
   --brand-secondary: var(--global-color-secondary-navy);
-  --brand-text-main: var(--brand-blue-gray-dark);
-  --brand-icon-main: var(--brand-blue-gray-dark);
+  --brand-text-main: var(--global-color-base-black);
+  --brand-icon-main: var(--global-color-base-black);
   --brand-border-main: var(--brand-blue-gray-50);
 }
 

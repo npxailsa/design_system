@@ -64,14 +64,54 @@ The component is fully integrated with the NPX Design System token system.
 
 The component uses the following design tokens for styling, which are defined in `src/styles/tokens.css`:
 
+#### Core Tokens
+
 | Token Name | Description | Value |
 | :--- | :--- | :--- |
 | `--label-text-color` | Primary text color | `var(--brand-text-main)` |
 | `--label-font-family` | Font family | `var(--brand-font-primary)` |
-| `--label-size-default` | Default font size | `var(--global-type-size-primary-label)` |
-| `--label-weight-bold` | Bold font weight | `var(--global-type-weight-bold)` |
+| `--label-icon-color` | Primary icon color | `var(--brand-icon-main)` |
 | `--label-divider-color` | Dropdown divider color | `var(--brand-border-main)` |
-| `--label-gap-default` | Default gap between icons and text | `var(--global-spacing-sizing-6px)` |
+| `--label-letter-spacing` | Global letter spacing | `var(--global-type-letter-spacing-primary-label)` |
+
+#### Size Tokens (Font Size / Line Height / Gap)
+
+| Token Name | Description | Value |
+| :--- | :--- | :--- |
+| `--label-size-large` | Large font size | `var(--global-type-size-primary-label-lg)` |
+| `--label-size-default` | Default font size | `var(--global-type-size-primary-label)` |
+| `--label-size-small` | Small font size | `var(--global-type-size-primary-label-sm)` |
+| `--label-size-x-small` | X-Small font size | `var(--global-type-size-primary-label-xs)` |
+| `--label-size-2x-small` | 2X-Small font size | `var(--global-type-size-primary-label-xxs)` |
+| `--label-line-height-large` | Large line height | `var(--global-type-line-height-label-lg)` |
+| `--label-line-height-default` | Default line height | `var(--global-type-line-height-label)` |
+| `--label-line-height-small` | Small line height | `var(--global-type-line-height-label-sm)` |
+| `--label-line-height-x-small` | X-Small line height | `var(--global-type-line-height-label-xs)` |
+| `--label-line-height-2x-small` | 2X-Small line height | `var(--global-type-line-height-label-xxs)` |
+| `--label-gap-large` | Large gap between icons/text | `var(--global-spacing-sizing-8px)` |
+| `--label-gap-default` | Default gap between icons/text | `var(--global-spacing-sizing-6px)` |
+| `--label-gap-small` | Small gap between icons/text | `var(--global-spacing-sizing-4px)` |
+| `--label-gap-x-small` | X-Small gap between icons/text | `var(--global-spacing-sizing-4px)` |
+| `--label-gap-2x-small` | 2X-Small gap between icons/text | `var(--global-spacing-sizing-2px)` |
+
+#### Weight Tokens
+
+| Token Name | Description | Value |
+| :--- | :--- | :--- |
+| `--label-weight-bold` | Bold font weight | `var(--global-type-weight-bold)` |
+| `--label-weight-medium` | Medium font weight | `var(--global-type-weight-medium)` |
+| `--label-weight-light` | Light font weight | `var(--global-type-weight-light)` |
+| `--label-weight-thin` | Thin font weight | `var(--global-type-weight-thin)` |
+
+#### Dropdown Specific Tokens
+
+| Token Name | Description | Value |
+| :--- | :--- | :--- |
+| `--label-dropdown-split-width` | Divider width | `var(--global-spacing-stroke-1px)` |
+| `--label-dropdown-split-opacity` | Divider opacity | `0.5` |
+| `--label-dropdown-chevron-opacity` | Chevron icon opacity | `0.6` |
+| `--label-dropdown-split-gap` | Gap within dropdown split | `var(--global-spacing-sizing-4px)` |
+| `--label-dropdown-padding-left` | Padding left for split section | `var(--global-spacing-sizing-2px)` |
 
 ## Guidelines
 
