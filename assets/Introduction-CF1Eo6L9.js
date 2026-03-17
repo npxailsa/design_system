@@ -1,4 +1,4 @@
-import{j as e,M as o}from"./iframe-CYtfCAo4.js";import{useMDXComponents as r}from"./index-BLV198ur.js";import"./preload-helper-Dp1pzeXC.js";function i(s){const n={a:"a",code:"code",h1:"h1",h2:"h2",h3:"h3",hr:"hr",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...r(),...s.components};return e.jsxs(e.Fragment,{children:[e.jsx(o,{title:"Introduction"}),`
+import{j as e,M as o}from"./iframe-B7VHhKRG.js";import{useMDXComponents as r}from"./index-DnrBtr_e.js";import"./preload-helper-Dp1pzeXC.js";function i(s){const n={a:"a",code:"code",h1:"h1",h2:"h2",h3:"h3",hr:"hr",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...r(),...s.components};return e.jsxs(e.Fragment,{children:[e.jsx(o,{title:"Introduction"}),`
 `,e.jsx(n.h1,{id:"design-system",children:"Design System"}),`
 `,e.jsx(n.p,{children:"Welcome to the official documentation for our Design System. This system provides a unified set of components, tokens, and guidelines to help you build consistent and accessible user interfaces."}),`
 `,e.jsx(n.hr,{}),`
