@@ -1,4 +1,4 @@
-import{j as e,M as t,T as r}from"./iframe-B2dX145-.js";import{useMDXComponents as l}from"./index-C3LzzalW.js";import"./preload-helper-Dp1pzeXC.js";function i(s){const n={code:"code",h1:"h1",h2:"h2",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...l(),...s.components};return e.jsxs(e.Fragment,{children:[e.jsx(t,{title:"Tokens/Typography"}),`
+import{j as e,M as t,T as r}from"./iframe-BuE5MOHi.js";import{useMDXComponents as l}from"./index-D87dadgB.js";import"./preload-helper-Dp1pzeXC.js";function i(s){const n={code:"code",h1:"h1",h2:"h2",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...l(),...s.components};return e.jsxs(e.Fragment,{children:[e.jsx(t,{title:"Tokens/Typography"}),`
 `,e.jsx(n.h1,{id:"design-tokens-typography",children:"Design Tokens: Typography"}),`
 `,e.jsx(n.p,{children:"Our typography system is structured into global primitives, brand aliases, and semantic component tokens."}),`
 `,e.jsx(n.h2,{id:"global-typefaces",children:"Global Typefaces"}),`
