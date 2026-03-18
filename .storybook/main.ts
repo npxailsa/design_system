@@ -15,10 +15,7 @@ const config: StorybookConfig = {
   ],
   "framework": "@storybook/react-vite",
   "staticDirs": [
-    {
-      "from": "../storybook-static/sb-typefaces",
-      "to": "/sb-static/sb-typefaces"
-    }
+    "../public"
   ],
   async viteFinal(config) {
     config.optimizeDeps = config.optimizeDeps || {};
