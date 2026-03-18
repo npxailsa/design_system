@@ -6,7 +6,7 @@
   /* ==========================================================================
      GLOBAL LAYER: Colors (Base Palette)
      ========================================================================== */
-  --global-color-base-black: #1c1c1c;
+  --global-color-base-black: #1C1C1C;
   --global-color-base-white: #ffffff;
   --global-color-base-peach-cream-50: #fffaf2;
   --global-color-base-peach-cream-100: #fff4e5;
@@ -235,24 +235,24 @@
   --brand-font-secondary: var(--global-font-secondary);
 
   /* Colors from brand_design_tokens.json */
-  /* Blue scale */
-  --brand-blue: #3776ce;
-  --brand-blue-dark: #182b47;
-  --brand-blue-25: #f2f7ff;
-  --brand-blue-50: #dae6f7;
-  --brand-blue-100: #c2d5f1;
-  --brand-blue-200: #a3c0eb;
-  --brand-blue-300: #84aae4;
-  --brand-blue-400: #6695dd;
+  /* Primary scale */
+  --brand-primary: #3776ce;
+  --brand-primary-dark: #182b47;
+  --brand-primary-25: #f2f7ff;
+  --brand-primary-50: #dae6f7;
+  --brand-primary-100: #c2d5f1;
+  --brand-primary-200: #a3c0eb;
+  --brand-primary-300: #84aae4;
+  --brand-primary-400: #6695dd;
 
-  /* Blue-Gray scale */
-  --brand-blue-gray: #304047;
-  --brand-blue-gray-dark: #182024;
-  --brand-blue-gray-50: #d6d9da;
-  --brand-blue-gray-100: #b7c6cb;
-  --brand-blue-gray-200: #9eacb5;
-  --brand-blue-gray-300: #758084;
-  --brand-blue-gray-400: #536066;
+  /* Secondary scale */
+  --brand-secondary: #304047;
+  --brand-secondary-dark: #182024;
+  --brand-secondary-50: #d6d9da;
+  --brand-secondary-100: #b7c6cb;
+  --brand-secondary-200: #9eacb5;
+  --brand-secondary-300: #758084;
+  --brand-secondary-400: #536066;
 
   /* Sky Blue scale */
   --brand-sky-blue: #00b2eb;
@@ -296,11 +296,9 @@
   --brand-status-edit: #b1cbde;
 
   /* Semantic Mappings */
-  --brand-primary: var(--brand-blue);
-  --brand-secondary: var(--global-color-secondary-navy);
   --brand-text-main: var(--global-color-base-black);
-  --brand-icon-main: var(--global-color-base-black);
-  --brand-border-main: var(--brand-blue-gray-50);
+  --brand-icon-main: var(--brand-secondary-400);
+  --brand-border-main: var(--global-color-neutral-gray-200);
 }
 
 /* ==========================================================================
