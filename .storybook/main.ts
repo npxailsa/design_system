@@ -37,6 +37,11 @@ const config: StorybookConfig = {
       include: [/hoist-non-react-statics/, /node_modules/],
       transformMixedEsModules: true,
     };
+
+    if (process.env.STORYBOOK_BASE_PATH) {
+      config.base = process.env.STORYBOOK_BASE_PATH;
+    }
+
     // Removed exclude for icons-material as it caused runtime errors with its dependencies
     return config;
   }

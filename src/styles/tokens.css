@@ -359,7 +359,7 @@
 /* Font Loading */
 @font-face {
   font-family: 'F37 Ginger Pro';
-  src: url('/sb-static/sb-typefaces/f37-ginger-thin.woff') format('woff');
+  src: url('../../public/sb-static/sb-typefaces/f37-ginger-thin.woff') format('woff');
   font-weight: 100;
   font-style: normal;
   font-display: swap;
@@ -367,7 +367,7 @@
 
 @font-face {
   font-family: 'F37 Ginger Pro';
-  src: url('/sb-static/sb-typefaces/f37-ginger-thin-italic.woff') format('woff');
+  src: url('../../public/sb-static/sb-typefaces/f37-ginger-thin-italic.woff') format('woff');
   font-weight: 100;
   font-style: italic;
   font-display: swap;
@@ -375,7 +375,7 @@
 
 @font-face {
   font-family: 'F37 Ginger Pro';
-  src: url('/sb-static/sb-typefaces/f37-ginger-light.woff') format('woff');
+  src: url('../../public/sb-static/sb-typefaces/f37-ginger-light.woff') format('woff');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -383,7 +383,7 @@
 
 @font-face {
   font-family: 'F37 Ginger Pro';
-  src: url('/sb-static/sb-typefaces/f37-ginger-light-italic.woff') format('woff');
+  src: url('../../public/sb-static/sb-typefaces/f37-ginger-light-italic.woff') format('woff');
   font-weight: 300;
   font-style: italic;
   font-display: swap;
@@ -391,7 +391,7 @@
 
 @font-face {
   font-family: 'F37 Ginger Pro';
-  src: url('/sb-static/sb-typefaces/f37-ginger.woff') format('woff');
+  src: url('../../public/sb-static/sb-typefaces/f37-ginger.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -399,7 +399,7 @@
 
 @font-face {
   font-family: 'F37 Ginger Pro';
-  src: url('/sb-static/sb-typefaces/f37-ginger-italic.woff') format('woff');
+  src: url('../../public/sb-static/sb-typefaces/f37-ginger-italic.woff') format('woff');
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -407,7 +407,7 @@
 
 @font-face {
   font-family: 'F37 Ginger Pro';
-  src: url('/sb-static/sb-typefaces/f37-ginger-bold.woff') format('woff');
+  src: url('../../public/sb-static/sb-typefaces/f37-ginger-bold.woff') format('woff');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -415,7 +415,7 @@
 
 @font-face {
   font-family: 'F37 Ginger Pro';
-  src: url('/sb-static/sb-typefaces/f37-ginger-bold-italic.woff') format('woff');
+  src: url('../../public/sb-static/sb-typefaces/f37-ginger-bold-italic.woff') format('woff');
   font-weight: 700;
   font-style: italic;
   font-display: swap;
@@ -423,7 +423,7 @@
 
 @font-face {
   font-family: 'Calibri';
-  src: url('/sb-static/sb-typefaces/Calibri_Light.woff') format('woff');
+  src: url('../../public/sb-static/sb-typefaces/Calibri_Light.woff') format('woff');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -431,7 +431,7 @@
 
 @font-face {
   font-family: 'Calibri';
-  src: url('/sb-static/sb-typefaces/Calibri_Light_Italic.woff') format('woff');
+  src: url('../../public/sb-static/sb-typefaces/Calibri_Light_Italic.woff') format('woff');
   font-weight: 300;
   font-style: italic;
   font-display: swap;
@@ -439,7 +439,7 @@
 
 @font-face {
   font-family: 'Calibri';
-  src: url('/sb-static/sb-typefaces/Calibri.woff') format('woff');
+  src: url('../../public/sb-static/sb-typefaces/Calibri.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -447,7 +447,7 @@
 
 @font-face {
   font-family: 'Calibri';
-  src: url('/sb-static/sb-typefaces/Calibri_Italic.woff') format('woff');
+  src: url('../../public/sb-static/sb-typefaces/Calibri_Italic.woff') format('woff');
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -455,7 +455,7 @@
 
 @font-face {
   font-family: 'Calibri';
-  src: url('/sb-static/sb-typefaces/Calibri_Bold.woff') format('woff');
+  src: url('../../public/sb-static/sb-typefaces/Calibri_Bold.woff') format('woff');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -463,7 +463,7 @@
 
 @font-face {
   font-family: 'Calibri';
-  src: url('/sb-static/sb-typefaces/Calibri_Bold_Italic.woff') format('woff');
+  src: url('../../public/sb-static/sb-typefaces/Calibri_Bold_Italic.woff') format('woff');
   font-weight: 700;
   font-style: italic;
   font-display: swap;
