@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A React and TypeScript design system with Storybook.",
   "private": true,
+  "homepage": "https://npxailsa.github.io/design_system",
   "dummy": "true5",
   "type": "module",
   "scripts": {
