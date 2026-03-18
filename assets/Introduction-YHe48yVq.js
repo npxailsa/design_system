@@ -1,4 +1,4 @@
-import{j as e,M as o}from"./iframe-CLguyvb_.js";import{useMDXComponents as r}from"./index-saSdEHzF.js";import"./preload-helper-Dp1pzeXC.js";function i(s){const n={a:"a",code:"code",h1:"h1",h2:"h2",h3:"h3",hr:"hr",img:"img",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...r(),...s.components};return e.jsxs(e.Fragment,{children:[e.jsx(o,{title:"Introduction"}),`
+import{j as e,M as o}from"./iframe-B2dX145-.js";import{useMDXComponents as r}from"./index-C3LzzalW.js";import"./preload-helper-Dp1pzeXC.js";function i(s){const n={a:"a",code:"code",h1:"h1",h2:"h2",h3:"h3",hr:"hr",img:"img",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...r(),...s.components};return e.jsxs(e.Fragment,{children:[e.jsx(o,{title:"Introduction"}),`
 `,e.jsx(n.h1,{id:"design-system",children:"Design System"}),`
 `,e.jsx(n.p,{children:"Welcome to the official documentation for our Design System. This system provides a unified set of components, tokens, and guidelines to help you build consistent and accessible user interfaces."}),`
 `,e.jsx(n.hr,{}),`
@@ -16,7 +16,7 @@ import{j as e,M as o}from"./iframe-CLguyvb_.js";import{useMDXComponents as r}fro
 `,e.jsx(n.p,{children:"We use Figma to design all our components and patterns. If you're a designer, check out our Figma library to start designing with our components."}),`
 `,e.jsxs(n.ul,{children:[`
 `,e.jsx(n.li,{children:e.jsx(n.strong,{children:e.jsx(n.a,{href:"https://figma.com",rel:"nofollow",children:"Figma Library"})})}),`
-`,e.jsx(n.li,{children:e.jsx(n.strong,{children:e.jsx(n.a,{href:"https://example.com",rel:"nofollow",children:"Design Guidelines"})})}),`
+`,e.jsx(n.li,{children:e.jsx(n.strong,{children:e.jsx(n.a,{href:"https://npxailsa.github.io/design_system",rel:"nofollow",children:"Design Guidelines"})})}),`
 `]}),`
 `,e.jsx(n.h3,{id:"for-developers",children:"For Developers"}),`
 `,e.jsx(n.p,{children:"To start using the design system in your project, install the package:"}),`
@@ -36,7 +36,7 @@ function App() {
 `,e.jsx(n.h2,{id:"resources",children:"Resources"}),`
 `,e.jsxs(n.ul,{children:[`
 `,e.jsx(n.li,{children:e.jsx(n.strong,{children:e.jsx(n.a,{href:"https://github.com/npxailsa/design_system",rel:"nofollow",children:"GitHub Repository"})})}),`
-`,e.jsx(n.li,{children:e.jsx(n.strong,{children:e.jsx(n.a,{href:"https://example.com/storybook",rel:"nofollow",children:"Storybook Examples"})})}),`
+`,e.jsx(n.li,{children:e.jsx(n.strong,{children:e.jsx(n.a,{href:"https://main--69b1afa12d84753b425f1721.chromatic.com",rel:"nofollow",children:"Storybook Examples"})})}),`
 `]}),`
 `,e.jsx(n.hr,{}),`
 `,e.jsx(n.h2,{id:"support",children:"Support"}),`

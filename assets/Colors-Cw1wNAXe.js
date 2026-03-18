@@ -1,4 +1,4 @@
-import{j as r,M as t,b as n,c as e}from"./iframe-CLguyvb_.js";import{useMDXComponents as s}from"./index-saSdEHzF.js";import"./preload-helper-Dp1pzeXC.js";function l(o){const a={code:"code",h1:"h1",h2:"h2",p:"p",pre:"pre",strong:"strong",...s(),...o.components};return r.jsxs(r.Fragment,{children:[r.jsx(t,{title:"Tokens/Colors"}),`
+import{j as r,M as t,b as n,c as e}from"./iframe-B2dX145-.js";import{useMDXComponents as s}from"./index-C3LzzalW.js";import"./preload-helper-Dp1pzeXC.js";function l(o){const a={code:"code",h1:"h1",h2:"h2",p:"p",pre:"pre",strong:"strong",...s(),...o.components};return r.jsxs(r.Fragment,{children:[r.jsx(t,{title:"Tokens/Colors"}),`
 `,r.jsx(a.h1,{id:"design-tokens-colors",children:"Design Tokens: Colors"}),`
 `,r.jsxs(a.p,{children:["Our color palette is structured into three layers: ",r.jsx(a.strong,{children:"Global"})," (primitives), ",r.jsx(a.strong,{children:"Brand"})," (contextual aliases), and ",r.jsx(a.strong,{children:"Component"})," (semantic). Always prefer using component or brand tokens over global ones."]}),`
 `,r.jsx(a.h2,{id:"global-palette-primitives",children:"Global Palette (Primitives)"}),`
