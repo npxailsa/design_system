@@ -1,14 +1,14 @@
-import{j as e,M as t,T as r}from"./iframe-aEoKiTRh.js";import{useMDXComponents as l}from"./index-CqMiBpm1.js";import"./preload-helper-Dp1pzeXC.js";function i(s){const n={code:"code",h1:"h1",h2:"h2",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...l(),...s.components};return e.jsxs(e.Fragment,{children:[e.jsx(t,{title:"Tokens/Typography"}),`
+import{j as e,M as t,T as r}from"./iframe-CLguyvb_.js";import{useMDXComponents as l}from"./index-saSdEHzF.js";import"./preload-helper-Dp1pzeXC.js";function i(s){const n={code:"code",h1:"h1",h2:"h2",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...l(),...s.components};return e.jsxs(e.Fragment,{children:[e.jsx(t,{title:"Tokens/Typography"}),`
 `,e.jsx(n.h1,{id:"design-tokens-typography",children:"Design Tokens: Typography"}),`
 `,e.jsx(n.p,{children:"Our typography system is structured into global primitives, brand aliases, and semantic component tokens."}),`
 `,e.jsx(n.h2,{id:"global-typefaces",children:"Global Typefaces"}),`
-`,e.jsxs(n.p,{children:["We use two primary font scales for our projects: ",e.jsx(n.strong,{children:"Archivo"})," and ",e.jsx(n.strong,{children:"F37 Ginger Pro"}),"."]}),`
+`,e.jsxs(n.p,{children:["We use two primary font scales for our projects: ",e.jsx(n.strong,{children:"F37 Ginger Pro"})," and ",e.jsx(n.strong,{children:"Calibri"}),"."]}),`
 `,e.jsxs(n.ul,{children:[`
-`,e.jsxs(n.li,{children:[e.jsx(n.strong,{children:"Global Primary Font"}),": ",e.jsx(n.code,{children:"var(--global-font-primary)"})," (Archivo)"]}),`
-`,e.jsxs(n.li,{children:[e.jsx(n.strong,{children:"Global Secondary Font"}),": ",e.jsx(n.code,{children:"var(--global-font-secondary)"})," (F37 Ginger Pro)"]}),`
+`,e.jsxs(n.li,{children:[e.jsx(n.strong,{children:"Global Primary Font"}),": ",e.jsx(n.code,{children:"var(--global-font-primary)"})," (F37 Ginger Pro)"]}),`
+`,e.jsxs(n.li,{children:[e.jsx(n.strong,{children:"Global Secondary Font"}),": ",e.jsx(n.code,{children:"var(--global-font-secondary)"})," (Calibri)"]}),`
 `]}),`
 `,e.jsx(n.h2,{id:"brand-aliases",children:"Brand Aliases"}),`
-`,e.jsxs(n.p,{children:["These tokens automatically switch based on the theme (",e.jsx(n.code,{children:'[data-theme="penta"]'})," or ",e.jsx(n.code,{children:'[data-theme="horizon"]'}),")."]}),`
+`,e.jsx(n.p,{children:"These tokens represent the active brand theme mappings for the NPX Design System."}),`
 `,e.jsxs(n.ul,{children:[`
 `,e.jsxs(n.li,{children:[e.jsx(n.strong,{children:"Brand Primary Font"}),": ",e.jsx(n.code,{children:"var(--brand-font-primary)"})]}),`
 `,e.jsxs(n.li,{children:[e.jsx(n.strong,{children:"Brand Secondary Font"}),": ",e.jsx(n.code,{children:"var(--brand-font-secondary)"})]}),`
