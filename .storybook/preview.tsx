@@ -30,29 +30,29 @@ if (typeof window !== 'undefined') {
 
 const Header = () => (
   <div style={{
-    padding: 'var(--spacing-small) var(--spacing-medium)',
-    borderBottom: '1px solid var(--border-color-light)',
+    padding: 'var(--global-spacing-sizing-8px) var(--global-spacing-sizing-16px)',
+    borderBottom: '1px solid var(--global-color-neutral-gray-200)',
     fontFamily: 'var(--font-family-primary)',
-    color: 'var(--color-primary)',
+    color: 'var(--brand-primary)',
     display: 'flex',
     alignItems: 'center',
-    gap: 'var(--spacing-small)'
+    gap: 'var(--global-spacing-sizing-8px)'
   }}>
-    <span style={{ fontWeight: 'var(--font-weight-bold)' }}>NPX</span>
-    <span style={{ color: 'var(--color-text-muted)' }}>|</span>
+    <span style={{ fontWeight: 'var(--global-type-weight-bold)' }}>NPX</span>
+    <span style={{ color: 'var(--global-color-neutral-gray-500)' }}>|</span>
     <span>Design System</span>
   </div>
 );
 
 const Footer = () => (
   <div style={{
-    padding: 'var(--spacing-medium)',
-    borderTop: '1px solid var(--border-color-light)',
+    padding: 'var(--global-spacing-sizing-16px)',
+    borderTop: '1px solid var(--global-color-neutral-gray-200)',
     fontFamily: 'var(--font-family-primary)',
-    color: 'var(--color-text-muted)',
-    fontSize: 'var(--font-size-xs)',
+    color: 'var(--global-color-neutral-gray-500)',
+    fontSize: 'var(--global-type-size-primary-label-xs)',
     textAlign: 'center',
-    marginTop: 'var(--spacing-large)'
+    marginTop: 'var(--global-spacing-sizing-24px)'
   }}>
     &copy; {new Date().getFullYear()} NPX Innovation. All rights reserved.
   </div>
@@ -75,10 +75,10 @@ const preview: Preview = {
     },
 
     docs: {
-      container: ({ children, context }: any) => (
-        <DocsContainer context={context}>
+      container: (props: any) => (
+        <DocsContainer {...props}>
           <Header />
-          {children}
+          {props.children}
           <Footer />
         </DocsContainer>
       ),

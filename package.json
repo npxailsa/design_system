@@ -7,10 +7,10 @@
   "dummy": "true5",
   "type": "module",
   "scripts": {
-    "dev": "storybook dev -p 6006 --config-dir .storybook --ci --no-open --loglevel debug",
+    "dev": "EDITOR=nano storybook dev -p 6006 --config-dir .storybook --ci --no-open --loglevel debug",
     "build": "NODE_OPTIONS=--max-old-space-size=4096 tsc && NODE_OPTIONS=--max-old-space-size=4096 vite build",
     "preview": "vite preview",
-    "storybook": "storybook dev -p 6006 --config-dir .storybook",
+    "storybook": "EDITOR=nano storybook dev -p 6006 --config-dir .storybook",
     "build-storybook": "npm run docs:generate && NODE_OPTIONS=--max-old-space-size=4096 storybook build",
     "build-storybook:gh-pages": "STORYBOOK_BASE_PATH=/design_system/ npm run docs:generate && NODE_OPTIONS=--max-old-space-size=4096 storybook build --output-dir storybook-static && touch storybook-static/.nojekyll",
     "docs:generate": "node scripts/generate-docs.mjs",
