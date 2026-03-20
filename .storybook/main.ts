@@ -18,6 +18,7 @@ const config: StorybookConfig = {
     "../public"
   ],
   async viteFinal(config) {
+    process.env.EDITOR = 'nano';
     config.optimizeDeps = config.optimizeDeps || {};
     config.optimizeDeps.include = [
       ...(config.optimizeDeps.include || []),

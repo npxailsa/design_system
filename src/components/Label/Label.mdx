@@ -7,7 +7,76 @@ import * as LabelStories from "./Label.stories";
 
 The `Label` component is a core building block of the design system, used to display text with optional icons and dropdown split functionality. It is designed to be highly systematic, with 120 possible variants based on size, weight, alignment, and state.
 
-## Usage
+## Design Tokens
+
+We use the following tokens to render our labels:
+
+### Core Tokens
+
+| Token Name | Description |
+| :--- | :--- |
+| `--label-text-color` | Primary text color |
+| `--label-font-family` | Font family |
+| `--label-icon-color` | Primary icon color |
+| `--label-divider-color` | Dropdown divider color |
+| `--label-letter-spacing` | Global letter spacing |
+
+### Size Tokens (Font Size / Line Height / Gap)
+
+| Token Name | Description |
+| :--- | :--- |
+| `--label-size-large` | Large font size |
+| `--label-size-default` | Default font size |
+| `--label-size-small` | Small font size |
+| `--label-size-x-small` | X-Small font size |
+| `--label-size-2x-small` | 2X-Small font size |
+| `--label-line-height-large` | Large line height |
+| `--label-line-height-default` | Default line height |
+| `--label-line-height-small` | Small line height |
+| `--label-line-height-x-small` | X-Small line height |
+| `--label-line-height-2x-small` | 2X-Small line height |
+| `--label-gap-large` | Large gap between icons/text |
+| `--label-gap-default` | Default gap between icons/text |
+| `--label-gap-small` | Small gap between icons/text |
+| `--label-gap-x-small` | X-Small gap between icons/text |
+| `--label-gap-2x-small` | 2X-Small gap between icons/text |
+
+### Weight Tokens
+
+| Token Name | Description |
+| :--- | :--- |
+| `--label-weight-bold` | Bold font weight |
+| `--label-weight-medium` | Medium font weight |
+| `--label-weight-light` | Light font weight |
+| `--label-weight-thin` | Thin font weight |
+
+### Dropdown Specific Tokens
+
+| Token Name | Description |
+| :--- | :--- |
+| `--label-dropdown-split-width` | Divider width |
+| `--label-dropdown-split-opacity` | Divider opacity |
+| `--label-dropdown-chevron-opacity` | Chevron icon opacity |
+| `--label-dropdown-split-gap` | Gap within dropdown split |
+| `--label-dropdown-padding-left` | Padding left for split section |
+
+## Principles
+
+Follow these common design principles by using labels in a cohesive, useful, and legible way.
+
+**Design for universal understanding**
+Labels should be clear, concise, and clearly describe the content or action they relate to.
+
+**Balance simplicity and detail to create legibility**
+Craft labels that use short, simple words, whilst containing enough context to properly identify the associated action or content.
+
+**Maintain visual harmony**
+Ensure labels work together as a cohesive system by adhering to consistent size, shape, and alignment guidelines across the entire interface.
+
+**Use labels intentionally**
+Labels provide crucial context and hierarchy to UI elements. Avoid unnecessary labels that repeat information clearly implied by icons or surrounding context.
+
+## Using the Component
 
 ```tsx
 import { Label } from './Label';
@@ -20,27 +89,17 @@ const MyComponent = () => (
 );
 ```
 
-## API
-
 The component accepts the following props:
 
 <Controls />
 
-## Examples
+## Visual Style
 
-### Default
-
-<Canvas of={LabelStories.Default} />
-
-### Sizes
-
-<Canvas of={LabelStories.Sizes} />
-
-### Weights
+Labels support different visual weights, dropdown variations, and alignments. Ensure appropriate contrast ratios when switching between brands.
 
 <Canvas of={LabelStories.Weights} />
 
-### With Dropdown
+### Dropdown Variations
 
 <Canvas of={LabelStories.WithDropdown} />
 
@@ -48,82 +107,28 @@ The component accepts the following props:
 
 <Canvas of={LabelStories.Alignments} />
 
-## Systematic Variants
+### Do
+
+Use systematic weights (bold, medium, light, thin) for consistent hierarchy.
+
+### Don't
+
+Overwrite internal component styles directly; use the token system. Avoid creating new custom weights or hardcoding pixel sizes.
+
+## Size and spacing
+
+The Label component supports multiple sizes. Use the `size` prop to ensure consistent scaling alongside other components.
+
+<Canvas of={LabelStories.Sizes} />
 
 This section showcases the systematic application of variants across all 5 sizes, 4 weights, 3 alignments, and 2 dropdown states.
 
-### Full Matrix (120 Variants)
-
 <Canvas of={LabelStories.AllVariants} />
 
-## Design System Integration
+## Contribution
 
-The component is fully integrated with the NPX Design System token system.
+When proposing updates or new properties for the Label component, consider the following:
+1. Does the proposed change align with existing typography scales?
+2. Does it maintain backward compatibility with our systematic sizing approach?
 
-### Design Tokens
-
-The component uses the following design tokens for styling, which are defined in `src/styles/tokens.css`:
-
-#### Core Tokens
-
-| Token Name | Description | Value |
-| :--- | :--- | :--- |
-| `--label-text-color` | Primary text color | `var(--brand-text-main)` |
-| `--label-font-family` | Font family | `var(--brand-font-primary)` |
-| `--label-icon-color` | Primary icon color | `var(--brand-icon-main)` |
-| `--label-divider-color` | Dropdown divider color | `var(--brand-border-main)` |
-| `--label-letter-spacing` | Global letter spacing | `var(--global-type-letter-spacing-primary-label)` |
-
-#### Size Tokens (Font Size / Line Height / Gap)
-
-| Token Name | Description | Value |
-| :--- | :--- | :--- |
-| `--label-size-large` | Large font size | `var(--global-type-size-primary-label-lg)` |
-| `--label-size-default` | Default font size | `var(--global-type-size-primary-label)` |
-| `--label-size-small` | Small font size | `var(--global-type-size-primary-label-sm)` |
-| `--label-size-x-small` | X-Small font size | `var(--global-type-size-primary-label-xs)` |
-| `--label-size-2x-small` | 2X-Small font size | `var(--global-type-size-primary-label-xxs)` |
-| `--label-line-height-large` | Large line height | `var(--global-type-line-height-label-lg)` |
-| `--label-line-height-default` | Default line height | `var(--global-type-line-height-label)` |
-| `--label-line-height-small` | Small line height | `var(--global-type-line-height-label-sm)` |
-| `--label-line-height-x-small` | X-Small line height | `var(--global-type-line-height-label-xs)` |
-| `--label-line-height-2x-small` | 2X-Small line height | `var(--global-type-line-height-label-xxs)` |
-| `--label-gap-large` | Large gap between icons/text | `var(--global-spacing-sizing-8px)` |
-| `--label-gap-default` | Default gap between icons/text | `var(--global-spacing-sizing-6px)` |
-| `--label-gap-small` | Small gap between icons/text | `var(--global-spacing-sizing-4px)` |
-| `--label-gap-x-small` | X-Small gap between icons/text | `var(--global-spacing-sizing-4px)` |
-| `--label-gap-2x-small` | 2X-Small gap between icons/text | `var(--global-spacing-sizing-2px)` |
-
-#### Weight Tokens
-
-| Token Name | Description | Value |
-| :--- | :--- | :--- |
-| `--label-weight-bold` | Bold font weight | `var(--global-type-weight-bold)` |
-| `--label-weight-medium` | Medium font weight | `var(--global-type-weight-medium)` |
-| `--label-weight-light` | Light font weight | `var(--global-type-weight-light)` |
-| `--label-weight-thin` | Thin font weight | `var(--global-type-weight-thin)` |
-
-#### Dropdown Specific Tokens
-
-| Token Name | Description | Value |
-| :--- | :--- | :--- |
-| `--label-dropdown-split-width` | Divider width | `var(--global-spacing-stroke-1px)` |
-| `--label-dropdown-split-opacity` | Divider opacity | `0.5` |
-| `--label-dropdown-chevron-opacity` | Chevron icon opacity | `0.6` |
-| `--label-dropdown-split-gap` | Gap within dropdown split | `var(--global-spacing-sizing-4px)` |
-| `--label-dropdown-padding-left` | Padding left for split section | `var(--global-spacing-sizing-2px)` |
-
-## Guidelines
-
-### Best Practices
-- Use the `size` prop to ensure consistent scaling.
-- Ensure appropriate contrast ratios when switching between brands.
-- Use component tokens for overrides rather than hardcoded values.
-
-### Accessibility
-- Ensure labels have sufficient color contrast (WCAG 2.1 AA).
-- If an icon carries unique meaning, ensure appropriate ARIA labels are provided via children or parent components.
-
-### Dos and Don'ts
-- **Do:** Use systematic weights (bold, medium, light, thin) for consistent hierarchy.
-- **Don't:** Overwrite internal component styles directly; use the token system.
+To contribute a new variation, please bring it to our Biweekly Design System meeting for review with the whole team.

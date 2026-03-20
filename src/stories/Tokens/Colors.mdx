@@ -2,13 +2,13 @@ import { Meta, ColorPalette, ColorItem } from "@storybook/addon-docs/blocks";
 
 <Meta title="Tokens/Colors" />
 
-# Design Tokens: Colors
+# Colors
 
-Our color palette is structured into three layers: **Global** (primitives), **Brand** (contextual aliases), and **Component** (semantic). Always prefer using component or brand tokens over global ones.
+Our color system provides a foundational language for expressing brand identity, communicating states, and establishing hierarchy across all our digital experiences. Our palette is structured into three layers: **Global** (primitives), **Brand** (contextual aliases), and **Component** (semantic). 
 
-## Global Palette (Primitives)
+## Design Tokens
 
-Foundational color values used to build the rest of the system.
+We use the following color tokens to render UI elements:
 
 <ColorPalette>
   <ColorItem
@@ -76,9 +76,39 @@ Foundational color values used to build the rest of the system.
   />
 </ColorPalette>
 
-## Brand Scales (Tints & Shades)
+## Principles
 
-Full color scales for the NPX brand, used for backgrounds, states, and secondary elements.
+Follow these common design principles by using colors in a cohesive, useful, and legible way.
+
+**Design for universal understanding**
+Ensure that color is never the only means of conveying information. Combine color with text labels, icons, or patterns.
+
+**Balance simplicity and detail to create legibility**
+Ensure there is sufficient contrast between text and background colors to meet WCAG 2.1 AA accessibility standards.
+
+**Maintain visual harmony**
+Limit the number of different colors used on a single screen to reduce cognitive load and maintain a cohesive brand feel.
+
+**Use colors intentionally**
+Use bright or saturated colors sparingly to draw attention to primary actions, errors, or critical information. Reserve neutral colors for structural elements and backgrounds.
+
+## Using the Component
+
+When using colors in your components, always refer to the design tokens defined in `tokens.css`.
+
+```css
+.my-component {
+  background-color: var(--global-color-base-white);
+  color: var(--brand-text-main);
+  border: var(--global-spacing-stroke-1px) solid var(--brand-border-main);
+}
+```
+
+## Visual Style
+
+Our color system provides distinct shades and tints to allow for subtle state changes (hover, active, disabled) while maintaining brand consistency.
+
+### Brand Scales (Tints & Shades)
 
 <ColorPalette>
   <ColorItem
@@ -171,14 +201,15 @@ Full color scales for the NPX brand, used for backgrounds, states, and secondary
   />
 </ColorPalette>
 
-## Usage
+### Do
+Always prefer using component or brand tokens over global ones.
+Ensure sufficient contrast when choosing text colors over backgrounds.
 
-When using colors in your components, always refer to the design tokens defined in `tokens.css`.
+### Don't
+Do not introduce hardcoded hex, rgb, or hsl values into components. Always map to an existing token or create a new token.
 
-```css
-.my-component {
-  background-color: var(--global-color-base-white);
-  color: var(--brand-text-main);
-  border: var(--global-spacing-stroke-1px) solid var(--brand-border-main);
-}
-```
+## Contribution
+
+If you find a gap in our color system or require a new semantic alias, please do not create a new raw color. Instead, review the existing Global Palette to see if a suitable primitive exists. 
+
+To contribute a new color token, please bring it to our Biweekly Design System meeting for review with the whole team.

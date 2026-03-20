@@ -2,73 +2,54 @@ import { Meta, Typeset } from "@storybook/addon-docs/blocks";
 
 <Meta title="Tokens/Typography" />
 
-# Design Tokens: Typography
+# Typography
 
-Our typography system is structured into global primitives, brand aliases, and semantic component tokens.
+Typography is a core element of our design language, providing a clear hierarchy, establishing tone, and creating readable, harmonious interfaces.
 
-## Global Typefaces
+## Design Tokens
 
-We use two primary font scales for our projects: **F37 Ginger Pro** and **Calibri**.
+We use the following typography tokens to render text across our components:
 
-- **Global Primary Font**: `var(--global-font-primary)` (F37 Ginger Pro)
-- **Global Secondary Font**: `var(--global-font-secondary)` (Calibri)
+### Typefaces
 
-## Brand Aliases
+| Token Name | Description | Value |
+| :--- | :--- | :--- |
+| `--global-font-primary` | Primary font | F37 Ginger Pro |
+| `--global-font-secondary` | Secondary font | Calibri |
+| `--brand-font-primary` | Brand primary font alias | `var(--global-font-primary)` |
+| `--brand-font-secondary` | Brand secondary font alias | `var(--global-font-secondary)` |
 
-These tokens represent the active brand theme mappings for the NPX Design System.
+### Font Weights
 
-- **Brand Primary Font**: `var(--brand-font-primary)`
-- **Brand Secondary Font**: `var(--brand-font-secondary)`
+| Token Name | Description | Value |
+| :--- | :--- | :--- |
+| `--global-type-weight-thin` | Thin weight | 100 |
+| `--global-type-weight-light` | Light weight | 300 |
+| `--global-type-weight-default`| Regular weight | 400 |
+| `--global-type-weight-medium` | Medium weight | 500 |
+| `--global-type-weight-semibold`| Semibold weight | 600 |
+| `--global-type-weight-bold` | Bold weight | 700 |
+| `--global-type-weight-extra-bold`| Extra bold weight | 800 |
 
-## Font Weights
+## Principles
 
-Always use the standard font weight tokens for consistency:
+Follow these common design principles by using typography in a cohesive, useful, and legible way.
 
-- **Thin**: 100 (`var(--global-type-weight-thin)`)
-- **Light**: 300 (`var(--global-type-weight-light)`)
-- **Default/Regular**: 400 (`var(--global-type-weight-default)`)
-- **Medium**: 500 (`var(--global-type-weight-medium)`)
-- **Semibold**: 600 (`var(--global-type-weight-semibold)`)
-- **Bold**: 700 (`var(--global-type-weight-bold)`)
-- **Extra Bold**: 800 (`var(--global-type-weight-extra-bold)`)
+**Design for universal understanding**
+Select clear, widely legible typefaces that ensure information is readable across all devices and screen sizes. Use type to establish a consistent hierarchy.
 
-## Font Sizes (Primary Label Scale)
+**Balance simplicity and detail to create legibility**
+Ensure text contrast meets WCAG 2.1 AA guidelines. Avoid using too many different font sizes and weights within a single view.
 
-A systematic scale used for all label components across the design system.
+**Maintain visual harmony**
+Adhere to the typography scale for sizes and line heights. Consistent spacing around text elements creates a harmonious rhythm.
 
-<Typeset
-  fontSizes={[
-    '10px',
-    '12px',
-    '14px',
-    '16px',
-    '18px',
-  ]}
-  fontWeight={400}
-  sampleText="Label Primary Scale"
-  fontFamily="var(--brand-font-primary)"
-/>
+**Use typography intentionally**
+Use font weights and sizes to guide the user's eye to the most important information first.
 
-## Font Sizes (Primary Heading Scale)
+## Using the Component
 
-A systematic scale used for all headings across the design system.
-
-<Typeset
-  fontSizes={[
-    '19px',
-    '24px',
-    '28px',
-    '32px',
-    '36px',
-  ]}
-  fontWeight={700}
-  sampleText="Heading Primary Scale"
-  fontFamily="var(--brand-font-primary)"
-/>
-
-## Usage
-
-When using typography in your components, always refer to the design tokens defined in `tokens.css`.
+When using typography in your components, always refer to the design tokens defined in `tokens.css`. Use CSS custom properties rather than hardcoding sizes or typefaces.
 
 ```css
 .my-title {
@@ -85,3 +66,54 @@ When using typography in your components, always refer to the design tokens defi
   line-height: var(--global-type-line-height-body);
 }
 ```
+
+## Visual Style
+
+Our typographic style balances the unique character of our brand with functional legibility for application UIs.
+
+### Do
+Use standard font weight tokens for consistency.
+Use brand aliases (`var(--brand-font-primary)`) rather than global typefaces directly when styling brand-specific components.
+
+### Don't
+Do not introduce custom font weights or arbitrary line heights outside the token scale.
+
+## Size and spacing
+
+We use a systematic scale for labels, headings, and body text. 
+
+**Label Primary Scale**
+
+<Typeset
+  fontSizes={[
+    '10px',
+    '12px',
+    '14px',
+    '16px',
+    '18px',
+  ]}
+  fontWeight={400}
+  sampleText="Label Primary Scale"
+  fontFamily="var(--brand-font-primary)"
+/>
+
+**Heading Primary Scale**
+
+<Typeset
+  fontSizes={[
+    '19px',
+    '24px',
+    '28px',
+    '32px',
+    '36px',
+  ]}
+  fontWeight={700}
+  sampleText="Heading Primary Scale"
+  fontFamily="var(--brand-font-primary)"
+/>
+
+## Contribution
+
+If a new typographic scale or size variant is required for a novel use case, consider whether existing sizes can be adapted first. 
+
+To contribute a new typographic variant, please bring it to our Biweekly Design System meeting for review with the whole team.

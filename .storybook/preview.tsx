@@ -75,13 +75,14 @@ const preview: Preview = {
     },
 
     docs: {
-      container: (props: any) => (
-        <DocsContainer {...props}>
-          <Header />
-          {props.children}
-          <Footer />
-        </DocsContainer>
-      ),
+      // Temporarily disabling custom DocsContainer to test if it's causing the crash
+      // container: (props: any) => (
+      //   <DocsContainer {...props}>
+      //     <Header />
+      //     {props.children}
+      //     <Footer />
+      //   </DocsContainer>
+      // ),
     },
   },
 };
