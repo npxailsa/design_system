@@ -1,3 +1,0 @@
-import{j as e,M as i}from"./iframe-BQzJWzAk.js";import{useMDXComponents as d}from"./index-Ca-U0yG_.js";import"./preload-helper-Dp1pzeXC.js";function o(n){const t={code:"code",h1:"h1",p:"p",...d(),...n.components};return e.jsxs(e.Fragment,{children:[e.jsx(i,{id:"hidden-example-id",title:"hidden/HiddenExampleStory"}),`
-`,e.jsx(t.h1,{id:"hidden-story",children:"Hidden Story"}),`
-`,e.jsxs(t.p,{children:["This story is prefixed with ",e.jsx(t.code,{children:"hidden/"})," so it should be hidden from the Storybook sidebar. It can still be referenced by other components (like in tabs)."]})]})}function h(n={}){const{wrapper:t}={...d(),...n.components};return t?e.jsx(t,{...n,children:e.jsx(o,{...n})}):o(n)}export{h as default};
