@@ -1,4 +1,4 @@
-import{j as e}from"./iframe-DG8c2tTZ.js";import{useMDXComponents as a}from"./index-D21M31WC.js";import{M as s,T as r}from"./blocks-Ce0K7Q2Q.js";import"./preload-helper-Dp1pzeXC.js";import"./index-DrEtw_Pl.js";function t(i){const n={code:"code",h1:"h1",h2:"h2",h3:"h3",p:"p",pre:"pre",strong:"strong",...a(),...i.components};return e.jsxs(e.Fragment,{children:[e.jsx(s,{title:"Tokens/Typography"}),`
+import{j as e}from"./iframe-DuBRwaoW.js";import{useMDXComponents as a}from"./index-U-0cNa5_.js";import{M as s,T as r}from"./blocks-C4JBfwkX.js";import"./preload-helper-Dp1pzeXC.js";import"./index-573YjJqL.js";function t(i){const n={code:"code",h1:"h1",h2:"h2",h3:"h3",p:"p",pre:"pre",strong:"strong",...a(),...i.components};return e.jsxs(e.Fragment,{children:[e.jsx(s,{title:"Tokens/Typography"}),`
 `,e.jsx(n.h1,{id:"typography",children:"Typography"}),`
 `,e.jsx(n.p,{children:"Typography is a core element of our design language, providing a clear hierarchy, establishing tone, and creating readable, harmonious interfaces."}),`
 `,e.jsx(n.h2,{id:"design-tokens",children:"Design Tokens"}),`
