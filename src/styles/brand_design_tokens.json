@@ -368,6 +368,15 @@
                 "$type": "color",
                 "$value": "#b1cbde"
               }
+            },
+            "interaction": {
+              "interaction-blue": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#2F42BD"
+              }
             }
           }
         }

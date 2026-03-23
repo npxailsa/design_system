@@ -295,6 +295,9 @@
   --brand-status-note-mid: #dfbff8;
   --brand-status-edit: #b1cbde;
 
+  /* Interaction Colors */
+  --brand-interaction-blue: #2F42BD;
+
   /* Semantic Mappings */
   --brand-text-main: var(--global-color-base-black);
   --brand-icon-main: var(--brand-secondary-400);
@@ -354,6 +357,24 @@
   --label-dropdown-chevron-opacity: 0.6;
   --label-dropdown-split-gap: var(--global-spacing-sizing-4px);
   --label-dropdown-padding-left: var(--global-spacing-sizing-2px);
+}
+
+/* ==========================================================================
+   COMPONENT LAYER: Placeholder (Component-Specific Tokens)
+   ========================================================================== */
+:root {
+  /* Placeholder component tokens */
+  --placeholder-text-color: var(--global-color-secondary-blue-gray);
+  --placeholder-icon-opacity: 0.6;
+  --placeholder-icon-opacity-alt: 0.7;   /* used for large size leading icon in default/tags-selected */
+  --placeholder-counter-opacity: 0.3;    /* minus-box icon opacity */
+
+  /* Placeholder font families (size-dependent) */
+  --placeholder-font-default: var(--brand-font-secondary);   /* large, default, small → Calibri */
+  --placeholder-font-xs: var(--brand-font-primary);          /* x-small → F37 Ginger */
+
+  /* Counter control color */
+  --placeholder-counter-color: var(--brand-interaction-blue);
 }
 
 /* Font Loading */

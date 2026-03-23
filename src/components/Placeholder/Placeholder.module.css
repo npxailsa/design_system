@@ -1,0 +1,159 @@
+/**
+ * Component-specific Design Tokens for Placeholder
+ */
+
+.placeholderContainer {
+  /* Default token values */
+  --local-font-family: var(--placeholder-font-default);
+  --local-text-color: var(--placeholder-text-color);
+  --local-gap: var(--global-spacing-sizing-4px);
+  --local-font-size: var(--global-type-size-primary-label);
+  --local-line-height: var(--global-type-line-height-label);
+  --local-icon-size: var(--global-spacing-sizing-16px);
+  --local-leading-icon-opacity: var(--placeholder-icon-opacity);
+
+  display: flex;
+  align-items: center;
+  color: var(--local-text-color);
+  font-family: var(--local-font-family), sans-serif;
+  gap: var(--local-gap);
+  font-size: var(--local-font-size);
+  line-height: var(--local-line-height);
+  width: 100%;
+}
+
+.placeholderContainer svg {
+  color: var(--local-text-color);
+  width: var(--local-icon-size);
+  height: var(--local-icon-size);
+}
+
+/* Alignments */
+.align-left {
+  justify-content: flex-start;
+}
+
+.align-centre {
+  justify-content: center;
+  text-align: center;
+}
+
+.align-right {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+/* Types */
+.type-italic .placeholderText {
+  font-style: italic;
+}
+
+/* Sizes */
+.size-large {
+  --local-font-size: var(--global-type-size-primary-label-lg);
+  --local-line-height: var(--global-type-line-height-label-lg);
+  --local-gap: var(--global-spacing-sizing-8px);
+  --local-icon-size: var(--global-spacing-sizing-20px);
+  /* The plan notes: 0.7 for large size leading icon in default and tags-selected */
+}
+
+.size-default {
+  --local-font-size: var(--global-type-size-primary-label);
+  --local-line-height: var(--global-type-line-height-label);
+  --local-gap: var(--global-spacing-sizing-4px);
+  --local-icon-size: var(--global-spacing-sizing-16px);
+}
+
+.size-small {
+  --local-font-size: var(--global-type-size-primary-label-sm);
+  --local-line-height: var(--global-type-line-height-label-sm);
+  --local-gap: var(--global-spacing-sizing-4px);
+  --local-icon-size: var(--global-spacing-sizing-16px);
+}
+
+.size-x-small {
+  --local-font-family: var(--placeholder-font-xs);
+  --local-font-size: var(--global-type-size-primary-label-xs);
+  --local-line-height: var(--global-type-line-height-label-xs);
+  --local-gap: var(--global-spacing-sizing-4px);
+  --local-icon-size: var(--global-spacing-sizing-12px);
+}
+
+/* Inner wrappers */
+.placeholderText {
+  display: inline-block;
+}
+
+.leadingIconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: var(--local-leading-icon-opacity);
+}
+
+.size-large.type-default .leadingIconWrapper,
+.size-large.type-tags-selected .leadingIconWrapper {
+  opacity: var(--placeholder-icon-opacity-alt);
+}
+
+.trailingIconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: var(--placeholder-icon-opacity);
+}
+
+/* Specific to tags-selected */
+.type-tags-selected.size-large {
+  gap: var(--global-spacing-sizing-12px);
+}
+
+.tagRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--local-gap);
+  flex-wrap: wrap;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--global-spacing-sizing-4px);
+  background: var(--global-color-neutral-gray-200);
+  border: var(--global-spacing-stroke-1px) solid var(--global-color-neutral-gray-300);
+  border-radius: var(--global-spacing-radius-full);
+  color: var(--global-color-base-black);
+  padding: 0 var(--global-spacing-sizing-6px); /* adjust padding to look like a pill */
+  font-size: inherit;
+  line-height: inherit;
+  height: max-content;
+}
+
+/* Counter / Number type */
+.counterSection {
+  display: flex;
+  align-items: center;
+  gap: var(--global-spacing-sizing-6px);
+  margin-left: auto; /* push counter to right if there is flex space */
+}
+
+/* Allow alignment rules to control it better */
+.align-left .counterSection { margin-left: auto; margin-right: 0; }
+.align-right .counterSection { margin-left: 0; margin-right: auto; }
+.align-centre .counterSection { margin-left: 0; margin-right: 0; }
+
+.counterValue {
+  display: inline-block;
+  min-width: 1ch;
+  text-align: center;
+}
+
+.counterSection svg {
+  color: var(--placeholder-counter-color);
+  cursor: pointer;
+}
+
+.counterMinusIcon {
+  opacity: var(--placeholder-counter-opacity);
+}
