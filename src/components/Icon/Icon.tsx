@@ -55,8 +55,8 @@ export const Icon: React.FC<IconProps> = ({
   const iconSx: any = {
     ...(typeof sx === 'object' ? sx : {}),
     fontSize: typeof size === 'number'
-      ? `${size}px`
-      : (isNamedSize ? sizeMap[size] : undefined)
+      ? `var(--global-spacing-sizing-${size}px)`
+      : (isNamedSize ? sizeMap[size as string] : undefined)
   };
 
   // If sx is a function, we handle it by wrapping it or just applying our override

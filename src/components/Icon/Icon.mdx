@@ -148,36 +148,36 @@ Like most elements in our system, icons use design tokens for their colours. Nev
 
 System icons are available at multiple sizes, depending of their usage:
 
-**Default (16px) — use in most cases**
+**Default (var(--global-spacing-sizing-16px)) — use in most cases**
 
-Default icons are 16 × 16px in size and are the **default** size in our system. This size balances harmoniously with our regular body text and the density of the apps NPX creates.
+Default icons are `var(--global-spacing-sizing-16px)` × `var(--global-spacing-sizing-16px)` in size and are the **default** size in our system. This size balances harmoniously with our regular body text and the density of the apps NPX creates.
 
-**Small (14px) — Use sparingly**
+**Small (var(--global-spacing-sizing-14px)) — Use sparingly**
 
-Small icons are 14 × 14px in size and are downscaled from our 16px default. This size should be used for footnotes and terms that don't need prominent placement in our visual hierarchy. Outside of accompanying small text, limit usage of small icons to the following areas:
+Small icons are `var(--global-spacing-sizing-14px)` × `var(--global-spacing-sizing-14px)` in size and are downscaled from our `var(--global-spacing-sizing-16px)` default. This size should be used for footnotes and terms that don't need prominent placement in our visual hierarchy. Outside of accompanying small text, limit usage of small icons to the following areas:
 
 - Footnotes, terms and conditions
 - Comments
 - Metrics & data display
 - Tables
 
-**X-Small (12px) — Use rarely**
+**X-Small (var(--global-spacing-sizing-12px)) — Use rarely**
 
-X-Small icons are 12 × 12px in size and are downscaled from our 16px default. This size should be used sparingly as they aren't as legible as 16px icons. Limit usage of 12px icons to accompanying X-Small text only.
+X-Small icons are `var(--global-spacing-sizing-12px)` × `var(--global-spacing-sizing-12px)` in size and are downscaled from our `var(--global-spacing-sizing-16px)` default. This size should be used sparingly as they aren't as legible as `var(--global-spacing-sizing-16px)` icons. Limit usage of `var(--global-spacing-sizing-12px)` icons to accompanying X-Small text only.
 
-**2X-Small (10px) — Use rarely**
+**2X-Small (var(--global-spacing-sizing-10px)) — Use rarely**
 
-2X-Small icons are 10 × 10px in size and are downscaled from our 16px default. This size should be used sparingly as they aren't as legible as 16px icons. Limit usage of 10px icons to accompanying 2X-Small text only.
+2X-Small icons are `var(--global-spacing-sizing-10px)` × `var(--global-spacing-sizing-10px)` in size and are downscaled from our `var(--global-spacing-sizing-16px)` default. This size should be used sparingly as they aren't as legible as `var(--global-spacing-sizing-16px)` icons. Limit usage of `var(--global-spacing-sizing-10px)` icons to accompanying 2X-Small text only.
 
-**Large (18px) — Use sparingly**
+**Large (var(--global-spacing-sizing-18px)) — Use sparingly**
 
-Large icons are 18 × 18px in size and are upscaled from our 16px default. This size should be used sparingly as they can overwhelm the UI at times. Limit usage of 18px icons to the following areas:
+Large icons are `var(--global-spacing-sizing-18px)` × `var(--global-spacing-sizing-18px)` in size and are upscaled from our `var(--global-spacing-sizing-16px)` default. This size should be used sparingly as they can overwhelm the UI at times. Limit usage of `var(--global-spacing-sizing-18px)` icons to the following areas:
 
 - Metrics & data display
 - Headings & subtitles
 - Dashboards
 
-By default, there is always at least 2px of padding around an icon, and in cases where the icon is not square itself, we default to the longest side and centre the icon on its shortest side. All padding values should be applied using the design tokens within the design system.
+By default, there is always at least `var(--global-spacing-sizing-2px)` of padding around an icon, and in cases where the icon is not square itself, we default to the longest side and centre the icon on its shortest side. All padding values should be applied using the design tokens within the design system.
 
 <Canvas of={IconStories.Sizes} />
 

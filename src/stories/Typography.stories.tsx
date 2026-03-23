@@ -3,19 +3,19 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const TypographyDemo = () => {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-40px)' }}>
       <section>
-        <h2 style={{ borderBottom: '1px solid #ccc', paddingBottom: '10px' }}>Font Families</h2>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+        <h2 style={{ borderBottom: 'var(--global-spacing-stroke-1px) solid var(--global-color-neutral-gray-300)', paddingBottom: 'var(--global-spacing-sizing-10px)' }}>Font Families</h2>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-20px)' }}>
           <div>
-            <p style={{ color: '#666', marginBottom: '5px' }}>Primary: F37 Ginger Pro (--font-family-primary)</p>
-            <p style={{ fontFamily: 'var(--font-family-primary)', fontSize: '24px' }}>
+            <p style={{ color: 'var(--global-color-neutral-gray-500)', marginBottom: 'var(--global-spacing-sizing-6px)' }}>Primary: F37 Ginger Pro (--font-family-primary)</p>
+            <p style={{ fontFamily: 'var(--font-family-primary)', fontSize: 'var(--global-type-size-primary-heading-4)' }}>
               The quick brown fox jumps over the lazy dog. 1234567890
             </p>
           </div>
           <div>
-            <p style={{ color: '#666', marginBottom: '5px' }}>Secondary: Calibri (--font-family-secondary)</p>
-            <p style={{ fontFamily: 'var(--font-family-secondary)', fontSize: '24px' }}>
+            <p style={{ color: 'var(--global-color-neutral-gray-500)', marginBottom: 'var(--global-spacing-sizing-6px)' }}>Secondary: Calibri (--font-family-secondary)</p>
+            <p style={{ fontFamily: 'var(--font-family-secondary)', fontSize: 'var(--global-type-size-primary-heading-4)' }}>
               The quick brown fox jumps over the lazy dog. 1234567890
             </p>
           </div>
@@ -23,8 +23,8 @@ const TypographyDemo = () => {
       </section>
 
       <section>
-        <h2 style={{ borderBottom: '1px solid #ccc', paddingBottom: '10px' }}>Font Weights (F37 Ginger Pro)</h2>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+        <h2 style={{ borderBottom: 'var(--global-spacing-stroke-1px) solid var(--global-color-neutral-gray-300)', paddingBottom: 'var(--global-spacing-sizing-10px)' }}>Font Weights (F37 Ginger Pro)</h2>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-10px)' }}>
           <p style={{ fontFamily: 'var(--font-family-primary)', fontWeight: 100 }}>Thin (100): Pack my box with five dozen liquor jugs.</p>
           <p style={{ fontFamily: 'var(--font-family-primary)', fontWeight: 300 }}>Light (300): Pack my box with five dozen liquor jugs.</p>
           <p style={{ fontFamily: 'var(--font-family-primary)', fontWeight: 400 }}>Regular (400): Pack my box with five dozen liquor jugs.</p>
@@ -34,8 +34,8 @@ const TypographyDemo = () => {
       </section>
 
       <section>
-        <h2 style={{ borderBottom: '1px solid #ccc', paddingBottom: '10px' }}>Font Weights (Calibri)</h2>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+        <h2 style={{ borderBottom: 'var(--global-spacing-stroke-1px) solid var(--global-color-neutral-gray-300)', paddingBottom: 'var(--global-spacing-sizing-10px)' }}>Font Weights (Calibri)</h2>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-10px)' }}>
           <p style={{ fontFamily: 'var(--font-family-secondary)', fontWeight: 300 }}>Light (300): Pack my box with five dozen liquor jugs.</p>
           <p style={{ fontFamily: 'var(--font-family-secondary)', fontWeight: 400 }}>Regular (400): Pack my box with five dozen liquor jugs.</p>
           <p style={{ fontFamily: 'var(--font-family-secondary)', fontWeight: 700 }}>Bold (700): Pack my box with five dozen liquor jugs.</p>
@@ -43,35 +43,35 @@ const TypographyDemo = () => {
       </section>
 
       <section>
-        <h2 style={{ borderBottom: '1px solid #ccc', paddingBottom: '10px' }}>Scale (Label Tokens)</h2>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+        <h2 style={{ borderBottom: 'var(--global-spacing-stroke-1px) solid var(--global-color-neutral-gray-300)', paddingBottom: 'var(--global-spacing-sizing-10px)' }}>Scale (Label Tokens)</h2>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)' }}>
           <div>
-            <span style={{ color: '#666', marginRight: '10px', fontSize: '12px' }}>lg (18px)</span>
-            <span style={{ fontFamily: 'var(--font-family-primary)', fontSize: 'var(--type-size-primary-scale-label-lg)' }}>
+            <span style={{ color: 'var(--global-color-neutral-gray-500)', marginRight: 'var(--global-spacing-sizing-10px)', fontSize: 'var(--global-type-size-primary-label-xs)' }}>lg (18px)</span>
+            <span style={{ fontFamily: 'var(--font-family-primary)', fontSize: 'var(--global-type-size-primary-label-lg)' }}>
               Large Scale Label
             </span>
           </div>
           <div>
-            <span style={{ color: '#666', marginRight: '10px', fontSize: '12px' }}>default (16px)</span>
-            <span style={{ fontFamily: 'var(--font-family-primary)', fontSize: 'var(--type-size-primary-scale-label)' }}>
+            <span style={{ color: 'var(--global-color-neutral-gray-500)', marginRight: 'var(--global-spacing-sizing-10px)', fontSize: 'var(--global-type-size-primary-label-xs)' }}>default (16px)</span>
+            <span style={{ fontFamily: 'var(--font-family-primary)', fontSize: 'var(--global-type-size-primary-label)' }}>
               Default Scale Label
             </span>
           </div>
           <div>
-            <span style={{ color: '#666', marginRight: '10px', fontSize: '12px' }}>sm (14px)</span>
-            <span style={{ fontFamily: 'var(--font-family-primary)', fontSize: 'var(--type-size-primary-scale-label-sm)' }}>
+            <span style={{ color: 'var(--global-color-neutral-gray-500)', marginRight: 'var(--global-spacing-sizing-10px)', fontSize: 'var(--global-type-size-primary-label-xs)' }}>sm (14px)</span>
+            <span style={{ fontFamily: 'var(--font-family-primary)', fontSize: 'var(--global-type-size-primary-label-sm)' }}>
               Small Scale Label
             </span>
           </div>
           <div>
-            <span style={{ color: '#666', marginRight: '10px', fontSize: '12px' }}>xs (12px)</span>
-            <span style={{ fontFamily: 'var(--font-family-primary)', fontSize: 'var(--type-size-primary-scale-label-xs)' }}>
+            <span style={{ color: 'var(--global-color-neutral-gray-500)', marginRight: 'var(--global-spacing-sizing-10px)', fontSize: 'var(--global-type-size-primary-label-xs)' }}>xs (12px)</span>
+            <span style={{ fontFamily: 'var(--font-family-primary)', fontSize: 'var(--global-type-size-primary-label-xs)' }}>
               X-Small Scale Label
             </span>
           </div>
           <div>
-            <span style={{ color: '#666', marginRight: '10px', fontSize: '12px' }}>xxs (10px)</span>
-            <span style={{ fontFamily: 'var(--font-family-primary)', fontSize: 'var(--type-size-primary-scale-label-xxs)' }}>
+            <span style={{ color: 'var(--global-color-neutral-gray-500)', marginRight: 'var(--global-spacing-sizing-10px)', fontSize: 'var(--global-type-size-primary-label-xs)' }}>xxs (10px)</span>
+            <span style={{ fontFamily: 'var(--font-family-primary)', fontSize: 'var(--global-type-size-primary-label-xxs)' }}>
               2X-Small Scale Label
             </span>
           </div>
