@@ -1,4 +1,4 @@
-import{j as e}from"./iframe-Ro1w_EQ1.js";import{useMDXComponents as a}from"./index-BGzEnwkj.js";import{M as r,C as l,a as i}from"./blocks-DtxHh3SB.js";import{I as t,S as c,C as d,G as h}from"./Icon.stories-C4FaeqaK.js";import"./preload-helper-Dp1pzeXC.js";import"./index-Cu0Y1KmY.js";import"./Person-Nc6LZ4no.js";function o(s){const n={a:"a",code:"code",h1:"h1",h2:"h2",h3:"h3",li:"li",ol:"ol",p:"p",pre:"pre",strong:"strong",ul:"ul",...a(),...s.components};return e.jsxs(e.Fragment,{children:[e.jsx(r,{of:t,title:"Foundations/Icon"}),`
+import{j as e}from"./iframe-DG8c2tTZ.js";import{useMDXComponents as a}from"./index-D21M31WC.js";import{M as l,C as r,a as s}from"./blocks-Ce0K7Q2Q.js";import{I as t,S as c,C as d,G as h}from"./Icon.stories-COdHNKzB.js";import"./preload-helper-Dp1pzeXC.js";import"./index-DrEtw_Pl.js";import"./Person-BMli7NZX.js";function o(i){const n={a:"a",code:"code",h1:"h1",h2:"h2",h3:"h3",li:"li",ol:"ol",p:"p",pre:"pre",strong:"strong",ul:"ul",...a(),...i.components};return e.jsxs(e.Fragment,{children:[e.jsx(l,{of:t,title:"Foundations/Icon"}),`
 `,e.jsx(n.h1,{id:"iconography",children:"Iconography"}),`
 `,e.jsx(n.p,{children:"Icons are visual representations of commands, features, directories, or common actions."}),`
 `,e.jsx(n.p,{children:"Icons are symbols designed to represent concepts or specific features. A company's iconography style can express a lot about a brand and its values."}),`
@@ -47,7 +47,7 @@ const MyComponent = () => (
 `,e.jsx(n.li,{children:"NPX Design System Curated Icons (Figma library)"}),`
 `]}),`
 `,e.jsx(n.p,{children:"The component accepts the following props:"}),`
-`,e.jsx(l,{}),`
+`,e.jsx(r,{}),`
 `,e.jsx(n.h2,{id:"visual-style",children:"Visual Style"}),`
 `,e.jsx(n.p,{children:'Our icons are available as "filled" or "outline" options, dependant on the scenario you may need them for. Where accessibility contrast is low, using "filled" icons will create a better visual distinction for those who may be colourblind or partially sighted.'}),`
 `,e.jsx(n.p,{children:e.jsx(n.strong,{children:"Simplicity & metaphor"})}),`
@@ -84,30 +84,30 @@ const MyComponent = () => (
 `,e.jsx(n.p,{children:"Like most elements in our system, icons use design tokens for their colours. Never use inaccessible colours for icons, especially if there is no label to help the user further parse it's meaning. There should be no use of hardcoded colours with icons – pick from the design system tokens available."}),`
 `,e.jsx(n.h2,{id:"size-and-spacing",children:"Size and spacing"}),`
 `,e.jsx(n.p,{children:"System icons are available at multiple sizes, depending of their usage:"}),`
-`,e.jsx(n.p,{children:e.jsx(n.strong,{children:"Default (16px) — use in most cases"})}),`
-`,e.jsxs(n.p,{children:["Default icons are 16 × 16px in size and are the ",e.jsx(n.strong,{children:"default"})," size in our system. This size balances harmoniously with our regular body text and the density of the apps NPX creates."]}),`
-`,e.jsx(n.p,{children:e.jsx(n.strong,{children:"Small (14px) — Use sparingly"})}),`
-`,e.jsx(n.p,{children:"Small icons are 14 × 14px in size and are downscaled from our 16px default. This size should be used for footnotes and terms that don't need prominent placement in our visual hierarchy. Outside of accompanying small text, limit usage of small icons to the following areas:"}),`
+`,e.jsx(n.p,{children:e.jsx(n.strong,{children:"Default (var(--global-spacing-sizing-16px)) — use in most cases"})}),`
+`,e.jsxs(n.p,{children:["Default icons are ",e.jsx(n.code,{children:"var(--global-spacing-sizing-16px)"})," × ",e.jsx(n.code,{children:"var(--global-spacing-sizing-16px)"})," in size and are the ",e.jsx(n.strong,{children:"default"})," size in our system. This size balances harmoniously with our regular body text and the density of the apps NPX creates."]}),`
+`,e.jsx(n.p,{children:e.jsx(n.strong,{children:"Small (var(--global-spacing-sizing-14px)) — Use sparingly"})}),`
+`,e.jsxs(n.p,{children:["Small icons are ",e.jsx(n.code,{children:"var(--global-spacing-sizing-14px)"})," × ",e.jsx(n.code,{children:"var(--global-spacing-sizing-14px)"})," in size and are downscaled from our ",e.jsx(n.code,{children:"var(--global-spacing-sizing-16px)"})," default. This size should be used for footnotes and terms that don't need prominent placement in our visual hierarchy. Outside of accompanying small text, limit usage of small icons to the following areas:"]}),`
 `,e.jsxs(n.ul,{children:[`
 `,e.jsx(n.li,{children:"Footnotes, terms and conditions"}),`
 `,e.jsx(n.li,{children:"Comments"}),`
 `,e.jsx(n.li,{children:"Metrics & data display"}),`
 `,e.jsx(n.li,{children:"Tables"}),`
 `]}),`
-`,e.jsx(n.p,{children:e.jsx(n.strong,{children:"X-Small (12px) — Use rarely"})}),`
-`,e.jsx(n.p,{children:"X-Small icons are 12 × 12px in size and are downscaled from our 16px default. This size should be used sparingly as they aren't as legible as 16px icons. Limit usage of 12px icons to accompanying X-Small text only."}),`
-`,e.jsx(n.p,{children:e.jsx(n.strong,{children:"2X-Small (10px) — Use rarely"})}),`
-`,e.jsx(n.p,{children:"2X-Small icons are 10 × 10px in size and are downscaled from our 16px default. This size should be used sparingly as they aren't as legible as 16px icons. Limit usage of 10px icons to accompanying 2X-Small text only."}),`
-`,e.jsx(n.p,{children:e.jsx(n.strong,{children:"Large (18px) — Use sparingly"})}),`
-`,e.jsx(n.p,{children:"Large icons are 18 × 18px in size and are upscaled from our 16px default. This size should be used sparingly as they can overwhelm the UI at times. Limit usage of 18px icons to the following areas:"}),`
+`,e.jsx(n.p,{children:e.jsx(n.strong,{children:"X-Small (var(--global-spacing-sizing-12px)) — Use rarely"})}),`
+`,e.jsxs(n.p,{children:["X-Small icons are ",e.jsx(n.code,{children:"var(--global-spacing-sizing-12px)"})," × ",e.jsx(n.code,{children:"var(--global-spacing-sizing-12px)"})," in size and are downscaled from our ",e.jsx(n.code,{children:"var(--global-spacing-sizing-16px)"})," default. This size should be used sparingly as they aren't as legible as ",e.jsx(n.code,{children:"var(--global-spacing-sizing-16px)"})," icons. Limit usage of ",e.jsx(n.code,{children:"var(--global-spacing-sizing-12px)"})," icons to accompanying X-Small text only."]}),`
+`,e.jsx(n.p,{children:e.jsx(n.strong,{children:"2X-Small (var(--global-spacing-sizing-10px)) — Use rarely"})}),`
+`,e.jsxs(n.p,{children:["2X-Small icons are ",e.jsx(n.code,{children:"var(--global-spacing-sizing-10px)"})," × ",e.jsx(n.code,{children:"var(--global-spacing-sizing-10px)"})," in size and are downscaled from our ",e.jsx(n.code,{children:"var(--global-spacing-sizing-16px)"})," default. This size should be used sparingly as they aren't as legible as ",e.jsx(n.code,{children:"var(--global-spacing-sizing-16px)"})," icons. Limit usage of ",e.jsx(n.code,{children:"var(--global-spacing-sizing-10px)"})," icons to accompanying 2X-Small text only."]}),`
+`,e.jsx(n.p,{children:e.jsx(n.strong,{children:"Large (var(--global-spacing-sizing-18px)) — Use sparingly"})}),`
+`,e.jsxs(n.p,{children:["Large icons are ",e.jsx(n.code,{children:"var(--global-spacing-sizing-18px)"})," × ",e.jsx(n.code,{children:"var(--global-spacing-sizing-18px)"})," in size and are upscaled from our ",e.jsx(n.code,{children:"var(--global-spacing-sizing-16px)"})," default. This size should be used sparingly as they can overwhelm the UI at times. Limit usage of ",e.jsx(n.code,{children:"var(--global-spacing-sizing-18px)"})," icons to the following areas:"]}),`
 `,e.jsxs(n.ul,{children:[`
 `,e.jsx(n.li,{children:"Metrics & data display"}),`
 `,e.jsx(n.li,{children:"Headings & subtitles"}),`
 `,e.jsx(n.li,{children:"Dashboards"}),`
 `]}),`
-`,e.jsx(n.p,{children:"By default, there is always at least 2px of padding around an icon, and in cases where the icon is not square itself, we default to the longest side and centre the icon on its shortest side. All padding values should be applied using the design tokens within the design system."}),`
-`,e.jsx(i,{of:c}),`
-`,e.jsx(i,{of:d}),`
+`,e.jsxs(n.p,{children:["By default, there is always at least ",e.jsx(n.code,{children:"var(--global-spacing-sizing-2px)"})," of padding around an icon, and in cases where the icon is not square itself, we default to the longest side and centre the icon on its shortest side. All padding values should be applied using the design tokens within the design system."]}),`
+`,e.jsx(s,{of:c}),`
+`,e.jsx(s,{of:d}),`
 `,e.jsx(n.h2,{id:"contribution--adding-new-icons",children:"Contribution & adding new icons"}),`
 `,e.jsxs(n.p,{children:["Currently, we use ",e.jsx(n.a,{href:"https://fonts.google.com/icons?icon.set=Material+Symbols",rel:"nofollow",children:"Material Symbols"})," as our default icon library. Material Symbols have an extensive variety of options available, which can be ",e.jsx(n.a,{href:"https://fonts.google.com/icons?icon.set=Material+Symbols",rel:"nofollow",children:"searched with Google Fonts."})]}),`
 `,e.jsx(n.p,{children:"In the rare event that Material Symbols does not have an adequate icon available, designers can contribute new ideas for icons. Before contributing a new icon, take look at our existing icons within Material Symbols and consider the following questions:"}),`
@@ -118,8 +118,8 @@ const MyComponent = () => (
 `]}),`
 `,e.jsxs(n.p,{children:["To contribute a new icon, please bring it to our ",e.jsx(n.a,{href:"https://teams.microsoft.com/meet/2968871577190?p=VGxQDsCWAp9iD0mK7p",rel:"nofollow",children:"Biweekly Design System meeting"})," for review with the whole team. If you need the calendar invite forwarding, please send the ",e.jsx(n.a,{href:"https://teams.cloud.microsoft/l/chat/19:c3c7d1170ba949228c4c6885a39882d2@thread.v2/conversations?context=%7B%22contextType%22%3A%22chat%22%7D",rel:"nofollow",children:"design team"})," a message on Teams."]}),`
 `,e.jsx(n.h2,{id:"common-icons-gallery",children:"Common Icons Gallery"}),`
-`,e.jsx(i,{of:h}),`
+`,e.jsx(s,{of:h}),`
 `,e.jsx(n.p,{children:"Related"}),`
 `,e.jsxs(n.ul,{children:[`
 `,e.jsx(n.li,{children:e.jsx(n.a,{href:"https://fonts.google.com/icons?icon.set=Material+Symbols",rel:"nofollow",children:"Browse all Material Symbols on Google"})}),`
-`]})]})}function y(s={}){const{wrapper:n}={...a(),...s.components};return n?e.jsx(n,{...s,children:e.jsx(o,{...s})}):o(s)}export{y as default};
+`]})]})}function y(i={}){const{wrapper:n}={...a(),...i.components};return n?e.jsx(n,{...i,children:e.jsx(o,{...i})}):o(i)}export{y as default};

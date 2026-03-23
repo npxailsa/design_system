@@ -1,4 +1,4 @@
-import{j as e}from"./iframe-Ro1w_EQ1.js";import{useMDXComponents as r}from"./index-BGzEnwkj.js";import{M as o,T as t}from"./blocks-DtxHh3SB.js";import"./preload-helper-Dp1pzeXC.js";import"./index-Cu0Y1KmY.js";function s(i){const n={code:"code",h1:"h1",h2:"h2",h3:"h3",p:"p",pre:"pre",strong:"strong",...r(),...i.components};return e.jsxs(e.Fragment,{children:[e.jsx(o,{title:"Tokens/Typography"}),`
+import{j as e}from"./iframe-DG8c2tTZ.js";import{useMDXComponents as a}from"./index-D21M31WC.js";import{M as s,T as r}from"./blocks-Ce0K7Q2Q.js";import"./preload-helper-Dp1pzeXC.js";import"./index-DrEtw_Pl.js";function t(i){const n={code:"code",h1:"h1",h2:"h2",h3:"h3",p:"p",pre:"pre",strong:"strong",...a(),...i.components};return e.jsxs(e.Fragment,{children:[e.jsx(s,{title:"Tokens/Typography"}),`
 `,e.jsx(n.h1,{id:"typography",children:"Typography"}),`
 `,e.jsx(n.p,{children:"Typography is a core element of our design language, providing a clear hierarchy, establishing tone, and creating readable, harmonious interfaces."}),`
 `,e.jsx(n.h2,{id:"design-tokens",children:"Design Tokens"}),`
@@ -56,9 +56,9 @@ Use brand aliases (`,e.jsx(n.code,{children:"var(--brand-font-primary)"}),") rat
 `,e.jsx(n.h2,{id:"size-and-spacing",children:"Size and spacing"}),`
 `,e.jsx(n.p,{children:"We use a systematic scale for labels, headings, and body text."}),`
 `,e.jsx(n.p,{children:e.jsx(n.strong,{children:"Label Primary Scale"})}),`
-`,e.jsx(t,{fontSizes:["10px","12px","14px","16px","18px"],fontWeight:400,sampleText:"Label Primary Scale",fontFamily:"var(--brand-font-primary)"}),`
+`,e.jsx(r,{fontSizes:["var(--global-type-size-primary-label-xxs)","var(--global-type-size-primary-label-xs)","var(--global-type-size-primary-label-sm)","var(--global-type-size-primary-label)","var(--global-type-size-primary-label-lg)"],fontWeight:400,sampleText:"Label Primary Scale",fontFamily:"var(--brand-font-primary)"}),`
 `,e.jsx(n.p,{children:e.jsx(n.strong,{children:"Heading Primary Scale"})}),`
-`,e.jsx(t,{fontSizes:["19px","24px","28px","32px","36px"],fontWeight:700,sampleText:"Heading Primary Scale",fontFamily:"var(--brand-font-primary)"}),`
+`,e.jsx(r,{fontSizes:["var(--global-type-size-primary-heading-5)","var(--global-type-size-primary-heading-4)","var(--global-type-size-primary-heading-3)","var(--global-type-size-primary-heading-2)","var(--global-type-size-primary-heading-1)"],fontWeight:700,sampleText:"Heading Primary Scale",fontFamily:"var(--brand-font-primary)"}),`
 `,e.jsx(n.h2,{id:"contribution",children:"Contribution"}),`
 `,e.jsx(n.p,{children:"If a new typographic scale or size variant is required for a novel use case, consider whether existing sizes can be adapted first."}),`
-`,e.jsx(n.p,{children:"To contribute a new typographic variant, please bring it to our Biweekly Design System meeting for review with the whole team."})]})}function p(i={}){const{wrapper:n}={...r(),...i.components};return n?e.jsx(n,{...i,children:e.jsx(s,{...i})}):s(i)}export{p as default};
+`,e.jsx(n.p,{children:"To contribute a new typographic variant, please bring it to our Biweekly Design System meeting for review with the whole team."})]})}function g(i={}){const{wrapper:n}={...a(),...i.components};return n?e.jsx(n,{...i,children:e.jsx(t,{...i})}):t(i)}export{g as default};
