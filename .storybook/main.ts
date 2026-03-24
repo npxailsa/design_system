@@ -29,7 +29,9 @@ const config: StorybookConfig = {
     ];
     config.optimizeDeps.exclude = [
       ...(config.optimizeDeps.exclude || []),
-      '@mui/icons-material'
+      '@mui/icons-material',
+      '@storybook/addon-docs',
+      '@storybook/addon-docs/blocks'
     ];
     config.build = config.build || {};
     config.build.commonjsOptions = {
