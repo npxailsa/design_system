@@ -6,7 +6,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import React, { useState } from 'react';
 
 const meta: Meta<typeof Placeholder> = {
-  title: 'Foundations/Placeholder',
+  title: 'Foundation/Placeholder',
   component: Placeholder,
   argTypes: {
     size: {
