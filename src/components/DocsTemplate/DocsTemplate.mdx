@@ -1,0 +1,80 @@
+{/* DocsTemplate.mdx */}
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Documentation/DocsTemplate/Usage Guide" />
+
+# DocsTemplate
+
+A reusable documentation page template system for the NPX Design System. Use it to create consistent, branded documentation pages for components, tokens, and guidelines.
+
+## Overview
+
+`DocsTemplate` is a composable component system. The root wrapper provides the page layout (white background, centered 944px column), and each sub-component handles a specific documentation pattern: headers, sections, token tables, principle cards, code blocks, Do/Don't comparisons, and more.
+
+## Sub-components
+
+| Sub-component | Purpose |
+|---|---|
+| `DocsTemplate.Header` | NPX logo + page title + subtitle |
+| `DocsTemplate.Section` | H1-level section with title, optional subtitle, and children |
+| `DocsTemplate.Subsection` | H4-level subsection with title and children |
+| `DocsTemplate.BodyText` | Styled paragraph text (`default` or `small` size) |
+| `DocsTemplate.TokenTable` | Blue-bordered card showing design token name/description rows |
+| `DocsTemplate.Principles` | Container for `PrincipleCard` items |
+| `DocsTemplate.PrincipleCard` | Numbered principle with title and body text |
+| `DocsTemplate.CodeBlock` | Gray background code snippet block |
+| `DocsTemplate.DosDonts` | Side-by-side Do/Don't comparison cards |
+| `DocsTemplate.BulletList` | Unordered or ordered list with optional link styling |
+| `DocsTemplate.RelatedLinks` | Section with external reference links |
+| `DocsTemplate.IconGallery` | Grid of icons with labels |
+| `DocsTemplate.SizeDemo` | Rows demonstrating icon/component sizes |
+| `DocsTemplate.Footer` | Separator line + copyright text |
+
+## Basic usage
+
+```tsx
+import { DocsTemplate } from './components/DocsTemplate';
+
+const MyDocsPage = () => (
+  <DocsTemplate>
+    <DocsTemplate.Header
+      title="Component Name"
+      subtitle="Short description of the component"
+    />
+
+    <DocsTemplate.BodyText>
+      Introductory paragraph about the component.
+    </DocsTemplate.BodyText>
+
+    <DocsTemplate.TokenTable
+      title="Design Tokens"
+      description="Tokens used by this component:"
+      tokens={[
+        { name: '--example-color', description: 'Primary colour' },
+        { name: '--example-size', description: 'Default size' },
+      ]}
+    />
+
+    <DocsTemplate.Section title="Guidelines">
+      <DocsTemplate.BodyText>
+        Guideline content goes here.
+      </DocsTemplate.BodyText>
+    </DocsTemplate.Section>
+
+    <DocsTemplate.Footer />
+  </DocsTemplate>
+);
+```
+
+## Design tokens used
+
+The template relies on existing design system tokens. Key tokens include:
+
+- **Typography**: `--font-family-primary` (F37 Ginger Pro), `--font-family-secondary` (Calibri)
+- **Colours**: `--global-color-base-black`, `--color-primary-blue-blue`, `--color-primary-blue-gray-blue-gray`, `--color-primary-seafoam-seafoam-100`, `--global-color-status-red`, `--global-color-status-dark-green`
+- **Spacing**: `--global-spacing-sizing-*`, `--global-spacing-radius-12px`
+- **Backgrounds**: `--color-primary-blue-blue-50` (principle cards, token tables), `--color-additional-gray-light-light-gray-default` (code blocks)
+
+## Reference implementation
+
+See the **Iconography** story under `Documentation/DocsTemplate` for a complete example of all sub-components working together to produce a full documentation page.

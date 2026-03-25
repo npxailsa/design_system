@@ -302,6 +302,31 @@
   --brand-text-main: var(--global-color-base-black);
   --brand-icon-main: var(--brand-secondary-400);
   --brand-border-main: var(--global-color-neutral-gray-200);
+
+  /* ==========================================================================
+     DOCS TEMPLATE LAYER: Tokens used by the documentation template
+     ========================================================================== */
+
+  /* Docs Template — Color (Echo Design System palette) */
+  --color-primary-blue-blue: #3776ce;
+  --color-primary-blue-blue-50: #dae6f7;
+  --color-primary-blue-gray-blue-gray: #304047;
+  --color-primary-blue-gray-blue-gray-50: #d6d9da;
+  --color-primary-blue-gray-blue-gray-300: #758084;
+  --color-primary-seafoam-seafoam-100: #dcece2;
+  --color-additional-gray-light-light-gray-default: #e8ebeb;
+
+  /* Docs Template — Shadow */
+  --shadow-shadow-xs-box-shadow: 0px 1px 4px 0px rgba(39, 39, 39, 0.05);
+  --shadow-shadow-sm-box-shadow: 0px 2px 4px 0px rgba(39, 39, 39, 0.10);
+
+  /* Docs Template — Gradient */
+  --skybluegradient: linear-gradient(
+    -66.26deg,
+    rgba(255, 255, 255, 1.00) 0.48%,
+    rgba(255, 255, 255, 0.60) 15.73%,
+    rgba(214, 240, 251, 1.00) 100%
+  );
 }
 
 /* ==========================================================================
