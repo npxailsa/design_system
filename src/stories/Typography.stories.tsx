@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { TypographyDocs } from './Tokens/TypographyDocs';
 
 const TypographyDemo = () => {
   return (
@@ -90,3 +91,14 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {};
+
+/**
+ * Full branded documentation page for Typography.
+ */
+export const Documentation: Story = {
+  render: () => <TypographyDocs />,
+  parameters: {
+    controls: { disable: true },
+    actions: { disable: true },
+  },
+};

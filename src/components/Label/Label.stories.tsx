@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import Label from './Label';
+import { LabelDocs } from './LabelDocs';
 import PersonIcon from '@mui/icons-material/Person';
 import MailIcon from '@mui/icons-material/Mail';
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -245,5 +246,16 @@ export const AllVariants: Story = {
 export const WithDropdown: Story = {
   args: {
     dropdown: true,
+  },
+};
+
+/**
+ * Full branded documentation page for the Label component.
+ */
+export const Documentation: Story = {
+  render: () => <LabelDocs />,
+  parameters: {
+    controls: { disable: true },
+    actions: { disable: true },
   },
 };

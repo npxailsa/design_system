@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import Placeholder, { PlaceholderProps } from './Placeholder';
+import { PlaceholderDocs } from './PlaceholderDocs';
 import FaceIcon from '@mui/icons-material/Face';
 import MailIcon from '@mui/icons-material/Mail';
 import React, { useState } from 'react';
@@ -231,4 +232,15 @@ export const AllVariants: Story = {
       <TypeMatrix type="number" />
     </div>
   ),
+};
+
+/**
+ * Full branded documentation page for the Placeholder component.
+ */
+export const Documentation: Story = {
+  render: () => <PlaceholderDocs />,
+  parameters: {
+    controls: { disable: true },
+    actions: { disable: true },
+  },
 };

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
 import Icon, { IconSize } from './Icon';
+import { IconDocs } from './IconDocs';
 import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -244,5 +245,16 @@ export const Gallery: Story = {
         ))}
       </div>
     );
+  },
+};
+
+/**
+ * Full branded documentation page for the Icon component.
+ */
+export const Documentation: Story = {
+  render: () => <IconDocs />,
+  parameters: {
+    controls: { disable: true },
+    actions: { disable: true },
   },
 };
