@@ -1,0 +1,12 @@
+.outlineIconsNameStarOutlineCategoryOutline,
+.outlineIconsNameStarOutlineCategoryOutline * {
+  box-sizing: border-box;
+}
+.outlineIconsNameStarOutlineCategoryOutline {
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}

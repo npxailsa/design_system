@@ -1,0 +1,1943 @@
+.docsTemplate,
+.docsTemplate * {
+  box-sizing: border-box;
+}
+.docsTemplate {
+  background: #ffffff;
+  height: 8003px;
+  position: relative;
+  overflow: hidden;
+}
+.docsContent {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 944px;
+  position: absolute;
+  left: 50%;
+  translate: -50%;
+  top: 40px;
+}
+.npxLogoPadding {
+  flex-shrink: 0;
+  width: 70px;
+  height: 70px;
+  position: relative;
+  aspect-ratio: 1;
+}
+.npxCubeLogoVariant7Instance {
+  width: 60.5px !important;
+  height: 94.29% !important;
+  position: absolute !important;
+  left: 50% !important;
+  translate: -50% !important;
+  bottom: 2.86% !important;
+  top: 2.86% !important;
+  aspect-ratio: 60.5/66 !important;
+}
+.titleSubtitle {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sizing-8px, 8px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.typography {
+  color: var(--color-base-black, #1c1c1c);
+  text-align: left;
+  font-family: var(--h1-h1-bold-font-family, "F37Ginger-Bold", sans-serif);
+  font-size: var(--h1-h1-bold-font-size, 36px);
+  line-height: var(--h1-h1-bold-line-height, 38px);
+  letter-spacing: var(--h1-h1-bold-letter-spacing, -1px);
+  font-weight: var(--h1-h1-bold-font-weight, 700);
+  position: relative;
+  align-self: stretch;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.iconsAreVisualRepresentationsOfCommandsFeaturesDirectoriesOrCommonActions {
+  color: var(--color-primary-blue-blue, #3776ce);
+  text-align: left;
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-lg-body-lg-regular-font-size, 18px);
+  line-height: var(--body-lg-body-lg-regular-line-height, 22px);
+  letter-spacing: var(--body-lg-body-lg-regular-letter-spacing, -0.15px);
+  font-weight: var(--body-lg-body-lg-regular-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.iconsAreSymbolsDesignedToRepresentConceptsOrSpecificFeaturesACompanySIconographyStyleCanExpressALotAboutABrandAndItsValuesOurIconographyHasRoundedCornersAndCurvesToAlignWithOurTypographyAndOtherRoundedUiElementsWhilstSquareEndTerminalsAddBoldnessToCreateAHarmoniousAppExpressionOfNpxSBroaderDesignLanguage {
+  color: var(--color-primary-blue-gray-blue-gray, #304047);
+  text-align: left;
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-lg-body-lg-regular-font-size, 18px);
+  line-height: var(--body-lg-body-lg-regular-line-height, 22px);
+  letter-spacing: var(--body-lg-body-lg-regular-letter-spacing, -0.15px);
+  font-weight: var(--body-lg-body-lg-regular-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.designTokes {
+  background: var(--color-primary-blue-blue-50, #dae6f7);
+  border-radius: var(--spacing-sizing-12px, 12px);
+  border-style: solid;
+  border-color: var(--color-primary-blue-blue, #3776ce);
+  border-width: 1px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sizing-12px, 12px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.titleSubtitle2 {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 896px;
+  position: relative;
+}
+.designTokens {
+  color: #000000;
+  text-align: left;
+  font-family: var(--h3-h3-bold-font-family, "F37Ginger-Bold", sans-serif);
+  font-size: var(--h3-h3-bold-font-size, 28px);
+  line-height: var(--h3-h3-bold-line-height, 28px);
+  letter-spacing: var(--h3-h3-bold-letter-spacing, -0.5px);
+  font-weight: var(--h3-h3-bold-font-weight, 700);
+  position: relative;
+  align-self: stretch;
+  height: 29px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.weUseTheFollowingTokensToRenderOurIcons {
+  color: #000000;
+  text-align: left;
+  font-family: var(
+    --body-body-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-body-regular-font-size, 16px);
+  line-height: var(--body-body-regular-line-height, 20px);
+  letter-spacing: var(--body-body-regular-letter-spacing, 0.05px);
+  font-weight: var(--body-body-regular-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  height: 29px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.codeBlock {
+  background: var(--color-additional-gray-light-light-gray-default, #e8ebeb);
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.tokenNameDescriptionBrandIconMainPrimaryIconColorIconSize2XSmall2XSmallIconSizeIconSizeXSmallXSmallIconSizeIconSizeSmallSmallIconSizeIconSizeDefaultDefaultIconSizeIconSizeLargeLargeIconSize {
+  color: #000000;
+  text-align: left;
+  font-family: "-", sans-serif;
+  font-size: var(--type-size-secondary-scale-body, 16px);
+  line-height: var(--type-line-height-label-lg, 24px);
+  letter-spacing: var(--type-letter-spacing-roboto-flex-body, 0.05px);
+  font-weight: var(--type-weight-default, 400);
+  position: relative;
+  width: 454px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.tokenNameDescriptionBrandIconMainPrimaryIconColorIconSize2XSmall2XSmallIconSizeIconSizeXSmallXSmallIconSizeIconSizeSmallSmallIconSizeIconSizeDefaultDefaultIconSizeIconSizeLargeLargeIconSizeSpan {
+  font-family: "GoogleSansCode-Bold", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.05px;
+  font-weight: 700;
+}
+.tokenNameDescriptionBrandIconMainPrimaryIconColorIconSize2XSmall2XSmallIconSizeIconSizeXSmallXSmallIconSizeIconSizeSmallSmallIconSizeIconSizeDefaultDefaultIconSizeIconSizeLargeLargeIconSizeSpan2 {
+  font-family: "GoogleSansCode-Regular", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.05px;
+  font-weight: 400;
+}
+.iconPrinciples {
+  padding: var(--spacing-sizing-16px, 16px) 0px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sizing-8px, 8px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.iconographyPrinciples {
+  color: var(--color-base-black, #1c1c1c);
+  text-align: left;
+  font-family: var(--h1-h1-bold-font-family, "F37Ginger-Bold", sans-serif);
+  font-size: var(--h1-h1-bold-font-size, 36px);
+  line-height: var(--h1-h1-bold-line-height, 38px);
+  letter-spacing: var(--h1-h1-bold-letter-spacing, -1px);
+  font-weight: var(--h1-h1-bold-font-weight, 700);
+  position: relative;
+  align-self: stretch;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.followTheseCommonDesignPrinciplesByUsingIconsInACohesiveUsefulAndLegibleWay {
+  color: var(--color-primary-blue-gray-blue-gray-300, #758084);
+  text-align: left;
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-lg-body-lg-regular-font-size, 18px);
+  line-height: var(--body-lg-body-lg-regular-line-height, 22px);
+  letter-spacing: var(--body-lg-body-lg-regular-letter-spacing, -0.15px);
+  font-weight: var(--body-lg-body-lg-regular-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.principles {
+  padding: var(--spacing-sizing-16px, 16px) var(--spacing-sizing-60px, 60px)
+    var(--spacing-sizing-16px, 16px) var(--spacing-sizing-16px, 16px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sizing-12px, 12px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.principle1 {
+  background: var(--color-primary-blue-blue-50, #dae6f7);
+  border-radius: var(--spacing-sizing-12px, 12px);
+  border-style: solid;
+  border-color: var(--color-primary-blue-blue, #3776ce);
+  border-width: 1px;
+  padding: var(--spacing-sizing-24px, 24px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sizing-8px, 8px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.oneDesignForUniversalUnderstanding {
+  color: var(--color-primary-blue-gray-blue-gray, #304047);
+  text-align: left;
+  font-family: var(
+    --h4-f37-ginger-pro-h4-med-font-family,
+    "F37Ginger-Regular",
+    sans-serif
+  );
+  font-size: var(--h4-f37-ginger-pro-h4-med-font-size, 24px);
+  line-height: var(--h4-f37-ginger-pro-h4-med-line-height, 24px);
+  letter-spacing: var(--h4-f37-ginger-pro-h4-med-letter-spacing, -0.25px);
+  font-weight: var(--h4-f37-ginger-pro-h4-med-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.designIconsThatUseWidelyRecognizedSymbolsAndEstablishedVisualMetaphorsEnsureIconsAreEasilyUnderstoodByADiverseAudienceByAvoidingSpecificCulturalOrLanguageAspects {
+  color: var(--color-primary-blue-gray-blue-gray, #304047);
+  text-align: left;
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-lg-body-lg-regular-font-size, 18px);
+  line-height: var(--body-lg-body-lg-regular-line-height, 22px);
+  letter-spacing: var(--body-lg-body-lg-regular-letter-spacing, -0.15px);
+  font-weight: var(--body-lg-body-lg-regular-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.principle2 {
+  background: var(--color-primary-blue-blue-50, #dae6f7);
+  border-radius: var(--spacing-sizing-12px, 12px);
+  border-style: solid;
+  border-color: var(--color-primary-blue-blue, #3776ce);
+  border-width: 1px;
+  padding: var(--spacing-sizing-24px, 24px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sizing-8px, 8px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.twoBalanceSimplicityAndDetailToCreateLegibility {
+  color: var(--color-primary-blue-gray-blue-gray, #304047);
+  text-align: left;
+  font-family: var(
+    --h4-f37-ginger-pro-h4-med-font-family,
+    "F37Ginger-Regular",
+    sans-serif
+  );
+  font-size: var(--h4-f37-ginger-pro-h4-med-font-size, 24px);
+  line-height: var(--h4-f37-ginger-pro-h4-med-line-height, 24px);
+  letter-spacing: var(--h4-f37-ginger-pro-h4-med-letter-spacing, -0.25px);
+  font-weight: var(--h4-f37-ginger-pro-h4-med-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.craftIconsThatAreSimpleEnoughForQuickRecognitionYetDetailedEnoughToConveyMeaningEffectivelyEvenAtSmallSizes {
+  color: var(--color-primary-blue-gray-blue-gray, #304047);
+  text-align: left;
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-lg-body-lg-regular-font-size, 18px);
+  line-height: var(--body-lg-body-lg-regular-line-height, 22px);
+  letter-spacing: var(--body-lg-body-lg-regular-letter-spacing, -0.15px);
+  font-weight: var(--body-lg-body-lg-regular-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.principle3 {
+  background: var(--color-primary-blue-blue-50, #dae6f7);
+  border-radius: var(--spacing-sizing-12px, 12px);
+  border-style: solid;
+  border-color: var(--color-primary-blue-blue, #3776ce);
+  border-width: 1px;
+  padding: var(--spacing-sizing-24px, 24px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sizing-8px, 8px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.threeMaintainVisualHarmony {
+  color: var(--color-primary-blue-gray-blue-gray, #304047);
+  text-align: left;
+  font-family: var(
+    --h4-f37-ginger-pro-h4-med-font-family,
+    "F37Ginger-Regular",
+    sans-serif
+  );
+  font-size: var(--h4-f37-ginger-pro-h4-med-font-size, 24px);
+  line-height: var(--h4-f37-ginger-pro-h4-med-line-height, 24px);
+  letter-spacing: var(--h4-f37-ginger-pro-h4-med-letter-spacing, -0.25px);
+  font-weight: var(--h4-f37-ginger-pro-h4-med-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.ensureIconsWorkTogetherAsACohesiveSystemByAdheringToConsistentSizeShapeAndStyleGuidelinesAcrossTheEntireSet {
+  color: var(--color-primary-blue-gray-blue-gray, #304047);
+  text-align: left;
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-lg-body-lg-regular-font-size, 18px);
+  line-height: var(--body-lg-body-lg-regular-line-height, 22px);
+  letter-spacing: var(--body-lg-body-lg-regular-letter-spacing, -0.15px);
+  font-weight: var(--body-lg-body-lg-regular-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.principle4 {
+  background: var(--color-primary-blue-blue-50, #dae6f7);
+  border-radius: var(--spacing-sizing-12px, 12px);
+  border-style: solid;
+  border-color: var(--color-primary-blue-blue, #3776ce);
+  border-width: 1px;
+  padding: var(--spacing-sizing-24px, 24px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sizing-8px, 8px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.fourUseIconsIntentionally {
+  color: var(--color-primary-blue-gray-blue-gray, #304047);
+  text-align: left;
+  font-family: var(
+    --h4-f37-ginger-pro-h4-med-font-family,
+    "F37Ginger-Regular",
+    sans-serif
+  );
+  font-size: var(--h4-f37-ginger-pro-h4-med-font-size, 24px);
+  line-height: var(--h4-f37-ginger-pro-h4-med-line-height, 24px);
+  letter-spacing: var(--h4-f37-ginger-pro-h4-med-letter-spacing, -0.25px);
+  font-weight: var(--h4-f37-ginger-pro-h4-med-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.iconsArePowerfulSignifiersThatCanAidComprehensionAndHelpWithNavigationTheyCanAlsoAddClutterOrConfusePeopleWhenUsedPoorlyUseTextLabelsToSupportIconsWhereverPossibleAndAvoidUsingIconsWhereTheyArenTNecessary {
+  color: var(--color-primary-blue-gray-blue-gray, #304047);
+  text-align: left;
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-lg-body-lg-regular-font-size, 18px);
+  line-height: var(--body-lg-body-lg-regular-line-height, 22px);
+  letter-spacing: var(--body-lg-body-lg-regular-letter-spacing, -0.15px);
+  font-weight: var(--body-lg-body-lg-regular-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.titleUsingIcons {
+  padding: var(--spacing-sizing-16px, 16px) 0px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sizing-8px, 8px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.usingIcons {
+  color: var(--color-base-black, #1c1c1c);
+  text-align: left;
+  font-family: var(--h1-h1-bold-font-family, "F37Ginger-Bold", sans-serif);
+  font-size: var(--h1-h1-bold-font-size, 36px);
+  line-height: var(--h1-h1-bold-line-height, 38px);
+  letter-spacing: var(--h1-h1-bold-letter-spacing, -1px);
+  font-weight: var(--h1-h1-bold-font-weight, 700);
+  position: relative;
+  align-self: stretch;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.toUseAnIconImportTheIconComponentAndASpecificIconFromMuiIconsMaterial {
+  text-align: left;
+  font-family: var(--type-typeface-calibri, "-", sans-serif);
+  font-size: var(--type-size-secondary-scale-body-lg, 18px);
+  line-height: var(--type-line-height-body-lg, 22px);
+  letter-spacing: var(--type-letter-spacing-secondary-scale-body-sm, -0.15px);
+  font-weight: var(--type-weight-semibold, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.toUseAnIconImportTheIconComponentAndASpecificIconFromMuiIconsMaterialSpan {
+  color: var(--color-primary-blue-gray-blue-gray-300, #758084);
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-lg-body-lg-regular-font-size, 18px);
+  line-height: var(--body-lg-body-lg-regular-line-height, 22px);
+  letter-spacing: var(--body-lg-body-lg-regular-letter-spacing, -0.15px);
+  font-weight: var(--body-lg-body-lg-regular-font-weight, 400);
+}
+.toUseAnIconImportTheIconComponentAndASpecificIconFromMuiIconsMaterialSpan2 {
+  color: var(--color-base-black, #1c1c1c);
+  font-family: "IbmPlexMono-SemiBold", sans-serif;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: -0.15px;
+  font-weight: 600;
+}
+.codeBlock2 {
+  background: var(--color-additional-gray-light-light-gray-default, #e8ebeb);
+  padding: var(--spacing-sizing-24px, 24px);
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.importIconFromComponentsIconImportHomeIconFromMuiIconsMaterialHomeConstMyComponentIconIconHomeIconColorPrimarySizeDefault {
+  color: #000000;
+  text-align: left;
+  font-family: "GoogleSansCode-Regular", sans-serif;
+  font-size: var(--type-size-secondary-scale-body, 16px);
+  line-height: var(--type-line-height-label-lg, 24px);
+  letter-spacing: var(--type-letter-spacing-roboto-flex-body, 0.05px);
+  font-weight: var(--type-weight-light, 400);
+  position: relative;
+  width: 454px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.youCanFindAllAvailableIconsInTheMaterialUiIconSearchSimplyFindTheNameOfTheIconAndImportItFromMuiIconsMaterialForExample {
+  text-align: left;
+  font-family: var(--type-typeface-calibri, "-", sans-serif);
+  font-size: var(--type-size-secondary-scale-body-lg, 18px);
+  line-height: var(--type-line-height-body-lg, 22px);
+  letter-spacing: var(--type-letter-spacing-secondary-scale-body-sm, -0.15px);
+  font-weight: var(--type-weight-semibold, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.youCanFindAllAvailableIconsInTheMaterialUiIconSearchSimplyFindTheNameOfTheIconAndImportItFromMuiIconsMaterialForExampleSpan {
+  color: var(--color-primary-blue-gray-blue-gray, #304047);
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-lg-body-lg-regular-font-size, 18px);
+  line-height: var(--body-lg-body-lg-regular-line-height, 22px);
+  letter-spacing: var(--body-lg-body-lg-regular-letter-spacing, -0.15px);
+  font-weight: var(--body-lg-body-lg-regular-font-weight, 400);
+}
+.youCanFindAllAvailableIconsInTheMaterialUiIconSearchSimplyFindTheNameOfTheIconAndImportItFromMuiIconsMaterialForExampleSpan2 {
+  color: var(--color-primary-blue-blue, #3776ce);
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-lg-body-lg-regular-font-size, 18px);
+  line-height: var(--body-lg-body-lg-regular-line-height, 22px);
+  letter-spacing: var(--body-lg-body-lg-regular-letter-spacing, -0.15px);
+  font-weight: var(--body-lg-body-lg-regular-font-weight, 400);
+  text-decoration: underline;
+}
+.youCanFindAllAvailableIconsInTheMaterialUiIconSearchSimplyFindTheNameOfTheIconAndImportItFromMuiIconsMaterialForExampleSpan3 {
+  color: var(--color-primary-blue-gray-blue-gray, #304047);
+  font-family: "IbmPlexMono-SemiBold", sans-serif;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: -0.15px;
+  font-weight: 600;
+}
+.homeImportHomeIconFromMuiIconsMaterialHomeFavoriteImportFavoriteIconFromMuiIconsMaterialFavoriteSettingsImportSettingsIconFromMuiIconsMaterialSettings {
+  color: #000000;
+  text-align: left;
+  font-family: "GoogleSansCode-Regular", sans-serif;
+  font-size: var(--type-size-secondary-scale-body, 16px);
+  line-height: var(--type-line-height-title, 36px);
+  letter-spacing: var(--type-letter-spacing-roboto-flex-body, 0.05px);
+  font-weight: var(--type-weight-light, 400);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.ourIconsAreAvailableAsAComponentReactViaMuiIconsWithinFigmaAndInOurDocumentationViewMuiSymbolsIconsMuiMaterialGitHubComponentUsageMuiSymbolsFigmaPluginNpxDesignSystemCuratedIconsFigmaLibrary {
+  text-align: left;
+  font-family: var(--type-typeface-calibri, "Calibri-Regular", sans-serif);
+  font-size: var(--type-size-secondary-scale-body-lg, 18px);
+  line-height: var(--type-line-height-body-lg, 0undefined);
+  letter-spacing: var(--type-letter-spacing-secondary-scale-body-sm, -0.15px);
+  font-weight: var(--type-weight-default, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.ourIconsAreAvailableAsAComponentReactViaMuiIconsWithinFigmaAndInOurDocumentationViewMuiSymbolsIconsMuiMaterialGitHubComponentUsageMuiSymbolsFigmaPluginNpxDesignSystemCuratedIconsFigmaLibrarySpan {
+  color: var(--color-primary-blue-gray-blue-gray, #304047);
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-lg-body-lg-regular-font-size, 18px);
+  line-height: var(--body-lg-body-lg-regular-line-height, 22px);
+  letter-spacing: var(--body-lg-body-lg-regular-letter-spacing, -0.15px);
+  font-weight: var(--body-lg-body-lg-regular-font-weight, 400);
+}
+.ourIconsAreAvailableAsAComponentReactViaMuiIconsWithinFigmaAndInOurDocumentationViewMuiSymbolsIconsMuiMaterialGitHubComponentUsageMuiSymbolsFigmaPluginNpxDesignSystemCuratedIconsFigmaLibrarySpan2 {
+  color: var(--color-primary-blue-blue, #3776ce);
+  list-style-type: disc;
+  padding-left: 1em;
+  font-family: "Calibri-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 26px;
+  letter-spacing: -0.15px;
+  font-weight: 400;
+  text-decoration: underline;
+}
+.visualStyle {
+  padding: var(--spacing-sizing-16px, 16px) 0px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sizing-8px, 8px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.visualStyle2 {
+  color: var(--color-base-black, #1c1c1c);
+  text-align: left;
+  font-family: var(--h1-h1-bold-font-family, "F37Ginger-Bold", sans-serif);
+  font-size: var(--h1-h1-bold-font-size, 36px);
+  line-height: var(--h1-h1-bold-line-height, 38px);
+  letter-spacing: var(--h1-h1-bold-letter-spacing, -1px);
+  font-weight: var(--h1-h1-bold-font-weight, 700);
+  position: relative;
+  align-self: stretch;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.ourIconsAreAvailableAsFilledOrOutlineOptionsDependantOnTheScenarioYouMayNeedThemForWhereAccessibilityContrastIsLowUsingFilledIconsWillCreateABetterVisualDistinctionForThoseWhoMayBeColourblindOrPartiallySighted {
+  color: var(--color-primary-blue-gray-blue-gray-300, #758084);
+  text-align: left;
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-lg-body-lg-regular-font-size, 18px);
+  line-height: var(--body-lg-body-lg-regular-line-height, 22px);
+  letter-spacing: var(--body-lg-body-lg-regular-letter-spacing, -0.15px);
+  font-weight: var(--body-lg-body-lg-regular-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.subtitle {
+  padding: var(--spacing-sizing-8px, 8px) 0px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sizing-8px, 8px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.simplicityMetaphor {
+  color: var(--color-primary-blue-gray-blue-gray, #304047);
+  text-align: left;
+  font-family: var(
+    --h4-f37-ginger-pro-h4-med-font-family,
+    "F37Ginger-Regular",
+    sans-serif
+  );
+  font-size: var(--h4-f37-ginger-pro-h4-med-font-size, 24px);
+  line-height: var(--h4-f37-ginger-pro-h4-med-line-height, 24px);
+  letter-spacing: var(--h4-f37-ginger-pro-h4-med-letter-spacing, -0.25px);
+  font-weight: var(--h4-f37-ginger-pro-h4-med-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.whereverPossibleUseIconsFromTheCuratedIconsFigmaFileToMaintainConsistencyAndReinforceVisualConceptsAcrossExperiencesSoTheyBecomeFamiliarToUsers {
+  color: var(--color-primary-blue-gray-blue-gray, #304047);
+  text-align: left;
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-lg-body-lg-regular-font-size, 18px);
+  line-height: var(--body-lg-body-lg-regular-line-height, 22px);
+  letter-spacing: var(--body-lg-body-lg-regular-letter-spacing, -0.15px);
+  font-weight: var(--body-lg-body-lg-regular-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.simplicity {
+  padding: var(--spacing-sizing-12px, 12px) 0px var(--spacing-sizing-24px, 24px)
+    0px;
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.do {
+  background: var(--color-base-white, #ffffff);
+  border-style: solid;
+  border-color: var(--color-primary-blue-gray-blue-gray-50, #d6d9da);
+  border-width: 1px;
+  padding: var(--spacing-sizing-16px, 16px) 0px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1;
+  position: relative;
+}
+.outlineIconsInstance {
+  width: 120px !important;
+  height: 120px !important;
+}
+.bottom {
+  background: var(--color-primary-seafoam-seafoam-100, #dcece2);
+  border-style: solid;
+  border-color: var(--color-primary-blue-gray-blue-gray-50, #d6d9da);
+  border-width: 1px;
+  padding: var(--spacing-sizing-12px, 12px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sizing-8px, 8px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.do2 {
+  color: var(--color-status-dark-green, #227f1a);
+  text-align: left;
+  font-family: var(
+    --h4-f37-ginger-pro-h4-med-font-family,
+    "F37Ginger-Regular",
+    sans-serif
+  );
+  font-size: var(--h4-f37-ginger-pro-h4-med-font-size, 24px);
+  line-height: var(--h4-f37-ginger-pro-h4-med-line-height, 24px);
+  letter-spacing: var(--h4-f37-ginger-pro-h4-med-letter-spacing, -0.25px);
+  font-weight: var(--h4-f37-ginger-pro-h4-med-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.useAnExistingIconOrVisualMetaphorForConsistencyAndClarityWhereverPossible {
+  color: var(--color-base-black, #1c1c1c);
+  text-align: left;
+  font-family: var(
+    --body-body-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-body-regular-font-size, 16px);
+  line-height: var(--body-body-regular-line-height, 20px);
+  letter-spacing: var(--body-body-regular-letter-spacing, 0.05px);
+  font-weight: var(--body-body-regular-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.outlineIconsInstance2 {
+  width: 120px !important;
+  height: 120px !important;
+}
+.bottom2 {
+  background: var(--color-status-red-light, #fbebeb);
+  border-style: solid;
+  border-color: var(--color-primary-blue-gray-blue-gray-50, #d6d9da);
+  border-width: 1px;
+  padding: var(--spacing-sizing-12px, 12px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sizing-8px, 8px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.donT {
+  color: var(--color-status-red, #ce2031);
+  text-align: left;
+  font-family: var(
+    --h4-f37-ginger-pro-h4-med-font-family,
+    "F37Ginger-Regular",
+    sans-serif
+  );
+  font-size: var(--h4-f37-ginger-pro-h4-med-font-size, 24px);
+  line-height: var(--h4-f37-ginger-pro-h4-med-line-height, 24px);
+  letter-spacing: var(--h4-f37-ginger-pro-h4-med-letter-spacing, -0.25px);
+  font-weight: var(--h4-f37-ginger-pro-h4-med-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.createANewIconIfASuitableOneAlreadyExistsToRepresentTheSameMetaphor {
+  color: var(--color-base-black, #1c1c1c);
+  text-align: left;
+  font-family: var(
+    --body-body-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-body-regular-font-size, 16px);
+  line-height: var(--body-body-regular-line-height, 20px);
+  letter-spacing: var(--body-body-regular-letter-spacing, 0.05px);
+  font-weight: var(--body-body-regular-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.simpleShapes {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.useSimplifiedShapesWithTheMinimumDetailRequiredToExpressAMetaphorTheGoalOfAnIconIsToAidClearQuickComprehensionExcessDetailCanDistractAndDoTheOppositeTheSmallSizeOfIconsMakesItHarderToSeeFineDetailsSoWeOptimiseForSimplicityAndLegibility {
+  color: var(--color-primary-blue-gray-blue-gray, #304047);
+  text-align: left;
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-lg-body-lg-regular-font-size, 18px);
+  line-height: var(--body-lg-body-lg-regular-line-height, 22px);
+  letter-spacing: var(--body-lg-body-lg-regular-letter-spacing, -0.15px);
+  font-weight: var(--body-lg-body-lg-regular-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.frame3 {
+  padding: var(--spacing-sizing-12px, 12px) 0px var(--spacing-sizing-24px, 24px)
+    0px;
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.outlineIconsInstance3 {
+  width: 120px !important;
+  height: 120px !important;
+}
+.useSimpleShapesWithTheMinimumDetailRequiredToExpressAMetaphorWithClarityAndLegibility {
+  color: var(--color-base-black, #1c1c1c);
+  text-align: left;
+  font-family: var(
+    --body-body-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-body-regular-font-size, 16px);
+  line-height: var(--body-body-regular-line-height, 20px);
+  letter-spacing: var(--body-body-regular-letter-spacing, 0.05px);
+  font-weight: var(--body-body-regular-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.outlineIconsInstance4 {
+  width: 120px !important;
+  height: 120px !important;
+}
+.donTAddExcessDetailUnlessNecessaryThisCanDistractAndBeChallengingToReadAtASmallSizes {
+  color: var(--color-base-black, #1c1c1c);
+  text-align: left;
+  font-family: var(
+    --body-body-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-body-regular-font-size, 16px);
+  line-height: var(--body-body-regular-line-height, 20px);
+  letter-spacing: var(--body-body-regular-letter-spacing, 0.05px);
+  font-weight: var(--body-body-regular-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.metaphors {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.whenCreatingANewIconUseSymbolsThatClearlyRepresentAConceptTryToUseMetaphorsWithClearAndEstablishedAssociationsWhereverPossible {
+  color: var(--color-primary-blue-gray-blue-gray, #304047);
+  text-align: left;
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-lg-body-lg-regular-font-size, 18px);
+  line-height: var(--body-lg-body-lg-regular-line-height, 22px);
+  letter-spacing: var(--body-lg-body-lg-regular-letter-spacing, -0.15px);
+  font-weight: var(--body-lg-body-lg-regular-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.frame4 {
+  padding: var(--spacing-sizing-12px, 12px) 0px var(--spacing-sizing-24px, 24px)
+    0px;
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.do3 {
+  background: var(--color-base-white, #ffffff);
+  border-style: solid;
+  border-color: var(--color-primary-blue-gray-blue-gray-50, #d6d9da);
+  border-width: 1px;
+  padding: var(--spacing-sizing-16px, 16px) 0px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sizing-8px, 8px);
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1;
+  position: relative;
+}
+.outlineIconsInstance5 {
+  width: 120px !important;
+  height: 120px !important;
+}
+.settings {
+  color: var(--color-primary-blue-gray-blue-gray-300, #758084);
+  text-align: center;
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-lg-body-lg-regular-font-size, 18px);
+  line-height: var(--body-lg-body-lg-regular-line-height, 22px);
+  letter-spacing: var(--body-lg-body-lg-regular-letter-spacing, -0.15px);
+  font-weight: var(--body-lg-body-lg-regular-font-weight, 400);
+  position: relative;
+  width: 259px;
+  height: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.outlineIconsInstance6 {
+  width: 120px !important;
+  height: 120px !important;
+}
+.perspective {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.perspective2 {
+  padding: var(--spacing-sizing-8px, 8px) 0px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sizing-8px, 8px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.perspectiveAngles {
+  color: var(--color-primary-blue-gray-blue-gray, #304047);
+  text-align: left;
+  font-family: var(
+    --h4-f37-ginger-pro-h4-med-font-family,
+    "F37Ginger-Regular",
+    sans-serif
+  );
+  font-size: var(--h4-f37-ginger-pro-h4-med-font-size, 24px);
+  line-height: var(--h4-f37-ginger-pro-h4-med-line-height, 24px);
+  letter-spacing: var(--h4-f37-ginger-pro-h4-med-letter-spacing, -0.25px);
+  font-weight: var(--h4-f37-ginger-pro-h4-med-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.shapesShouldAppearStraightOnOrFromAFull90DegreeProfileDonTUseDiagonalPerspectivesToCreate3DShapesBecauseTheseCanBeHardToDiscernAtAGlanceEspeciallyForPeopleWithSomeCognitiveDisabilities {
+  color: var(--color-primary-blue-gray-blue-gray, #304047);
+  text-align: left;
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-lg-body-lg-regular-font-size, 18px);
+  line-height: var(--body-lg-body-lg-regular-line-height, 22px);
+  letter-spacing: var(--body-lg-body-lg-regular-letter-spacing, -0.15px);
+  font-weight: var(--body-lg-body-lg-regular-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.perspective3 {
+  padding: var(--spacing-sizing-12px, 12px) 0px var(--spacing-sizing-12px, 12px)
+    0px;
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.do4 {
+  background: var(--color-base-white, #ffffff);
+  border-style: solid;
+  border-color: var(--color-primary-blue-gray-blue-gray-50, #d6d9da);
+  border-width: 1px;
+  padding: var(--spacing-sizing-16px, 16px) 0px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sizing-8px, 8px);
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+}
+.outlineIconsInstance7 {
+  width: 120px !important;
+  height: 120px !important;
+}
+.bottom3 {
+  background: var(--color-primary-seafoam-seafoam-100, #dcece2);
+  border-style: solid;
+  border-color: var(--color-primary-blue-gray-blue-gray-50, #d6d9da);
+  border-width: 1px;
+  padding: var(--spacing-sizing-12px, 12px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sizing-8px, 8px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+}
+.tryToUseShapesThatAppearStraightOnWithoutDimensionality {
+  color: var(--color-base-black, #1c1c1c);
+  text-align: left;
+  font-family: var(
+    --body-body-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-body-regular-font-size, 16px);
+  line-height: var(--body-body-regular-line-height, 20px);
+  letter-spacing: var(--body-body-regular-letter-spacing, 0.05px);
+  font-weight: var(--body-body-regular-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.outlineIconsInstance8 {
+  width: 120px !important;
+  height: 120px !important;
+}
+.donTUseDiagonalPerspectivesToCreate3DShapesAsTheyCanBeHardToDiscernAtAGlance {
+  color: var(--color-base-black, #1c1c1c);
+  text-align: left;
+  font-family: var(
+    --body-body-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-body-regular-font-size, 16px);
+  line-height: var(--body-body-regular-line-height, 20px);
+  letter-spacing: var(--body-body-regular-letter-spacing, 0.05px);
+  font-weight: var(--body-body-regular-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.sizeSpacing {
+  padding: var(--spacing-sizing-16px, 16px) 0px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sizing-8px, 8px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.sizeSpacing2 {
+  color: var(--color-base-black, #1c1c1c);
+  text-align: left;
+  font-family: var(--h1-h1-bold-font-family, "F37Ginger-Bold", sans-serif);
+  font-size: var(--h1-h1-bold-font-size, 36px);
+  line-height: var(--h1-h1-bold-line-height, 38px);
+  letter-spacing: var(--h1-h1-bold-letter-spacing, -1px);
+  font-weight: var(--h1-h1-bold-font-weight, 700);
+  position: relative;
+  align-self: stretch;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.systemIconsAreAvailableAtMultipleSizesDependingOfTheirUsage {
+  color: var(--color-base-black, #1c1c1c);
+  text-align: left;
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-lg-body-lg-regular-font-size, 18px);
+  line-height: var(--body-lg-body-lg-regular-line-height, 22px);
+  letter-spacing: var(--body-lg-body-lg-regular-letter-spacing, -0.15px);
+  font-weight: var(--body-lg-body-lg-regular-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.default {
+  padding: var(--spacing-sizing-12px, 12px) 0px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.frame7 {
+  padding: var(--spacing-sizing-8px, 8px) 0px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sizing-8px, 8px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.default16PxUseInMostCases {
+  color: var(--color-primary-blue-gray-blue-gray, #304047);
+  text-align: left;
+  font-family: var(
+    --h4-f37-ginger-pro-h4-med-font-family,
+    "F37Ginger-Regular",
+    sans-serif
+  );
+  font-size: var(--h4-f37-ginger-pro-h4-med-font-size, 24px);
+  line-height: var(--h4-f37-ginger-pro-h4-med-line-height, 24px);
+  letter-spacing: var(--h4-f37-ginger-pro-h4-med-letter-spacing, -0.25px);
+  font-weight: var(--h4-f37-ginger-pro-h4-med-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.defaultIconsAre1616PxInSizeAndAreTheDefaultSizeInOurSystemThisSizeBalancesHarmoniouslyWithOurRegularBodyTextAndTheDensityOfTheAppsNpxCreates {
+  color: var(--color-base-black, #1c1c1c);
+  text-align: left;
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-lg-body-lg-regular-font-size, 18px);
+  line-height: var(--body-lg-body-lg-regular-line-height, 22px);
+  letter-spacing: var(--body-lg-body-lg-regular-letter-spacing, -0.15px);
+  font-weight: var(--body-lg-body-lg-regular-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.small {
+  padding: var(--spacing-sizing-8px, 8px) 0px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.small14PxUseSparingly {
+  color: var(--color-primary-blue-gray-blue-gray, #304047);
+  text-align: left;
+  font-family: var(
+    --h4-f37-ginger-pro-h4-med-font-family,
+    "F37Ginger-Regular",
+    sans-serif
+  );
+  font-size: var(--h4-f37-ginger-pro-h4-med-font-size, 24px);
+  line-height: var(--h4-f37-ginger-pro-h4-med-line-height, 24px);
+  letter-spacing: var(--h4-f37-ginger-pro-h4-med-letter-spacing, -0.25px);
+  font-weight: var(--h4-f37-ginger-pro-h4-med-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.smallIconsAre1414PxInSizeAndAreDownscaledFromOur16PxDefaultThisSizeShouldBeUsedForFootnotesAndTermsThatDonTNeedProminentPlacementInOurVisualHierarchyOutsideOfAccompanyingSmallTextLimitUsageOfSmallIconsToTheFollowingAreasFootnotesTermsAndConditionsCommentsMetricsDataDisplayTables {
+  color: var(--color-base-black, #1c1c1c);
+  text-align: left;
+  font-family: var(--type-typeface-calibri, "Calibri-Regular", sans-serif);
+  font-size: var(--type-size-secondary-scale-body-lg, 18px);
+  line-height: var(--type-line-height-body-lg, 0undefined);
+  letter-spacing: var(--type-letter-spacing-secondary-scale-body-sm, -0.15px);
+  font-weight: var(--type-weight-default, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.smallIconsAre1414PxInSizeAndAreDownscaledFromOur16PxDefaultThisSizeShouldBeUsedForFootnotesAndTermsThatDonTNeedProminentPlacementInOurVisualHierarchyOutsideOfAccompanyingSmallTextLimitUsageOfSmallIconsToTheFollowingAreasFootnotesTermsAndConditionsCommentsMetricsDataDisplayTablesSpan {
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-lg-body-lg-regular-font-size, 18px);
+  line-height: var(--body-lg-body-lg-regular-line-height, 22px);
+  letter-spacing: var(--body-lg-body-lg-regular-letter-spacing, -0.15px);
+  font-weight: var(--body-lg-body-lg-regular-font-weight, 400);
+}
+.smallIconsAre1414PxInSizeAndAreDownscaledFromOur16PxDefaultThisSizeShouldBeUsedForFootnotesAndTermsThatDonTNeedProminentPlacementInOurVisualHierarchyOutsideOfAccompanyingSmallTextLimitUsageOfSmallIconsToTheFollowingAreasFootnotesTermsAndConditionsCommentsMetricsDataDisplayTablesSpan2 {
+  list-style-type: disc;
+  padding-left: 1em;
+  font-family: "Calibri-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 26px;
+  letter-spacing: -0.15px;
+  font-weight: 400;
+}
+.xSmall {
+  padding: var(--spacing-sizing-8px, 8px) 0px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.xSmall12PxUseRarely {
+  color: var(--color-primary-blue-gray-blue-gray, #304047);
+  text-align: left;
+  font-family: var(
+    --h4-f37-ginger-pro-h4-med-font-family,
+    "F37Ginger-Regular",
+    sans-serif
+  );
+  font-size: var(--h4-f37-ginger-pro-h4-med-font-size, 24px);
+  line-height: var(--h4-f37-ginger-pro-h4-med-line-height, 24px);
+  letter-spacing: var(--h4-f37-ginger-pro-h4-med-letter-spacing, -0.25px);
+  font-weight: var(--h4-f37-ginger-pro-h4-med-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.xSmallIconsAre1212PxInSizeAndAreDownscaledFromOur16PxDefaultThisSizeShouldBeUsedSparinglyAsTheyArenTAsLegibleAs16PxIconsLimitUsageOf12PxIconsToAccompanyingXSmallTextOnly {
+  color: var(--color-base-black, #1c1c1c);
+  text-align: left;
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-lg-body-lg-regular-font-size, 18px);
+  line-height: var(--body-lg-body-lg-regular-line-height, 22px);
+  letter-spacing: var(--body-lg-body-lg-regular-letter-spacing, -0.15px);
+  font-weight: var(--body-lg-body-lg-regular-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.twoXSmall {
+  padding: var(--spacing-sizing-8px, 8px) 0px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.twoXSmall10PxUseRarely {
+  color: var(--color-primary-blue-gray-blue-gray, #304047);
+  text-align: left;
+  font-family: var(
+    --h4-f37-ginger-pro-h4-med-font-family,
+    "F37Ginger-Regular",
+    sans-serif
+  );
+  font-size: var(--h4-f37-ginger-pro-h4-med-font-size, 24px);
+  line-height: var(--h4-f37-ginger-pro-h4-med-line-height, 24px);
+  letter-spacing: var(--h4-f37-ginger-pro-h4-med-letter-spacing, -0.25px);
+  font-weight: var(--h4-f37-ginger-pro-h4-med-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.twoXSmallIconsAre1010PxInSizeAndAreDownscaledFromOur16PxDefaultThisSizeShouldBeUsedSparinglyAsTheyArenTAsLegibleAs16PxIconsLimitUsageOf10PxIconsToAccompanying2XSmallTextOnly {
+  color: var(--color-base-black, #1c1c1c);
+  text-align: left;
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-lg-body-lg-regular-font-size, 18px);
+  line-height: var(--body-lg-body-lg-regular-line-height, 22px);
+  letter-spacing: var(--body-lg-body-lg-regular-letter-spacing, -0.15px);
+  font-weight: var(--body-lg-body-lg-regular-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.large {
+  padding: var(--spacing-sizing-8px, 8px) 0px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.large18PxUseSparingly {
+  color: var(--color-primary-blue-gray-blue-gray, #304047);
+  text-align: left;
+  font-family: var(
+    --h4-f37-ginger-pro-h4-med-font-family,
+    "F37Ginger-Regular",
+    sans-serif
+  );
+  font-size: var(--h4-f37-ginger-pro-h4-med-font-size, 24px);
+  line-height: var(--h4-f37-ginger-pro-h4-med-line-height, 24px);
+  letter-spacing: var(--h4-f37-ginger-pro-h4-med-letter-spacing, -0.25px);
+  font-weight: var(--h4-f37-ginger-pro-h4-med-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.largeIconsAre1818PxInSizeAndAreUpscaledFromOur16PxDefaultThisSizeShouldBeUsedSparinglyAsTheyCanOverwhelmTheUiAtTimesLimitUsageOf18PxIconsToTheFollowingAreasMetricsDataDisplayHeadingsSubtitlesDashboards {
+  color: var(--color-base-black, #1c1c1c);
+  text-align: left;
+  font-family: var(--type-typeface-calibri, "Calibri-Regular", sans-serif);
+  font-size: var(--type-size-secondary-scale-body-lg, 18px);
+  line-height: var(--type-line-height-body-lg, 0undefined);
+  letter-spacing: var(--type-letter-spacing-secondary-scale-body-sm, -0.15px);
+  font-weight: var(--type-weight-default, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.largeIconsAre1818PxInSizeAndAreUpscaledFromOur16PxDefaultThisSizeShouldBeUsedSparinglyAsTheyCanOverwhelmTheUiAtTimesLimitUsageOf18PxIconsToTheFollowingAreasMetricsDataDisplayHeadingsSubtitlesDashboardsSpan {
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-lg-body-lg-regular-font-size, 18px);
+  line-height: var(--body-lg-body-lg-regular-line-height, 22px);
+  letter-spacing: var(--body-lg-body-lg-regular-letter-spacing, -0.15px);
+  font-weight: var(--body-lg-body-lg-regular-font-weight, 400);
+}
+.largeIconsAre1818PxInSizeAndAreUpscaledFromOur16PxDefaultThisSizeShouldBeUsedSparinglyAsTheyCanOverwhelmTheUiAtTimesLimitUsageOf18PxIconsToTheFollowingAreasMetricsDataDisplayHeadingsSubtitlesDashboardsSpan2 {
+  list-style-type: disc;
+  padding-left: 1em;
+  font-family: "Calibri-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 26px;
+  letter-spacing: -0.15px;
+  font-weight: 400;
+}
+.size {
+  flex-shrink: 0;
+  width: 944px;
+  height: 246px;
+  position: relative;
+  object-fit: cover;
+  aspect-ratio: 944/246;
+}
+.byDefaultThereIsAlwaysAtLeast2PxOfPaddingAroundAnIconAndInCasesWhereTheIconIsNotSquareItselfWeDefaultToTheLongestSideAndCentreTheIconOnItsShortestSideAllPaddingValuesShouldBeAppliedUsingTheDesignTokensWithinTheDesignSystem {
+  color: var(--color-primary-blue-gray-blue-gray, #304047);
+  text-align: left;
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-lg-body-lg-regular-font-size, 18px);
+  line-height: var(--body-lg-body-lg-regular-line-height, 22px);
+  letter-spacing: var(--body-lg-body-lg-regular-letter-spacing, -0.15px);
+  font-weight: var(--body-lg-body-lg-regular-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.shapes {
+  padding: var(--spacing-sizing-16px, 16px) 0px var(--spacing-sizing-8px, 8px)
+    0px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sizing-8px, 8px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.shapes2 {
+  color: var(--color-base-black, #1c1c1c);
+  text-align: left;
+  font-family: var(--h1-h1-bold-font-family, "F37Ginger-Bold", sans-serif);
+  font-size: var(--h1-h1-bold-font-size, 36px);
+  line-height: var(--h1-h1-bold-line-height, 38px);
+  letter-spacing: var(--h1-h1-bold-letter-spacing, -1px);
+  font-weight: var(--h1-h1-bold-font-weight, 700);
+  position: relative;
+  align-self: stretch;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.iconsUseConsistentShapesToEnsureAConsistentLookAndFeelAcrossTheSetMuiDesignedEachShapeForOpticalScaleAndBalanceSoThatTallerThinnerShapesDonTFeelLikeADifferentScaleFromShorterOrWiderShapes {
+  color: var(--color-base-black, #1c1c1c);
+  text-align: left;
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-lg-body-lg-regular-font-size, 18px);
+  line-height: var(--body-lg-body-lg-regular-line-height, 22px);
+  letter-spacing: var(--body-lg-body-lg-regular-letter-spacing, -0.15px);
+  font-weight: var(--body-lg-body-lg-regular-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.shapes3 {
+  border-radius: var(--spacing-sizing-20px, 20px);
+  border-style: solid;
+  border-color: var(--color-primary-blue-gray-blue-gray-50, #d6d9da);
+  border-width: 1px;
+  flex-shrink: 0;
+  width: 944px;
+  height: 246px;
+  position: relative;
+  object-fit: cover;
+  aspect-ratio: 944/246;
+}
+.cornerCurves {
+  padding: var(--spacing-sizing-8px, 8px) 0px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.cornerCurves2 {
+  color: var(--color-primary-blue-gray-blue-gray, #304047);
+  text-align: left;
+  font-family: var(
+    --h4-f37-ginger-pro-h4-med-font-family,
+    "F37Ginger-Regular",
+    sans-serif
+  );
+  font-size: var(--h4-f37-ginger-pro-h4-med-font-size, 24px);
+  line-height: var(--h4-f37-ginger-pro-h4-med-line-height, 24px);
+  letter-spacing: var(--h4-f37-ginger-pro-h4-med-letter-spacing, -0.25px);
+  font-weight: var(--h4-f37-ginger-pro-h4-med-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.curvedEdgesLendToAFriendlierFeelButInternalEdgesRemainSharpToMaintainClarity {
+  color: var(--color-base-black, #1c1c1c);
+  text-align: left;
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-lg-body-lg-regular-font-size, 18px);
+  line-height: var(--body-lg-body-lg-regular-line-height, 22px);
+  letter-spacing: var(--body-lg-body-lg-regular-letter-spacing, -0.15px);
+  font-weight: var(--body-lg-body-lg-regular-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.star {
+  padding: var(--spacing-sizing-12px, 12px) 0px var(--spacing-sizing-12px, 12px)
+    0px;
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.outlineIconsInstance9 {
+  width: 120px !important;
+  height: 120px !important;
+}
+.picture13 {
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+  position: relative;
+  object-fit: cover;
+  aspect-ratio: 1;
+}
+.colour {
+  padding: var(--spacing-sizing-16px, 16px) 0px var(--spacing-sizing-8px, 8px)
+    0px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sizing-8px, 8px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.colour2 {
+  color: var(--color-base-black, #1c1c1c);
+  text-align: left;
+  font-family: var(--h1-h1-bold-font-family, "F37Ginger-Bold", sans-serif);
+  font-size: var(--h1-h1-bold-font-size, 36px);
+  line-height: var(--h1-h1-bold-line-height, 38px);
+  letter-spacing: var(--h1-h1-bold-letter-spacing, -1px);
+  font-weight: var(--h1-h1-bold-font-weight, 700);
+  position: relative;
+  align-self: stretch;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.likeMostElementsInOurSystemIconsUseDesignTokensForTheirColoursNeverUseInaccessibleColoursForIconsEspeciallyIfThereIsNoLabelToHelpTheUserFurtherParseItSMeaningThereShouldBeNoUseOfHardcodedColoursWithIconsPickFromTheDesignSystemTokensAvailable {
+  color: var(--color-base-black, #1c1c1c);
+  text-align: left;
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-lg-body-lg-regular-font-size, 18px);
+  line-height: var(--body-lg-body-lg-regular-line-height, 22px);
+  letter-spacing: var(--body-lg-body-lg-regular-letter-spacing, -0.15px);
+  font-weight: var(--body-lg-body-lg-regular-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.contributions {
+  padding: var(--spacing-sizing-16px, 16px) 0px var(--spacing-sizing-8px, 8px)
+    0px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sizing-8px, 8px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.contributionAddingNewIcons {
+  color: var(--color-base-black, #1c1c1c);
+  text-align: left;
+  font-family: var(--h1-h1-bold-font-family, "F37Ginger-Bold", sans-serif);
+  font-size: var(--h1-h1-bold-font-size, 36px);
+  line-height: var(--h1-h1-bold-line-height, 38px);
+  letter-spacing: var(--h1-h1-bold-letter-spacing, -1px);
+  font-weight: var(--h1-h1-bold-font-weight, 700);
+  position: relative;
+  align-self: stretch;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.currentlyWeUseMaterialSymbolsAsOurDefaultIconLibraryMaterialSymbolsHaveAnExtensiveVarietyOfOptionsAvailableWhichCanBeSearchedWithGoogleFontsInTheRareEventThatMaterialSymbolsDoesNotHaveAnAdequateIconAvailableDesignersCanContributeNewIdeasForIconsBeforeContributingANewIconTakeLookAtOurExistingIconsWithinMaterialSymbolsAndConsiderTheFollowingQuestionsIsTheIconIMContributingVerySimilarToAnotherSystemIconCouldMyIconBeConfusedWithAnotherConceptThatExistsInAppsDoesThisDesignReallyRequireAnIconAtAllWouldATextLabelButtonOrOtherApproachProvideAClearerAffordanceForCustomerUnderstanding {
+  text-align: left;
+  font-family: var(--type-typeface-calibri, "-", sans-serif);
+  font-size: var(--type-size-secondary-scale-body-lg, 18px);
+  line-height: var(--type-line-height-body-lg, 0undefined);
+  letter-spacing: var(--type-letter-spacing-secondary-scale-body-sm, -0.15px);
+  font-weight: var(--type-weight-default, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.currentlyWeUseMaterialSymbolsAsOurDefaultIconLibraryMaterialSymbolsHaveAnExtensiveVarietyOfOptionsAvailableWhichCanBeSearchedWithGoogleFontsInTheRareEventThatMaterialSymbolsDoesNotHaveAnAdequateIconAvailableDesignersCanContributeNewIdeasForIconsBeforeContributingANewIconTakeLookAtOurExistingIconsWithinMaterialSymbolsAndConsiderTheFollowingQuestionsIsTheIconIMContributingVerySimilarToAnotherSystemIconCouldMyIconBeConfusedWithAnotherConceptThatExistsInAppsDoesThisDesignReallyRequireAnIconAtAllWouldATextLabelButtonOrOtherApproachProvideAClearerAffordanceForCustomerUnderstandingSpan {
+  color: var(--color-base-black, #1c1c1c);
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-lg-body-lg-regular-font-size, 18px);
+  line-height: var(--body-lg-body-lg-regular-line-height, 22px);
+  letter-spacing: var(--body-lg-body-lg-regular-letter-spacing, -0.15px);
+  font-weight: var(--body-lg-body-lg-regular-font-weight, 400);
+}
+.currentlyWeUseMaterialSymbolsAsOurDefaultIconLibraryMaterialSymbolsHaveAnExtensiveVarietyOfOptionsAvailableWhichCanBeSearchedWithGoogleFontsInTheRareEventThatMaterialSymbolsDoesNotHaveAnAdequateIconAvailableDesignersCanContributeNewIdeasForIconsBeforeContributingANewIconTakeLookAtOurExistingIconsWithinMaterialSymbolsAndConsiderTheFollowingQuestionsIsTheIconIMContributingVerySimilarToAnotherSystemIconCouldMyIconBeConfusedWithAnotherConceptThatExistsInAppsDoesThisDesignReallyRequireAnIconAtAllWouldATextLabelButtonOrOtherApproachProvideAClearerAffordanceForCustomerUnderstandingSpan2 {
+  color: var(--color-primary-blue-blue, #3776ce);
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-lg-body-lg-regular-font-size, 18px);
+  line-height: var(--body-lg-body-lg-regular-line-height, 22px);
+  letter-spacing: var(--body-lg-body-lg-regular-letter-spacing, -0.15px);
+  font-weight: var(--body-lg-body-lg-regular-font-weight, 400);
+}
+.currentlyWeUseMaterialSymbolsAsOurDefaultIconLibraryMaterialSymbolsHaveAnExtensiveVarietyOfOptionsAvailableWhichCanBeSearchedWithGoogleFontsInTheRareEventThatMaterialSymbolsDoesNotHaveAnAdequateIconAvailableDesignersCanContributeNewIdeasForIconsBeforeContributingANewIconTakeLookAtOurExistingIconsWithinMaterialSymbolsAndConsiderTheFollowingQuestionsIsTheIconIMContributingVerySimilarToAnotherSystemIconCouldMyIconBeConfusedWithAnotherConceptThatExistsInAppsDoesThisDesignReallyRequireAnIconAtAllWouldATextLabelButtonOrOtherApproachProvideAClearerAffordanceForCustomerUnderstandingSpan3 {
+  color: var(--color-primary-blue-blue, #3776ce);
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-lg-body-lg-regular-font-size, 18px);
+  line-height: var(--body-lg-body-lg-regular-line-height, 22px);
+  letter-spacing: var(--body-lg-body-lg-regular-letter-spacing, -0.15px);
+  font-weight: var(--body-lg-body-lg-regular-font-weight, 400);
+  text-decoration: underline;
+}
+.currentlyWeUseMaterialSymbolsAsOurDefaultIconLibraryMaterialSymbolsHaveAnExtensiveVarietyOfOptionsAvailableWhichCanBeSearchedWithGoogleFontsInTheRareEventThatMaterialSymbolsDoesNotHaveAnAdequateIconAvailableDesignersCanContributeNewIdeasForIconsBeforeContributingANewIconTakeLookAtOurExistingIconsWithinMaterialSymbolsAndConsiderTheFollowingQuestionsIsTheIconIMContributingVerySimilarToAnotherSystemIconCouldMyIconBeConfusedWithAnotherConceptThatExistsInAppsDoesThisDesignReallyRequireAnIconAtAllWouldATextLabelButtonOrOtherApproachProvideAClearerAffordanceForCustomerUnderstandingSpan4 {
+  color: var(--color-base-black, #1c1c1c);
+  list-style-type: decimal;
+  padding-left: 1em;
+  font-family: "Calibri-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 26px;
+  letter-spacing: -0.15px;
+  font-weight: 400;
+}
+.toContributeANewIconPleaseBringItToOurBiweeklyDesignSystemMeetingForReviewWithTheWholeTeamIfYouNeedTheCalendarInviteForwardingPleaseSendTheDesignTeamAMessageOnTeams {
+  text-align: left;
+  font-family: var(--body-lg-body-lg-regular-font-family, "-", sans-serif);
+  font-size: var(--body-lg-body-lg-regular-font-size, 18px);
+  line-height: var(--body-lg-body-lg-regular-line-height, 22px);
+  letter-spacing: var(--body-lg-body-lg-regular-letter-spacing, -0.15px);
+  font-weight: var(--body-lg-body-lg-regular-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.toContributeANewIconPleaseBringItToOurBiweeklyDesignSystemMeetingForReviewWithTheWholeTeamIfYouNeedTheCalendarInviteForwardingPleaseSendTheDesignTeamAMessageOnTeamsSpan {
+  color: var(--color-base-black, #1c1c1c);
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+}
+.toContributeANewIconPleaseBringItToOurBiweeklyDesignSystemMeetingForReviewWithTheWholeTeamIfYouNeedTheCalendarInviteForwardingPleaseSendTheDesignTeamAMessageOnTeamsSpan2 {
+  color: var(--color-primary-blue-blue, #3776ce);
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  text-decoration: underline;
+}
+.relatedLinks {
+  padding: var(--spacing-sizing-8px, 8px) 0px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.relatedLinks2 {
+  color: var(--color-primary-blue-gray-blue-gray, #304047);
+  text-align: left;
+  font-family: var(
+    --h4-f37-ginger-pro-h4-med-font-family,
+    "F37Ginger-Regular",
+    sans-serif
+  );
+  font-size: var(--h4-f37-ginger-pro-h4-med-font-size, 24px);
+  line-height: var(--h4-f37-ginger-pro-h4-med-line-height, 24px);
+  letter-spacing: var(--h4-f37-ginger-pro-h4-med-letter-spacing, -0.25px);
+  font-weight: var(--h4-f37-ginger-pro-h4-med-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.browseMaterialSymbolsOnGoogleFonts {
+  color: var(--color-primary-blue-blue, #3776ce);
+  text-align: left;
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-lg-body-lg-regular-font-size, 18px);
+  line-height: var(--body-lg-body-lg-regular-line-height, 22px);
+  letter-spacing: var(--body-lg-body-lg-regular-letter-spacing, -0.15px);
+  font-weight: var(--body-lg-body-lg-regular-font-weight, 400);
+  text-decoration: underline;
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.commonIcons {
+  padding: var(--spacing-sizing-32px, 32px) 0px var(--spacing-sizing-8px, 8px)
+    0px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sizing-8px, 8px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.commonIconsGallery {
+  color: var(--color-base-black, #1c1c1c);
+  text-align: left;
+  font-family: var(--h1-h1-bold-font-family, "F37Ginger-Bold", sans-serif);
+  font-size: var(--h1-h1-bold-font-size, 36px);
+  line-height: var(--h1-h1-bold-line-height, 38px);
+  letter-spacing: var(--h1-h1-bold-letter-spacing, -1px);
+  font-weight: var(--h1-h1-bold-font-weight, 700);
+  position: relative;
+  align-self: stretch;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.picture14 {
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 1151.27px;
+  position: relative;
+  object-fit: cover;
+  aspect-ratio: 944/1151.27;
+}
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sizing-12px, 12px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.line1 {
+  margin-top: -1px;
+  border-style: solid;
+  border-color: var(--color-additional-gray-light-light-gray-200, #d2d7d7);
+  border-width: 1px 0 0 0;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 0px;
+  position: relative;
+}
+.two026NpxDesignSystem {
+  color: var(--color-base-black, #1c1c1c);
+  text-align: center;
+  font-family: var(
+    --body-lg-body-lg-regular-font-family,
+    "Calibri-Regular",
+    sans-serif
+  );
+  font-size: var(--body-lg-body-lg-regular-font-size, 18px);
+  line-height: var(--body-lg-body-lg-regular-line-height, 22px);
+  letter-spacing: var(--body-lg-body-lg-regular-letter-spacing, -0.15px);
+  font-weight: var(--body-lg-body-lg-regular-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
