@@ -1,0 +1,246 @@
+/* ==========================================================================
+   Toast Component Styles
+   Colours are driven by CSS custom properties set inline on the root element.
+   ========================================================================== */
+
+/* ── Enter animation (slide in from right + fade) ── */
+@keyframes toast-enter {
+  from {
+    opacity: 0;
+    transform: translateX(var(--global-spacing-sizing-24px));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ── Exit animation (fade out + shrink) ── */
+@keyframes toast-exit {
+  from {
+    opacity: 1;
+    transform: scale(1);
+    max-height: 200px;
+    margin-bottom: var(--toast-gap);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.96);
+    max-height: 0;
+    margin-bottom: 0;
+  }
+}
+
+/* ── Root element ── */
+
+.toast {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  min-width: var(--toast-min-width);
+  max-width: var(--toast-max-width);
+  width: 100%;
+  background: var(--toast-colour-bg);
+  border: var(--toast-border-width) solid var(--toast-colour-border);
+  border-radius: var(--toast-border-radius);
+  box-shadow: var(--toast-shadow);
+  font-family: var(--toast-font-family);
+  letter-spacing: var(--toast-letter-spacing);
+  box-sizing: border-box;
+  will-change: transform, opacity;
+}
+
+/* ── Visibility states ── */
+
+.toast--visible {
+  animation: toast-enter var(--toast-enter-duration) var(--toast-animation-easing) both;
+}
+
+.toast--hidden {
+  animation: toast-exit var(--toast-exit-duration) ease both;
+  pointer-events: none;
+}
+
+/* ── Size variants ── */
+
+.toast--small {
+  padding: var(--toast-padding-small);
+}
+
+.toast--default {
+  padding: var(--toast-padding-default);
+}
+
+.toast--large {
+  padding: var(--toast-padding-large);
+}
+
+/* ── Inner content row ── */
+
+.toast__content {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--toast-content-gap);
+  width: 100%;
+}
+
+/* ── Icon + text group ── */
+
+.toast__icon-group {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--toast-icon-text-gap);
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Leading icon ── */
+
+.toast__leading-icon {
+  flex-shrink: 0;
+}
+
+/* ── Text stack ── */
+
+.toast__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--toast-text-gap);
+  min-width: 0;
+}
+
+/* ── Title ── */
+
+.toast__title {
+  color: var(--toast-colour-title);
+  font-weight: var(--toast-title-weight);
+}
+
+.toast--small .toast__title {
+  font-size: var(--toast-title-size-small);
+  line-height: var(--toast-title-line-height-small);
+}
+
+.toast--default .toast__title {
+  font-size: var(--toast-title-size-default);
+  line-height: var(--toast-title-line-height-default);
+}
+
+.toast--large .toast__title {
+  font-size: var(--toast-title-size-large);
+  line-height: var(--toast-title-line-height-large);
+}
+
+/* ── Description ── */
+
+.toast__description {
+  color: var(--toast-description-color);
+  font-weight: var(--toast-desc-weight);
+}
+
+.toast--small .toast__description {
+  font-size: var(--toast-desc-size-small);
+  line-height: var(--toast-desc-line-height-small);
+}
+
+.toast--default .toast__description {
+  font-size: var(--toast-desc-size-default);
+  line-height: var(--toast-desc-line-height-default);
+}
+
+.toast--large .toast__description {
+  font-size: var(--toast-desc-size-large);
+  line-height: var(--toast-desc-line-height-large);
+}
+
+/* ── Close button ── */
+
+.toast__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: var(--global-spacing-sizing-8px);
+  margin: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  line-height: 0;
+  transition: opacity 150ms ease;
+}
+
+.toast__close:hover {
+  opacity: 0.8;
+}
+
+.toast__close:focus-visible {
+  outline: var(--global-spacing-stroke-2px) solid var(--toast-colour-title);
+  outline-offset: var(--global-spacing-sizing-2px);
+  border-radius: var(--global-spacing-radius-2px);
+}
+
+/* ==========================================================================
+   Toast Container (portal host, manages stacking)
+   ========================================================================== */
+
+.toast-container {
+  position: fixed;
+  z-index: var(--toast-z-index);
+  display: flex;
+  flex-direction: column;
+  gap: var(--toast-gap);
+  pointer-events: none;
+}
+
+.toast-container > * {
+  pointer-events: auto;
+}
+
+/* ── Position variants ── */
+
+.toast-container--top-right {
+  top: var(--toast-offset-y);
+  right: var(--toast-offset-x);
+  align-items: flex-end;
+}
+
+.toast-container--top-left {
+  top: var(--toast-offset-y);
+  left: var(--toast-offset-x);
+  align-items: flex-start;
+}
+
+.toast-container--top-center {
+  top: var(--toast-offset-y);
+  left: 50%;
+  transform: translateX(-50%);
+  align-items: center;
+}
+
+.toast-container--bottom-right {
+  bottom: var(--toast-offset-y);
+  right: var(--toast-offset-x);
+  align-items: flex-end;
+  flex-direction: column-reverse;
+}
+
+.toast-container--bottom-left {
+  bottom: var(--toast-offset-y);
+  left: var(--toast-offset-x);
+  align-items: flex-start;
+  flex-direction: column-reverse;
+}
+
+.toast-container--bottom-center {
+  bottom: var(--toast-offset-y);
+  left: 50%;
+  transform: translateX(-50%);
+  align-items: center;
+  flex-direction: column-reverse;
+}
