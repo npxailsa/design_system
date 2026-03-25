@@ -1,0 +1,30 @@
+.stepper {
+  display: flex;
+  align-items: flex-start;
+}
+
+.stepper--horizontal {
+  flex-direction: row;
+}
+
+.stepper--vertical {
+  flex-direction: column;
+}
+
+.connector {
+  flex-shrink: 0;
+}
+
+.connector--horizontal {
+  width: var(--global-spacing-sizing-32px);
+  height: var(--stepper-connector-width);
+  background-color: var(--stepper-connector-color);
+  align-self: flex-start;
+}
+
+.connector--vertical {
+  height: var(--global-spacing-sizing-32px);
+  width: var(--stepper-connector-width);
+  background-color: var(--stepper-connector-color);
+  align-self: flex-start;
+}

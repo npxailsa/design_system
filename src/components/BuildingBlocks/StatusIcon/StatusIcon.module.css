@@ -1,0 +1,62 @@
+.statusIcon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--status-icon-gap-default);
+  min-width: 30px;
+  max-width: 200px;
+  box-sizing: border-box;
+}
+
+.statusIcon--small {
+  gap: var(--status-icon-gap-small);
+}
+
+.statusIcon--large {
+  gap: var(--status-icon-gap-large);
+}
+
+.circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  aspect-ratio: 1;
+}
+
+.label {
+  font-family: var(--status-icon-font-family);
+  letter-spacing: var(--status-icon-label-letter-spacing);
+  font-weight: var(--status-icon-label-weight-current);
+  color: var(--status-icon-label-color);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.label--small {
+  font-size: var(--status-icon-label-size-small);
+  line-height: var(--status-icon-label-line-height-small);
+}
+
+.label--default {
+  font-size: var(--status-icon-label-size-default);
+  line-height: var(--status-icon-label-line-height-default);
+}
+
+.label--large {
+  font-size: var(--status-icon-label-size-large);
+  line-height: var(--status-icon-label-line-height-large);
+}
+
+.label--past {
+  font-weight: var(--status-icon-label-weight-past);
+  color: var(--status-icon-label-color-past);
+}
+
+.label--disabled {
+  color: var(--status-icon-label-color-disabled);
+}

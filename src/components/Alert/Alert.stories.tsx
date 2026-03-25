@@ -5,7 +5,7 @@ import type { AlertColour, AlertSize } from './Alert';
 import React from 'react';
 
 const meta: Meta<typeof Alert> = {
-  title: 'Components/Alert',
+  title: 'Atoms/Alert',
   component: Alert,
   parameters: {
     docs: {

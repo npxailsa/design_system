@@ -35,16 +35,31 @@
   /* Status Colors */
   --global-color-status-red: #ce2031;
   --global-color-status-red-light: #fbebeb;
+  --global-color-status-rose: #fcabb3;
   --global-color-status-green: #96f78d;
   --global-color-status-dark-green: #227f1a;
   --global-color-status-green-light: #f2fff1;
   --global-color-status-orange: #f4a403;
   --global-color-status-dark-orange: #d07c06;
   --global-color-status-orange-light: #fef4da;
+  --global-color-status-orange-light-border: #fce4a5;
   --global-color-status-info-blue: #366f97;
   --global-color-status-info-blue-light: #f5fcff;
+  --global-color-status-edit: #b1cbde;
   --global-color-status-purple: #5d2c82;
   --global-color-status-purple-light: #fbf7ff;
+  --global-color-status-note-mid: #dfbff8;
+
+  /* Primary Colors */
+  --global-color-primary-sky-blue: #0ba7ea;
+  --global-color-primary-sky-blue-50: #f4fcff;
+  --global-color-primary-sky-blue-200: #b6e5f9;
+  --global-color-primary-sky-blue-300: #85d3f5;
+  --global-color-primary-blue: #2f42bd;
+  --global-color-primary-blue-25: #f2f7ff;
+  --global-color-primary-blue-200: #a3c0eb;
+  --global-color-primary-seafoam-300: #aed2bc;
+  --global-color-secondary-blue-gray-200: #9eacb5;
 
   /* ==========================================================================
      GLOBAL LAYER: Spacing / Sizing (Scale)
@@ -610,6 +625,112 @@
   --toast-border-white: var(--alert-border-white);
   --toast-title-white: var(--alert-title-white);
   --toast-icon-white: var(--alert-icon-white);
+}
+
+/* ==========================================================================
+   COMPONENT LAYER: StatusIcon (Component-Specific Tokens)
+   ========================================================================== */
+:root {
+  /* StatusIcon sizing */
+  --status-icon-size-small: 22px;
+  --status-icon-size-default: 36px;
+  --status-icon-size-large: 48px;
+
+  /* StatusIcon inner icon sizing */
+  --status-icon-inner-small: var(--global-spacing-sizing-14px);
+  --status-icon-inner-default: 22px;
+  --status-icon-inner-large: var(--global-spacing-sizing-28px);
+
+  /* StatusIcon padding */
+  --status-icon-padding-small: var(--global-spacing-sizing-2px);
+  --status-icon-padding-default: var(--global-spacing-sizing-4px);
+  --status-icon-padding-large: var(--global-spacing-sizing-6px);
+
+  /* StatusIcon border */
+  --status-icon-border-radius: var(--global-spacing-radius-full);
+  --status-icon-border-width-current: var(--global-spacing-stroke-2px);
+  --status-icon-border-width-future: var(--global-spacing-stroke-1px);
+  --status-icon-border-width-past: var(--global-spacing-stroke-1px);
+
+  /* StatusIcon label font */
+  --status-icon-font-family: var(--brand-font-primary);
+  --status-icon-label-size-small: var(--global-type-size-primary-label-xxs);
+  --status-icon-label-size-default: var(--global-type-size-primary-label-xs);
+  --status-icon-label-size-large: var(--global-type-size-primary-label-sm);
+  --status-icon-label-line-height-small: var(--global-type-line-height-label-xxs);
+  --status-icon-label-line-height-default: var(--global-type-line-height-label-xs);
+  --status-icon-label-line-height-large: var(--global-type-line-height-label-sm);
+  --status-icon-label-letter-spacing: var(--global-type-letter-spacing-primary-label-xs);
+  --status-icon-label-weight-current: var(--global-type-weight-light);
+  --status-icon-label-weight-future: var(--global-type-weight-light);
+  --status-icon-label-weight-past: var(--global-type-weight-default);
+  --status-icon-label-color: var(--global-color-neutral-gray-700);
+  --status-icon-label-color-past: var(--global-color-base-black);
+  --status-icon-label-color-disabled: var(--global-color-neutral-gray-400);
+
+  /* StatusIcon gap */
+  --status-icon-gap-small: var(--global-spacing-sizing-6px);
+  --status-icon-gap-default: var(--global-spacing-sizing-8px);
+  --status-icon-gap-large: var(--global-spacing-sizing-12px);
+
+  /* StatusIcon icon opacity */
+  --status-icon-opacity-current: 0.5;
+  --status-icon-opacity-future: 0.5;
+  --status-icon-opacity-past: 1;
+
+  /* StatusIcon type colors — warning */
+  --status-icon-color-warning: var(--global-color-status-orange);
+  --status-icon-bg-warning-future: var(--global-color-status-orange-light);
+  --status-icon-border-warning-future: var(--global-color-status-orange-light-border);
+
+  /* StatusIcon type colors — error */
+  --status-icon-color-error: var(--global-color-status-red);
+  --status-icon-bg-error-future: var(--global-color-status-red-light);
+  --status-icon-border-error-future: var(--global-color-status-rose);
+
+  /* StatusIcon type colors — complete */
+  --status-icon-color-complete: var(--global-color-status-dark-green);
+  --status-icon-bg-complete-future: var(--global-color-status-green-light);
+  --status-icon-border-complete-future: var(--global-color-primary-seafoam-300);
+
+  /* StatusIcon type colors — locked */
+  --status-icon-color-locked: var(--global-color-secondary-blue-gray);
+  --status-icon-bg-locked-future: var(--global-color-neutral-gray-50);
+  --status-icon-border-locked-future: var(--global-color-secondary-blue-gray-200);
+
+  /* StatusIcon type colors — comments */
+  --status-icon-color-comments: var(--global-color-primary-sky-blue);
+  --status-icon-bg-comments-future: var(--global-color-primary-sky-blue-50);
+  --status-icon-border-comments-future: var(--global-color-primary-sky-blue-300);
+
+  /* StatusIcon type colors — notification */
+  --status-icon-color-notification: var(--global-color-primary-blue);
+  --status-icon-bg-notification-future: var(--global-color-primary-blue-25);
+  --status-icon-border-notification-future: var(--global-color-primary-blue-200);
+
+  /* StatusIcon type colors — note */
+  --status-icon-color-note: var(--global-color-status-purple);
+  --status-icon-bg-note-future: var(--global-color-status-purple-light);
+  --status-icon-border-note-future: var(--global-color-status-note-mid);
+
+  /* StatusIcon type colors — edit */
+  --status-icon-color-edit: var(--global-color-status-info-blue);
+  --status-icon-bg-edit-future: var(--global-color-status-info-blue-light);
+  --status-icon-border-edit-future: var(--global-color-status-edit);
+
+  /* StatusIcon disabled */
+  --status-icon-color-disabled: var(--global-color-neutral-gray-300);
+  --status-icon-bg-disabled: var(--global-color-neutral-gray-300);
+}
+
+/* ==========================================================================
+   COMPONENT LAYER: Stepper (Component-Specific Tokens)
+   ========================================================================== */
+:root {
+  --stepper-connector-color: var(--global-color-neutral-gray-300);
+  --stepper-connector-width: var(--global-spacing-stroke-2px);
+  --stepper-connector-gap: var(--global-spacing-sizing-4px);
+  --stepper-gap: var(--global-spacing-sizing-0px);
 }
 
 /* Font Loading */

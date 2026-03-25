@@ -40,7 +40,7 @@ export const IconDocs: React.FC = () => {
   return (
     <DocsTemplate>
       <DocsTemplate.Header
-        title="Typography"
+        title="Iconography"
         subtitle="Icons are visual representations of commands, features, directories, or common actions"
       />
 

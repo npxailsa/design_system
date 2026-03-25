@@ -6,7 +6,7 @@ import { ToastProvider, useToast } from './ToastContext';
 import type { ToastColour, ToastSize } from './Toast';
 
 const meta: Meta<typeof Toast> = {
-  title: 'Components/Toast',
+  title: 'Atoms/Toast',
   component: Toast,
   parameters: {
     layout: 'padded',
