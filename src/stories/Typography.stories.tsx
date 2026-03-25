@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { TypographyDocs } from './Tokens/TypographyDocs';
+import { TypographyDocs } from './Foundation/TypographyDocs';
 
 const TypographyDemo = () => {
   return (
