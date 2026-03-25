@@ -1,4 +1,4 @@
-import{j as e}from"./iframe-DuBRwaoW.js";import{useMDXComponents as r}from"./index-U-0cNa5_.js";import{M as o}from"./blocks-C4JBfwkX.js";import"./preload-helper-Dp1pzeXC.js";import"./index-573YjJqL.js";function i(s){const n={a:"a",code:"code",h1:"h1",h2:"h2",h3:"h3",hr:"hr",img:"img",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...r(),...s.components};return e.jsxs(e.Fragment,{children:[e.jsx(o,{title:"Introduction"}),`
+import{j as e}from"./iframe-DUjEMit0.js";import{useMDXComponents as r}from"./index-CA7X6xBi.js";import{M as o}from"./blocks-DEDZH2du.js";import"./preload-helper-Dp1pzeXC.js";import"./index-BYdnDEgC.js";function i(s){const n={a:"a",code:"code",h1:"h1",h2:"h2",h3:"h3",hr:"hr",img:"img",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...r(),...s.components};return e.jsxs(e.Fragment,{children:[e.jsx(o,{title:"Introduction"}),`
 `,e.jsx(n.h1,{id:"design-system",children:"Design System"}),`
 `,e.jsx(n.p,{children:"Welcome to the official documentation for our Design System. This system provides a unified set of components, tokens, and guidelines to help you build consistent and accessible user interfaces."}),`
 `,e.jsx(n.hr,{}),`

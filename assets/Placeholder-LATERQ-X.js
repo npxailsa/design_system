@@ -1,4 +1,4 @@
-import{j as e}from"./iframe-DuBRwaoW.js";import{useMDXComponents as o}from"./index-U-0cNa5_.js";import{M as r,C as l,a as s}from"./blocks-C4JBfwkX.js";import{P as c,T as a,a as d,N as p,A as h,S as m,b as u}from"./Placeholder.stories-B3LKckgD.js";import"./preload-helper-Dp1pzeXC.js";import"./index-573YjJqL.js";import"./Mail-BzIBdpXB.js";import"./Cancel-DG6TTgc-.js";import"./KeyboardArrowDown-BjAmkM2h.js";function i(t){const n={code:"code",h1:"h1",h2:"h2",h3:"h3",li:"li",ol:"ol",p:"p",pre:"pre",strong:"strong",...o(),...t.components};return e.jsxs(e.Fragment,{children:[e.jsx(r,{of:c,title:"Foundations/Placeholder"}),`
+import{j as e}from"./iframe-DUjEMit0.js";import{useMDXComponents as o}from"./index-CA7X6xBi.js";import{M as r,C as l,a as i}from"./blocks-DEDZH2du.js";import{P as c,T as a,a as d,N as p,A as h,S as m,b as u}from"./Placeholder.stories-CjFBm7LB.js";import"./preload-helper-Dp1pzeXC.js";import"./index-BYdnDEgC.js";import"./createSvgIcon-CxELKLH0.js";import"./Cancel-Bz75-0BS.js";import"./KeyboardArrowDown-C9WbfejU.js";import"./Mail-BElPappD.js";function s(t){const n={code:"code",h1:"h1",h2:"h2",h3:"h3",li:"li",ol:"ol",p:"p",pre:"pre",strong:"strong",...o(),...t.components};return e.jsxs(e.Fragment,{children:[e.jsx(r,{of:c,title:"Foundations/Placeholder"}),`
 `,e.jsx(n.h1,{id:"placeholder",children:"Placeholder"}),`
 `,e.jsxs(n.p,{children:["The ",e.jsx(n.code,{children:"Placeholder"})," component is a form-field placeholder UI element — it represents the visual content inside an empty or partially-filled input. It supports 4 sizes, 3 alignments, and 4 types, resulting in 45 possible variants."]}),`
 `,e.jsx(n.h2,{id:"design-tokens",children:"Design Tokens"}),`
@@ -58,28 +58,28 @@ const CounterComponent = () => (
 `,e.jsx(n.h2,{id:"visual-style",children:"Visual Style"}),`
 `,e.jsx(n.p,{children:"Placeholders support different variants based on their type. Ensure appropriate context is provided for the user."}),`
 `,e.jsx(n.h3,{id:"default-and-italic-types",children:"Default and Italic Types"}),`
-`,e.jsx(s,{of:a}),`
+`,e.jsx(i,{of:a}),`
 `,e.jsx(n.h3,{id:"tags-selected-type",children:"Tags Selected Type"}),`
 `,e.jsx(n.p,{children:"Used when multiple selections have been made in a combobox or select input. Note: not supported in x-small size."}),`
-`,e.jsx(s,{of:d}),`
+`,e.jsx(i,{of:d}),`
 `,e.jsx(n.h3,{id:"number-type",children:"Number Type"}),`
 `,e.jsx(n.p,{children:"Used for numeric inputs requiring step controls. The counter controls are visually presented but require external state management."}),`
-`,e.jsx(s,{of:p}),`
+`,e.jsx(i,{of:p}),`
 `,e.jsx(n.h3,{id:"alignment",children:"Alignment"}),`
-`,e.jsx(s,{of:h}),`
+`,e.jsx(i,{of:h}),`
 `,e.jsx(n.h3,{id:"do",children:"Do"}),`
 `,e.jsx(n.p,{children:"Use systematic sizes and types for consistent form field patterns."}),`
 `,e.jsx(n.h3,{id:"dont",children:"Don't"}),`
 `,e.jsx(n.p,{children:"Overwrite internal component styles directly; use the token system. Avoid creating invalid combinations (like x-small tags-selected)."}),`
 `,e.jsx(n.h2,{id:"size-and-spacing",children:"Size and spacing"}),`
 `,e.jsxs(n.p,{children:["The Placeholder component supports multiple sizes. Use the ",e.jsx(n.code,{children:"size"})," prop to ensure consistent scaling."]}),`
-`,e.jsx(s,{of:m}),`
+`,e.jsx(i,{of:m}),`
 `,e.jsx(n.p,{children:"This section showcases the systematic application of variants across all sizes, types, and alignments."}),`
-`,e.jsx(s,{of:u}),`
+`,e.jsx(i,{of:u}),`
 `,e.jsx(n.h2,{id:"contribution",children:"Contribution"}),`
 `,e.jsx(n.p,{children:"When proposing updates or new properties for the Placeholder component, consider the following:"}),`
 `,e.jsxs(n.ol,{children:[`
 `,e.jsx(n.li,{children:"Does the proposed change align with existing form field patterns?"}),`
 `,e.jsx(n.li,{children:"Does it maintain backward compatibility with our systematic sizing approach?"}),`
 `]}),`
-`,e.jsx(n.p,{children:"To contribute a new variation, please bring it to our Biweekly Design System meeting for review with the whole team."})]})}function C(t={}){const{wrapper:n}={...o(),...t.components};return n?e.jsx(n,{...t,children:e.jsx(i,{...t})}):i(t)}export{C as default};
+`,e.jsx(n.p,{children:"To contribute a new variation, please bring it to our Biweekly Design System meeting for review with the whole team."})]})}function z(t={}){const{wrapper:n}={...o(),...t.components};return n?e.jsx(n,{...t,children:e.jsx(s,{...t})}):s(t)}export{z as default};

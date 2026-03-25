@@ -1,4 +1,4 @@
-import{j as e}from"./iframe-DuBRwaoW.js";import{useMDXComponents as a}from"./index-U-0cNa5_.js";import{M as l,C as r,a as s}from"./blocks-C4JBfwkX.js";import{I as t,S as c,C as d,G as h}from"./Icon.stories-BsV-fYLm.js";import"./preload-helper-Dp1pzeXC.js";import"./index-573YjJqL.js";import"./Mail-BzIBdpXB.js";import"./Person-dyUbIsPy.js";import"./Cancel-DG6TTgc-.js";function o(i){const n={a:"a",code:"code",h1:"h1",h2:"h2",h3:"h3",li:"li",ol:"ol",p:"p",pre:"pre",strong:"strong",ul:"ul",...a(),...i.components};return e.jsxs(e.Fragment,{children:[e.jsx(l,{of:t,title:"Foundations/Icon"}),`
+import{j as e}from"./iframe-DUjEMit0.js";import{useMDXComponents as a}from"./index-CA7X6xBi.js";import{M as r,C as l,a as s}from"./blocks-DEDZH2du.js";import{I as t,S as c,C as d,G as h}from"./Icon.stories-Bg-jKzpl.js";import"./preload-helper-Dp1pzeXC.js";import"./index-BYdnDEgC.js";import"./createSvgIcon-CxELKLH0.js";import"./Star-C2XXjzmw.js";import"./Person-C1mJqj9M.js";import"./Mail-BElPappD.js";import"./Cancel-Bz75-0BS.js";function o(i){const n={a:"a",code:"code",h1:"h1",h2:"h2",h3:"h3",li:"li",ol:"ol",p:"p",pre:"pre",strong:"strong",ul:"ul",...a(),...i.components};return e.jsxs(e.Fragment,{children:[e.jsx(r,{of:t,title:"Foundations/Icon"}),`
 `,e.jsx(n.h1,{id:"iconography",children:"Iconography"}),`
 `,e.jsx(n.p,{children:"Icons are visual representations of commands, features, directories, or common actions."}),`
 `,e.jsx(n.p,{children:"Icons are symbols designed to represent concepts or specific features. A company's iconography style can express a lot about a brand and its values."}),`
@@ -47,7 +47,7 @@ const MyComponent = () => (
 `,e.jsx(n.li,{children:"NPX Design System Curated Icons (Figma library)"}),`
 `]}),`
 `,e.jsx(n.p,{children:"The component accepts the following props:"}),`
-`,e.jsx(r,{}),`
+`,e.jsx(l,{}),`
 `,e.jsx(n.h2,{id:"visual-style",children:"Visual Style"}),`
 `,e.jsx(n.p,{children:'Our icons are available as "filled" or "outline" options, dependant on the scenario you may need them for. Where accessibility contrast is low, using "filled" icons will create a better visual distinction for those who may be colourblind or partially sighted.'}),`
 `,e.jsx(n.p,{children:e.jsx(n.strong,{children:"Simplicity & metaphor"})}),`
@@ -122,4 +122,4 @@ const MyComponent = () => (
 `,e.jsx(n.p,{children:"Related"}),`
 `,e.jsxs(n.ul,{children:[`
 `,e.jsx(n.li,{children:e.jsx(n.a,{href:"https://fonts.google.com/icons?icon.set=Material+Symbols",rel:"nofollow",children:"Browse all Material Symbols on Google"})}),`
-`]})]})}function v(i={}){const{wrapper:n}={...a(),...i.components};return n?e.jsx(n,{...i,children:e.jsx(o,{...i})}):o(i)}export{v as default};
+`]})]})}function z(i={}){const{wrapper:n}={...a(),...i.components};return n?e.jsx(n,{...i,children:e.jsx(o,{...i})}):o(i)}export{z as default};
