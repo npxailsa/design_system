@@ -1,0 +1,11 @@
+.npxCubeLogoVariant7,
+.npxCubeLogoVariant7 * {
+  box-sizing: border-box;
+}
+.npxCubeLogoVariant7 {
+  width: 60.5px;
+  height: 66px;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 60.5/66;
+}

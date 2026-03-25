@@ -1,0 +1,12 @@
+.outlineIconsNameAlertOutlineCategoryOutline,
+.outlineIconsNameAlertOutlineCategoryOutline * {
+  box-sizing: border-box;
+}
+.outlineIconsNameAlertOutlineCategoryOutline {
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}

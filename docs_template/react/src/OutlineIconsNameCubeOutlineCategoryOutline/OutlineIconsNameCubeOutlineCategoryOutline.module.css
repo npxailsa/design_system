@@ -1,0 +1,12 @@
+.outlineIconsNameCubeOutlineCategoryOutline,
+.outlineIconsNameCubeOutlineCategoryOutline * {
+  box-sizing: border-box;
+}
+.outlineIconsNameCubeOutlineCategoryOutline {
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}
