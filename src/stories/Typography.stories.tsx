@@ -83,7 +83,7 @@ const TypographyDemo = () => {
 };
 
 const meta: Meta = {
-  title: 'Foundations/Typography',
+  title: 'Foundation/Typography',
   component: TypographyDemo,
 };
 
