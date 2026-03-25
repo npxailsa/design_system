@@ -385,6 +385,106 @@
 }
 
 /* ==========================================================================
+   COMPONENT LAYER: Alert (Component-Specific Tokens)
+   ========================================================================== */
+:root {
+  /* Alert layout tokens */
+  --alert-padding-small: var(--global-spacing-sizing-6px) var(--global-spacing-sizing-8px);
+  --alert-padding-default: var(--global-spacing-sizing-8px) var(--global-spacing-sizing-12px);
+  --alert-padding-large: var(--global-spacing-sizing-10px) var(--global-spacing-sizing-12px);
+  --alert-gap: var(--global-spacing-sizing-12px);
+  --alert-icon-text-gap: var(--global-spacing-sizing-8px);
+  --alert-text-gap-small: var(--global-spacing-sizing-2px);
+  --alert-text-gap-default: var(--global-spacing-sizing-2px);
+  --alert-text-gap-large: var(--global-spacing-sizing-1px);
+  --alert-border-radius: var(--global-spacing-radius-4px);
+  --alert-border-width: var(--global-spacing-stroke-1px);
+  --alert-icon-opacity: 0.5;
+  --alert-min-width: var(--global-spacing-sizing-400px);
+
+  /* Alert font tokens */
+  --alert-font-family: var(--brand-font-primary);
+  --alert-letter-spacing: var(--global-type-letter-spacing-primary-label);
+  --alert-description-color: var(--global-color-neutral-gray-700);
+
+  /* Alert size tokens — leading icon */
+  --alert-leading-icon-small: var(--global-spacing-sizing-16px);
+  --alert-leading-icon-default: 22px;
+  --alert-leading-icon-large: var(--global-spacing-sizing-28px);
+
+  /* Alert size tokens — close icon */
+  --alert-close-icon-small: var(--global-spacing-sizing-14px);
+  --alert-close-icon-default: var(--global-spacing-sizing-16px);
+  --alert-close-icon-large: var(--global-spacing-sizing-18px);
+
+  /* Alert size tokens — title */
+  --alert-title-size-small: var(--global-type-size-primary-label-xs);
+  --alert-title-size-default: var(--global-type-size-primary-label-sm);
+  --alert-title-size-large: var(--global-type-size-primary-label);
+  --alert-title-line-height-small: var(--global-type-line-height-label-xs);
+  --alert-title-line-height-default: var(--global-type-line-height-label-sm);
+  --alert-title-line-height-large: var(--global-type-line-height-label);
+  --alert-title-weight: var(--global-type-weight-default);
+
+  /* Alert size tokens — description */
+  --alert-desc-size-small: var(--global-type-size-primary-label-xs);
+  --alert-desc-size-default: var(--global-type-size-primary-label);
+  --alert-desc-size-large: var(--global-type-size-primary-label);
+  --alert-desc-line-height-small: var(--global-type-line-height-label-xs);
+  --alert-desc-line-height-default: var(--global-type-line-height-label-sm);
+  --alert-desc-line-height-large: var(--global-type-line-height-label);
+  --alert-desc-weight: var(--global-type-weight-light);
+
+  /* Alert colour tokens — default */
+  --alert-bg-default: rgba(58, 50, 130, 0.05);
+  --alert-border-default: var(--global-color-secondary-navy);
+  --alert-title-default: var(--global-color-secondary-navy);
+  --alert-icon-default: var(--global-color-secondary-navy);
+
+  /* Alert colour tokens — warning */
+  --alert-bg-warning: var(--global-color-status-orange-light);
+  --alert-border-warning: var(--global-color-status-dark-orange);
+  --alert-title-warning: var(--global-color-status-dark-orange);
+  --alert-icon-warning: var(--global-color-status-orange);
+
+  /* Alert colour tokens — light-gray */
+  --alert-bg-light-gray: var(--global-color-neutral-gray-100);
+  --alert-border-light-gray: var(--global-color-neutral-gray-400);
+  --alert-title-light-gray: var(--global-color-base-black);
+  --alert-icon-light-gray: var(--global-color-neutral-gray-700);
+
+  /* Alert colour tokens — navy */
+  --alert-bg-navy: var(--global-color-status-info-blue-light);
+  --alert-border-navy: var(--global-color-status-info-blue);
+  --alert-title-navy: var(--global-color-status-info-blue);
+  --alert-icon-navy: var(--global-color-status-info-blue);
+
+  /* Alert colour tokens — success */
+  --alert-bg-success: var(--global-color-status-green-light);
+  --alert-border-success: var(--global-color-status-dark-green);
+  --alert-title-success: var(--global-color-status-dark-green);
+  --alert-icon-success: var(--global-color-status-dark-green);
+
+  /* Alert colour tokens — error */
+  --alert-bg-error: var(--global-color-status-red-light);
+  --alert-border-error: var(--global-color-status-red);
+  --alert-title-error: var(--global-color-status-red);
+  --alert-icon-error: var(--global-color-status-red);
+
+  /* Alert colour tokens — purple */
+  --alert-bg-purple: var(--global-color-status-purple-light);
+  --alert-border-purple: var(--global-color-status-purple);
+  --alert-title-purple: var(--global-color-status-purple);
+  --alert-icon-purple: var(--global-color-status-purple);
+
+  /* Alert colour tokens — white */
+  --alert-bg-white: var(--global-color-base-white);
+  --alert-border-white: var(--global-color-neutral-gray-300);
+  --alert-title-white: var(--global-color-base-black);
+  --alert-icon-white: var(--global-color-base-black);
+}
+
+/* ==========================================================================
    COMPONENT LAYER: Placeholder (Component-Specific Tokens)
    ========================================================================== */
 :root {

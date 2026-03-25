@@ -1,0 +1,146 @@
+/* ==========================================================================
+   Alert Component Styles
+   48 variants: 3 sizes × 8 colours × 2 border states
+   Colours are driven by CSS custom properties set inline on the root element.
+   ========================================================================== */
+
+.alert {
+  display: flex;
+  min-width: var(--alert-min-width);
+  max-width: 1920px;
+  align-items: flex-start;
+  gap: var(--alert-gap);
+  font-family: var(--alert-font-family);
+  letter-spacing: var(--alert-letter-spacing);
+  box-sizing: border-box;
+}
+
+/* ── Border variants ── */
+
+.alert--border {
+  background: var(--alert-colour-bg);
+  border: var(--alert-border-width) solid var(--alert-colour-border);
+  border-radius: var(--alert-border-radius);
+}
+
+.alert--no-border {
+  background: transparent;
+  border: none;
+}
+
+/* ── Size variants ── */
+
+.alert--small {
+  padding: var(--alert-padding-small);
+}
+
+.alert--default {
+  padding: var(--alert-padding-default);
+}
+
+.alert--large {
+  padding: var(--alert-padding-large);
+}
+
+/* ── Icon + text group ── */
+
+.alert__icon-group {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--alert-icon-text-gap);
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Leading icon ── */
+
+.alert__leading-icon {
+  flex-shrink: 0;
+}
+
+/* ── Text stack ── */
+
+.alert__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.alert--small .alert__text {
+  gap: var(--alert-text-gap-small);
+}
+
+.alert--default .alert__text {
+  gap: var(--alert-text-gap-default);
+}
+
+.alert--large .alert__text {
+  gap: var(--alert-text-gap-large);
+}
+
+/* ── Title ── */
+
+.alert__title {
+  color: var(--alert-colour-title);
+  font-weight: var(--alert-title-weight);
+}
+
+.alert--small .alert__title {
+  font-size: var(--alert-title-size-small);
+  line-height: var(--alert-title-line-height-small);
+}
+
+.alert--default .alert__title {
+  font-size: var(--alert-title-size-default);
+  line-height: var(--alert-title-line-height-default);
+}
+
+.alert--large .alert__title {
+  font-size: var(--alert-title-size-large);
+  line-height: var(--alert-title-line-height-large);
+}
+
+/* ── Description ── */
+
+.alert__description {
+  color: var(--alert-description-color);
+  font-weight: var(--alert-desc-weight);
+}
+
+.alert--small .alert__description {
+  font-size: var(--alert-desc-size-small);
+  line-height: var(--alert-desc-line-height-small);
+}
+
+.alert--default .alert__description {
+  font-size: var(--alert-desc-size-default);
+  line-height: var(--alert-desc-line-height-default);
+}
+
+.alert--large .alert__description {
+  font-size: var(--alert-desc-size-large);
+  line-height: var(--alert-desc-line-height-large);
+}
+
+/* ── Close button ── */
+
+.alert__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  margin-left: auto;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.alert__close:focus-visible {
+  outline: var(--global-spacing-stroke-2px) solid var(--alert-colour-title);
+  outline-offset: var(--global-spacing-sizing-2px);
+  border-radius: var(--global-spacing-radius-2px);
+}
