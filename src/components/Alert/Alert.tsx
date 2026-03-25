@@ -339,15 +339,17 @@ export const Alert: React.FC<AlertProps> = ({
 
   return (
     <div className={rootClasses} style={cssVars} role="alert">
-      <div className={styles['alert__icon-group']}>
-        {showLeadingIcon && (
-          <LeadingIcon size={sizeConfig.leadingIcon} fill={colourConfig.icon} />
-        )}
-        <div className={styles.alert__text}>
-          <span className={styles.alert__title}>{title}</span>
-          {showSubtext && description && (
-            <span className={styles.alert__description}>{description}</span>
+      <div className={styles.alert__content}>
+        <div className={styles['alert__icon-group']}>
+          {showLeadingIcon && (
+            <LeadingIcon size={sizeConfig.leadingIcon} fill={colourConfig.icon} />
           )}
+          <div className={styles.alert__text}>
+            <span className={styles.alert__title}>{title}</span>
+            {showSubtext && description && (
+              <span className={styles.alert__description}>{description}</span>
+            )}
+          </div>
         </div>
       </div>
       {showTrailingIcon && (

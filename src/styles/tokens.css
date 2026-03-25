@@ -390,14 +390,14 @@
 :root {
   /* Alert layout tokens */
   --alert-padding-small: var(--global-spacing-sizing-6px) var(--global-spacing-sizing-8px);
-  --alert-padding-default: var(--global-spacing-sizing-8px) var(--global-spacing-sizing-12px);
-  --alert-padding-large: var(--global-spacing-sizing-10px) var(--global-spacing-sizing-12px);
+  --alert-padding-default: var(--global-spacing-sizing-12px);
+  --alert-padding-large: var(--global-spacing-sizing-16px) var(--global-spacing-sizing-12px);
   --alert-gap: var(--global-spacing-sizing-12px);
   --alert-icon-text-gap: var(--global-spacing-sizing-8px);
   --alert-text-gap-small: var(--global-spacing-sizing-2px);
   --alert-text-gap-default: var(--global-spacing-sizing-2px);
   --alert-text-gap-large: var(--global-spacing-sizing-1px);
-  --alert-border-radius: var(--global-spacing-radius-4px);
+  --alert-border-radius: var(--global-spacing-radius-6px);
   --alert-border-width: var(--global-spacing-stroke-1px);
   --alert-icon-opacity: 0.5;
   --alert-min-width: var(--global-spacing-sizing-400px);
@@ -420,36 +420,36 @@
   /* Alert size tokens — title */
   --alert-title-size-small: var(--global-type-size-primary-label-xs);
   --alert-title-size-default: var(--global-type-size-primary-label-sm);
-  --alert-title-size-large: var(--global-type-size-primary-label);
+  --alert-title-size-large: var(--global-type-size-primary-label-lg);
   --alert-title-line-height-small: var(--global-type-line-height-label-xs);
   --alert-title-line-height-default: var(--global-type-line-height-label-sm);
-  --alert-title-line-height-large: var(--global-type-line-height-label);
+  --alert-title-line-height-large: var(--global-type-line-height-label-lg);
   --alert-title-weight: var(--global-type-weight-default);
 
   /* Alert size tokens — description */
   --alert-desc-size-small: var(--global-type-size-primary-label-xs);
-  --alert-desc-size-default: var(--global-type-size-primary-label);
+  --alert-desc-size-default: var(--global-type-size-primary-label-sm);
   --alert-desc-size-large: var(--global-type-size-primary-label);
   --alert-desc-line-height-small: var(--global-type-line-height-label-xs);
-  --alert-desc-line-height-default: var(--global-type-line-height-label-sm);
+  --alert-desc-line-height-default: var(--global-type-line-height-body);
   --alert-desc-line-height-large: var(--global-type-line-height-label);
   --alert-desc-weight: var(--global-type-weight-light);
 
   /* Alert colour tokens — default */
-  --alert-bg-default: rgba(58, 50, 130, 0.05);
-  --alert-border-default: var(--global-color-secondary-navy);
+  --alert-bg-default: var(--global-color-status-info-blue-light);
+  --alert-border-default: var(--global-color-secondary-navy-mid);
   --alert-title-default: var(--global-color-secondary-navy);
   --alert-icon-default: var(--global-color-secondary-navy);
 
   /* Alert colour tokens — warning */
-  --alert-bg-warning: var(--global-color-status-orange-light);
-  --alert-border-warning: var(--global-color-status-dark-orange);
+  --alert-bg-warning: var(--global-color-base-peach-cream-50);
+  --alert-border-warning: var(--global-color-status-orange);
   --alert-title-warning: var(--global-color-status-dark-orange);
   --alert-icon-warning: var(--global-color-status-orange);
 
   /* Alert colour tokens — light-gray */
-  --alert-bg-light-gray: var(--global-color-neutral-gray-100);
-  --alert-border-light-gray: var(--global-color-neutral-gray-400);
+  --alert-bg-light-gray: var(--global-color-neutral-gray-50);
+  --alert-border-light-gray: var(--global-color-neutral-gray-700);
   --alert-title-light-gray: var(--global-color-base-black);
   --alert-icon-light-gray: var(--global-color-neutral-gray-700);
 
@@ -460,7 +460,7 @@
   --alert-icon-navy: var(--global-color-status-info-blue);
 
   /* Alert colour tokens — success */
-  --alert-bg-success: var(--global-color-status-green-light);
+  --alert-bg-success: var(--global-color-neutral-gray-50);
   --alert-border-success: var(--global-color-status-dark-green);
   --alert-title-success: var(--global-color-status-dark-green);
   --alert-icon-success: var(--global-color-status-dark-green);
@@ -479,7 +479,7 @@
 
   /* Alert colour tokens — white */
   --alert-bg-white: var(--global-color-base-white);
-  --alert-border-white: var(--global-color-neutral-gray-300);
+  --alert-border-white: var(--global-color-neutral-gray-500);
   --alert-title-white: var(--global-color-base-black);
   --alert-icon-white: var(--global-color-base-black);
 }

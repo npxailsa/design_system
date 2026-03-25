@@ -6,13 +6,24 @@
 
 .alert {
   display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
   min-width: var(--alert-min-width);
   max-width: 1920px;
-  align-items: flex-start;
-  gap: var(--alert-gap);
   font-family: var(--alert-font-family);
   letter-spacing: var(--alert-letter-spacing);
   box-sizing: border-box;
+}
+
+/* ── Inner content wrapper ── */
+
+.alert__content {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--alert-gap);
+  width: 100%;
 }
 
 /* ── Border variants ── */
@@ -129,9 +140,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: var(--global-spacing-sizing-8px);
   margin: 0;
-  margin-left: auto;
   background: transparent;
   border: none;
   cursor: pointer;

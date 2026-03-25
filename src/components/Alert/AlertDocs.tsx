@@ -35,14 +35,14 @@ export const AlertDocs: React.FC = () => {
         description="Layout tokens control padding, gaps, and border radius:"
         tokens={[
           { name: '--alert-padding-small', description: 'Padding for small size (6px 8px)' },
-          { name: '--alert-padding-default', description: 'Padding for default size (8px 12px)' },
-          { name: '--alert-padding-large', description: 'Padding for large size (10px 12px)' },
+          { name: '--alert-padding-default', description: 'Padding for default size (12px all sides) — uses --global-spacing-sizing-12px' },
+          { name: '--alert-padding-large', description: 'Padding for large size (16px 12px) — uses --global-spacing-sizing-16px / --global-spacing-sizing-12px' },
           { name: '--alert-gap', description: 'Gap between icon-group and close button (12px)' },
           { name: '--alert-icon-text-gap', description: 'Gap between leading icon and text (8px)' },
           { name: '--alert-text-gap-small', description: 'Gap between title and description — small (2px)' },
           { name: '--alert-text-gap-default', description: 'Gap between title and description — default (2px)' },
           { name: '--alert-text-gap-large', description: 'Gap between title and description — large (1px)' },
-          { name: '--alert-border-radius', description: 'Border radius for bordered variant (4px)' },
+          { name: '--alert-border-radius', description: 'Border radius for bordered variant (6px) — uses --global-spacing-radius-6px' },
           { name: '--alert-border-width', description: 'Border width (1px)' },
           { name: '--alert-icon-opacity', description: 'Opacity applied to leading and close icons (0.5)' },
           { name: '--alert-min-width', description: 'Minimum width of the alert (400px)' },
@@ -61,12 +61,12 @@ export const AlertDocs: React.FC = () => {
           { name: '--alert-description-color', description: 'Description text color (gray-700)' },
           { name: '--alert-title-size-small', description: 'Title font size — small (12px)' },
           { name: '--alert-title-size-default', description: 'Title font size — default (14px)' },
-          { name: '--alert-title-size-large', description: 'Title font size — large (16px)' },
+          { name: '--alert-title-size-large', description: 'Title font size — large (18px) — uses --global-type-size-primary-label-lg' },
           { name: '--alert-title-line-height-small', description: 'Title line height — small (14px)' },
           { name: '--alert-title-line-height-default', description: 'Title line height — default (16px)' },
-          { name: '--alert-title-line-height-large', description: 'Title line height — large (20px)' },
+          { name: '--alert-title-line-height-large', description: 'Title line height — large (24px) — uses --global-type-line-height-label-lg' },
           { name: '--alert-desc-size-small', description: 'Description font size — small (12px)' },
-          { name: '--alert-desc-size-default', description: 'Description font size — default (16px)' },
+          { name: '--alert-desc-size-default', description: 'Description font size — default (14px) — uses --global-type-size-primary-label-sm' },
           { name: '--alert-desc-size-large', description: 'Description font size — large (16px)' },
         ]}
       />
@@ -90,16 +90,16 @@ export const AlertDocs: React.FC = () => {
         title="Design Tokens — Colour Variants"
         description="Each colour variant maps to background, border, title, and icon fill tokens:"
         tokens={[
-          { name: '--alert-bg-default', description: 'Default background — rgba(58,50,130,0.05)' },
+          { name: '--alert-bg-default', description: 'Default background — status-info-blue-light (#f5fcff) — uses --global-color-status-info-blue-light' },
           { name: '--alert-title-default', description: 'Default title color — secondary-navy' },
-          { name: '--alert-bg-warning', description: 'Warning background — status-orange-light' },
+          { name: '--alert-bg-warning', description: 'Warning background — peach-cream-50 (#fffaf2) — uses --global-color-base-peach-cream-50' },
           { name: '--alert-title-warning', description: 'Warning title color — status-dark-orange' },
           { name: '--alert-icon-warning', description: 'Warning leading icon fill — status-orange' },
-          { name: '--alert-bg-light-gray', description: 'Light-gray background — neutral-gray-100' },
+          { name: '--alert-bg-light-gray', description: 'Light-gray background — neutral-gray-50 (#f9fafb) — uses --global-color-neutral-gray-50' },
           { name: '--alert-title-light-gray', description: 'Light-gray title color — base-black' },
           { name: '--alert-bg-navy', description: 'Navy background — status-info-blue-light' },
           { name: '--alert-title-navy', description: 'Navy title color — status-info-blue' },
-          { name: '--alert-bg-success', description: 'Success background — status-green-light' },
+          { name: '--alert-bg-success', description: 'Success background — neutral-gray-50 (#f9fafb) — uses --global-color-neutral-gray-50' },
           { name: '--alert-title-success', description: 'Success title color — status-dark-green' },
           { name: '--alert-bg-error', description: 'Error background — status-red-light' },
           { name: '--alert-title-error', description: 'Error title color — status-red' },
@@ -197,7 +197,7 @@ export const AlertDocs: React.FC = () => {
       <DocsTemplate.Subsection title="Border vs. no border" />
 
       <DocsTemplate.BodyText>
-        The bordered variant adds a background tint and 1px border with 4px radius.
+        The bordered variant adds a background tint and 1px border with 6px radius.
         The no-border variant renders the same content on a transparent background,
         suitable for inline messaging within existing containers.
       </DocsTemplate.BodyText>
