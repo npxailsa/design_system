@@ -1,4 +1,5 @@
-You must ALWAYS use the design tokens / variables instead of hard-coded numbers. 
+You must ALWAYS use the design tokens / variables instead of hard-coded numbers. These can be found in the Github Repo under the file names tokens.css, global_design_tokens.json, and brand_design_tokens.json (.design_system/src
+/styles)
 
 MUI is the base of our components. 
 Every time a component is built, updated, edited, you MUST update or create the relative documentation for it. 
