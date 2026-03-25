@@ -100,6 +100,14 @@
   --global-spacing-sizing-320px: 320px;
   --global-spacing-sizing-360px: 360px;
   --global-spacing-sizing-400px: 400px;
+  --global-spacing-sizing-480px: 480px;
+  --global-spacing-sizing-560px: 560px;
+  --global-spacing-sizing-640px: 640px;
+  --global-spacing-sizing-720px: 720px;
+  --global-spacing-sizing-800px: 800px;
+
+  /* Legacy reference tokens (rounded sub-400 additions) */
+  --global-spacing-sizing-300px: 300px;
 
   /* Negative Sizing */
   --global-spacing-sizing-neg-2px: -2px;
@@ -743,8 +751,8 @@
   --accordion-border-width: var(--global-spacing-stroke-1px);
   --accordion-border-color: var(--global-color-neutral-gray-200);
   --accordion-border-color-none: transparent;
-  --accordion-min-width: var(--global-spacing-sizing-360px);
-  --accordion-max-width: 1280px;
+  --accordion-min-width: var(--global-spacing-sizing-300px);
+  --accordion-max-width: var(--global-spacing-sizing-800px);
   --accordion-min-height: 70px;
   --accordion-gap: var(--global-spacing-sizing-12px);
 

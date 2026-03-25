@@ -29,7 +29,6 @@
 .accordion--no-stroke {
   border-color: var(--accordion-border-color-none);
   padding: var(--accordion-padding-no-stroke);
-  min-width: 200px;
 }
 
 /* ── Size variants ── */
@@ -116,6 +115,9 @@
   letter-spacing: var(--accordion-title-letter-spacing);
   font-weight: var(--accordion-title-weight);
   display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .accordion--large .accordion__title {
@@ -139,6 +141,9 @@
   font-weight: var(--accordion-title-weight-no-stroke);
   display: block;
   flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* ── Supporting description text ── */
@@ -151,6 +156,9 @@
   letter-spacing: var(--accordion-desc-letter-spacing);
   font-weight: var(--accordion-desc-weight);
   display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* ── Toggle icon ── */
@@ -182,4 +190,6 @@
   line-height: var(--accordion-body-line-height);
   letter-spacing: var(--accordion-body-letter-spacing);
   font-weight: var(--accordion-body-weight);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
