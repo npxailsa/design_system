@@ -54,7 +54,7 @@ import BatteryFullIcon from '@mui/icons-material/BatteryFull';
 import BluetoothConnectedIcon from '@mui/icons-material/BluetoothConnected';
 
 const meta: Meta<typeof Icon> = {
-  title: 'Foundations/Icon',
+  title: 'Foundation/Icon',
   component: Icon,
   argTypes: {
     icon: {

@@ -7,7 +7,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import React from 'react';
 
 const meta: Meta<typeof Label> = {
-  title: 'Foundations/Label',
+  title: 'Foundation/Label',
   component: Label,
   argTypes: {
     size: {
