@@ -9,7 +9,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 const meta: Meta<typeof DocsTemplate> = {
-  title: 'Documentation/DocsTemplate',
+  title: 'Foundation/DocsTemplate',
   component: DocsTemplate,
   parameters: {
     layout: 'fullscreen',
