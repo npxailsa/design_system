@@ -9,6 +9,11 @@ import React from 'react';
 const meta: Meta<typeof Label> = {
   title: 'Foundation/Label',
   component: Label,
+  parameters: {
+    docs: {
+      page: () => <LabelDocs />,
+    },
+  },
   argTypes: {
     size: {
       control: 'select',

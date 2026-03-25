@@ -56,6 +56,11 @@ import BluetoothConnectedIcon from '@mui/icons-material/BluetoothConnected';
 const meta: Meta<typeof Icon> = {
   title: 'Foundation/Icon',
   component: Icon,
+  parameters: {
+    docs: {
+      page: () => <IconDocs />,
+    },
+  },
   argTypes: {
     icon: {
       description: 'The Material UI icon component to render.',

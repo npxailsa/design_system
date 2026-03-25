@@ -8,6 +8,11 @@ import React, { useState } from 'react';
 const meta: Meta<typeof Placeholder> = {
   title: 'Foundation/Placeholder',
   component: Placeholder,
+  parameters: {
+    docs: {
+      page: () => <PlaceholderDocs />,
+    },
+  },
   argTypes: {
     size: {
       control: 'select',

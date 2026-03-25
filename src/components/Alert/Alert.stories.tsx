@@ -7,6 +7,11 @@ import React from 'react';
 const meta: Meta<typeof Alert> = {
   title: 'Components/Alert',
   component: Alert,
+  parameters: {
+    docs: {
+      page: () => <AlertDocs />,
+    },
+  },
   argTypes: {
     size: {
       control: 'select',

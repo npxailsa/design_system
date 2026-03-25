@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { DocsTemplate } from './DocsTemplate';
 import { IconographyDocs } from './IconographyDocs';
+import { DocsTemplateDocs } from './DocsTemplateDocs';
 import { Icon } from '../Icon';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
@@ -18,6 +19,17 @@ const meta: Meta<typeof DocsTemplate> = {
 
 export default meta;
 type Story = StoryObj<typeof DocsTemplate>;
+
+/**
+ * Full branded documentation page for the DocsTemplate system.
+ */
+export const UsageGuide: Story = {
+  render: () => <DocsTemplateDocs />,
+  parameters: {
+    controls: { disable: true },
+    actions: { disable: true },
+  },
+};
 
 /**
  * The full Iconography documentation page — a complete reference
