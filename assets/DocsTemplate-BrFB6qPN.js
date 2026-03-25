@@ -1,4 +1,4 @@
-import{j as e}from"./iframe-DUjEMit0.js";import{useMDXComponents as t}from"./index-CA7X6xBi.js";import{M as c}from"./blocks-DEDZH2du.js";import"./preload-helper-Dp1pzeXC.js";import"./index-BYdnDEgC.js";function s(o){const n={code:"code",h1:"h1",h2:"h2",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...t(),...o.components};return e.jsxs(e.Fragment,{children:[`
+import{j as e}from"./iframe-DpyGajr9.js";import{useMDXComponents as t}from"./index-CAu-S49J.js";import{M as c}from"./blocks-xTJFe8Gl.js";import"./preload-helper-Dp1pzeXC.js";import"./index-C8KlDZdh.js";function s(o){const n={code:"code",h1:"h1",h2:"h2",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...t(),...o.components};return e.jsxs(e.Fragment,{children:[`
 `,`
 `,e.jsx(c,{title:"Documentation/DocsTemplate/Usage Guide"}),`
 `,e.jsx(n.h1,{id:"docstemplate",children:"DocsTemplate"}),`
