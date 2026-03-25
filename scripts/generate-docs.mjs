@@ -21,7 +21,7 @@ function generateMDXTemplate(componentName) {
   return `import { Meta, Controls, Canvas, Story } from "@storybook/addon-docs/blocks";
 import * as ${componentName}Stories from "./${componentName}.stories";
 
-<Meta of={${componentName}Stories} title="Foundations/${componentName}" />
+<Meta of={${componentName}Stories} title="Foundation/${componentName}" />
 
 # ${componentName}
 
