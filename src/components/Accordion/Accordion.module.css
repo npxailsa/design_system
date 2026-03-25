@@ -1,0 +1,185 @@
+/* ==========================================================================
+   Accordion Component
+   ========================================================================== */
+
+.accordion,
+.accordion * {
+  box-sizing: border-box;
+}
+
+.accordion {
+  background: var(--accordion-bg);
+  border-radius: var(--accordion-border-radius);
+  border: var(--accordion-border-width) solid var(--accordion-border-color);
+  padding: var(--accordion-padding-default);
+  display: flex;
+  flex-direction: row;
+  gap: var(--accordion-gap);
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-width: var(--accordion-min-width);
+  max-width: var(--accordion-max-width);
+  min-height: var(--accordion-min-height);
+  width: 100%;
+  transition: border-color var(--accordion-transition-duration) var(--accordion-transition-easing);
+}
+
+/* ── Type variants ── */
+
+.accordion--no-stroke {
+  border-color: var(--accordion-border-color-none);
+  padding: var(--accordion-padding-no-stroke);
+  min-width: 200px;
+}
+
+/* ── Size variants ── */
+
+.accordion--large {
+  padding: var(--accordion-padding-large);
+  min-height: 80px;
+}
+
+.accordion--small {
+  padding: var(--accordion-padding-small);
+  min-height: 56px;
+}
+
+/* ── Open state ── */
+
+.accordion--open {
+  min-height: unset;
+}
+
+/* ── Status icon ── */
+
+.accordion__status-icon {
+  flex-shrink: 0;
+  margin-top: var(--global-spacing-sizing-2px);
+}
+
+/* ── Leading bell icon ── */
+
+.accordion__leading-icon {
+  flex-shrink: 0;
+  margin-top: var(--global-spacing-sizing-2px);
+}
+
+/* ── Body (trigger + panel) ── */
+
+.accordion__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--global-spacing-sizing-0px);
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Trigger / heading row ── */
+
+.accordion__trigger {
+  display: flex;
+  flex-direction: row;
+  gap: var(--accordion-heading-gap);
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.accordion__trigger:focus-visible {
+  outline: 2px solid var(--global-color-primary-blue);
+  outline-offset: 2px;
+  border-radius: var(--global-spacing-radius-4px);
+}
+
+/* ── Title group (title + supporting text) ── */
+
+.accordion__title-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--global-spacing-sizing-4px);
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Title text — simple type ── */
+
+.accordion__title {
+  color: var(--accordion-title-color);
+  font-family: var(--accordion-title-font-family);
+  font-size: var(--accordion-title-font-size-default);
+  line-height: var(--accordion-title-line-height-default);
+  letter-spacing: var(--accordion-title-letter-spacing);
+  font-weight: var(--accordion-title-weight);
+  display: block;
+}
+
+.accordion--large .accordion__title {
+  font-size: var(--accordion-title-font-size-large);
+  line-height: var(--accordion-title-line-height-large);
+}
+
+.accordion--small .accordion__title {
+  font-size: var(--accordion-title-font-size-small);
+  line-height: var(--accordion-title-line-height-small);
+}
+
+/* ── Title text — no-stroke type ── */
+
+.accordion__title--no-stroke {
+  color: var(--accordion-title-color-no-stroke-closed);
+  font-family: var(--accordion-title-font-family-no-stroke);
+  font-size: var(--accordion-title-font-size-no-stroke);
+  line-height: var(--accordion-title-line-height-no-stroke);
+  letter-spacing: var(--accordion-title-letter-spacing-no-stroke);
+  font-weight: var(--accordion-title-weight-no-stroke);
+  display: block;
+  flex: 1;
+}
+
+/* ── Supporting description text ── */
+
+.accordion__desc {
+  color: var(--accordion-desc-color);
+  font-family: var(--accordion-desc-font-family);
+  font-size: var(--accordion-desc-font-size);
+  line-height: var(--accordion-desc-line-height);
+  letter-spacing: var(--accordion-desc-letter-spacing);
+  font-weight: var(--accordion-desc-weight);
+  display: block;
+}
+
+/* ── Toggle icon ── */
+
+.accordion__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  color: var(--accordion-icon-color);
+  margin-top: var(--global-spacing-sizing-2px);
+}
+
+/* ── Expandable content panel ── */
+
+.accordion__panel {
+  margin-top: var(--accordion-content-gap-default);
+}
+
+.accordion--small .accordion__panel {
+  margin-top: var(--accordion-content-gap-small);
+}
+
+/* ── Body text (inside open panel) ── */
+
+.accordion__body-text {
+  color: var(--accordion-body-color);
+  font-family: var(--accordion-body-font-family);
+  font-size: var(--accordion-body-font-size);
+  line-height: var(--accordion-body-line-height);
+  letter-spacing: var(--accordion-body-letter-spacing);
+  font-weight: var(--accordion-body-weight);
+}

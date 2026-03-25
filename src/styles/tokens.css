@@ -733,6 +733,88 @@
   --stepper-gap: var(--global-spacing-sizing-0px);
 }
 
+/* ==========================================================================
+   COMPONENT LAYER: Accordion (Component-Specific Tokens)
+   ========================================================================== */
+:root {
+  /* Accordion layout */
+  --accordion-bg: var(--global-color-base-white);
+  --accordion-border-radius: var(--global-spacing-radius-8px);
+  --accordion-border-width: var(--global-spacing-stroke-1px);
+  --accordion-border-color: var(--global-color-neutral-gray-200);
+  --accordion-border-color-none: transparent;
+  --accordion-min-width: var(--global-spacing-sizing-360px);
+  --accordion-max-width: 1280px;
+  --accordion-min-height: 70px;
+  --accordion-gap: var(--global-spacing-sizing-12px);
+
+  /* Accordion padding — size variants */
+  --accordion-padding-default: var(--global-spacing-sizing-20px) var(--global-spacing-sizing-24px) var(--global-spacing-sizing-20px) var(--global-spacing-sizing-20px);
+  --accordion-padding-large: var(--global-spacing-sizing-24px) var(--global-spacing-sizing-28px) var(--global-spacing-sizing-24px) var(--global-spacing-sizing-24px);
+  --accordion-padding-small: var(--global-spacing-sizing-14px) var(--global-spacing-sizing-20px) var(--global-spacing-sizing-14px) var(--global-spacing-sizing-16px);
+  --accordion-padding-no-stroke: var(--global-spacing-sizing-20px) var(--global-spacing-sizing-24px);
+
+  /* Accordion heading inner gap */
+  --accordion-heading-gap: var(--global-spacing-sizing-12px);
+
+  /* Accordion content gap (between heading + body when open) */
+  --accordion-content-gap-default: var(--global-spacing-sizing-16px);
+  --accordion-content-gap-small: var(--global-spacing-sizing-12px);
+
+  /* Accordion title font — simple type */
+  --accordion-title-font-family: var(--brand-font-primary);
+  --accordion-title-font-size-default: 19px;
+  --accordion-title-font-size-large: 22px;
+  --accordion-title-font-size-small: var(--global-type-size-primary-label);
+  --accordion-title-line-height-default: var(--global-spacing-sizing-24px);
+  --accordion-title-line-height-large: 28px;
+  --accordion-title-line-height-small: var(--global-spacing-sizing-20px);
+  --accordion-title-letter-spacing: -0.15px;
+  --accordion-title-weight: var(--global-type-weight-default);
+  --accordion-title-color: var(--global-color-base-black);
+  --accordion-title-color-no-stroke-closed: #191e3c;
+
+  /* Accordion title font — no-stroke type */
+  --accordion-title-font-family-no-stroke: var(--brand-font-primary);
+  --accordion-title-font-size-no-stroke: var(--global-spacing-sizing-18px);
+  --accordion-title-line-height-no-stroke: var(--global-spacing-sizing-24px);
+  --accordion-title-letter-spacing-no-stroke: var(--global-type-letter-spacing-primary-label);
+  --accordion-title-weight-no-stroke: var(--global-type-weight-light);
+
+  /* Accordion description (supporting text) */
+  --accordion-desc-font-family: var(--brand-font-secondary);
+  --accordion-desc-font-size: var(--global-type-size-primary-label);
+  --accordion-desc-line-height: var(--global-spacing-sizing-20px);
+  --accordion-desc-letter-spacing: 0.05px;
+  --accordion-desc-weight: var(--global-type-weight-light);
+  --accordion-desc-color: var(--global-color-secondary-blue-gray);
+
+  /* Accordion body text */
+  --accordion-body-font-family: var(--brand-font-secondary);
+  --accordion-body-font-size: var(--global-type-size-primary-label);
+  --accordion-body-line-height: var(--global-spacing-sizing-20px);
+  --accordion-body-letter-spacing: 0.05px;
+  --accordion-body-weight: var(--global-type-weight-light);
+  --accordion-body-color: var(--global-color-neutral-gray-900);
+
+  /* Accordion chevron / toggle icon */
+  --accordion-icon-size-default: var(--global-spacing-sizing-28px);
+  --accordion-icon-size-large: var(--global-spacing-sizing-32px);
+  --accordion-icon-size-small: var(--global-spacing-sizing-24px);
+  --accordion-icon-color: var(--global-color-base-black);
+
+  /* Accordion leading icon (optional bell) */
+  --accordion-leading-icon-size: 22px;
+  --accordion-leading-icon-opacity: 0.5;
+
+  /* Accordion status icon gap */
+  --accordion-status-icon-gap: var(--global-spacing-sizing-12px);
+
+  /* Accordion transition */
+  --accordion-transition-duration: 220ms;
+  --accordion-transition-easing: ease;
+}
+
 /* Font Loading */
 @font-face {
   font-family: 'F37 Ginger Pro';
