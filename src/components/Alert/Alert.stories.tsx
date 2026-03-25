@@ -91,6 +91,16 @@ const SectionHeader = ({ label }: { label: string }) => (
   </div>
 );
 
+/* ── Documentation ── */
+
+export const Documentation: Story = {
+  render: () => <AlertDocs />,
+  parameters: {
+    controls: { disable: true },
+    actions: { disable: true },
+  },
+};
+
 /* ── Default (playground) ── */
 
 export const Default: Story = {
@@ -233,14 +243,4 @@ export const AllVariants: Story = {
       ))}
     </div>
   ),
-};
-
-/* ── Documentation ── */
-
-export const Documentation: Story = {
-  render: () => <AlertDocs />,
-  parameters: {
-    controls: { disable: true },
-    actions: { disable: true },
-  },
 };

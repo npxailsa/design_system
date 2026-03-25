@@ -1,5 +1,6 @@
 You must ALWAYS use the design tokens / variables instead of hard-coded numbers. These can be found in the Github Repo under the file names tokens.css, global_design_tokens.json, and brand_design_tokens.json (.design_system/src
 /styles)
+Ensure that a "Documentation" story is listed as the first option for each individual component and/or each individual category/section/folder.
 
 MUI is the base of our components. 
 Every time a component is built, updated, edited, you MUST update or create the relative documentation for it. 

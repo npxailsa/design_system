@@ -65,6 +65,17 @@ const InteractiveNumberCounter = (args: Partial<PlaceholderProps>) => {
   );
 };
 
+/**
+ * Full branded documentation page for the Placeholder component.
+ */
+export const Documentation: Story = {
+  render: () => <PlaceholderDocs />,
+  parameters: {
+    controls: { disable: true },
+    actions: { disable: true },
+  },
+};
+
 // --- Basic Stories ---
 
 export const Default: Story = {
@@ -237,15 +248,4 @@ export const AllVariants: Story = {
       <TypeMatrix type="number" />
     </div>
   ),
-};
-
-/**
- * Full branded documentation page for the Placeholder component.
- */
-export const Documentation: Story = {
-  render: () => <PlaceholderDocs />,
-  parameters: {
-    controls: { disable: true },
-    actions: { disable: true },
-  },
 };

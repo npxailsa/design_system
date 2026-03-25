@@ -67,6 +67,17 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 /**
+ * Full branded documentation page for the Label component.
+ */
+export const Documentation: Story = {
+  render: () => <LabelDocs />,
+  parameters: {
+    controls: { disable: true },
+    actions: { disable: true },
+  },
+};
+
+/**
  * Helper component to render a matrix of variants for a specific weight
  */
 const WeightMatrix = ({ weight }: { weight: 'bold' | 'medium' | 'light' | 'thin' }) => {
@@ -251,16 +262,5 @@ export const AllVariants: Story = {
 export const WithDropdown: Story = {
   args: {
     dropdown: true,
-  },
-};
-
-/**
- * Full branded documentation page for the Label component.
- */
-export const Documentation: Story = {
-  render: () => <LabelDocs />,
-  parameters: {
-    controls: { disable: true },
-    actions: { disable: true },
   },
 };

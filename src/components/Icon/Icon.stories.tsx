@@ -106,6 +106,17 @@ export default meta;
 type Story = StoryObj<typeof Icon>;
 
 /**
+ * Full branded documentation page for the Icon component.
+ */
+export const Documentation: Story = {
+  render: () => <IconDocs />,
+  parameters: {
+    controls: { disable: true },
+    actions: { disable: true },
+  },
+};
+
+/**
  * The default icon story demonstrating the selectable icon prop.
  */
 export const Default: Story = {
@@ -250,16 +261,5 @@ export const Gallery: Story = {
         ))}
       </div>
     );
-  },
-};
-
-/**
- * Full branded documentation page for the Icon component.
- */
-export const Documentation: Story = {
-  render: () => <IconDocs />,
-  parameters: {
-    controls: { disable: true },
-    actions: { disable: true },
   },
 };

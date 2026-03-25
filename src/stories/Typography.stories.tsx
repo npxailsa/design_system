@@ -90,8 +90,6 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-export const Default: Story = {};
-
 /**
  * Full branded documentation page for Typography.
  */
@@ -102,3 +100,5 @@ export const Documentation: Story = {
     actions: { disable: true },
   },
 };
+
+export const Default: Story = {};
