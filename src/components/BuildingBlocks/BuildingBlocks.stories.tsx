@@ -6,7 +6,7 @@ import { BuildingBlocksDocs } from './BuildingBlocksDocs';
 import type { StatusIconType, StatusIconStep, StatusIconSize } from './StatusIcon/StatusIcon';
 
 const meta: Meta<typeof StatusIcon> = {
-  title: 'Foundation/BuildingBlocks',
+  title: 'Foundation/BuildingBlocks/StatusStepper',
   component: StatusIcon,
   parameters: {
     docs: {
