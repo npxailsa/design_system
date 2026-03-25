@@ -17,13 +17,26 @@ if (typeof window !== 'undefined') {
     originalError.apply(window.console, args);
   };
 
+  // Suppress in the global error event (covers overlay + error boundary)
   window.addEventListener('error', (e) => {
-    if (e.message === 'ResizeObserver loop completed with undelivered notifications') {
-      const resizeObserverErr = document.getElementById('webpack-dev-server-client-overlay-error');
-      if (resizeObserverErr) {
-        resizeObserverErr.style.display = 'none';
-      }
+    if (
+      e.message === 'ResizeObserver loop completed with undelivered notifications' ||
+      e.message === 'ResizeObserver loop limit exceeded'
+    ) {
       e.stopImmediatePropagation();
+      e.preventDefault();
+    }
+  });
+
+  // Also suppress if it surfaces as an unhandled rejection
+  window.addEventListener('unhandledrejection', (e) => {
+    if (
+      e.reason &&
+      typeof e.reason.message === 'string' &&
+      (e.reason.message.includes('ResizeObserver loop') ||
+        e.reason.message.includes('ResizeObserver loop limit exceeded'))
+    ) {
+      e.preventDefault();
     }
   });
 }
