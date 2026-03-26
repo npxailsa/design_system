@@ -39,42 +39,62 @@ export const ToastDocs: React.FC = () => {
           toasts float above page content via a fixed-position portal with a drop shadow.
         </DocsTemplate.BodyText>
         <DocsTemplate.Anatomy
-          preview={<Toast size="default" colour="default" />}
+          preview={
+            <DocsTemplate.AnatomyMarker id={5} position="top-left">
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: 'var(--global-spacing-sizing-8px)', background: 'var(--alert-bg-default)', border: '1px solid var(--alert-border-default)', borderRadius: 'var(--global-spacing-radius-6px)', padding: 'var(--global-spacing-sizing-12px)', minWidth: '280px', maxWidth: '400px', boxShadow: '0 4px 12px rgba(0,0,0,0.12)' }}>
+                <DocsTemplate.AnatomyMarker id={1} position="top-left">
+                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ opacity: 0.5, flexShrink: 0 }}>
+                    <circle cx="11" cy="11" r="10" stroke="var(--alert-title-default)" strokeWidth="1.5" fill="none" />
+                    <circle cx="11" cy="11" r="6" stroke="var(--alert-title-default)" strokeWidth="1.5" fill="none" />
+                    <circle cx="11" cy="11" r="2" fill="var(--alert-title-default)" />
+                  </svg>
+                </DocsTemplate.AnatomyMarker>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', flex: 1 }}>
+                  <DocsTemplate.AnatomyMarker id={2}>
+                    <span style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '14px', color: 'var(--alert-title-default)', fontWeight: 400 }}>This is a toast notification</span>
+                  </DocsTemplate.AnatomyMarker>
+                  <DocsTemplate.AnatomyMarker id={3}>
+                    <span style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '14px', color: 'var(--global-color-neutral-gray-700)', fontWeight: 300 }}>Description text for context</span>
+                  </DocsTemplate.AnatomyMarker>
+                </div>
+                <DocsTemplate.AnatomyMarker id={4} position="top-right">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ opacity: 0.5, flexShrink: 0, cursor: 'pointer' }}>
+                    <path d="M4 4l8 8M12 4l-8 8" stroke="var(--alert-title-default)" strokeWidth="1.5" strokeLinecap="round" />
+                  </svg>
+                </DocsTemplate.AnatomyMarker>
+              </div>
+            </DocsTemplate.AnatomyMarker>
+          }
           parts={[
             {
               id: 1,
               name: 'Leading Icon',
               token: 'filled/icons (display category)\n--toast-leading-icon-{size}\n--toast-icon-opacity',
               description: 'Context-sensitive SVG icon indicating the notification type. Rendered at 50% opacity. Selection varies by colour variant. Aliased from --alert-leading-icon-{size}.',
-              pin: { top: '60%', left: '5%' },
             },
             {
               id: 2,
               name: 'Title',
               token: '--toast-font-family\n--toast-title-size-{size}\n--toast-title-weight\n--toast-title-{colour}',
               description: 'Primary notification text using F37 Ginger Pro Regular. Colour inherits from the matching Alert colour token for the selected variant.',
-              pin: { top: '28%', left: '48%' },
             },
             {
               id: 3,
               name: 'Description',
               token: '--toast-font-family\n--toast-desc-size-{size}\n--toast-desc-weight\n--toast-description-color',
               description: 'Supporting subtext at 300 weight. Always gray-700 regardless of colour variant. Toggle with showSubtext prop.',
-              pin: { top: '72%', left: '48%' },
             },
             {
               id: 4,
               name: 'Close Icon',
               token: 'filled/icons (action category)\n--toast-close-icon-{size}\n--toast-icon-opacity',
               description: 'Optional dismiss action. Calls the onClose callback when clicked. Toggle with showTrailingIcon prop.',
-              pin: { top: '40%', left: '95%' },
             },
             {
               id: 5,
               name: 'Container / Portal',
               token: '--toast-bg-{colour}\n--toast-border-radius\n--toast-shadow\n--toast-min-width\n--toast-max-width\n--toast-offset-x\n--toast-offset-y\n--toast-z-index',
               description: 'Fixed-position floating panel rendered into a portal above all page content. Drop shadow (--toast-shadow) distinguishes it from the page. Width is 280–400px.',
-              pin: { top: '5%', left: '50%' },
             },
           ]}
         />

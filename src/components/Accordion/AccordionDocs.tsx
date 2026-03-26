@@ -25,15 +25,39 @@ export const AccordionDocs: React.FC = () => {
         </DocsTemplate.BodyText>
         <DocsTemplate.Anatomy
           preview={
-            <Accordion
-              type="simple"
-              size="default"
-              openIcon="chevron"
-              showStatusIcon
-              showLeadingIcon
-              showDescription
-              defaultOpen
-            />
+            <div style={{ display: 'flex', flexDirection: 'column', background: 'var(--global-color-base-white)', border: '1px solid var(--global-color-neutral-gray-200)', borderRadius: 'var(--global-spacing-radius-8px)', padding: 'var(--global-spacing-sizing-20px) var(--global-spacing-sizing-24px) var(--global-spacing-sizing-20px) var(--global-spacing-sizing-20px)', minWidth: '300px', maxWidth: '600px', width: '100%' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--global-spacing-sizing-12px)' }}>
+                <DocsTemplate.AnatomyMarker id={1} position="top-left">
+                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0 }}>
+                    <circle cx="14" cy="14" r="12" stroke="var(--global-color-neutral-gray-400)" strokeWidth="1.5" fill="none" />
+                    <path d="M14 8v4l3 3" stroke="var(--global-color-neutral-gray-400)" strokeWidth="1.5" strokeLinecap="round" />
+                  </svg>
+                </DocsTemplate.AnatomyMarker>
+                <DocsTemplate.AnatomyMarker id={2} position="top-left">
+                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0 }}>
+                    <path d="M14 4c-1.5 0-2.5 1-2.5 2.5S14 10 14 10s2.5-2 2.5-3.5S15.5 4 14 4zM10 22h8M14 10v12" stroke="var(--global-color-neutral-gray-400)" strokeWidth="1.5" strokeLinecap="round" />
+                  </svg>
+                </DocsTemplate.AnatomyMarker>
+                <div style={{ display: 'flex', flexDirection: 'column', flex: 1, overflow: 'hidden' }}>
+                  <DocsTemplate.AnatomyMarker id={3}>
+                    <span style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '19px', color: 'var(--global-color-base-black)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>This is a section title...</span>
+                  </DocsTemplate.AnatomyMarker>
+                  <DocsTemplate.AnatomyMarker id={4}>
+                    <span style={{ fontFamily: 'var(--font-family-secondary)', fontSize: '14px', color: 'var(--color-primary-blue-gray-blue-gray)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>Supporting description text</span>
+                  </DocsTemplate.AnatomyMarker>
+                </div>
+                <DocsTemplate.AnatomyMarker id={5} position="top-right">
+                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0 }}>
+                    <path d="M8 11l6 6 6-6" stroke="var(--global-color-neutral-gray-600)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </DocsTemplate.AnatomyMarker>
+              </div>
+              <div style={{ paddingTop: 'var(--global-spacing-sizing-16px)' }}>
+                <DocsTemplate.AnatomyMarker id={6}>
+                  <span style={{ fontFamily: 'var(--font-family-secondary)', fontSize: '14px', color: 'var(--global-color-neutral-gray-700)', lineHeight: 1.5 }}>Expanded body content goes here. This panel is visible only when the accordion is open.</span>
+                </DocsTemplate.AnatomyMarker>
+              </div>
+            </div>
           }
           parts={[
             {
@@ -41,42 +65,36 @@ export const AccordionDocs: React.FC = () => {
               name: 'Status Icon',
               token: 'filled/icons (display category)\n--accordion-icon-size-{size}',
               description: 'Optional icon communicating category or state. Positioned at the far left. Toggle with showStatusIcon prop.',
-              pin: { top: '28%', left: '3%' },
             },
             {
               id: 2,
               name: 'Leading Icon',
               token: 'filled/icons (display category)\n--accordion-icon-size-{size}',
               description: 'Optional secondary leading icon (bell). Appears after the status icon. Toggle with showLeadingIcon prop.',
-              pin: { top: '28%', left: '9%' },
             },
             {
               id: 3,
               name: 'Title',
               token: '--accordion-title-font-family\n--accordion-title-font-size-{size}\n--accordion-title-color\n--accordion-title-weight',
               description: 'Primary heading text using F37 Ginger Pro. Truncates with ellipsis if content overflows available width.',
-              pin: { top: '18%', left: '50%' },
             },
             {
               id: 4,
               name: 'Description',
               token: '--accordion-desc-font-family\n--accordion-desc-color\n--accordion-desc-font-size',
               description: 'Supporting subtext below the title. Truncates with ellipsis on overflow. Toggle with showDescription prop.',
-              pin: { top: '38%', left: '50%' },
             },
             {
               id: 5,
               name: 'Toggle Icon',
               token: '--accordion-icon-size-{size}\n--accordion-icon-color',
               description: 'Chevron or plus/minus icon that rotates/changes on open/close. Controlled by the openIcon prop.',
-              pin: { top: '28%', left: '96%' },
             },
             {
               id: 6,
               name: 'Body Text',
               token: '--accordion-body-color\n--accordion-body-font-family\n--accordion-body-font-size\n--accordion-content-gap-default',
               description: 'Expanded content panel. Wraps text normally (word-wrap: break-word). Appears only in open state.',
-              pin: { top: '75%', left: '50%' },
             },
           ]}
         />

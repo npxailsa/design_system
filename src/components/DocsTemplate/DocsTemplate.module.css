@@ -629,42 +629,58 @@
   overflow: visible;
 }
 
-/* Legend strip — numbered badges + element names below preview */
-.anatomy-legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--global-spacing-sizing-12px);
-  padding: var(--global-spacing-sizing-8px) 0;
-}
+/* ==========================================================================
+   AnatomyMarker — Inline badge attached to an individual component part
+   ========================================================================== */
 
-.anatomy-legend-item {
+.anatomy-marker {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: var(--global-spacing-sizing-6px, 6px);
+  justify-content: center;
+  border: var(--global-spacing-stroke-1px) dashed var(--color-primary-blue-blue, #3a6cff);
+  border-radius: var(--global-spacing-radius-4px, 4px);
+  padding: var(--global-spacing-sizing-2px, 2px);
 }
 
-.anatomy-legend-badge {
-  width: 22px;
-  height: 22px;
+.anatomy-marker-badge {
+  position: absolute;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background: var(--color-primary-blue-blue, #3a6cff);
   color: var(--global-color-base-white);
   font-family: var(--font-family-secondary);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
   line-height: 1;
+  pointer-events: none;
+  z-index: 1;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
 }
 
-.anatomy-legend-label {
-  font-family: var(--font-family-secondary);
-  font-size: var(--global-type-size-secondary-body, 14px);
-  color: var(--color-primary-blue-gray-blue-gray);
-  font-weight: var(--global-type-weight-default);
-  line-height: 1.4;
+/* Position variants via data attribute */
+.anatomy-marker[data-position='top-right'] .anatomy-marker-badge {
+  top: -10px;
+  right: -10px;
+}
+
+.anatomy-marker[data-position='top-left'] .anatomy-marker-badge {
+  top: -10px;
+  left: -10px;
+}
+
+.anatomy-marker[data-position='bottom-right'] .anatomy-marker-badge {
+  bottom: -10px;
+  right: -10px;
+}
+
+.anatomy-marker[data-position='bottom-left'] .anatomy-marker-badge {
+  bottom: -10px;
+  left: -10px;
 }
 
 .anatomy-parts {

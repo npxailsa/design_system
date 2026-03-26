@@ -26,13 +26,30 @@ export const AccordionAltDocs: React.FC = () => {
         </DocsTemplate.BodyText>
         <DocsTemplate.Anatomy
           preview={
-            <AccordionAlt
-              type="decorative"
-              size="default"
-              showIcon
-              title="Discover what's new in our latest release"
-              defaultOpen
-            />
+            <DocsTemplate.AnatomyMarker id={5} position="top-left">
+              <div style={{ display: 'flex', flexDirection: 'column', background: 'var(--global-color-base-white)', border: '2px solid var(--global-color-secondary-sky-blue)', borderRadius: 'var(--global-spacing-radius-8px)', padding: 'var(--global-spacing-sizing-16px)', minWidth: '200px', maxWidth: '500px', width: '100%' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--global-spacing-sizing-12px)' }}>
+                  <DocsTemplate.AnatomyMarker id={1} position="top-left">
+                    <span style={{ width: '28px', height: '28px', borderRadius: '50%', background: 'var(--global-color-secondary-sky-blue-50)', border: '1px solid var(--global-color-secondary-sky-blue-200)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1c-1.5 0-2.5 1-2.5 2.5S7 7 7 7s2.5-2 2.5-3.5S8.5 1 7 1zM5 11h4M7 7v4" stroke="var(--global-color-secondary-sky-blue)" strokeWidth="1.2" strokeLinecap="round" /></svg>
+                    </span>
+                  </DocsTemplate.AnatomyMarker>
+                  <DocsTemplate.AnatomyMarker id={2}>
+                    <span style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '18px', color: 'var(--global-color-base-black)', flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Discover what&rsquo;s new in our latest release</span>
+                  </DocsTemplate.AnatomyMarker>
+                  <DocsTemplate.AnatomyMarker id={3} position="top-right">
+                    <span style={{ width: '24px', height: '24px', borderRadius: '50%', background: 'var(--global-color-neutral-gray-50)', border: '1px solid var(--global-color-neutral-gray-200)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="var(--global-color-neutral-gray-600)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                    </span>
+                  </DocsTemplate.AnatomyMarker>
+                </div>
+                <div style={{ paddingTop: 'var(--global-spacing-sizing-12px)' }}>
+                  <DocsTemplate.AnatomyMarker id={4}>
+                    <span style={{ fontFamily: 'var(--font-family-secondary)', fontSize: '14px', color: 'var(--global-color-neutral-gray-700)', lineHeight: 1.5 }}>Expanded body content visible in the open state.</span>
+                  </DocsTemplate.AnatomyMarker>
+                </div>
+              </div>
+            </DocsTemplate.AnatomyMarker>
           }
           parts={[
             {
@@ -40,35 +57,30 @@ export const AccordionAltDocs: React.FC = () => {
               name: 'Icon Badge',
               token: '--accordion-alt-icon-badge-size\n--accordion-alt-icon-badge-bg\n--accordion-alt-icon-badge-border-color\n--accordion-alt-icon-badge-border-radius',
               description: 'Circular badge shown in decorative type. Contains a bell SVG icon. Replaced by a number (numbered type) or tag pill (label type).',
-              pin: { top: '30%', left: '5%' },
             },
             {
               id: 2,
               name: 'Title',
               token: '--accordion-alt-title-font-family\n--accordion-alt-title-font-size-{size}\n--accordion-alt-title-color\n--accordion-alt-title-weight',
               description: 'Primary heading text using F37 Ginger Pro. Truncates with ellipsis if it overflows the available horizontal space.',
-              pin: { top: '30%', left: '52%' },
             },
             {
               id: 3,
               name: 'Toggle Button',
               token: '--accordion-alt-toggle-size-{size}\n--accordion-alt-toggle-bg\n--accordion-alt-toggle-border-color\n--accordion-alt-toggle-border-radius',
               description: 'Pill-shaped button containing a chevron or plus/minus icon. Controlled by the openIcon prop. Rotates/changes on open/close.',
-              pin: { top: '30%', left: '96%' },
             },
             {
               id: 4,
               name: 'Body Text',
               token: '--accordion-alt-body-color\n--accordion-alt-body-font-family\n--accordion-alt-body-font-size\n--accordion-alt-gap-open',
               description: 'Expanded content below the trigger row. Text wraps normally. Visible only in the open state.',
-              pin: { top: '78%', left: '40%' },
             },
             {
               id: 5,
               name: 'Container',
               token: '--accordion-alt-bg\n--accordion-alt-border-radius\n--accordion-alt-border-width\n--accordion-alt-min-width\n--accordion-alt-max-width',
               description: 'Outer panel. Width is fixed between open/closed states (200px–600px). Open state uses inset box-shadow for border emphasis without layout shift.',
-              pin: { top: '5%', left: '50%' },
             },
           ]}
         />

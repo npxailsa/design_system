@@ -26,6 +26,7 @@ export const DocsTemplate: React.FC<DocsTemplateProps> & {
   IconGallery: typeof IconGallery;
   SizeDemo: typeof SizeDemo;
   Anatomy: typeof Anatomy;
+  AnatomyMarker: typeof AnatomyMarker;
   Footer: typeof Footer;
 } = ({ children, className }) => {
   return (
@@ -383,16 +384,6 @@ const Anatomy: React.FC<AnatomyProps> = ({ preview, parts }) => (
       {preview}
     </div>
 
-    {/* Legend strip — numbered badges + element names */}
-    <div className={styles['anatomy-legend']}>
-      {parts.map((p) => (
-        <span key={p.id} className={styles['anatomy-legend-item']}>
-          <span className={styles['anatomy-legend-badge']}>{p.id}</span>
-          <span className={styles['anatomy-legend-label']}>{p.name}</span>
-        </span>
-      ))}
-    </div>
-
     <div className={styles['anatomy-parts']}>
       <div className={styles['anatomy-parts-header']}>
         <span>#</span>
@@ -410,6 +401,32 @@ const Anatomy: React.FC<AnatomyProps> = ({ preview, parts }) => (
       ))}
     </div>
   </div>
+);
+
+/* ==========================================================================
+   AnatomyMarker — Inline numbered badge attached to a component element
+   ========================================================================== */
+
+interface AnatomyMarkerProps {
+  /** The anatomy part number */
+  id: number;
+  /** The element to annotate */
+  children: React.ReactNode;
+  /** Badge position relative to the child — default 'top-right' */
+  position?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+}
+
+const AnatomyMarker: React.FC<AnatomyMarkerProps> = ({
+  id,
+  children,
+  position = 'top-right',
+}) => (
+  <span className={styles['anatomy-marker']} data-position={position}>
+    {children}
+    <span className={styles['anatomy-marker-badge']} aria-hidden="true">
+      {id}
+    </span>
+  </span>
 );
 
 /* ==========================================================================
@@ -447,4 +464,5 @@ DocsTemplate.RelatedLinks = RelatedLinks;
 DocsTemplate.IconGallery = IconGallery;
 DocsTemplate.SizeDemo = SizeDemo;
 DocsTemplate.Anatomy = Anatomy;
+DocsTemplate.AnatomyMarker = AnatomyMarker;
 DocsTemplate.Footer = Footer;

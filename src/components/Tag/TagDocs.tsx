@@ -82,18 +82,25 @@ export const TagDocs: React.FC = () => {
         </DocsTemplate.BodyText>
         <DocsTemplate.Anatomy
           preview={
-            <Tag
-              colour="blue"
-              size="large"
-              label="Category"
-              showLeadingIcon
-              leadingIcon={CheckIcon}
-              showCount
-              count={4}
-              showTrailingIcon
-              trailingIcon={ArrowForwardIcon}
-              showRemove
-            />
+            <DocsTemplate.AnatomyMarker id={6} position="top-left">
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 'var(--global-spacing-sizing-6px, 6px)', height: 'var(--tag-height-large)', padding: '0 var(--global-spacing-sizing-12px)', background: 'var(--tag-bg-blue)', border: '1px solid var(--tag-border-color-blue)', borderRadius: 'var(--global-spacing-radius-100px, 100px)', fontFamily: 'var(--font-family-primary)', fontSize: 'var(--tag-font-size-large)', color: 'var(--tag-color-blue)' }}>
+                <DocsTemplate.AnatomyMarker id={1} position="top-left">
+                  <CheckIcon style={{ fontSize: 'var(--tag-icon-size-large, 16px)' }} />
+                </DocsTemplate.AnatomyMarker>
+                <DocsTemplate.AnatomyMarker id={2}>
+                  <span style={{ lineHeight: 1 }}>Category</span>
+                </DocsTemplate.AnatomyMarker>
+                <DocsTemplate.AnatomyMarker id={3} position="top-right">
+                  <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', minWidth: '18px', height: '18px', borderRadius: '50%', background: 'var(--tag-count-bg-blue)', color: 'var(--tag-count-color-blue)', fontSize: '10px', fontWeight: 700, padding: '0 4px', lineHeight: 1 }}>4</span>
+                </DocsTemplate.AnatomyMarker>
+                <DocsTemplate.AnatomyMarker id={4} position="top-right">
+                  <ArrowForwardIcon style={{ fontSize: 'var(--tag-icon-size-large, 16px)' }} />
+                </DocsTemplate.AnatomyMarker>
+                <DocsTemplate.AnatomyMarker id={5} position="top-right">
+                  <span style={{ display: 'inline-flex', alignItems: 'center', opacity: 0.65, cursor: 'pointer', fontSize: '14px', lineHeight: 1 }}>&times;</span>
+                </DocsTemplate.AnatomyMarker>
+              </div>
+            </DocsTemplate.AnatomyMarker>
           }
           parts={[
             {
@@ -101,42 +108,36 @@ export const TagDocs: React.FC = () => {
               name: 'Leading Icon',
               token: 'MUI icon component\n--tag-icon-size-{size}\n--tag-gap-{size}',
               description: 'Optional icon preceding the label. Inherits the tag colour. Controlled by showLeadingIcon + leadingIcon props.',
-              pin: { top: '50%', left: '7%' },
             },
             {
               id: 2,
               name: 'Label',
               token: '--tag-font-family\n--tag-font-size-{size}\n--tag-font-weight\n--tag-color-{colour}',
               description: 'The primary text content. Truncates with ellipsis at max 160px. Set via the label prop.',
-              pin: { top: '50%', left: '42%' },
             },
             {
               id: 3,
               name: 'Count Badge',
-              token: '--tag-count background (rgba overlay)',
-              description: 'Optional numeric badge after the label. Semi-transparent background derived from the tag colour. Controlled by showCount + count props.',
-              pin: { top: '20%', left: '65%' },
+              token: '--tag-count-bg-{colour}\n--tag-count-color-{colour}',
+              description: 'Optional numeric badge after the label. Per-colour darker background with accessible text. Controlled by showCount + count props.',
             },
             {
               id: 4,
               name: 'Trailing Icon',
               token: 'MUI icon component\n--tag-icon-size-{size}\n--tag-gap-{size}',
               description: 'Optional icon after the label/count. Inherits tag colour. Controlled by showTrailingIcon + trailingIcon props.',
-              pin: { top: '50%', left: '80%' },
             },
             {
               id: 5,
               name: 'Remove Button',
               token: '--tag-remove (× SVG, currentColor)',
               description: 'Optional dismiss control. Calls onRemove on click. Inherits tag text colour at 65% opacity, rising to 100% on hover.',
-              pin: { top: '50%', left: '93%' },
             },
             {
               id: 6,
               name: 'Container',
               token: '--tag-border-radius\n--tag-bg-{colour}\n--tag-border-color-{colour}\n--tag-height-{size}\n--tag-padding-{size}',
               description: 'Pill-shaped outer shell. Fully rounded (100px radius). Height, padding, and colour are all size- and colour-variant driven.',
-              pin: { top: '5%', left: '50%' },
             },
           ]}
         />
