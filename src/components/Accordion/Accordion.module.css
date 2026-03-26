@@ -1,5 +1,10 @@
 /* ==========================================================================
    Accordion Component
+   --------------------------------------------------------------------------
+   RULE: The overall component width (left-to-right) MUST remain identical
+   between open and closed states. Never change border-width, padding, or
+   margin on open/closed that would alter outer dimensions. This rule
+   applies to ALL accordion components in the design system.
    ========================================================================== */
 
 .accordion,
