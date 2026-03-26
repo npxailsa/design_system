@@ -95,7 +95,6 @@ function App() {
 
       <DocsTemplate.BulletList
         items={[
-          'Slack: #design-system',
           'GitHub Issues: Open a new issue at github.com/npxailsa/design_system/issues',
         ]}
       />
