@@ -251,13 +251,21 @@
   line-height: 1;
 }
 
-.tag--dark .tag__count,
-.tag--navy .tag__count {
-  background: rgba(255, 255, 255, 0.25);
-}
+/* Per-colour count badge backgrounds + accessible text */
+.tag--default .tag__count { background: var(--tag-count-bg-default); color: var(--tag-count-color-default); }
+.tag--blue .tag__count    { background: var(--tag-count-bg-blue);    color: var(--tag-count-color-blue); }
+.tag--seafoam .tag__count { background: var(--tag-count-bg-seafoam); color: var(--tag-count-color-seafoam); }
+.tag--yellow .tag__count  { background: var(--tag-count-bg-yellow);  color: var(--tag-count-color-yellow); }
+.tag--dark .tag__count    { background: var(--tag-count-bg-dark);    color: var(--tag-count-color-dark); }
+.tag--navy .tag__count    { background: var(--tag-count-bg-navy);    color: var(--tag-count-color-navy); }
+.tag--red .tag__count     { background: var(--tag-count-bg-red);     color: var(--tag-count-color-red); }
+.tag--green .tag__count   { background: var(--tag-count-bg-green);   color: var(--tag-count-color-green); }
+.tag--purple .tag__count  { background: var(--tag-count-bg-purple);  color: var(--tag-count-color-purple); }
+.tag--info .tag__count    { background: var(--tag-count-bg-info);    color: var(--tag-count-color-info); }
 
 .tag--selected .tag__count {
   background: rgba(255, 255, 255, 0.3);
+  color: var(--global-color-base-white);
 }
 
 /* ── Remove button ── */

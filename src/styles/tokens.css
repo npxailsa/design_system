@@ -997,6 +997,28 @@
   --tag-bg-info: var(--global-color-status-info-blue-light);
   --tag-color-info: var(--global-color-status-info-blue);
   --tag-border-color-info: var(--global-color-status-edit);
+
+  /* Tag — count badge: per-colour background (slightly darker than fill) + accessible text */
+  --tag-count-bg-default: var(--global-color-neutral-gray-300);
+  --tag-count-color-default: var(--global-color-base-black);
+  --tag-count-bg-blue: var(--global-color-primary-sky-blue-200);
+  --tag-count-color-blue: var(--global-color-base-black);
+  --tag-count-bg-seafoam: var(--global-color-primary-seafoam-300);
+  --tag-count-color-seafoam: var(--global-color-base-black);
+  --tag-count-bg-yellow: var(--global-color-status-orange-light-border);
+  --tag-count-color-yellow: var(--global-color-base-black);
+  --tag-count-bg-dark: var(--global-color-neutral-gray-600);
+  --tag-count-color-dark: var(--global-color-base-white);
+  --tag-count-bg-navy: var(--global-color-secondary-navy-mid);
+  --tag-count-color-navy: var(--global-color-base-white);
+  --tag-count-bg-red: var(--global-color-status-rose);
+  --tag-count-color-red: var(--global-color-base-black);
+  --tag-count-bg-green: var(--global-color-status-green);
+  --tag-count-color-green: var(--global-color-base-black);
+  --tag-count-bg-purple: var(--global-color-status-note-mid);
+  --tag-count-color-purple: var(--global-color-base-black);
+  --tag-count-bg-info: var(--global-color-status-edit);
+  --tag-count-color-info: var(--global-color-base-black);
 }
 
 /* Font Loading */

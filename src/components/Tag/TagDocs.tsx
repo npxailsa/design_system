@@ -298,6 +298,23 @@ export const TagDocs: React.FC = () => {
         ]}
       />
 
+      <DocsTemplate.TokenTable
+        title="Design Tokens — Count Badge"
+        description="Each colour variant has a dedicated count badge background (slightly darker than the tag fill) and an accessible text colour (white or black):"
+        tokens={[
+          { name: '--tag-count-bg-blue / --tag-count-color-blue', description: 'Blue count — sky-blue-200 bg / base-black text' },
+          { name: '--tag-count-bg-seafoam / --tag-count-color-seafoam', description: 'Seafoam count — seafoam-300 bg / base-black text' },
+          { name: '--tag-count-bg-yellow / --tag-count-color-yellow', description: 'Yellow count — orange-light-border bg / base-black text' },
+          { name: '--tag-count-bg-dark / --tag-count-color-dark', description: 'Dark count — neutral-gray-600 bg / base-white text' },
+          { name: '--tag-count-bg-navy / --tag-count-color-navy', description: 'Navy count — secondary-navy-mid bg / base-white text' },
+          { name: '--tag-count-bg-red / --tag-count-color-red', description: 'Red count — status-rose bg / base-black text' },
+          { name: '--tag-count-bg-green / --tag-count-color-green', description: 'Green count — status-green bg / base-black text' },
+          { name: '--tag-count-bg-purple / --tag-count-color-purple', description: 'Purple count — note-mid bg / base-black text' },
+          { name: '--tag-count-bg-info / --tag-count-color-info', description: 'Info count — status-edit bg / base-black text' },
+          { name: '--tag-count-bg-default / --tag-count-color-default', description: 'Default count — neutral-gray-300 bg / base-black text' },
+        ]}
+      />
+
       {/* ── Usage ── */}
       <DocsTemplate.CodeBlock>
         {`import { Tag } from './Tag';
