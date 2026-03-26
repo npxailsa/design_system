@@ -823,6 +823,91 @@
   --accordion-transition-easing: ease;
 }
 
+/* ==========================================================================
+   COMPONENT LAYER: AccordionAlt (Component-Specific Tokens)
+   ========================================================================== */
+:root {
+  /* AccordionAlt layout */
+  --accordion-alt-bg: var(--global-color-base-white);
+  --accordion-alt-bg-open-decorative: var(--skybluegradient);
+  --accordion-alt-border-radius: var(--global-spacing-radius-8px);
+  --accordion-alt-border-width: var(--global-spacing-stroke-1px);
+  --accordion-alt-border-width-open: var(--global-spacing-stroke-2px);
+  --accordion-alt-border-color-decorative: var(--global-color-primary-sky-blue-200);
+  --accordion-alt-border-color-decorative-open: var(--global-color-primary-sky-blue);
+  --accordion-alt-border-color-numbered: var(--global-color-neutral-gray-200);
+  --accordion-alt-border-color-numbered-open: var(--global-color-primary-sky-blue);
+  --accordion-alt-border-color-label: var(--global-color-neutral-gray-200);
+  --accordion-alt-min-width: var(--global-spacing-sizing-300px);
+  --accordion-alt-max-width: var(--global-spacing-sizing-800px);
+
+  /* AccordionAlt padding — size variants */
+  --accordion-alt-padding-default: var(--global-spacing-sizing-16px);
+  --accordion-alt-padding-small: var(--global-spacing-sizing-12px);
+  --accordion-alt-padding-large: var(--global-spacing-sizing-20px);
+
+  /* AccordionAlt gaps */
+  --accordion-alt-gap: var(--global-spacing-sizing-10px);
+  --accordion-alt-gap-open: var(--global-spacing-sizing-12px);
+  --accordion-alt-header-gap: var(--global-spacing-sizing-12px);
+
+  /* AccordionAlt toggle button */
+  --accordion-alt-toggle-size-default: var(--global-spacing-sizing-24px);
+  --accordion-alt-toggle-size-small: 22px;
+  --accordion-alt-toggle-size-large: var(--global-spacing-sizing-28px);
+  --accordion-alt-toggle-bg: var(--global-color-neutral-gray-50);
+  --accordion-alt-toggle-border-color: var(--global-color-neutral-gray-200);
+  --accordion-alt-toggle-border-radius: var(--global-spacing-radius-full);
+  --accordion-alt-toggle-border-width: var(--global-spacing-stroke-1px);
+
+  /* AccordionAlt icon badge (decorative type) */
+  --accordion-alt-icon-badge-size: var(--global-spacing-sizing-28px);
+  --accordion-alt-icon-badge-bg: var(--global-color-primary-sky-blue-50);
+  --accordion-alt-icon-badge-border-color: var(--global-color-primary-sky-blue-200);
+  --accordion-alt-icon-badge-border-radius: var(--global-spacing-radius-full);
+
+  /* AccordionAlt number (numbered type) */
+  --accordion-alt-number-color: var(--global-color-primary-sky-blue);
+
+  /* AccordionAlt label badge (label type) */
+  --accordion-alt-label-bg: var(--global-color-primary-sky-blue-50);
+  --accordion-alt-label-color: var(--global-color-primary-sky-blue);
+  --accordion-alt-label-border-color: var(--global-color-primary-sky-blue-200);
+  --accordion-alt-label-border-radius: var(--global-spacing-radius-full);
+  --accordion-alt-label-padding: var(--global-spacing-sizing-2px) var(--global-spacing-sizing-8px);
+  --accordion-alt-label-font-size: var(--global-type-size-primary-label-xs);
+
+  /* AccordionAlt typography — title */
+  --accordion-alt-title-font-family: var(--brand-font-primary);
+  --accordion-alt-title-font-size-default: var(--global-spacing-sizing-18px);
+  --accordion-alt-title-font-size-small: var(--global-type-size-primary-label);
+  --accordion-alt-title-font-size-large: var(--global-spacing-sizing-24px);
+  --accordion-alt-title-line-height-default: var(--global-spacing-sizing-24px);
+  --accordion-alt-title-line-height-small: var(--global-spacing-sizing-20px);
+  --accordion-alt-title-line-height-large: var(--global-spacing-sizing-28px);
+  --accordion-alt-title-weight: var(--global-type-weight-medium);
+  --accordion-alt-title-color: var(--global-color-base-black);
+  --accordion-alt-title-letter-spacing: var(--global-type-letter-spacing-primary-label);
+
+  /* AccordionAlt typography — number */
+  --accordion-alt-number-font-size-default: var(--global-spacing-sizing-28px);
+  --accordion-alt-number-font-size-small: var(--global-spacing-sizing-24px);
+  --accordion-alt-number-font-size-large: var(--global-spacing-sizing-36px);
+  --accordion-alt-number-weight: var(--global-type-weight-bold);
+
+  /* AccordionAlt typography — body */
+  --accordion-alt-body-font-family: var(--brand-font-secondary);
+  --accordion-alt-body-color: var(--global-color-neutral-gray-800);
+  --accordion-alt-body-font-size: var(--global-type-size-primary-label);
+  --accordion-alt-body-line-height: var(--global-type-line-height-body);
+  --accordion-alt-body-weight: var(--global-type-weight-light);
+  --accordion-alt-body-letter-spacing: 0.05px;
+
+  /* AccordionAlt transition */
+  --accordion-alt-transition-duration: 220ms;
+  --accordion-alt-transition-easing: ease;
+}
+
 /* Font Loading */
 @font-face {
   font-family: 'F37 Ginger Pro';

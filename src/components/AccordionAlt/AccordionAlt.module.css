@@ -1,0 +1,225 @@
+/* ==========================================================================
+   AccordionAlt Component
+   ========================================================================== */
+
+.accordion-alt,
+.accordion-alt * {
+  box-sizing: border-box;
+}
+
+.accordion-alt {
+  background: var(--accordion-alt-bg);
+  border-radius: var(--accordion-alt-border-radius);
+  border: var(--accordion-alt-border-width) solid var(--accordion-alt-border-color-decorative);
+  padding: var(--accordion-alt-padding-default);
+  display: flex;
+  flex-direction: column;
+  gap: var(--accordion-alt-gap);
+  min-width: var(--accordion-alt-min-width);
+  max-width: var(--accordion-alt-max-width);
+  width: 100%;
+  transition:
+    border-color var(--accordion-alt-transition-duration) var(--accordion-alt-transition-easing),
+    background var(--accordion-alt-transition-duration) var(--accordion-alt-transition-easing);
+}
+
+/* ── Type: Decorative ── */
+
+.accordion-alt--decorative {
+  border-color: var(--accordion-alt-border-color-decorative);
+}
+
+.accordion-alt--decorative.accordion-alt--open {
+  border-width: var(--accordion-alt-border-width-open);
+  border-color: var(--accordion-alt-border-color-decorative-open);
+  background: var(--accordion-alt-bg-open-decorative);
+}
+
+/* ── Type: Numbered ── */
+
+.accordion-alt--numbered {
+  border-color: var(--accordion-alt-border-color-numbered);
+}
+
+.accordion-alt--numbered.accordion-alt--open {
+  border-width: var(--accordion-alt-border-width-open);
+  border-color: var(--accordion-alt-border-color-numbered-open);
+}
+
+/* ── Type: Label ── */
+
+.accordion-alt--label {
+  border-color: var(--accordion-alt-border-color-label);
+}
+
+/* ── Size variants ── */
+
+.accordion-alt--small {
+  padding: var(--accordion-alt-padding-small);
+}
+
+.accordion-alt--large {
+  padding: var(--accordion-alt-padding-large);
+}
+
+/* ── Open state gap ── */
+
+.accordion-alt--open {
+  gap: var(--accordion-alt-gap-open);
+}
+
+/* ── Trigger / heading row ── */
+
+.accordion-alt__trigger {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--accordion-alt-header-gap);
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.accordion-alt__trigger:focus-visible {
+  outline: 2px solid var(--global-color-primary-blue);
+  outline-offset: 2px;
+  border-radius: var(--global-spacing-radius-4px);
+}
+
+/* ── Header content (left side) ── */
+
+.accordion-alt__header-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--accordion-alt-header-gap);
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Icon badge (decorative type) ── */
+
+.accordion-alt__icon-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--accordion-alt-icon-badge-size);
+  height: var(--accordion-alt-icon-badge-size);
+  background: var(--accordion-alt-icon-badge-bg);
+  border: var(--accordion-alt-border-width) solid var(--accordion-alt-icon-badge-border-color);
+  border-radius: var(--accordion-alt-icon-badge-border-radius);
+  color: var(--accordion-alt-number-color);
+  flex-shrink: 0;
+}
+
+/* ── Number prefix (numbered type) ── */
+
+.accordion-alt__number {
+  color: var(--accordion-alt-number-color);
+  font-family: var(--accordion-alt-title-font-family);
+  font-size: var(--accordion-alt-number-font-size-default);
+  font-weight: var(--accordion-alt-number-weight);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.accordion-alt--small .accordion-alt__number {
+  font-size: var(--accordion-alt-number-font-size-small);
+}
+
+.accordion-alt--large .accordion-alt__number {
+  font-size: var(--accordion-alt-number-font-size-large);
+}
+
+/* ── Label badge (label type) ── */
+
+.accordion-alt__label-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--accordion-alt-label-padding);
+  background: var(--accordion-alt-label-bg);
+  color: var(--accordion-alt-label-color);
+  border: var(--accordion-alt-border-width) solid var(--accordion-alt-label-border-color);
+  border-radius: var(--accordion-alt-label-border-radius);
+  font-family: var(--accordion-alt-title-font-family);
+  font-size: var(--accordion-alt-label-font-size);
+  font-weight: var(--accordion-alt-title-weight);
+  line-height: 1.2;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Title text ── */
+
+.accordion-alt__title {
+  color: var(--accordion-alt-title-color);
+  font-family: var(--accordion-alt-title-font-family);
+  font-size: var(--accordion-alt-title-font-size-default);
+  line-height: var(--accordion-alt-title-line-height-default);
+  font-weight: var(--accordion-alt-title-weight);
+  letter-spacing: var(--accordion-alt-title-letter-spacing);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  min-width: 0;
+}
+
+.accordion-alt--small .accordion-alt__title {
+  font-size: var(--accordion-alt-title-font-size-small);
+  line-height: var(--accordion-alt-title-line-height-small);
+}
+
+.accordion-alt--large .accordion-alt__title {
+  font-size: var(--accordion-alt-title-font-size-large);
+  line-height: var(--accordion-alt-title-line-height-large);
+}
+
+/* ── Toggle button ── */
+
+.accordion-alt__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--accordion-alt-toggle-size-default);
+  height: var(--accordion-alt-toggle-size-default);
+  background: var(--accordion-alt-toggle-bg);
+  border: var(--accordion-alt-toggle-border-width) solid var(--accordion-alt-toggle-border-color);
+  border-radius: var(--accordion-alt-toggle-border-radius);
+  color: var(--global-color-base-black);
+  flex-shrink: 0;
+}
+
+.accordion-alt--small .accordion-alt__toggle {
+  width: var(--accordion-alt-toggle-size-small);
+  height: var(--accordion-alt-toggle-size-small);
+}
+
+.accordion-alt--large .accordion-alt__toggle {
+  width: var(--accordion-alt-toggle-size-large);
+  height: var(--accordion-alt-toggle-size-large);
+}
+
+/* ── Expandable content panel ── */
+
+.accordion-alt__panel {
+  padding: 0;
+}
+
+/* ── Body text ── */
+
+.accordion-alt__body-text {
+  color: var(--accordion-alt-body-color);
+  font-family: var(--accordion-alt-body-font-family);
+  font-size: var(--accordion-alt-body-font-size);
+  line-height: var(--accordion-alt-body-line-height);
+  font-weight: var(--accordion-alt-body-weight);
+  letter-spacing: var(--accordion-alt-body-letter-spacing);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  margin: 0;
+}
