@@ -624,44 +624,6 @@
   overflow: visible;
 }
 
-/* Legend strip — numbered badges mapped to element names */
-.anatomy-legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--global-spacing-sizing-16px);
-  padding: var(--global-spacing-sizing-4px) 0;
-}
-
-.anatomy-legend-item {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--global-spacing-sizing-6px, 6px);
-}
-
-.anatomy-legend-badge {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: var(--color-primary-blue-blue, #3a6cff);
-  color: var(--global-color-base-white);
-  font-family: var(--font-family-secondary);
-  font-size: 11px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  line-height: 1;
-}
-
-.anatomy-legend-label {
-  font-family: var(--font-family-secondary);
-  font-size: var(--global-type-size-secondary-body, 14px);
-  color: var(--color-primary-blue-gray-blue-gray);
-  font-weight: var(--global-type-weight-default);
-  line-height: 1.4;
-}
-
 .anatomy-parts {
   display: flex;
   flex-direction: column;

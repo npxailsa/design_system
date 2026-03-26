@@ -383,16 +383,6 @@ const Anatomy: React.FC<AnatomyProps> = ({ preview, parts }) => (
       {preview}
     </div>
 
-    {/* Legend strip — numbered badges mapped to element names */}
-    <div className={styles['anatomy-legend']}>
-      {parts.map((p) => (
-        <span key={p.id} className={styles['anatomy-legend-item']}>
-          <span className={styles['anatomy-legend-badge']}>{p.id}</span>
-          <span className={styles['anatomy-legend-label']}>{p.name}</span>
-        </span>
-      ))}
-    </div>
-
     <div className={styles['anatomy-parts']}>
       <div className={styles['anatomy-parts-header']}>
         <span>#</span>
