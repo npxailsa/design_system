@@ -102,6 +102,7 @@
   --global-spacing-sizing-400px: 400px;
   --global-spacing-sizing-480px: 480px;
   --global-spacing-sizing-560px: 560px;
+  --global-spacing-sizing-600px: 600px;
   --global-spacing-sizing-640px: 640px;
   --global-spacing-sizing-720px: 720px;
   --global-spacing-sizing-800px: 800px;
@@ -838,8 +839,8 @@
   --accordion-alt-border-color-numbered: var(--global-color-neutral-gray-200);
   --accordion-alt-border-color-numbered-open: var(--global-color-primary-sky-blue);
   --accordion-alt-border-color-label: var(--global-color-neutral-gray-200);
-  --accordion-alt-min-width: var(--global-spacing-sizing-300px);
-  --accordion-alt-max-width: var(--global-spacing-sizing-800px);
+  --accordion-alt-min-width: var(--global-spacing-sizing-200px);
+  --accordion-alt-max-width: var(--global-spacing-sizing-600px);
 
   /* AccordionAlt padding — size variants */
   --accordion-alt-padding-default: var(--global-spacing-sizing-16px);

@@ -176,6 +176,8 @@ export const AccordionAltDocs: React.FC = () => {
           { name: '--accordion-alt-border-color-numbered', description: 'Border colour for numbered type (gray-200)' },
           { name: '--accordion-alt-border-color-numbered-open', description: 'Border colour for open numbered type (sky-blue)' },
           { name: '--accordion-alt-border-color-label', description: 'Border colour for label type (gray-200)' },
+          { name: '--accordion-alt-min-width', description: 'Minimum component width (200px)' },
+          { name: '--accordion-alt-max-width', description: 'Maximum component width (600px)' },
           { name: '--accordion-alt-padding-default', description: 'Inner padding — default size (16px)' },
           { name: '--accordion-alt-padding-small', description: 'Inner padding — small size (12px)' },
           { name: '--accordion-alt-padding-large', description: 'Inner padding — large size (20px)' },
