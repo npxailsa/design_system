@@ -25,6 +25,7 @@ export const DocsTemplate: React.FC<DocsTemplateProps> & {
   RelatedLinks: typeof RelatedLinks;
   IconGallery: typeof IconGallery;
   SizeDemo: typeof SizeDemo;
+  Anatomy: typeof Anatomy;
   Footer: typeof Footer;
 } = ({ children, className }) => {
   return (
@@ -354,6 +355,66 @@ const SizeDemo: React.FC<SizeDemoProps> = ({ rows }) => (
 );
 
 /* ==========================================================================
+   Anatomy — Component anatomy diagram with numbered callouts
+   ========================================================================== */
+
+export interface AnatomyPart {
+  id: number;
+  /** Short element name shown in the table */
+  name: string;
+  /** Design token name(s) or component reference */
+  token: string;
+  /** What this element does / how it behaves */
+  description: string;
+  /** Optional pin placement on the preview (percentage strings, e.g. '50%') */
+  pin?: { top: string; left: string };
+}
+
+interface AnatomyProps {
+  /** The rendered component to annotate */
+  preview: React.ReactNode;
+  /** Numbered anatomy parts */
+  parts: AnatomyPart[];
+}
+
+const Anatomy: React.FC<AnatomyProps> = ({ preview, parts }) => (
+  <div className={styles.anatomy}>
+    <div className={styles['anatomy-preview']}>
+      {preview}
+      {parts
+        .filter((p) => p.pin)
+        .map((p) => (
+          <span
+            key={p.id}
+            className={styles['anatomy-pin']}
+            style={{ top: p.pin!.top, left: p.pin!.left }}
+            aria-hidden="true"
+          >
+            {p.id}
+          </span>
+        ))}
+    </div>
+
+    <div className={styles['anatomy-parts']}>
+      <div className={styles['anatomy-parts-header']}>
+        <span>#</span>
+        <span>Element</span>
+        <span>Token / Component</span>
+        <span>Description</span>
+      </div>
+      {parts.map((p) => (
+        <div key={p.id} className={styles['anatomy-part-row']}>
+          <div className={styles['anatomy-part-badge']}>{p.id}</div>
+          <div className={styles['anatomy-part-name']}>{p.name}</div>
+          <div className={styles['anatomy-part-token']}>{p.token}</div>
+          <div className={styles['anatomy-part-description']}>{p.description}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+/* ==========================================================================
    Footer — Separator + copyright
    ========================================================================== */
 
@@ -387,4 +448,5 @@ DocsTemplate.BulletList = BulletList;
 DocsTemplate.RelatedLinks = RelatedLinks;
 DocsTemplate.IconGallery = IconGallery;
 DocsTemplate.SizeDemo = SizeDemo;
+DocsTemplate.Anatomy = Anatomy;
 DocsTemplate.Footer = Footer;

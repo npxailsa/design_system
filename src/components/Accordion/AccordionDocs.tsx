@@ -17,6 +17,71 @@ export const AccordionDocs: React.FC = () => {
         Optional leading icons and status indicators provide additional context at a glance.
       </DocsTemplate.BodyText>
 
+      {/* ── Component Anatomy ── */}
+      <DocsTemplate.Section title="Component Anatomy">
+        <DocsTemplate.BodyText>
+          The diagram below identifies each numbered part of the Accordion component (simple type,
+          default size, open state) along with the tokens and sub-components that control it.
+        </DocsTemplate.BodyText>
+        <DocsTemplate.Anatomy
+          preview={
+            <Accordion
+              type="simple"
+              size="default"
+              openIcon="chevron"
+              showStatusIcon
+              showLeadingIcon
+              showDescription
+              defaultOpen
+            />
+          }
+          parts={[
+            {
+              id: 1,
+              name: 'Status Icon',
+              token: 'filled/icons (display category)\n--accordion-icon-size-{size}',
+              description: 'Optional icon communicating category or state. Positioned at the far left. Toggle with showStatusIcon prop.',
+              pin: { top: '28%', left: '3%' },
+            },
+            {
+              id: 2,
+              name: 'Leading Icon',
+              token: 'filled/icons (display category)\n--accordion-icon-size-{size}',
+              description: 'Optional secondary leading icon (bell). Appears after the status icon. Toggle with showLeadingIcon prop.',
+              pin: { top: '28%', left: '9%' },
+            },
+            {
+              id: 3,
+              name: 'Title',
+              token: '--accordion-title-font-family\n--accordion-title-font-size-{size}\n--accordion-title-color\n--accordion-title-weight',
+              description: 'Primary heading text using F37 Ginger Pro. Truncates with ellipsis if content overflows available width.',
+              pin: { top: '18%', left: '50%' },
+            },
+            {
+              id: 4,
+              name: 'Description',
+              token: '--accordion-desc-font-family\n--accordion-desc-color\n--accordion-desc-font-size',
+              description: 'Supporting subtext below the title. Truncates with ellipsis on overflow. Toggle with showDescription prop.',
+              pin: { top: '38%', left: '50%' },
+            },
+            {
+              id: 5,
+              name: 'Toggle Icon',
+              token: '--accordion-icon-size-{size}\n--accordion-icon-color',
+              description: 'Chevron or plus/minus icon that rotates/changes on open/close. Controlled by the openIcon prop.',
+              pin: { top: '28%', left: '96%' },
+            },
+            {
+              id: 6,
+              name: 'Body Text',
+              token: '--accordion-body-color\n--accordion-body-font-family\n--accordion-body-font-size\n--accordion-content-gap-default',
+              description: 'Expanded content panel. Wraps text normally (word-wrap: break-word). Appears only in open state.',
+              pin: { top: '75%', left: '50%' },
+            },
+          ]}
+        />
+      </DocsTemplate.Section>
+
       {/* ── Types ── */}
       <DocsTemplate.Section title="Types">
         <DocsTemplate.BodyText>

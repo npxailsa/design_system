@@ -31,6 +31,55 @@ export const ToastDocs: React.FC = () => {
         auto-dismiss and portal rendering.
       </DocsTemplate.BodyText>
 
+      {/* ── Component Anatomy ── */}
+      <DocsTemplate.Section title="Component Anatomy">
+        <DocsTemplate.BodyText>
+          The Toast shares the same internal layout as the Alert component — the anatomy below maps
+          each numbered element to its controlling tokens. The key difference is the outer container:
+          toasts float above page content via a fixed-position portal with a drop shadow.
+        </DocsTemplate.BodyText>
+        <DocsTemplate.Anatomy
+          preview={<Toast size="default" colour="default" />}
+          parts={[
+            {
+              id: 1,
+              name: 'Leading Icon',
+              token: 'filled/icons (display category)\n--toast-leading-icon-{size}\n--toast-icon-opacity',
+              description: 'Context-sensitive SVG icon indicating the notification type. Rendered at 50% opacity. Selection varies by colour variant. Aliased from --alert-leading-icon-{size}.',
+              pin: { top: '60%', left: '5%' },
+            },
+            {
+              id: 2,
+              name: 'Title',
+              token: '--toast-font-family\n--toast-title-size-{size}\n--toast-title-weight\n--toast-title-{colour}',
+              description: 'Primary notification text using F37 Ginger Pro Regular. Colour inherits from the matching Alert colour token for the selected variant.',
+              pin: { top: '28%', left: '48%' },
+            },
+            {
+              id: 3,
+              name: 'Description',
+              token: '--toast-font-family\n--toast-desc-size-{size}\n--toast-desc-weight\n--toast-description-color',
+              description: 'Supporting subtext at 300 weight. Always gray-700 regardless of colour variant. Toggle with showSubtext prop.',
+              pin: { top: '72%', left: '48%' },
+            },
+            {
+              id: 4,
+              name: 'Close Icon',
+              token: 'filled/icons (action category)\n--toast-close-icon-{size}\n--toast-icon-opacity',
+              description: 'Optional dismiss action. Calls the onClose callback when clicked. Toggle with showTrailingIcon prop.',
+              pin: { top: '40%', left: '95%' },
+            },
+            {
+              id: 5,
+              name: 'Container / Portal',
+              token: '--toast-bg-{colour}\n--toast-border-radius\n--toast-shadow\n--toast-min-width\n--toast-max-width\n--toast-offset-x\n--toast-offset-y\n--toast-z-index',
+              description: 'Fixed-position floating panel rendered into a portal above all page content. Drop shadow (--toast-shadow) distinguishes it from the page. Width is 280–400px.',
+              pin: { top: '5%', left: '50%' },
+            },
+          ]}
+        />
+      </DocsTemplate.Section>
+
       {/* ── Layout Tokens ── */}
       <DocsTemplate.TokenTable
         title="Design Tokens — Layout"

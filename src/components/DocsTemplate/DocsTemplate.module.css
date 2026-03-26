@@ -606,6 +606,153 @@
 }
 
 /* ==========================================================================
+   Component Anatomy Diagram
+   ========================================================================== */
+
+.anatomy {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: var(--global-spacing-sizing-16px);
+}
+
+.anatomy-preview {
+  position: relative;
+  background: var(--global-color-neutral-gray-50, #f9fafb);
+  border-radius: var(--global-spacing-radius-8px);
+  border: var(--global-spacing-stroke-1px) dashed var(--color-primary-blue-gray-blue-gray-50);
+  padding: var(--global-spacing-sizing-48px, 48px) var(--global-spacing-sizing-32px, 32px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 140px;
+  overflow: visible;
+}
+
+.anatomy-pin {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--color-primary-blue-blue, #3a6cff);
+  color: var(--global-color-base-white);
+  font-family: var(--font-family-secondary);
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.22);
+  pointer-events: none;
+  line-height: 1;
+}
+
+.anatomy-parts {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-self: stretch;
+  border: var(--global-spacing-stroke-1px) solid var(--color-primary-blue-gray-blue-gray-50);
+  border-radius: var(--global-spacing-radius-8px);
+  overflow: hidden;
+}
+
+.anatomy-parts-header {
+  display: grid;
+  grid-template-columns: 32px 1fr 2fr 2fr;
+  gap: var(--global-spacing-sizing-12px);
+  padding: var(--global-spacing-sizing-8px) var(--global-spacing-sizing-16px);
+  background: var(--color-primary-blue-blue-50);
+  border-bottom: var(--global-spacing-stroke-1px) solid var(--color-primary-blue-gray-blue-gray-50);
+}
+
+.anatomy-parts-header span {
+  font-family: var(--font-family-primary);
+  font-size: var(--global-type-size-primary-label-xs, 12px);
+  font-weight: var(--global-type-weight-bold);
+  color: var(--color-primary-blue-gray-blue-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.anatomy-part-row {
+  display: grid;
+  grid-template-columns: 32px 1fr 2fr 2fr;
+  gap: var(--global-spacing-sizing-12px);
+  padding: var(--global-spacing-sizing-10px, 10px) var(--global-spacing-sizing-16px);
+  align-items: start;
+  border-bottom: var(--global-spacing-stroke-1px) solid var(--color-primary-blue-gray-blue-gray-50);
+}
+
+.anatomy-part-row:last-child {
+  border-bottom: none;
+}
+
+.anatomy-part-row:nth-child(odd) {
+  background: var(--global-color-base-white);
+}
+
+.anatomy-part-row:nth-child(even) {
+  background: var(--color-primary-blue-blue-50, #f0f4ff);
+}
+
+.anatomy-part-badge {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-primary-blue-blue, #3a6cff);
+  color: var(--global-color-base-white);
+  font-size: 11px;
+  font-weight: 700;
+  font-family: var(--font-family-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: var(--global-spacing-sizing-2px);
+}
+
+.anatomy-part-name {
+  font-family: var(--font-family-primary);
+  font-size: var(--global-type-size-secondary-body, 14px);
+  font-weight: var(--global-type-weight-bold);
+  color: var(--global-color-base-black);
+  line-height: 1.5;
+}
+
+.anatomy-part-token {
+  font-family: monospace, sans-serif;
+  font-size: 11px;
+  color: var(--color-primary-blue-blue, #3a6cff);
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+.anatomy-part-description {
+  font-family: var(--font-family-secondary);
+  font-size: var(--global-type-size-secondary-body-sm, 13px);
+  color: var(--color-primary-blue-gray-blue-gray-300);
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .anatomy-parts-header {
+    grid-template-columns: 28px 1fr 2fr;
+  }
+  .anatomy-parts-header span:last-child {
+    display: none;
+  }
+  .anatomy-part-row {
+    grid-template-columns: 28px 1fr 2fr;
+  }
+  .anatomy-part-description {
+    display: none;
+  }
+}
+
+/* ==========================================================================
    Ordered list (for contribution questions)
    ========================================================================== */
 .ordered-list {

@@ -29,6 +29,55 @@ export const AlertDocs: React.FC = () => {
         close button, and description subtext.
       </DocsTemplate.BodyText>
 
+      {/* ── Component Anatomy ── */}
+      <DocsTemplate.Section title="Component Anatomy">
+        <DocsTemplate.BodyText>
+          The diagram below identifies the numbered parts of the Alert component, the design tokens
+          that control each element, and how they relate to one another. All sizes scale
+          proportionally across the three size variants.
+        </DocsTemplate.BodyText>
+        <DocsTemplate.Anatomy
+          preview={<Alert size="default" colour="default" border />}
+          parts={[
+            {
+              id: 1,
+              name: 'Leading Icon',
+              token: 'filled/icons (display category)\n--alert-leading-icon-{size}\n--alert-icon-opacity',
+              description: 'Context-sensitive SVG icon indicating the alert type. Rendered at 50% opacity via --alert-icon-opacity. Icon selection varies per colour variant.',
+              pin: { top: '60%', left: '5%' },
+            },
+            {
+              id: 2,
+              name: 'Title',
+              token: '--alert-font-family\n--alert-title-size-{size}\n--alert-title-weight\n--alert-title-{colour}',
+              description: 'Primary message text. Uses F37 Ginger Pro Regular. Colour changes per variant (e.g. navy for default, orange for warning).',
+              pin: { top: '28%', left: '48%' },
+            },
+            {
+              id: 3,
+              name: 'Description',
+              token: '--alert-font-family\n--alert-desc-size-{size}\n--alert-desc-weight\n--alert-description-color',
+              description: 'Supporting subtext at 300 weight (light). Always gray-700 regardless of colour variant. Toggle with showSubtext prop.',
+              pin: { top: '72%', left: '48%' },
+            },
+            {
+              id: 4,
+              name: 'Close Icon',
+              token: 'filled/icons (action category)\n--alert-close-icon-{size}\n--alert-icon-opacity',
+              description: 'Optional dismiss action icon. Rendered at 50% opacity. Tinted to match the variant title colour. Toggle with showTrailingIcon prop.',
+              pin: { top: '40%', left: '95%' },
+            },
+            {
+              id: 5,
+              name: 'Container',
+              token: '--alert-bg-{colour}\n--alert-border-radius\n--alert-border-width\n--alert-padding-{size}\n--alert-min-width',
+              description: 'Outer wrapper with colour-specific background tint. Border is optional (border prop). Min-width 400px, flex row layout.',
+              pin: { top: '5%', left: '50%' },
+            },
+          ]}
+        />
+      </DocsTemplate.Section>
+
       {/* ── Layout Tokens ── */}
       <DocsTemplate.TokenTable
         title="Design Tokens — Layout"

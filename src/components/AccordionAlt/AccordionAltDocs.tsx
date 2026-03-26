@@ -17,6 +17,63 @@ export const AccordionAltDocs: React.FC = () => {
         for marketing hero sections, step-by-step processes, and tagged data categories.
       </DocsTemplate.BodyText>
 
+      {/* ── Component Anatomy ── */}
+      <DocsTemplate.Section title="Component Anatomy">
+        <DocsTemplate.BodyText>
+          The diagram below uses the decorative type (open state) to show each numbered part and
+          its corresponding tokens. The numbered and label types share the same layout; only the
+          prefix element (icon badge, number, or tag) differs.
+        </DocsTemplate.BodyText>
+        <DocsTemplate.Anatomy
+          preview={
+            <AccordionAlt
+              type="decorative"
+              size="default"
+              showIcon
+              title="Discover what's new in our latest release"
+              defaultOpen
+            />
+          }
+          parts={[
+            {
+              id: 1,
+              name: 'Icon Badge',
+              token: '--accordion-alt-icon-badge-size\n--accordion-alt-icon-badge-bg\n--accordion-alt-icon-badge-border-color\n--accordion-alt-icon-badge-border-radius',
+              description: 'Circular badge shown in decorative type. Contains a bell SVG icon. Replaced by a number (numbered type) or tag pill (label type).',
+              pin: { top: '30%', left: '5%' },
+            },
+            {
+              id: 2,
+              name: 'Title',
+              token: '--accordion-alt-title-font-family\n--accordion-alt-title-font-size-{size}\n--accordion-alt-title-color\n--accordion-alt-title-weight',
+              description: 'Primary heading text using F37 Ginger Pro. Truncates with ellipsis if it overflows the available horizontal space.',
+              pin: { top: '30%', left: '52%' },
+            },
+            {
+              id: 3,
+              name: 'Toggle Button',
+              token: '--accordion-alt-toggle-size-{size}\n--accordion-alt-toggle-bg\n--accordion-alt-toggle-border-color\n--accordion-alt-toggle-border-radius',
+              description: 'Pill-shaped button containing a chevron or plus/minus icon. Controlled by the openIcon prop. Rotates/changes on open/close.',
+              pin: { top: '30%', left: '96%' },
+            },
+            {
+              id: 4,
+              name: 'Body Text',
+              token: '--accordion-alt-body-color\n--accordion-alt-body-font-family\n--accordion-alt-body-font-size\n--accordion-alt-gap-open',
+              description: 'Expanded content below the trigger row. Text wraps normally. Visible only in the open state.',
+              pin: { top: '78%', left: '40%' },
+            },
+            {
+              id: 5,
+              name: 'Container',
+              token: '--accordion-alt-bg\n--accordion-alt-border-radius\n--accordion-alt-border-width\n--accordion-alt-min-width\n--accordion-alt-max-width',
+              description: 'Outer panel. Width is fixed between open/closed states (200px–600px). Open state uses inset box-shadow for border emphasis without layout shift.',
+              pin: { top: '5%', left: '50%' },
+            },
+          ]}
+        />
+      </DocsTemplate.Section>
+
       {/* ── Decorative Type ── */}
       <DocsTemplate.Section title="Decorative Type">
         <DocsTemplate.BodyText>
