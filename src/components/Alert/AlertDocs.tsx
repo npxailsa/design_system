@@ -37,37 +37,31 @@ export const AlertDocs: React.FC = () => {
           proportionally across the three size variants.
         </DocsTemplate.BodyText>
         <DocsTemplate.Anatomy
-          preview={<Alert size="default" colour="default" border />}
+          preview={
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2Fbf096656a4e94f0ab4dee13de9549353"
+              alt="Alert component anatomy diagram showing numbered callouts for each element"
+              style={{ width: '100%', maxWidth: '800px', height: 'auto' }}
+            />
+          }
           parts={[
             {
               id: 1,
-              name: 'Leading Icon',
-              token: 'filled/icons (display category)\n--alert-leading-icon-{size}\n--alert-icon-opacity',
-              description: 'Context-sensitive SVG icon indicating the alert type. Rendered at 50% opacity via --alert-icon-opacity. Icon selection varies per colour variant.',
+              name: 'Close Icon',
+              token: 'filled/icons (action category)\n--alert-close-icon-{size}\n--alert-icon-opacity',
+              description: 'Optional dismiss action icon (16×16). Rendered at 50% opacity. Tinted to match the variant title colour. Toggle with showTrailingIcon prop.',
             },
             {
               id: 2,
               name: 'Title',
               token: '--alert-font-family\n--alert-title-size-{size}\n--alert-title-weight\n--alert-title-{colour}',
-              description: 'Primary message text. Uses F37 Ginger Pro Regular. Colour changes per variant (e.g. navy for default, orange for warning).',
+              description: 'Primary message text (283×20). Uses F37 Ginger (Regular) at 14px / 18px line-height. Colour changes per variant (e.g. color/secondary/navy for default).',
             },
             {
               id: 3,
-              name: 'Description',
-              token: '--alert-font-family\n--alert-desc-size-{size}\n--alert-desc-weight\n--alert-description-color',
-              description: 'Supporting subtext at 300 weight (light). Always gray-700 regardless of colour variant. Toggle with showSubtext prop.',
-            },
-            {
-              id: 4,
-              name: 'Close Icon',
-              token: 'filled/icons (action category)\n--alert-close-icon-{size}\n--alert-icon-opacity',
-              description: 'Optional dismiss action icon. Rendered at 50% opacity. Tinted to match the variant title colour. Toggle with showTrailingIcon prop.',
-            },
-            {
-              id: 5,
-              name: 'Container',
-              token: '--alert-bg-{colour}\n--alert-border-radius\n--alert-border-width\n--alert-padding-{size}\n--alert-min-width',
-              description: 'Outer wrapper with colour-specific background tint. Border is optional (border prop). Min-width 400px, flex row layout.',
+              name: 'Leading Icon',
+              token: 'filled/icons (display category)\n--alert-leading-icon-{size}\n--alert-icon-opacity',
+              description: 'Context-sensitive SVG icon (22×22) indicating the alert type — "bullseye" for default. Rendered at 50% opacity via --alert-icon-opacity. Icon selection varies per colour variant.',
             },
           ]}
         />
