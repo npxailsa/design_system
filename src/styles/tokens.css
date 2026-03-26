@@ -909,6 +909,96 @@
   --accordion-alt-transition-easing: ease;
 }
 
+/* ==========================================================================
+   COMPONENT LAYER: Tag (Component-Specific Tokens)
+   ========================================================================== */
+:root {
+  /* Tag — layout */
+  --tag-border-radius: var(--global-spacing-radius-100px, 100px);
+  --tag-border-width: var(--global-spacing-stroke-1px);
+  --tag-transition-duration: 150ms;
+  --tag-transition-easing: ease;
+
+  /* Tag — sizes: small */
+  --tag-height-small: var(--global-spacing-sizing-20px);
+  --tag-padding-small: 0 var(--global-spacing-sizing-8px);
+  --tag-font-size-small: var(--global-type-size-primary-label-xs, 11px);
+  --tag-line-height-small: var(--global-type-line-height-label-xs, 14px);
+  --tag-icon-size-small: 10px;
+  --tag-gap-small: var(--global-spacing-sizing-4px);
+
+  /* Tag — sizes: default */
+  --tag-height-default: var(--global-spacing-sizing-24px);
+  --tag-padding-default: 0 var(--global-spacing-sizing-10px, 10px);
+  --tag-font-size-default: var(--global-type-size-primary-label-xs, 12px);
+  --tag-line-height-default: var(--global-type-line-height-label-xs, 14px);
+  --tag-icon-size-default: 12px;
+  --tag-gap-default: var(--global-spacing-sizing-4px);
+
+  /* Tag — sizes: large */
+  --tag-height-large: var(--global-spacing-sizing-28px);
+  --tag-padding-large: 0 var(--global-spacing-sizing-12px);
+  --tag-font-size-large: var(--global-type-size-primary-label-sm, 14px);
+  --tag-line-height-large: var(--global-type-line-height-label-sm, 16px);
+  --tag-icon-size-large: 14px;
+  --tag-gap-large: var(--global-spacing-sizing-6px, 6px);
+
+  /* Tag — typography */
+  --tag-font-family: var(--font-family-primary);
+  --tag-font-weight: var(--global-type-weight-default);
+  --tag-letter-spacing: var(--global-type-letter-spacing-primary-label-sm, 0.15px);
+
+  /* Tag — colours: default (gray) */
+  --tag-bg-default: var(--global-color-neutral-gray-100);
+  --tag-color-default: var(--global-color-neutral-gray-700);
+  --tag-border-color-default: var(--global-color-neutral-gray-300);
+
+  /* Tag — colours: blue (sky-blue) */
+  --tag-bg-blue: var(--global-color-primary-sky-blue-50);
+  --tag-color-blue: var(--global-color-primary-sky-blue);
+  --tag-border-color-blue: var(--global-color-primary-sky-blue-200);
+
+  /* Tag — colours: seafoam */
+  --tag-bg-seafoam: var(--color-primary-seafoam-seafoam-100);
+  --tag-color-seafoam: var(--global-color-primary-seafoam-300);
+  --tag-border-color-seafoam: var(--global-color-primary-seafoam-300);
+
+  /* Tag — colours: yellow/warning */
+  --tag-bg-yellow: var(--global-color-status-orange-light);
+  --tag-color-yellow: var(--global-color-status-dark-orange);
+  --tag-border-color-yellow: var(--global-color-status-orange-light-border);
+
+  /* Tag — colours: dark */
+  --tag-bg-dark: var(--global-color-base-black);
+  --tag-color-dark: var(--global-color-base-white);
+  --tag-border-color-dark: var(--global-color-base-black);
+
+  /* Tag — colours: navy */
+  --tag-bg-navy: var(--global-color-secondary-navy, #3a3282);
+  --tag-color-navy: var(--global-color-base-white);
+  --tag-border-color-navy: var(--global-color-secondary-navy, #3a3282);
+
+  /* Tag — colours: red */
+  --tag-bg-red: var(--global-color-status-red-light);
+  --tag-color-red: var(--global-color-status-red);
+  --tag-border-color-red: var(--global-color-status-rose);
+
+  /* Tag — colours: green */
+  --tag-bg-green: var(--global-color-status-green-light);
+  --tag-color-green: var(--global-color-status-dark-green);
+  --tag-border-color-green: var(--global-color-status-green);
+
+  /* Tag — colours: purple */
+  --tag-bg-purple: var(--global-color-status-purple-light);
+  --tag-color-purple: var(--global-color-status-purple);
+  --tag-border-color-purple: var(--global-color-status-note-mid);
+
+  /* Tag — colours: info (navy-blue info) */
+  --tag-bg-info: var(--global-color-status-info-blue-light);
+  --tag-color-info: var(--global-color-status-info-blue);
+  --tag-border-color-info: var(--global-color-status-edit);
+}
+
 /* Font Loading */
 @font-face {
   font-family: 'F37 Ginger Pro';

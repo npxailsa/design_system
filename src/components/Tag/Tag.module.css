@@ -1,0 +1,304 @@
+/* ==========================================================================
+   Tag Component
+   --------------------------------------------------------------------------
+   Compact pill-shaped labels for categorising, filtering, or annotating
+   content. Uses design tokens exclusively — no hardcoded values.
+   ========================================================================== */
+
+/* ── Base ── */
+
+.tag,
+.tag * {
+  box-sizing: border-box;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--tag-gap-default);
+  height: var(--tag-height-default);
+  padding: var(--tag-padding-default);
+  border-radius: var(--tag-border-radius);
+  border: var(--tag-border-width) solid transparent;
+  font-family: var(--tag-font-family);
+  font-size: var(--tag-font-size-default);
+  line-height: var(--tag-line-height-default);
+  font-weight: var(--tag-font-weight);
+  letter-spacing: var(--tag-letter-spacing);
+  white-space: nowrap;
+  user-select: none;
+  vertical-align: middle;
+  transition:
+    background-color var(--tag-transition-duration) var(--tag-transition-easing),
+    border-color var(--tag-transition-duration) var(--tag-transition-easing),
+    color var(--tag-transition-duration) var(--tag-transition-easing),
+    opacity var(--tag-transition-duration) var(--tag-transition-easing);
+}
+
+/* ── Sizes ── */
+
+.tag--small {
+  gap: var(--tag-gap-small);
+  height: var(--tag-height-small);
+  padding: var(--tag-padding-small);
+  font-size: var(--tag-font-size-small);
+  line-height: var(--tag-line-height-small);
+}
+
+.tag--large {
+  gap: var(--tag-gap-large);
+  height: var(--tag-height-large);
+  padding: var(--tag-padding-large);
+  font-size: var(--tag-font-size-large);
+  line-height: var(--tag-line-height-large);
+}
+
+/* ── Colours — Filled (default variant) ── */
+
+.tag--default {
+  background: var(--tag-bg-default);
+  color: var(--tag-color-default);
+  border-color: var(--tag-border-color-default);
+}
+
+.tag--blue {
+  background: var(--tag-bg-blue);
+  color: var(--tag-color-blue);
+  border-color: var(--tag-border-color-blue);
+}
+
+.tag--seafoam {
+  background: var(--tag-bg-seafoam);
+  color: var(--tag-color-seafoam);
+  border-color: var(--tag-border-color-seafoam);
+}
+
+.tag--yellow {
+  background: var(--tag-bg-yellow);
+  color: var(--tag-color-yellow);
+  border-color: var(--tag-border-color-yellow);
+}
+
+.tag--dark {
+  background: var(--tag-bg-dark);
+  color: var(--tag-color-dark);
+  border-color: var(--tag-border-color-dark);
+}
+
+.tag--navy {
+  background: var(--tag-bg-navy);
+  color: var(--tag-color-navy);
+  border-color: var(--tag-border-color-navy);
+}
+
+.tag--red {
+  background: var(--tag-bg-red);
+  color: var(--tag-color-red);
+  border-color: var(--tag-border-color-red);
+}
+
+.tag--green {
+  background: var(--tag-bg-green);
+  color: var(--tag-color-green);
+  border-color: var(--tag-border-color-green);
+}
+
+.tag--purple {
+  background: var(--tag-bg-purple);
+  color: var(--tag-color-purple);
+  border-color: var(--tag-border-color-purple);
+}
+
+.tag--info {
+  background: var(--tag-bg-info);
+  color: var(--tag-color-info);
+  border-color: var(--tag-border-color-info);
+}
+
+/* ── Outline variant ── */
+
+.tag--outline {
+  background: transparent;
+}
+
+/* ── Selected state ── */
+
+.tag--selected.tag--blue {
+  background: var(--tag-color-blue);
+  color: var(--global-color-base-white);
+  border-color: var(--tag-color-blue);
+}
+
+.tag--selected.tag--seafoam {
+  background: var(--tag-color-seafoam);
+  color: var(--global-color-base-white);
+  border-color: var(--tag-color-seafoam);
+}
+
+.tag--selected.tag--yellow {
+  background: var(--tag-color-yellow);
+  color: var(--global-color-base-white);
+  border-color: var(--tag-color-yellow);
+}
+
+.tag--selected.tag--red {
+  background: var(--tag-color-red);
+  color: var(--global-color-base-white);
+  border-color: var(--tag-color-red);
+}
+
+.tag--selected.tag--green {
+  background: var(--tag-color-green);
+  color: var(--global-color-base-white);
+  border-color: var(--tag-color-green);
+}
+
+.tag--selected.tag--purple {
+  background: var(--tag-color-purple);
+  color: var(--global-color-base-white);
+  border-color: var(--tag-color-purple);
+}
+
+.tag--selected.tag--info {
+  background: var(--tag-color-info);
+  color: var(--global-color-base-white);
+  border-color: var(--tag-color-info);
+}
+
+.tag--selected.tag--default {
+  background: var(--global-color-neutral-gray-600);
+  color: var(--global-color-base-white);
+  border-color: var(--global-color-neutral-gray-600);
+}
+
+/* ── Interactive (clickable) ── */
+
+.tag--interactive {
+  cursor: pointer;
+}
+
+.tag--interactive:hover {
+  opacity: 0.85;
+}
+
+.tag--interactive:focus-visible {
+  outline: 2px solid var(--global-color-primary-sky-blue);
+  outline-offset: 2px;
+}
+
+/* ── Disabled ── */
+
+.tag--disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Leading icon ── */
+
+.tag__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tag__icon-svg {
+  width: var(--tag-icon-size-default) !important;
+  height: var(--tag-icon-size-default) !important;
+  font-size: var(--tag-icon-size-default) !important;
+}
+
+.tag--small .tag__icon-svg {
+  width: var(--tag-icon-size-small) !important;
+  height: var(--tag-icon-size-small) !important;
+  font-size: var(--tag-icon-size-small) !important;
+}
+
+.tag--large .tag__icon-svg {
+  width: var(--tag-icon-size-large) !important;
+  height: var(--tag-icon-size-large) !important;
+  font-size: var(--tag-icon-size-large) !important;
+}
+
+/* ── Label text ── */
+
+.tag__label {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 160px;
+}
+
+/* ── Count badge ── */
+
+.tag__count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 var(--global-spacing-sizing-4px);
+  border-radius: var(--global-spacing-radius-100px, 100px);
+  background: rgba(0, 0, 0, 0.15);
+  color: inherit;
+  font-size: 10px;
+  font-weight: var(--global-type-weight-bold);
+  line-height: 1;
+}
+
+.tag--dark .tag__count,
+.tag--navy .tag__count {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.tag--selected .tag__count {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ── Remove button ── */
+
+.tag__remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.65;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: opacity var(--tag-transition-duration) var(--tag-transition-easing);
+  line-height: 1;
+}
+
+.tag__remove:hover {
+  opacity: 1;
+}
+
+.tag__remove:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 1px;
+  opacity: 1;
+}
+
+.tag__remove:disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+.tag--small .tag__remove {
+  width: 10px;
+  height: 10px;
+}
+
+.tag--large .tag__remove {
+  width: 14px;
+  height: 14px;
+}
