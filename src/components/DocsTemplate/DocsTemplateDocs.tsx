@@ -34,6 +34,7 @@ export const DocsTemplateDocs: React.FC = () => {
           { name: 'DocsTemplate.RelatedLinks', description: 'Section with external reference links' },
           { name: 'DocsTemplate.IconGallery', description: 'Grid of icons with labels' },
           { name: 'DocsTemplate.SizeDemo', description: 'Rows demonstrating icon/component sizes' },
+          { name: 'DocsTemplate.Anatomy', description: 'Component anatomy diagram with numbered pins, preview panel, and parts table' },
           { name: 'DocsTemplate.Footer', description: 'Separator line + copyright text' },
         ]}
       />
@@ -76,6 +77,113 @@ const MyDocsPage = () => (
     <DocsTemplate.Footer />
   </DocsTemplate>
 );`}
+      </DocsTemplate.CodeBlock>
+
+      {/* ── Anatomy Example ── */}
+      <DocsTemplate.Section
+        title="Component Anatomy"
+        subtitle="Use DocsTemplate.Anatomy to document the numbered parts of a component, the design tokens that control each element, and how they relate."
+      />
+
+      <DocsTemplate.BodyText>
+        The <strong>Anatomy</strong> sub-component renders a live preview of a component with
+        numbered annotation pins, and a structured parts table below it. Each part lists its name,
+        associated design token(s), and a short description. Use it as the first section after the
+        introductory text in every component’s documentation page.
+      </DocsTemplate.BodyText>
+
+      <DocsTemplate.Anatomy
+        preview={
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px',
+              padding: '12px 16px',
+              border: '1px solid #ccc',
+              borderRadius: '8px',
+              fontFamily: 'var(--font-family-primary)',
+              fontSize: '14px',
+              background: 'white',
+              width: '100%',
+              maxWidth: '420px',
+            }}
+          >
+            <span style={{ opacity: 0.5 }}>\u25CF</span>
+            <span>Example component preview</span>
+            <span style={{ marginLeft: 'auto', opacity: 0.5 }}>\u2715</span>
+          </div>
+        }
+        parts={[
+          {
+            id: 1,
+            name: 'Leading Element',
+            token: '--component-icon-size\n--component-icon-color',
+            description: 'Optional icon or visual element positioned at the start of the component.',
+            pin: { top: '50%', left: '6%' },
+          },
+          {
+            id: 2,
+            name: 'Content Area',
+            token: '--component-font-family\n--component-font-size\n--component-text-color',
+            description: 'The primary content / text area of the component. This is the main interactive or informational region.',
+            pin: { top: '50%', left: '52%' },
+          },
+          {
+            id: 3,
+            name: 'Trailing Action',
+            token: '--component-action-size\n--component-action-opacity',
+            description: 'Optional dismiss or action control at the end of the component.',
+            pin: { top: '50%', left: '95%' },
+          },
+        ]}
+      />
+
+      <DocsTemplate.Subsection title="Props" />
+
+      <DocsTemplate.TokenTable
+        title="Anatomy Props"
+        description="The Anatomy component accepts the following props:"
+        tokens={[
+          { name: 'preview', description: 'React node — the rendered component to annotate inside the diagram' },
+          { name: 'parts', description: 'Array of AnatomyPart objects (id, name, token, description, optional pin position)' },
+        ]}
+      />
+
+      <DocsTemplate.TokenTable
+        title="AnatomyPart shape"
+        description="Each item in the parts array has the following fields:"
+        tokens={[
+          { name: 'id', description: 'number — the numbered badge shown on the pin and in the table' },
+          { name: 'name', description: 'string — short element name (e.g. \u201CLeading Icon\u201D, \u201CTitle\u201D)' },
+          { name: 'token', description: 'string — design token name(s) or component reference. Use \\n for multi-line' },
+          { name: 'description', description: 'string — what this element does and how it behaves' },
+          { name: 'pin', description: '{ top: string, left: string } — optional percentage position for the overlay pin on the preview' },
+        ]}
+      />
+
+      <DocsTemplate.Subsection title="Usage" />
+
+      <DocsTemplate.CodeBlock>
+        {`<DocsTemplate.Anatomy
+  preview={<MyComponent size="default" />}
+  parts={[
+    {
+      id: 1,
+      name: 'Leading Icon',
+      token: '--component-icon-size\\n--component-icon-color',
+      description: 'Optional icon at the start of the component.',
+      pin: { top: '50%', left: '5%' },
+    },
+    {
+      id: 2,
+      name: 'Title',
+      token: '--component-font-family\\n--component-font-size',
+      description: 'Primary heading text.',
+      pin: { top: '50%', left: '50%' },
+    },
+  ]}
+/>`}
       </DocsTemplate.CodeBlock>
 
       {/* ── Design Tokens Used ── */}
