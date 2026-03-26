@@ -161,6 +161,31 @@ export const AccordionAltDocs: React.FC = () => {
         </DocsTemplate.Subsection>
       </DocsTemplate.Section>
 
+      {/* ── Width Behaviour ── */}
+      <DocsTemplate.Section title="Width Behaviour">
+        <DocsTemplate.BodyText>
+          The <strong>Accordion (alt.)</strong> component maintains a <strong>fixed outer width</strong>{' '}
+          between open and closed states. If the component is 400px wide when closed, it will remain
+          exactly 400px wide when opened. This is enforced through <code>box-sizing: border-box</code>,{' '}
+          <code>width: 100%</code>, and a strict rule that no property change on open/close may alter
+          the outer dimensions.
+        </DocsTemplate.BodyText>
+
+        <DocsTemplate.BodyText>
+          To visually emphasise the border on open states (decorative and numbered types), an{' '}
+          <strong>inset box-shadow</strong> is used instead of increasing <code>border-width</code>.{' '}
+          This preserves the outer width while giving the appearance of a thicker, coloured border.
+          The token <code>--accordion-alt-border-width-open</code> controls the shadow spread that
+          simulates the heavier border.
+        </DocsTemplate.BodyText>
+
+        <DocsTemplate.BodyText>
+          The component is constrained between <code>--accordion-alt-min-width</code> (200px) and{' '}
+          <code>--accordion-alt-max-width</code> (600px). These limits ensure the component never
+          becomes too narrow to read or too wide for its intended layout context.
+        </DocsTemplate.BodyText>
+      </DocsTemplate.Section>
+
       {/* ── Design Tokens ── */}
       <DocsTemplate.TokenTable
         title="Design Tokens"
@@ -170,7 +195,7 @@ export const AccordionAltDocs: React.FC = () => {
           { name: '--accordion-alt-bg-open-decorative', description: 'Sky-blue gradient background for open decorative type' },
           { name: '--accordion-alt-border-radius', description: 'Corner radius (8px)' },
           { name: '--accordion-alt-border-width', description: 'Default border thickness (1px)' },
-          { name: '--accordion-alt-border-width-open', description: 'Border thickness when open (2px)' },
+          { name: '--accordion-alt-border-width-open', description: 'Inset box-shadow spread for open state — simulates a thicker border without changing outer width (2px)' },
           { name: '--accordion-alt-border-color-decorative', description: 'Border colour for decorative type (sky-blue-200)' },
           { name: '--accordion-alt-border-color-decorative-open', description: 'Border colour for open decorative type (sky-blue)' },
           { name: '--accordion-alt-border-color-numbered', description: 'Border colour for numbered type (gray-200)' },

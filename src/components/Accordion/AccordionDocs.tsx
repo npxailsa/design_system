@@ -147,6 +147,24 @@ export const AccordionDocs: React.FC = () => {
         </DocsTemplate.Subsection>
       </DocsTemplate.Section>
 
+      {/* ── Width Behaviour ── */}
+      <DocsTemplate.Section title="Width Behaviour">
+        <DocsTemplate.BodyText>
+          The <strong>Accordion</strong> component maintains a <strong>fixed outer width</strong>{' '}
+          between open and closed states. If the component is 400px wide when collapsed, it will
+          remain exactly 400px wide when expanded. This is enforced through{' '}
+          <code>box-sizing: border-box</code>, <code>width: 100%</code>, and a design-system rule
+          that no property change on open/close may alter the outer dimensions.
+        </DocsTemplate.BodyText>
+
+        <DocsTemplate.BodyText>
+          The component is constrained between <code>--accordion-min-width</code> (300px) and{' '}
+          <code>--accordion-max-width</code> (800px). Title and description text will truncate with
+          an ellipsis when the content exceeds the available horizontal space. Body text inside the
+          expanded panel wraps normally using <code>word-wrap: break-word</code>.
+        </DocsTemplate.BodyText>
+      </DocsTemplate.Section>
+
       {/* ── Design Tokens ── */}
       <DocsTemplate.TokenTable
         title="Design Tokens"
