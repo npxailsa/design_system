@@ -20,6 +20,7 @@
   width: 100%;
   transition:
     border-color var(--accordion-alt-transition-duration) var(--accordion-alt-transition-easing),
+    box-shadow var(--accordion-alt-transition-duration) var(--accordion-alt-transition-easing),
     background var(--accordion-alt-transition-duration) var(--accordion-alt-transition-easing);
 }
 
@@ -30,8 +31,8 @@
 }
 
 .accordion-alt--decorative.accordion-alt--open {
-  border-width: var(--accordion-alt-border-width-open);
   border-color: var(--accordion-alt-border-color-decorative-open);
+  box-shadow: inset 0 0 0 var(--accordion-alt-border-width) var(--accordion-alt-border-color-decorative-open);
   background: var(--accordion-alt-bg-open-decorative);
 }
 
@@ -42,8 +43,8 @@
 }
 
 .accordion-alt--numbered.accordion-alt--open {
-  border-width: var(--accordion-alt-border-width-open);
   border-color: var(--accordion-alt-border-color-numbered-open);
+  box-shadow: inset 0 0 0 var(--accordion-alt-border-width) var(--accordion-alt-border-color-numbered-open);
 }
 
 /* ── Type: Label ── */
