@@ -621,10 +621,10 @@
   background: var(--global-color-neutral-gray-50, #f9fafb);
   border-radius: var(--global-spacing-radius-8px);
   border: var(--global-spacing-stroke-1px) dashed var(--color-primary-blue-gray-blue-gray-50);
-  padding: var(--global-spacing-sizing-48px, 48px) var(--global-spacing-sizing-32px, 32px);
+  padding: var(--global-spacing-sizing-48px, 48px) var(--global-spacing-sizing-40px, 40px);
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   min-height: 140px;
   overflow: visible;
 }
@@ -640,7 +640,9 @@
   justify-content: center;
   border: var(--global-spacing-stroke-1px) dashed var(--color-primary-blue-blue, #3a6cff);
   border-radius: var(--global-spacing-radius-4px, 4px);
-  padding: var(--global-spacing-sizing-2px, 2px);
+  padding: var(--global-spacing-sizing-4px, 4px);
+  margin: 6px;
+  overflow: visible;
 }
 
 .anatomy-marker-badge {

@@ -38,12 +38,12 @@ export const AccordionDocs: React.FC = () => {
                     <path d="M14 4c-1.5 0-2.5 1-2.5 2.5S14 10 14 10s2.5-2 2.5-3.5S15.5 4 14 4zM10 22h8M14 10v12" stroke="var(--global-color-neutral-gray-400)" strokeWidth="1.5" strokeLinecap="round" />
                   </svg>
                 </DocsTemplate.AnatomyMarker>
-                <div style={{ display: 'flex', flexDirection: 'column', flex: 1, overflow: 'hidden' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minWidth: 0 }}>
                   <DocsTemplate.AnatomyMarker id={3}>
-                    <span style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '19px', color: 'var(--global-color-base-black)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>This is a section title...</span>
+                    <span style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '19px', color: 'var(--global-color-base-black)' }}>This is a section title...</span>
                   </DocsTemplate.AnatomyMarker>
                   <DocsTemplate.AnatomyMarker id={4}>
-                    <span style={{ fontFamily: 'var(--font-family-secondary)', fontSize: '14px', color: 'var(--color-primary-blue-gray-blue-gray)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>Supporting description text</span>
+                    <span style={{ fontFamily: 'var(--font-family-secondary)', fontSize: '14px', color: 'var(--color-primary-blue-gray-blue-gray)' }}>Supporting description text</span>
                   </DocsTemplate.AnatomyMarker>
                 </div>
                 <DocsTemplate.AnatomyMarker id={5} position="top-right">

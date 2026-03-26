@@ -31,11 +31,11 @@ export const AccordionAltDocs: React.FC = () => {
                 <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--global-spacing-sizing-12px)' }}>
                   <DocsTemplate.AnatomyMarker id={1} position="top-left">
                     <span style={{ width: '28px', height: '28px', borderRadius: '50%', background: 'var(--global-color-secondary-sky-blue-50)', border: '1px solid var(--global-color-secondary-sky-blue-200)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1c-1.5 0-2.5 1-2.5 2.5S7 7 7 7s2.5-2 2.5-3.5S8.5 1 7 1zM5 11h4M7 7v4" stroke="var(--global-color-secondary-sky-blue)" strokeWidth="1.2" strokeLinecap="round" /></svg>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z" fill="var(--global-color-secondary-sky-blue)" /></svg>
                     </span>
                   </DocsTemplate.AnatomyMarker>
                   <DocsTemplate.AnatomyMarker id={2}>
-                    <span style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '18px', color: 'var(--global-color-base-black)', flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Discover what&rsquo;s new in our latest release</span>
+                    <span style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '18px', color: 'var(--global-color-base-black)' }}>Discover what&rsquo;s new in our latest release</span>
                   </DocsTemplate.AnatomyMarker>
                   <DocsTemplate.AnatomyMarker id={3} position="top-right">
                     <span style={{ width: '24px', height: '24px', borderRadius: '50%', background: 'var(--global-color-neutral-gray-50)', border: '1px solid var(--global-color-neutral-gray-200)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
