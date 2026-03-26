@@ -366,7 +366,7 @@ export interface AnatomyPart {
   token: string;
   /** What this element does / how it behaves */
   description: string;
-  /** Optional pin placement on the preview (percentage strings, e.g. '50%') */
+  /** @deprecated Pin placement no longer used — kept for backward compat */
   pin?: { top: string; left: string };
 }
 
@@ -381,18 +381,16 @@ const Anatomy: React.FC<AnatomyProps> = ({ preview, parts }) => (
   <div className={styles.anatomy}>
     <div className={styles['anatomy-preview']}>
       {preview}
-      {parts
-        .filter((p) => p.pin)
-        .map((p) => (
-          <span
-            key={p.id}
-            className={styles['anatomy-pin']}
-            style={{ top: p.pin!.top, left: p.pin!.left }}
-            aria-hidden="true"
-          >
-            {p.id}
-          </span>
-        ))}
+    </div>
+
+    {/* Legend strip — numbered badges + element names */}
+    <div className={styles['anatomy-legend']}>
+      {parts.map((p) => (
+        <span key={p.id} className={styles['anatomy-legend-item']}>
+          <span className={styles['anatomy-legend-badge']}>{p.id}</span>
+          <span className={styles['anatomy-legend-label']}>{p.name}</span>
+        </span>
+      ))}
     </div>
 
     <div className={styles['anatomy-parts']}>
