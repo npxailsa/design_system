@@ -366,8 +366,6 @@ export interface AnatomyPart {
   token: string;
   /** What this element does / how it behaves */
   description: string;
-  /** @deprecated Pin placement no longer used — kept for backward compat */
-  pin?: { top: string; left: string };
 }
 
 interface AnatomyProps {

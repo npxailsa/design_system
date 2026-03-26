@@ -176,43 +176,20 @@ export const ComponentAnatomyExample: Story = {
     <DocsTemplate>
       <DocsTemplate.Section title="Component Anatomy">
         <DocsTemplate.BodyText>
-          Use <strong>DocsTemplate.Anatomy</strong> to create annotated diagrams that display the
-          actual rendered component in a preview area, with a numbered legend strip below that maps
-          each number to an element name. The detail table provides full token and description info.
+          Use <strong>DocsTemplate.Anatomy</strong> to document the numbered parts of a component.
+          Pass a static annotated SVG or image (exported from Figma) as the <code>preview</code>,
+          with numbered callouts and connector lines baked into the image. The <code>parts</code>{' '}
+          array populates the detail table below the diagram, mapping each number to its element
+          name, design tokens, and description.
         </DocsTemplate.BodyText>
       </DocsTemplate.Section>
       <DocsTemplate.Anatomy
         preview={
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '12px',
-              padding: '12px 16px',
-              border: '1px solid #ccc',
-              borderRadius: '8px',
-              fontFamily: 'var(--font-family-primary)',
-              fontSize: '14px',
-              background: 'white',
-              width: '100%',
-              maxWidth: '420px',
-            }}
-          >
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" style={{ opacity: 0.5, flexShrink: 0 }}>
-              <circle cx="11" cy="11" r="9" stroke="#3A3282" strokeWidth="2" />
-              <circle cx="11" cy="11" r="5" stroke="#3A3282" strokeWidth="2" />
-              <circle cx="11" cy="11" r="1.5" fill="#3A3282" />
-            </svg>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', flex: 1 }}>
-              <span style={{ color: '#3A3282', fontWeight: 400 }}>This is a sample component</span>
-              <span style={{ color: '#374151', fontWeight: 300, fontSize: '13px' }}>
-                Supporting description text
-              </span>
-            </div>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ opacity: 0.5, flexShrink: 0 }}>
-              <path d="M12.67 4.27L11.73 3.33L8 7.06L4.27 3.33L3.33 4.27L7.06 8L3.33 11.73L4.27 12.67L8 8.94L11.73 12.67L12.67 11.73L8.94 8L12.67 4.27Z" fill="#3A3282" />
-            </svg>
-          </div>
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2Fbf096656a4e94f0ab4dee13de9549353"
+            alt="Example component anatomy diagram with numbered callouts"
+            style={{ width: '100%', maxWidth: '800px', height: 'auto' }}
+          />
         }
         parts={[
           {
