@@ -1,0 +1,1 @@
+import{j as o}from"./iframe-BxqaoWE4.js";import{c as r}from"./createSvgIcon-aRWeNf67.js";const t=r(o.jsx("path",{d:"m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"})),a=r(o.jsx("path",{d:"M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4m0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4"}));export{t as A,a as P};
