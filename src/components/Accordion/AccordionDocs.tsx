@@ -25,52 +25,48 @@ export const AccordionDocs: React.FC = () => {
         </DocsTemplate.BodyText>
         <DocsTemplate.Anatomy
           preview={
-            <Accordion
-              type="simple"
-              size="default"
-              openIcon="chevron"
-              showStatusIcon
-              showLeadingIcon
-              showDescription
-              defaultOpen
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2F54b40126e17e45fa9918dbbe0112f741"
+              alt="Accordion component anatomy diagram showing numbered callouts for each element"
+              style={{ width: '100%', maxWidth: '800px', height: 'auto' }}
             />
           }
           parts={[
             {
               id: 1,
               name: 'Status Icon',
-              token: 'filled/icons (display category)\n--accordion-icon-size-{size}',
-              description: 'Optional icon communicating category or state. Positioned at the far left. Toggle with showStatusIcon prop.',
+              token: 'building-blocks/status-icon\n--accordion-icon-size-{size}',
+              description: 'Optional icon (32\u00D732) communicating category or state. Positioned at the far left. Toggle with showStatusIcon prop.',
             },
             {
               id: 2,
               name: 'Leading Icon',
-              token: 'filled/icons (display category)\n--accordion-icon-size-{size}',
-              description: 'Optional secondary leading icon (bell). Appears after the status icon. Toggle with showLeadingIcon prop.',
+              token: 'filled/icons (action category)\n--accordion-icon-size-{size}',
+              description: 'Optional secondary leading icon (22\u00D722), e.g. bell-ring. Appears after the status icon. Toggle with showLeadingIcon prop.',
             },
             {
               id: 3,
-              name: 'Title',
-              token: '--accordion-title-font-family\n--accordion-title-font-size-{size}\n--accordion-title-color\n--accordion-title-weight',
-              description: 'Primary heading text using F37 Ginger Pro. Truncates with ellipsis if content overflows available width.',
+              name: 'Container',
+              token: 'accordion/simple\n--accordion-bg\n--accordion-border-radius\n--accordion-border-color\n--accordion-min-width\n--accordion-max-width',
+              description: 'The accordion panel (601\u00D770 min). White background with 1px gray-200 border. Houses all child elements.',
             },
             {
               id: 4,
-              name: 'Description',
-              token: '--accordion-desc-font-family\n--accordion-desc-color\n--accordion-desc-font-size',
-              description: 'Supporting subtext below the title. Truncates with ellipsis on overflow. Toggle with showDescription prop.',
+              name: 'Toggle Icon',
+              token: 'filled/icons (display category)\n--accordion-icon-size-{size}\n--accordion-icon-color',
+              description: 'Chevron-down icon (28\u00D728) that rotates on open/close. Controlled by the openIcon prop (chevron or plus/minus).',
             },
             {
               id: 5,
-              name: 'Toggle Icon',
-              token: '--accordion-icon-size-{size}\n--accordion-icon-color',
-              description: 'Chevron or plus/minus icon that rotates/changes on open/close. Controlled by the openIcon prop.',
+              name: 'Title',
+              token: '--accordion-title-font-family\n--accordion-title-font-size-default (19px)\n--accordion-title-color\n--accordion-title-weight',
+              description: 'Primary heading text using F37 Ginger (Regular) at 19px / 24px line-height. Truncates with ellipsis on overflow.',
             },
             {
               id: 6,
-              name: 'Body Text',
-              token: '--accordion-body-color\n--accordion-body-font-family\n--accordion-body-font-size\n--accordion-content-gap-default',
-              description: 'Expanded content panel. Wraps text normally (word-wrap: break-word). Appears only in open state.',
+              name: 'Description',
+              token: '--accordion-desc-font-family\n--accordion-desc-color\n--accordion-desc-font-size (16px)',
+              description: 'Supporting subtext using Calibri (Light) at 16px / 20px line-height. Truncates with ellipsis on overflow. Toggle with showDescription prop.',
             },
           ]}
         />
