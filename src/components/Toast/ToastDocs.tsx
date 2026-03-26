@@ -39,32 +39,7 @@ export const ToastDocs: React.FC = () => {
           toasts float above page content via a fixed-position portal with a drop shadow.
         </DocsTemplate.BodyText>
         <DocsTemplate.Anatomy
-          preview={
-            <DocsTemplate.AnatomyMarker id={5} position="top-left">
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: 'var(--global-spacing-sizing-8px)', background: 'var(--alert-bg-default)', border: '1px solid var(--alert-border-default)', borderRadius: 'var(--global-spacing-radius-6px)', padding: 'var(--global-spacing-sizing-12px)', minWidth: '280px', maxWidth: '400px', boxShadow: '0 4px 12px rgba(0,0,0,0.12)' }}>
-                <DocsTemplate.AnatomyMarker id={1} position="top-left">
-                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ opacity: 0.5, flexShrink: 0 }}>
-                    <circle cx="11" cy="11" r="10" stroke="var(--alert-title-default)" strokeWidth="1.5" fill="none" />
-                    <circle cx="11" cy="11" r="6" stroke="var(--alert-title-default)" strokeWidth="1.5" fill="none" />
-                    <circle cx="11" cy="11" r="2" fill="var(--alert-title-default)" />
-                  </svg>
-                </DocsTemplate.AnatomyMarker>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', flex: 1 }}>
-                  <DocsTemplate.AnatomyMarker id={2}>
-                    <span style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '14px', color: 'var(--alert-title-default)', fontWeight: 400 }}>This is a toast notification</span>
-                  </DocsTemplate.AnatomyMarker>
-                  <DocsTemplate.AnatomyMarker id={3}>
-                    <span style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '14px', color: 'var(--global-color-neutral-gray-700)', fontWeight: 300 }}>Description text for context</span>
-                  </DocsTemplate.AnatomyMarker>
-                </div>
-                <DocsTemplate.AnatomyMarker id={4} position="top-right">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ opacity: 0.5, flexShrink: 0, cursor: 'pointer' }}>
-                    <path d="M4 4l8 8M12 4l-8 8" stroke="var(--alert-title-default)" strokeWidth="1.5" strokeLinecap="round" />
-                  </svg>
-                </DocsTemplate.AnatomyMarker>
-              </div>
-            </DocsTemplate.AnatomyMarker>
-          }
+          preview={<Toast size="default" colour="default" />}
           parts={[
             {
               id: 1,

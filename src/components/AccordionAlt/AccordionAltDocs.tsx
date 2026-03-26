@@ -26,30 +26,13 @@ export const AccordionAltDocs: React.FC = () => {
         </DocsTemplate.BodyText>
         <DocsTemplate.Anatomy
           preview={
-            <DocsTemplate.AnatomyMarker id={5} position="top-left">
-              <div style={{ display: 'flex', flexDirection: 'column', background: 'var(--global-color-base-white)', border: '2px solid var(--global-color-secondary-sky-blue)', borderRadius: 'var(--global-spacing-radius-8px)', padding: 'var(--global-spacing-sizing-16px)', minWidth: '200px', maxWidth: '500px', width: '100%' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--global-spacing-sizing-12px)' }}>
-                  <DocsTemplate.AnatomyMarker id={1} position="top-left">
-                    <span style={{ width: '28px', height: '28px', borderRadius: '50%', background: 'var(--global-color-secondary-sky-blue-50)', border: '1px solid var(--global-color-secondary-sky-blue-200)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z" fill="var(--global-color-secondary-sky-blue)" /></svg>
-                    </span>
-                  </DocsTemplate.AnatomyMarker>
-                  <DocsTemplate.AnatomyMarker id={2}>
-                    <span style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '18px', color: 'var(--global-color-base-black)' }}>Discover what&rsquo;s new in our latest release</span>
-                  </DocsTemplate.AnatomyMarker>
-                  <DocsTemplate.AnatomyMarker id={3} position="top-right">
-                    <span style={{ width: '24px', height: '24px', borderRadius: '50%', background: 'var(--global-color-neutral-gray-50)', border: '1px solid var(--global-color-neutral-gray-200)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="var(--global-color-neutral-gray-600)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                    </span>
-                  </DocsTemplate.AnatomyMarker>
-                </div>
-                <div style={{ paddingTop: 'var(--global-spacing-sizing-12px)' }}>
-                  <DocsTemplate.AnatomyMarker id={4}>
-                    <span style={{ fontFamily: 'var(--font-family-secondary)', fontSize: '14px', color: 'var(--global-color-neutral-gray-700)', lineHeight: 1.5 }}>Expanded body content visible in the open state.</span>
-                  </DocsTemplate.AnatomyMarker>
-                </div>
-              </div>
-            </DocsTemplate.AnatomyMarker>
+            <AccordionAlt
+              type="decorative"
+              size="default"
+              showIcon
+              title="Discover what's new in our latest release"
+              defaultOpen
+            />
           }
           parts={[
             {

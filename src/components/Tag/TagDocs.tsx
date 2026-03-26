@@ -82,25 +82,18 @@ export const TagDocs: React.FC = () => {
         </DocsTemplate.BodyText>
         <DocsTemplate.Anatomy
           preview={
-            <DocsTemplate.AnatomyMarker id={6} position="top-left">
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 'var(--global-spacing-sizing-6px, 6px)', height: 'var(--tag-height-large)', padding: '0 var(--global-spacing-sizing-12px)', background: 'var(--tag-bg-blue)', border: '1px solid var(--tag-border-color-blue)', borderRadius: 'var(--global-spacing-radius-100px, 100px)', fontFamily: 'var(--font-family-primary)', fontSize: 'var(--tag-font-size-large)', color: 'var(--tag-color-blue)' }}>
-                <DocsTemplate.AnatomyMarker id={1} position="top-left">
-                  <CheckIcon style={{ fontSize: 'var(--tag-icon-size-large, 16px)' }} />
-                </DocsTemplate.AnatomyMarker>
-                <DocsTemplate.AnatomyMarker id={2}>
-                  <span style={{ lineHeight: 1 }}>Category</span>
-                </DocsTemplate.AnatomyMarker>
-                <DocsTemplate.AnatomyMarker id={3} position="top-right">
-                  <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', minWidth: '18px', height: '18px', borderRadius: '50%', background: 'var(--tag-count-bg-blue)', color: 'var(--tag-count-color-blue)', fontSize: '10px', fontWeight: 700, padding: '0 4px', lineHeight: 1 }}>4</span>
-                </DocsTemplate.AnatomyMarker>
-                <DocsTemplate.AnatomyMarker id={4} position="top-right">
-                  <ArrowForwardIcon style={{ fontSize: 'var(--tag-icon-size-large, 16px)' }} />
-                </DocsTemplate.AnatomyMarker>
-                <DocsTemplate.AnatomyMarker id={5} position="top-right">
-                  <span style={{ display: 'inline-flex', alignItems: 'center', opacity: 0.65, cursor: 'pointer', fontSize: '14px', lineHeight: 1 }}>&times;</span>
-                </DocsTemplate.AnatomyMarker>
-              </div>
-            </DocsTemplate.AnatomyMarker>
+            <Tag
+              colour="blue"
+              size="large"
+              label="Category"
+              showLeadingIcon
+              leadingIcon={CheckIcon}
+              showCount
+              count={4}
+              showTrailingIcon
+              trailingIcon={ArrowForwardIcon}
+              showRemove
+            />
           }
           parts={[
             {

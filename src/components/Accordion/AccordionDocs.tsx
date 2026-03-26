@@ -25,39 +25,15 @@ export const AccordionDocs: React.FC = () => {
         </DocsTemplate.BodyText>
         <DocsTemplate.Anatomy
           preview={
-            <div style={{ display: 'flex', flexDirection: 'column', background: 'var(--global-color-base-white)', border: '1px solid var(--global-color-neutral-gray-200)', borderRadius: 'var(--global-spacing-radius-8px)', padding: 'var(--global-spacing-sizing-20px) var(--global-spacing-sizing-24px) var(--global-spacing-sizing-20px) var(--global-spacing-sizing-20px)', minWidth: '300px', maxWidth: '600px', width: '100%' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--global-spacing-sizing-12px)' }}>
-                <DocsTemplate.AnatomyMarker id={1} position="top-left">
-                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0 }}>
-                    <circle cx="14" cy="14" r="12" stroke="var(--global-color-neutral-gray-400)" strokeWidth="1.5" fill="none" />
-                    <path d="M14 8v4l3 3" stroke="var(--global-color-neutral-gray-400)" strokeWidth="1.5" strokeLinecap="round" />
-                  </svg>
-                </DocsTemplate.AnatomyMarker>
-                <DocsTemplate.AnatomyMarker id={2} position="top-left">
-                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0 }}>
-                    <path d="M14 4c-1.5 0-2.5 1-2.5 2.5S14 10 14 10s2.5-2 2.5-3.5S15.5 4 14 4zM10 22h8M14 10v12" stroke="var(--global-color-neutral-gray-400)" strokeWidth="1.5" strokeLinecap="round" />
-                  </svg>
-                </DocsTemplate.AnatomyMarker>
-                <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minWidth: 0 }}>
-                  <DocsTemplate.AnatomyMarker id={3}>
-                    <span style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '19px', color: 'var(--global-color-base-black)' }}>This is a section title...</span>
-                  </DocsTemplate.AnatomyMarker>
-                  <DocsTemplate.AnatomyMarker id={4}>
-                    <span style={{ fontFamily: 'var(--font-family-secondary)', fontSize: '14px', color: 'var(--color-primary-blue-gray-blue-gray)' }}>Supporting description text</span>
-                  </DocsTemplate.AnatomyMarker>
-                </div>
-                <DocsTemplate.AnatomyMarker id={5} position="top-right">
-                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0 }}>
-                    <path d="M8 11l6 6 6-6" stroke="var(--global-color-neutral-gray-600)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </DocsTemplate.AnatomyMarker>
-              </div>
-              <div style={{ paddingTop: 'var(--global-spacing-sizing-16px)' }}>
-                <DocsTemplate.AnatomyMarker id={6}>
-                  <span style={{ fontFamily: 'var(--font-family-secondary)', fontSize: '14px', color: 'var(--global-color-neutral-gray-700)', lineHeight: 1.5 }}>Expanded body content goes here. This panel is visible only when the accordion is open.</span>
-                </DocsTemplate.AnatomyMarker>
-              </div>
-            </div>
+            <Accordion
+              type="simple"
+              size="default"
+              openIcon="chevron"
+              showStatusIcon
+              showLeadingIcon
+              showDescription
+              defaultOpen
+            />
           }
           parts={[
             {

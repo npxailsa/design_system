@@ -25,22 +25,14 @@ export const LabelDocs: React.FC = () => {
         <DocsTemplate.Anatomy
           preview={
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontFamily: 'var(--font-family-primary)', fontSize: 'var(--global-type-size-primary-label)', fontWeight: 'var(--global-type-weight-bold)', color: 'var(--global-color-base-black)', letterSpacing: '0.15px' }}>
-              <DocsTemplate.AnatomyMarker id={1} position="top-left">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M10 2a8 8 0 1 0 0 16A8 8 0 0 0 10 2zm0 1.5a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13zM10 6a.75.75 0 0 0-.75.75v3.5H7.75a.75.75 0 0 0 0 1.5h1.5v1.5a.75.75 0 0 0 1.5 0V11.75h1.5a.75.75 0 0 0 0-1.5h-1.5V6.75A.75.75 0 0 0 10 6z" fill="currentColor"/>
-                </svg>
-              </DocsTemplate.AnatomyMarker>
-              <DocsTemplate.AnatomyMarker id={2}>
-                <span>Example Label Text</span>
-              </DocsTemplate.AnatomyMarker>
-              <DocsTemplate.AnatomyMarker id={3} position="top-right">
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                  <span style={{ width: '1px', height: '16px', background: 'currentColor', opacity: 0.3 }} aria-hidden="true" />
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ opacity: 0.6 }} aria-hidden="true">
-                    <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </span>
-              </DocsTemplate.AnatomyMarker>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M10 2a8 8 0 1 0 0 16A8 8 0 0 0 10 2zm0 1.5a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13zM10 6a.75.75 0 0 0-.75.75v3.5H7.75a.75.75 0 0 0 0 1.5h1.5v1.5a.75.75 0 0 0 1.5 0V11.75h1.5a.75.75 0 0 0 0-1.5h-1.5V6.75A.75.75 0 0 0 10 6z" fill="currentColor"/>
+              </svg>
+              <span>Example Label Text</span>
+              <span style={{ width: '1px', height: '16px', background: 'currentColor', opacity: 0.3 }} aria-hidden="true" />
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ opacity: 0.6 }} aria-hidden="true">
+                <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </div>
           }
           parts={[

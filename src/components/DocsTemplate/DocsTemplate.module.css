@@ -621,68 +621,50 @@
   background: var(--global-color-neutral-gray-50, #f9fafb);
   border-radius: var(--global-spacing-radius-8px);
   border: var(--global-spacing-stroke-1px) dashed var(--color-primary-blue-gray-blue-gray-50);
-  padding: var(--global-spacing-sizing-48px, 48px) var(--global-spacing-sizing-40px, 40px);
+  padding: var(--global-spacing-sizing-48px, 48px) var(--global-spacing-sizing-32px, 32px);
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   min-height: 140px;
   overflow: visible;
 }
 
-/* ==========================================================================
-   AnatomyMarker — Inline badge attached to an individual component part
-   ========================================================================== */
-
-.anatomy-marker {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: var(--global-spacing-stroke-1px) dashed var(--color-primary-blue-blue, #3a6cff);
-  border-radius: var(--global-spacing-radius-4px, 4px);
-  padding: var(--global-spacing-sizing-4px, 4px);
-  margin: 6px;
-  overflow: visible;
+/* Legend strip — numbered badges mapped to element names */
+.anatomy-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--global-spacing-sizing-16px);
+  padding: var(--global-spacing-sizing-4px) 0;
 }
 
-.anatomy-marker-badge {
-  position: absolute;
-  width: 20px;
-  height: 20px;
+.anatomy-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--global-spacing-sizing-6px, 6px);
+}
+
+.anatomy-legend-badge {
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   background: var(--color-primary-blue-blue, #3a6cff);
   color: var(--global-color-base-white);
   font-family: var(--font-family-secondary);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
   line-height: 1;
-  pointer-events: none;
-  z-index: 1;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
 }
 
-/* Position variants via data attribute */
-.anatomy-marker[data-position='top-right'] .anatomy-marker-badge {
-  top: -10px;
-  right: -10px;
-}
-
-.anatomy-marker[data-position='top-left'] .anatomy-marker-badge {
-  top: -10px;
-  left: -10px;
-}
-
-.anatomy-marker[data-position='bottom-right'] .anatomy-marker-badge {
-  bottom: -10px;
-  right: -10px;
-}
-
-.anatomy-marker[data-position='bottom-left'] .anatomy-marker-badge {
-  bottom: -10px;
-  left: -10px;
+.anatomy-legend-label {
+  font-family: var(--font-family-secondary);
+  font-size: var(--global-type-size-secondary-body, 14px);
+  color: var(--color-primary-blue-gray-blue-gray);
+  font-weight: var(--global-type-weight-default);
+  line-height: 1.4;
 }
 
 .anatomy-parts {
