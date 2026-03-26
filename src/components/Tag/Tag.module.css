@@ -122,6 +122,14 @@
   background: transparent;
 }
 
+.tag--outline.tag--dark {
+  color: var(--global-color-base-black);
+}
+
+.tag--outline.tag--navy {
+  color: var(--global-color-secondary-navy);
+}
+
 /* ── Selected state ── */
 
 .tag--selected.tag--blue {
