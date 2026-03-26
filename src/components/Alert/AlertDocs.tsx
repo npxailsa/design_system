@@ -41,7 +41,7 @@ export const AlertDocs: React.FC = () => {
             <img
               src="https://cdn.builder.io/api/v1/image/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2Fbf096656a4e94f0ab4dee13de9549353"
               alt="Alert component anatomy diagram showing numbered callouts for each element"
-              style={{ width: '100%', maxWidth: '800px', height: 'auto' }}
+              style={{ width: '100%', height: 'auto' }}
             />
           }
           parts={[

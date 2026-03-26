@@ -98,7 +98,7 @@ const MyDocsPage = () => (
           <img
             src="https://cdn.builder.io/api/v1/image/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2Fbf096656a4e94f0ab4dee13de9549353"
             alt="Example component anatomy diagram with numbered callouts"
-            style={{ width: '100%', maxWidth: '800px', height: 'auto' }}
+            style={{ width: '100%', height: 'auto' }}
           />
         }
         parts={[
@@ -153,7 +153,7 @@ const MyDocsPage = () => (
     <img
       src="/path/to/component-anatomy.svg"
       alt="Component anatomy diagram"
-      style={{ width: '100%', maxWidth: '800px', height: 'auto' }}
+      style={{ width: '100%', height: 'auto' }}
     />
   }
   parts={[

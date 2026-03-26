@@ -28,7 +28,7 @@ export const AccordionDocs: React.FC = () => {
             <img
               src="https://cdn.builder.io/api/v1/image/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2F54b40126e17e45fa9918dbbe0112f741"
               alt="Accordion component anatomy diagram showing numbered callouts for each element"
-              style={{ width: '100%', maxWidth: '800px', height: 'auto' }}
+              style={{ width: '100%', height: 'auto' }}
             />
           }
           parts={[
