@@ -618,14 +618,9 @@
 
 .anatomy-preview {
   position: relative;
-  background: var(--global-color-neutral-gray-50, #f9fafb);
-  border-radius: var(--global-spacing-radius-8px);
-  border: var(--global-spacing-stroke-1px) dashed var(--color-primary-blue-gray-blue-gray-50);
-  padding: var(--global-spacing-sizing-48px, 48px) var(--global-spacing-sizing-32px, 32px);
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 140px;
   overflow: visible;
 }
 
