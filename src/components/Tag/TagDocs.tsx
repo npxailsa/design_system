@@ -4,6 +4,7 @@ import { Tag } from './Tag';
 import PersonIcon from '@mui/icons-material/Person';
 import CheckIcon from '@mui/icons-material/Check';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const ALL_COLOURS = [
   'blue', 'seafoam', 'yellow', 'dark', 'navy', 'red', 'green', 'purple', 'info', 'default',
@@ -40,6 +41,8 @@ export const TagDocs: React.FC = () => {
               leadingIcon={CheckIcon}
               showCount
               count={4}
+              showTrailingIcon
+              trailingIcon={ArrowForwardIcon}
               showRemove
             />
           }
@@ -67,13 +70,20 @@ export const TagDocs: React.FC = () => {
             },
             {
               id: 4,
-              name: 'Remove Button',
-              token: '--tag-remove (× SVG, currentColor)',
-              description: 'Optional dismiss control. Calls onRemove on click. Inherits tag text colour at 65% opacity, rising to 100% on hover.',
-              pin: { top: '50%', left: '90%' },
+              name: 'Trailing Icon',
+              token: 'MUI icon component\n--tag-icon-size-{size}\n--tag-gap-{size}',
+              description: 'Optional icon after the label/count. Inherits tag colour. Controlled by showTrailingIcon + trailingIcon props.',
+              pin: { top: '50%', left: '80%' },
             },
             {
               id: 5,
+              name: 'Remove Button',
+              token: '--tag-remove (× SVG, currentColor)',
+              description: 'Optional dismiss control. Calls onRemove on click. Inherits tag text colour at 65% opacity, rising to 100% on hover.',
+              pin: { top: '50%', left: '93%' },
+            },
+            {
+              id: 6,
               name: 'Container',
               token: '--tag-border-radius\n--tag-bg-{colour}\n--tag-border-color-{colour}\n--tag-height-{size}\n--tag-padding-{size}',
               description: 'Pill-shaped outer shell. Fully rounded (100px radius). Height, padding, and colour are all size- and colour-variant driven.',
@@ -168,6 +178,15 @@ export const TagDocs: React.FC = () => {
             <Tag colour="green" label="Verified" showLeadingIcon leadingIcon={CheckIcon} />
             <Tag colour="purple" label="Featured" showLeadingIcon leadingIcon={StarBorderIcon} />
             <Tag colour="yellow" label="Review" size="large" showLeadingIcon leadingIcon={StarBorderIcon} />
+          </div>
+        </DocsTemplate.Subsection>
+
+        <DocsTemplate.Subsection title="With Trailing Icon">
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-8px)', padding: 'var(--global-spacing-sizing-12px) 0' }}>
+            <Tag colour="blue" label="Next" showTrailingIcon trailingIcon={ArrowForwardIcon} />
+            <Tag colour="green" label="Verified" showTrailingIcon trailingIcon={CheckIcon} />
+            <Tag colour="purple" label="Featured" showLeadingIcon leadingIcon={StarBorderIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} />
+            <Tag colour="yellow" label="Navigate" size="large" showTrailingIcon trailingIcon={ArrowForwardIcon} />
           </div>
         </DocsTemplate.Subsection>
 
@@ -298,6 +317,14 @@ import CheckIcon from '@mui/icons-material/Check';
   count={4}
   showRemove
   onRemove={() => console.log('removed')}
+/>
+
+// Tag with trailing icon
+<Tag
+  colour="blue"
+  label="Next"
+  showTrailingIcon
+  trailingIcon={ArrowForwardIcon}
 />
 
 // Interactive (clickable) tag with selected state

@@ -225,11 +225,13 @@
 /* ── Label text ── */
 
 .tag__label {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 160px;
+  line-height: 1;
 }
 
 /* ── Count badge ── */

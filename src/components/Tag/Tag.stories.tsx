@@ -41,6 +41,18 @@ const meta: Meta<typeof Tag> = {
       },
     },
     showLeadingIcon: { control: 'boolean' },
+    trailingIcon: {
+      control: 'select',
+      options: ['None', 'Person', 'Check', 'Star', 'Tag'],
+      mapping: {
+        None: undefined,
+        Person: PersonIcon,
+        Check: CheckIcon,
+        Star: StarBorderIcon,
+        Tag: LocalOfferOutlinedIcon,
+      },
+    },
+    showTrailingIcon: { control: 'boolean' },
     showRemove: { control: 'boolean' },
     showCount: { control: 'boolean' },
     count: { control: 'number' },
@@ -134,6 +146,21 @@ export const WithLeadingIcon: Story = {
       <Tag colour="purple" label="Featured" showLeadingIcon leadingIcon={StarBorderIcon} />
       <Tag colour="yellow" label="Tagged" size="large" showLeadingIcon leadingIcon={LocalOfferOutlinedIcon} />
       <Tag colour="info" size="small" label="Small icon" showLeadingIcon leadingIcon={PersonIcon} />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+/**
+ * Tags with trailing icons.
+ */
+export const WithTrailingIcon: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', padding: '16px' }}>
+      <Tag colour="blue" label="Next" showTrailingIcon trailingIcon={CheckIcon} />
+      <Tag colour="green" label="Verified" showTrailingIcon trailingIcon={CheckIcon} />
+      <Tag colour="purple" label="Featured" showLeadingIcon leadingIcon={StarBorderIcon} showTrailingIcon trailingIcon={CheckIcon} />
+      <Tag colour="yellow" label="Tagged" size="large" showTrailingIcon trailingIcon={LocalOfferOutlinedIcon} />
     </div>
   ),
   parameters: { controls: { disable: true } },

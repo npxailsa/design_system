@@ -28,6 +28,10 @@ export interface TagProps {
   leadingIcon?: React.ElementType;
   /** Show the leading icon */
   showLeadingIcon?: boolean;
+  /** Optional MUI icon component rendered after the label */
+  trailingIcon?: React.ElementType;
+  /** Show the trailing icon */
+  showTrailingIcon?: boolean;
   /** Show a dismiss/remove × button on the trailing edge */
   showRemove?: boolean;
   /** Numeric count badge shown after the label */
@@ -58,6 +62,8 @@ export const Tag: React.FC<TagProps> = ({
   variant = 'filled',
   leadingIcon: LeadingIcon,
   showLeadingIcon = false,
+  trailingIcon: TrailingIcon,
+  showTrailingIcon = false,
   showRemove = false,
   count,
   showCount = false,
@@ -118,6 +124,13 @@ export const Tag: React.FC<TagProps> = ({
       {/* Count badge */}
       {showCount && count !== undefined && (
         <span className={styles['tag__count']}>{count}</span>
+      )}
+
+      {/* Trailing icon */}
+      {showTrailingIcon && TrailingIcon && (
+        <span className={styles['tag__icon']} aria-hidden="true">
+          <TrailingIcon className={styles['tag__icon-svg']} />
+        </span>
       )}
 
       {/* Remove button */}

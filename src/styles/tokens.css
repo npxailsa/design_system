@@ -960,7 +960,7 @@
 
   /* Tag — colours: seafoam */
   --tag-bg-seafoam: var(--color-primary-seafoam-seafoam-100);
-  --tag-color-seafoam: var(--global-color-primary-seafoam-300);
+  --tag-color-seafoam: var(--global-color-base-black);
   --tag-border-color-seafoam: var(--global-color-primary-seafoam-300);
 
   /* Tag — colours: yellow/warning */
