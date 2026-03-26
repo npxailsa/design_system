@@ -1021,6 +1021,73 @@
   --tag-count-color-info: var(--global-color-base-black);
 }
 
+/* ==========================================================================
+   COMPONENT LAYER: Notification Badge (Component-Specific Tokens)
+   ========================================================================== */
+:root {
+  /* Notification Badge — sizes */
+  --badge-size-xs: var(--global-spacing-sizing-16px);
+  --badge-size-sm: var(--global-spacing-sizing-20px);
+  --badge-size-md: var(--global-spacing-sizing-24px);
+  --badge-size-lg: var(--global-spacing-sizing-28px);
+
+  /* Notification Badge — typography */
+  --badge-font-family: var(--font-family-primary);
+  --badge-font-weight: var(--global-type-weight-bold);
+  --badge-font-size-xs: var(--global-type-size-primary-label-xxs);
+  --badge-font-size-sm: var(--global-type-size-primary-label-xs);
+  --badge-font-size-md: var(--global-type-size-primary-label-xs);
+  --badge-font-size-lg: var(--global-type-size-primary-label-sm);
+  --badge-letter-spacing: var(--global-type-letter-spacing-primary-label-xs);
+
+  /* Notification Badge — border */
+  --badge-border-radius: var(--global-spacing-radius-full);
+  --badge-border-width: var(--global-spacing-stroke-1px);
+  --badge-transition-duration: 150ms;
+  --badge-transition-easing: ease;
+
+  /* Notification Badge — colours (filled): background / text / border */
+  --badge-bg-default:      var(--global-color-neutral-gray-100);
+  --badge-color-default:   var(--global-color-neutral-gray-700);
+  --badge-border-default:  var(--global-color-neutral-gray-300);
+
+  --badge-bg-blue:         var(--global-color-primary-sky-blue-50);
+  --badge-color-blue:      var(--global-color-primary-sky-blue);
+  --badge-border-blue:     var(--global-color-primary-sky-blue-200);
+
+  --badge-bg-seafoam:      var(--color-primary-seafoam-seafoam-100);
+  --badge-color-seafoam:   var(--global-color-base-black);
+  --badge-border-seafoam:  var(--global-color-primary-seafoam-300);
+
+  --badge-bg-yellow:       var(--global-color-status-orange-light);
+  --badge-color-yellow:    var(--global-color-status-dark-orange);
+  --badge-border-yellow:   var(--global-color-status-orange-light-border);
+
+  --badge-bg-dark:         var(--global-color-base-black);
+  --badge-color-dark:      var(--global-color-base-white);
+  --badge-border-dark:     var(--global-color-base-black);
+
+  --badge-bg-navy:         var(--global-color-secondary-navy);
+  --badge-color-navy:      var(--global-color-base-white);
+  --badge-border-navy:     var(--global-color-secondary-navy);
+
+  --badge-bg-red:          var(--global-color-status-red-light);
+  --badge-color-red:       var(--global-color-status-red);
+  --badge-border-red:      var(--global-color-status-rose);
+
+  --badge-bg-green:        var(--global-color-status-green-light);
+  --badge-color-green:     var(--global-color-status-dark-green);
+  --badge-border-green:    var(--global-color-status-green);
+
+  --badge-bg-purple:       var(--global-color-status-purple-light);
+  --badge-color-purple:    var(--global-color-status-purple);
+  --badge-border-purple:   var(--global-color-status-note-mid);
+
+  --badge-bg-info:         var(--global-color-status-info-blue-light);
+  --badge-color-info:      var(--global-color-status-info-blue);
+  --badge-border-info:     var(--global-color-status-edit);
+}
+
 /* Font Loading */
 @font-face {
   font-family: 'F37 Ginger Pro';

@@ -214,6 +214,121 @@ export const SelectedState: Story = {
   parameters: { controls: { disable: true } },
 };
 
+const ALL_BADGE_COLOURS = ['default', 'blue', 'seafoam', 'yellow', 'dark', 'navy', 'red', 'green', 'purple', 'info'] as const;
+type BadgeColour = typeof ALL_BADGE_COLOURS[number];
+
+interface NotificationBadgeProps {
+  colour?: BadgeColour;
+  count?: number | string;
+  size?: 'xs' | 'sm' | 'md' | 'lg';
+  variant?: 'filled' | 'outline';
+}
+
+const NotificationBadge: React.FC<NotificationBadgeProps> = ({
+  colour = 'blue',
+  count = 1,
+  size = 'md',
+  variant = 'filled',
+}) => {
+  const dim = `var(--badge-size-${size})`;
+  const fontSize = `var(--badge-font-size-${size})`;
+  const isOutline = variant === 'outline';
+  return (
+    <span
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: dim,
+        height: dim,
+        minWidth: dim,
+        borderRadius: 'var(--badge-border-radius)',
+        border: `var(--badge-border-width) solid var(--badge-border-${colour})`,
+        background: isOutline ? 'transparent' : `var(--badge-bg-${colour})`,
+        color: isOutline ? `var(--badge-bg-${colour === 'dark' ? 'dark' : colour === 'navy' ? 'navy' : colour})` : `var(--badge-color-${colour})`,
+        fontFamily: 'var(--badge-font-family)',
+        fontWeight: 'var(--badge-font-weight)' as React.CSSProperties['fontWeight'],
+        fontSize,
+        letterSpacing: 'var(--badge-letter-spacing)',
+        lineHeight: 1,
+        userSelect: 'none',
+        flexShrink: 0,
+        transition: 'background var(--badge-transition-duration) var(--badge-transition-easing)',
+      }}
+    >
+      {count}
+    </span>
+  );
+};
+
+// Specific text colour overrides for outline on dark backgrounds
+const OutlineNotificationBadge: React.FC<NotificationBadgeProps> = ({ colour = 'blue', ...rest }) => {
+  const textColour =
+    colour === 'dark' ? 'var(--global-color-base-black)' :
+    colour === 'navy' ? 'var(--global-color-secondary-navy)' :
+    `var(--badge-color-${colour})`;
+
+  const dim = `var(--badge-size-${rest.size ?? 'md'})`;
+  const fontSize = `var(--badge-font-size-${rest.size ?? 'md'})`;
+
+  return (
+    <span
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: dim,
+        height: dim,
+        minWidth: dim,
+        borderRadius: 'var(--badge-border-radius)',
+        border: `var(--badge-border-width) solid var(--badge-border-${colour})`,
+        background: 'transparent',
+        color: textColour,
+        fontFamily: 'var(--badge-font-family)',
+        fontWeight: 700,
+        fontSize,
+        letterSpacing: 'var(--badge-letter-spacing)',
+        lineHeight: 1,
+        userSelect: 'none',
+        flexShrink: 0,
+      }}
+    >
+      {rest.count ?? 1}
+    </span>
+  );
+};
+
+/**
+ * Circular notification badges in all colour variants and sizes.
+ * Use these to indicate counts, alerts, or status dots on UI elements.
+ */
+export const NotificationBadges: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '16px' }}>
+      {/* Filled — 4 sizes */}
+      {(['xs', 'sm', 'md', 'lg'] as const).map((size) => (
+        <div key={size} style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', alignItems: 'center' }}>
+          <span style={{ fontFamily: 'var(--font-family-secondary)', fontSize: '11px', color: '#6d7280', minWidth: '32px', flexShrink: 0 }}>{size}</span>
+          {ALL_BADGE_COLOURS.map((colour) => (
+            <NotificationBadge key={colour} colour={colour} size={size} count={1} variant="filled" />
+          ))}
+        </div>
+      ))}
+      {/* Outline — default size */}
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', alignItems: 'center' }}>
+        <span style={{ fontFamily: 'var(--font-family-secondary)', fontSize: '11px', color: '#6d7280', minWidth: '32px', flexShrink: 0 }}>out</span>
+        {ALL_BADGE_COLOURS.map((colour) => (
+          <OutlineNotificationBadge key={colour} colour={colour} size="md" count={1} />
+        ))}
+      </div>
+    </div>
+  ),
+  parameters: {
+    layout: 'padded',
+    controls: { disable: true },
+  },
+};
+
 /**
  * All sizes × all colours matrix.
  */

@@ -10,6 +10,55 @@ const ALL_COLOURS = [
   'blue', 'seafoam', 'yellow', 'dark', 'navy', 'red', 'green', 'purple', 'info', 'default',
 ] as const;
 
+type BadgeColour = typeof ALL_COLOURS[number];
+type BadgeSize = 'xs' | 'sm' | 'md' | 'lg';
+
+interface NotificationBadgeProps {
+  colour?: BadgeColour;
+  count?: number | string;
+  size?: BadgeSize;
+  variant?: 'filled' | 'outline';
+}
+
+const NotificationBadge: React.FC<NotificationBadgeProps> = ({
+  colour = 'blue',
+  count = 1,
+  size = 'md',
+  variant = 'filled',
+}) => {
+  const isOutline = variant === 'outline';
+  const outlineText =
+    colour === 'dark' ? 'var(--global-color-base-black)' :
+    colour === 'navy' ? 'var(--global-color-secondary-navy)' :
+    `var(--badge-color-${colour})`;
+
+  return (
+    <span
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: `var(--badge-size-${size})`,
+        height: `var(--badge-size-${size})`,
+        minWidth: `var(--badge-size-${size})`,
+        borderRadius: 'var(--badge-border-radius)',
+        border: `var(--badge-border-width) solid var(--badge-border-${colour})`,
+        background: isOutline ? 'transparent' : `var(--badge-bg-${colour})`,
+        color: isOutline ? outlineText : `var(--badge-color-${colour})`,
+        fontFamily: 'var(--badge-font-family)',
+        fontWeight: 700,
+        fontSize: `var(--badge-font-size-${size})`,
+        letterSpacing: 'var(--badge-letter-spacing)',
+        lineHeight: 1,
+        userSelect: 'none',
+        flexShrink: 0,
+      }}
+    >
+      {count}
+    </span>
+  );
+};
+
 export const TagDocs: React.FC = () => {
   return (
     <DocsTemplate>
@@ -249,6 +298,46 @@ export const TagDocs: React.FC = () => {
         </div>
       </DocsTemplate.Section>
 
+      {/* ── Notification Badges ── */}
+      <DocsTemplate.Section title="Notification Badges">
+        <DocsTemplate.BodyText>
+          Circular count indicators used to surface unread counts, alerts, or status at a glance.
+          They share the same colour token set as the Tag component and are available in four sizes
+          — <strong>xs</strong> (16px), <strong>sm</strong> (20px), <strong>md</strong> (24px),
+          and <strong>lg</strong> (28px) — as both filled and outline variants.
+        </DocsTemplate.BodyText>
+
+        <DocsTemplate.Subsection title="Filled — all sizes">
+          {(['xs', 'sm', 'md', 'lg'] as const).map((size) => (
+            <div key={size} style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-8px)', alignItems: 'center', padding: 'var(--global-spacing-sizing-4px) 0' }}>
+              <span style={{ fontFamily: 'var(--font-family-secondary)', fontSize: '11px', color: 'var(--global-color-neutral-gray-500)', minWidth: '28px', flexShrink: 0 }}>{size}</span>
+              {ALL_COLOURS.map((colour) => (
+                <NotificationBadge key={colour} colour={colour} size={size} count={1} variant="filled" />
+              ))}
+            </div>
+          ))}
+        </DocsTemplate.Subsection>
+
+        <DocsTemplate.Subsection title="Outline">
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-8px)', alignItems: 'center', padding: 'var(--global-spacing-sizing-8px) 0' }}>
+            {ALL_COLOURS.map((colour) => (
+              <NotificationBadge key={colour} colour={colour} size="md" count={1} variant="outline" />
+            ))}
+          </div>
+        </DocsTemplate.Subsection>
+
+        <DocsTemplate.Subsection title="Counts in context">
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-8px)', alignItems: 'center', padding: 'var(--global-spacing-sizing-8px) 0' }}>
+            <NotificationBadge colour="red" size="xs" count={3} />
+            <NotificationBadge colour="blue" size="sm" count={12} />
+            <NotificationBadge colour="green" size="md" count={99} />
+            <NotificationBadge colour="dark" size="lg" count={7} />
+            <NotificationBadge colour="navy" size="md" count={1} />
+            <NotificationBadge colour="purple" size="sm" count={4} />
+          </div>
+        </DocsTemplate.Subsection>
+      </DocsTemplate.Section>
+
       {/* ── Design Tokens ── */}
       <DocsTemplate.TokenTable
         title="Design Tokens — Layout & Size"
@@ -312,6 +401,23 @@ export const TagDocs: React.FC = () => {
           { name: '--tag-count-bg-purple / --tag-count-color-purple', description: 'Purple count — note-mid bg / base-black text' },
           { name: '--tag-count-bg-info / --tag-count-color-info', description: 'Info count — status-edit bg / base-black text' },
           { name: '--tag-count-bg-default / --tag-count-color-default', description: 'Default count — neutral-gray-300 bg / base-black text' },
+        ]}
+      />
+
+      <DocsTemplate.TokenTable
+        title="Design Tokens — Notification Badge"
+        description="Circular notification badge dimensions, typography, and per-colour values. Colours mirror the Tag colour system."
+        tokens={[
+          { name: '--badge-size-xs', description: 'Extra-small badge diameter (16px)' },
+          { name: '--badge-size-sm', description: 'Small badge diameter (20px)' },
+          { name: '--badge-size-md', description: 'Default badge diameter (24px)' },
+          { name: '--badge-size-lg', description: 'Large badge diameter (28px)' },
+          { name: '--badge-font-family', description: 'Font family — F37 Ginger Pro (--font-family-primary)' },
+          { name: '--badge-font-weight', description: 'Font weight — bold (700)' },
+          { name: '--badge-font-size-xs / sm / md / lg', description: 'Size-variant type scale (10px → 14px)' },
+          { name: '--badge-border-radius', description: 'Fully circular (--global-spacing-radius-full)' },
+          { name: '--badge-border-width', description: 'Border thickness (1px)' },
+          { name: '--badge-bg-{colour} / --badge-color-{colour} / --badge-border-{colour}', description: 'Per-colour tokens — mirrors tag colour palette (10 variants)' },
         ]}
       />
 
