@@ -155,7 +155,7 @@
   width: var(--btn-icon-only-size-default);
   height: var(--btn-icon-only-size-default);
   padding: 0;
-  border-radius: var(--global-spacing-radius-full);
+  border-radius: var(--btn-border-radius);
 }
 
 .btn--icon-only.btn--small {
