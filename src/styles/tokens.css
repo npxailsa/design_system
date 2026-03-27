@@ -1299,7 +1299,7 @@
 
      Visual spec (from Figma — type=default/primary, special=alt):
        Default  : bg blue-50, 1px border blue-300, text blue-gray
-       Hover    : bg blue-100, 1px border blue-300, 2×2 shadow blue-400, text black
+       Hover    : bg base/white, 1px border base/black, 2×2 shadow base/black, text black
        Active   : same as hover
        Focused  : bg blue-50, 2px border blue-300, text blue-gray
        Disabled : bg gray-50, 2px border gray-200, text gray-300
@@ -1311,8 +1311,8 @@
 
   /* Ghost Button — colours */
   --btn-ghost-bg:                  var(--global-color-primary-blue-blue-50);
-  --btn-ghost-bg-hover:            var(--global-color-primary-blue-blue-100);
-  --btn-ghost-bg-active:           var(--global-color-primary-blue-blue-100);
+  --btn-ghost-bg-hover:            var(--global-color-base-white);
+  --btn-ghost-bg-active:           var(--global-color-base-white);
   --btn-ghost-bg-disabled:         var(--global-color-neutral-gray-50);
   --btn-ghost-color:               var(--global-color-secondary-blue-gray);
   --btn-ghost-color-hover:         var(--global-color-base-black);
@@ -1321,7 +1321,7 @@
   --btn-ghost-border-color-hover:   var(--global-color-base-black);
   --btn-ghost-border-color-focus:  var(--global-color-primary-blue-blue-300);
   --btn-ghost-border-color-disabled: var(--global-color-neutral-gray-200);
-  --btn-ghost-shadow-hover:        var(--global-spacing-sizing-2px) var(--global-spacing-sizing-2px) var(--global-spacing-stroke-0px) var(--global-spacing-stroke-0px) var(--global-color-primary-blue-blue-400);
+  --btn-ghost-shadow-hover:        var(--global-spacing-sizing-2px) var(--global-spacing-sizing-2px) var(--global-spacing-stroke-0px) var(--global-spacing-stroke-0px) var(--global-color-base-black);
 
   /* Ghost Button — border widths (reuse base btn tokens) */
   --btn-ghost-border-width-default: var(--global-spacing-stroke-1px);

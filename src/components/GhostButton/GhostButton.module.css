@@ -13,7 +13,7 @@
 
    Figma states (ghost variant):
      Default  : bg blue-50 (#F9F9FE), 1px border blue-gray (#61607C), text blue-gray (#61607C)
-     Hover    : bg blue-100 (#E7E9F4), border base/black (#1C1C1C), shadow 2px 2px #6171DF, text black
+     Hover    : bg base/white (#FFFFFF), border base/black (#1C1C1C), shadow 2px 2px base/black (#1C1C1C), text black
      Active   : same as hover
      Focused  : bg blue-50, border 2px blue-300, text blue-gray
      Disabled : bg gray-50, border 2px gray-200, text gray-300

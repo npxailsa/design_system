@@ -63,7 +63,7 @@ export const GhostButtonDocs: React.FC = () => {
               id: 1,
               name: 'Container',
               token: '--btn-border-radius (--global-spacing-radius-4px)\n--btn-ghost-bg (--global-color-primary-blue-blue-50 / #F9F9FE)\n--btn-ghost-border-color (--global-color-secondary-blue-gray / #61607C)\n--btn-ghost-border-color-hover (--global-color-base-black / #1C1C1C)\n--btn-ghost-border-width-default (--global-spacing-stroke-1px)\n--btn-ghost-shadow-hover (2px 2px 0 0 #6171DF — hover & active only)\n--btn-padding-{size}',
-              description: 'Outer button shell. W: HUG, H: HUG. Min-W: 80px. Corner radius: 4px. Default fill: color/primary/blue/blue-50 (#F9F9FE), 1px border secondary/blue-gray (#61607C). On hover/active, border becomes base/black (#1C1C1C), bg shifts to blue-100 with a 2×2 drop shadow in blue-400.',
+              description: 'Outer button shell. W: HUG, H: HUG. Min-W: 80px. Corner radius: 4px. Default fill: color/primary/blue/blue-50 (#F9F9FE), 1px border secondary/blue-gray (#61607C). On hover/active, border becomes base/black (#1C1C1C), bg shifts to base/white (#FFFFFF) with a 2×2 drop shadow in base/black (#1C1C1C).',
             },
             {
               id: 2,
@@ -265,8 +265,8 @@ export const GhostButtonDocs: React.FC = () => {
         description="Component-specific colour tokens for the Ghost Button (--btn-ghost-*):"
         tokens={[
           { name: '--btn-ghost-bg', description: 'Default background — --global-color-primary-blue-blue-50 (#F9F9FE)' },
-          { name: '--btn-ghost-bg-hover', description: 'Hover / active background — --global-color-primary-blue-blue-100 (#E7E9F4)' },
-          { name: '--btn-ghost-bg-active', description: 'Active (pressed) background — same as hover (#E7E9F4)' },
+          { name: '--btn-ghost-bg-hover', description: 'Hover / active background — --global-color-base-white (#FFFFFF)' },
+          { name: '--btn-ghost-bg-active', description: 'Active (pressed) background — same as hover (#FFFFFF)' },
           { name: '--btn-ghost-bg-disabled', description: 'Disabled background — --global-color-neutral-gray-50 (#F9FAFB)' },
           { name: '--btn-ghost-color', description: 'Default text / icon colour — --global-color-secondary-blue-gray (#61607C)' },
           { name: '--btn-ghost-color-hover', description: 'Hover / active text colour — --global-color-base-black (#1C1C1C)' },
@@ -275,7 +275,7 @@ export const GhostButtonDocs: React.FC = () => {
           { name: '--btn-ghost-border-color-hover', description: 'Hover / active border — --global-color-base-black (#1C1C1C)' },
           { name: '--btn-ghost-border-color-focus', description: 'Focus border — --global-color-primary-blue-blue-300 (#95A0E5)' },
           { name: '--btn-ghost-border-color-disabled', description: 'Disabled border — --global-color-neutral-gray-200 (#E5E7EB)' },
-          { name: '--btn-ghost-shadow-hover', description: 'Hover / active shadow — 2px 2px 0 0 --global-color-primary-blue-blue-400 (#6171DF)' },
+          { name: '--btn-ghost-shadow-hover', description: 'Hover / active shadow — 2px 2px 0 0 --global-color-base-black (#1C1C1C)' },
           { name: '--btn-ghost-border-width-default', description: 'Default border width — 1px (--global-spacing-stroke-1px)' },
           { name: '--btn-ghost-border-width-focus', description: 'Focus border width — 2px (--global-spacing-stroke-2px)' },
           { name: '--btn-ghost-border-width-disabled', description: 'Disabled border width — 2px (--global-spacing-stroke-2px)' },
