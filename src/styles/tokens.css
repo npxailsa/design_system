@@ -109,6 +109,7 @@
   --global-spacing-sizing-32px: 32px;
   --global-spacing-sizing-36px: 36px;
   --global-spacing-sizing-40px: 40px;
+  --global-spacing-sizing-42px: 42px;
   --global-spacing-sizing-44px: 44px;
   --global-spacing-sizing-48px: 48px;
   --global-spacing-sizing-52px: 52px;
@@ -1138,6 +1139,8 @@
    ========================================================================== */
 :root {
   /* Button — layout */
+  --btn-min-width: var(--global-spacing-sizing-80px);
+  --btn-min-height: var(--global-spacing-sizing-42px);
   --btn-border-radius: var(--global-spacing-radius-4px);
   --btn-font-family: var(--brand-font-primary);
   --btn-letter-spacing: var(--global-type-letter-spacing-primary-label);

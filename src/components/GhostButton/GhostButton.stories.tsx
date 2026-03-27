@@ -75,12 +75,14 @@ export const Documentation: Story = {
 };
 
 /**
- * Default ghost button with trailing icon.
+ * Default ghost button with leading and trailing icons.
  */
 export const Default: Story = {
   args: {
     label: 'Label',
     size: 'default',
+    showLeadingIcon: true,
+    leadingIcon: PersonIcon,
     showTrailingIcon: true,
     trailingIcon: ArrowForwardIcon,
   },

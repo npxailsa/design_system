@@ -203,6 +203,8 @@ export const GhostButtonDocs: React.FC = () => {
         title="Design Tokens — Layout & Spacing"
         description="Ghost Button reuses the shared button layout tokens:"
         tokens={[
+          { name: '--btn-min-width', description: 'Minimum button width — 80px (--global-spacing-sizing-80px)' },
+          { name: '--btn-min-height', description: 'Minimum button height — 42px (--global-spacing-sizing-42px)' },
           { name: '--btn-border-radius', description: 'Corner radius 4px — --global-spacing-radius-4px' },
           { name: '--btn-padding-small', description: 'Small padding — 8px vertical / 12px horizontal' },
           { name: '--btn-padding-default', description: 'Default padding — 12px vertical / 16px horizontal' },
@@ -245,8 +247,14 @@ export const GhostButtonDocs: React.FC = () => {
 import PersonIcon from '@mui/icons-material/Person';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
-// Default ghost button with trailing arrow
-<GhostButton label="Label" showTrailingIcon trailingIcon={ArrowForwardIcon} />
+// Default ghost button with leading and trailing icons
+<GhostButton
+  label="Label"
+  showLeadingIcon
+  leadingIcon={PersonIcon}
+  showTrailingIcon
+  trailingIcon={ArrowForwardIcon}
+/>
 
 // With leading and trailing icons
 <GhostButton

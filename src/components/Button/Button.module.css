@@ -28,6 +28,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-width: var(--btn-min-width);
+  min-height: var(--btn-min-height);
   gap: var(--btn-gap-default);
   padding: var(--btn-padding-default);
   border-radius: var(--btn-border-radius);
