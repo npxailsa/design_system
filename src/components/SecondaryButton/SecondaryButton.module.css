@@ -24,6 +24,11 @@
 
 /* ── Base ── */
 .btn {
+  /* Reset global button styles (src/index.css sets blue bg/color/filter on all <button>) */
+  background: transparent;
+  color: var(--btn-secondary-color);
+  filter: none;
+  outline: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
