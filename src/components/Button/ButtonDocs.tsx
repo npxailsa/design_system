@@ -71,7 +71,7 @@ export const ButtonDocs: React.FC = () => {
           <DocsTemplate.Anatomy
             preview={
               <img
-                src="https://cdn.builder.io/api/v1/image/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2Fbbc4a05558b54da29f2b0c32aecd0210"
+                src="https://cdn.builder.io/api/v1/image/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2Fcb9650a698cd47429c486b0389c2bf51"
                 alt="Outline primary button component anatomy diagram with numbered callouts"
                 style={{ width: '100%', height: 'auto' }}
               />
