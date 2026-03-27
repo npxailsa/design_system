@@ -45,7 +45,7 @@ a:hover {
   opacity: 0.8;
 }
 
-button {
+button:where(:not([class])) {
   border-radius: var(--global-spacing-radius-8px);
   border: var(--global-spacing-stroke-1px) solid transparent;
   padding: var(--global-spacing-sizing-8px) var(--global-spacing-sizing-16px);
@@ -58,13 +58,13 @@ button {
   transition: border-color 0.25s;
 }
 
-button:hover {
+button:where(:not([class])):hover {
   border-color: var(--brand-primary);
   filter: brightness(1.1);
 }
 
-button:focus,
-button:focus-visible {
+button:where(:not([class])):focus,
+button:where(:not([class])):focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
