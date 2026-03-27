@@ -73,6 +73,12 @@ const Footer = () => (
 
 const preview: Preview = {
   parameters: {
+    options: {
+      storySort: {
+        order: ['Introduction', 'Foundation', 'Atoms', '*'],
+      },
+    },
+
     controls: {
       matchers: {
         color: /(background|color)$/i,
