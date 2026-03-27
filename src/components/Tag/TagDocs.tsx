@@ -83,7 +83,7 @@ export const TagDocs: React.FC = () => {
         <DocsTemplate.Anatomy
           preview={
             <img
-              src="https://cdn.builder.io/api/v1/image/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2F615997e5803f49ce8bf033d0780d1633"
+              src="https://cdn.builder.io/api/v1/image/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2F0afb91c27a8d4e7b8dc3a156dcf732de"
               alt="Tag component anatomy diagram with numbered callouts"
               style={{ width: '100%', height: 'auto' }}
             />
