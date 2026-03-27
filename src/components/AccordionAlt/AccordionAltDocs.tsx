@@ -26,44 +26,36 @@ export const AccordionAltDocs: React.FC = () => {
         </DocsTemplate.BodyText>
         <DocsTemplate.Anatomy
           preview={
-            <AccordionAlt
-              type="decorative"
-              size="default"
-              showIcon
-              title="Discover what's new in our latest release"
-              defaultOpen
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2F9d7a848d27c94ec8ab5a47a948153f5b"
+              alt="Accordion (alt.) component anatomy diagram with numbered callouts"
+              style={{ width: '100%', height: 'auto' }}
             />
           }
           parts={[
             {
               id: 1,
-              name: 'Icon Badge',
-              token: '--accordion-alt-icon-badge-size\n--accordion-alt-icon-badge-bg\n--accordion-alt-icon-badge-border-color\n--accordion-alt-icon-badge-border-radius',
-              description: 'Circular badge shown in decorative type. Contains a bell SVG icon. Replaced by a number (numbered type) or tag pill (label type).',
+              name: 'Icon Frame',
+              token: '--accordion-alt-icon-badge-size\n--accordion-alt-icon-badge-bg (color/primary/sky-blue/sky-blue-50)\n--accordion-alt-icon-badge-border-color (sky-blue-200)',
+              description: 'Circular badge (28 x 28) shown in decorative type. Contains an SVG icon. Replaced by a number (numbered type) or tag pill (label type).',
             },
             {
               id: 2,
               name: 'Title',
-              token: '--accordion-alt-title-font-family\n--accordion-alt-title-font-size-{size}\n--accordion-alt-title-color\n--accordion-alt-title-weight',
-              description: 'Primary heading text using F37 Ginger Pro. Truncates with ellipsis if it overflows the available horizontal space.',
+              token: '--accordion-alt-title-font-family (Archivo Medium)\n--accordion-alt-title-font-size-default (19px / 24px)\n--accordion-alt-title-color (color/base/black)',
+              description: 'Primary heading text. Truncates with ellipsis if it overflows the available horizontal space.',
             },
             {
               id: 3,
-              name: 'Toggle Button',
-              token: '--accordion-alt-toggle-size-{size}\n--accordion-alt-toggle-bg\n--accordion-alt-toggle-border-color\n--accordion-alt-toggle-border-radius',
-              description: 'Pill-shaped button containing a chevron or plus/minus icon. Controlled by the openIcon prop. Rotates/changes on open/close.',
+              name: 'Container',
+              token: '--accordion-alt-bg (color/base/white)\n--accordion-alt-border-radius (8)\n--accordion-alt-border-color-decorative (color/primary/sky-blue/sky-blue-200)\n--accordion-alt-min-width\n--accordion-alt-max-width (464)',
+              description: 'Outer panel (W: 464, H: HUG). Props: type: decorative, open: False, size: default, open-icon: default (chevron). Width is fixed between open/closed states.',
             },
             {
               id: 4,
-              name: 'Body Text',
-              token: '--accordion-alt-body-color\n--accordion-alt-body-font-family\n--accordion-alt-body-font-size\n--accordion-alt-gap-open',
-              description: 'Expanded content below the trigger row. Text wraps normally. Visible only in the open state.',
-            },
-            {
-              id: 5,
-              name: 'Container',
-              token: '--accordion-alt-bg\n--accordion-alt-border-radius\n--accordion-alt-border-width\n--accordion-alt-min-width\n--accordion-alt-max-width',
-              description: 'Outer panel. Width is fixed between open/closed states (200px–600px). Open state uses inset box-shadow for border emphasis without layout shift.',
+              name: 'Open / Close Icon',
+              token: '--accordion-alt-toggle-size-default (24 x 24)\n--accordion-alt-toggle-bg (color/neutral/gray/gray-50)\n--accordion-alt-toggle-border-color (gray-200)',
+              description: 'Circular button containing a chevron or plus/minus icon. Controlled by the openIcon prop. Rotates/changes on open/close.',
             },
           ]}
         />
