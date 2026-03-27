@@ -1,0 +1,205 @@
+/* ==========================================================================
+   Button Component
+   --------------------------------------------------------------------------
+   Primary interactive control. Uses design tokens exclusively — no hardcoded
+   values. Three variants (filled, outline, ghost), three sizes, plus loading,
+   disabled, and icon-only modes.
+   ========================================================================== */
+
+/* ── Reset ── */
+.btn,
+.btn * {
+  box-sizing: border-box;
+}
+
+/* ── Base ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--btn-gap-default);
+  height: var(--btn-height-default);
+  padding: var(--btn-padding-default);
+  border-radius: var(--btn-border-radius);
+  border: var(--btn-border-width) solid transparent;
+  font-family: var(--btn-font-family);
+  font-size: var(--btn-font-size-default);
+  line-height: var(--btn-line-height-default);
+  font-weight: var(--btn-font-weight);
+  letter-spacing: var(--btn-letter-spacing);
+  white-space: nowrap;
+  user-select: none;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  transition:
+    background-color var(--btn-transition-duration) var(--btn-transition-easing),
+    border-color var(--btn-transition-duration) var(--btn-transition-easing),
+    color var(--btn-transition-duration) var(--btn-transition-easing),
+    opacity var(--btn-transition-duration) var(--btn-transition-easing);
+}
+
+.btn:focus-visible {
+  outline: var(--btn-focus-ring-width) solid var(--btn-focus-ring-color);
+  outline-offset: var(--btn-focus-ring-offset);
+}
+
+/* ── Sizes ── */
+.btn--small {
+  gap: var(--btn-gap-small);
+  height: var(--btn-height-small);
+  padding: var(--btn-padding-small);
+  font-size: var(--btn-font-size-small);
+  line-height: var(--btn-line-height-small);
+}
+
+.btn--large {
+  gap: var(--btn-gap-large);
+  height: var(--btn-height-large);
+  padding: var(--btn-padding-large);
+  font-size: var(--btn-font-size-large);
+  line-height: var(--btn-line-height-large);
+}
+
+/* ── Filled variant ── */
+.btn--filled {
+  background: var(--btn-filled-bg);
+  color: var(--btn-filled-color);
+  border-color: var(--btn-filled-border-color);
+}
+
+.btn--filled:hover:not(:disabled):not(.btn--disabled) {
+  background: var(--btn-filled-bg-hover);
+}
+
+.btn--filled:active:not(:disabled):not(.btn--disabled) {
+  background: var(--btn-filled-bg-active);
+}
+
+/* ── Outline variant ── */
+.btn--outline {
+  background: var(--btn-outline-bg);
+  color: var(--btn-outline-color);
+  border-color: var(--btn-outline-border-color);
+}
+
+.btn--outline:hover:not(:disabled):not(.btn--disabled) {
+  background: var(--btn-outline-bg-hover);
+}
+
+.btn--outline:active:not(:disabled):not(.btn--disabled) {
+  background: var(--btn-outline-bg-active);
+}
+
+/* ── Ghost variant ── */
+.btn--ghost {
+  background: var(--btn-ghost-bg);
+  color: var(--btn-ghost-color);
+  border-color: var(--btn-ghost-border-color);
+}
+
+.btn--ghost:hover:not(:disabled):not(.btn--disabled) {
+  background: var(--btn-ghost-bg-hover);
+}
+
+.btn--ghost:active:not(:disabled):not(.btn--disabled) {
+  background: var(--btn-ghost-bg-active);
+}
+
+/* ── Icon-only ── */
+.btn--icon-only {
+  width: var(--btn-icon-only-size-default);
+  padding: 0;
+  border-radius: var(--global-spacing-radius-full);
+}
+
+.btn--icon-only.btn--small {
+  width: var(--btn-icon-only-size-small);
+  height: var(--btn-icon-only-size-small);
+}
+
+.btn--icon-only.btn--large {
+  width: var(--btn-icon-only-size-large);
+  height: var(--btn-icon-only-size-large);
+}
+
+/* ── Full width ── */
+.btn--full-width {
+  width: 100%;
+}
+
+/* ── Disabled ── */
+.btn--disabled,
+.btn:disabled {
+  opacity: var(--btn-disabled-opacity);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Loading ── */
+.btn--loading {
+  cursor: wait;
+  pointer-events: none;
+}
+
+/* ── Icon slot ── */
+.btn__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.btn__icon-svg {
+  width: var(--btn-icon-size-default) !important;
+  height: var(--btn-icon-size-default) !important;
+  font-size: var(--btn-icon-size-default) !important;
+}
+
+.btn--small .btn__icon-svg {
+  width: var(--btn-icon-size-small) !important;
+  height: var(--btn-icon-size-small) !important;
+  font-size: var(--btn-icon-size-small) !important;
+}
+
+.btn--large .btn__icon-svg {
+  width: var(--btn-icon-size-large) !important;
+  height: var(--btn-icon-size-large) !important;
+  font-size: var(--btn-icon-size-large) !important;
+}
+
+/* ── Label ── */
+.btn__label {
+  display: inline-flex;
+  align-items: center;
+  line-height: inherit;
+}
+
+/* ── Spinner ── */
+.btn__spinner {
+  display: inline-block;
+  width: var(--btn-spinner-size-default);
+  height: var(--btn-spinner-size-default);
+  border: var(--btn-spinner-border-width) solid currentColor;
+  border-top-color: transparent;
+  border-radius: var(--global-spacing-radius-full);
+  animation: btn-spin 0.7s linear infinite;
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+.btn--small .btn__spinner {
+  width: var(--btn-spinner-size-small);
+  height: var(--btn-spinner-size-small);
+}
+
+.btn--large .btn__spinner {
+  width: var(--btn-spinner-size-large);
+  height: var(--btn-spinner-size-large);
+}
+
+@keyframes btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

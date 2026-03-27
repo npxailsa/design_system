@@ -1088,6 +1088,78 @@
   --badge-border-info:     var(--global-color-status-edit);
 }
 
+/* ==========================================================================
+   COMPONENT LAYER: Button (Component-Specific Tokens)
+   ========================================================================== */
+:root {
+  /* Button — layout */
+  --btn-border-radius: var(--global-spacing-radius-8px);
+  --btn-border-width: var(--global-spacing-stroke-2px);
+  --btn-font-family: var(--brand-font-primary);
+  --btn-letter-spacing: var(--global-type-letter-spacing-primary-label);
+  --btn-font-weight: var(--global-type-weight-default);
+  --btn-transition-duration: 160ms;
+  --btn-transition-easing: ease;
+  --btn-focus-ring-offset: var(--global-spacing-sizing-2px);
+  --btn-focus-ring-width: var(--global-spacing-stroke-2px);
+  --btn-focus-ring-color: var(--brand-primary);
+  --btn-disabled-opacity: 0.45;
+
+  /* Button — sizes: small */
+  --btn-height-small: var(--global-spacing-sizing-32px);
+  --btn-padding-small: 0 var(--global-spacing-sizing-12px);
+  --btn-font-size-small: var(--global-type-size-primary-label-sm);
+  --btn-line-height-small: var(--global-type-line-height-label-sm);
+  --btn-gap-small: var(--global-spacing-sizing-6px);
+  --btn-icon-size-small: var(--global-spacing-sizing-16px);
+  --btn-icon-only-size-small: var(--global-spacing-sizing-32px);
+
+  /* Button — sizes: default */
+  --btn-height-default: var(--global-spacing-sizing-40px);
+  --btn-padding-default: 0 var(--global-spacing-sizing-16px);
+  --btn-font-size-default: var(--global-type-size-primary-label);
+  --btn-line-height-default: var(--global-type-line-height-label);
+  --btn-gap-default: var(--global-spacing-sizing-8px);
+  --btn-icon-size-default: var(--global-spacing-sizing-18px);
+  --btn-icon-only-size-default: var(--global-spacing-sizing-40px);
+
+  /* Button — sizes: large */
+  --btn-height-large: var(--global-spacing-sizing-48px);
+  --btn-padding-large: 0 var(--global-spacing-sizing-20px);
+  --btn-font-size-large: var(--global-type-size-primary-label-lg);
+  --btn-line-height-large: var(--global-type-line-height-label-lg);
+  --btn-gap-large: var(--global-spacing-sizing-10px);
+  --btn-icon-size-large: var(--global-spacing-sizing-20px);
+  --btn-icon-only-size-large: var(--global-spacing-sizing-48px);
+
+  /* Button — filled variant */
+  --btn-filled-bg: var(--brand-primary);
+  --btn-filled-bg-hover: var(--brand-primary-dark);
+  --btn-filled-bg-active: var(--brand-primary-dark);
+  --btn-filled-color: var(--global-color-base-white);
+  --btn-filled-border-color: transparent;
+
+  /* Button — outline variant */
+  --btn-outline-bg: transparent;
+  --btn-outline-bg-hover: var(--brand-primary-25);
+  --btn-outline-bg-active: var(--brand-primary-50);
+  --btn-outline-color: var(--brand-primary);
+  --btn-outline-border-color: var(--brand-primary);
+
+  /* Button — ghost variant */
+  --btn-ghost-bg: transparent;
+  --btn-ghost-bg-hover: var(--brand-primary-25);
+  --btn-ghost-bg-active: var(--brand-primary-50);
+  --btn-ghost-color: var(--brand-primary);
+  --btn-ghost-border-color: transparent;
+
+  /* Button — loading spinner */
+  --btn-spinner-size-small: var(--global-spacing-sizing-14px);
+  --btn-spinner-size-default: var(--global-spacing-sizing-16px);
+  --btn-spinner-size-large: var(--global-spacing-sizing-20px);
+  --btn-spinner-border-width: var(--global-spacing-stroke-2px);
+}
+
 /* Font Loading */
 @font-face {
   font-family: 'F37 Ginger Pro';
