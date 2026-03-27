@@ -62,8 +62,8 @@ export const GhostButtonDocs: React.FC = () => {
             {
               id: 1,
               name: 'Container',
-              token: '--btn-border-radius (--global-spacing-radius-4px)\n--btn-ghost-bg (--global-color-primary-blue-blue-50 / #F9F9FE)\n--btn-ghost-border-color (--global-color-primary-blue-blue-300 / #95A0E5)\n--btn-ghost-border-width-default (--global-spacing-stroke-1px)\n--btn-ghost-shadow-hover (2px 2px 0 0 #6171DF — hover & active only)\n--btn-padding-{size}',
-              description: 'Outer button shell. W: HUG, H: HUG. Min-W: 80px. Corner radius: 4px. Default fill: color/primary/blue/blue-50 (#F9F9FE), 1px border color/primary/blue/blue-300 (#95A0E5). On hover/active, bg shifts to blue-100 with a 2×2 drop shadow in blue-400.',
+              token: '--btn-border-radius (--global-spacing-radius-4px)\n--btn-ghost-bg (--global-color-primary-blue-blue-50 / #F9F9FE)\n--btn-ghost-border-color (--global-color-secondary-blue-gray / #61607C)\n--btn-ghost-border-color-hover (--global-color-base-black / #1C1C1C)\n--btn-ghost-border-width-default (--global-spacing-stroke-1px)\n--btn-ghost-shadow-hover (2px 2px 0 0 #6171DF — hover & active only)\n--btn-padding-{size}',
+              description: 'Outer button shell. W: HUG, H: HUG. Min-W: 80px. Corner radius: 4px. Default fill: color/primary/blue/blue-50 (#F9F9FE), 1px border secondary/blue-gray (#61607C). On hover/active, border becomes base/black (#1C1C1C), bg shifts to blue-100 with a 2×2 drop shadow in blue-400.',
             },
             {
               id: 2,
@@ -271,7 +271,8 @@ export const GhostButtonDocs: React.FC = () => {
           { name: '--btn-ghost-color', description: 'Default text / icon colour — --global-color-secondary-blue-gray (#61607C)' },
           { name: '--btn-ghost-color-hover', description: 'Hover / active text colour — --global-color-base-black (#1C1C1C)' },
           { name: '--btn-ghost-color-disabled', description: 'Disabled text — --global-color-neutral-gray-300 (#D2D5DA)' },
-          { name: '--btn-ghost-border-color', description: 'Default border — --global-color-primary-blue-blue-300 (#95A0E5)' },
+          { name: '--btn-ghost-border-color', description: 'Default border — --global-color-secondary-blue-gray (#61607C)' },
+          { name: '--btn-ghost-border-color-hover', description: 'Hover / active border — --global-color-base-black (#1C1C1C)' },
           { name: '--btn-ghost-border-color-focus', description: 'Focus border — --global-color-primary-blue-blue-300 (#95A0E5)' },
           { name: '--btn-ghost-border-color-disabled', description: 'Disabled border — --global-color-neutral-gray-200 (#E5E7EB)' },
           { name: '--btn-ghost-shadow-hover', description: 'Hover / active shadow — 2px 2px 0 0 --global-color-primary-blue-blue-400 (#6171DF)' },

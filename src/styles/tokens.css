@@ -1317,7 +1317,8 @@
   --btn-ghost-color:               var(--global-color-secondary-blue-gray);
   --btn-ghost-color-hover:         var(--global-color-base-black);
   --btn-ghost-color-disabled:      var(--global-color-neutral-gray-300);
-  --btn-ghost-border-color:        var(--global-color-primary-blue-blue-300);
+  --btn-ghost-border-color:        var(--global-color-secondary-blue-gray);
+  --btn-ghost-border-color-hover:   var(--global-color-base-black);
   --btn-ghost-border-color-focus:  var(--global-color-primary-blue-blue-300);
   --btn-ghost-border-color-disabled: var(--global-color-neutral-gray-200);
   --btn-ghost-shadow-hover:        var(--global-spacing-sizing-2px) var(--global-spacing-sizing-2px) var(--global-spacing-stroke-0px) var(--global-spacing-stroke-0px) var(--global-color-primary-blue-blue-400);
