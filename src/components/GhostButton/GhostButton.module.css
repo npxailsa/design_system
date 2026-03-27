@@ -1,0 +1,215 @@
+/* ==========================================================================
+   GhostButton Component
+   --------------------------------------------------------------------------
+   Low-emphasis button with a blue-periwinkle ghost/outline style.
+   Uses design tokens exclusively — no hardcoded values.
+
+   Visual spec from Figma (type=default/primary, special=alt):
+     Default  : bg blue-50 (#F9F9FE), 1px border blue-300 (#95A0E5), text blue-gray (#61607C)
+     Hover    : bg blue-100 (#E7E9F4), border unchanged, shadow 2×2 blue-400 (#6171DF), text black
+     Active   : same as hover
+     Focused  : bg blue-50, border 2px blue-300, text blue-gray
+     Disabled : bg gray-50, border 2px gray-200, text gray-300
+     Loading  : bg blue-50, border 0.5px blue-300, spinner blue-300 @ 0.6 opacity
+
+   Sizes: small / default / large
+   Modes: with leading icon, trailing icon, icon-only, full-width
+   ========================================================================== */
+
+/* ── Reset ── */
+.ghost-btn,
+.ghost-btn * {
+  box-sizing: border-box;
+}
+
+/* ── Base ── */
+.ghost-btn {
+  /* Reset global button styles (src/index.css sets blue bg on all <button>) */
+  background: transparent;
+  filter: none;
+  outline: none;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--btn-gap-default);
+  padding: var(--btn-padding-default);
+  border-radius: var(--btn-border-radius);
+  border: var(--btn-ghost-border-width-default) solid var(--btn-ghost-border-color);
+  background: var(--btn-ghost-bg);
+  color: var(--btn-ghost-color);
+
+  font-family: var(--btn-font-family);
+  font-size: var(--btn-font-size-default);
+  line-height: var(--btn-line-height-default);
+  font-weight: var(--btn-font-weight);
+  letter-spacing: var(--btn-letter-spacing);
+
+  white-space: nowrap;
+  user-select: none;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+
+  transition:
+    background-color var(--btn-transition-duration) var(--btn-transition-easing),
+    border-color var(--btn-transition-duration) var(--btn-transition-easing),
+    border-width var(--btn-transition-duration) var(--btn-transition-easing),
+    box-shadow var(--btn-transition-duration) var(--btn-transition-easing),
+    color var(--btn-transition-duration) var(--btn-transition-easing);
+}
+
+/* Override global button:hover / button:focus blue bleed */
+.ghost-btn:hover,
+.ghost-btn:focus,
+.ghost-btn:focus-visible {
+  filter: none;
+  border-color: var(--btn-ghost-border-color);
+}
+
+/* ── Hover & Active ── */
+.ghost-btn:hover:not(:disabled):not(.ghost-btn--disabled) {
+  background: var(--btn-ghost-bg-hover);
+  color: var(--btn-ghost-color-hover);
+  border-width: var(--btn-ghost-border-width-default);
+  border-color: var(--btn-ghost-border-color);
+  box-shadow: var(--btn-ghost-shadow-hover);
+}
+
+.ghost-btn:active:not(:disabled):not(.ghost-btn--disabled) {
+  background: var(--btn-ghost-bg-active);
+  color: var(--btn-ghost-color-hover);
+  border-width: var(--btn-ghost-border-width-default);
+  border-color: var(--btn-ghost-border-color);
+  box-shadow: var(--btn-ghost-shadow-hover);
+}
+
+/* ── Focus ── */
+.ghost-btn:focus-visible:not(:disabled):not(.ghost-btn--disabled) {
+  outline: none;
+  background: var(--btn-ghost-bg);
+  color: var(--btn-ghost-color);
+  border-width: var(--btn-ghost-border-width-focus);
+  border-color: var(--btn-ghost-border-color-focus);
+  box-shadow: none;
+}
+
+/* ── Disabled ── */
+.ghost-btn--disabled,
+.ghost-btn:disabled {
+  background: var(--btn-ghost-bg-disabled) !important;
+  color: var(--btn-ghost-color-disabled) !important;
+  border-color: var(--btn-ghost-border-color-disabled) !important;
+  border-width: var(--btn-ghost-border-width-disabled) !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Loading ── */
+.ghost-btn--loading {
+  border-width: var(--btn-ghost-border-width-loading);
+  cursor: wait;
+  pointer-events: none;
+}
+
+/* ── Sizes ── */
+.ghost-btn--small {
+  gap: var(--btn-gap-small);
+  padding: var(--btn-padding-small);
+  font-size: var(--btn-font-size-small);
+  line-height: var(--btn-line-height-small);
+}
+
+.ghost-btn--large {
+  gap: var(--btn-gap-large);
+  padding: var(--btn-padding-large);
+  font-size: var(--btn-font-size-large);
+  line-height: var(--btn-line-height-large);
+}
+
+/* ── Icon-only ── */
+.ghost-btn--icon-only {
+  width: var(--btn-icon-only-size-default);
+  height: var(--btn-icon-only-size-default);
+  padding: 0;
+  border-radius: var(--btn-border-radius);
+}
+
+.ghost-btn--icon-only.ghost-btn--small {
+  width: var(--btn-icon-only-size-small);
+  height: var(--btn-icon-only-size-small);
+}
+
+.ghost-btn--icon-only.ghost-btn--large {
+  width: var(--btn-icon-only-size-large);
+  height: var(--btn-icon-only-size-large);
+}
+
+/* ── Full width ── */
+.ghost-btn--full-width {
+  width: 100%;
+}
+
+/* ── Icon slot ── */
+.ghost-btn__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ghost-btn__icon-svg {
+  width: var(--btn-icon-size-default) !important;
+  height: var(--btn-icon-size-default) !important;
+  font-size: var(--btn-icon-size-default) !important;
+}
+
+.ghost-btn--small .ghost-btn__icon-svg {
+  width: var(--btn-icon-size-small) !important;
+  height: var(--btn-icon-size-small) !important;
+  font-size: var(--btn-icon-size-small) !important;
+}
+
+.ghost-btn--large .ghost-btn__icon-svg {
+  width: var(--btn-icon-size-large) !important;
+  height: var(--btn-icon-size-large) !important;
+  font-size: var(--btn-icon-size-large) !important;
+}
+
+/* ── Label ── */
+.ghost-btn__label {
+  display: inline-flex;
+  align-items: center;
+  line-height: inherit;
+}
+
+/* ── Spinner ── */
+.ghost-btn__spinner {
+  display: inline-block;
+  width: var(--btn-spinner-size-default);
+  height: var(--btn-spinner-size-default);
+  border: var(--btn-spinner-border-width) solid var(--btn-ghost-spinner-color);
+  border-top-color: transparent;
+  border-radius: var(--global-spacing-radius-full);
+  animation: ghost-btn-spin var(--btn-spinner-duration) linear infinite;
+  flex-shrink: 0;
+  opacity: var(--btn-spinner-opacity);
+}
+
+.ghost-btn--small .ghost-btn__spinner {
+  width: var(--btn-spinner-size-small);
+  height: var(--btn-spinner-size-small);
+}
+
+.ghost-btn--large .ghost-btn__spinner {
+  width: var(--btn-spinner-size-large);
+  height: var(--btn-spinner-size-large);
+}
+
+@keyframes ghost-btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

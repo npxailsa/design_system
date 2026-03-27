@@ -1286,6 +1286,47 @@
   --btn-tertiary-padding-xs: var(--global-spacing-sizing-2px) var(--global-spacing-sizing-4px);
   --btn-tertiary-gap-xs: var(--global-spacing-sizing-6px);
   --btn-tertiary-icon-only-size-xs: var(--global-spacing-sizing-28px);
+
+  /* ==========================================================================
+     COMPONENT: Ghost Button
+     --------------------------------------------------------------------------
+     A transparent/ghost-style button with a blue-periwinkle outline. Designed
+     for low-emphasis or supporting actions where the Primary (filled) and
+     Secondary (sky-blue) hierarchy is already established.
+
+     Visual spec (from Figma — type=default/primary, special=alt):
+       Default  : bg blue-50, 1px border blue-300, text blue-gray
+       Hover    : bg blue-100, 1px border blue-300, 2×2 shadow blue-400, text black
+       Active   : same as hover
+       Focused  : bg blue-50, 2px border blue-300, text blue-gray
+       Disabled : bg gray-50, 2px border gray-200, text gray-300
+       Loading  : bg blue-50, 0.5px border blue-300, spinner blue-300 @ 0.6 opacity
+
+     Shares layout/typography tokens with --btn-* but uses own --btn-ghost-* colour family.
+     Sizes: small, default, large.
+     ========================================================================== */
+
+  /* Ghost Button — colours */
+  --btn-ghost-bg:                  var(--global-color-primary-blue-blue-50);
+  --btn-ghost-bg-hover:            var(--global-color-primary-blue-blue-100);
+  --btn-ghost-bg-active:           var(--global-color-primary-blue-blue-100);
+  --btn-ghost-bg-disabled:         var(--global-color-neutral-gray-50);
+  --btn-ghost-color:               var(--global-color-secondary-blue-gray);
+  --btn-ghost-color-hover:         var(--global-color-base-black);
+  --btn-ghost-color-disabled:      var(--global-color-neutral-gray-300);
+  --btn-ghost-border-color:        var(--global-color-primary-blue-blue-300);
+  --btn-ghost-border-color-focus:  var(--global-color-primary-blue-blue-300);
+  --btn-ghost-border-color-disabled: var(--global-color-neutral-gray-200);
+  --btn-ghost-shadow-hover:        var(--global-spacing-sizing-2px) var(--global-spacing-sizing-2px) var(--global-spacing-stroke-0px) var(--global-spacing-stroke-0px) var(--global-color-primary-blue-blue-400);
+
+  /* Ghost Button — border widths (reuse base btn tokens) */
+  --btn-ghost-border-width-default: var(--global-spacing-stroke-1px);
+  --btn-ghost-border-width-focus:   var(--global-spacing-stroke-2px);
+  --btn-ghost-border-width-disabled: var(--global-spacing-stroke-2px);
+  --btn-ghost-border-width-loading: var(--global-spacing-stroke-0-5px);
+
+  /* Ghost Button — spinner colour (blue-300) */
+  --btn-ghost-spinner-color: var(--global-color-primary-blue-blue-300);
 }
 
 /* Font Loading */
