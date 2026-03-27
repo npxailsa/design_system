@@ -82,55 +82,30 @@ export const TagDocs: React.FC = () => {
         </DocsTemplate.BodyText>
         <DocsTemplate.Anatomy
           preview={
-            <Tag
-              colour="blue"
-              size="large"
-              label="Category"
-              showLeadingIcon
-              leadingIcon={CheckIcon}
-              showCount
-              count={4}
-              showTrailingIcon
-              trailingIcon={ArrowForwardIcon}
-              showRemove
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2F615997e5803f49ce8bf033d0780d1633"
+              alt="Tag component anatomy diagram with numbered callouts"
+              style={{ width: '100%', height: 'auto' }}
             />
           }
           parts={[
             {
               id: 1,
               name: 'Leading Icon',
-              token: 'MUI icon component\n--tag-icon-size-{size}\n--tag-gap-{size}',
-              description: 'Optional icon preceding the label. Inherits the tag colour. Controlled by showLeadingIcon + leadingIcon props.',
+              token: 'filled/icons (user category)\n--tag-icon-size-{size}\n--tag-gap-{size}',
+              description: 'Optional icon preceding the label. W: 16, H: 16, fill: #FFFFFF. Icon name: account, category: user. Controlled by showLeadingIcon + leadingIcon props.',
             },
             {
               id: 2,
               name: 'Label',
-              token: '--tag-font-family\n--tag-font-size-{size}\n--tag-font-weight\n--tag-color-{colour}',
-              description: 'The primary text content. Truncates with ellipsis at max 160px. Set via the label prop.',
+              token: '--tag-font-family (--brand-font-primary)\n--tag-font-size (16px)\n--tag-font-weight (400)\n--tag-color (color/base/white)',
+              description: 'Primary text content. W: HUG, H: HUG. Uses F37 Ginger Regular at 16px with 20px line-height. Colour: color/base/white. Set via the label prop.',
             },
             {
               id: 3,
-              name: 'Count Badge',
-              token: '--tag-count-bg-{colour}\n--tag-count-color-{colour}',
-              description: 'Optional numeric badge after the label. Per-colour darker background with accessible text. Controlled by showCount + count props.',
-            },
-            {
-              id: 4,
               name: 'Trailing Icon',
-              token: 'MUI icon component\n--tag-icon-size-{size}\n--tag-gap-{size}',
-              description: 'Optional icon after the label/count. Inherits tag colour. Controlled by showTrailingIcon + trailingIcon props.',
-            },
-            {
-              id: 5,
-              name: 'Remove Button',
-              token: '--tag-remove (× SVG, currentColor)',
-              description: 'Optional dismiss control. Calls onRemove on click. Inherits tag text colour at 65% opacity, rising to 100% on hover.',
-            },
-            {
-              id: 6,
-              name: 'Container',
-              token: '--tag-border-radius\n--tag-bg-{colour}\n--tag-border-color-{colour}\n--tag-height-{size}\n--tag-padding-{size}',
-              description: 'Pill-shaped outer shell. Fully rounded (100px radius). Height, padding, and colour are all size- and colour-variant driven.',
+              token: 'filled/icons (action category)\n--tag-icon-size-{size}\n--tag-gap-{size}',
+              description: 'Optional icon after the label. W: 16, H: 16, fill: #FFFFFF. Icon name: arrow-right, category: action. Controlled by showTrailingIcon + trailingIcon props.',
             },
           ]}
         />
