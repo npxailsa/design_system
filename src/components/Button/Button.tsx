@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Button.module.css';
 
-export type ButtonVariant = 'filled' | 'outline' | 'ghost';
+export type ButtonVariant = 'filled' | 'outline';
 export type ButtonSize = 'small' | 'default' | 'large';
 export type ButtonType = 'button' | 'submit' | 'reset';
 
@@ -40,7 +40,7 @@ export interface ButtonProps {
 
 /**
  * Button — Primary interactive control for the design system.
- * Supports 3 variants (filled, outline, ghost), 3 sizes, optional leading/
+ * Supports 2 variants (filled, outline), 3 sizes, optional leading/
  * trailing icons, icon-only mode, and loading + disabled states.
  */
 export const Button: React.FC<ButtonProps> = ({

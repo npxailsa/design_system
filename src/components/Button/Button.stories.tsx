@@ -20,7 +20,7 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['filled', 'outline', 'ghost'],
+      options: ['filled', 'outline'],
     },
     size: {
       control: 'select',
@@ -88,14 +88,13 @@ export const Default: Story = {
 };
 
 /**
- * All three variants side by side.
+ * Both variants side by side.
  */
 export const Variants: Story = {
   render: () => (
     <div style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '16px' }}>
       <Button variant="filled" label="Filled" />
       <Button variant="outline" label="Outline" />
-      <Button variant="ghost" label="Ghost" />
     </div>
   ),
   parameters: { controls: { disable: true } },
@@ -203,7 +202,6 @@ export const Loading: Story = {
       <Button label="Loading…" loading />
       <Button label="Loading…" loading size="large" />
       <Button label="Loading…" variant="outline" loading />
-      <Button label="Loading…" variant="ghost" loading />
     </div>
   ),
   parameters: { controls: { disable: true } },
@@ -217,8 +215,8 @@ export const Disabled: Story = {
     <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '12px', padding: '16px' }}>
       <Button label="Disabled" disabled />
       <Button label="Disabled" variant="outline" disabled />
-      <Button label="Disabled" variant="ghost" disabled />
       <Button label="Disabled" showLeadingIcon leadingIcon={PersonIcon} disabled />
+      <Button label="Disabled" variant="outline" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} disabled />
       <Button iconOnly leadingIcon={PersonIcon} disabled ariaLabel="User" />
     </div>
   ),
@@ -231,7 +229,7 @@ export const Disabled: Story = {
 export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', padding: '24px' }}>
-      {(['filled', 'outline', 'ghost'] as const).map((variant) => (
+      {(['filled', 'outline'] as const).map((variant) => (
         <div key={variant} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
           <span style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '11px', color: 'var(--global-color-neutral-gray-500)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
             {variant}

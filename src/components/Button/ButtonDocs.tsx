@@ -17,15 +17,15 @@ export const ButtonDocs: React.FC = () => {
 
       <DocsTemplate.BodyText>
         The <strong>Button</strong> component is the core action element of the design system. It
-        supports three visual variants — <em>filled</em>, <em>outline</em>, and <em>ghost</em> — across
-        three sizes, with optional leading and trailing icons, an icon-only mode, and built-in
-        loading and disabled states. All styling is driven by the token system with no hardcoded values.
+        supports two visual variants — <em>filled</em> and <em>outline</em> — across three sizes,
+        with optional leading and trailing icons, an icon-only mode, and built-in loading and
+        disabled states. All styling is driven by the token system with no hardcoded values.
       </DocsTemplate.BodyText>
 
       {/* ── Component Anatomy ── */}
       <DocsTemplate.Section title="Component Anatomy">
         <DocsTemplate.BodyText>
-          The diagram below maps each part of the default filled Button to its controlling design token.
+          The diagram below maps each part of the default Button to its controlling design token.
         </DocsTemplate.BodyText>
         <DocsTemplate.Anatomy
           preview={
@@ -39,26 +39,26 @@ export const ButtonDocs: React.FC = () => {
             {
               id: 1,
               name: 'Container',
-              token: '--btn-border-radius (--global-spacing-radius-8px)\n--btn-border-width (--global-spacing-stroke-2px)\n--btn-height-{size}\n--btn-padding-{size}\n--btn-filled-bg (--brand-primary)',
-              description: 'Outer button shell. Height and padding are size-driven. Background, border, and colour switch per variant. Corner radius is 8px.',
+              token: '--btn-border-radius (--global-spacing-radius-4px)\n--btn-border-width-default (--global-spacing-stroke-1px)\n--btn-padding-{size}\n--btn-outline-bg (--global-color-primary-blue-blue-50)',
+              description: 'Outer button shell. Padding drives height with equal top/bottom spacing. Corner radius is 4px. Border is 1px default, 2px on focus.',
             },
             {
               id: 2,
               name: 'Leading Icon',
-              token: '--btn-icon-size-{size}\n--btn-gap-{size}',
-              description: 'Optional MUI icon before the label. Size scales with the button size. Controlled by showLeadingIcon + leadingIcon props.',
+              token: '--btn-icon-size-{size} (16px default)\n--btn-gap-{size} (--global-spacing-sizing-8px)',
+              description: 'Optional MUI icon before the label. 16px for default size. Controlled by showLeadingIcon + leadingIcon props.',
             },
             {
               id: 3,
               name: 'Label',
-              token: '--btn-font-family (--brand-font-primary)\n--btn-font-size-{size}\n--btn-font-weight (400)\n--btn-letter-spacing',
-              description: 'Primary button text. Uses F37 Ginger Regular. Font size is size-variant driven. Set via the label prop.',
+              token: '--btn-font-family (--brand-font-primary)\n--btn-font-size-{size} (16px default)\n--btn-font-weight (--global-type-weight-light)\n--btn-letter-spacing',
+              description: 'Primary button text. Uses F37 Ginger Light (weight 300), 16px default. Vertically centred by equal padding. Set via the label prop.',
             },
             {
               id: 4,
               name: 'Trailing Icon',
-              token: '--btn-icon-size-{size}\n--btn-gap-{size}',
-              description: 'Optional MUI icon after the label. Inherits button colour. Controlled by showTrailingIcon + trailingIcon props.',
+              token: '--btn-icon-size-{size} (16px default)\n--btn-gap-{size} (--global-spacing-sizing-8px)',
+              description: 'Optional MUI icon after the label. Inherits button text colour. Controlled by showTrailingIcon + trailingIcon props.',
             },
           ]}
         />
@@ -67,9 +67,8 @@ export const ButtonDocs: React.FC = () => {
       {/* ── Variants ── */}
       <DocsTemplate.Section title="Variants">
         <DocsTemplate.BodyText>
-          Three visual variants cover the full range of hierarchy needs. Use <strong>filled</strong>
-          for the primary action, <strong>outline</strong> for secondary actions, and{' '}
-          <strong>ghost</strong> for tertiary or low-emphasis controls.
+          Two visual variants cover the primary hierarchy needs. Use <strong>filled</strong>
+          for the primary action and <strong>outline</strong> for secondary actions.
         </DocsTemplate.BodyText>
 
         <DocsTemplate.Subsection title="Filled">
@@ -89,22 +88,13 @@ export const ButtonDocs: React.FC = () => {
             <Button variant="outline" label="Label" />
           </div>
         </DocsTemplate.Subsection>
-
-        <DocsTemplate.Subsection title="Ghost">
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px) 0' }}>
-            <Button variant="ghost" label="Label" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} />
-            <Button variant="ghost" label="Label" showLeadingIcon leadingIcon={PersonIcon} />
-            <Button variant="ghost" label="Label" showTrailingIcon trailingIcon={ArrowForwardIcon} />
-            <Button variant="ghost" label="Label" />
-          </div>
-        </DocsTemplate.Subsection>
       </DocsTemplate.Section>
 
       {/* ── Sizes ── */}
       <DocsTemplate.Section title="Sizes">
         <DocsTemplate.BodyText>
-          Three sizes scale the button for different density contexts. All sizes support all
-          variants and optional elements.
+          Three sizes scale the button for different density contexts. All sizes support both
+          variants and all optional elements.
         </DocsTemplate.BodyText>
 
         <DocsTemplate.SizeDemo
@@ -176,7 +166,6 @@ export const ButtonDocs: React.FC = () => {
             <Button iconOnly leadingIcon={PersonIcon} ariaLabel="User" />
             <Button iconOnly leadingIcon={PersonIcon} size="large" ariaLabel="User" />
             <Button iconOnly variant="outline" leadingIcon={AddIcon} ariaLabel="Add" />
-            <Button iconOnly variant="ghost" leadingIcon={AddIcon} ariaLabel="Add" />
           </div>
         </DocsTemplate.Subsection>
       </DocsTemplate.Section>
@@ -186,26 +175,26 @@ export const ButtonDocs: React.FC = () => {
         <DocsTemplate.Subsection title="Loading">
           <DocsTemplate.BodyText>
             Pass <code>loading</code> to show a spinner. The button is non-interactive during loading.
+            The border uses a lighter stroke weight while loading.
           </DocsTemplate.BodyText>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-12px) 0' }}>
             <Button label="Loading…" loading size="small" />
             <Button label="Loading…" loading />
             <Button label="Loading…" loading size="large" />
             <Button label="Loading…" variant="outline" loading />
-            <Button label="Loading…" variant="ghost" loading />
           </div>
         </DocsTemplate.Subsection>
 
         <DocsTemplate.Subsection title="Disabled">
           <DocsTemplate.BodyText>
-            Disabled buttons render at 45% opacity and block all interactions. Apply with the{' '}
-            <code>disabled</code> prop.
+            The outline disabled state uses explicit gray colours per the Figma spec. Filled
+            disabled uses 45% opacity. Both block all interactions.
           </DocsTemplate.BodyText>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-12px) 0' }}>
             <Button label="Label" disabled />
             <Button label="Label" variant="outline" disabled />
-            <Button label="Label" variant="ghost" disabled />
-            <Button label="Label" showLeadingIcon leadingIcon={PersonIcon} disabled />
+            <Button label="Label" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} disabled />
+            <Button label="Label" variant="outline" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} disabled />
             <Button iconOnly leadingIcon={PersonIcon} disabled ariaLabel="User" />
           </div>
         </DocsTemplate.Subsection>
@@ -213,38 +202,37 @@ export const ButtonDocs: React.FC = () => {
 
       {/* ── Design Tokens ── */}
       <DocsTemplate.TokenTable
-        title="Design Tokens — Layout & Size"
-        description="Tokens controlling dimensions, padding, and border radius:"
+        title="Design Tokens — Layout & Spacing"
+        description="Tokens controlling padding, border radius, and gap:"
         tokens={[
-          { name: '--btn-border-radius', description: 'Corner radius (8px) — uses --global-spacing-radius-8px' },
-          { name: '--btn-border-width', description: 'Border thickness (2px) — uses --global-spacing-stroke-2px' },
-          { name: '--btn-height-small', description: 'Small button height (32px) — uses --global-spacing-sizing-32px' },
-          { name: '--btn-height-default', description: 'Default button height (40px) — uses --global-spacing-sizing-40px' },
-          { name: '--btn-height-large', description: 'Large button height (48px) — uses --global-spacing-sizing-48px' },
-          { name: '--btn-padding-small', description: 'Small horizontal padding (0 12px)' },
-          { name: '--btn-padding-default', description: 'Default horizontal padding (0 16px)' },
-          { name: '--btn-padding-large', description: 'Large horizontal padding (0 20px)' },
+          { name: '--btn-border-radius', description: 'Corner radius (4px) — uses --global-spacing-radius-4px' },
+          { name: '--btn-border-width-default', description: 'Default border (1px) — uses --global-spacing-stroke-1px' },
+          { name: '--btn-border-width-focus', description: 'Focus state border (2px) — uses --global-spacing-stroke-2px' },
+          { name: '--btn-border-width-disabled', description: 'Disabled state border (2px) — uses --global-spacing-stroke-2px' },
+          { name: '--btn-border-width-loading', description: 'Loading state border (0.5px) — uses --global-spacing-stroke-0-5px' },
+          { name: '--btn-padding-small', description: 'Small padding — 8px vertical / 12px horizontal (equal top & bottom)' },
+          { name: '--btn-padding-default', description: 'Default padding — 12px vertical / 16px horizontal (equal top & bottom)' },
+          { name: '--btn-padding-large', description: 'Large padding — 16px vertical / 20px horizontal (equal top & bottom)' },
           { name: '--btn-gap-small', description: 'Gap between elements — small (6px)' },
           { name: '--btn-gap-default', description: 'Gap between elements — default (8px)' },
           { name: '--btn-gap-large', description: 'Gap between elements — large (10px)' },
-          { name: '--btn-icon-only-size-{size}', description: 'Icon-only button width = height (32px / 40px / 48px)' },
-          { name: '--btn-disabled-opacity', description: 'Disabled state opacity (0.45)' },
+          { name: '--btn-icon-only-size-{size}', description: 'Icon-only button dimensions (36px / 44px / 52px)' },
         ]}
       />
 
       <DocsTemplate.TokenTable
         title="Design Tokens — Typography"
-        description="Tokens controlling text appearance:"
+        description="Tokens controlling text and icon appearance:"
         tokens={[
           { name: '--btn-font-family', description: 'Font family — F37 Ginger Pro (--brand-font-primary)' },
-          { name: '--btn-font-weight', description: 'Font weight — 400 regular (--global-type-weight-default)' },
-          { name: '--btn-letter-spacing', description: 'Letter spacing (0.15px)' },
-          { name: '--btn-font-size-small', description: 'Small font size (14px) — uses --global-type-size-primary-label-sm' },
-          { name: '--btn-font-size-default', description: 'Default font size (16px) — uses --global-type-size-primary-label' },
-          { name: '--btn-font-size-large', description: 'Large font size (18px) — uses --global-type-size-primary-label-lg' },
-          { name: '--btn-icon-size-small', description: 'Small icon size (16px)' },
-          { name: '--btn-icon-size-default', description: 'Default icon size (18px)' },
-          { name: '--btn-icon-size-large', description: 'Large icon size (20px)' },
+          { name: '--btn-font-weight', description: 'Font weight — 300 light (--global-type-weight-light)' },
+          { name: '--btn-letter-spacing', description: 'Letter spacing (0.15px) — --global-type-letter-spacing-primary-label' },
+          { name: '--btn-font-size-small', description: 'Small font size (14px) — --global-type-size-primary-label-sm' },
+          { name: '--btn-font-size-default', description: 'Default font size (16px) — --global-type-size-primary-label' },
+          { name: '--btn-font-size-large', description: 'Large font size (18px) — --global-type-size-primary-label-lg' },
+          { name: '--btn-icon-size-small', description: 'Small icon size (14px) — --global-spacing-sizing-14px' },
+          { name: '--btn-icon-size-default', description: 'Default icon size (16px) — --global-spacing-sizing-16px' },
+          { name: '--btn-icon-size-large', description: 'Large icon size (18px) — --global-spacing-sizing-18px' },
         ]}
       />
 
@@ -252,11 +240,10 @@ export const ButtonDocs: React.FC = () => {
         title="Design Tokens — Filled Variant"
         description="Colour tokens for the filled (primary) variant:"
         tokens={[
-          { name: '--btn-filled-bg', description: 'Default background — uses --brand-primary (#3776ce)' },
-          { name: '--btn-filled-bg-hover', description: 'Hover background — uses --brand-primary-dark (#182b47)' },
-          { name: '--btn-filled-bg-active', description: 'Active/pressed background — uses --brand-primary-dark' },
-          { name: '--btn-filled-color', description: 'Text and icon colour — uses --global-color-base-white' },
-          { name: '--btn-filled-border-color', description: 'Border (transparent for filled)' },
+          { name: '--btn-filled-bg', description: 'Default background — --global-color-primary-blue-blue-400 (#6171DF)' },
+          { name: '--btn-filled-bg-hover', description: 'Hover / active background — --global-color-primary-blue-blue-500 (#4A58CC)' },
+          { name: '--btn-filled-color', description: 'Text and icon colour — --global-color-base-white' },
+          { name: '--btn-filled-border-color', description: 'Border colour (matches fill) — --global-color-primary-blue-blue-400' },
         ]}
       />
 
@@ -264,23 +251,15 @@ export const ButtonDocs: React.FC = () => {
         title="Design Tokens — Outline Variant"
         description="Colour tokens for the outline (secondary) variant:"
         tokens={[
-          { name: '--btn-outline-bg', description: 'Default background (transparent)' },
-          { name: '--btn-outline-bg-hover', description: 'Hover background — uses --brand-primary-25' },
-          { name: '--btn-outline-bg-active', description: 'Active background — uses --brand-primary-50' },
-          { name: '--btn-outline-color', description: 'Text and icon colour — uses --brand-primary' },
-          { name: '--btn-outline-border-color', description: 'Border colour — uses --brand-primary' },
-        ]}
-      />
-
-      <DocsTemplate.TokenTable
-        title="Design Tokens — Ghost Variant"
-        description="Colour tokens for the ghost (tertiary) variant:"
-        tokens={[
-          { name: '--btn-ghost-bg', description: 'Default background (transparent)' },
-          { name: '--btn-ghost-bg-hover', description: 'Hover background — uses --brand-primary-25' },
-          { name: '--btn-ghost-bg-active', description: 'Active background — uses --brand-primary-50' },
-          { name: '--btn-ghost-color', description: 'Text and icon colour — uses --brand-primary' },
-          { name: '--btn-ghost-border-color', description: 'Border (transparent for ghost)' },
+          { name: '--btn-outline-bg', description: 'Default background — --global-color-primary-blue-blue-50 (#F9F9FE)' },
+          { name: '--btn-outline-bg-hover', description: 'Hover / active background — --global-color-primary-blue-blue-100 (#E7E9F4)' },
+          { name: '--btn-outline-bg-disabled', description: 'Disabled background — --global-color-neutral-gray-50 (#F9FAFB)' },
+          { name: '--btn-outline-color', description: 'Default text/icon — --global-color-secondary-blue-gray (#61607C)' },
+          { name: '--btn-outline-color-hover', description: 'Hover text/icon — --global-color-base-black (#1C1C1C)' },
+          { name: '--btn-outline-color-disabled', description: 'Disabled text — --global-color-neutral-gray-300 (#D2D5DA)' },
+          { name: '--btn-outline-border-color', description: 'Default border — --global-color-primary-blue-blue-300 (#95A0E5)' },
+          { name: '--btn-outline-border-color-disabled', description: 'Disabled border — --global-color-neutral-gray-200 (#E5E7EB)' },
+          { name: '--btn-outline-shadow-hover', description: 'Hover box-shadow — 2px 2px 0 0 --global-color-primary-blue-blue-400' },
         ]}
       />
 
@@ -305,9 +284,6 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 // Outline variant
 <Button variant="outline" label="Cancel" />
 
-// Ghost variant
-<Button variant="ghost" label="Learn more" showTrailingIcon trailingIcon={ArrowForwardIcon} />
-
 // Small size
 <Button size="small" label="Compact" />
 
@@ -325,8 +301,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
       <DocsTemplate.Principles>
         <DocsTemplate.PrincipleCard number={1} title="Use one primary action per context">
           Each view or panel should have at most one <strong>filled</strong> button as the primary
-          action. Use <strong>outline</strong> for secondary actions and <strong>ghost</strong> for
-          tertiary or destructive alternatives.
+          action. Use <strong>outline</strong> for secondary actions alongside it.
         </DocsTemplate.PrincipleCard>
         <DocsTemplate.PrincipleCard number={2} title="Match size to context">
           Use <strong>small</strong> in dense toolbars and inline controls, <strong>default</strong>

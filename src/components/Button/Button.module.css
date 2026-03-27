@@ -2,8 +2,15 @@
    Button Component
    --------------------------------------------------------------------------
    Primary interactive control. Uses design tokens exclusively — no hardcoded
-   values. Three variants (filled, outline, ghost), three sizes, plus loading,
-   disabled, and icon-only modes.
+   values. Two variants (filled, outline), three sizes, plus loading, disabled,
+   and icon-only modes.
+
+   Key specs (from Figma):
+     - border-radius: 4px (--btn-border-radius)
+     - border: 1px default / 2px focused & disabled
+     - padding: equal top/bottom per size (vertically centred)
+     - font-weight: 300 light
+     - icon size: 16px default, 14px small, 18px large
    ========================================================================== */
 
 /* ── Reset ── */
@@ -18,10 +25,9 @@
   align-items: center;
   justify-content: center;
   gap: var(--btn-gap-default);
-  height: var(--btn-height-default);
   padding: var(--btn-padding-default);
   border-radius: var(--btn-border-radius);
-  border: var(--btn-border-width) solid transparent;
+  border: var(--btn-border-width-default) solid transparent;
   font-family: var(--btn-font-family);
   font-size: var(--btn-font-size-default);
   line-height: var(--btn-line-height-default);
@@ -35,19 +41,13 @@
   transition:
     background-color var(--btn-transition-duration) var(--btn-transition-easing),
     border-color var(--btn-transition-duration) var(--btn-transition-easing),
-    color var(--btn-transition-duration) var(--btn-transition-easing),
-    opacity var(--btn-transition-duration) var(--btn-transition-easing);
-}
-
-.btn:focus-visible {
-  outline: var(--btn-focus-ring-width) solid var(--btn-focus-ring-color);
-  outline-offset: var(--btn-focus-ring-offset);
+    box-shadow var(--btn-transition-duration) var(--btn-transition-easing),
+    color var(--btn-transition-duration) var(--btn-transition-easing);
 }
 
 /* ── Sizes ── */
 .btn--small {
   gap: var(--btn-gap-small);
-  height: var(--btn-height-small);
   padding: var(--btn-padding-small);
   font-size: var(--btn-font-size-small);
   line-height: var(--btn-line-height-small);
@@ -55,7 +55,6 @@
 
 .btn--large {
   gap: var(--btn-gap-large);
-  height: var(--btn-height-large);
   padding: var(--btn-padding-large);
   font-size: var(--btn-font-size-large);
   line-height: var(--btn-line-height-large);
@@ -70,10 +69,18 @@
 
 .btn--filled:hover:not(:disabled):not(.btn--disabled) {
   background: var(--btn-filled-bg-hover);
+  border-color: var(--btn-filled-bg-hover);
 }
 
 .btn--filled:active:not(:disabled):not(.btn--disabled) {
   background: var(--btn-filled-bg-active);
+  border-color: var(--btn-filled-bg-active);
+}
+
+.btn--filled:focus-visible:not(:disabled):not(.btn--disabled) {
+  outline: none;
+  border-width: var(--btn-border-width-focus);
+  border-color: var(--btn-filled-border-color);
 }
 
 /* ── Outline variant ── */
@@ -81,34 +88,59 @@
   background: var(--btn-outline-bg);
   color: var(--btn-outline-color);
   border-color: var(--btn-outline-border-color);
+  border-width: var(--btn-border-width-default);
 }
 
 .btn--outline:hover:not(:disabled):not(.btn--disabled) {
   background: var(--btn-outline-bg-hover);
+  color: var(--btn-outline-color-hover);
+  box-shadow: var(--btn-outline-shadow-hover);
 }
 
 .btn--outline:active:not(:disabled):not(.btn--disabled) {
   background: var(--btn-outline-bg-active);
+  color: var(--btn-outline-color-hover);
+  box-shadow: var(--btn-outline-shadow-hover);
 }
 
-/* ── Ghost variant ── */
-.btn--ghost {
-  background: var(--btn-ghost-bg);
-  color: var(--btn-ghost-color);
-  border-color: var(--btn-ghost-border-color);
+.btn--outline:focus-visible:not(:disabled):not(.btn--disabled) {
+  outline: none;
+  border-width: var(--btn-border-width-focus);
+  box-shadow: none;
 }
 
-.btn--ghost:hover:not(:disabled):not(.btn--disabled) {
-  background: var(--btn-ghost-bg-hover);
+/* ── Outline — Disabled (explicit colours, not opacity) ── */
+.btn--outline.btn--disabled,
+.btn--outline:disabled {
+  background: var(--btn-outline-bg-disabled) !important;
+  color: var(--btn-outline-color-disabled) !important;
+  border-color: var(--btn-outline-border-color-disabled) !important;
+  border-width: var(--btn-border-width-disabled) !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
-.btn--ghost:active:not(:disabled):not(.btn--disabled) {
-  background: var(--btn-ghost-bg-active);
+/* ── Filled — Disabled (opacity-based) ── */
+.btn--filled.btn--disabled,
+.btn--filled:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Loading ── */
+.btn--loading {
+  border-width: var(--btn-border-width-loading);
+  cursor: wait;
+  pointer-events: none;
 }
 
 /* ── Icon-only ── */
 .btn--icon-only {
   width: var(--btn-icon-only-size-default);
+  height: var(--btn-icon-only-size-default);
   padding: 0;
   border-radius: var(--global-spacing-radius-full);
 }
@@ -126,20 +158,6 @@
 /* ── Full width ── */
 .btn--full-width {
   width: 100%;
-}
-
-/* ── Disabled ── */
-.btn--disabled,
-.btn:disabled {
-  opacity: var(--btn-disabled-opacity);
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-/* ── Loading ── */
-.btn--loading {
-  cursor: wait;
-  pointer-events: none;
 }
 
 /* ── Icon slot ── */
@@ -185,7 +203,7 @@
   border-radius: var(--global-spacing-radius-full);
   animation: btn-spin 0.7s linear infinite;
   flex-shrink: 0;
-  opacity: 0.8;
+  opacity: var(--btn-spinner-opacity);
 }
 
 .btn--small .btn__spinner {

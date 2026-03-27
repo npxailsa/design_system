@@ -50,6 +50,13 @@
   --global-color-status-purple-light: #fbf7ff;
   --global-color-status-note-mid: #dfbff8;
 
+  /* Blue-Blue palette (periwinkle/indigo scale — used for primary button) */
+  --global-color-primary-blue-blue-50: #F9F9FE;
+  --global-color-primary-blue-blue-100: #E7E9F4;
+  --global-color-primary-blue-blue-300: #95A0E5;
+  --global-color-primary-blue-blue-400: #6171DF;
+  --global-color-primary-blue-blue-500: #4A58CC;
+
   /* Primary Colors */
   --global-color-primary-sky-blue: #0ba7ea;
   --global-color-primary-sky-blue-50: #f4fcff;
@@ -1093,71 +1100,68 @@
    ========================================================================== */
 :root {
   /* Button — layout */
-  --btn-border-radius: var(--global-spacing-radius-8px);
-  --btn-border-width: var(--global-spacing-stroke-2px);
+  --btn-border-radius: var(--global-spacing-radius-4px);
   --btn-font-family: var(--brand-font-primary);
   --btn-letter-spacing: var(--global-type-letter-spacing-primary-label);
-  --btn-font-weight: var(--global-type-weight-default);
+  --btn-font-weight: var(--global-type-weight-light);
   --btn-transition-duration: 160ms;
   --btn-transition-easing: ease;
-  --btn-focus-ring-offset: var(--global-spacing-sizing-2px);
-  --btn-focus-ring-width: var(--global-spacing-stroke-2px);
-  --btn-focus-ring-color: var(--brand-primary);
-  --btn-disabled-opacity: 0.45;
+
+  /* Button — border widths */
+  --btn-border-width-default: var(--global-spacing-stroke-1px);
+  --btn-border-width-focus: var(--global-spacing-stroke-2px);
+  --btn-border-width-disabled: var(--global-spacing-stroke-2px);
+  --btn-border-width-loading: var(--global-spacing-stroke-0-5px);
 
   /* Button — sizes: small */
-  --btn-height-small: var(--global-spacing-sizing-32px);
-  --btn-padding-small: 0 var(--global-spacing-sizing-12px);
+  --btn-padding-small: var(--global-spacing-sizing-8px) var(--global-spacing-sizing-12px);
   --btn-font-size-small: var(--global-type-size-primary-label-sm);
   --btn-line-height-small: var(--global-type-line-height-label-sm);
   --btn-gap-small: var(--global-spacing-sizing-6px);
-  --btn-icon-size-small: var(--global-spacing-sizing-16px);
-  --btn-icon-only-size-small: var(--global-spacing-sizing-32px);
+  --btn-icon-size-small: var(--global-spacing-sizing-14px);
+  --btn-icon-only-size-small: var(--global-spacing-sizing-36px);
 
   /* Button — sizes: default */
-  --btn-height-default: var(--global-spacing-sizing-40px);
-  --btn-padding-default: 0 var(--global-spacing-sizing-16px);
+  --btn-padding-default: var(--global-spacing-sizing-12px) var(--global-spacing-sizing-16px);
   --btn-font-size-default: var(--global-type-size-primary-label);
   --btn-line-height-default: var(--global-type-line-height-label);
   --btn-gap-default: var(--global-spacing-sizing-8px);
-  --btn-icon-size-default: var(--global-spacing-sizing-18px);
-  --btn-icon-only-size-default: var(--global-spacing-sizing-40px);
+  --btn-icon-size-default: var(--global-spacing-sizing-16px);
+  --btn-icon-only-size-default: var(--global-spacing-sizing-44px);
 
   /* Button — sizes: large */
-  --btn-height-large: var(--global-spacing-sizing-48px);
-  --btn-padding-large: 0 var(--global-spacing-sizing-20px);
+  --btn-padding-large: var(--global-spacing-sizing-16px) var(--global-spacing-sizing-20px);
   --btn-font-size-large: var(--global-type-size-primary-label-lg);
   --btn-line-height-large: var(--global-type-line-height-label-lg);
   --btn-gap-large: var(--global-spacing-sizing-10px);
-  --btn-icon-size-large: var(--global-spacing-sizing-20px);
-  --btn-icon-only-size-large: var(--global-spacing-sizing-48px);
+  --btn-icon-size-large: var(--global-spacing-sizing-18px);
+  --btn-icon-only-size-large: var(--global-spacing-sizing-52px);
 
   /* Button — filled variant */
-  --btn-filled-bg: var(--brand-primary);
-  --btn-filled-bg-hover: var(--brand-primary-dark);
-  --btn-filled-bg-active: var(--brand-primary-dark);
+  --btn-filled-bg: var(--global-color-primary-blue-blue-400);
+  --btn-filled-bg-hover: var(--global-color-primary-blue-blue-500);
+  --btn-filled-bg-active: var(--global-color-primary-blue-blue-500);
   --btn-filled-color: var(--global-color-base-white);
-  --btn-filled-border-color: transparent;
+  --btn-filled-border-color: var(--global-color-primary-blue-blue-400);
 
   /* Button — outline variant */
-  --btn-outline-bg: transparent;
-  --btn-outline-bg-hover: var(--brand-primary-25);
-  --btn-outline-bg-active: var(--brand-primary-50);
-  --btn-outline-color: var(--brand-primary);
-  --btn-outline-border-color: var(--brand-primary);
-
-  /* Button — ghost variant */
-  --btn-ghost-bg: transparent;
-  --btn-ghost-bg-hover: var(--brand-primary-25);
-  --btn-ghost-bg-active: var(--brand-primary-50);
-  --btn-ghost-color: var(--brand-primary);
-  --btn-ghost-border-color: transparent;
+  --btn-outline-bg: var(--global-color-primary-blue-blue-50);
+  --btn-outline-bg-hover: var(--global-color-primary-blue-blue-100);
+  --btn-outline-bg-active: var(--global-color-primary-blue-blue-100);
+  --btn-outline-bg-disabled: var(--global-color-neutral-gray-50);
+  --btn-outline-color: var(--global-color-secondary-blue-gray);
+  --btn-outline-color-hover: var(--global-color-base-black);
+  --btn-outline-color-disabled: var(--global-color-neutral-gray-300);
+  --btn-outline-border-color: var(--global-color-primary-blue-blue-300);
+  --btn-outline-border-color-disabled: var(--global-color-neutral-gray-200);
+  --btn-outline-shadow-hover: 2px 2px 0 0 var(--global-color-primary-blue-blue-400);
 
   /* Button — loading spinner */
   --btn-spinner-size-small: var(--global-spacing-sizing-14px);
   --btn-spinner-size-default: var(--global-spacing-sizing-16px);
   --btn-spinner-size-large: var(--global-spacing-sizing-20px);
   --btn-spinner-border-width: var(--global-spacing-stroke-2px);
+  --btn-spinner-opacity: 0.6;
 }
 
 /* Font Loading */
