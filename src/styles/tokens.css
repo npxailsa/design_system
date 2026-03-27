@@ -1414,6 +1414,33 @@
   /* ButtonMenu — transition */
   --btn-menu-transition-duration: var(--global-animation-duration-fast);
   --btn-menu-transition-easing:   var(--global-animation-easing-default);
+
+  /* ==========================================================================
+     COMPONENT: SplitButton
+     --------------------------------------------------------------------------
+     A compound button pairing a primary action (main zone) with a chevron
+     dropdown trigger (secondary zone) separated by a vertical divider.
+     Supports all four button families (Primary, Secondary, Tertiary, Ghost)
+     and their visual variants (filled/outline, solid/alt, ghost/link).
+
+     Structure: [Main Label] | [divider] | [▾ chevron]
+                └─ same bg/border/hover as base button ─┘
+
+     On trigger click: a ButtonMenu panel appears below the container.
+     ========================================================================== */
+
+  /* SplitButton — structural */
+  --btn-split-trigger-width-small:    var(--global-spacing-sizing-32px);
+  --btn-split-trigger-width-default:  var(--global-spacing-sizing-40px);
+  --btn-split-trigger-width-large:    var(--global-spacing-sizing-48px);
+  --btn-split-divider-width:          var(--global-spacing-stroke-1px);
+  --btn-split-divider-opacity:        0.4;
+  --btn-split-chevron-size:           var(--global-spacing-sizing-18px);
+  --btn-split-chevron-opacity:        0.75;
+  --btn-split-panel-offset:           var(--global-spacing-sizing-4px);
+  --btn-split-panel-shadow:           0px 5px 10px 0px rgba(39, 39, 39, 0.12);
+  --btn-split-panel-z-index:          200;
+  --btn-split-chevron-rotate:         180deg;
 }
 
 /* Font Loading */
