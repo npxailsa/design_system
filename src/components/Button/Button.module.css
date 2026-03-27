@@ -49,6 +49,13 @@
     color var(--btn-transition-duration) var(--btn-transition-easing);
 }
 
+/* Override global button:hover / button:focus that sets blue border-color */
+.btn:hover,
+.btn:focus,
+.btn:focus-visible {
+  filter: none;
+}
+
 /* ── Sizes ── */
 .btn--small {
   gap: var(--btn-gap-small);
