@@ -1260,7 +1260,7 @@
 
   /* Tertiary Button — solid variant */
   --btn-tertiary-bg: var(--global-color-primary-yellow-200);
-  --btn-tertiary-bg-hover: var(--global-color-primary-yellow-200);
+  --btn-tertiary-bg-hover: var(--global-color-primary-yellow-50);
   --btn-tertiary-color: var(--global-color-base-black);
   --btn-tertiary-border-color: var(--global-color-primary-yellow-dark);
   --btn-tertiary-border-width: var(--global-spacing-stroke-1px);

@@ -100,11 +100,13 @@
 }
 
 .btn--solid:hover:not(:disabled):not(.btn--disabled) {
+  background: var(--btn-tertiary-bg-hover);
   border-width: var(--btn-tertiary-border-width-hover);
   box-shadow: var(--btn-tertiary-shadow-hover);
 }
 
 .btn--solid:active:not(:disabled):not(.btn--disabled) {
+  background: var(--btn-tertiary-bg-hover);
   border-width: var(--btn-tertiary-border-width-hover);
   box-shadow: var(--btn-tertiary-shadow-hover);
 }

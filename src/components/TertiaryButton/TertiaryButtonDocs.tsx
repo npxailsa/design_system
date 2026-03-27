@@ -106,7 +106,8 @@ export const TertiaryButtonDocs: React.FC = () => {
 
         <DocsTemplate.Subsection title="Solid">
           <DocsTemplate.BodyText>
-            Yellow-200 (#FDEEC7) background with dark-yellow border (#E8A317). The default variant.
+            Yellow-200 (#FDEEC7) background with dark-yellow border (#E8A317). Shifts to
+            yellow-50 (#FEFAED) on hover and pressed. The default variant.
           </DocsTemplate.BodyText>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px) 0' }}>
             <TertiaryButton variant="solid" label="Label" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} />
@@ -263,6 +264,7 @@ export const TertiaryButtonDocs: React.FC = () => {
         description="Yellow/amber colour tokens specific to the Tertiary Button:"
         tokens={[
           { name: '--btn-tertiary-bg', description: 'Solid background — --global-color-primary-yellow-200 (#FDEEC7)' },
+          { name: '--btn-tertiary-bg-hover', description: 'Solid hover/pressed background — --global-color-primary-yellow-50 (#FEFAED)' },
           { name: '--btn-tertiary-alt-bg', description: 'Alt background — --global-color-primary-seafoam-25 (#F9FCFA)' },
           { name: '--btn-tertiary-alt-bg-hover', description: 'Alt hover background — --global-color-primary-seafoam-50 (#F3F9F5)' },
           { name: '--btn-tertiary-icon-only-bg', description: 'Icon-only background — --global-color-primary-yellow (#F9C846)' },
