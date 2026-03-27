@@ -244,6 +244,7 @@ export const ButtonDocs: React.FC = () => {
           { name: '--btn-filled-bg-hover', description: 'Hover / active background — --global-color-primary-blue-blue-500 (#4A58CC)' },
           { name: '--btn-filled-color', description: 'Text and icon colour — --global-color-base-white' },
           { name: '--btn-filled-border-color', description: 'Border colour (matches fill) — --global-color-primary-blue-blue-400' },
+          { name: '--btn-filled-shadow', description: 'Drop shadow — 2px 2px 0 0 --global-color-primary-blue-blue-500' },
         ]}
       />
 

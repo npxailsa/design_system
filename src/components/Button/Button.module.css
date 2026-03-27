@@ -65,11 +65,13 @@
   background: var(--btn-filled-bg);
   color: var(--btn-filled-color);
   border-color: var(--btn-filled-border-color);
+  box-shadow: var(--btn-filled-shadow);
 }
 
 .btn--filled:hover:not(:disabled):not(.btn--disabled) {
   background: var(--btn-filled-bg-hover);
   border-color: var(--btn-filled-bg-hover);
+  box-shadow: var(--btn-filled-shadow);
 }
 
 .btn--filled:active:not(:disabled):not(.btn--disabled) {
@@ -126,6 +128,7 @@
 .btn--filled.btn--disabled,
 .btn--filled:disabled {
   opacity: 0.45;
+  box-shadow: none;
   cursor: not-allowed;
   pointer-events: none;
 }

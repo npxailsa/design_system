@@ -1143,6 +1143,7 @@
   --btn-filled-bg-active: var(--global-color-primary-blue-blue-500);
   --btn-filled-color: var(--global-color-base-white);
   --btn-filled-border-color: var(--global-color-primary-blue-blue-400);
+  --btn-filled-shadow: 2px 2px 0 0 var(--global-color-primary-blue-blue-500);
 
   /* Button — outline variant */
   --btn-outline-bg: var(--global-color-primary-blue-blue-50);
