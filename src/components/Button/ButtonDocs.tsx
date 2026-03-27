@@ -11,7 +11,7 @@ export const ButtonDocs: React.FC = () => {
   return (
     <DocsTemplate>
       <DocsTemplate.Header
-        title="Button"
+        title="Primary Button"
         subtitle="The primary interactive control for triggering actions, submitting forms, and navigating the interface"
       />
 
@@ -42,8 +42,8 @@ export const ButtonDocs: React.FC = () => {
               {
                 id: 1,
                 name: 'Container',
-                token: '--btn-border-radius (--global-spacing-radius-4px)\n--btn-filled-bg (--global-color-primary-blue-blue-400)\n--btn-filled-border-color (--global-color-primary-blue-blue-400)\n--btn-filled-shadow\n--btn-padding-{size}',
-                description: 'Outer button shell. W: HUG, H: HUG. Min-W: 80, min-H: 52 (large). Corner radius: 4. Fill and border both use color/primary/blue/blue. Stroke width: 0.5. Drop shadow applied by default.',
+                token: '--btn-border-radius (--global-spacing-radius-4px)\n--btn-filled-bg (--brand-primary / #3776CE)\n--btn-filled-border-width (--global-spacing-stroke-0-5px)\n--btn-filled-shadow-hover (hover & active only)\n--btn-padding-{size}',
+                description: 'Outer button shell. W: HUG, H: HUG. Min-W: 80, min-H: 52 (large). Corner radius: 4. Default fill: color/primary/blue (#3776CE), 0.5px border. On hover/active, bg shifts to #6171DF with 2×2 drop shadow.',
               },
               {
                 id: 2,
@@ -229,8 +229,8 @@ export const ButtonDocs: React.FC = () => {
 
         <DocsTemplate.Subsection title="Disabled">
           <DocsTemplate.BodyText>
-            The outline disabled state uses explicit gray colours per the Figma spec. Filled
-            disabled uses 45% opacity. Both block all interactions.
+            Both filled and outline disabled states use explicit gray colours per the Figma spec
+            (no opacity reduction). Both block all interactions.
           </DocsTemplate.BodyText>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-12px) 0' }}>
             <Button label="Label" disabled />
@@ -259,6 +259,8 @@ export const ButtonDocs: React.FC = () => {
           { name: '--btn-gap-default', description: 'Gap between elements — default (8px)' },
           { name: '--btn-gap-large', description: 'Gap between elements — large (10px)' },
           { name: '--btn-icon-only-size-{size}', description: 'Icon-only button dimensions (36px / 44px / 52px)' },
+          { name: '--btn-transition-duration', description: 'Transition speed — --global-animation-duration-fast (160ms)' },
+          { name: '--btn-transition-easing', description: 'Transition curve — --global-animation-easing-default (ease)' },
         ]}
       />
 
@@ -275,6 +277,8 @@ export const ButtonDocs: React.FC = () => {
           { name: '--btn-icon-size-small', description: 'Small icon size (14px) — --global-spacing-sizing-14px' },
           { name: '--btn-icon-size-default', description: 'Default icon size (16px) — --global-spacing-sizing-16px' },
           { name: '--btn-icon-size-large', description: 'Large icon size (18px) — --global-spacing-sizing-18px' },
+          { name: '--btn-spinner-duration', description: 'Spinner animation speed — --global-animation-duration-spinner (700ms)' },
+          { name: '--btn-spinner-opacity', description: 'Spinner opacity — --global-opacity-muted (0.6)' },
         ]}
       />
 
@@ -282,11 +286,17 @@ export const ButtonDocs: React.FC = () => {
         title="Design Tokens — Filled Variant"
         description="Colour tokens for the filled (primary) variant:"
         tokens={[
-          { name: '--btn-filled-bg', description: 'Default background — --global-color-primary-blue-blue-400 (#6171DF)' },
-          { name: '--btn-filled-bg-hover', description: 'Hover / active background — --global-color-primary-blue-blue-500 (#4A58CC)' },
+          { name: '--btn-filled-bg', description: 'Default background — --brand-primary (#3776CE)' },
+          { name: '--btn-filled-bg-hover', description: 'Hover / active background — --global-color-primary-blue-blue-400 (#6171DF)' },
           { name: '--btn-filled-color', description: 'Text and icon colour — --global-color-base-white' },
-          { name: '--btn-filled-border-color', description: 'Border colour (matches fill) — --global-color-primary-blue-blue-400' },
-          { name: '--btn-filled-shadow', description: 'Drop shadow — 2px 2px 0 0 --global-color-primary-blue-blue-500' },
+          { name: '--btn-filled-border-color', description: 'Default border colour (matches fill) — --brand-primary' },
+          { name: '--btn-filled-border-width', description: 'Default border width (0.5px) — --global-spacing-stroke-0-5px' },
+          { name: '--btn-filled-border-color-hover', description: 'Hover border colour — --global-color-primary-blue-blue-200 (#C5CAED)' },
+          { name: '--btn-filled-border-color-focus', description: 'Focus border colour — --global-color-primary-blue-blue-400 (#6171DF)' },
+          { name: '--btn-filled-shadow-hover', description: 'Drop shadow on hover & active only — --global-spacing-sizing-2px offset, --global-color-primary-blue-blue-400 colour' },
+          { name: '--btn-filled-bg-disabled', description: 'Disabled background — --global-color-neutral-gray-50 (#F9FAFB)' },
+          { name: '--btn-filled-color-disabled', description: 'Disabled text — --global-color-neutral-gray-300 (#D2D5DA)' },
+          { name: '--btn-filled-border-color-disabled', description: 'Disabled border — --global-color-neutral-gray-200 (#E5E7EB)' },
         ]}
       />
 
@@ -302,7 +312,7 @@ export const ButtonDocs: React.FC = () => {
           { name: '--btn-outline-color-disabled', description: 'Disabled text — --global-color-neutral-gray-300 (#D2D5DA)' },
           { name: '--btn-outline-border-color', description: 'Default border — --global-color-primary-blue-blue-300 (#95A0E5)' },
           { name: '--btn-outline-border-color-disabled', description: 'Disabled border — --global-color-neutral-gray-200 (#E5E7EB)' },
-          { name: '--btn-outline-shadow-hover', description: 'Hover box-shadow — 2px 2px 0 0 --global-color-primary-blue-blue-400' },
+          { name: '--btn-outline-shadow-hover', description: 'Hover box-shadow — --global-spacing-sizing-2px offset, --global-color-primary-blue-blue-400 colour' },
         ]}
       />
 

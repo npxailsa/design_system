@@ -64,25 +64,31 @@
 .btn--filled {
   background: var(--btn-filled-bg);
   color: var(--btn-filled-color);
+  border-width: var(--btn-filled-border-width);
   border-color: var(--btn-filled-border-color);
-  box-shadow: var(--btn-filled-shadow);
+  /* No shadow on default state */
 }
 
 .btn--filled:hover:not(:disabled):not(.btn--disabled) {
   background: var(--btn-filled-bg-hover);
-  border-color: var(--btn-filled-bg-hover);
-  box-shadow: var(--btn-filled-shadow);
+  border-width: var(--btn-border-width-default);
+  border-color: var(--btn-filled-border-color-hover);
+  box-shadow: var(--btn-filled-shadow-hover);
 }
 
 .btn--filled:active:not(:disabled):not(.btn--disabled) {
   background: var(--btn-filled-bg-active);
-  border-color: var(--btn-filled-bg-active);
+  border-width: var(--btn-border-width-default);
+  border-color: var(--btn-filled-border-color-hover);
+  box-shadow: var(--btn-filled-shadow-hover);
 }
 
 .btn--filled:focus-visible:not(:disabled):not(.btn--disabled) {
   outline: none;
+  background: var(--btn-filled-bg);
   border-width: var(--btn-border-width-focus);
-  border-color: var(--btn-filled-border-color);
+  border-color: var(--btn-filled-border-color-focus);
+  box-shadow: none;
 }
 
 /* ── Outline variant ── */
@@ -124,11 +130,15 @@
   pointer-events: none;
 }
 
-/* ── Filled — Disabled (opacity-based) ── */
+/* ── Filled — Disabled (explicit colours per Figma, same as outline) ── */
 .btn--filled.btn--disabled,
 .btn--filled:disabled {
-  opacity: 0.45;
-  box-shadow: none;
+  background: var(--btn-filled-bg-disabled) !important;
+  color: var(--btn-filled-color-disabled) !important;
+  border-color: var(--btn-filled-border-color-disabled) !important;
+  border-width: var(--btn-filled-border-width) !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
   cursor: not-allowed;
   pointer-events: none;
 }
@@ -204,7 +214,7 @@
   border: var(--btn-spinner-border-width) solid currentColor;
   border-top-color: transparent;
   border-radius: var(--global-spacing-radius-full);
-  animation: btn-spin 0.7s linear infinite;
+  animation: btn-spin var(--btn-spinner-duration) linear infinite;
   flex-shrink: 0;
   opacity: var(--btn-spinner-opacity);
 }

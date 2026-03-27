@@ -53,6 +53,7 @@
   /* Blue-Blue palette (periwinkle/indigo scale — used for primary button) */
   --global-color-primary-blue-blue-50: #F9F9FE;
   --global-color-primary-blue-blue-100: #E7E9F4;
+  --global-color-primary-blue-blue-200: #C5CAED;
   --global-color-primary-blue-blue-300: #95A0E5;
   --global-color-primary-blue-blue-400: #6171DF;
   --global-color-primary-blue-blue-500: #4A58CC;
@@ -171,6 +172,23 @@
   --global-spacing-stroke-20px: 20px;
   --global-spacing-stroke-32px: 32px;
   --global-spacing-stroke-40px: 40px;
+
+  /* ==========================================================================
+     GLOBAL LAYER: Animation / Transition
+     ========================================================================== */
+  --global-animation-duration-fast: 160ms;
+  --global-animation-duration-default: 300ms;
+  --global-animation-duration-slow: 500ms;
+  --global-animation-duration-spinner: 700ms;
+  --global-animation-easing-default: ease;
+  --global-animation-easing-in-out: ease-in-out;
+
+  /* ==========================================================================
+     GLOBAL LAYER: Opacity
+     ========================================================================== */
+  --global-opacity-muted: 0.6;
+  --global-opacity-disabled: 0.45;
+  --global-opacity-full: 1;
 
   /* ==========================================================================
      GLOBAL LAYER: Typography
@@ -1104,8 +1122,8 @@
   --btn-font-family: var(--brand-font-primary);
   --btn-letter-spacing: var(--global-type-letter-spacing-primary-label);
   --btn-font-weight: var(--global-type-weight-light);
-  --btn-transition-duration: 160ms;
-  --btn-transition-easing: ease;
+  --btn-transition-duration: var(--global-animation-duration-fast);
+  --btn-transition-easing: var(--global-animation-easing-default);
 
   /* Button — border widths */
   --btn-border-width-default: var(--global-spacing-stroke-1px);
@@ -1138,12 +1156,18 @@
   --btn-icon-only-size-large: var(--global-spacing-sizing-52px);
 
   /* Button — filled variant */
-  --btn-filled-bg: var(--global-color-primary-blue-blue-400);
-  --btn-filled-bg-hover: var(--global-color-primary-blue-blue-500);
-  --btn-filled-bg-active: var(--global-color-primary-blue-blue-500);
+  --btn-filled-bg: var(--brand-primary);
+  --btn-filled-bg-hover: var(--global-color-primary-blue-blue-400);
+  --btn-filled-bg-active: var(--global-color-primary-blue-blue-400);
   --btn-filled-color: var(--global-color-base-white);
-  --btn-filled-border-color: var(--global-color-primary-blue-blue-400);
-  --btn-filled-shadow: 2px 2px 0 0 var(--global-color-primary-blue-blue-500);
+  --btn-filled-border-color: var(--brand-primary);
+  --btn-filled-border-width: var(--global-spacing-stroke-0-5px);
+  --btn-filled-border-color-hover: var(--global-color-primary-blue-blue-200);
+  --btn-filled-border-color-focus: var(--global-color-primary-blue-blue-400);
+  --btn-filled-shadow-hover: var(--global-spacing-sizing-2px) var(--global-spacing-sizing-2px) var(--global-spacing-stroke-0px) var(--global-spacing-stroke-0px) var(--global-color-primary-blue-blue-400);
+  --btn-filled-bg-disabled: var(--global-color-neutral-gray-50);
+  --btn-filled-border-color-disabled: var(--global-color-neutral-gray-200);
+  --btn-filled-color-disabled: var(--global-color-neutral-gray-300);
 
   /* Button — outline variant */
   --btn-outline-bg: var(--global-color-primary-blue-blue-50);
@@ -1155,14 +1179,15 @@
   --btn-outline-color-disabled: var(--global-color-neutral-gray-300);
   --btn-outline-border-color: var(--global-color-primary-blue-blue-300);
   --btn-outline-border-color-disabled: var(--global-color-neutral-gray-200);
-  --btn-outline-shadow-hover: 2px 2px 0 0 var(--global-color-primary-blue-blue-400);
+  --btn-outline-shadow-hover: var(--global-spacing-sizing-2px) var(--global-spacing-sizing-2px) var(--global-spacing-stroke-0px) var(--global-spacing-stroke-0px) var(--global-color-primary-blue-blue-400);
 
   /* Button — loading spinner */
   --btn-spinner-size-small: var(--global-spacing-sizing-14px);
   --btn-spinner-size-default: var(--global-spacing-sizing-16px);
   --btn-spinner-size-large: var(--global-spacing-sizing-20px);
   --btn-spinner-border-width: var(--global-spacing-stroke-2px);
-  --btn-spinner-opacity: 0.6;
+  --btn-spinner-duration: var(--global-animation-duration-spinner);
+  --btn-spinner-opacity: var(--global-opacity-muted);
 }
 
 /* Font Loading */
