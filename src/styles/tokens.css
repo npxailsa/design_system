@@ -71,6 +71,24 @@
   --global-color-primary-seafoam-300: #aed2bc;
   --global-color-secondary-blue-gray-200: #9eacb5;
 
+  /* Yellow (amber) palette */
+  --global-color-primary-yellow: #f9c846;
+  --global-color-primary-yellow-dark: #e8a317;
+  --global-color-primary-yellow-50: #fefaed;
+  --global-color-primary-yellow-100: #fef4da;
+  --global-color-primary-yellow-200: #fdeec7;
+  --global-color-primary-yellow-300: #ffeab2;
+  --global-color-primary-yellow-400: #fce4a5;
+
+  /* Seafoam palette */
+  --global-color-primary-seafoam: #8bbf9f;
+  --global-color-primary-seafoam-dark: #4b6d58;
+  --global-color-primary-seafoam-extra-dark: #384c40;
+  --global-color-primary-seafoam-25: #f9fcfa;
+  --global-color-primary-seafoam-50: #f3f9f5;
+  --global-color-primary-seafoam-100: #dcece2;
+  --global-color-primary-seafoam-200: #c5dfcf;
+
   /* ==========================================================================
      GLOBAL LAYER: Spacing / Sizing (Scale)
      ========================================================================== */
@@ -1230,6 +1248,44 @@
   --btn-secondary-gap-xs: var(--global-spacing-sizing-6px);
   --btn-secondary-icon-only-size-xs: var(--global-spacing-sizing-28px);
   --btn-secondary-min-height-xs: auto;
+
+  /* ==========================================================================
+     COMPONENT: Tertiary Button
+     --------------------------------------------------------------------------
+     Yellow/amber colour scheme for tertiary-level actions. Three variants:
+     solid (yellow-200 bg), alt (seafoam-25 / very light green bg), icon-only.
+     Sizes: extra-small, small, default, large.
+     Hover shadow: 2×2 dark-seafoam (#384C40).
+     ========================================================================== */
+
+  /* Tertiary Button — solid variant */
+  --btn-tertiary-bg: var(--global-color-primary-yellow-200);
+  --btn-tertiary-bg-hover: var(--global-color-primary-yellow-200);
+  --btn-tertiary-color: var(--global-color-base-black);
+  --btn-tertiary-border-color: var(--global-color-primary-yellow-dark);
+  --btn-tertiary-border-width: var(--global-spacing-stroke-1px);
+  --btn-tertiary-border-width-hover: var(--global-spacing-stroke-2px);
+  --btn-tertiary-border-width-focus-sm: var(--global-spacing-stroke-3px);
+  --btn-tertiary-border-width-focus: var(--global-spacing-stroke-2px);
+  --btn-tertiary-shadow-hover: var(--global-spacing-sizing-2px) var(--global-spacing-sizing-2px) var(--global-spacing-stroke-0px) var(--global-spacing-stroke-0px) var(--global-color-primary-seafoam-extra-dark);
+
+  /* Tertiary Button — alt variant (seafoam-25 bg) */
+  --btn-tertiary-alt-bg: var(--global-color-primary-seafoam-25);
+  --btn-tertiary-alt-bg-hover: var(--global-color-primary-seafoam-50);
+
+  /* Tertiary Button — icon-only variant (brighter yellow bg) */
+  --btn-tertiary-icon-only-bg: var(--global-color-primary-yellow);
+  --btn-tertiary-icon-only-bg-hover: var(--global-color-primary-yellow);
+
+  /* Tertiary Button — disabled (same gray scheme as other buttons) */
+  --btn-tertiary-bg-disabled: var(--global-color-neutral-gray-50);
+  --btn-tertiary-color-disabled: var(--global-color-neutral-gray-300);
+  --btn-tertiary-border-color-disabled: var(--global-color-neutral-gray-200);
+
+  /* Tertiary Button — extra-small size */
+  --btn-tertiary-padding-xs: var(--global-spacing-sizing-2px) var(--global-spacing-sizing-4px);
+  --btn-tertiary-gap-xs: var(--global-spacing-sizing-6px);
+  --btn-tertiary-icon-only-size-xs: var(--global-spacing-sizing-28px);
 }
 
 /* Font Loading */
