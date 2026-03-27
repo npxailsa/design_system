@@ -39,37 +39,37 @@ export const ToastDocs: React.FC = () => {
           toasts float above page content via a fixed-position portal with a drop shadow.
         </DocsTemplate.BodyText>
         <DocsTemplate.Anatomy
-          preview={<Toast size="default" colour="default" />}
+          preview={
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2F84c4366c9c4546ca8d1e757a3ddc8fff"
+              alt="Toast component anatomy diagram with numbered callouts"
+              style={{ width: '100%', height: 'auto' }}
+            />
+          }
           parts={[
             {
               id: 1,
-              name: 'Leading Icon',
-              token: 'filled/icons (display category)\n--toast-leading-icon-{size}\n--toast-icon-opacity',
-              description: 'Context-sensitive SVG icon indicating the notification type. Rendered at 50% opacity. Selection varies by colour variant. Aliased from --alert-leading-icon-{size}.',
+              name: 'Container',
+              token: '--toast-bg-{colour}\n--toast-border-radius (--global-spacing-radius-6px)\n--toast-border-width (--global-spacing-stroke-1px)\n--toast-border-{colour} (color/primary/sky-blue/sky-blue-25)\n--toast-min-width (--global-spacing-sizing-280px)\n--toast-max-width',
+              description: 'Outer toast panel. W: 300, H: HUG, min-W: 280, max-H: 320. Fill uses color/secondary/navy-mid, border uses color/primary/sky-blue/sky-blue-25, corner-radius: 6, stroke-width: 1.',
             },
             {
               id: 2,
-              name: 'Title',
-              token: '--toast-font-family\n--toast-title-size-{size}\n--toast-title-weight\n--toast-title-{colour}',
-              description: 'Primary notification text using F37 Ginger Pro Regular. Colour inherits from the matching Alert colour token for the selected variant.',
+              name: 'Leading Icon',
+              token: 'filled/icons (display category)\n--toast-leading-icon-{size}',
+              description: 'Context-sensitive SVG icon indicating the notification type. W: 16, H: 16, fill: #FFFFFF. Icon name: bullseye, category: display. Toggle with showLeadingIcon prop.',
             },
             {
               id: 3,
-              name: 'Description',
-              token: '--toast-font-family\n--toast-desc-size-{size}\n--toast-desc-weight\n--toast-description-color',
-              description: 'Supporting subtext at 300 weight. Always gray-700 regardless of colour variant. Toggle with showSubtext prop.',
+              name: 'Title',
+              token: '--toast-font-family (--brand-font-primary)\n--toast-title-size-small (12px)\n--toast-title-weight (400)',
+              description: 'Primary notification text. W: FILL, H: HUG. Uses F37 Ginger Regular at 12px with 16px line-height. Colour: color/secondary/navy.',
             },
             {
               id: 4,
-              name: 'Close Icon',
-              token: 'filled/icons (action category)\n--toast-close-icon-{size}\n--toast-icon-opacity',
-              description: 'Optional dismiss action. Calls the onClose callback when clicked. Toggle with showTrailingIcon prop.',
-            },
-            {
-              id: 5,
-              name: 'Container / Portal',
-              token: '--toast-bg-{colour}\n--toast-border-radius\n--toast-shadow\n--toast-min-width\n--toast-max-width\n--toast-offset-x\n--toast-offset-y\n--toast-z-index',
-              description: 'Fixed-position floating panel rendered into a portal above all page content. Drop shadow (--toast-shadow) distinguishes it from the page. Width is 280–400px.',
+              name: 'Description',
+              token: '--toast-font-family (--brand-font-primary)\n--toast-desc-size-small (10px)\n--toast-desc-weight (300)\n--toast-description-color (--global-color-neutral-gray-700)',
+              description: 'Supporting subtext. W: FILL, H: HUG. Uses F37 Ginger Light at 10px with 14px line-height. Colour: color/neutral/gray/gray-700. Toggle with showSubtext prop.',
             },
           ]}
         />
