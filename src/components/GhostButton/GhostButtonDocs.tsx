@@ -17,11 +17,10 @@ export const GhostButtonDocs: React.FC = () => {
       />
 
       <DocsTemplate.BodyText>
-        The <strong>Ghost Button</strong> is a low-hierarchy action control using the blue-periwinkle
-        colour family — a light blue-50 background, blue-300 border, and blue-gray label. It is
-        designed to sit alongside stronger <em>Primary</em> (filled) and <em>Secondary</em>
-        (sky-blue) buttons without competing for visual attention. All styling is driven by the
-        token system with no hardcoded values.
+        The <strong>Ghost Button</strong> is a low-hierarchy action control with two visual
+        variants — <strong>ghost</strong> (bordered, blue-50 background) and <strong>link</strong>
+        (text link, no border or background). Four sizes are supported: extra-small, small, default,
+        and large. All styling is driven by the token system with no hardcoded values.
       </DocsTemplate.BodyText>
 
       {/* ── Component Anatomy ── */}
@@ -91,12 +90,24 @@ export const GhostButtonDocs: React.FC = () => {
       {/* ── Sizes ── */}
       <DocsTemplate.Section title="Sizes">
         <DocsTemplate.BodyText>
-          Three sizes scale the Ghost Button for different density contexts. All sizes support
-          leading icons, trailing icons, and icon-only mode.
+          Four sizes scale the Ghost Button for different density contexts. All sizes support
+          leading icons, trailing icons, icon-only, and the link variant.
         </DocsTemplate.BodyText>
 
         <DocsTemplate.SizeDemo
           rows={[
+            {
+              label: 'Extra Small',
+              sublabel: 'Ultra-compact toolbars, badges, chips',
+              children: (
+                <div style={{ display: 'flex', gap: 'var(--global-spacing-sizing-8px)', alignItems: 'center', flexWrap: 'wrap' }}>
+                  <GhostButton size="extra-small" label="Label" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} />
+                  <GhostButton size="extra-small" label="Label" showTrailingIcon trailingIcon={ArrowForwardIcon} />
+                  <GhostButton size="extra-small" iconOnly leadingIcon={PersonIcon} ariaLabel="User" />
+                  <GhostButton variant="link" size="extra-small" label="Label" showTrailingIcon trailingIcon={ArrowForwardIcon} />
+                </div>
+              ),
+            },
             {
               label: 'Small',
               sublabel: 'Dense toolbars, inline actions',
@@ -105,6 +116,7 @@ export const GhostButtonDocs: React.FC = () => {
                   <GhostButton size="small" label="Label" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} />
                   <GhostButton size="small" label="Label" showTrailingIcon trailingIcon={ArrowForwardIcon} />
                   <GhostButton size="small" iconOnly leadingIcon={PersonIcon} ariaLabel="User" />
+                  <GhostButton variant="link" size="small" label="Label" showTrailingIcon trailingIcon={ArrowForwardIcon} />
                 </div>
               ),
             },
@@ -116,6 +128,7 @@ export const GhostButtonDocs: React.FC = () => {
                   <GhostButton size="default" label="Label" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} />
                   <GhostButton size="default" label="Label" showTrailingIcon trailingIcon={ArrowForwardIcon} />
                   <GhostButton size="default" iconOnly leadingIcon={PersonIcon} ariaLabel="User" />
+                  <GhostButton variant="link" size="default" label="Label" showTrailingIcon trailingIcon={ArrowForwardIcon} />
                 </div>
               ),
             },
@@ -127,6 +140,7 @@ export const GhostButtonDocs: React.FC = () => {
                   <GhostButton size="large" label="Label" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} />
                   <GhostButton size="large" label="Label" showTrailingIcon trailingIcon={ArrowForwardIcon} />
                   <GhostButton size="large" iconOnly leadingIcon={PersonIcon} ariaLabel="User" />
+                  <GhostButton variant="link" size="large" label="Label" showTrailingIcon trailingIcon={ArrowForwardIcon} />
                 </div>
               ),
             },
@@ -157,13 +171,41 @@ export const GhostButtonDocs: React.FC = () => {
           </div>
         </DocsTemplate.Subsection>
 
-        <DocsTemplate.Subsection title="Icon Only">
+        <DocsTemplate.Subsection title="Icon Only (Bordered)">
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-12px) 0', alignItems: 'center' }}>
+            <GhostButton iconOnly leadingIcon={PersonIcon} size="extra-small" ariaLabel="User" />
             <GhostButton iconOnly leadingIcon={PersonIcon} size="small" ariaLabel="User" />
             <GhostButton iconOnly leadingIcon={PersonIcon} ariaLabel="User" />
             <GhostButton iconOnly leadingIcon={PersonIcon} size="large" ariaLabel="User" />
             <GhostButton iconOnly leadingIcon={AddIcon} ariaLabel="Add" />
             <GhostButton iconOnly leadingIcon={EditIcon} ariaLabel="Edit" />
+          </div>
+        </DocsTemplate.Subsection>
+
+        <DocsTemplate.Subsection title="Icon Only (Borderless)">
+          <DocsTemplate.BodyText>
+            Add <code>borderless</code> prop alongside <code>iconOnly</code> for a no-border,
+            no-background icon button. Matches Figma <code>special=icon-only</code> (no stroke).
+          </DocsTemplate.BodyText>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-12px) 0', alignItems: 'center' }}>
+            <GhostButton iconOnly borderless leadingIcon={PersonIcon} size="extra-small" ariaLabel="User" />
+            <GhostButton iconOnly borderless leadingIcon={PersonIcon} size="small" ariaLabel="User" />
+            <GhostButton iconOnly borderless leadingIcon={PersonIcon} ariaLabel="User" />
+            <GhostButton iconOnly borderless leadingIcon={PersonIcon} size="large" ariaLabel="User" />
+          </div>
+        </DocsTemplate.Subsection>
+
+        <DocsTemplate.Subsection title="Link Variant">
+          <DocsTemplate.BodyText>
+            Use <code>variant="link"</code> for a text link style — no border or background.
+            Matches Figma <code>special=link-only</code>. On hover, text switches to the
+            brand primary colour with an underline.
+          </DocsTemplate.BodyText>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-12px) 0', alignItems: 'center' }}>
+            <GhostButton variant="link" size="extra-small" label="Label" showTrailingIcon trailingIcon={ArrowForwardIcon} />
+            <GhostButton variant="link" size="small" label="Label" showTrailingIcon trailingIcon={ArrowForwardIcon} />
+            <GhostButton variant="link" size="default" label="Label" showTrailingIcon trailingIcon={ArrowForwardIcon} />
+            <GhostButton variant="link" size="large" label="Label" showTrailingIcon trailingIcon={ArrowForwardIcon} />
           </div>
         </DocsTemplate.Subsection>
       </DocsTemplate.Section>
@@ -238,6 +280,9 @@ export const GhostButtonDocs: React.FC = () => {
           { name: '--btn-ghost-border-width-disabled', description: 'Disabled border width — 2px (--global-spacing-stroke-2px)' },
           { name: '--btn-ghost-border-width-loading', description: 'Loading border width — 0.5px (--global-spacing-stroke-0-5px)' },
           { name: '--btn-ghost-spinner-color', description: 'Spinner ring colour — --global-color-primary-blue-blue-300 (#95A0E5)' },
+          { name: '--btn-ghost-link-color', description: 'Link variant default text — --global-color-secondary-blue-gray (#61607C)' },
+          { name: '--btn-ghost-link-color-hover', description: 'Link variant hover text — --brand-primary (#3776CE)' },
+          { name: '--btn-ghost-link-color-disabled', description: 'Link variant disabled text — --global-color-neutral-gray-300 (#D2D5DA)' },
         ]}
       />
 
@@ -247,34 +292,30 @@ export const GhostButtonDocs: React.FC = () => {
 import PersonIcon from '@mui/icons-material/Person';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
-// Default ghost button with leading and trailing icons
+// Ghost variant (default) — bordered, blue-50 background
 <GhostButton
   label="Label"
-  showLeadingIcon
-  leadingIcon={PersonIcon}
-  showTrailingIcon
-  trailingIcon={ArrowForwardIcon}
+  showLeadingIcon leadingIcon={PersonIcon}
+  showTrailingIcon trailingIcon={ArrowForwardIcon}
 />
 
-// With leading and trailing icons
-<GhostButton
-  label="Label"
-  showLeadingIcon
-  leadingIcon={PersonIcon}
-  showTrailingIcon
-  trailingIcon={ArrowForwardIcon}
-/>
+// Link variant — text link, no border
+<GhostButton variant="link" label="View details" showTrailingIcon trailingIcon={ArrowForwardIcon} />
 
-// Small size
-<GhostButton size="small" label="Compact" showTrailingIcon trailingIcon={ArrowForwardIcon} />
+// Extra-small size
+<GhostButton size="extra-small" label="Label" showTrailingIcon trailingIcon={ArrowForwardIcon} />
 
-// Large size
-<GhostButton size="large" label="Prominent" showTrailingIcon trailingIcon={ArrowForwardIcon} />
+// Small / Large
+<GhostButton size="small" label="Small" showTrailingIcon trailingIcon={ArrowForwardIcon} />
+<GhostButton size="large" label="Large" showTrailingIcon trailingIcon={ArrowForwardIcon} />
 
-// Icon only (use ariaLabel for accessibility)
+// Icon only — bordered
 <GhostButton iconOnly leadingIcon={PersonIcon} ariaLabel="User profile" />
 
-// Loading state
+// Icon only — borderless
+<GhostButton iconOnly borderless leadingIcon={PersonIcon} ariaLabel="User profile" />
+
+// Loading
 <GhostButton label="Saving…" loading />
 
 // Disabled

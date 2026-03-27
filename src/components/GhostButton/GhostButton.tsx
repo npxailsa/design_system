@@ -1,10 +1,13 @@
 import React from 'react';
 import styles from './GhostButton.module.css';
 
-export type GhostButtonSize = 'small' | 'default' | 'large';
+export type GhostButtonVariant = 'ghost' | 'link';
+export type GhostButtonSize = 'extra-small' | 'small' | 'default' | 'large';
 export type GhostButtonType = 'button' | 'submit' | 'reset';
 
 export interface GhostButtonProps {
+  /** Visual variant — ghost (bordered, light bg) or link (text link, no border) */
+  variant?: GhostButtonVariant;
   /** Text label displayed inside the button */
   label?: string;
   /** Size variant */
@@ -19,8 +22,10 @@ export interface GhostButtonProps {
   trailingIcon?: React.ElementType;
   /** Show the trailing icon */
   showTrailingIcon?: boolean;
-  /** Render as an icon-only button (no label) */
+  /** Render as an icon-only button (square, no label) */
   iconOnly?: boolean;
+  /** Remove border for icon-only borderless style */
+  borderless?: boolean;
   /** Show a loading spinner */
   loading?: boolean;
   /** Disable all interactions */
@@ -36,16 +41,19 @@ export interface GhostButtonProps {
 }
 
 /**
- * GhostButton — Low-emphasis interactive control with a ghost/outline style.
+ * GhostButton — Low-emphasis interactive control with ghost/outline or link style.
  *
- * Uses the blue-periwinkle colour family (blue-50 background, blue-300 border,
- * blue-gray text). Designed for supporting actions that sit alongside stronger
- * Primary or Secondary buttons without competing for attention.
+ * **Variants**
+ * - `ghost` (default): blue-50 background, blue-300 border, blue-gray text
+ * - `link`: no background or border, blue-gray/primary text like a hyperlink
  *
- * Supports 3 sizes (small / default / large), optional leading / trailing icons,
- * icon-only mode, and loading + disabled states.
+ * **Sizes**: extra-small / small / default / large
+ *
+ * Supports optional leading / trailing icons, icon-only mode (with or without border),
+ * and loading + disabled states.
  */
 export const GhostButton: React.FC<GhostButtonProps> = ({
+  variant = 'ghost',
   label = 'Label',
   size = 'default',
   type = 'button',
@@ -54,6 +62,7 @@ export const GhostButton: React.FC<GhostButtonProps> = ({
   trailingIcon: TrailingIcon,
   showTrailingIcon = false,
   iconOnly = false,
+  borderless = false,
   loading = false,
   disabled = false,
   fullWidth = false,
@@ -63,8 +72,10 @@ export const GhostButton: React.FC<GhostButtonProps> = ({
 }) => {
   const classNames = [
     styles['ghost-btn'],
+    styles[`ghost-btn--${variant}`],
     styles[`ghost-btn--${size}`],
     iconOnly ? styles['ghost-btn--icon-only'] : '',
+    iconOnly && borderless ? styles['ghost-btn--borderless'] : '',
     loading ? styles['ghost-btn--loading'] : '',
     disabled ? styles['ghost-btn--disabled'] : '',
     fullWidth ? styles['ghost-btn--full-width'] : '',

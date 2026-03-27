@@ -1,2 +1,2 @@
 export { GhostButton } from './GhostButton';
-export type { GhostButtonProps, GhostButtonSize, GhostButtonType } from './GhostButton';
+export type { GhostButtonProps, GhostButtonVariant, GhostButtonSize, GhostButtonType } from './GhostButton';

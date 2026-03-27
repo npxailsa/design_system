@@ -1,19 +1,23 @@
 /* ==========================================================================
    GhostButton Component
    --------------------------------------------------------------------------
-   Low-emphasis button with a blue-periwinkle ghost/outline style.
-   Uses design tokens exclusively — no hardcoded values.
+   Low-emphasis button. Two visual variants:
+     ghost — bordered, blue-50 background (special=alt in Figma)
+     link  — no border/background, text link style (special=link-only in Figma)
 
-   Visual spec from Figma (type=default/primary, special=alt):
+   Sizes: extra-small / small / default / large
+   Modes: leading icon, trailing icon, icon-only (bordered or borderless),
+          loading, disabled, full-width
+
+   All values use design tokens exclusively — no hardcoded numbers.
+
+   Figma states (ghost variant):
      Default  : bg blue-50 (#F9F9FE), 1px border blue-300 (#95A0E5), text blue-gray (#61607C)
-     Hover    : bg blue-100 (#E7E9F4), border unchanged, shadow 2×2 blue-400 (#6171DF), text black
+     Hover    : bg blue-100 (#E7E9F4), border unchanged, shadow 2px 2px #6171DF, text black
      Active   : same as hover
      Focused  : bg blue-50, border 2px blue-300, text blue-gray
      Disabled : bg gray-50, border 2px gray-200, text gray-300
      Loading  : bg blue-50, border 0.5px blue-300, spinner blue-300 @ 0.6 opacity
-
-   Sizes: small / default / large
-   Modes: with leading icon, trailing icon, icon-only, full-width
    ========================================================================== */
 
 /* ── Reset ── */
@@ -24,11 +28,6 @@
 
 /* ── Base ── */
 .ghost-btn {
-  /* Reset global button styles (src/index.css sets blue bg on all <button>) */
-  background: transparent;
-  filter: none;
-  outline: none;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -37,9 +36,6 @@
   gap: var(--btn-gap-default);
   padding: var(--btn-padding-default);
   border-radius: var(--btn-border-radius);
-  border: var(--btn-ghost-border-width-default) solid var(--btn-ghost-border-color);
-  background: var(--btn-ghost-bg);
-  color: var(--btn-ghost-color);
 
   font-family: var(--btn-font-family);
   font-size: var(--btn-font-size-default);
@@ -53,42 +49,59 @@
   text-decoration: none;
   position: relative;
 
+  /* Prevent ANY global button styles from bleeding in */
+  background: none;
+  border: none;
+  color: inherit;
+  filter: none;
+  outline: none;
+
   transition:
-    background-color var(--btn-transition-duration) var(--btn-transition-easing),
+    background var(--btn-transition-duration) var(--btn-transition-easing),
     border-color var(--btn-transition-duration) var(--btn-transition-easing),
     border-width var(--btn-transition-duration) var(--btn-transition-easing),
     box-shadow var(--btn-transition-duration) var(--btn-transition-easing),
     color var(--btn-transition-duration) var(--btn-transition-easing);
 }
 
-/* Override global button:hover / button:focus blue bleed */
+/* Suppress any global hover/focus filter */
 .ghost-btn:hover,
 .ghost-btn:focus,
 .ghost-btn:focus-visible {
   filter: none;
-  border-color: var(--btn-ghost-border-color);
+  outline: none;
 }
 
-/* ── Hover & Active ── */
-.ghost-btn:hover:not(:disabled):not(.ghost-btn--disabled) {
+/* ════════════════════════════════════════════════════════════
+   VARIANT — GHOST (bordered, light background)
+   ════════════════════════════════════════════════════════════ */
+
+.ghost-btn--ghost {
+  background: var(--btn-ghost-bg);
+  color: var(--btn-ghost-color);
+  border: var(--btn-ghost-border-width-default) solid var(--btn-ghost-border-color);
+}
+
+/* Ghost: hover */
+.ghost-btn--ghost:hover:not(:disabled):not(.ghost-btn--disabled) {
   background: var(--btn-ghost-bg-hover);
   color: var(--btn-ghost-color-hover);
-  border-width: var(--btn-ghost-border-width-default);
   border-color: var(--btn-ghost-border-color);
+  border-width: var(--btn-ghost-border-width-default);
   box-shadow: var(--btn-ghost-shadow-hover);
 }
 
-.ghost-btn:active:not(:disabled):not(.ghost-btn--disabled) {
+/* Ghost: active / clicked */
+.ghost-btn--ghost:active:not(:disabled):not(.ghost-btn--disabled) {
   background: var(--btn-ghost-bg-active);
   color: var(--btn-ghost-color-hover);
-  border-width: var(--btn-ghost-border-width-default);
   border-color: var(--btn-ghost-border-color);
+  border-width: var(--btn-ghost-border-width-default);
   box-shadow: var(--btn-ghost-shadow-hover);
 }
 
-/* ── Focus ── */
-.ghost-btn:focus-visible:not(:disabled):not(.ghost-btn--disabled) {
-  outline: none;
+/* Ghost: keyboard focus */
+.ghost-btn--ghost:focus-visible:not(:disabled):not(.ghost-btn--disabled) {
   background: var(--btn-ghost-bg);
   color: var(--btn-ghost-color);
   border-width: var(--btn-ghost-border-width-focus);
@@ -96,9 +109,9 @@
   box-shadow: none;
 }
 
-/* ── Disabled ── */
-.ghost-btn--disabled,
-.ghost-btn:disabled {
+/* Ghost: disabled */
+.ghost-btn--ghost.ghost-btn--disabled,
+.ghost-btn--ghost:disabled {
   background: var(--btn-ghost-bg-disabled) !important;
   color: var(--btn-ghost-color-disabled) !important;
   border-color: var(--btn-ghost-border-color-disabled) !important;
@@ -109,14 +122,87 @@
   pointer-events: none;
 }
 
-/* ── Loading ── */
-.ghost-btn--loading {
+/* Ghost: loading */
+.ghost-btn--ghost.ghost-btn--loading {
+  background: var(--btn-ghost-bg);
   border-width: var(--btn-ghost-border-width-loading);
+  border-color: var(--btn-ghost-border-color);
+}
+
+/* ════════════════════════════════════════════════════════════
+   VARIANT — LINK (text link, no border, no background)
+   ════════════════════════════════════════════════════════════ */
+
+.ghost-btn--link {
+  background: transparent;
+  color: var(--btn-ghost-link-color);
+  border: none;
+  min-width: unset;
+  padding-left: var(--global-spacing-sizing-4px);
+  padding-right: var(--global-spacing-sizing-4px);
+}
+
+/* Link: hover — switch to primary blue */
+.ghost-btn--link:hover:not(:disabled):not(.ghost-btn--disabled) {
+  color: var(--btn-ghost-link-color-hover);
+  text-decoration: underline;
+  box-shadow: none;
+}
+
+/* Link: active */
+.ghost-btn--link:active:not(:disabled):not(.ghost-btn--disabled) {
+  color: var(--btn-ghost-link-color-hover);
+  text-decoration: underline;
+  box-shadow: none;
+}
+
+/* Link: focus */
+.ghost-btn--link:focus-visible:not(:disabled):not(.ghost-btn--disabled) {
+  color: var(--btn-ghost-link-color);
+  text-decoration: underline;
+  box-shadow: none;
+  border-radius: var(--global-spacing-radius-2px);
+  outline: var(--global-spacing-stroke-2px) solid var(--btn-ghost-border-color-focus);
+  outline-offset: var(--global-spacing-sizing-2px);
+}
+
+/* Link: disabled */
+.ghost-btn--link.ghost-btn--disabled,
+.ghost-btn--link:disabled {
+  color: var(--btn-ghost-link-color-disabled) !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Link: loading */
+.ghost-btn--link.ghost-btn--loading {
+  color: var(--btn-ghost-link-color);
+}
+
+/* ════════════════════════════════════════════════════════════
+   LOADING STATE (shared)
+   ════════════════════════════════════════════════════════════ */
+.ghost-btn--loading {
   cursor: wait;
   pointer-events: none;
 }
 
-/* ── Sizes ── */
+/* ════════════════════════════════════════════════════════════
+   SIZES
+   ════════════════════════════════════════════════════════════ */
+
+/* Extra-small */
+.ghost-btn--extra-small {
+  gap: var(--btn-gap-extra-small);
+  padding: var(--btn-padding-extra-small);
+  font-size: var(--btn-font-size-extra-small);
+  line-height: var(--btn-line-height-extra-small);
+}
+
+/* Small */
 .ghost-btn--small {
   gap: var(--btn-gap-small);
   padding: var(--btn-padding-small);
@@ -124,6 +210,7 @@
   line-height: var(--btn-line-height-small);
 }
 
+/* Large */
 .ghost-btn--large {
   gap: var(--btn-gap-large);
   padding: var(--btn-padding-large);
@@ -131,22 +218,47 @@
   line-height: var(--btn-line-height-large);
 }
 
-/* ── Icon-only ── */
+/* ════════════════════════════════════════════════════════════
+   ICON-ONLY (bordered square)
+   ════════════════════════════════════════════════════════════ */
+
 .ghost-btn--icon-only {
   width: var(--btn-icon-only-size-default);
   height: var(--btn-icon-only-size-default);
+  min-width: unset;
+  min-height: unset;
   padding: 0;
   border-radius: var(--btn-border-radius);
 }
 
-.ghost-btn--icon-only.ghost-btn--small {
+.ghost-btn--extra-small.ghost-btn--icon-only {
+  width: var(--btn-icon-only-size-extra-small);
+  height: var(--btn-icon-only-size-extra-small);
+}
+
+.ghost-btn--small.ghost-btn--icon-only {
   width: var(--btn-icon-only-size-small);
   height: var(--btn-icon-only-size-small);
 }
 
-.ghost-btn--icon-only.ghost-btn--large {
+.ghost-btn--large.ghost-btn--icon-only {
   width: var(--btn-icon-only-size-large);
   height: var(--btn-icon-only-size-large);
+}
+
+/* ════════════════════════════════════════════════════════════
+   BORDERLESS (icon-only without border/background)
+   ════════════════════════════════════════════════════════════ */
+
+.ghost-btn--ghost.ghost-btn--icon-only.ghost-btn--borderless {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.ghost-btn--ghost.ghost-btn--icon-only.ghost-btn--borderless:hover:not(:disabled):not(.ghost-btn--disabled) {
+  background: var(--btn-ghost-bg-hover) !important;
+  box-shadow: none !important;
 }
 
 /* ── Full width ── */
@@ -154,7 +266,10 @@
   width: 100%;
 }
 
-/* ── Icon slot ── */
+/* ════════════════════════════════════════════════════════════
+   ICON SLOT
+   ════════════════════════════════════════════════════════════ */
+
 .ghost-btn__icon {
   display: inline-flex;
   align-items: center;
@@ -166,6 +281,12 @@
   width: var(--btn-icon-size-default) !important;
   height: var(--btn-icon-size-default) !important;
   font-size: var(--btn-icon-size-default) !important;
+}
+
+.ghost-btn--extra-small .ghost-btn__icon-svg {
+  width: var(--btn-icon-size-extra-small) !important;
+  height: var(--btn-icon-size-extra-small) !important;
+  font-size: var(--btn-icon-size-extra-small) !important;
 }
 
 .ghost-btn--small .ghost-btn__icon-svg {
@@ -187,7 +308,10 @@
   line-height: inherit;
 }
 
-/* ── Spinner ── */
+/* ════════════════════════════════════════════════════════════
+   SPINNER (ghost variant only — uses blue-300 colour)
+   ════════════════════════════════════════════════════════════ */
+
 .ghost-btn__spinner {
   display: inline-block;
   width: var(--btn-spinner-size-default);
@@ -211,7 +335,5 @@
 }
 
 @keyframes ghost-btn-spin {
-  to {
-    transform: rotate(360deg);
-  }
+  to { transform: rotate(360deg); }
 }

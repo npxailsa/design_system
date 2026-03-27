@@ -1330,6 +1330,19 @@
 
   /* Ghost Button — spinner colour (blue-300) */
   --btn-ghost-spinner-color: var(--global-color-primary-blue-blue-300);
+
+  /* Ghost Button — link variant colours */
+  --btn-ghost-link-color:          var(--global-color-secondary-blue-gray);
+  --btn-ghost-link-color-hover:    var(--brand-primary);
+  --btn-ghost-link-color-disabled: var(--global-color-neutral-gray-300);
+
+  /* Button — extra-small size */
+  --btn-padding-extra-small: var(--global-spacing-sizing-4px) var(--global-spacing-sizing-8px);
+  --btn-font-size-extra-small: var(--global-type-size-primary-label-xs);
+  --btn-line-height-extra-small: var(--global-type-line-height-label-xs);
+  --btn-gap-extra-small: var(--global-spacing-sizing-4px);
+  --btn-icon-size-extra-small: var(--global-spacing-sizing-12px);
+  --btn-icon-only-size-extra-small: var(--global-spacing-sizing-24px);
 }
 
 /* Font Loading */
