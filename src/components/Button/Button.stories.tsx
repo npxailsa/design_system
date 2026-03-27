@@ -186,7 +186,6 @@ export const IconOnly: Story = {
       <Button iconOnly leadingIcon={PersonIcon} ariaLabel="User" />
       <Button iconOnly leadingIcon={PersonIcon} size="large" ariaLabel="User" />
       <Button iconOnly variant="outline" leadingIcon={PersonIcon} ariaLabel="User" />
-      <Button iconOnly variant="ghost" leadingIcon={PersonIcon} ariaLabel="User" />
     </div>
   ),
   parameters: { controls: { disable: true } },
