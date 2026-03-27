@@ -1344,6 +1344,76 @@
   --btn-gap-extra-small: var(--global-spacing-sizing-4px);
   --btn-icon-size-extra-small: var(--global-spacing-sizing-12px);
   --btn-icon-only-size-extra-small: var(--global-spacing-sizing-24px);
+
+  /* ==========================================================================
+     COMPONENT: ButtonMenu (BuildingBlocks)
+     --------------------------------------------------------------------------
+     A stacked vertical list of menu items used as dropdown menus or contextual
+     action lists. Items are divided into top, middle, and bottom positions,
+     each sharing borders that collapse between adjacent rows.
+
+     Visual spec (from Figma — BuildingBlocks/Button/menu):
+       Container : width 200px (small: 160px, large: 240px), flex-col, no gap
+       Top item  : 6px radius top, 0.5px border top+left+right, neutral-gray-300
+       Middle    : no radius, 0.5px border left+right, neutral-gray-300
+       Bottom    : 6px radius bottom, 0.5px border bottom+left+right, neutral-gray-300
+       Bg        : base/white; hover: neutral-gray-50
+       Text      : base/black, Calibri Light
+     ========================================================================== */
+
+  /* ButtonMenu — layout */
+  --btn-menu-bg:                  var(--global-color-base-white);
+  --btn-menu-bg-hover:            var(--global-color-neutral-gray-50);
+  --btn-menu-bg-selected:         var(--global-color-primary-blue-blue-50);
+  --btn-menu-bg-disabled:         var(--global-color-base-white);
+  --btn-menu-border-color:        var(--global-color-neutral-gray-300);
+  --btn-menu-border-width:        var(--global-spacing-stroke-0-5px);
+  --btn-menu-border-radius-top:   var(--global-spacing-radius-6px);
+  --btn-menu-border-radius-bottom: var(--global-spacing-radius-6px);
+  --btn-menu-width-small:         var(--global-spacing-sizing-160px);
+  --btn-menu-width-default:       var(--global-spacing-sizing-200px);
+  --btn-menu-width-large:         var(--global-spacing-sizing-240px);
+  --btn-menu-min-width:           var(--global-spacing-sizing-140px);
+
+  /* ButtonMenu — typography */
+  --btn-menu-font-family:         var(--brand-font-secondary);
+  --btn-menu-font-weight:         var(--global-type-weight-light);
+  --btn-menu-color:               var(--global-color-base-black);
+  --btn-menu-color-disabled:      var(--global-color-neutral-gray-400);
+  --btn-menu-color-selected:      var(--global-color-secondary-blue-gray);
+  --btn-menu-letter-spacing:      0.05px;
+
+  /* ButtonMenu — font sizes per size */
+  --btn-menu-font-size-small:     var(--global-type-size-primary-label-sm);
+  --btn-menu-line-height-small:   var(--global-type-line-height-label-sm);
+  --btn-menu-font-size-default:   var(--global-type-size-primary-label);
+  --btn-menu-line-height-default: var(--global-type-line-height-label);
+  --btn-menu-font-size-large:     var(--global-type-size-primary-label-lg);
+  --btn-menu-line-height-large:   var(--global-type-line-height-label-lg);
+
+  /* ButtonMenu — padding per size (top row uses more top padding, bottom more bottom) */
+  --btn-menu-padding-top-small:     var(--global-spacing-sizing-12px) var(--global-spacing-sizing-12px) var(--global-spacing-sizing-6px);
+  --btn-menu-padding-mid-small:     var(--global-spacing-sizing-6px) var(--global-spacing-sizing-12px);
+  --btn-menu-padding-bottom-small:  var(--global-spacing-sizing-6px) var(--global-spacing-sizing-12px) var(--global-spacing-sizing-12px);
+
+  --btn-menu-padding-top-default:    var(--global-spacing-sizing-12px) var(--global-spacing-sizing-12px) var(--global-spacing-sizing-8px);
+  --btn-menu-padding-mid-default:    var(--global-spacing-sizing-8px) var(--global-spacing-sizing-12px);
+  --btn-menu-padding-bottom-default: var(--global-spacing-sizing-8px) var(--global-spacing-sizing-12px) var(--global-spacing-sizing-12px);
+
+  --btn-menu-padding-top-large:     var(--global-spacing-sizing-16px) var(--global-spacing-sizing-16px) var(--global-spacing-sizing-10px);
+  --btn-menu-padding-mid-large:     var(--global-spacing-sizing-10px) var(--global-spacing-sizing-16px);
+  --btn-menu-padding-bottom-large:  var(--global-spacing-sizing-10px) var(--global-spacing-sizing-16px) var(--global-spacing-sizing-16px);
+
+  /* ButtonMenu — icon */
+  --btn-menu-icon-size-small:   var(--global-spacing-sizing-14px);
+  --btn-menu-icon-size-default: var(--global-spacing-sizing-16px);
+  --btn-menu-icon-size-large:   var(--global-spacing-sizing-18px);
+  --btn-menu-icon-gap:          var(--global-spacing-sizing-8px);
+  --btn-menu-icon-opacity:      0.6;
+
+  /* ButtonMenu — transition */
+  --btn-menu-transition-duration: var(--global-animation-duration-fast);
+  --btn-menu-transition-easing:   var(--global-animation-easing-default);
 }
 
 /* Font Loading */
