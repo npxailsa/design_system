@@ -27,7 +27,7 @@ export const AccordionAltDocs: React.FC = () => {
         <DocsTemplate.Anatomy
           preview={
             <img
-              src="https://cdn.builder.io/api/v1/image/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2F9d7a848d27c94ec8ab5a47a948153f5b"
+              src="https://cdn.builder.io/api/v1/image/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2Fc7f6ee1c115f464ea06d29a28a6daacd"
               alt="Accordion (alt.) component anatomy diagram with numbered callouts"
               style={{ width: '100%', height: 'auto' }}
             />
