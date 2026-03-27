@@ -60,7 +60,9 @@
 
   /* Primary Colors */
   --global-color-primary-sky-blue: #0ba7ea;
+  --global-color-primary-sky-blue-25: #fafdff;
   --global-color-primary-sky-blue-50: #f4fcff;
+  --global-color-primary-sky-blue-100: #d6f0fb;
   --global-color-primary-sky-blue-200: #b6e5f9;
   --global-color-primary-sky-blue-300: #85d3f5;
   --global-color-primary-blue: #2f42bd;
@@ -1188,6 +1190,46 @@
   --btn-spinner-border-width: var(--global-spacing-stroke-2px);
   --btn-spinner-duration: var(--global-animation-duration-spinner);
   --btn-spinner-opacity: var(--global-opacity-muted);
+
+  /* ==========================================================================
+     COMPONENT: Secondary Button
+     --------------------------------------------------------------------------
+     Sky-blue colour scheme for secondary actions. Shares layout/typography
+     tokens with the base Button (--btn-*) but uses its own colour family.
+     Variants: solid (default), alt (white bg), icon-only, split.
+     Sizes: extra-small, small, default, large.
+     ========================================================================== */
+
+  /* Secondary Button — solid variant (default) */
+  --btn-secondary-bg: var(--brand-sky-blue-50);
+  --btn-secondary-bg-hover: var(--global-color-primary-sky-blue-25);
+  --btn-secondary-bg-active: var(--global-color-primary-sky-blue-25);
+  --btn-secondary-color: var(--global-color-secondary-blue-gray);
+  --btn-secondary-color-hover: var(--global-color-base-black);
+  --btn-secondary-border-color: var(--brand-sky-blue);
+  --btn-secondary-border-width: var(--global-spacing-stroke-0-5px);
+  --btn-secondary-shadow-hover: var(--global-spacing-sizing-2px) var(--global-spacing-sizing-2px) var(--global-spacing-stroke-0px) var(--global-spacing-stroke-0px) var(--global-color-primary-sky-blue);
+
+  /* Secondary Button — alt variant (white bg) */
+  --btn-secondary-alt-bg: var(--global-color-base-white);
+  --btn-secondary-alt-bg-hover: var(--global-color-primary-sky-blue-25);
+
+  /* Secondary Button — icon-only hover bg */
+  --btn-secondary-icon-only-bg-hover: var(--global-color-primary-sky-blue-50);
+
+  /* Secondary Button — disabled */
+  --btn-secondary-bg-disabled: var(--global-color-neutral-gray-50);
+  --btn-secondary-color-disabled: var(--global-color-neutral-gray-300);
+  --btn-secondary-border-color-disabled: var(--global-color-neutral-gray-200);
+
+  /* Secondary Button — focus */
+  --btn-secondary-border-width-focus: var(--global-spacing-stroke-2px);
+
+  /* Secondary Button — sizes: extra-small */
+  --btn-secondary-padding-xs: var(--global-spacing-sizing-2px) var(--global-spacing-sizing-4px);
+  --btn-secondary-gap-xs: var(--global-spacing-sizing-6px);
+  --btn-secondary-icon-only-size-xs: var(--global-spacing-sizing-28px);
+  --btn-secondary-min-height-xs: auto;
 }
 
 /* Font Loading */

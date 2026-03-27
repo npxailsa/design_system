@@ -18,9 +18,13 @@ const meta: Meta<typeof SecondaryButton> = {
     },
   },
   argTypes: {
+    variant: {
+      control: 'select',
+      options: ['solid', 'alt'],
+    },
     size: {
       control: 'select',
-      options: ['small', 'default', 'large'],
+      options: ['extra-small', 'small', 'default', 'large'],
     },
     label: { control: 'text' },
     leadingIcon: {
@@ -73,21 +77,36 @@ export const Documentation: Story = {
 };
 
 /**
- * Default secondary button with label.
+ * Default secondary button — solid variant with label.
  */
 export const Default: Story = {
   args: {
     label: 'Label',
+    variant: 'solid',
     size: 'default',
   },
 };
 
 /**
- * All three sizes.
+ * Both variants side by side.
+ */
+export const Variants: Story = {
+  render: () => (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px)' }}>
+      <SecondaryButton variant="solid" label="Solid" />
+      <SecondaryButton variant="alt" label="Alt" />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+/**
+ * All four sizes.
  */
 export const Sizes: Story = {
   render: () => (
     <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px)' }}>
+      <SecondaryButton size="extra-small" label="Extra Small" />
       <SecondaryButton size="small" label="Small" />
       <SecondaryButton size="default" label="Default" />
       <SecondaryButton size="large" label="Large" />
@@ -102,6 +121,7 @@ export const Sizes: Story = {
 export const WithLeadingIcon: Story = {
   render: () => (
     <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px)' }}>
+      <SecondaryButton label="Label" showLeadingIcon leadingIcon={PersonIcon} size="extra-small" />
       <SecondaryButton label="Label" showLeadingIcon leadingIcon={PersonIcon} size="small" />
       <SecondaryButton label="Label" showLeadingIcon leadingIcon={PersonIcon} />
       <SecondaryButton label="Label" showLeadingIcon leadingIcon={PersonIcon} size="large" />
@@ -116,6 +136,7 @@ export const WithLeadingIcon: Story = {
 export const WithTrailingIcon: Story = {
   render: () => (
     <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px)' }}>
+      <SecondaryButton label="Label" showTrailingIcon trailingIcon={ArrowForwardIcon} size="extra-small" />
       <SecondaryButton label="Label" showTrailingIcon trailingIcon={ArrowForwardIcon} size="small" />
       <SecondaryButton label="Label" showTrailingIcon trailingIcon={ArrowForwardIcon} />
       <SecondaryButton label="Label" showTrailingIcon trailingIcon={ArrowForwardIcon} size="large" />
@@ -130,40 +151,21 @@ export const WithTrailingIcon: Story = {
 export const WithBothIcons: Story = {
   render: () => (
     <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px)' }}>
-      <SecondaryButton
-        label="Label"
-        showLeadingIcon
-        leadingIcon={PersonIcon}
-        showTrailingIcon
-        trailingIcon={ArrowForwardIcon}
-        size="small"
-      />
-      <SecondaryButton
-        label="Label"
-        showLeadingIcon
-        leadingIcon={PersonIcon}
-        showTrailingIcon
-        trailingIcon={ArrowForwardIcon}
-      />
-      <SecondaryButton
-        label="Label"
-        showLeadingIcon
-        leadingIcon={PersonIcon}
-        showTrailingIcon
-        trailingIcon={ArrowForwardIcon}
-        size="large"
-      />
+      <SecondaryButton label="Label" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} size="small" />
+      <SecondaryButton label="Label" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} />
+      <SecondaryButton label="Label" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} size="large" />
     </div>
   ),
   parameters: { controls: { disable: true } },
 };
 
 /**
- * Icon-only buttons — square with 4px radius, no label.
+ * Icon-only buttons — square with 4px radius.
  */
 export const IconOnly: Story = {
   render: () => (
     <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px)' }}>
+      <SecondaryButton iconOnly leadingIcon={PersonIcon} size="extra-small" ariaLabel="User" />
       <SecondaryButton iconOnly leadingIcon={PersonIcon} size="small" ariaLabel="User" />
       <SecondaryButton iconOnly leadingIcon={PersonIcon} ariaLabel="User" />
       <SecondaryButton iconOnly leadingIcon={PersonIcon} size="large" ariaLabel="User" />
@@ -181,6 +183,7 @@ export const Loading: Story = {
       <SecondaryButton label="Loading…" loading size="small" />
       <SecondaryButton label="Loading…" loading />
       <SecondaryButton label="Loading…" loading size="large" />
+      <SecondaryButton label="Loading…" variant="alt" loading />
     </div>
   ),
   parameters: { controls: { disable: true } },
@@ -193,7 +196,7 @@ export const Disabled: Story = {
   render: () => (
     <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px)' }}>
       <SecondaryButton label="Disabled" disabled />
-      <SecondaryButton label="Disabled" showLeadingIcon leadingIcon={PersonIcon} disabled />
+      <SecondaryButton label="Disabled" variant="alt" disabled />
       <SecondaryButton label="Disabled" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} disabled />
       <SecondaryButton iconOnly leadingIcon={PersonIcon} disabled ariaLabel="User" />
     </div>
@@ -202,23 +205,28 @@ export const Disabled: Story = {
 };
 
 /**
- * Full size and state matrix.
+ * Full variant, size, and state matrix.
  */
 export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-24px)', padding: 'var(--global-spacing-sizing-24px)' }}>
-      {(['small', 'default', 'large'] as const).map((size) => (
-        <div key={size} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-12px)' }}>
+      {(['solid', 'alt'] as const).map((variant) => (
+        <div key={variant} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)' }}>
           <span style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '11px', color: 'var(--global-color-neutral-gray-500)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-            {size}
+            {variant}
           </span>
-          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 'var(--global-spacing-sizing-10px)' }}>
-            <SecondaryButton size={size} label="Label" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} />
-            <SecondaryButton size={size} label="Label" />
-            <SecondaryButton size={size} iconOnly leadingIcon={PersonIcon} ariaLabel="User" />
-            <SecondaryButton size={size} label="Disabled" disabled />
-            <SecondaryButton size={size} label="Loading" loading />
-          </div>
+          {(['extra-small', 'small', 'default', 'large'] as const).map((size) => (
+            <div key={size} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 'var(--global-spacing-sizing-10px)' }}>
+              <span style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '10px', color: 'var(--global-color-neutral-gray-400)', width: 'var(--global-spacing-sizing-80px)' }}>
+                {size}
+              </span>
+              <SecondaryButton variant={variant} size={size} label="Label" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} />
+              <SecondaryButton variant={variant} size={size} label="Label" />
+              <SecondaryButton variant={variant} size={size} iconOnly leadingIcon={PersonIcon} ariaLabel="User" />
+              <SecondaryButton variant={variant} size={size} label="Disabled" disabled />
+              <SecondaryButton variant={variant} size={size} label="Loading" loading />
+            </div>
+          ))}
         </div>
       ))}
     </div>

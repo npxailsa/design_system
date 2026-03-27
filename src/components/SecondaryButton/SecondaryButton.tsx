@@ -1,14 +1,19 @@
 import React from 'react';
-import { Button } from '../Button/Button';
-import type { ButtonSize, ButtonType } from '../Button/Button';
+import styles from './SecondaryButton.module.css';
+
+export type SecondaryButtonVariant = 'solid' | 'alt';
+export type SecondaryButtonSize = 'extra-small' | 'small' | 'default' | 'large';
+export type SecondaryButtonType = 'button' | 'submit' | 'reset';
 
 export interface SecondaryButtonProps {
   /** Text label displayed inside the button */
   label?: string;
+  /** Visual variant — solid (sky-blue bg) or alt (white bg) */
+  variant?: SecondaryButtonVariant;
   /** Size variant */
-  size?: ButtonSize;
+  size?: SecondaryButtonSize;
   /** HTML button type */
-  type?: ButtonType;
+  type?: SecondaryButtonType;
   /** Optional MUI icon component rendered before the label */
   leadingIcon?: React.ElementType;
   /** Show the leading icon */
@@ -34,16 +39,87 @@ export interface SecondaryButtonProps {
 }
 
 /**
- * Secondary Button — The outline-style button used for secondary actions.
+ * Secondary Button — Sky-blue button for secondary/supporting actions.
  *
- * Wraps the base Button component with `variant="outline"` locked in.
- * Use alongside the Primary Button to establish clear visual hierarchy.
- *
- * All design tokens are shared with the base Button component via the
- * `--btn-outline-*` token family.
+ * Uses the sky-blue colour family (--btn-secondary-*) and supports two visual
+ * variants: solid (sky-blue-50 background) and alt (white background).
+ * Four sizes: extra-small, small, default, large.
+ * Includes icon-only, loading, and disabled modes.
  */
-export const SecondaryButton: React.FC<SecondaryButtonProps> = (props) => {
-  return <Button {...props} variant="outline" />;
+export const SecondaryButton: React.FC<SecondaryButtonProps> = ({
+  label = 'Label',
+  variant = 'solid',
+  size = 'default',
+  type = 'button',
+  leadingIcon: LeadingIcon,
+  showLeadingIcon = false,
+  trailingIcon: TrailingIcon,
+  showTrailingIcon = false,
+  iconOnly = false,
+  loading = false,
+  disabled = false,
+  fullWidth = false,
+  onClick,
+  className = '',
+  ariaLabel,
+}) => {
+  const classNames = [
+    styles.btn,
+    styles[`btn--${variant}`],
+    styles[`btn--${size}`],
+    iconOnly ? styles['btn--icon-only'] : '',
+    loading ? styles['btn--loading'] : '',
+    disabled ? styles['btn--disabled'] : '',
+    fullWidth ? styles['btn--full-width'] : '',
+    className,
+  ]
+    .filter(Boolean)
+    .join(' ');
+
+  const showSpinner = loading;
+  const showLeading = showLeadingIcon && LeadingIcon && !showSpinner;
+
+  return (
+    <button
+      type={type}
+      className={classNames}
+      onClick={!disabled && !loading ? onClick : undefined}
+      disabled={disabled || loading}
+      aria-label={iconOnly ? (ariaLabel ?? label) : ariaLabel}
+      aria-busy={loading || undefined}
+    >
+      {/* Loading spinner */}
+      {showSpinner && (
+        <span className={styles['btn__spinner']} aria-hidden="true" />
+      )}
+
+      {/* Leading icon */}
+      {showLeading && (
+        <span className={styles['btn__icon']} aria-hidden="true">
+          <LeadingIcon className={styles['btn__icon-svg']} />
+        </span>
+      )}
+
+      {/* Label */}
+      {!iconOnly && (
+        <span className={styles['btn__label']}>{label}</span>
+      )}
+
+      {/* Trailing icon */}
+      {showTrailingIcon && TrailingIcon && !iconOnly && (
+        <span className={styles['btn__icon']} aria-hidden="true">
+          <TrailingIcon className={styles['btn__icon-svg']} />
+        </span>
+      )}
+
+      {/* Icon-only icon */}
+      {iconOnly && !showSpinner && LeadingIcon && (
+        <span className={styles['btn__icon']} aria-hidden="true">
+          <LeadingIcon className={styles['btn__icon-svg']} />
+        </span>
+      )}
+    </button>
+  );
 };
 
 export default SecondaryButton;

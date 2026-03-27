@@ -1,0 +1,257 @@
+/* ==========================================================================
+   Secondary Button Component
+   --------------------------------------------------------------------------
+   Sky-blue colour scheme for secondary/supporting actions. Uses design tokens
+   exclusively — no hardcoded values.
+
+   Variants: solid (sky-blue-50 bg), alt (white bg)
+   Sizes: extra-small, small, default, large
+   States: default, hover, active, focus-visible, disabled, loading
+
+   Key specs (from Figma):
+     - border-radius: 4px (--btn-border-radius)
+     - border: 0.5px default / 1px hover / 2px focused & disabled
+     - font-weight: 300 light
+     - colours: sky-blue family (--btn-secondary-*)
+     - hover shadow: 2px 2px 0 0 sky-blue
+   ========================================================================== */
+
+/* ── Reset ── */
+.btn,
+.btn * {
+  box-sizing: border-box;
+}
+
+/* ── Base ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--btn-gap-default);
+  padding: var(--btn-padding-default);
+  border-radius: var(--btn-border-radius);
+  border: var(--btn-secondary-border-width) solid var(--btn-secondary-border-color);
+  font-family: var(--btn-font-family);
+  font-size: var(--btn-font-size-default);
+  line-height: var(--btn-line-height-default);
+  font-weight: var(--btn-font-weight);
+  letter-spacing: var(--btn-letter-spacing);
+  white-space: nowrap;
+  user-select: none;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  min-width: var(--global-spacing-sizing-80px);
+  transition:
+    background-color var(--btn-transition-duration) var(--btn-transition-easing),
+    border-color var(--btn-transition-duration) var(--btn-transition-easing),
+    box-shadow var(--btn-transition-duration) var(--btn-transition-easing),
+    color var(--btn-transition-duration) var(--btn-transition-easing);
+}
+
+/* ── Sizes ── */
+.btn--extra-small {
+  gap: var(--btn-secondary-gap-xs);
+  padding: var(--btn-secondary-padding-xs);
+  font-size: var(--btn-font-size-small);
+  line-height: var(--btn-line-height-small);
+}
+
+.btn--small {
+  gap: var(--btn-gap-small);
+  padding: var(--btn-padding-small);
+  font-size: var(--btn-font-size-small);
+  line-height: var(--btn-line-height-small);
+  min-height: var(--global-spacing-sizing-32px);
+}
+
+.btn--default {
+  min-height: var(--global-spacing-sizing-44px);
+}
+
+.btn--large {
+  gap: var(--btn-gap-large);
+  padding: var(--btn-padding-large);
+  font-size: var(--btn-font-size-large);
+  line-height: var(--btn-line-height-large);
+  min-height: var(--global-spacing-sizing-52px);
+}
+
+/* ── Solid variant (sky-blue-50 bg) ── */
+.btn--solid {
+  background: var(--btn-secondary-bg);
+  color: var(--btn-secondary-color);
+}
+
+.btn--solid:hover:not(:disabled):not(.btn--disabled) {
+  background: var(--btn-secondary-bg-hover);
+  color: var(--btn-secondary-color-hover);
+  border-width: var(--btn-border-width-default);
+  box-shadow: var(--btn-secondary-shadow-hover);
+}
+
+.btn--solid:active:not(:disabled):not(.btn--disabled) {
+  background: var(--btn-secondary-bg-active);
+  color: var(--btn-secondary-color-hover);
+  border-width: var(--btn-border-width-default);
+  box-shadow: var(--btn-secondary-shadow-hover);
+}
+
+.btn--solid:focus-visible:not(:disabled):not(.btn--disabled) {
+  outline: none;
+  border-width: var(--btn-secondary-border-width-focus);
+  box-shadow: none;
+}
+
+/* ── Alt variant (white bg) ── */
+.btn--alt {
+  background: var(--btn-secondary-alt-bg);
+  color: var(--btn-secondary-color);
+}
+
+.btn--alt:hover:not(:disabled):not(.btn--disabled) {
+  background: var(--btn-secondary-alt-bg-hover);
+  color: var(--btn-secondary-color-hover);
+  border-width: var(--btn-border-width-default);
+  box-shadow: var(--btn-secondary-shadow-hover);
+}
+
+.btn--alt:active:not(:disabled):not(.btn--disabled) {
+  background: var(--btn-secondary-alt-bg-hover);
+  color: var(--btn-secondary-color-hover);
+  border-width: var(--btn-border-width-default);
+  box-shadow: var(--btn-secondary-shadow-hover);
+}
+
+.btn--alt:focus-visible:not(:disabled):not(.btn--disabled) {
+  outline: none;
+  background: var(--btn-secondary-alt-bg);
+  border-width: var(--btn-secondary-border-width-focus);
+  box-shadow: none;
+}
+
+/* ── Disabled (both variants) ── */
+.btn--disabled,
+.btn:disabled {
+  background: var(--btn-secondary-bg-disabled) !important;
+  color: var(--btn-secondary-color-disabled) !important;
+  border-color: var(--btn-secondary-border-color-disabled) !important;
+  border-width: var(--btn-border-width-disabled) !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Loading ── */
+.btn--loading {
+  border-width: var(--btn-border-width-loading);
+  cursor: wait;
+  pointer-events: none;
+}
+
+/* ── Icon-only ── */
+.btn--icon-only {
+  width: var(--btn-icon-only-size-default);
+  height: var(--btn-icon-only-size-default);
+  min-width: unset;
+  padding: var(--global-spacing-sizing-4px);
+  border-radius: var(--btn-border-radius);
+}
+
+.btn--icon-only.btn--extra-small {
+  width: var(--global-spacing-sizing-28px);
+  height: var(--global-spacing-sizing-28px);
+}
+
+.btn--icon-only.btn--small {
+  width: var(--btn-icon-only-size-small);
+  height: var(--btn-icon-only-size-small);
+  min-height: unset;
+}
+
+.btn--icon-only.btn--large {
+  width: var(--btn-icon-only-size-large);
+  height: var(--btn-icon-only-size-large);
+  min-height: unset;
+}
+
+/* Icon-only hover uses sky-blue-50 bg */
+.btn--icon-only:hover:not(:disabled):not(.btn--disabled) {
+  background: var(--btn-secondary-icon-only-bg-hover);
+}
+
+.btn--icon-only:focus-visible:not(:disabled):not(.btn--disabled) {
+  outline: none;
+  border-width: var(--btn-secondary-border-width-focus);
+  box-shadow: none;
+}
+
+/* ── Full width ── */
+.btn--full-width {
+  width: 100%;
+}
+
+/* ── Icon slot ── */
+.btn__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.btn__icon-svg {
+  width: var(--btn-icon-size-default) !important;
+  height: var(--btn-icon-size-default) !important;
+  font-size: var(--btn-icon-size-default) !important;
+}
+
+.btn--extra-small .btn__icon-svg,
+.btn--small .btn__icon-svg {
+  width: var(--btn-icon-size-small) !important;
+  height: var(--btn-icon-size-small) !important;
+  font-size: var(--btn-icon-size-small) !important;
+}
+
+.btn--large .btn__icon-svg {
+  width: var(--btn-icon-size-large) !important;
+  height: var(--btn-icon-size-large) !important;
+  font-size: var(--btn-icon-size-large) !important;
+}
+
+/* ── Label ── */
+.btn__label {
+  display: inline-flex;
+  align-items: center;
+  line-height: inherit;
+}
+
+/* ── Spinner ── */
+.btn__spinner {
+  display: inline-block;
+  width: var(--btn-spinner-size-default);
+  height: var(--btn-spinner-size-default);
+  border: var(--btn-spinner-border-width) solid currentColor;
+  border-top-color: transparent;
+  border-radius: var(--global-spacing-radius-full);
+  animation: secondary-btn-spin var(--btn-spinner-duration) linear infinite;
+  flex-shrink: 0;
+  opacity: var(--btn-spinner-opacity);
+}
+
+.btn--extra-small .btn__spinner,
+.btn--small .btn__spinner {
+  width: var(--btn-spinner-size-small);
+  height: var(--btn-spinner-size-small);
+}
+
+.btn--large .btn__spinner {
+  width: var(--btn-spinner-size-large);
+  height: var(--btn-spinner-size-large);
+}
+
+@keyframes secondary-btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
