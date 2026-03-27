@@ -119,7 +119,7 @@ export const TertiaryButtonDocs: React.FC = () => {
 
         <DocsTemplate.Subsection title="Alt">
           <DocsTemplate.BodyText>
-            Seafoam-25 (#F9FCFA) background with dark-yellow border. Shifts to seafoam-50 on hover.
+            Seafoam-25 (#F9FCFA) background with dark-yellow border. Shifts to yellow-50 (#FEFAED) on hover and pressed.
           </DocsTemplate.BodyText>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px) 0' }}>
             <TertiaryButton variant="alt" label="Label" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} />
@@ -132,7 +132,8 @@ export const TertiaryButtonDocs: React.FC = () => {
         <DocsTemplate.Subsection title="Icon Only">
           <DocsTemplate.BodyText>
             Brighter yellow (#F9C846) background — the full-strength yellow signal that this is
-            an action, with the same dark-yellow border and seafoam hover shadow.
+            an action, with the same dark-yellow border and dark-seafoam hover shadow. Shifts to
+            yellow-50 (#FEFAED) on hover and pressed.
           </DocsTemplate.BodyText>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px) 0', alignItems: 'center' }}>
             <TertiaryButton iconOnly leadingIcon={PersonIcon} size="extra-small" ariaLabel="User" />
@@ -266,8 +267,9 @@ export const TertiaryButtonDocs: React.FC = () => {
           { name: '--btn-tertiary-bg', description: 'Solid background — --global-color-primary-yellow-200 (#FDEEC7)' },
           { name: '--btn-tertiary-bg-hover', description: 'Solid hover/pressed background — --global-color-primary-yellow-50 (#FEFAED)' },
           { name: '--btn-tertiary-alt-bg', description: 'Alt background — --global-color-primary-seafoam-25 (#F9FCFA)' },
-          { name: '--btn-tertiary-alt-bg-hover', description: 'Alt hover background — --global-color-primary-seafoam-50 (#F3F9F5)' },
+          { name: '--btn-tertiary-alt-bg-hover', description: 'Alt hover/pressed background — --global-color-primary-yellow-50 (#FEFAED)' },
           { name: '--btn-tertiary-icon-only-bg', description: 'Icon-only background — --global-color-primary-yellow (#F9C846)' },
+          { name: '--btn-tertiary-icon-only-bg-hover', description: 'Icon-only hover/pressed background — --global-color-primary-yellow-50 (#FEFAED)' },
           { name: '--btn-tertiary-color', description: 'Text / icon colour — --global-color-base-black (#1C1C1C)' },
           { name: '--btn-tertiary-border-color', description: 'Border colour — --global-color-primary-yellow-dark (#E8A317)' },
           { name: '--btn-tertiary-shadow-hover', description: 'Hover shadow — 2px 2px 0 0 --global-color-primary-seafoam-extra-dark (#384C40)' },

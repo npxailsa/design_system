@@ -1271,11 +1271,11 @@
 
   /* Tertiary Button — alt variant (seafoam-25 bg) */
   --btn-tertiary-alt-bg: var(--global-color-primary-seafoam-25);
-  --btn-tertiary-alt-bg-hover: var(--global-color-primary-seafoam-50);
+  --btn-tertiary-alt-bg-hover: var(--global-color-primary-yellow-50);
 
   /* Tertiary Button — icon-only variant (brighter yellow bg) */
   --btn-tertiary-icon-only-bg: var(--global-color-primary-yellow);
-  --btn-tertiary-icon-only-bg-hover: var(--global-color-primary-yellow);
+  --btn-tertiary-icon-only-bg-hover: var(--global-color-primary-yellow-50);
 
   /* Tertiary Button — disabled (same gray scheme as other buttons) */
   --btn-tertiary-bg-disabled: var(--global-color-neutral-gray-50);
