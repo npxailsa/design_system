@@ -25,43 +25,85 @@ export const ButtonDocs: React.FC = () => {
       {/* ── Component Anatomy ── */}
       <DocsTemplate.Section title="Component Anatomy">
         <DocsTemplate.BodyText>
-          The diagram below maps each part of the default Button to its controlling design token.
+          The diagrams below map each part of the Button to its controlling design token for both
+          the <strong>filled</strong> and <strong>outline</strong> variants.
         </DocsTemplate.BodyText>
-        <DocsTemplate.Anatomy
-          preview={
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2F39deb59118f84012a5375e7c768ee343"
-              alt="Button component anatomy diagram with numbered callouts"
-              style={{ width: '100%', height: 'auto' }}
-            />
-          }
-          parts={[
-            {
-              id: 1,
-              name: 'Container',
-              token: '--btn-border-radius (--global-spacing-radius-4px)\n--btn-border-width-default (--global-spacing-stroke-1px)\n--btn-padding-{size}\n--btn-outline-bg (--global-color-primary-blue-blue-50)',
-              description: 'Outer button shell. Padding drives height with equal top/bottom spacing. Corner radius is 4px. Border is 1px default, 2px on focus.',
-            },
-            {
-              id: 2,
-              name: 'Leading Icon',
-              token: '--btn-icon-size-{size} (16px default)\n--btn-gap-{size} (--global-spacing-sizing-8px)',
-              description: 'Optional MUI icon before the label. 16px for default size. Controlled by showLeadingIcon + leadingIcon props.',
-            },
-            {
-              id: 3,
-              name: 'Label',
-              token: '--btn-font-family (--brand-font-primary)\n--btn-font-size-{size} (16px default)\n--btn-font-weight (--global-type-weight-light)\n--btn-letter-spacing',
-              description: 'Primary button text. Uses F37 Ginger Light (weight 300), 16px default. Vertically centred by equal padding. Set via the label prop.',
-            },
-            {
-              id: 4,
-              name: 'Trailing Icon',
-              token: '--btn-icon-size-{size} (16px default)\n--btn-gap-{size} (--global-spacing-sizing-8px)',
-              description: 'Optional MUI icon after the label. Inherits button text colour. Controlled by showTrailingIcon + trailingIcon props.',
-            },
-          ]}
-        />
+
+        <DocsTemplate.Subsection title="Filled">
+          <DocsTemplate.Anatomy
+            preview={
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2Faa05dab54f864947ac346fbc53ed3d44"
+                alt="Filled primary button component anatomy diagram with numbered callouts"
+                style={{ width: '100%', height: 'auto' }}
+              />
+            }
+            parts={[
+              {
+                id: 1,
+                name: 'Container',
+                token: '--btn-border-radius (--global-spacing-radius-4px)\n--btn-filled-bg (--global-color-primary-blue-blue-400)\n--btn-filled-border-color (--global-color-primary-blue-blue-400)\n--btn-filled-shadow\n--btn-padding-{size}',
+                description: 'Outer button shell. W: HUG, H: HUG. Min-W: 80, min-H: 52 (large). Corner radius: 4. Fill and border both use color/primary/blue/blue. Stroke width: 0.5. Drop shadow applied by default.',
+              },
+              {
+                id: 2,
+                name: 'Leading Icon',
+                token: 'filled/icons (user category)\n--btn-icon-size-{size} (18px large)',
+                description: 'Optional icon preceding the label. W: 18, H: 18, fill: #FFFFFF. Icon name: account, category: user. Controlled by showLeadingIcon + leadingIcon props.',
+              },
+              {
+                id: 3,
+                name: 'Trailing Icon',
+                token: 'filled/icons (action category)\n--btn-icon-size-{size} (18px large)',
+                description: 'Optional icon after the label. W: 18, H: 18, fill: #FFFFFF. Icon name: arrow-right, category: action. Controlled by showTrailingIcon + trailingIcon props.',
+              },
+              {
+                id: 4,
+                name: 'Label',
+                token: '--btn-font-family (Archivo Light)\n--btn-font-size-{size} (18px large)\n--btn-font-weight (--global-type-weight-light)',
+                description: 'Primary button text. W: HUG, H: HUG. Uses Archivo Light at 18px with 24px line-height. Colour: color/base/white.',
+              },
+            ]}
+          />
+        </DocsTemplate.Subsection>
+
+        <DocsTemplate.Subsection title="Outline">
+          <DocsTemplate.Anatomy
+            preview={
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2Fbbc4a05558b54da29f2b0c32aecd0210"
+                alt="Outline primary button component anatomy diagram with numbered callouts"
+                style={{ width: '100%', height: 'auto' }}
+              />
+            }
+            parts={[
+              {
+                id: 1,
+                name: 'Container',
+                token: '--btn-border-radius (--global-spacing-radius-4px)\n--btn-outline-bg (--global-color-primary-blue-blue-50)\n--btn-outline-border-color (--global-color-primary-blue-blue-300)\n--btn-border-width-default (--global-spacing-stroke-1px)\n--btn-padding-{size}',
+                description: 'Outer button shell. W: HUG, H: HUG. Min-W: 80, min-H: 52 (large). Corner radius: 4. Fill uses color/primary/blue/blue-50, border uses color/primary/blue/blue-300. Stroke width: 1.',
+              },
+              {
+                id: 2,
+                name: 'Leading Icon',
+                token: 'filled/icons (user category)\n--btn-icon-size-{size} (18px large)',
+                description: 'Optional icon preceding the label. W: 18, H: 18, fill: #FFFFFF. Icon name: account, category: user. Controlled by showLeadingIcon + leadingIcon props.',
+              },
+              {
+                id: 3,
+                name: 'Trailing Icon',
+                token: 'filled/icons (action category)\n--btn-icon-size-{size} (18px large)',
+                description: 'Optional icon after the label. W: 18, H: 18, fill: #FFFFFF. Icon name: arrow-right, category: action. Controlled by showTrailingIcon + trailingIcon props.',
+              },
+              {
+                id: 4,
+                name: 'Label',
+                token: '--btn-font-family (Archivo Light)\n--btn-font-size-{size} (18px large)\n--btn-font-weight (--global-type-weight-light)\n--btn-outline-color (--global-color-secondary-blue-gray)',
+                description: 'Primary button text. W: HUG, H: HUG. Uses Archivo Light at 18px with 24px line-height. Colour: color/secondary/blue-gray.',
+              },
+            ]}
+          />
+        </DocsTemplate.Subsection>
       </DocsTemplate.Section>
 
       {/* ── Variants ── */}
