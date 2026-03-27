@@ -1416,6 +1416,78 @@
   --btn-menu-transition-easing:   var(--global-animation-easing-default);
 
   /* ==========================================================================
+     COMPONENT: ButtonMenuItem
+     --------------------------------------------------------------------------
+     A standalone, position-aware menu list item component used as a building
+     block inside ButtonMenu. Each item can be placed as top / mid / bottom /
+     solo, adjusting its border-radius and border pattern accordingly.
+
+     Figma spec (BuildingBlocks/Button/menu-item):
+       Default  : 1px blue-300 border, blue-50 bg, blue-gray text
+       Hover    : blue-100 bg, black text, 2×2 blue-400 offset shadow
+       Focused  : 2px blue-300 border, blue-50 bg, blue-gray text
+       Selected : brand-primary bg+border (0.5px), white text
+       Disabled : gray-200 border, gray-50 bg, gray-300 text
+       Radius   : 4px on the exposed corners per position
+     ========================================================================== */
+
+  /* ButtonMenuItem — colours */
+  --btn-menu-item-bg:                    var(--global-color-primary-blue-blue-50);
+  --btn-menu-item-border-color:          var(--global-color-primary-blue-blue-300);
+  --btn-menu-item-border-width:          var(--global-spacing-stroke-1px);
+  --btn-menu-item-border-width-focus:    var(--global-spacing-stroke-2px);
+  --btn-menu-item-color:                 var(--global-color-secondary-blue-gray);
+
+  --btn-menu-item-bg-hover:              var(--global-color-primary-blue-blue-100);
+  --btn-menu-item-color-hover:           var(--global-color-base-black);
+  --btn-menu-item-shadow-hover:          2px 2px 0px 0px var(--global-color-primary-blue-blue-400);
+
+  --btn-menu-item-bg-selected:           var(--brand-primary);
+  --btn-menu-item-border-color-selected: var(--brand-primary);
+  --btn-menu-item-border-width-selected: var(--global-spacing-stroke-0-5px);
+  --btn-menu-item-color-selected:        var(--global-color-base-white);
+
+  --btn-menu-item-bg-disabled:           var(--global-color-neutral-gray-50);
+  --btn-menu-item-border-color-disabled: var(--global-color-neutral-gray-200);
+  --btn-menu-item-color-disabled:        var(--global-color-neutral-gray-300);
+
+  /* ButtonMenuItem — shape */
+  --btn-menu-item-radius:                var(--global-spacing-radius-4px);
+
+  /* ButtonMenuItem — sizing */
+  --btn-menu-item-min-height-sm:         var(--global-spacing-sizing-32px);
+  --btn-menu-item-min-height:            var(--global-spacing-sizing-42px);
+  --btn-menu-item-min-height-lg:         var(--global-spacing-sizing-52px);
+  --btn-menu-item-min-width:             var(--global-spacing-sizing-80px);
+
+  /* ButtonMenuItem — padding */
+  --btn-menu-item-padding-sm:            var(--global-spacing-sizing-4px) var(--global-spacing-sizing-12px);
+  --btn-menu-item-padding:               var(--global-spacing-sizing-4px) var(--global-spacing-sizing-16px);
+  --btn-menu-item-padding-lg:            var(--global-spacing-sizing-8px) var(--global-spacing-sizing-16px);
+
+  /* ButtonMenuItem — typography */
+  --btn-menu-item-font-family:           var(--brand-font-primary);
+  --btn-menu-item-font-weight:           var(--global-type-weight-light);
+  --btn-menu-item-font-size-sm:          var(--global-type-size-primary-label-sm);
+  --btn-menu-item-font-size:             var(--global-type-size-primary-label);
+  --btn-menu-item-font-size-lg:          var(--global-type-size-primary-label-lg);
+  --btn-menu-item-line-height-sm:        var(--global-type-line-height-label-sm);
+  --btn-menu-item-line-height:           var(--global-type-line-height-label);
+  --btn-menu-item-line-height-lg:        var(--global-type-line-height-label-lg);
+  --btn-menu-item-letter-spacing:        var(--global-type-letter-spacing-primary-label);
+
+  /* ButtonMenuItem — icon */
+  --btn-menu-item-icon-size-sm:          var(--global-spacing-sizing-14px);
+  --btn-menu-item-icon-size:             var(--global-spacing-sizing-16px);
+  --btn-menu-item-icon-size-lg:          var(--global-spacing-sizing-18px);
+  --btn-menu-item-icon-gap:              var(--global-spacing-sizing-8px);
+  --btn-menu-item-icon-opacity:          0.7;
+
+  /* ButtonMenuItem — transition */
+  --btn-menu-item-transition-duration:   var(--global-animation-duration-fast);
+  --btn-menu-item-transition-easing:     var(--global-animation-easing-default);
+
+  /* ==========================================================================
      COMPONENT: SplitButton
      --------------------------------------------------------------------------
      A compound button pairing a primary action (main zone) with a chevron

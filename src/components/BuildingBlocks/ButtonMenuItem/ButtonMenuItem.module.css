@@ -1,0 +1,214 @@
+/* ==========================================================================
+   ButtonMenuItem — BuildingBlocks Component
+   --------------------------------------------------------------------------
+   A single, position-aware menu list item. Used individually or stacked
+   inside ButtonMenu. Position controls border-radius and border edges so
+   a stack reads as a single card with collapsed internal borders.
+
+   Figma spec (BuildingBlocks/Button/menu-item):
+     Default  : 1px blue-300 border (#95A0E5), blue-50 bg (#F9F9FE),
+                blue-gray text (#61607C), F37 Ginger Light 16px
+     Hover    : blue-100 bg (#E7E9F4), black text, 2×2 blue-400 shadow
+     Focus    : 2px border, same as default otherwise
+     Selected : brand-primary bg (#3776CE), white text, 0.5px border
+     Disabled : gray-50 bg, gray-200 border, gray-300 text
+
+   Design tokens: see tokens.css  →  --btn-menu-item-*
+   ========================================================================== */
+
+/* ── Reset ── */
+.item,
+.item * {
+  box-sizing: border-box;
+}
+
+/* ── Base ── */
+.item {
+  /* Native reset */
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+  outline: none;
+  cursor: pointer;
+
+  /* Layout */
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--btn-menu-item-icon-gap);
+  width: 100%;
+  min-width: var(--btn-menu-item-min-width);
+  min-height: var(--btn-menu-item-min-height);
+  text-align: left;
+
+  /* Colours (default / outline state) */
+  background-color: var(--btn-menu-item-bg);
+  color: var(--btn-menu-item-color);
+
+  /* Border — all 4 sides by default (solo) */
+  border-style: solid;
+  border-color: var(--btn-menu-item-border-color);
+  border-width: var(--btn-menu-item-border-width);
+  border-radius: var(--btn-menu-item-radius);
+
+  /* Padding */
+  padding: var(--btn-menu-item-padding);
+
+  /* Typography */
+  font-family:    var(--btn-menu-item-font-family);
+  font-size:      var(--btn-menu-item-font-size);
+  line-height:    var(--btn-menu-item-line-height);
+  font-weight:    var(--btn-menu-item-font-weight);
+  letter-spacing: var(--btn-menu-item-letter-spacing);
+
+  /* Transition */
+  transition:
+    background-color var(--btn-menu-item-transition-duration) var(--btn-menu-item-transition-easing),
+    color            var(--btn-menu-item-transition-duration) var(--btn-menu-item-transition-easing),
+    box-shadow       var(--btn-menu-item-transition-duration) var(--btn-menu-item-transition-easing),
+    border-color     var(--btn-menu-item-transition-duration) var(--btn-menu-item-transition-easing),
+    border-width     var(--btn-menu-item-transition-duration) var(--btn-menu-item-transition-easing);
+}
+
+/* ════════════════════════════════════════════════════════════
+   POSITION MODIFIERS
+   Controls which corners are rounded and which border edges show
+   ════════════════════════════════════════════════════════════ */
+
+/* top: rounded top corners, top+left+right border, no bottom border */
+.item--top {
+  border-radius: var(--btn-menu-item-radius) var(--btn-menu-item-radius) 0 0;
+  border-bottom-width: 0;
+}
+
+/* mid: no radius, left+right border only */
+.item--mid {
+  border-radius: 0;
+  border-top-width: 0;
+  border-bottom-width: 0;
+}
+
+/* bottom: rounded bottom corners, all borders, no top border */
+.item--bottom {
+  border-radius: 0 0 var(--btn-menu-item-radius) var(--btn-menu-item-radius);
+  border-top-width: 0;
+}
+
+/* solo: all 4 corners rounded, all 4 borders (default) */
+.item--solo {
+  border-radius: var(--btn-menu-item-radius);
+}
+
+/* ════════════════════════════════════════════════════════════
+   INTERACTIVE STATES
+   ════════════════════════════════════════════════════════════ */
+
+/* Hover */
+.item:hover:not(:disabled):not(.item--disabled):not(.item--selected) {
+  background-color: var(--btn-menu-item-bg-hover);
+  color:            var(--btn-menu-item-color-hover);
+  box-shadow:       var(--btn-menu-item-shadow-hover);
+}
+
+/* Focus-visible (keyboard navigation) */
+.item:focus-visible:not(:disabled):not(.item--disabled) {
+  border-width: var(--btn-menu-item-border-width-focus);
+  outline: none;
+}
+
+/* Active / pressed */
+.item:active:not(:disabled):not(.item--disabled):not(.item--selected) {
+  background-color: var(--btn-menu-item-bg-hover);
+  color:            var(--btn-menu-item-color-hover);
+  box-shadow:       var(--btn-menu-item-shadow-hover);
+}
+
+/* Selected */
+.item--selected {
+  background-color: var(--btn-menu-item-bg-selected);
+  color:            var(--btn-menu-item-color-selected);
+  border-color:     var(--btn-menu-item-border-color-selected);
+  border-width:     var(--btn-menu-item-border-width-selected);
+}
+
+/* Selected + hover: keep selected appearance */
+.item--selected:hover {
+  background-color: var(--btn-menu-item-bg-selected);
+  color:            var(--btn-menu-item-color-selected);
+  box-shadow: none;
+}
+
+/* Disabled */
+.item--disabled,
+.item:disabled {
+  background-color: var(--btn-menu-item-bg-disabled);
+  color:            var(--btn-menu-item-color-disabled);
+  border-color:     var(--btn-menu-item-border-color-disabled);
+  cursor:           not-allowed;
+  pointer-events:   none;
+  box-shadow:       none;
+}
+
+/* ════════════════════════════════════════════════════════════
+   SIZE — SMALL
+   ════════════════════════════════════════════════════════════ */
+
+.item--small {
+  min-height:  var(--btn-menu-item-min-height-sm);
+  padding:     var(--btn-menu-item-padding-sm);
+  font-size:   var(--btn-menu-item-font-size-sm);
+  line-height: var(--btn-menu-item-line-height-sm);
+}
+
+.item--small .item__icon-svg {
+  width:     var(--btn-menu-item-icon-size-sm) !important;
+  height:    var(--btn-menu-item-icon-size-sm) !important;
+  font-size: var(--btn-menu-item-icon-size-sm) !important;
+}
+
+/* ════════════════════════════════════════════════════════════
+   SIZE — LARGE
+   ════════════════════════════════════════════════════════════ */
+
+.item--large {
+  min-height:  var(--btn-menu-item-min-height-lg);
+  padding:     var(--btn-menu-item-padding-lg);
+  font-size:   var(--btn-menu-item-font-size-lg);
+  line-height: var(--btn-menu-item-line-height-lg);
+}
+
+.item--large .item__icon-svg {
+  width:     var(--btn-menu-item-icon-size-lg) !important;
+  height:    var(--btn-menu-item-icon-size-lg) !important;
+  font-size: var(--btn-menu-item-icon-size-lg) !important;
+}
+
+/* ════════════════════════════════════════════════════════════
+   ICON SLOTS
+   ════════════════════════════════════════════════════════════ */
+
+.item__icon {
+  display:         inline-flex;
+  align-items:     center;
+  justify-content: center;
+  flex-shrink:     0;
+  opacity:         var(--btn-menu-item-icon-opacity);
+}
+
+.item__icon-svg {
+  width:     var(--btn-menu-item-icon-size) !important;
+  height:    var(--btn-menu-item-icon-size) !important;
+  font-size: var(--btn-menu-item-icon-size) !important;
+}
+
+.item__icon--trailing {
+  margin-left: auto;
+}
+
+/* ── Label ── */
+.item__label {
+  display:     inline-flex;
+  align-items: center;
+  line-height: inherit;
+  flex:        1;
+}

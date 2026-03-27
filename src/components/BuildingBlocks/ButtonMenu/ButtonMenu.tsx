@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './ButtonMenu.module.css';
+import { ButtonMenuItem } from '../ButtonMenuItem/ButtonMenuItem';
 
 export type ButtonMenuSize = 'small' | 'default' | 'large';
 
@@ -19,7 +20,7 @@ export interface ButtonMenuItem {
 }
 
 export interface ButtonMenuProps {
-  /** Controls font size and padding */
+  /** Controls font size, icon size, and container width */
   size?: ButtonMenuSize;
   /** Array of menu items — minimum 2 (top + bottom) */
   items: ButtonMenuItem[];
@@ -48,44 +49,25 @@ export const ButtonMenu = ({
       {items.map((item, index) => {
         const isTop = index === 0;
         const isBottom = index === items.length - 1;
-        const isMid = !isTop && !isBottom;
+        const isSolo = items.length === 1;
 
-        const itemClasses = [
-          styles.buttonMenu__item,
-          isTop && styles['buttonMenu__item--top'],
-          isMid && styles['buttonMenu__item--mid'],
-          isBottom && styles['buttonMenu__item--bottom'],
-          item.selected && styles['buttonMenu__item--selected'],
-          item.disabled && styles['buttonMenu__item--disabled'],
-        ]
-          .filter(Boolean)
-          .join(' ');
-
-        const LeadingIcon = item.leadingIcon;
-        const TrailingIcon = item.trailingIcon;
+        let position: 'top' | 'mid' | 'bottom' | 'solo' = 'mid';
+        if (isSolo) position = 'solo';
+        else if (isTop) position = 'top';
+        else if (isBottom) position = 'bottom';
 
         return (
-          <button
+          <ButtonMenuItem
             key={index}
-            role="menuitem"
-            className={itemClasses}
-            onClick={item.disabled ? undefined : item.onClick}
+            label={item.label}
+            position={position}
+            size={size}
+            selected={item.selected}
             disabled={item.disabled}
-            aria-selected={item.selected}
-            aria-disabled={item.disabled}
-          >
-            {LeadingIcon && (
-              <span className={styles.buttonMenu__icon}>
-                <LeadingIcon className={styles['buttonMenu__icon-svg']} />
-              </span>
-            )}
-            <span className={styles.buttonMenu__label}>{item.label}</span>
-            {TrailingIcon && (
-              <span className={`${styles.buttonMenu__icon} ${styles['buttonMenu__icon--trailing']}`}>
-                <TrailingIcon className={styles['buttonMenu__icon-svg']} />
-              </span>
-            )}
-          </button>
+            leadingIcon={item.leadingIcon}
+            trailingIcon={item.trailingIcon}
+            onClick={item.onClick}
+          />
         );
       })}
     </div>
