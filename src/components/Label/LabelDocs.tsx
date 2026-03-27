@@ -24,35 +24,36 @@ export const LabelDocs: React.FC = () => {
         </DocsTemplate.BodyText>
         <DocsTemplate.Anatomy
           preview={
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontFamily: 'var(--font-family-primary)', fontSize: 'var(--global-type-size-primary-label)', fontWeight: 'var(--global-type-weight-bold)', color: 'var(--global-color-base-black)', letterSpacing: '0.15px' }}>
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M10 2a8 8 0 1 0 0 16A8 8 0 0 0 10 2zm0 1.5a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13zM10 6a.75.75 0 0 0-.75.75v3.5H7.75a.75.75 0 0 0 0 1.5h1.5v1.5a.75.75 0 0 0 1.5 0V11.75h1.5a.75.75 0 0 0 0-1.5h-1.5V6.75A.75.75 0 0 0 10 6z" fill="currentColor"/>
-              </svg>
-              <span>Example Label Text</span>
-              <span style={{ width: '1px', height: '16px', background: 'currentColor', opacity: 0.3 }} aria-hidden="true" />
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ opacity: 0.6 }} aria-hidden="true">
-                <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </div>
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2F19def398fc2449d4811d7e7b92b6c603"
+              alt="Label component anatomy diagram with numbered callouts"
+              style={{ width: '100%', height: 'auto' }}
+            />
           }
           parts={[
             {
               id: 1,
               name: 'Leading Icon',
-              token: 'MUI icon component (or custom SVG)\n--label-icon-color\n--label-gap-{size}',
-              description: 'Optional icon preceding the text. Inherits colour from --label-icon-color. Gap to text is controlled by --label-gap-{size}.',
+              token: 'filled/icons (user category)\n--label-icon-color\n--label-gap-{size}',
+              description: 'Optional icon preceding the text. W: 18, H: 18, fill: #FFFFFF. Icon name: account, category: user. Controlled by showLeadingIcon prop.',
             },
             {
               id: 2,
-              name: 'Text',
-              token: '--label-font-family\n--label-size-{size}\n--label-line-height-{size}\n--label-weight-{weight}\n--label-text-color\n--label-letter-spacing',
-              description: 'The primary label string. Font size, line height, and weight are all size- and weight-variant driven. Supports 5 sizes × 4 weights.',
+              name: 'Label',
+              token: '--label-font-family (--brand-font-primary)\n--label-size (18px)\n--label-line-height (24px)\n--label-text-color (color/base/black)',
+              description: 'Primary text content. W: HUG, H: HUG. Uses F37 Ginger Regular at 18px with 24px line-height. Colour: color/base/black.',
             },
             {
               id: 3,
-              name: 'Dropdown Split',
-              token: '--label-dropdown-split-width\n--label-dropdown-split-opacity\n--label-dropdown-split-gap\n--label-dropdown-chevron-opacity\n--label-dropdown-padding-left',
-              description: 'Optional split divider + chevron for dropdown-trigger labels. Controlled by the showDropdown prop. Divider uses --label-divider-color.',
+              name: 'Trailing Icon',
+              token: 'filled/icons (action category)\n--label-icon-color\n--label-gap-{size}',
+              description: 'Optional icon after the text. W: 18, H: 18, fill: #FFFFFF. Icon name: arrow-right, category: action. Controlled by showTrailingIcon prop.',
+            },
+            {
+              id: 4,
+              name: 'Split',
+              token: '--label-dropdown-split-width\n--label-dropdown-split-gap (--global-spacing-sizing-4px)',
+              description: 'Optional split divider for dropdown-trigger labels. W: HUG, H: FILL. Gap uses spacing/sizing/4px. Controlled by the showDropdown prop.',
             },
           ]}
         />
