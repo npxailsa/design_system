@@ -60,7 +60,7 @@ export const SaveDraftButtonDocs: React.FC = () => {
       {/* ── Anatomy ── */}
       <DocsTemplate.Section title="Component Anatomy">
         <DocsTemplate.BodyText>
-          The button contains two fixed elements: a <strong>Person icon</strong> (MUI Account)
+          The button contains two fixed elements: a <strong>Save icon</strong> (MUI SaveOutlined / floppy disk)
           always visible on the left, and a <strong>label</strong> that updates per status.
           No trailing icon or icon-only mode is supported.
         </DocsTemplate.BodyText>
@@ -93,7 +93,7 @@ export const SaveDraftButtonDocs: React.FC = () => {
               id: 2,
               name: 'Leading Icon',
               token: '--btn-save-draft-icon-size (18px)\n--btn-save-draft-icon-gap (8px)',
-              description: 'MUI Person icon, always rendered. Size: 18px. Colour inherits from the button text token.',
+              description: 'MUI SaveOutlined (floppy disk) icon, always rendered. Size: 18px. Colour inherits from the button text token.',
             },
             {
               id: 3,
@@ -167,7 +167,7 @@ export const SaveDraftButtonDocs: React.FC = () => {
           { name: '--btn-save-draft-padding-v', description: 'Vertical padding — 8px' },
           { name: '--btn-save-draft-padding-h', description: 'Horizontal padding (default state) — 16px' },
           { name: '--btn-save-draft-padding-h-expanded', description: 'Horizontal padding (all other states) — 24px' },
-          { name: '--btn-save-draft-icon-size', description: 'Person icon size — 18px' },
+          { name: '--btn-save-draft-icon-size', description: 'Save (floppy disk) icon size — 18px' },
           { name: '--btn-save-draft-icon-gap', description: 'Gap between icon and label — 8px' },
           { name: '--btn-save-draft-font-family', description: 'Font family — --brand-font-primary (F37 Ginger Pro)' },
           { name: '--btn-save-draft-font-weight', description: 'Font weight — --global-type-weight-light (300)' },

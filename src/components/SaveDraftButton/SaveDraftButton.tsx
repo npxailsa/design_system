@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './SaveDraftButton.module.css';
-import PersonIcon from '@mui/icons-material/Person';
+import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined';
 
 export type SaveDraftStatus =
   | 'default'
@@ -80,7 +80,7 @@ export const SaveDraftButton: React.FC<SaveDraftButtonProps> = ({
       aria-busy={status === 'saving' || status === 'auto-saving' || undefined}
     >
       <span className={styles['save-draft-btn__icon']} aria-hidden="true">
-        <PersonIcon className={styles['save-draft-btn__icon-svg']} />
+        <SaveOutlinedIcon className={styles['save-draft-btn__icon-svg']} />
       </span>
       <span className={styles['save-draft-btn__label']}>{resolvedLabel}</span>
     </button>
