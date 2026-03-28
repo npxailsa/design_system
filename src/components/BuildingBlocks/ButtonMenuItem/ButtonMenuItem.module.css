@@ -8,7 +8,7 @@
    Figma spec (BuildingBlocks/Button/menu-item):
      Default  : 1px blue-300 border (#95A0E5), blue-50 bg (#F9F9FE),
                 blue-gray text (#61607C), F37 Ginger Light 16px
-     Hover    : blue-100 bg (#E7E9F4), black text, 2×2 blue-400 shadow
+     Hover    : blue-100 bg (#E7E9F4), same text colour, no shadow
      Focus    : 2px border, same as default otherwise
      Selected : brand-primary bg (#3776CE), white text, 0.5px border
      Disabled : gray-50 bg, gray-200 border, gray-300 text
@@ -106,8 +106,6 @@
 /* Hover */
 .item:hover:not(:disabled):not(.item--disabled):not(.item--selected) {
   background-color: var(--btn-menu-item-bg-hover);
-  color:            var(--btn-menu-item-color-hover);
-  box-shadow:       var(--btn-menu-item-shadow-hover);
 }
 
 /* Focus-visible (keyboard navigation) */
@@ -119,8 +117,6 @@
 /* Active / pressed */
 .item:active:not(:disabled):not(.item--disabled):not(.item--selected) {
   background-color: var(--btn-menu-item-bg-hover);
-  color:            var(--btn-menu-item-color-hover);
-  box-shadow:       var(--btn-menu-item-shadow-hover);
 }
 
 /* Selected */

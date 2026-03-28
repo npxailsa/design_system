@@ -1424,7 +1424,7 @@
 
      Figma spec (BuildingBlocks/Button/menu-item):
        Default  : 1px blue-300 border, blue-50 bg, blue-gray text
-       Hover    : blue-100 bg, black text, 2×2 blue-400 offset shadow
+       Hover    : blue-100 bg, same text colour, no shadow
        Focused  : 2px blue-300 border, blue-50 bg, blue-gray text
        Selected : brand-primary bg+border (0.5px), white text
        Disabled : gray-200 border, gray-50 bg, gray-300 text
@@ -1439,8 +1439,8 @@
   --btn-menu-item-color:                 var(--global-color-secondary-blue-gray);
 
   --btn-menu-item-bg-hover:              var(--global-color-primary-blue-blue-100);
-  --btn-menu-item-color-hover:           var(--global-color-base-black);
-  --btn-menu-item-shadow-hover:          2px 2px 0px 0px var(--global-color-primary-blue-blue-400);
+  --btn-menu-item-color-hover:           var(--global-color-secondary-blue-gray);
+  --btn-menu-item-shadow-hover:          none;
 
   --btn-menu-item-bg-selected:           var(--brand-primary);
   --btn-menu-item-border-color-selected: var(--brand-primary);

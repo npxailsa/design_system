@@ -138,8 +138,9 @@ export const ButtonMenuItemDocs = (): JSX.Element => (
     <div style={section}>
       <h2 style={sectionTitle}>States</h2>
       <p style={sectionDesc}>
-        Each item supports five interactive states: default, hover (CSS),
-        focus-visible (CSS), selected, and disabled.
+        Each item supports five interactive states: default, hover (background
+        tint only — no shadow or text colour change), focus-visible (CSS),
+        selected, and disabled.
       </p>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-8px)', maxWidth: '280px' }}>
         <div style={colLabel}>Default</div>
@@ -239,8 +240,8 @@ export const ButtonMenuItemDocs = (): JSX.Element => (
             ['--btn-menu-item-border-width-focus', 'var(--global-spacing-stroke-2px)', 'Focus state border width'],
             ['--btn-menu-item-color', 'var(--global-color-secondary-blue-gray)', 'Default text colour (#61607C)'],
             ['--btn-menu-item-bg-hover', 'var(--global-color-primary-blue-blue-100)', 'Hover background (#E7E9F4)'],
-            ['--btn-menu-item-color-hover', 'var(--global-color-base-black)', 'Hover text colour'],
-            ['--btn-menu-item-shadow-hover', '2px 2px 0px 0px blue-400', 'Hover offset shadow'],
+            ['--btn-menu-item-color-hover', 'var(--global-color-secondary-blue-gray)', 'Hover text colour (unchanged)'],
+            ['--btn-menu-item-shadow-hover', 'none', 'No shadow on hover (menu items)'],
             ['--btn-menu-item-bg-selected', 'var(--brand-primary)', 'Selected background (#3776CE)'],
             ['--btn-menu-item-border-color-selected', 'var(--brand-primary)', 'Selected border colour'],
             ['--btn-menu-item-border-width-selected', 'var(--global-spacing-stroke-0-5px)', 'Selected border width'],
