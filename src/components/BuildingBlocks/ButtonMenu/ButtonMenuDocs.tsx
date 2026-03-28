@@ -164,10 +164,23 @@ export const ButtonMenuDocs: React.FC = () => {
           </div>
         </DocsTemplate.Subsection>
 
+        <DocsTemplate.Subsection title="Hover State">
+          <DocsTemplate.BodyText>
+            On hover, menu items receive a subtle background tint change from{' '}
+            <code>--btn-menu-item-bg</code> (blue-50) to{' '}
+            <code>--btn-menu-item-bg-hover</code> (blue-100 / #E7E9F4). There is no
+            shadow offset or text colour change — menu items use a softer hover treatment
+            than buttons to maintain their list-like affordance.
+          </DocsTemplate.BodyText>
+        </DocsTemplate.Subsection>
+
         <DocsTemplate.Subsection title="Selected State">
           <DocsTemplate.BodyText>
-            Set <code>selected: true</code> on an item to highlight it with the blue-50 background
-            and blue-gray text, indicating the active choice.
+            Set <code>selected: true</code> on an item to highlight it with the brand-primary
+            background (<code>--btn-menu-item-bg-selected</code> / #3776CE) and white text
+            (<code>--btn-menu-item-color-selected</code>). The border also matches the
+            brand-primary colour at 0.5px width. Only one item per menu should be selected at
+            a time.
           </DocsTemplate.BodyText>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-24px)', padding: 'var(--global-spacing-sizing-12px) 0' }}>
             <ButtonMenu
@@ -184,7 +197,8 @@ export const ButtonMenuDocs: React.FC = () => {
         <DocsTemplate.Subsection title="Disabled Items">
           <DocsTemplate.BodyText>
             Set <code>disabled: true</code> on individual items to prevent interaction. Disabled
-            items use <code>--global-color-neutral-gray-400</code> text and a not-allowed cursor.
+            items use <code>--btn-menu-item-color-disabled</code> (gray-300 / #D2D5DA) text,
+            a gray-50 background, gray-200 border, and a not-allowed cursor.
           </DocsTemplate.BodyText>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-24px)', padding: 'var(--global-spacing-sizing-12px) 0' }}>
             <ButtonMenu
@@ -218,16 +232,19 @@ export const ButtonMenuDocs: React.FC = () => {
       />
 
       <DocsTemplate.TokenTable
-        title="Design Tokens — Colours"
-        description="ButtonMenu colour tokens:"
+        title="Design Tokens — Item Colours (via ButtonMenuItem)"
+        description="Item-level colour tokens that drive the appearance of each row (delegated to ButtonMenuItem):"
         tokens={[
-          { name: '--btn-menu-bg', description: 'Default background — --global-color-base-white (#FFFFFF)' },
-          { name: '--btn-menu-bg-hover', description: 'Hover background — --global-color-neutral-gray-50 (#F9FAFB)' },
-          { name: '--btn-menu-bg-selected', description: 'Selected background — --global-color-primary-blue-blue-50 (#F9F9FE)' },
-          { name: '--btn-menu-bg-disabled', description: 'Disabled background — --global-color-base-white (#FFFFFF)' },
-          { name: '--btn-menu-color', description: 'Default text colour — --global-color-base-black (#1C1C1C)' },
-          { name: '--btn-menu-color-selected', description: 'Selected text colour — --global-color-secondary-blue-gray (#61607C)' },
-          { name: '--btn-menu-color-disabled', description: 'Disabled text colour — --global-color-neutral-gray-400 (#9CA3AF)' },
+          { name: '--btn-menu-item-bg', description: 'Default background — --global-color-primary-blue-blue-50 (#F9F9FE)' },
+          { name: '--btn-menu-item-border-color', description: 'Default border — --global-color-primary-blue-blue-300 (#95A0E5)' },
+          { name: '--btn-menu-item-color', description: 'Default text — --global-color-secondary-blue-gray (#61607C)' },
+          { name: '--btn-menu-item-bg-hover', description: 'Hover background — --global-color-primary-blue-blue-100 (#E7E9F4). No shadow, no text change.' },
+          { name: '--btn-menu-item-bg-selected', description: 'Selected background — --brand-primary (#3776CE)' },
+          { name: '--btn-menu-item-color-selected', description: 'Selected text — --global-color-base-white (#FFFFFF)' },
+          { name: '--btn-menu-item-border-color-selected', description: 'Selected border — --brand-primary (#3776CE), 0.5px width' },
+          { name: '--btn-menu-item-bg-disabled', description: 'Disabled background — --global-color-neutral-gray-50 (#F9FAFB)' },
+          { name: '--btn-menu-item-color-disabled', description: 'Disabled text — --global-color-neutral-gray-300 (#D2D5DA)' },
+          { name: '--btn-menu-item-border-color-disabled', description: 'Disabled border — --global-color-neutral-gray-200 (#E5E7EB)' },
         ]}
       />
 

@@ -142,15 +142,45 @@ export const ButtonMenuItemDocs = (): JSX.Element => (
         tint only — no shadow or text colour change), focus-visible (CSS),
         selected, and disabled.
       </p>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-8px)', maxWidth: '280px' }}>
-        <div style={colLabel}>Default</div>
-        <ButtonMenuItem label="This is the top" position="top" />
-        <ButtonMenuItem label="This is the middle" position="mid" />
-        <ButtonMenuItem label="This is the bottom" position="bottom" />
-        <div style={{ ...colLabel, marginTop: 'var(--global-spacing-sizing-12px)' }}>Selected</div>
-        <ButtonMenuItem label="Selected item" selected />
-        <div style={{ ...colLabel, marginTop: 'var(--global-spacing-sizing-12px)' }}>Disabled</div>
-        <ButtonMenuItem label="Disabled item" disabled />
+      <div style={{ display: 'flex', gap: 'var(--global-spacing-sizing-32px)', flexWrap: 'wrap', alignItems: 'flex-start' }}>
+        {/* Default stack */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0px', maxWidth: '280px' }}>
+          <div style={colLabel}>Default</div>
+          <p style={{ ...sectionDesc, fontSize: 'var(--global-type-size-primary-label-xs)', margin: '0 0 var(--global-spacing-sizing-8px)' }}>
+            Blue-50 background (<code style={codePill}>--btn-menu-item-bg</code>),
+            blue-300 border, blue-gray text. Hover to see the background tint
+            shift to blue-100 — no shadow or text colour change.
+          </p>
+          <ButtonMenuItem label="This is the top" position="top" />
+          <ButtonMenuItem label="This is the middle" position="mid" />
+          <ButtonMenuItem label="This is the bottom" position="bottom" />
+        </div>
+
+        {/* Selected */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0px', maxWidth: '280px' }}>
+          <div style={colLabel}>Selected</div>
+          <p style={{ ...sectionDesc, fontSize: 'var(--global-type-size-primary-label-xs)', margin: '0 0 var(--global-spacing-sizing-8px)' }}>
+            Brand-primary fill (<code style={codePill}>--btn-menu-item-bg-selected</code>{' '}
+            / #3776CE) with white text (<code style={codePill}>--btn-menu-item-color-selected</code>).
+            Border matches at 0.5px. Only one item per list should be selected.
+          </p>
+          <ButtonMenuItem label="Not selected" position="top" />
+          <ButtonMenuItem label="Selected item" position="mid" selected />
+          <ButtonMenuItem label="Not selected" position="bottom" />
+        </div>
+
+        {/* Disabled */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0px', maxWidth: '280px' }}>
+          <div style={colLabel}>Disabled</div>
+          <p style={{ ...sectionDesc, fontSize: 'var(--global-type-size-primary-label-xs)', margin: '0 0 var(--global-spacing-sizing-8px)' }}>
+            Gray-50 background, gray-200 border, gray-300 text
+            (<code style={codePill}>--btn-menu-item-color-disabled</code>).
+            Cursor shows not-allowed; pointer events are disabled.
+          </p>
+          <ButtonMenuItem label="Enabled item" position="top" />
+          <ButtonMenuItem label="Disabled item" position="mid" disabled />
+          <ButtonMenuItem label="Enabled item" position="bottom" />
+        </div>
       </div>
     </div>
 
