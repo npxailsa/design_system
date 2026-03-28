@@ -1,0 +1,174 @@
+/* ==========================================================================
+   SaveDraftButton Component
+   --------------------------------------------------------------------------
+   Pill-shaped status button for auto-save workflows. Uses the sky-blue
+   palette as default with status-specific overrides.
+
+   States   : default · auto-saving · saving · saved · error · disabled · focused
+   Shape    : pill (border-radius: full / 99999px)
+   Tokens   : --btn-save-draft-* in tokens.css
+
+   Figma source: auto-save-button-react.zip / AutoSave component
+     default      : sky-blue-100 bg (#D6F0FB), sky-blue border (#0BA7EA), 1px
+     auto-saving  : same as default
+     saving       : 2px border + 2px 2px blue-400 offset shadow
+     saved        : green-light bg (#F2FFF1), dark-green border (#227F1A) + text
+     error        : red-light bg (#FBEBEB), status-red border (#CE2031) + text
+     disabled     : gray-50 bg, gray-200 border, gray-400 text
+     hover        : sky-blue bg + 2px 2px blue-400 shadow
+     focused      : sky-blue-100 bg, 2px border
+   ========================================================================== */
+
+.save-draft-btn,
+.save-draft-btn * {
+  box-sizing: border-box;
+}
+
+/* ── Base ── */
+.save-draft-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--btn-save-draft-icon-gap);
+
+  padding:
+    var(--btn-save-draft-padding-v)
+    var(--btn-save-draft-padding-h);
+
+  border-radius: var(--btn-save-draft-radius);
+  border-style: solid;
+  border-width: var(--btn-save-draft-border-width);
+  border-color: var(--btn-save-draft-border-color);
+  background: var(--btn-save-draft-bg);
+  color: var(--btn-save-draft-color);
+
+  font-family:    var(--btn-save-draft-font-family);
+  font-size:      var(--btn-save-draft-font-size);
+  font-weight:    var(--btn-save-draft-font-weight);
+  line-height:    var(--btn-save-draft-line-height);
+  white-space:    nowrap;
+  user-select:    none;
+  cursor:         pointer;
+  outline:        none;
+
+  transition:
+    background    var(--btn-save-draft-transition-duration) var(--btn-save-draft-transition-easing),
+    border-color  var(--btn-save-draft-transition-duration) var(--btn-save-draft-transition-easing),
+    border-width  var(--btn-save-draft-transition-duration) var(--btn-save-draft-transition-easing),
+    box-shadow    var(--btn-save-draft-transition-duration) var(--btn-save-draft-transition-easing),
+    color         var(--btn-save-draft-transition-duration) var(--btn-save-draft-transition-easing);
+}
+
+/* Suppress global hover/focus filters */
+.save-draft-btn:hover,
+.save-draft-btn:focus,
+.save-draft-btn:focus-visible {
+  filter: none;
+  outline: none;
+}
+
+/* ════════════════════════════════════════════════════════════
+   STATUS VARIANTS
+   ════════════════════════════════════════════════════════════ */
+
+/* ── default & auto-saving: same visual, expanded padding ── */
+.save-draft-btn--default {
+  padding:
+    var(--btn-save-draft-padding-v)
+    var(--btn-save-draft-padding-h);
+}
+
+.save-draft-btn--auto-saving {
+  padding:
+    var(--btn-save-draft-padding-v)
+    var(--btn-save-draft-padding-h-expanded);
+}
+
+/* ── saving: thicker border + shadow ── */
+.save-draft-btn--saving {
+  border-width: var(--btn-save-draft-border-width-saving);
+  box-shadow:   var(--btn-save-draft-shadow-saving);
+  padding:
+    var(--btn-save-draft-padding-v)
+    var(--btn-save-draft-padding-h-expanded);
+}
+
+/* ── saved: green palette ── */
+.save-draft-btn--saved {
+  background:   var(--btn-save-draft-bg-saved);
+  border-color: var(--btn-save-draft-border-color-saved);
+  color:        var(--btn-save-draft-color-saved);
+  padding:
+    var(--btn-save-draft-padding-v)
+    var(--btn-save-draft-padding-h-expanded);
+}
+
+/* ── error: red palette ── */
+.save-draft-btn--error {
+  background:   var(--btn-save-draft-bg-error);
+  border-color: var(--btn-save-draft-border-color-error);
+  color:        var(--btn-save-draft-color-error);
+  padding:
+    var(--btn-save-draft-padding-v)
+    var(--btn-save-draft-padding-h-expanded);
+}
+
+/* ── disabled ── */
+.save-draft-btn--disabled,
+.save-draft-btn:disabled {
+  background:     var(--btn-save-draft-bg-disabled)   !important;
+  border-color:   var(--btn-save-draft-border-color-disabled) !important;
+  color:          var(--btn-save-draft-color-disabled) !important;
+  box-shadow:     none !important;
+  cursor:         not-allowed;
+  pointer-events: none;
+  opacity:        1 !important;
+  padding:
+    var(--btn-save-draft-padding-v)
+    var(--btn-save-draft-padding-h-expanded);
+}
+
+/* ── focused (keyboard / programmatic focus) ── */
+.save-draft-btn--focused,
+.save-draft-btn:focus-visible {
+  border-width: var(--btn-save-draft-border-width-focus);
+  box-shadow:   none;
+  padding:
+    var(--btn-save-draft-padding-v)
+    var(--btn-save-draft-padding-h-expanded);
+}
+
+/* ════════════════════════════════════════════════════════════
+   HOVER (any non-disabled status)
+   ════════════════════════════════════════════════════════════ */
+
+.save-draft-btn:hover:not(:disabled):not(.save-draft-btn--disabled):not(.save-draft-btn--saved):not(.save-draft-btn--error) {
+  box-shadow: var(--btn-save-draft-shadow-hover);
+  padding:
+    var(--btn-save-draft-padding-v)
+    var(--btn-save-draft-padding-h-expanded);
+}
+
+/* ════════════════════════════════════════════════════════════
+   ICON SLOT
+   ════════════════════════════════════════════════════════════ */
+
+.save-draft-btn__icon {
+  display:         inline-flex;
+  align-items:     center;
+  justify-content: center;
+  flex-shrink:     0;
+}
+
+.save-draft-btn__icon-svg {
+  width:     var(--btn-save-draft-icon-size) !important;
+  height:    var(--btn-save-draft-icon-size) !important;
+  font-size: var(--btn-save-draft-icon-size) !important;
+}
+
+/* ── Label ── */
+.save-draft-btn__label {
+  display:     inline-flex;
+  align-items: center;
+  line-height: inherit;
+}

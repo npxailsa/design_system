@@ -1513,6 +1513,58 @@
   --btn-split-panel-shadow:           0px 5px 10px 0px rgba(39, 39, 39, 0.12);
   --btn-split-panel-z-index:          200;
   --btn-split-chevron-rotate:         180deg;
+
+  /* ==========================================================================
+     COMPONENT: SaveDraftButton
+     --------------------------------------------------------------------------
+     A pill-shaped status button used for auto-save workflows. Uses the
+     sky-blue palette as the base, with status-specific overrides for
+     saved (green), error (red), and disabled (gray) states.
+
+     States: default · auto-saving · saving · saved · error · disabled · focused
+     Shape : pill (border-radius: full)
+     ========================================================================== */
+
+  /* SaveDraftButton — base (default & auto-saving) */
+  --btn-save-draft-bg:                    var(--global-color-primary-sky-blue-100);
+  --btn-save-draft-border-color:          var(--global-color-primary-sky-blue);
+  --btn-save-draft-border-width:          var(--global-spacing-stroke-1px);
+  --btn-save-draft-color:                 var(--global-color-base-black);
+  --btn-save-draft-radius:                var(--global-spacing-radius-full);
+  --btn-save-draft-padding-v:             var(--global-spacing-sizing-8px);
+  --btn-save-draft-padding-h:             var(--global-spacing-sizing-16px);
+  --btn-save-draft-padding-h-expanded:    var(--global-spacing-sizing-24px);
+  --btn-save-draft-icon-size:             var(--global-spacing-sizing-18px);
+  --btn-save-draft-icon-gap:              var(--global-spacing-sizing-8px);
+  --btn-save-draft-font-family:           var(--brand-font-primary);
+  --btn-save-draft-font-size:             var(--global-type-size-primary-label);
+  --btn-save-draft-font-weight:           var(--global-type-weight-light);
+  --btn-save-draft-line-height:           var(--global-type-line-height-label);
+  --btn-save-draft-transition-duration:   var(--global-animation-duration-fast);
+  --btn-save-draft-transition-easing:     var(--global-animation-easing-default);
+
+  /* SaveDraftButton — hover / focused */
+  --btn-save-draft-shadow-hover:          2px 2px 0px 0px var(--global-color-primary-blue-blue-400);
+  --btn-save-draft-border-width-focus:    var(--global-spacing-stroke-2px);
+
+  /* SaveDraftButton — saving (thicker border + shadow) */
+  --btn-save-draft-border-width-saving:   var(--global-spacing-stroke-2px);
+  --btn-save-draft-shadow-saving:         2px 2px 0px 0px var(--global-color-primary-blue-blue-400);
+
+  /* SaveDraftButton — saved (green) */
+  --btn-save-draft-bg-saved:              var(--global-color-status-green-light);
+  --btn-save-draft-border-color-saved:    var(--global-color-status-dark-green);
+  --btn-save-draft-color-saved:           var(--global-color-status-dark-green);
+
+  /* SaveDraftButton — error */
+  --btn-save-draft-bg-error:              var(--global-color-status-red-light);
+  --btn-save-draft-border-color-error:    var(--global-color-status-red);
+  --btn-save-draft-color-error:           var(--global-color-status-red);
+
+  /* SaveDraftButton — disabled */
+  --btn-save-draft-bg-disabled:           var(--global-color-neutral-gray-50);
+  --btn-save-draft-border-color-disabled: var(--global-color-neutral-gray-200);
+  --btn-save-draft-color-disabled:        var(--global-color-neutral-gray-400);
 }
 
 /* Font Loading */
