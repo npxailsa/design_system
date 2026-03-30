@@ -189,3 +189,29 @@
   top: -5px !important;
   right: -5px !important;
 }
+
+/* Circle shape: badge sits on the curved border edge */
+.shape-circle .badge {
+  top: 1px !important;
+  right: 1px !important;
+}
+
+.shape-circle.size-x-small .badge {
+  top: 0px !important;
+  right: 0px !important;
+}
+
+.shape-circle.size-small .badge {
+  top: 0px !important;
+  right: 0px !important;
+}
+
+.shape-circle.size-default .badge {
+  top: 1px !important;
+  right: 1px !important;
+}
+
+.shape-circle.size-large .badge {
+  top: 1px !important;
+  right: 1px !important;
+}
