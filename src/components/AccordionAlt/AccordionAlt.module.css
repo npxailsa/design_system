@@ -92,8 +92,8 @@
 }
 
 .accordion-alt__trigger:focus-visible {
-  outline: 2px solid var(--global-color-primary-blue);
-  outline-offset: 2px;
+  outline: var(--global-spacing-stroke-2px) solid var(--global-color-primary-blue);
+  outline-offset: var(--global-spacing-sizing-2px);
   border-radius: var(--global-spacing-radius-4px);
 }
 

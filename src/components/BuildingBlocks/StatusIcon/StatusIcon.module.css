@@ -4,8 +4,8 @@
   align-items: center;
   justify-content: flex-start;
   gap: var(--status-icon-gap-default);
-  min-width: 30px;
-  max-width: 200px;
+  min-width: var(--status-icon-min-width);
+  max-width: var(--status-icon-max-width);
   box-sizing: border-box;
 }
 

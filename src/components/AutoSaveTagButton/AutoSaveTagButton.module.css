@@ -1,0 +1,205 @@
+/* ==========================================================================
+   AutoSaveTagButton Component
+   --------------------------------------------------------------------------
+   Vertical stack: pill-shaped auto-save button + timestamp tag below.
+   Re-uses --btn-save-draft-* tokens for button, --btn-autosave-tag-* for tag.
+
+   States   : default · auto-saving · saving · saved · error · disabled · focused
+   Shape    : pill button + rounded tag
+   Tokens   : --btn-save-draft-* + --btn-autosave-tag-* in tokens.css
+   ========================================================================== */
+
+.autosave-tag,
+.autosave-tag * {
+  box-sizing: border-box;
+}
+
+/* ── Wrapper ── */
+.autosave-tag {
+  display: flex;
+  flex-direction: column;
+  gap: var(--btn-autosave-tag-gap);
+  align-items: flex-start;
+}
+
+/* ════════════════════════════════════════════════════════════
+   BUTTON PORTION (pill)
+   ════════════════════════════════════════════════════════════ */
+
+.autosave-tag__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--btn-save-draft-icon-gap);
+
+  padding:
+    var(--btn-save-draft-padding-v)
+    var(--btn-save-draft-padding-h);
+
+  border-radius: var(--btn-save-draft-radius);
+  border-style: solid;
+  border-width: var(--btn-save-draft-border-width);
+  border-color: var(--btn-save-draft-border-color);
+  background: var(--btn-save-draft-bg);
+  color: var(--btn-save-draft-color);
+
+  font-family:  var(--btn-save-draft-font-family);
+  font-size:    var(--btn-save-draft-font-size);
+  font-weight:  var(--btn-save-draft-font-weight);
+  line-height:  var(--btn-save-draft-line-height);
+  white-space:  nowrap;
+  user-select:  none;
+  cursor:       pointer;
+  outline:      none;
+
+  transition:
+    background    var(--btn-save-draft-transition-duration) var(--btn-save-draft-transition-easing),
+    border-color  var(--btn-save-draft-transition-duration) var(--btn-save-draft-transition-easing),
+    border-width  var(--btn-save-draft-transition-duration) var(--btn-save-draft-transition-easing),
+    box-shadow    var(--btn-save-draft-transition-duration) var(--btn-save-draft-transition-easing),
+    color         var(--btn-save-draft-transition-duration) var(--btn-save-draft-transition-easing);
+}
+
+.autosave-tag__btn:hover,
+.autosave-tag__btn:focus,
+.autosave-tag__btn:focus-visible {
+  filter: none;
+  outline: none;
+}
+
+/* ── Status: default ── */
+.autosave-tag__btn--default {
+  padding:
+    var(--btn-save-draft-padding-v)
+    var(--btn-save-draft-padding-h);
+}
+
+/* ── Status: auto-saving ── */
+.autosave-tag__btn--auto-saving {
+  padding:
+    var(--btn-save-draft-padding-v)
+    var(--btn-save-draft-padding-h-expanded);
+}
+
+/* ── Status: saving ── */
+.autosave-tag__btn--saving {
+  border-width: var(--btn-save-draft-border-width-saving);
+  box-shadow:   var(--btn-save-draft-shadow-saving);
+  padding:
+    var(--btn-save-draft-padding-v)
+    var(--btn-save-draft-padding-h-expanded);
+}
+
+/* ── Status: saved (green) ── */
+.autosave-tag__btn--saved {
+  background:   var(--btn-save-draft-bg-saved);
+  border-color: var(--btn-save-draft-border-color-saved);
+  color:        var(--btn-save-draft-color-saved);
+  padding:
+    var(--btn-save-draft-padding-v)
+    var(--btn-save-draft-padding-h-expanded);
+}
+
+/* ── Status: error (red) ── */
+.autosave-tag__btn--error {
+  background:   var(--btn-save-draft-bg-error);
+  border-color: var(--btn-save-draft-border-color-error);
+  color:        var(--btn-save-draft-color-error);
+  padding:
+    var(--btn-save-draft-padding-v)
+    var(--btn-save-draft-padding-h-expanded);
+}
+
+/* ── Status: disabled ── */
+.autosave-tag__btn--disabled,
+.autosave-tag__btn:disabled {
+  background:     var(--btn-save-draft-bg-disabled)   !important;
+  border-color:   var(--btn-save-draft-border-color-disabled) !important;
+  color:          var(--btn-save-draft-color-disabled) !important;
+  box-shadow:     none !important;
+  cursor:         not-allowed;
+  pointer-events: none;
+  opacity:        1 !important;
+  padding:
+    var(--btn-save-draft-padding-v)
+    var(--btn-save-draft-padding-h-expanded);
+}
+
+/* ── Status: focused ── */
+.autosave-tag__btn--focused,
+.autosave-tag__btn:focus-visible {
+  border-width: var(--btn-save-draft-border-width-focus);
+  box-shadow:   none;
+  padding:
+    var(--btn-save-draft-padding-v)
+    var(--btn-save-draft-padding-h-expanded);
+}
+
+/* ── Hover (non-disabled, non-saved, non-error) ── */
+.autosave-tag__btn:hover:not(:disabled):not(.autosave-tag__btn--disabled):not(.autosave-tag__btn--saved):not(.autosave-tag__btn--error) {
+  box-shadow: var(--btn-save-draft-shadow-hover);
+  padding:
+    var(--btn-save-draft-padding-v)
+    var(--btn-save-draft-padding-h-expanded);
+}
+
+/* ════════════════════════════════════════════════════════════
+   ICON + LABEL
+   ════════════════════════════════════════════════════════════ */
+
+.autosave-tag__icon {
+  display:         inline-flex;
+  align-items:     center;
+  justify-content: center;
+  flex-shrink:     0;
+}
+
+.autosave-tag__icon-svg {
+  width:     var(--btn-save-draft-icon-size) !important;
+  height:    var(--btn-save-draft-icon-size) !important;
+  font-size: var(--btn-save-draft-icon-size) !important;
+}
+
+.autosave-tag__label {
+  display:     inline-flex;
+  align-items: center;
+  line-height: inherit;
+}
+
+/* ════════════════════════════════════════════════════════════
+   TIMESTAMP TAG
+   ════════════════════════════════════════════════════════════ */
+
+.autosave-tag__tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+
+  padding:
+    var(--btn-autosave-tag-tag-padding-v)
+    var(--btn-autosave-tag-tag-padding-h);
+
+  background:    var(--btn-autosave-tag-tag-bg);
+  border-radius: var(--btn-autosave-tag-tag-radius);
+  border:        var(--btn-autosave-tag-tag-border-width) solid var(--btn-autosave-tag-tag-border-color);
+}
+
+.autosave-tag__tag--disabled {
+  background:   var(--btn-autosave-tag-tag-bg-disabled);
+  border-color: var(--btn-autosave-tag-tag-border-disabled);
+}
+
+.autosave-tag__tag-text {
+  font-family:    var(--btn-autosave-tag-tag-font-family);
+  font-size:      var(--btn-autosave-tag-tag-font-size);
+  font-weight:    var(--btn-autosave-tag-tag-font-weight);
+  line-height:    var(--btn-autosave-tag-tag-line-height);
+  letter-spacing: 0.15px;
+  color:          var(--btn-autosave-tag-tag-color);
+  white-space:    nowrap;
+}
+
+.autosave-tag__tag--disabled .autosave-tag__tag-text {
+  color: var(--btn-autosave-tag-tag-color-disabled);
+}

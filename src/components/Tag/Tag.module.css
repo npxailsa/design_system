@@ -191,8 +191,8 @@
 }
 
 .tag--interactive:focus-visible {
-  outline: 2px solid var(--global-color-primary-sky-blue);
-  outline-offset: 2px;
+  outline: var(--global-spacing-stroke-2px) solid var(--global-color-primary-sky-blue);
+  outline-offset: var(--global-spacing-sizing-2px);
 }
 
 /* ── Disabled ── */
@@ -238,7 +238,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 160px;
+  max-width: var(--global-spacing-sizing-160px);
   line-height: 1;
 }
 
@@ -248,13 +248,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 16px;
-  height: 16px;
+  min-width: var(--global-spacing-sizing-16px);
+  height: var(--global-spacing-sizing-16px);
   padding: 0 var(--global-spacing-sizing-4px);
-  border-radius: var(--global-spacing-radius-100px, 100px);
+  border-radius: var(--global-spacing-radius-full);
   background: rgba(0, 0, 0, 0.15);
   color: inherit;
-  font-size: 10px;
+  font-size: var(--global-spacing-sizing-10px);
   font-weight: var(--global-type-weight-bold);
   line-height: 1;
 }
@@ -282,15 +282,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 12px;
-  height: 12px;
+  width: var(--global-spacing-sizing-12px);
+  height: var(--global-spacing-sizing-12px);
   padding: 0;
   border: none;
   background: none;
   cursor: pointer;
   color: inherit;
   opacity: 0.65;
-  border-radius: 50%;
+  border-radius: var(--global-spacing-radius-full);
   flex-shrink: 0;
   transition: opacity var(--tag-transition-duration) var(--tag-transition-easing);
   line-height: 1;
@@ -301,8 +301,8 @@
 }
 
 .tag__remove:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 1px;
+  outline: var(--global-spacing-stroke-2px) solid currentColor;
+  outline-offset: var(--global-spacing-sizing-1px);
   opacity: 1;
 }
 
@@ -312,11 +312,11 @@
 }
 
 .tag--small .tag__remove {
-  width: 10px;
-  height: 10px;
+  width: var(--global-spacing-sizing-10px);
+  height: var(--global-spacing-sizing-10px);
 }
 
 .tag--large .tag__remove {
-  width: 14px;
-  height: 14px;
+  width: var(--global-spacing-sizing-14px);
+  height: var(--global-spacing-sizing-14px);
 }

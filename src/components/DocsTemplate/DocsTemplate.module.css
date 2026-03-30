@@ -33,8 +33,8 @@
 /* Logo container */
 .logo-container {
   flex-shrink: 0;
-  width: 70px;
-  height: 70px;
+  width: var(--global-spacing-sizing-70px);
+  height: var(--global-spacing-sizing-70px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -61,7 +61,7 @@
   letter-spacing: var(--global-type-letter-spacing-primary-heading-1);
   font-weight: var(--global-type-weight-bold);
   margin: 0;
-  min-height: 45px;
+  min-height: var(--global-spacing-sizing-44px);
   display: flex;
   align-items: center;
 }
@@ -99,7 +99,7 @@
   letter-spacing: var(--global-type-letter-spacing-primary-heading-1);
   font-weight: var(--global-type-weight-bold);
   margin: 0;
-  min-height: 45px;
+  min-height: var(--global-spacing-sizing-44px);
   display: flex;
   align-items: center;
 }
@@ -321,7 +321,7 @@
   padding: var(--global-spacing-sizing-12px) 0 var(--global-spacing-sizing-24px) 0;
   display: flex;
   flex-direction: row;
-  gap: 18px;
+  gap: var(--global-spacing-sizing-18px);
   align-items: flex-start;
   justify-content: flex-start;
   align-self: stretch;
@@ -345,7 +345,7 @@
   align-items: center;
   justify-content: center;
   padding: var(--global-spacing-sizing-16px);
-  min-height: 120px;
+  min-height: var(--global-spacing-sizing-120px);
 }
 
 .dos-donts-label-area {
@@ -398,7 +398,7 @@
   letter-spacing: var(--global-type-letter-spacing-primary-heading-4);
   font-weight: var(--global-type-weight-default);
   margin: 0;
-  min-height: 30px;
+  min-height: var(--global-spacing-sizing-30px);
   display: flex;
   align-items: center;
 }
@@ -412,7 +412,7 @@
   letter-spacing: var(--global-type-letter-spacing-primary-heading-4);
   font-weight: var(--global-type-weight-default);
   margin: 0;
-  min-height: 30px;
+  min-height: var(--global-spacing-sizing-30px);
   display: flex;
   align-items: center;
 }
@@ -644,7 +644,7 @@
 
 .anatomy-parts-header {
   display: grid;
-  grid-template-columns: 32px 1fr 2fr 2fr;
+  grid-template-columns: var(--global-spacing-sizing-32px) 1fr 2fr 2fr;
   gap: var(--global-spacing-sizing-12px);
   padding: var(--global-spacing-sizing-8px) var(--global-spacing-sizing-16px);
   background: var(--color-primary-blue-blue-50);
@@ -662,9 +662,9 @@
 
 .anatomy-part-row {
   display: grid;
-  grid-template-columns: 32px 1fr 2fr 2fr;
+  grid-template-columns: var(--global-spacing-sizing-32px) 1fr 2fr 2fr;
   gap: var(--global-spacing-sizing-12px);
-  padding: var(--global-spacing-sizing-10px, 10px) var(--global-spacing-sizing-16px);
+  padding: var(--global-spacing-sizing-10px) var(--global-spacing-sizing-16px);
   align-items: start;
   border-bottom: var(--global-spacing-stroke-1px) solid var(--color-primary-blue-gray-blue-gray-50);
 }
@@ -682,9 +682,9 @@
 }
 
 .anatomy-part-badge {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
+  width: var(--global-spacing-sizing-22px);
+  height: var(--global-spacing-sizing-22px);
+  border-radius: var(--global-spacing-radius-full);
   background: var(--color-primary-blue-blue, #3a6cff);
   color: var(--global-color-base-white);
   font-size: 11px;
@@ -722,13 +722,13 @@
 
 @media (max-width: 600px) {
   .anatomy-parts-header {
-    grid-template-columns: 28px 1fr 2fr;
+    grid-template-columns: var(--global-spacing-sizing-28px) 1fr 2fr;
   }
   .anatomy-parts-header span:last-child {
     display: none;
   }
   .anatomy-part-row {
-    grid-template-columns: 28px 1fr 2fr;
+    grid-template-columns: var(--global-spacing-sizing-28px) 1fr 2fr;
   }
   .anatomy-part-description {
     display: none;

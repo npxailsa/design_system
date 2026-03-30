@@ -104,8 +104,10 @@
   --global-spacing-sizing-16px: 16px;
   --global-spacing-sizing-18px: 18px;
   --global-spacing-sizing-20px: 20px;
+  --global-spacing-sizing-22px: 22px;
   --global-spacing-sizing-24px: 24px;
   --global-spacing-sizing-28px: 28px;
+  --global-spacing-sizing-30px: 30px;
   --global-spacing-sizing-32px: 32px;
   --global-spacing-sizing-36px: 36px;
   --global-spacing-sizing-40px: 40px;
@@ -116,6 +118,7 @@
   --global-spacing-sizing-56px: 56px;
   --global-spacing-sizing-60px: 60px;
   --global-spacing-sizing-64px: 64px;
+  --global-spacing-sizing-70px: 70px;
   --global-spacing-sizing-72px: 72px;
   --global-spacing-sizing-80px: 80px;
   --global-spacing-sizing-100px: 100px;
@@ -687,14 +690,16 @@
    ========================================================================== */
 :root {
   /* StatusIcon sizing */
-  --status-icon-size-small: 22px;
-  --status-icon-size-default: 36px;
-  --status-icon-size-large: 48px;
+  --status-icon-size-small:          var(--global-spacing-sizing-22px);
+  --status-icon-size-default:        var(--global-spacing-sizing-36px);
+  --status-icon-size-large:          var(--global-spacing-sizing-48px);
+  --status-icon-min-width:           var(--global-spacing-sizing-30px);
+  --status-icon-max-width:           var(--global-spacing-sizing-200px);
 
   /* StatusIcon inner icon sizing */
-  --status-icon-inner-small: var(--global-spacing-sizing-14px);
-  --status-icon-inner-default: 22px;
-  --status-icon-inner-large: var(--global-spacing-sizing-28px);
+  --status-icon-inner-small:         var(--global-spacing-sizing-14px);
+  --status-icon-inner-default:       var(--global-spacing-sizing-22px);
+  --status-icon-inner-large:         var(--global-spacing-sizing-28px);
 
   /* StatusIcon padding */
   --status-icon-padding-small: var(--global-spacing-sizing-2px);
@@ -1566,6 +1571,38 @@
   --btn-save-draft-border-color-disabled: var(--global-color-neutral-gray-200);
   --btn-save-draft-color-disabled:        var(--global-color-neutral-gray-400);
 
+  /* ==========================================================================
+     COMPONENT: AutoSaveTagButton
+     --------------------------------------------------------------------------
+     Combines the SaveDraftButton pill with a timestamp tag underneath.
+     Re-uses the same save-draft tokens for the button portion.
+     The tag portion uses a gray outline pill with xs-label typography.
+
+     States: default · auto-saving · saving · saved · error · disabled · focused
+     Shape : vertical stack — pill button + small rounded tag
+     ========================================================================== */
+
+  /* AutoSaveTagButton — wrapper */
+  --btn-autosave-tag-gap:                 var(--global-spacing-sizing-16px);
+
+  /* AutoSaveTagButton — timestamp tag */
+  --btn-autosave-tag-tag-bg:              var(--global-color-neutral-gray-100);
+  --btn-autosave-tag-tag-border-color:    var(--global-color-neutral-gray-300);
+  --btn-autosave-tag-tag-border-width:    var(--global-spacing-stroke-1px);
+  --btn-autosave-tag-tag-radius:          var(--global-spacing-radius-full);
+  --btn-autosave-tag-tag-padding-v:       var(--global-spacing-sizing-4px);
+  --btn-autosave-tag-tag-padding-h:       var(--global-spacing-sizing-12px);
+  --btn-autosave-tag-tag-font-family:     var(--brand-font-primary);
+  --btn-autosave-tag-tag-font-size:       var(--global-type-size-primary-label-xs);
+  --btn-autosave-tag-tag-font-weight:     var(--global-type-weight-light);
+  --btn-autosave-tag-tag-line-height:     var(--global-type-line-height-label-xs);
+  --btn-autosave-tag-tag-color:           var(--global-color-neutral-gray-800);
+
+  /* AutoSaveTagButton — disabled tag */
+  --btn-autosave-tag-tag-bg-disabled:     var(--global-color-neutral-gray-50);
+  --btn-autosave-tag-tag-border-disabled: var(--global-color-neutral-gray-200);
+  --btn-autosave-tag-tag-color-disabled:  var(--global-color-neutral-gray-400);
+
   /* ─────────────────────────────────────────────────────────────────────
      FilterSortButton — Table/list toolbar action buttons
      Variants : primary · secondary · tertiary · ghost
@@ -1656,7 +1693,7 @@
   --btn-group-size-xs:               var(--global-spacing-sizing-28px);
   --btn-group-icon-size-xs:          var(--global-spacing-sizing-14px);
 
-  --btn-group-size-sm:               30px;
+  --btn-group-size-sm:               var(--global-spacing-sizing-30px);
   --btn-group-icon-size-sm:          var(--global-spacing-sizing-16px);
 
   --btn-group-size-md:               var(--global-spacing-sizing-42px);
