@@ -1531,7 +1531,7 @@
   --btn-save-draft-border-width:          var(--global-spacing-stroke-1px);
   --btn-save-draft-color:                 var(--global-color-base-black);
   --btn-save-draft-radius:                var(--global-spacing-radius-full);
-  --btn-save-draft-padding-v:             var(--global-spacing-sizing-8px);
+  --btn-save-draft-padding-v:             var(--global-spacing-sizing-12px);
   --btn-save-draft-padding-h:             var(--global-spacing-sizing-16px);
   --btn-save-draft-padding-h-expanded:    var(--global-spacing-sizing-24px);
   --btn-save-draft-icon-size:             var(--global-spacing-sizing-18px);

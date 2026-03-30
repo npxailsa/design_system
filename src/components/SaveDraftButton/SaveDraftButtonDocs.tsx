@@ -87,7 +87,7 @@ export const SaveDraftButtonDocs: React.FC = () => {
               id: 1,
               name: 'Container',
               token: '--btn-save-draft-radius (99999px)\n--btn-save-draft-bg (sky-blue-100)\n--btn-save-draft-border-color (sky-blue)',
-              description: 'Full-pill shape. Background and border colour change per status. Fixed padding: 8px vertical, 16–24px horizontal.',
+              description: 'Full-pill shape. Background and border colour change per status. Fixed padding: 12px vertical, 16–24px horizontal.',
             },
             {
               id: 2,
@@ -164,7 +164,7 @@ export const SaveDraftButtonDocs: React.FC = () => {
           { name: '--btn-save-draft-border-width', description: 'Default border width — 1px' },
           { name: '--btn-save-draft-color', description: 'Default text colour — --global-color-base-black (#1C1C1C)' },
           { name: '--btn-save-draft-radius', description: 'Border radius — --global-spacing-radius-full (99999px)' },
-          { name: '--btn-save-draft-padding-v', description: 'Vertical padding — 8px' },
+          { name: '--btn-save-draft-padding-v', description: 'Vertical padding — 12px (--global-spacing-sizing-12px)' },
           { name: '--btn-save-draft-padding-h', description: 'Horizontal padding (default state) — 16px' },
           { name: '--btn-save-draft-padding-h-expanded', description: 'Horizontal padding (all other states) — 24px' },
           { name: '--btn-save-draft-icon-size', description: 'Save (floppy disk) icon size — 18px' },
