@@ -18,7 +18,7 @@ const sampleMenu = [
 ];
 
 const meta: Meta<typeof SplitButton> = {
-  title: 'Atoms/Split Button',
+  title: 'Atoms/Buttons/Split Button',
   component: SplitButton,
   parameters: {
     docs: {

@@ -9,7 +9,7 @@ import AddIcon from '@mui/icons-material/Add';
 import DownloadIcon from '@mui/icons-material/Download';
 
 const meta: Meta<typeof SecondaryButton> = {
-  title: 'Atoms/Secondary Button',
+  title: 'Atoms/Buttons/Secondary Button',
   component: SecondaryButton,
   parameters: {
     layout: 'centered',

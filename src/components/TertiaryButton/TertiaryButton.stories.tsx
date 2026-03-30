@@ -9,7 +9,7 @@ import AddIcon from '@mui/icons-material/Add';
 import DownloadIcon from '@mui/icons-material/Download';
 
 const meta: Meta<typeof TertiaryButton> = {
-  title: 'Atoms/Tertiary Button',
+  title: 'Atoms/Buttons/Tertiary Button',
   component: TertiaryButton,
   parameters: {
     layout: 'centered',

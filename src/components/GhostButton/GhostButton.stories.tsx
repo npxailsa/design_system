@@ -10,7 +10,7 @@ import DownloadIcon from '@mui/icons-material/Download';
 import EditIcon from '@mui/icons-material/Edit';
 
 const meta: Meta<typeof GhostButton> = {
-  title: 'Atoms/Ghost Button',
+  title: 'Atoms/Buttons/Ghost Button',
   component: GhostButton,
   parameters: {
     layout: 'centered',

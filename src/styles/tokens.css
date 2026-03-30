@@ -1565,6 +1565,77 @@
   --btn-save-draft-bg-disabled:           var(--global-color-neutral-gray-50);
   --btn-save-draft-border-color-disabled: var(--global-color-neutral-gray-200);
   --btn-save-draft-color-disabled:        var(--global-color-neutral-gray-400);
+
+  /* ─────────────────────────────────────────────────────────────────────
+     FilterSortButton — Table/list toolbar action buttons
+     Variants : primary · secondary · tertiary · ghost
+     Sizes    : xs · sm · md · lg
+     ───────────────────────────────────────────────────────────────────── */
+
+  /* Shared */
+  --btn-filter-radius:                  var(--global-spacing-radius-4px);
+  --btn-filter-border-width:            var(--global-spacing-stroke-1px);
+  --btn-filter-font-family:             var(--brand-font-primary);
+  --btn-filter-font-weight:             var(--global-type-weight-light);
+  --btn-filter-transition-duration:     var(--global-animation-duration-fast);
+  --btn-filter-transition-easing:       var(--global-animation-easing-default);
+
+  /* Extra-small (xs) */
+  --btn-filter-padding-xs:              var(--global-spacing-sizing-2px) var(--global-spacing-sizing-12px) var(--global-spacing-sizing-2px) var(--global-spacing-sizing-8px);
+  --btn-filter-font-size-xs:            var(--global-type-size-primary-label-xs);
+  --btn-filter-line-height-xs:          var(--global-type-line-height-label-xs);
+  --btn-filter-icon-size-xs:            var(--global-spacing-sizing-14px);
+  --btn-filter-gap-xs:                  var(--global-spacing-sizing-4px);
+
+  /* Small (sm) */
+  --btn-filter-padding-sm:              var(--global-spacing-sizing-4px) var(--global-spacing-sizing-16px) var(--global-spacing-sizing-4px) var(--global-spacing-sizing-12px);
+  --btn-filter-font-size-sm:            var(--global-type-size-primary-label-sm);
+  --btn-filter-line-height-sm:          var(--global-type-line-height-label-sm);
+  --btn-filter-icon-size-sm:            var(--global-spacing-sizing-16px);
+  --btn-filter-gap-sm:                  var(--global-spacing-sizing-6px);
+
+  /* Default / medium (md) */
+  --btn-filter-padding-md:              var(--global-spacing-sizing-6px) var(--global-spacing-sizing-16px) var(--global-spacing-sizing-6px) var(--global-spacing-sizing-12px);
+  --btn-filter-font-size-md:            var(--global-type-size-primary-label);
+  --btn-filter-line-height-md:          var(--global-type-line-height-label);
+  --btn-filter-icon-size-md:            var(--global-spacing-sizing-18px);
+  --btn-filter-gap-md:                  var(--global-spacing-sizing-8px);
+
+  /* Large (lg) */
+  --btn-filter-padding-lg:              var(--global-spacing-sizing-8px) var(--global-spacing-sizing-20px) var(--global-spacing-sizing-8px) var(--global-spacing-sizing-16px);
+  --btn-filter-font-size-lg:            var(--global-type-size-primary-label-lg);
+  --btn-filter-line-height-lg:          var(--global-type-line-height-label-lg);
+  --btn-filter-icon-size-lg:            var(--global-spacing-sizing-20px);
+  --btn-filter-gap-lg:                  var(--global-spacing-sizing-8px);
+
+  /* Variant: Primary (navy filled) */
+  --btn-filter-primary-bg:              var(--global-color-secondary-navy);
+  --btn-filter-primary-border:          var(--global-color-secondary-navy);
+  --btn-filter-primary-color:           var(--global-color-base-white);
+  --btn-filter-primary-shadow-hover:    2px 2px 0px 0px var(--global-color-primary-blue-blue-400);
+
+  /* Variant: Secondary (sky-blue tint) */
+  --btn-filter-secondary-bg:            var(--global-color-primary-sky-blue-100);
+  --btn-filter-secondary-border:        var(--global-color-primary-sky-blue);
+  --btn-filter-secondary-color:         var(--global-color-base-black);
+  --btn-filter-secondary-shadow-hover:  2px 2px 0px 0px var(--global-color-primary-sky-blue);
+
+  /* Variant: Tertiary (seafoam tint) */
+  --btn-filter-tertiary-bg:             var(--global-color-primary-seafoam-100);
+  --btn-filter-tertiary-border:         var(--global-color-primary-seafoam);
+  --btn-filter-tertiary-color:          var(--global-color-base-black);
+  --btn-filter-tertiary-shadow-hover:   2px 2px 0px 0px var(--global-color-primary-seafoam-dark);
+
+  /* Variant: Ghost (outline only) */
+  --btn-filter-ghost-bg:                var(--global-color-base-white);
+  --btn-filter-ghost-border:            var(--global-color-neutral-gray-300);
+  --btn-filter-ghost-color:             var(--global-color-base-black);
+  --btn-filter-ghost-shadow-hover:      2px 2px 0px 0px var(--global-color-neutral-gray-300);
+
+  /* Disabled */
+  --btn-filter-bg-disabled:             var(--global-color-neutral-gray-50);
+  --btn-filter-border-disabled:         var(--global-color-neutral-gray-200);
+  --btn-filter-color-disabled:          var(--global-color-neutral-gray-400);
 }
 
 /* Font Loading */

@@ -15,7 +15,7 @@ const ALL_STATUSES: SaveDraftStatus[] = [
 ];
 
 const meta: Meta<typeof SaveDraftButton> = {
-  title: 'Atoms/Save Draft Button',
+  title: 'Atoms/Buttons/Save Draft Button',
   component: SaveDraftButton,
   parameters: {
     docs: {
