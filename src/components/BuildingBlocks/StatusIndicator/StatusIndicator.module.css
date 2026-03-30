@@ -1,0 +1,106 @@
+/* =============================================================================
+   StatusIndicator — Presence dot badge
+   Tokens: src/styles/tokens.css  →  --status-indicator-*
+   ============================================================================= */
+
+/* ── Reset ── */
+.statusIndicator,
+.statusIndicator * {
+  box-sizing: border-box;
+}
+
+/* ── Root container ── */
+.statusIndicator {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* default size — overridden by size modifiers below */
+  width:  var(--status-indicator-size-default);
+  height: var(--status-indicator-size-default);
+  aspect-ratio: 1;
+  flex-shrink: 0;
+}
+
+/* ── Inner dot (shared by away / dnd / online / offline) ── */
+.dot {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--status-indicator-border-radius);
+  border-style: solid;
+  border-width: var(--status-indicator-border-width);
+}
+
+/* ── Status: away (yellow) ── */
+.status-away .dot {
+  background: var(--status-indicator-away-bg);
+  border-color: var(--status-indicator-away-border);
+}
+
+/* ── Status: do-not-disturb (red) ── */
+.status-do-not-disturb .dot {
+  background: var(--status-indicator-dnd-bg);
+  border-color: var(--status-indicator-dnd-border);
+}
+
+/* ── Status: online (green) ── */
+.status-online .dot {
+  background: var(--status-indicator-online-bg);
+  border-color: var(--status-indicator-online-border);
+}
+
+/* ── Status: offline (gray) ── */
+.status-offline .dot {
+  background: var(--status-indicator-offline-bg);
+  border-color: var(--status-indicator-offline-border);
+}
+
+/* ── Status: verified (sky-blue checkmark badge) ── */
+.status-verified {
+  background: transparent;
+  overflow: visible;
+}
+
+.verifiedSvg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+.verifiedCircle {
+  fill: var(--status-indicator-verified-bg);
+}
+
+/* ── Size: default ── */
+.size-default {
+  width:  var(--status-indicator-size-default);
+  height: var(--status-indicator-size-default);
+}
+
+.size-default.status-verified {
+  width:  var(--status-indicator-size-verified-default);
+  height: var(--status-indicator-size-verified-default);
+}
+
+/* ── Size: large ── */
+.size-large {
+  width:  var(--status-indicator-size-large);
+  height: var(--status-indicator-size-large);
+}
+
+.size-large.status-verified {
+  width:  var(--status-indicator-size-verified-large);
+  height: var(--status-indicator-size-verified-large);
+}
+
+/* ── Size: small ── */
+.size-small {
+  width:  var(--status-indicator-size-small);
+  height: var(--status-indicator-size-small);
+}
+
+.size-small.status-verified {
+  width:  var(--status-indicator-size-verified-small);
+  height: var(--status-indicator-size-verified-small);
+}

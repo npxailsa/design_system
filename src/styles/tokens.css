@@ -784,6 +784,45 @@
 }
 
 /* ==========================================================================
+   COMPONENT LAYER: StatusIndicator (Presence Dot — Component-Specific Tokens)
+   ========================================================================== */
+:root {
+  /* StatusIndicator — dot sizes */
+  --status-indicator-size-default:      var(--global-spacing-sizing-14px);
+  --status-indicator-size-large:        var(--global-spacing-sizing-10px);
+  --status-indicator-size-small:        var(--global-spacing-sizing-8px);
+
+  /* StatusIndicator — verified badge sizes */
+  --status-indicator-size-verified-default: var(--global-spacing-sizing-16px);
+  --status-indicator-size-verified-large:   var(--global-spacing-sizing-12px);
+  --status-indicator-size-verified-small:   var(--global-spacing-sizing-10px);
+
+  /* StatusIndicator — border */
+  --status-indicator-border-width:      var(--global-spacing-stroke-2px);
+  --status-indicator-border-radius:     var(--global-spacing-radius-full);
+
+  /* StatusIndicator — away (yellow) */
+  --status-indicator-away-bg:           var(--global-color-primary-yellow);
+  --status-indicator-away-border:       var(--global-color-primary-yellow-100);
+
+  /* StatusIndicator — do-not-disturb (red) */
+  --status-indicator-dnd-bg:            var(--global-color-status-red);
+  --status-indicator-dnd-border:        var(--global-color-status-red-light);
+
+  /* StatusIndicator — online (green) */
+  --status-indicator-online-bg:         var(--global-color-status-dark-green);
+  --status-indicator-online-border:     var(--global-color-status-green);
+
+  /* StatusIndicator — offline (gray) */
+  --status-indicator-offline-bg:        var(--global-color-neutral-gray-600);
+  --status-indicator-offline-border:    var(--global-color-neutral-gray-300);
+
+  /* StatusIndicator — verified (sky-blue checkmark badge) */
+  --status-indicator-verified-bg:       var(--global-color-primary-sky-blue);
+  --status-indicator-verified-check:    var(--global-color-base-white);
+}
+
+/* ==========================================================================
    COMPONENT LAYER: Stepper (Component-Specific Tokens)
    ========================================================================== */
 :root {
