@@ -1620,11 +1620,11 @@
   --btn-filter-secondary-color:         var(--global-color-base-black);
   --btn-filter-secondary-shadow-hover:  2px 2px 0px 0px var(--global-color-primary-sky-blue);
 
-  /* Variant: Tertiary (seafoam tint) */
-  --btn-filter-tertiary-bg:             var(--global-color-primary-seafoam-100);
-  --btn-filter-tertiary-border:         var(--global-color-primary-seafoam);
+  /* Variant: Tertiary (yellow — matches Tertiary Button) */
+  --btn-filter-tertiary-bg:             var(--global-color-primary-yellow-200);
+  --btn-filter-tertiary-border:         var(--global-color-primary-yellow-dark);
   --btn-filter-tertiary-color:          var(--global-color-base-black);
-  --btn-filter-tertiary-shadow-hover:   2px 2px 0px 0px var(--global-color-primary-seafoam-dark);
+  --btn-filter-tertiary-shadow-hover:   2px 2px 0px 0px var(--global-color-primary-yellow-dark);
 
   /* Variant: Ghost (outline only) */
   --btn-filter-ghost-bg:                var(--global-color-base-white);

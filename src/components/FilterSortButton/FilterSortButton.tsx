@@ -30,7 +30,7 @@ export interface FilterSortButtonProps {
  * **Variants**
  * - `primary`   — Navy filled (`--global-color-secondary-navy`)
  * - `secondary` — Sky-blue tint fill (`--global-color-primary-sky-blue-100`)
- * - `tertiary`  — Seafoam tint fill (`--global-color-primary-seafoam-100`)
+ * - `tertiary`  — Yellow tint fill (`--global-color-primary-yellow-200`)
  * - `ghost`     — Outline only, white background
  *
  * **Sizes**

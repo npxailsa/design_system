@@ -17,7 +17,7 @@ const VARIANTS: Array<{ variant: FilterSortVariant; label: string; description: 
   {
     variant: 'tertiary',
     label: 'Tertiary',
-    description: 'Seafoam tint with seafoam border. Lower visual weight — ideal for additional toolbar options.',
+    description: 'Yellow tint with yellow-dark border. Matches the Tertiary Button colour scheme — ideal for additional toolbar options.',
   },
   {
     variant: 'ghost',
@@ -249,10 +249,10 @@ export const FilterSortButtonDocs: React.FC = () => {
           { name: '--btn-filter-secondary-border', description: 'Secondary border — --global-color-primary-sky-blue (#0BA7EA)' },
           { name: '--btn-filter-secondary-color', description: 'Secondary text — --global-color-base-black' },
           { name: '--btn-filter-secondary-shadow-hover', description: 'Secondary hover shadow — 2px 2px sky-blue' },
-          { name: '--btn-filter-tertiary-bg', description: 'Tertiary background — --global-color-primary-seafoam-100 (#DCECE2)' },
-          { name: '--btn-filter-tertiary-border', description: 'Tertiary border — --global-color-primary-seafoam (#8BBF9F)' },
+          { name: '--btn-filter-tertiary-bg', description: 'Tertiary background — --global-color-primary-yellow-200' },
+          { name: '--btn-filter-tertiary-border', description: 'Tertiary border — --global-color-primary-yellow-dark' },
           { name: '--btn-filter-tertiary-color', description: 'Tertiary text — --global-color-base-black' },
-          { name: '--btn-filter-tertiary-shadow-hover', description: 'Tertiary hover shadow — 2px 2px seafoam-dark' },
+          { name: '--btn-filter-tertiary-shadow-hover', description: 'Tertiary hover shadow — 2px 2px yellow-dark' },
           { name: '--btn-filter-ghost-bg', description: 'Ghost background — --global-color-base-white' },
           { name: '--btn-filter-ghost-border', description: 'Ghost border — --global-color-neutral-gray-300' },
           { name: '--btn-filter-ghost-color', description: 'Ghost text — --global-color-base-black' },

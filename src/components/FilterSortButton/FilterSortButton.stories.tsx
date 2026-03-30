@@ -20,7 +20,7 @@ const meta: Meta<typeof FilterSortButton> = {
     variant: {
       control: 'select',
       options: ALL_VARIANTS,
-      description: 'Visual colour variant: primary (navy), secondary (sky-blue), tertiary (seafoam), ghost (outline)',
+      description: 'Visual colour variant: primary (navy), secondary (sky-blue), tertiary (yellow), ghost (outline)',
     },
     size: {
       control: 'select',

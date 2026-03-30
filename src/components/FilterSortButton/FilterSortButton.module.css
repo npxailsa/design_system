@@ -108,7 +108,7 @@
   box-shadow: var(--btn-filter-secondary-shadow-hover);
 }
 
-/* ── Tertiary (seafoam tint) ── */
+/* ── Tertiary (yellow — matches Tertiary Button) ── */
 .fsb--tertiary {
   background:   var(--btn-filter-tertiary-bg);
   border-color: var(--btn-filter-tertiary-border);
