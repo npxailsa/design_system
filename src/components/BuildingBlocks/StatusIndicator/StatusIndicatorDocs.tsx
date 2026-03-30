@@ -298,7 +298,7 @@ export const StatusIndicatorDocs: React.FC = () => {
             border: `var(--global-spacing-stroke-1px) solid var(--global-color-neutral-gray-200)`,
           }}
         >
-          {ALL_SIZES.map((size) => (
+          {ALL_SIZES.map(({ size, label }) => (
             <div
               key={size}
               style={{ display: 'flex', alignItems: 'center', gap: 'var(--global-spacing-sizing-20px)' }}
@@ -313,7 +313,7 @@ export const StatusIndicatorDocs: React.FC = () => {
                   textTransform: 'capitalize',
                 }}
               >
-                {size}
+                {label}
               </div>
               {ALL_STATUSES.map(({ status }) => (
                 <StatusIndicator key={status} status={status} size={size} />
