@@ -15,7 +15,7 @@ const ALL_STATUSES: StatusIndicatorStatus[] = [
 const ALL_SIZES: StatusIndicatorSize[] = ['default', 'large', 'small'];
 
 const meta: Meta<typeof StatusIndicator> = {
-  title: 'Foundation/Building Blocks/Status Indicator',
+  title: 'Foundation/BuildingBlocks/Status Indicator',
   component: StatusIndicator,
   parameters: {
     docs: {
