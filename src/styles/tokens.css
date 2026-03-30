@@ -888,6 +888,51 @@
 }
 
 /* ==========================================================================
+   COMPONENT LAYER: AvatarWithText (Component-Specific Tokens)
+   ========================================================================== */
+:root {
+  /* AvatarWithText — layout */
+  --avatar-with-text-gap:               var(--global-spacing-sizing-8px);
+  --avatar-with-text-text-gap:          var(--global-spacing-sizing-2px);
+
+  /* AvatarWithText — name colours & font */
+  --avatar-with-text-name-font:         var(--brand-font-primary);
+  --avatar-with-text-name-color:        var(--global-color-base-black);
+  --avatar-with-text-name-weight:       var(--global-type-weight-default);
+
+  /* AvatarWithText — name sizes per avatar size */
+  --avatar-with-text-name-size-lg:      var(--global-type-size-primary-label-lg);
+  --avatar-with-text-name-size-default: var(--global-type-size-primary-label);
+  --avatar-with-text-name-size-sm:      var(--global-type-size-primary-label-sm);
+  --avatar-with-text-name-size-xs:      var(--global-type-size-primary-label-xs);
+
+  /* AvatarWithText — name line-heights per avatar size */
+  --avatar-with-text-name-lh-lg:        var(--global-type-line-height-label-lg);
+  --avatar-with-text-name-lh-default:   var(--global-type-line-height-label);
+  --avatar-with-text-name-lh-sm:        var(--global-type-line-height-label-sm);
+  --avatar-with-text-name-lh-xs:        var(--global-type-line-height-label-xs);
+
+  /* AvatarWithText — letter spacing */
+  --avatar-with-text-name-ls:           var(--global-type-letter-spacing-primary-label);
+
+  /* AvatarWithText — subtext */
+  --avatar-with-text-subtext-font:      var(--brand-font-primary);
+  --avatar-with-text-subtext-color:     var(--global-color-neutral-gray-600);
+  --avatar-with-text-subtext-weight:    var(--global-type-weight-light);
+  --avatar-with-text-subtext-size:      var(--global-type-size-primary-footnote);
+  --avatar-with-text-subtext-lh:        var(--global-type-line-height-footnote);
+  --avatar-with-text-subtext-ls:        var(--global-type-letter-spacing-primary-footnote);
+
+  /* AvatarWithText — email */
+  --avatar-with-text-email-font:        var(--brand-font-primary);
+  --avatar-with-text-email-color:       var(--global-color-primary-blue);
+  --avatar-with-text-email-weight:      var(--global-type-weight-light);
+  --avatar-with-text-email-size:        var(--global-type-size-primary-footnote);
+  --avatar-with-text-email-lh:          var(--global-type-line-height-footnote);
+  --avatar-with-text-email-ls:          var(--global-type-letter-spacing-primary-footnote);
+}
+
+/* ==========================================================================
    COMPONENT LAYER: Accordion (Component-Specific Tokens)
    ========================================================================== */
 :root {

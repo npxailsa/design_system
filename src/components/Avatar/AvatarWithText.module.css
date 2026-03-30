@@ -1,0 +1,93 @@
+/* =============================================================================
+   AvatarWithText — Horizontal avatar + text compound component
+   Tokens: src/styles/tokens.css  →  --avatar-with-text-*
+   ============================================================================= */
+
+/* ── Reset ── */
+.root,
+.root * {
+  box-sizing: border-box;
+}
+
+/* ── Root layout ── */
+.root {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--avatar-with-text-gap);
+}
+
+/* ── Avatar slot ── */
+.avatar {
+  flex-shrink: 0;
+}
+
+/* ── Text column ── */
+.textCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--avatar-with-text-text-gap);
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* ── Name ── */
+.name {
+  font-family: var(--avatar-with-text-name-font);
+  font-weight: var(--avatar-with-text-name-weight);
+  color: var(--avatar-with-text-name-color);
+  letter-spacing: var(--avatar-with-text-name-ls);
+  line-height: var(--avatar-with-text-name-lh-default);
+  font-size: var(--avatar-with-text-name-size-default);
+}
+
+/* ── Subtext ── */
+.subtext {
+  font-family: var(--avatar-with-text-subtext-font);
+  font-weight: var(--avatar-with-text-subtext-weight);
+  color: var(--avatar-with-text-subtext-color);
+  font-size: var(--avatar-with-text-subtext-size);
+  line-height: var(--avatar-with-text-subtext-lh);
+  letter-spacing: var(--avatar-with-text-subtext-ls);
+}
+
+/* ── Email ── */
+.email {
+  font-family: var(--avatar-with-text-email-font);
+  font-weight: var(--avatar-with-text-email-weight);
+  color: var(--avatar-with-text-email-color);
+  font-size: var(--avatar-with-text-email-size);
+  line-height: var(--avatar-with-text-email-lh);
+  letter-spacing: var(--avatar-with-text-email-ls);
+}
+
+/* =============================================================================
+   SIZE MODIFIERS — scale name typography with avatar size
+   ============================================================================= */
+
+.size-large .name {
+  font-size: var(--avatar-with-text-name-size-lg);
+  line-height: var(--avatar-with-text-name-lh-lg);
+}
+
+.size-default .name {
+  font-size: var(--avatar-with-text-name-size-default);
+  line-height: var(--avatar-with-text-name-lh-default);
+}
+
+.size-small .name {
+  font-size: var(--avatar-with-text-name-size-sm);
+  line-height: var(--avatar-with-text-name-lh-sm);
+}
+
+.size-x-small .name {
+  font-size: var(--avatar-with-text-name-size-xs);
+  line-height: var(--avatar-with-text-name-lh-xs);
+}
+
+/* x-small also scales the secondary text */
+.size-x-small .subtext,
+.size-x-small .email {
+  font-size: var(--global-type-size-primary-label-xxs);
+  line-height: var(--global-type-line-height-label-xxs);
+}
