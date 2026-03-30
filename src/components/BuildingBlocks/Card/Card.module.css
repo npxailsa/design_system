@@ -1,0 +1,160 @@
+/* =============================================================================
+   Card — Foundational surface building block
+   Tokens: src/styles/tokens.css  →  --card-*
+   ============================================================================= */
+
+.card,
+.card * {
+  box-sizing: border-box;
+}
+
+/* ── Base ── */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--card-border-radius);
+  border-style: solid;
+  border-color: var(--card-border-color);
+  border-width: var(--card-border-width);
+
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  /* Default (small) dimensions */
+  width: var(--card-size-sm);
+  height: var(--card-size-sm);
+  min-width: var(--card-size-sm);
+  min-height: 20px;
+
+  padding: var(--card-padding-sm);
+  position: relative;
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+}
+
+/* =============================================================================
+   SIZE MODIFIERS
+   ============================================================================= */
+.size-small {
+  width: var(--card-size-sm);
+  height: var(--card-size-sm);
+  min-width: var(--card-size-sm);
+  padding: var(--card-padding-sm);
+}
+
+.size-default {
+  width: var(--card-size-default);
+  height: var(--card-size-default);
+  min-width: var(--card-size-default);
+  padding: var(--card-padding-default);
+}
+
+.size-large {
+  width: var(--card-size-lg);
+  height: var(--card-size-lg);
+  min-width: var(--card-size-lg);
+  padding: var(--card-padding-lg);
+}
+
+/* =============================================================================
+   SHADOW MODIFIER
+   ============================================================================= */
+.shadow-true {
+  border-width: var(--card-border-width);
+  box-shadow: var(--card-shadow);
+}
+
+.shadow-false {
+  border-width: var(--card-border-width-flat);
+  box-shadow: none;
+}
+
+/* =============================================================================
+   BACKGROUND + BORDER COLOUR VARIANTS
+   Uses compound selectors with mode for light/dark splits
+   ============================================================================= */
+
+/* ── default ── */
+.bg-default.mode-light {
+  background: var(--card-bg-default);
+  border-color: var(--card-border-color);
+}
+.bg-default.mode-dark {
+  background: var(--card-bg-black);
+  border-color: var(--card-border-black);
+}
+
+/* ── sky-blue ── */
+.bg-sky-blue.mode-light {
+  background: var(--card-bg-sky-blue);
+  border-color: var(--card-border-sky-blue);
+}
+.bg-sky-blue.mode-dark {
+  background: var(--card-bg-blue);
+  border-color: var(--card-border-blue);
+}
+
+/* ── blue ── */
+.bg-blue {
+  background: var(--card-bg-blue);
+  border-color: var(--card-border-blue);
+}
+
+/* ── error ── */
+.bg-error.mode-light {
+  background: var(--card-bg-error-light);
+  border-color: var(--card-border-error-light);
+}
+.bg-error.mode-dark {
+  background: var(--card-bg-error-dark);
+  border-color: var(--card-border-error-dark);
+}
+
+/* ── success ── */
+.bg-success {
+  border-color: var(--card-border-success);
+}
+.bg-success.mode-light {
+  background: var(--card-bg-success-light);
+}
+.bg-success.mode-dark {
+  background: var(--card-bg-success-dark);
+}
+
+/* ── warning ── */
+.bg-warning {
+  background: var(--card-bg-warning);
+  border-color: var(--card-border-warning);
+}
+
+/* ── info-blue ── */
+.bg-info-blue {
+  background: var(--card-bg-info-blue);
+  border-color: var(--card-border-info-blue);
+}
+
+/* ── note-purple ── */
+.bg-note-purple {
+  background: var(--card-bg-note-purple);
+  border-color: var(--card-border-note-purple);
+}
+
+/* ── light-gray ── */
+.bg-light-gray {
+  background: var(--card-bg-light-gray);
+  border-color: var(--card-border-light-gray);
+}
+
+/* ── black ── */
+.bg-black {
+  background: var(--card-bg-black);
+  border-color: var(--card-border-black);
+}
+
+/* ── dark-gray ── */
+.bg-dark-gray {
+  background: var(--card-bg-dark-gray);
+  border-color: var(--card-border-black);
+}

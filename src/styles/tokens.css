@@ -888,6 +888,54 @@
 }
 
 /* ==========================================================================
+   COMPONENT LAYER: Card (Component-Specific Tokens)
+   ========================================================================== */
+:root {
+  /* Card — base structure */
+  --card-border-radius:         var(--global-spacing-radius-6px);
+  --card-border-width:          0.5px;
+  --card-border-width-flat:     var(--global-spacing-stroke-1px);
+  --card-border-color:          var(--global-color-neutral-gray-300);
+  --card-bg:                    var(--global-color-base-white);
+  --card-shadow:                0px 5px 10px 0px rgba(39, 39, 39, 0.1);
+
+  /* Card — sizes (small = default base 100px) */
+  --card-size-sm:               100px;
+  --card-size-default:          140px;
+  --card-size-lg:               180px;
+  --card-padding-sm:            var(--global-spacing-sizing-16px);
+  --card-padding-default:       var(--global-spacing-sizing-24px);
+  --card-padding-lg:            var(--global-spacing-sizing-32px);
+
+  /* Card — background colours (light mode) */
+  --card-bg-default:            var(--global-color-base-white);
+  --card-bg-sky-blue:           var(--global-color-primary-sky-blue-50);
+  --card-bg-blue:               var(--global-color-primary-blue);
+  --card-bg-error-light:        var(--global-color-status-red-light);
+  --card-bg-error-dark:         var(--global-color-status-red);
+  --card-bg-success-light:      var(--global-color-status-green-light);
+  --card-bg-success-dark:       var(--global-color-status-dark-green);
+  --card-bg-warning:            var(--global-color-status-orange-light);
+  --card-bg-info-blue:          var(--global-color-status-info-blue-light);
+  --card-bg-note-purple:        var(--global-color-status-purple-light);
+  --card-bg-light-gray:         var(--global-color-neutral-gray-50);
+  --card-bg-black:              var(--global-color-base-black);
+  --card-bg-dark-gray:          var(--global-color-neutral-gray-600);
+
+  /* Card — border colours */
+  --card-border-sky-blue:       var(--global-color-primary-sky-blue);
+  --card-border-blue:           var(--global-color-primary-blue-200);
+  --card-border-error-light:    var(--global-color-status-red);
+  --card-border-error-dark:     var(--global-color-status-red-light);
+  --card-border-success:        var(--global-color-status-green);
+  --card-border-warning:        var(--global-color-status-orange);
+  --card-border-info-blue:      var(--global-color-status-info-blue);
+  --card-border-note-purple:    var(--global-color-status-purple);
+  --card-border-light-gray:     var(--global-color-neutral-gray-400);
+  --card-border-black:          var(--global-color-neutral-gray-600);
+}
+
+/* ==========================================================================
    COMPONENT LAYER: AvatarWithText (Component-Specific Tokens)
    ========================================================================== */
 :root {
