@@ -1370,7 +1370,7 @@
   --btn-menu-bg:                  var(--global-color-base-white);
   --btn-menu-bg-hover:            var(--global-color-neutral-gray-50);
   --btn-menu-bg-selected:         var(--global-color-primary-blue-blue-50);
-  --btn-menu-bg-disabled:         var(--global-color-base-white);
+  --btn-menu-bg-disabled:         var(--global-color-neutral-gray-50);
   --btn-menu-border-color:        var(--global-color-neutral-gray-300);
   --btn-menu-border-width:        var(--global-spacing-stroke-0-5px);
   --btn-menu-border-radius-top:   var(--global-spacing-radius-6px);
@@ -1645,9 +1645,9 @@
   --btn-filter-icon-size-lg:            var(--global-spacing-sizing-20px);
   --btn-filter-gap-lg:                  var(--global-spacing-sizing-8px);
 
-  /* Variant: Primary (navy filled) */
-  --btn-filter-primary-bg:              var(--global-color-secondary-navy);
-  --btn-filter-primary-border:          var(--global-color-secondary-navy);
+  /* Variant: Primary (brand blue filled) */
+  --btn-filter-primary-bg:              var(--brand-primary);
+  --btn-filter-primary-border:          var(--brand-primary);
   --btn-filter-primary-color:           var(--global-color-base-white);
   --btn-filter-primary-shadow-hover:    2px 2px 0px 0px var(--global-color-primary-blue-blue-400);
 

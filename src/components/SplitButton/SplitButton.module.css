@@ -432,7 +432,7 @@
   --split-border-color-hover:   var(--global-color-neutral-gray-300);
   --split-bg-active:            var(--global-color-neutral-gray-50);
   --split-shadow-hover:         none;
-  --split-bg-disabled:          transparent;
+  --split-bg-disabled:          var(--global-color-neutral-gray-50);
   --split-color-disabled:       var(--btn-ghost-link-color-disabled);
   --split-border-color-disabled: var(--global-color-neutral-gray-200);
 }

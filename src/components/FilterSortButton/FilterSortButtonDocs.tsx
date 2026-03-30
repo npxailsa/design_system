@@ -7,7 +7,7 @@ const VARIANTS: Array<{ variant: FilterSortVariant; label: string; description: 
   {
     variant: 'primary',
     label: 'Primary',
-    description: 'Navy filled button. Used for the primary action (e.g. Filter) in a toolbar. High visual weight — use once per toolbar.',
+    description: 'Brand blue filled button (--brand-primary, #3776CE). Used for the primary action (e.g. Filter) in a toolbar. High visual weight — use once per toolbar.',
   },
   {
     variant: 'secondary',
@@ -241,8 +241,8 @@ export const FilterSortButtonDocs: React.FC = () => {
         title="Design Tokens — Variants"
         description="Colour tokens per variant:"
         tokens={[
-          { name: '--btn-filter-primary-bg', description: 'Primary background — --global-color-secondary-navy (#3A3282)' },
-          { name: '--btn-filter-primary-border', description: 'Primary border — --global-color-secondary-navy' },
+          { name: '--btn-filter-primary-bg', description: 'Primary background — --brand-primary (#3776CE)' },
+          { name: '--btn-filter-primary-border', description: 'Primary border — --brand-primary (#3776CE)' },
           { name: '--btn-filter-primary-color', description: 'Primary text — --global-color-base-white' },
           { name: '--btn-filter-primary-shadow-hover', description: 'Primary hover shadow — 2px 2px blue-400' },
           { name: '--btn-filter-secondary-bg', description: 'Secondary background — --global-color-primary-sky-blue-100 (#D6F0FB)' },

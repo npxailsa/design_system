@@ -3,7 +3,7 @@
    --------------------------------------------------------------------------
    Compact toolbar-action button used in tables and lists.
 
-   Variants : primary (navy) · secondary (sky-blue) · tertiary (seafoam) · ghost
+   Variants : primary (brand blue) · secondary (sky-blue) · tertiary (yellow) · ghost
    Sizes    : xs · sm · md · lg
    Tokens   : --btn-filter-* in tokens.css
    ========================================================================== */
@@ -86,7 +86,7 @@
    COLOUR VARIANTS
    ════════════════════════════════════════════════════════════ */
 
-/* ── Primary (navy filled) ── */
+/* ── Primary (brand blue filled) ── */
 .fsb--primary {
   background:   var(--btn-filter-primary-bg);
   border-color: var(--btn-filter-primary-border);
