@@ -1,0 +1,223 @@
+/* ==========================================================================
+   ButtonGroup Component
+   --------------------------------------------------------------------------
+   Icon-only square buttons arranged in a horizontal group.
+
+   Layouts  : joined (connected, no gap) · separate (6px gap, primary+ghost pair)
+   Variants : primary · secondary · tertiary · ghost
+   Sizes    : xs · sm · md · lg
+   Tokens   : --btn-group-* in tokens.css
+   ========================================================================== */
+
+.btn-group,
+.btn-group * {
+  box-sizing: border-box;
+}
+
+/* ── Container ── */
+.btn-group {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* ════════════════════════════════════════════════════════════
+   LAYOUTS
+   ════════════════════════════════════════════════════════════ */
+
+.btn-group--joined {
+  gap: 0;
+}
+
+.btn-group--separate {
+  gap: var(--btn-group-gap-separate);
+}
+
+/* ════════════════════════════════════════════════════════════
+   BUTTON BASE
+   ════════════════════════════════════════════════════════════ */
+
+.btn-group__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  outline: none;
+  border-style: solid;
+  border-radius: var(--btn-group-radius);
+  transition:
+    background   var(--btn-group-transition-duration) var(--btn-group-transition-easing),
+    box-shadow   var(--btn-group-transition-duration) var(--btn-group-transition-easing);
+}
+
+.btn-group__btn:hover:not(:disabled),
+.btn-group__btn:focus-visible:not(:disabled) {
+  filter:  none;
+  outline: none;
+}
+
+/* ════════════════════════════════════════════════════════════
+   SIZES
+   ════════════════════════════════════════════════════════════ */
+
+/* Extra-small */
+.btn-group--xs .btn-group__btn {
+  width:      var(--btn-group-size-xs);
+  height:     var(--btn-group-size-xs);
+  min-width:  var(--btn-group-size-xs);
+  min-height: var(--btn-group-size-xs);
+}
+
+/* Small */
+.btn-group--sm .btn-group__btn {
+  width:      var(--btn-group-size-sm);
+  height:     var(--btn-group-size-sm);
+  min-width:  var(--btn-group-size-sm);
+  min-height: var(--btn-group-size-sm);
+}
+
+/* Default / Medium */
+.btn-group--md .btn-group__btn {
+  width:      var(--btn-group-size-md);
+  height:     var(--btn-group-size-md);
+  min-width:  var(--btn-group-size-md);
+  min-height: var(--btn-group-size-md);
+}
+
+/* Large */
+.btn-group--lg .btn-group__btn {
+  width:      var(--btn-group-size-lg);
+  height:     var(--btn-group-size-lg);
+  min-width:  var(--btn-group-size-lg);
+  min-height: var(--btn-group-size-lg);
+}
+
+/* ── Icon sizing per size ── */
+.btn-group--xs .btn-group__icon {
+  width:     var(--btn-group-icon-size-xs) !important;
+  height:    var(--btn-group-icon-size-xs) !important;
+  font-size: var(--btn-group-icon-size-xs) !important;
+}
+
+.btn-group--sm .btn-group__icon {
+  width:     var(--btn-group-icon-size-sm) !important;
+  height:    var(--btn-group-icon-size-sm) !important;
+  font-size: var(--btn-group-icon-size-sm) !important;
+}
+
+.btn-group--md .btn-group__icon {
+  width:     var(--btn-group-icon-size-md) !important;
+  height:    var(--btn-group-icon-size-md) !important;
+  font-size: var(--btn-group-icon-size-md) !important;
+}
+
+.btn-group--lg .btn-group__icon {
+  width:     var(--btn-group-icon-size-lg) !important;
+  height:    var(--btn-group-icon-size-lg) !important;
+  font-size: var(--btn-group-icon-size-lg) !important;
+}
+
+/* ════════════════════════════════════════════════════════════
+   COLOUR VARIANTS
+   ════════════════════════════════════════════════════════════ */
+
+/* ── Primary (blue filled) ── */
+.btn-group__btn--primary {
+  background:   var(--btn-group-primary-bg);
+  border-color: var(--btn-group-primary-border);
+  border-width: var(--btn-group-border-width-filled);
+  color:        var(--btn-group-primary-color);
+}
+
+.btn-group__btn--primary:hover:not(:disabled) {
+  background: var(--btn-group-primary-bg-hover);
+}
+
+/* ── Secondary (sky-blue tint) ── */
+.btn-group__btn--secondary {
+  background:   var(--btn-group-secondary-bg);
+  border-color: var(--btn-group-secondary-border);
+  border-width: var(--btn-group-border-width-filled);
+  color:        var(--btn-group-secondary-color);
+}
+
+.btn-group__btn--secondary:hover:not(:disabled) {
+  background: var(--btn-group-secondary-bg-hover);
+}
+
+/* ── Tertiary (yellow — matches Tertiary Button) ── */
+.btn-group__btn--tertiary {
+  background:   var(--btn-group-tertiary-bg);
+  border-color: var(--btn-group-tertiary-border);
+  border-width: var(--btn-group-border-width);
+  color:        var(--btn-group-tertiary-color);
+}
+
+.btn-group__btn--tertiary:hover:not(:disabled) {
+  background: var(--btn-group-tertiary-bg-hover);
+}
+
+/* ── Ghost (outline only) ── */
+.btn-group__btn--ghost {
+  background:   var(--btn-group-ghost-bg);
+  border-color: var(--btn-group-ghost-border);
+  border-width: var(--btn-group-border-width);
+  color:        var(--btn-group-ghost-color);
+}
+
+.btn-group__btn--ghost:hover:not(:disabled) {
+  background: var(--btn-group-ghost-bg-hover);
+}
+
+/* ════════════════════════════════════════════════════════════
+   JOINED LAYOUT — border-radius & border merging
+   ════════════════════════════════════════════════════════════ */
+
+/* Left-end: round left corners only */
+.btn-group--joined .btn-group__btn--left {
+  border-radius: var(--btn-group-radius) 0 0 var(--btn-group-radius);
+}
+
+/* Middle: no radius, remove left border to avoid double line */
+.btn-group--joined .btn-group__btn--middle {
+  border-radius: 0;
+  border-left-width: 0;
+}
+
+/* Right-end: round right corners only, remove left border */
+.btn-group--joined .btn-group__btn--right {
+  border-radius: 0 var(--btn-group-radius) var(--btn-group-radius) 0;
+  border-left-width: 0;
+}
+
+/* Solo: full radius (single button in joined group) */
+.btn-group--joined .btn-group__btn--solo {
+  border-radius: var(--btn-group-radius);
+}
+
+/* ════════════════════════════════════════════════════════════
+   DISABLED STATE
+   ════════════════════════════════════════════════════════════ */
+
+.btn-group--disabled .btn-group__btn,
+.btn-group__btn--disabled,
+.btn-group__btn:disabled {
+  background:     var(--btn-group-bg-disabled)     !important;
+  border-color:   var(--btn-group-border-disabled) !important;
+  color:          var(--btn-group-color-disabled)  !important;
+  box-shadow:     none                             !important;
+  cursor:         not-allowed;
+  pointer-events: none;
+  opacity:        1 !important;
+}
+
+/* ════════════════════════════════════════════════════════════
+   ICON
+   ════════════════════════════════════════════════════════════ */
+
+.btn-group__icon {
+  display:    block;
+  flex-shrink: 0;
+}

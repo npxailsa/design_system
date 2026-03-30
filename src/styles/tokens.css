@@ -1636,6 +1636,63 @@
   --btn-filter-bg-disabled:             var(--global-color-neutral-gray-50);
   --btn-filter-border-disabled:         var(--global-color-neutral-gray-200);
   --btn-filter-color-disabled:          var(--global-color-neutral-gray-400);
+
+  /* ─────────────────────────────────────────────────────────────────────
+     ButtonGroup — Icon-only square buttons in horizontal groups
+     Layouts  : joined (connected, no gap) · separate (gapped pair)
+     Variants : primary · secondary · tertiary · ghost
+     Sizes    : xs · sm · md · lg
+     ───────────────────────────────────────────────────────────────────── */
+
+  /* Shared */
+  --btn-group-radius:                var(--global-spacing-radius-4px);
+  --btn-group-border-width:          var(--global-spacing-stroke-1px);
+  --btn-group-border-width-filled:   var(--global-spacing-stroke-0-5px);
+  --btn-group-gap-separate:          var(--global-spacing-sizing-6px);
+  --btn-group-transition-duration:   var(--global-animation-duration-fast);
+  --btn-group-transition-easing:     var(--global-animation-easing-default);
+
+  /* Sizes (square icon-only buttons) */
+  --btn-group-size-xs:               var(--global-spacing-sizing-28px);
+  --btn-group-icon-size-xs:          var(--global-spacing-sizing-14px);
+
+  --btn-group-size-sm:               30px;
+  --btn-group-icon-size-sm:          var(--global-spacing-sizing-16px);
+
+  --btn-group-size-md:               var(--global-spacing-sizing-42px);
+  --btn-group-icon-size-md:          var(--global-spacing-sizing-18px);
+
+  --btn-group-size-lg:               var(--global-spacing-sizing-52px);
+  --btn-group-icon-size-lg:          var(--global-spacing-sizing-20px);
+
+  /* Variant: Primary (blue filled) */
+  --btn-group-primary-bg:            var(--brand-primary);
+  --btn-group-primary-border:        var(--global-color-primary-blue-blue-300);
+  --btn-group-primary-color:         var(--global-color-base-white);
+  --btn-group-primary-bg-hover:      var(--global-color-primary-blue-blue-400);
+
+  /* Variant: Secondary (sky-blue tint) */
+  --btn-group-secondary-bg:          var(--global-color-primary-sky-blue-100);
+  --btn-group-secondary-border:      var(--global-color-primary-sky-blue);
+  --btn-group-secondary-color:       var(--global-color-base-black);
+  --btn-group-secondary-bg-hover:    var(--global-color-primary-sky-blue-50);
+
+  /* Variant: Tertiary (yellow — matches Tertiary Button) */
+  --btn-group-tertiary-bg:           var(--global-color-primary-yellow-200);
+  --btn-group-tertiary-border:       var(--global-color-primary-yellow-dark);
+  --btn-group-tertiary-color:        var(--global-color-base-black);
+  --btn-group-tertiary-bg-hover:     var(--global-color-primary-yellow-50);
+
+  /* Variant: Ghost (outline only, white background) */
+  --btn-group-ghost-bg:              var(--global-color-base-white);
+  --btn-group-ghost-border:          var(--global-color-neutral-gray-500);
+  --btn-group-ghost-color:           var(--global-color-base-black);
+  --btn-group-ghost-bg-hover:        var(--global-color-neutral-gray-50);
+
+  /* Disabled */
+  --btn-group-bg-disabled:           var(--global-color-neutral-gray-50);
+  --btn-group-border-disabled:       var(--global-color-neutral-gray-200);
+  --btn-group-color-disabled:        var(--global-color-neutral-gray-400);
 }
 
 /* Font Loading */
