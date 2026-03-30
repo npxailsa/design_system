@@ -833,6 +833,61 @@
 }
 
 /* ==========================================================================
+   COMPONENT LAYER: Avatar (Component-Specific Tokens)
+   ========================================================================== */
+:root {
+  /* Avatar — container sizes */
+  --avatar-size-xs:      26px;
+  --avatar-size-sm:      38px;
+  --avatar-size-default: 46px;
+  --avatar-size-lg:      62px;
+
+  /* Avatar — square border-radius per size */
+  --avatar-radius-sq-xs:      var(--global-spacing-radius-4px);
+  --avatar-radius-sq-sm:      6px;
+  --avatar-radius-sq-default: var(--global-spacing-radius-8px);
+  --avatar-radius-sq-lg:      var(--global-spacing-radius-12px);
+
+  /* Avatar — circle (round) shape */
+  --avatar-radius-circle: var(--global-spacing-radius-full);
+
+  /* Avatar — icon / initials font */
+  --avatar-font-family:       var(--brand-font-primary);
+  --avatar-initial-size-xs:   var(--global-type-size-primary-label-xs);
+  --avatar-initial-size-sm:   var(--global-type-size-primary-label-lg);
+  --avatar-initial-size-default: var(--global-type-size-primary-heading-5);
+  --avatar-initial-size-lg:   var(--global-type-size-primary-heading-4);
+
+  /* Avatar — empty-state icon sizes */
+  --avatar-icon-size-xs:      var(--global-spacing-sizing-14px);
+  --avatar-icon-size-sm:      var(--global-spacing-sizing-20px);
+  --avatar-icon-size-default: var(--global-spacing-sizing-24px);
+  --avatar-icon-size-lg:      var(--global-spacing-sizing-32px);
+
+  /* Avatar — type backgrounds */
+  --avatar-bg-empty-state:    var(--global-color-neutral-gray-200);
+  --avatar-bg-initial-light:  var(--global-color-neutral-gray-200);
+  --avatar-bg-initial-dark:   var(--global-color-base-black);
+  --avatar-color-initial-light: var(--global-color-base-black);
+  --avatar-color-initial-dark:  var(--global-color-base-white);
+
+  /* Avatar — border (no-border state) */
+  --avatar-border-width:      var(--global-spacing-stroke-1px);
+  --avatar-border-color:      var(--global-color-neutral-gray-200);
+
+  /* Avatar — border (border=true state) */
+  --avatar-border-width-active: 4px;
+  --avatar-border-color-active: var(--global-color-base-white);
+  --avatar-border-shadow-active: 2px 2px 0px 0px var(--global-color-neutral-gray-200);
+
+  /* Avatar — status badge size per avatar size */
+  --avatar-badge-size-xs:      var(--global-spacing-sizing-8px);
+  --avatar-badge-size-sm:      var(--global-spacing-sizing-10px);
+  --avatar-badge-size-default: var(--global-spacing-sizing-14px);
+  --avatar-badge-size-lg:      var(--global-spacing-sizing-14px);
+}
+
+/* ==========================================================================
    COMPONENT LAYER: Accordion (Component-Specific Tokens)
    ========================================================================== */
 :root {

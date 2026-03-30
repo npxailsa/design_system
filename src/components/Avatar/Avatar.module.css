@@ -1,0 +1,189 @@
+/* =============================================================================
+   Avatar — User identity badge
+   Tokens: src/styles/tokens.css  →  --avatar-*
+   ============================================================================= */
+
+/* ── Reset ── */
+.avatar,
+.avatar * {
+  box-sizing: border-box;
+}
+
+/* ── Root container ── */
+.avatar {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+
+  /* Default dimensions — overridden by size modifiers */
+  width:  var(--avatar-size-default);
+  height: var(--avatar-size-default);
+
+  /* Default border */
+  border-style: solid;
+  border-width: var(--avatar-border-width);
+  border-color: var(--avatar-border-color);
+}
+
+/* =============================================================================
+   SIZE MODIFIERS
+   ============================================================================= */
+.size-x-small {
+  width:  var(--avatar-size-xs);
+  height: var(--avatar-size-xs);
+}
+
+.size-small {
+  width:  var(--avatar-size-sm);
+  height: var(--avatar-size-sm);
+}
+
+.size-default {
+  width:  var(--avatar-size-default);
+  height: var(--avatar-size-default);
+}
+
+.size-large {
+  width:  var(--avatar-size-lg);
+  height: var(--avatar-size-lg);
+}
+
+/* =============================================================================
+   SHAPE MODIFIERS
+   ============================================================================= */
+
+/* Circle */
+.shape-circle {
+  border-radius: var(--avatar-radius-circle);
+}
+
+/* Square — radius scales with size */
+.shape-square.size-x-small { border-radius: var(--avatar-radius-sq-xs); }
+.shape-square.size-small    { border-radius: var(--avatar-radius-sq-sm); }
+.shape-square.size-default  { border-radius: var(--avatar-radius-sq-default); }
+.shape-square.size-large    { border-radius: var(--avatar-radius-sq-lg); }
+
+/* =============================================================================
+   TYPE MODIFIERS — background colour
+   ============================================================================= */
+.type-empty-state {
+  background: var(--avatar-bg-empty-state);
+}
+
+.type-profile-photo {
+  background: var(--avatar-bg-empty-state);
+}
+
+.type-initial-light {
+  background: var(--avatar-bg-initial-light);
+}
+
+.type-initial-dark {
+  background: var(--avatar-bg-initial-dark);
+}
+
+/* =============================================================================
+   BORDER VARIANTS
+   ============================================================================= */
+
+/* border-false: standard 1px neutral border (already set on root) */
+.border-false {
+  border-width: var(--avatar-border-width);
+  border-color: var(--avatar-border-color);
+  box-shadow: none;
+}
+
+/* border-true: thick white border + offset shadow */
+.border-true {
+  border-width: var(--avatar-border-width-active);
+  border-color: var(--avatar-border-color-active);
+  box-shadow: var(--avatar-border-shadow-active);
+  overflow: visible;
+}
+
+/* =============================================================================
+   IMAGE WRAP (empty-state & profile-photo)
+   ============================================================================= */
+.imageWrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* Profile photo fills the container */
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Person icon for empty-state */
+.personIcon {
+  color: var(--global-color-neutral-gray-400) !important;
+  flex-shrink: 0;
+}
+
+.size-x-small .personIcon { font-size: var(--avatar-icon-size-xs) !important; }
+.size-small   .personIcon { font-size: var(--avatar-icon-size-sm) !important; }
+.size-default .personIcon { font-size: var(--avatar-icon-size-default) !important; }
+.size-large   .personIcon { font-size: var(--avatar-icon-size-lg) !important; }
+
+/* =============================================================================
+   INITIALS
+   ============================================================================= */
+.initials {
+  font-family: var(--avatar-font-family);
+  font-weight: var(--global-type-weight-default);
+  line-height: 1;
+  letter-spacing: var(--global-type-letter-spacing-primary-label);
+  user-select: none;
+}
+
+/* Colour per type */
+.type-initial-light .initials { color: var(--avatar-color-initial-light); }
+.type-initial-dark  .initials { color: var(--avatar-color-initial-dark); }
+
+/* Font size per size */
+.size-x-small .initials { font-size: var(--avatar-initial-size-xs); }
+.size-small   .initials { font-size: var(--avatar-initial-size-sm); }
+.size-default .initials { font-size: var(--avatar-initial-size-default); }
+.size-large   .initials { font-size: var(--avatar-initial-size-lg); }
+
+/* =============================================================================
+   STATUS BADGE — positioned at top-right corner
+   ============================================================================= */
+.badge {
+  position: absolute !important;
+  /* Default position (size-default) */
+  top: -4px !important;
+  right: -4px !important;
+}
+
+/* Adjust badge offset per size so it sits neatly on the corner */
+.size-x-small .badge {
+  top: -3px !important;
+  right: -3px !important;
+}
+
+.size-small .badge {
+  top: -3px !important;
+  right: -3px !important;
+}
+
+.size-default .badge {
+  top: -4px !important;
+  right: -4px !important;
+}
+
+.size-large .badge {
+  top: -5px !important;
+  right: -5px !important;
+}
