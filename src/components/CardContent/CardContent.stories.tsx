@@ -1,0 +1,398 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
+import { CardContent } from './CardContent';
+import { CardContentDocs } from './CardContentDocs';
+import type { CardContentStatus, CardContentSize, CardContentVariant } from './CardContent';
+
+const ALL_STATUSES: CardContentStatus[] = ['error', 'warning', 'success', 'info'];
+const ALL_SIZES: CardContentSize[] = ['small', 'default', 'large'];
+const ALL_VARIANTS: CardContentVariant[] = ['notification', 'image'];
+
+const meta: Meta<typeof CardContent> = {
+  title: 'Atoms/CardContent',
+  component: CardContent,
+  parameters: {
+    docs: {
+      page: () => <CardContentDocs />,
+    },
+  },
+  argTypes: {
+    variant: {
+      control: 'select',
+      options: ALL_VARIANTS,
+    },
+    status: {
+      control: 'select',
+      options: ALL_STATUSES,
+    },
+    size: {
+      control: 'select',
+      options: ALL_SIZES,
+    },
+    heading: { control: 'text' },
+    body: { control: 'text' },
+    count: { control: 'number' },
+    imageSrc: { control: 'text' },
+    imageAlt: { control: 'text' },
+    rating: { control: { type: 'number', min: 0, max: 5, step: 0.5 } },
+    ratingCount: { control: 'number' },
+    buttonGroupVariant: {
+      control: 'select',
+      options: ['primary', 'secondary', 'tertiary', 'ghost'],
+    },
+    buttonGroupLayout: {
+      control: 'select',
+      options: ['joined', 'separate'],
+    },
+    buttonGroupCount: { control: { type: 'number', min: 1, max: 6 } },
+    buttonGroupDisabled: { control: 'boolean' },
+  },
+  args: {
+    variant: 'notification',
+    status: 'info',
+    size: 'default',
+    heading: 'This is a heading',
+    body: 'This is a body description providing useful context for the card content.',
+    count: 4,
+    rating: 4,
+    ratingCount: 128,
+    buttonGroupVariant: 'primary',
+    buttonGroupLayout: 'separate',
+    buttonGroupCount: 2,
+    buttonGroupDisabled: false,
+  },
+};
+
+export default meta;
+type Story = StoryObj<typeof CardContent>;
+
+/* ── Documentation ──────────────────────────────────────────────────────── */
+
+export const Documentation: Story = {
+  name: 'Documentation',
+  render: () => <CardContentDocs />,
+  parameters: { controls: { disable: true } },
+};
+
+/* ── Playground ─────────────────────────────────────────────────────────── */
+
+export const Playground: Story = {
+  name: 'Playground',
+};
+
+/* ── Notification — Error ────────────────────────────────────────────────── */
+
+export const NotificationError: Story = {
+  name: 'Notification / Error',
+  args: {
+    variant: 'notification',
+    status: 'error',
+    heading: 'This is an error heading',
+    body: 'This is a body description providing useful context for the notification.',
+  },
+};
+
+/* ── Notification — Warning ──────────────────────────────────────────────── */
+
+export const NotificationWarning: Story = {
+  name: 'Notification / Warning',
+  args: {
+    variant: 'notification',
+    status: 'warning',
+    heading: 'This is a warning heading',
+    body: 'This is a body description providing useful context for the notification.',
+  },
+};
+
+/* ── Notification — Success ──────────────────────────────────────────────── */
+
+export const NotificationSuccess: Story = {
+  name: 'Notification / Success',
+  args: {
+    variant: 'notification',
+    status: 'success',
+    heading: 'This is a success heading',
+    body: 'This is a body description providing useful context for the notification.',
+  },
+};
+
+/* ── Notification — Info ─────────────────────────────────────────────────── */
+
+export const NotificationInfo: Story = {
+  name: 'Notification / Info',
+  args: {
+    variant: 'notification',
+    status: 'info',
+    heading: 'This is an info heading',
+    body: 'This is a body description providing useful context for the notification.',
+  },
+};
+
+/* ── Image card — default ────────────────────────────────────────────────── */
+
+export const ImageCard: Story = {
+  name: 'Image Card / Default',
+  args: {
+    variant: 'image',
+    size: 'default',
+    heading: 'This is a heading',
+    body: 'This is a body description providing useful context for the card content.',
+    rating: 4,
+    ratingCount: 128,
+  },
+};
+
+/* ── Image card — with photo ─────────────────────────────────────────────── */
+
+export const ImageCardWithPhoto: Story = {
+  name: 'Image Card / With Photo',
+  args: {
+    variant: 'image',
+    size: 'default',
+    heading: 'Ocean Escapes',
+    body: 'Discover pristine beaches and coastal adventures.',
+    rating: 5,
+    ratingCount: 543,
+    imageSrc:
+      'https://images.pexels.com/photos/1032650/pexels-photo-1032650.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop',
+    imageAlt: 'Ocean beach',
+  },
+};
+
+/* ── All Status Types ────────────────────────────────────────────────────── */
+
+export const AllStatusTypes: Story = {
+  name: 'All Notification Types',
+  render: (args) => (
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: 'var(--global-spacing-sizing-16px)',
+        padding: 'var(--global-spacing-sizing-32px)',
+        background: 'var(--global-color-neutral-gray-50)',
+      }}
+    >
+      {ALL_STATUSES.map((status) => (
+        <CardContent
+          key={status}
+          {...args}
+          variant="notification"
+          status={status}
+          heading={`This is an ${status} heading`}
+          body="This is a body description providing useful context."
+          count={4}
+        />
+      ))}
+    </div>
+  ),
+  args: { size: 'default' },
+  parameters: { controls: { include: ['size', 'buttonGroupVariant', 'buttonGroupLayout'] } },
+};
+
+/* ── All Sizes — Notification ────────────────────────────────────────────── */
+
+export const AllSizesNotification: Story = {
+  name: 'All Sizes / Notification',
+  render: (args) => (
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        alignItems: 'flex-start',
+        gap: 'var(--global-spacing-sizing-16px)',
+        padding: 'var(--global-spacing-sizing-32px)',
+        background: 'var(--global-color-neutral-gray-50)',
+      }}
+    >
+      {ALL_SIZES.map((size) => (
+        <CardContent
+          key={size}
+          {...args}
+          variant="notification"
+          size={size}
+        />
+      ))}
+    </div>
+  ),
+  args: {
+    status: 'info',
+    heading: 'This is an info heading',
+    body: 'This is a body description providing useful context.',
+    count: 4,
+  },
+  parameters: { controls: { include: ['status', 'buttonGroupVariant', 'buttonGroupLayout'] } },
+};
+
+/* ── All Sizes — Image ───────────────────────────────────────────────────── */
+
+export const AllSizesImage: Story = {
+  name: 'All Sizes / Image',
+  render: (args) => (
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        alignItems: 'flex-start',
+        gap: 'var(--global-spacing-sizing-16px)',
+        padding: 'var(--global-spacing-sizing-32px)',
+        background: 'var(--global-color-neutral-gray-50)',
+      }}
+    >
+      {ALL_SIZES.map((size) => (
+        <CardContent
+          key={size}
+          {...args}
+          variant="image"
+          size={size}
+        />
+      ))}
+    </div>
+  ),
+  args: {
+    heading: 'This is a heading',
+    body: 'This is a body description providing useful context.',
+    rating: 4,
+    ratingCount: 128,
+  },
+};
+
+/* ── All Status Types × All Sizes ────────────────────────────────────────── */
+
+export const AllStatusesAllSizes: Story = {
+  name: 'All Statuses × All Sizes',
+  render: () => (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--global-spacing-sizing-32px)',
+        padding: 'var(--global-spacing-sizing-32px)',
+        background: 'var(--global-color-neutral-gray-50)',
+      }}
+    >
+      {ALL_STATUSES.map((status) => (
+        <div key={status} style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', alignItems: 'flex-start' }}>
+          {ALL_SIZES.map((size) => (
+            <CardContent
+              key={size}
+              variant="notification"
+              status={status}
+              size={size}
+              heading={`This is an ${status} heading`}
+              body="This is a body description providing useful context."
+              count={4}
+            />
+          ))}
+        </div>
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+/* ── Image — All Sizes with photo ────────────────────────────────────────── */
+
+export const AllSizesImageWithPhoto: Story = {
+  name: 'All Sizes / Image + Photo',
+  render: () => (
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        alignItems: 'flex-start',
+        gap: 'var(--global-spacing-sizing-16px)',
+        padding: 'var(--global-spacing-sizing-32px)',
+        background: 'var(--global-color-neutral-gray-50)',
+      }}
+    >
+      {ALL_SIZES.map((size) => (
+        <CardContent
+          key={size}
+          variant="image"
+          size={size}
+          heading="This is a heading"
+          body="This is a body description providing useful context for the card."
+          rating={4.5}
+          ratingCount={87}
+          imageSrc="https://images.pexels.com/photos/466685/pexels-photo-466685.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop"
+          imageAlt="City skyline"
+        />
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+/* ── ButtonGroup Variants ────────────────────────────────────────────────── */
+
+export const ButtonGroupVariants: Story = {
+  name: 'ButtonGroup Variants',
+  render: () => (
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        alignItems: 'flex-start',
+        gap: 'var(--global-spacing-sizing-16px)',
+        padding: 'var(--global-spacing-sizing-32px)',
+        background: 'var(--global-color-neutral-gray-50)',
+      }}
+    >
+      {(['primary', 'secondary', 'tertiary', 'ghost'] as const).map((bgVariant) => (
+        <CardContent
+          key={bgVariant}
+          variant="notification"
+          status="info"
+          size="default"
+          heading={`${bgVariant} buttons`}
+          body="ButtonGroup variant demonstration."
+          count={4}
+          buttonGroupVariant={bgVariant}
+          buttonGroupLayout="separate"
+        />
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+/* ── ButtonGroup Joined Layout ───────────────────────────────────────────── */
+
+export const ButtonGroupJoined: Story = {
+  name: 'ButtonGroup / Joined Layout',
+  render: () => (
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        alignItems: 'flex-start',
+        gap: 'var(--global-spacing-sizing-16px)',
+        padding: 'var(--global-spacing-sizing-32px)',
+        background: 'var(--global-color-neutral-gray-50)',
+      }}
+    >
+      <CardContent
+        variant="notification"
+        status="info"
+        size="default"
+        heading="Joined layout"
+        body="ButtonGroup with joined layout (4 buttons)."
+        count={4}
+        buttonGroupLayout="joined"
+        buttonGroupCount={4}
+      />
+      <CardContent
+        variant="image"
+        size="default"
+        heading="Joined layout"
+        body="Image card with joined ButtonGroup."
+        rating={4}
+        ratingCount={128}
+        buttonGroupLayout="joined"
+        buttonGroupCount={4}
+      />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};

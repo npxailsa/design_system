@@ -981,6 +981,98 @@
 }
 
 /* ==========================================================================
+   COMPONENT LAYER: CardContent (Component-Specific Tokens)
+   ========================================================================== */
+:root {
+  /* CardContent — card shell */
+  --card-content-bg:                    var(--global-color-base-white);
+  --card-content-border-radius:         var(--global-spacing-radius-6px);
+  --card-content-border-width:          0.5px;
+  --card-content-border-color:          var(--global-color-neutral-gray-300);
+  --card-content-shadow:                0px 5px 10px 0px rgba(39, 39, 39, 0.1);
+  --card-content-overflow:              hidden;
+
+  /* CardContent — sizes */
+  --card-content-width-sm:              160px;
+  --card-content-width-default:         220px;
+  --card-content-width-lg:              300px;
+  --card-content-padding-sm:            var(--global-spacing-sizing-12px);
+  --card-content-padding-default:       var(--global-spacing-sizing-16px);
+  --card-content-padding-lg:            var(--global-spacing-sizing-20px);
+  --card-content-gap-sm:                var(--global-spacing-sizing-8px);
+  --card-content-gap-default:           var(--global-spacing-sizing-10px);
+  --card-content-gap-lg:                var(--global-spacing-sizing-12px);
+
+  /* CardContent — image area */
+  --card-content-image-height-sm:       80px;
+  --card-content-image-height-default:  110px;
+  --card-content-image-height-lg:       150px;
+  --card-content-image-bg:              var(--global-color-neutral-gray-200);
+
+  /* CardContent — status icon area */
+  --card-content-icon-size-sm:          32px;
+  --card-content-icon-size-default:     44px;
+  --card-content-icon-size-lg:          56px;
+
+  /* CardContent — typography: heading */
+  --card-content-heading-font:          var(--brand-font-primary);
+  --card-content-heading-color:         var(--global-color-base-black);
+  --card-content-heading-weight:        var(--global-type-weight-default);
+  --card-content-heading-size-sm:       var(--global-type-size-primary-label-xs);
+  --card-content-heading-size-default:  var(--global-type-size-primary-label-sm);
+  --card-content-heading-size-lg:       var(--global-type-size-primary-label);
+  --card-content-heading-lh-sm:         var(--global-type-line-height-label-xs);
+  --card-content-heading-lh-default:    var(--global-type-line-height-label-sm);
+  --card-content-heading-lh-lg:         var(--global-type-line-height-label);
+
+  /* CardContent — typography: body text */
+  --card-content-body-font:             var(--brand-font-primary);
+  --card-content-body-color:            var(--global-color-neutral-gray-700);
+  --card-content-body-weight:           var(--global-type-weight-light);
+  --card-content-body-size-sm:          var(--global-type-size-primary-label-xs);
+  --card-content-body-size-default:     var(--global-type-size-primary-label-xs);
+  --card-content-body-size-lg:          var(--global-type-size-primary-label-sm);
+  --card-content-body-lh-sm:            var(--global-type-line-height-label-xs);
+  --card-content-body-lh-default:       var(--global-type-line-height-label-xs);
+  --card-content-body-lh-lg:            var(--global-type-line-height-label-sm);
+
+  /* CardContent — count badge */
+  --card-content-count-bg:              var(--global-color-neutral-gray-100);
+  --card-content-count-color:           var(--global-color-neutral-gray-600);
+  --card-content-count-border-radius:   var(--global-spacing-radius-full);
+  --card-content-count-font:            var(--brand-font-primary);
+
+  /* CardContent — rating star */
+  --card-content-star-color:            var(--global-color-primary-yellow);
+  --card-content-star-empty-color:      var(--global-color-neutral-gray-300);
+  --card-content-rating-count-color:    var(--global-color-neutral-gray-500);
+
+  /* CardContent — notification status colours: error */
+  --card-content-error-icon:            var(--global-color-status-red);
+  --card-content-error-heading:         var(--global-color-status-red);
+  --card-content-error-bg:              var(--global-color-status-red-light);
+  --card-content-error-border:          var(--global-color-status-red);
+
+  /* CardContent — notification status colours: warning */
+  --card-content-warning-icon:          var(--global-color-status-orange);
+  --card-content-warning-heading:       var(--global-color-status-dark-orange);
+  --card-content-warning-bg:            var(--global-color-status-orange-light);
+  --card-content-warning-border:        var(--global-color-status-orange);
+
+  /* CardContent — notification status colours: success */
+  --card-content-success-icon:          var(--global-color-status-dark-green);
+  --card-content-success-heading:       var(--global-color-status-dark-green);
+  --card-content-success-bg:            var(--global-color-status-green-light);
+  --card-content-success-border:        var(--global-color-status-dark-green);
+
+  /* CardContent — notification status colours: info */
+  --card-content-info-icon:             var(--global-color-status-info-blue);
+  --card-content-info-heading:          var(--global-color-status-info-blue);
+  --card-content-info-bg:               var(--global-color-status-info-blue-light);
+  --card-content-info-border:           var(--global-color-status-info-blue);
+}
+
+/* ==========================================================================
    COMPONENT LAYER: Accordion (Component-Specific Tokens)
    ========================================================================== */
 :root {
