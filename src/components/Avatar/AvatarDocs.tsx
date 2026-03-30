@@ -3,8 +3,11 @@ import { DocsTemplate } from '../DocsTemplate/DocsTemplate';
 import { Avatar } from './Avatar';
 import type { AvatarSize, AvatarType, AvatarShape } from './Avatar';
 
-const DEMO_PHOTO =
-  'https://cdn.builder.io/api/v1/image/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2F66ca08e7a8064c219b23a01fe8b9a4fd?format=webp&width=200&height=200';
+const DEMO_PHOTO_WOMAN =
+  'https://images.pexels.com/photos/35721587/pexels-photo-35721587.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop';
+
+const DEMO_PHOTO_MAN =
+  'https://images.pexels.com/photos/5308640/pexels-photo-5308640.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop';
 
 const ALL_SIZES: AvatarSize[] = ['x-small', 'small', 'default', 'large'];
 const ALL_TYPES: Array<{ type: AvatarType; label: string; description: string }> = [
@@ -69,8 +72,8 @@ export const AvatarDocs: React.FC = () => {
         <DocsTemplate.Anatomy
           preview={
             <div style={previewWrap}>
-              <Avatar type="profile-photo" size="large" shape="square" src={DEMO_PHOTO} statusIcon />
-              <Avatar type="profile-photo" size="large" shape="circle" src={DEMO_PHOTO} statusIcon />
+              <Avatar type="profile-photo" size="large" shape="square" src={DEMO_PHOTO_WOMAN} statusIcon />
+              <Avatar type="profile-photo" size="large" shape="circle" src={DEMO_PHOTO_WOMAN} statusIcon />
             </div>
           }
           parts={[
@@ -102,6 +105,28 @@ export const AvatarDocs: React.FC = () => {
         />
       </DocsTemplate.Section>
 
+      {/* ── Profile Photo States ── */}
+      <DocsTemplate.Section title="Profile Photo States">
+        <DocsTemplate.BodyText>
+          The profile-photo type covers three scenarios: an empty state when no image has been
+          uploaded (falls back to a person icon), and uploaded portrait photos.
+        </DocsTemplate.BodyText>
+        <div style={{ display: 'flex', alignItems: 'flex-end', gap: 'var(--global-spacing-sizing-32px)' }}>
+          {[
+            { src: undefined, label: 'No photo uploaded (icon)', type: 'empty-state' as AvatarType },
+            { src: DEMO_PHOTO_WOMAN, label: 'Woman profile photo', type: 'profile-photo' as AvatarType },
+            { src: DEMO_PHOTO_MAN, label: 'Man profile photo', type: 'profile-photo' as AvatarType },
+          ].map(({ src, label, type }) => (
+            <div key={label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'var(--global-spacing-sizing-8px)' }}>
+              <Avatar type={type} size="large" shape="square" src={src} />
+              <span style={{ fontFamily: 'var(--brand-font-primary)', fontSize: 'var(--global-type-size-primary-label-xs)', color: 'var(--global-color-neutral-gray-600)', textAlign: 'center', maxWidth: '80px' }}>
+                {label}
+              </span>
+            </div>
+          ))}
+        </div>
+      </DocsTemplate.Section>
+
       {/* ── Types ── */}
       <DocsTemplate.Section title="Types">
         <DocsTemplate.BodyText>
@@ -118,7 +143,7 @@ export const AvatarDocs: React.FC = () => {
                 gap: 'var(--global-spacing-sizing-16px)',
               }}
             >
-              <Avatar type={type} size="default" shape="square" src={DEMO_PHOTO} initials="A" />
+              <Avatar type={type} size="default" shape="square" src={DEMO_PHOTO_WOMAN} initials="A" />
               <div style={{ fontFamily: 'var(--brand-font-primary)', fontSize: 'var(--global-type-size-primary-label-sm)', fontWeight: 'var(--global-type-weight-default)', color: 'var(--global-color-base-black)' }}>
                 {label}
               </div>
@@ -138,7 +163,7 @@ export const AvatarDocs: React.FC = () => {
         <div style={{ display: 'flex', alignItems: 'flex-end', gap: 'var(--global-spacing-sizing-32px)' }}>
           {(['square', 'circle'] as AvatarShape[]).map((shape) => (
             <div key={shape} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'var(--global-spacing-sizing-8px)' }}>
-              <Avatar type="profile-photo" size="large" shape={shape} src={DEMO_PHOTO} />
+              <Avatar type="profile-photo" size="large" shape={shape} src={DEMO_PHOTO_WOMAN} />
               <span style={{ fontFamily: 'var(--brand-font-primary)', fontSize: 'var(--global-type-size-primary-label-xs)', color: 'var(--global-color-neutral-gray-600)', textTransform: 'capitalize' }}>
                 {shape}
               </span>
@@ -165,7 +190,7 @@ export const AvatarDocs: React.FC = () => {
           {SIZE_DATA.map(({ size, label, px, usage }) => (
             <div key={size} style={{ display: 'grid', gridTemplateColumns: '70px 80px 110px 1fr', gap: 'var(--global-spacing-sizing-16px)', alignItems: 'center' }}>
               <div style={{ display: 'flex', alignItems: 'center' }}>
-                <Avatar type="profile-photo" size={size} shape="square" src={DEMO_PHOTO} />
+                <Avatar type="profile-photo" size={size} shape="square" src={DEMO_PHOTO_WOMAN} />
               </div>
               <div style={{ fontFamily: 'var(--brand-font-primary)', fontSize: 'var(--global-type-size-primary-label-xs)', color: 'var(--global-color-base-black)' }}>
                 {label}
@@ -192,7 +217,7 @@ export const AvatarDocs: React.FC = () => {
           {(['square', 'circle'] as AvatarShape[]).map((shape) =>
             [false, true].map((border) => (
               <div key={`${shape}-${border}`} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'var(--global-spacing-sizing-8px)' }}>
-                <Avatar type="profile-photo" size="default" shape={shape} border={border} src={DEMO_PHOTO} />
+                <Avatar type="profile-photo" size="default" shape={shape} border={border} src={DEMO_PHOTO_WOMAN} />
                 <span style={{ fontFamily: 'var(--brand-font-primary)', fontSize: 'var(--global-type-size-primary-label-xs)', color: 'var(--global-color-neutral-gray-600)' }}>
                   {shape} / border={border ? 'true' : 'false'}
                 </span>
@@ -203,7 +228,7 @@ export const AvatarDocs: React.FC = () => {
       </DocsTemplate.Section>
 
       {/* ── Status badge ── */}
-      <DocsTemplate.Section title="Status Badge">
+      <DocsTemplate.Section title="With Status Indicator">
         <DocsTemplate.BodyText>
           When statusIcon=true, a do-not-disturb badge (red dot) is positioned at the
           top-right corner. The dot size scales automatically with the avatar size using the
@@ -211,7 +236,29 @@ export const AvatarDocs: React.FC = () => {
         </DocsTemplate.BodyText>
         <div style={{ display: 'flex', alignItems: 'flex-end', gap: 'var(--global-spacing-sizing-24px)', padding: 'var(--global-spacing-sizing-16px)' }}>
           {ALL_SIZES.map((size) => (
-            <Avatar key={size} type="profile-photo" size={size} shape="square" statusIcon src={DEMO_PHOTO} />
+            <Avatar key={size} type="profile-photo" size={size} shape="square" statusIcon src={DEMO_PHOTO_WOMAN} />
+          ))}
+        </div>
+        <div style={{ display: 'flex', alignItems: 'flex-end', gap: 'var(--global-spacing-sizing-24px)', padding: 'var(--global-spacing-sizing-16px)' }}>
+          {ALL_SIZES.map((size) => (
+            <Avatar key={size} type="profile-photo" size={size} shape="circle" statusIcon src={DEMO_PHOTO_WOMAN} />
+          ))}
+        </div>
+      </DocsTemplate.Section>
+
+      <DocsTemplate.Section title="Without Status Indicator">
+        <DocsTemplate.BodyText>
+          When statusIcon=false (the default), no presence badge is shown. The avatar renders
+          cleanly without any overlay — use this when presence status is not relevant.
+        </DocsTemplate.BodyText>
+        <div style={{ display: 'flex', alignItems: 'flex-end', gap: 'var(--global-spacing-sizing-24px)', padding: 'var(--global-spacing-sizing-16px)' }}>
+          {ALL_SIZES.map((size) => (
+            <Avatar key={size} type="profile-photo" size={size} shape="square" src={DEMO_PHOTO_WOMAN} />
+          ))}
+        </div>
+        <div style={{ display: 'flex', alignItems: 'flex-end', gap: 'var(--global-spacing-sizing-24px)', padding: 'var(--global-spacing-sizing-16px)' }}>
+          {ALL_SIZES.map((size) => (
+            <Avatar key={size} type="profile-photo" size={size} shape="circle" src={DEMO_PHOTO_WOMAN} />
           ))}
         </div>
       </DocsTemplate.Section>
@@ -225,7 +272,7 @@ export const AvatarDocs: React.FC = () => {
                 {label}
               </div>
               {ALL_SIZES.map((size) => (
-                <Avatar key={size} type={type} size={size} shape="square" statusIcon src={DEMO_PHOTO} initials="A" />
+                <Avatar key={size} type={type} size={size} shape="square" statusIcon src={DEMO_PHOTO_WOMAN} initials="A" />
               ))}
             </div>
           ))}
@@ -240,7 +287,7 @@ export const AvatarDocs: React.FC = () => {
                 {label}
               </div>
               {ALL_SIZES.map((size) => (
-                <Avatar key={size} type={type} size={size} shape="circle" statusIcon src={DEMO_PHOTO} initials="A" />
+                <Avatar key={size} type={type} size={size} shape="circle" statusIcon src={DEMO_PHOTO_WOMAN} initials="A" />
               ))}
             </div>
           ))}
