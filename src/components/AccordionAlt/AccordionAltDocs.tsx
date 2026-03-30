@@ -42,7 +42,7 @@ export const AccordionAltDocs: React.FC = () => {
             {
               id: 2,
               name: 'Title',
-              token: '--accordion-alt-title-font-family (Archivo Medium)\n--accordion-alt-title-font-size-default (19px / 24px)\n--accordion-alt-title-color (color/base/black)',
+              token: '--accordion-alt-title-font-family (F37 Ginger Pro Medium)\n--accordion-alt-title-font-size-default (19px / 24px)\n--accordion-alt-title-color (color/base/black)',
               description: 'Primary heading text. Truncates with ellipsis if it overflows the available horizontal space.',
             },
             {

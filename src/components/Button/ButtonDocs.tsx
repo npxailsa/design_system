@@ -60,8 +60,8 @@ export const ButtonDocs: React.FC = () => {
               {
                 id: 4,
                 name: 'Label',
-                token: '--btn-font-family (Archivo Light)\n--btn-font-size-{size} (18px large)\n--btn-font-weight (--global-type-weight-light)',
-                description: 'Primary button text. W: HUG, H: HUG. Uses Archivo Light at 18px with 24px line-height. Colour: color/base/white.',
+                token: '--btn-font-family (F37 Ginger Pro Light)\n--btn-font-size-{size} (18px large)\n--btn-font-weight (--global-type-weight-light)',
+                description: 'Primary button text. W: HUG, H: HUG. Uses F37 Ginger Pro Light at 18px with 24px line-height. Colour: color/base/white.',
               },
             ]}
           />
@@ -98,8 +98,8 @@ export const ButtonDocs: React.FC = () => {
               {
                 id: 4,
                 name: 'Label',
-                token: '--btn-font-family (Archivo Light)\n--btn-font-size-{size} (18px large)\n--btn-font-weight (--global-type-weight-light)\n--btn-outline-color (--global-color-secondary-blue-gray)',
-                description: 'Primary button text. W: HUG, H: HUG. Uses Archivo Light at 18px with 24px line-height. Colour: color/secondary/blue-gray.',
+                token: '--btn-font-family (F37 Ginger Pro Light)\n--btn-font-size-{size} (18px large)\n--btn-font-weight (--global-type-weight-light)\n--btn-outline-color (--global-color-secondary-blue-gray)',
+                description: 'Primary button text. W: HUG, H: HUG. Uses F37 Ginger Pro Light at 18px with 24px line-height. Colour: color/secondary/blue-gray.',
               },
             ]}
           />

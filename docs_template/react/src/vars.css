@@ -203,7 +203,7 @@
   --subtitle-calibri-subtitle-regular-line-height: 26px;
   --subtitle-calibri-subtitle-regular-font-weight: 400;
   --subtitle-calibri-subtitle-regular-font-style: normal;
-  --subtitle-calibri-subtitle-bold-font-family: Archivo-Bold, sans-serif;
+  --subtitle-calibri-subtitle-bold-font-family: "F37 Ginger Pro", sans-serif;
   --subtitle-calibri-subtitle-bold-font-size: 24px;
   --subtitle-calibri-subtitle-bold-line-height: 26px;
   --subtitle-calibri-subtitle-bold-font-weight: 700;
@@ -517,4 +517,3 @@
   --color-status-note-mid: #dfbff8;
   --color-status-edit: #b1cbde;
 }
-

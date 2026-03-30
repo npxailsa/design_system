@@ -1750,11 +1750,3 @@
   font-style: italic;
   font-display: swap;
 }
-
-@font-face {
-  font-family: 'Archivo';
-  src: url('https://fonts.gstatic.com/s/archivo/v19/8n3782sSy_o7jr6kaT1O87rVByU20VLu.woff2') format('woff2');
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
