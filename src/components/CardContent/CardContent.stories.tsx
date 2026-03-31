@@ -9,7 +9,6 @@ const ALL_STATUSES: CardContentStatus[] = [
   'default', 'light-gray', 'navy', 'purple', 'white',
 ];
 const ALL_SIZES: CardContentSize[] = ['small', 'default', 'large'];
-const ALL_VARIANTS: CardContentVariant[] = ['notification', 'image'];
 
 const meta: Meta<typeof CardContent> = {
   title: 'Atoms/CardContent',
@@ -20,32 +19,25 @@ const meta: Meta<typeof CardContent> = {
     },
   },
   argTypes: {
-    variant: { control: 'select', options: ALL_VARIANTS },
+    variant: { control: 'select', options: ['notification', 'image'] as CardContentVariant[] },
     status: { control: 'select', options: ALL_STATUSES },
     size: { control: 'select', options: ALL_SIZES },
     heading: { control: 'text' },
     body: { control: 'text' },
-    count: { control: 'number' },
+    border: { control: 'boolean' },
+    showIcon: { control: 'boolean' },
+    showBody: { control: 'boolean' },
+    showDismiss: { control: 'boolean' },
+    showActions: { control: 'boolean' },
+    showRating: { control: 'boolean' },
+    showImage: { control: 'boolean' },
     imageSrc: { control: 'text' },
     imageAlt: { control: 'text' },
     rating: { control: { type: 'number', min: 0, max: 5, step: 0.5 } },
     ratingCount: { control: 'number' },
-    border: { control: 'boolean' },
-    showIcon: { control: 'boolean' },
-    showBody: { control: 'boolean' },
-    showActions: { control: 'boolean' },
-    showDismiss: { control: 'boolean' },
-    showRating: { control: 'boolean' },
-    showImage: { control: 'boolean' },
-    alignment: {
-      control: 'select',
-      options: ['vertical', 'horizontal'],
-      description: 'vertical — icon above text (default); horizontal — icon left, content right',
-    },
     buttonGroupType: {
       control: 'select',
       options: ['label', 'icon'],
-      description: 'Button type: label (icon + text + arrow) or icon (square icon-only)',
     },
     buttonGroupVariant: {
       control: 'select',
@@ -54,7 +46,6 @@ const meta: Meta<typeof CardContent> = {
     buttonGroupSpecial: {
       control: 'select',
       options: ['default', 'alt'],
-      description: 'Label style: default (solid) or alt (tinted/outlined)',
     },
     buttonGroupLayout: {
       control: 'select',
@@ -65,21 +56,19 @@ const meta: Meta<typeof CardContent> = {
   },
   args: {
     variant: 'notification',
-    status: 'info',
+    status: 'default',
     size: 'default',
-    heading: 'This is a heading',
-    body: 'This is a body description providing useful context for the card content.',
-    count: 4,
-    rating: 4,
-    ratingCount: 128,
+    heading: 'This is an alert banner for the Echo app',
+    body: 'This is a description for an alert banner in the Echo app',
     border: true,
     showIcon: true,
     showBody: true,
+    showDismiss: true,
     showActions: true,
-    showDismiss: false,
     showRating: true,
     showImage: true,
-    alignment: 'vertical',
+    rating: 4,
+    ratingCount: 128,
     buttonGroupType: 'label',
     buttonGroupVariant: 'primary',
     buttonGroupSpecial: 'default',
@@ -96,8 +85,8 @@ type Story = StoryObj<typeof CardContent>;
 
 const gridWrap: React.CSSProperties = {
   display: 'flex',
-  flexWrap: 'wrap',
-  alignItems: 'flex-start',
+  flexDirection: 'column',
+  alignItems: 'stretch',
   gap: 'var(--global-spacing-sizing-16px)',
   padding: 'var(--global-spacing-sizing-32px)',
   background: 'var(--global-color-neutral-gray-50)',
@@ -128,54 +117,157 @@ export const Playground: Story = { name: 'Playground' };
 
 export const NotificationError: Story = {
   name: 'Notification / Error',
-  args: { variant: 'notification', status: 'error', heading: 'Error heading', count: 4 },
+  args: { status: 'error' },
 };
 
 export const NotificationWarning: Story = {
   name: 'Notification / Warning',
-  args: { variant: 'notification', status: 'warning', heading: 'Warning heading', count: 4 },
+  args: { status: 'warning' },
 };
 
 export const NotificationSuccess: Story = {
   name: 'Notification / Success',
-  args: { variant: 'notification', status: 'success', heading: 'Success heading', count: 4 },
+  args: { status: 'success' },
 };
 
 export const NotificationInfo: Story = {
   name: 'Notification / Info',
-  args: { variant: 'notification', status: 'info', heading: 'Info heading', count: 4 },
+  args: { status: 'info' },
 };
 
 export const NotificationDefault: Story = {
   name: 'Notification / Default',
-  args: { variant: 'notification', status: 'default', heading: 'Default heading', count: 4 },
+  args: { status: 'default' },
 };
 
 export const NotificationLightGray: Story = {
   name: 'Notification / Light Gray',
-  args: { variant: 'notification', status: 'light-gray', heading: 'Light gray heading', count: 4 },
+  args: { status: 'light-gray' },
 };
 
 export const NotificationNavy: Story = {
   name: 'Notification / Navy',
-  args: { variant: 'notification', status: 'navy', heading: 'Navy heading', count: 4 },
+  args: { status: 'navy', heading: 'This is an info alert banner for the Echo app' },
 };
 
 export const NotificationPurple: Story = {
   name: 'Notification / Purple',
-  args: { variant: 'notification', status: 'purple', heading: 'Purple heading', count: 4 },
+  args: { status: 'purple' },
 };
 
 export const NotificationWhite: Story = {
   name: 'Notification / White',
-  args: { variant: 'notification', status: 'white', heading: 'White heading', count: 4 },
+  args: { status: 'white' },
+};
+
+/* ── All 9 Status Types ─────────────────────────────────────────────────── */
+
+export const AllStatusTypes: Story = {
+  name: 'All 9 Status Types',
+  render: (args) => (
+    <div style={gridWrap}>
+      {ALL_STATUSES.map((status) => (
+        <CardContent
+          key={status}
+          {...args}
+          status={status}
+          heading={status === 'navy' ? 'This is an info alert banner for the Echo app' : 'This is an alert banner for the Echo app'}
+        />
+      ))}
+    </div>
+  ),
+  args: { size: 'default', border: true },
+  parameters: { controls: { include: ['size', 'border', 'showIcon', 'showBody', 'showDismiss'] } },
+};
+
+/* ── All Sizes ───────────────────────────────────────────────────────────── */
+
+export const AllSizesNotification: Story = {
+  name: 'All Sizes / Notification',
+  render: (args) => (
+    <div style={gridWrap}>
+      {ALL_SIZES.map((size) => (
+        <div key={size}>
+          <p style={sectionLabel}>{size}</p>
+          <CardContent {...args} size={size} />
+        </div>
+      ))}
+    </div>
+  ),
+  args: { status: 'default' },
+};
+
+/* ── Border — With vs Without ────────────────────────────────────────────── */
+
+export const BorderVariants: Story = {
+  name: 'Border / With vs Without',
+  render: () => (
+    <div style={gridWrap}>
+      {ALL_STATUSES.map((status) => (
+        <React.Fragment key={status}>
+          <CardContent status={status} border={true} />
+          <CardContent status={status} border={false} />
+        </React.Fragment>
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+/* ── Full Status × Size × Border Matrix ──────────────────────────────────── */
+
+export const AllStatusesAllSizes: Story = {
+  name: 'All Statuses × All Sizes',
+  render: () => (
+    <div style={{ ...gridWrap, gap: 'var(--global-spacing-sizing-32px)' }}>
+      {ALL_STATUSES.map((status) => (
+        <div key={status}>
+          <p style={sectionLabel}>{status} — small · default · large (with border + without)</p>
+          {ALL_SIZES.map((size) => (
+            <React.Fragment key={size}>
+              <CardContent status={status} size={size} border={true} />
+              <div style={{ height: '4px' }} />
+              <CardContent status={status} size={size} border={false} />
+              <div style={{ height: '12px' }} />
+            </React.Fragment>
+          ))}
+        </div>
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+/* ── Toggleable Sub-Elements ─────────────────────────────────────────────── */
+
+export const ToggleableElements: Story = {
+  name: 'Toggleable Sub-Elements',
+  render: () => (
+    <div style={gridWrap}>
+      <p style={sectionLabel}>All visible (icon + body + dismiss)</p>
+      <CardContent status="default" showIcon={true} showBody={true} showDismiss={true} />
+
+      <p style={sectionLabel}>No leading icon</p>
+      <CardContent status="default" showIcon={false} showBody={true} showDismiss={true} />
+
+      <p style={sectionLabel}>No body / subtext</p>
+      <CardContent status="default" showIcon={true} showBody={false} showDismiss={true} />
+
+      <p style={sectionLabel}>No trailing dismiss icon</p>
+      <CardContent status="default" showIcon={true} showBody={true} showDismiss={false} />
+
+      <p style={sectionLabel}>Heading only</p>
+      <CardContent status="default" showIcon={false} showBody={false} showDismiss={false} />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
 };
 
 /* ── Image card ─────────────────────────────────────────────────────────── */
 
 export const ImageCard: Story = {
   name: 'Image Card / Default',
-  args: { variant: 'image', size: 'default', rating: 4, ratingCount: 128 },
+  args: { variant: 'image', size: 'default', rating: 4, ratingCount: 128, heading: 'This is a heading', body: 'This is a body description providing useful context for the card content.' },
 };
 
 export const ImageCardWithPhoto: Story = {
@@ -191,339 +283,16 @@ export const ImageCardWithPhoto: Story = {
   },
 };
 
-/* ── All 9 Status Types ─────────────────────────────────────────────────── */
-
-export const AllStatusTypes: Story = {
-  name: 'All 9 Status Types',
-  render: (args) => (
-    <div style={gridWrap}>
-      {ALL_STATUSES.map((status) => (
-        <CardContent
-          key={status}
-          {...args}
-          variant="notification"
-          status={status}
-          heading={`${status} heading`}
-          count={4}
-        />
-      ))}
-    </div>
-  ),
-  args: { size: 'default', border: true },
-  parameters: { controls: { include: ['size', 'border', 'showIcon', 'showBody', 'showActions', 'showDismiss'] } },
-};
-
-/* ── All Sizes — Notification ────────────────────────────────────────────── */
-
-export const AllSizesNotification: Story = {
-  name: 'All Sizes / Notification',
-  render: (args) => (
-    <div style={gridWrap}>
-      {ALL_SIZES.map((size) => (
-        <CardContent key={size} {...args} variant="notification" size={size} />
-      ))}
-    </div>
-  ),
-  args: { status: 'info', heading: 'Info heading', count: 4 },
-};
-
 /* ── All Sizes — Image ───────────────────────────────────────────────────── */
 
 export const AllSizesImage: Story = {
   name: 'All Sizes / Image',
   render: (args) => (
-    <div style={gridWrap}>
+    <div style={{ ...gridWrap, flexDirection: 'row', flexWrap: 'wrap', alignItems: 'flex-start' }}>
       {ALL_SIZES.map((size) => (
-        <CardContent key={size} {...args} variant="image" size={size} />
+        <CardContent key={size} {...args} variant="image" size={size} heading="This is a heading" body="This is a body description providing useful context for the card content." />
       ))}
     </div>
   ),
   args: { rating: 4, ratingCount: 128 },
-};
-
-/* ── Border — With vs Without ────────────────────────────────────────────── */
-
-export const BorderVariants: Story = {
-  name: 'Border / With vs Without',
-  render: () => (
-    <div style={{ ...gridWrap, flexDirection: 'column' }}>
-      <div>
-        <p style={sectionLabel}>Notification — Border True vs False</p>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', alignItems: 'flex-start' }}>
-          {ALL_STATUSES.map((status) => (
-            <React.Fragment key={status}>
-              <CardContent variant="notification" status={status} size="default" heading={`${status} — border`} count={4} border={true} />
-              <CardContent variant="notification" status={status} size="default" heading={`${status} — no border`} count={4} border={false} />
-            </React.Fragment>
-          ))}
-        </div>
-      </div>
-      <div>
-        <p style={sectionLabel}>Image — Border True vs False</p>
-        <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
-          <CardContent variant="image" size="default" heading="With border" rating={4} ratingCount={128} border={true} />
-          <CardContent variant="image" size="default" heading="No border" rating={4} ratingCount={128} border={false} />
-        </div>
-      </div>
-    </div>
-  ),
-  parameters: { controls: { disable: true } },
-};
-
-/* ── Full Status × Size × Border Matrix (notification) ───────────────────── */
-
-export const AllStatusesAllSizes: Story = {
-  name: 'All Statuses × All Sizes',
-  render: () => (
-    <div style={{ ...gridWrap, flexDirection: 'column', gap: 'var(--global-spacing-sizing-32px)' }}>
-      {ALL_STATUSES.map((status) => (
-        <div key={status}>
-          <p style={sectionLabel}>
-            {status} — small · default · large (border) | small · default · large (no border)
-          </p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'flex-start' }}>
-            {ALL_SIZES.map((size) => (
-              <CardContent key={`${size}-b`} variant="notification" status={status} size={size} heading={`${status} heading`} count={4} border={true} />
-            ))}
-            {ALL_SIZES.map((size) => (
-              <CardContent key={`${size}-nb`} variant="notification" status={status} size={size} heading={`${status} heading`} count={4} border={false} />
-            ))}
-          </div>
-        </div>
-      ))}
-    </div>
-  ),
-  parameters: { controls: { disable: true } },
-};
-
-/* ── Image — All Sizes × Both Borders ────────────────────────────────────── */
-
-export const AllSizesImageBorderMatrix: Story = {
-  name: 'All Sizes / Image × Border Matrix',
-  render: () => (
-    <div style={{ ...gridWrap, flexDirection: 'column', gap: 'var(--global-spacing-sizing-32px)' }}>
-      {([true, false] as const).map((hasBorder) => (
-        <div key={String(hasBorder)}>
-          <p style={sectionLabel}>Image — Border: {hasBorder ? 'True' : 'False'}</p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'flex-start' }}>
-            {ALL_SIZES.map((size) => (
-              <CardContent key={size} variant="image" size={size} heading="This is a heading" rating={4} ratingCount={128} border={hasBorder} />
-            ))}
-          </div>
-        </div>
-      ))}
-    </div>
-  ),
-  parameters: { controls: { disable: true } },
-};
-
-/* ── Image — All Sizes with photo ────────────────────────────────────────── */
-
-export const AllSizesImageWithPhoto: Story = {
-  name: 'All Sizes / Image + Photo',
-  render: () => (
-    <div style={gridWrap}>
-      {ALL_SIZES.map((size) => (
-        <CardContent
-          key={size}
-          variant="image"
-          size={size}
-          heading="This is a heading"
-          rating={4.5}
-          ratingCount={87}
-          imageSrc="https://images.pexels.com/photos/466685/pexels-photo-466685.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop"
-          imageAlt="City skyline"
-        />
-      ))}
-    </div>
-  ),
-  parameters: { controls: { disable: true } },
-};
-
-/* ── Horizontal Alignment ────────────────────────────────────────────────── */
-
-export const HorizontalAlignment: Story = {
-  name: 'Horizontal Alignment',
-  render: () => (
-    <div style={{ ...gridWrap, flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)' }}>
-      <p style={sectionLabel}>All statuses — horizontal layout (small)</p>
-      {ALL_STATUSES.slice(0, 4).map((status) => (
-        <CardContent
-          key={status}
-          variant="notification"
-          status={status}
-          size="small"
-          alignment="horizontal"
-          heading={`${status} heading`}
-          body="Body text that wraps within the card alongside the action buttons."
-        />
-      ))}
-      <p style={{ ...sectionLabel, marginTop: '16px' }}>Default size — horizontal</p>
-      {ALL_STATUSES.slice(0, 4).map((status) => (
-        <CardContent
-          key={status}
-          variant="notification"
-          status={status}
-          size="default"
-          alignment="horizontal"
-          heading={`${status} heading`}
-          body="Body text that wraps within the card alongside the action buttons."
-        />
-      ))}
-    </div>
-  ),
-  parameters: { controls: { disable: true } },
-};
-
-/* ── Toggleable Sub-Elements ─────────────────────────────────────────────── */
-
-export const ToggleableElements: Story = {
-  name: 'Toggleable Sub-Elements',
-  render: () => (
-    <div style={{ ...gridWrap, flexDirection: 'column', gap: 'var(--global-spacing-sizing-32px)' }}>
-      {/* Notification toggles */}
-      <div>
-        <p style={sectionLabel}>Notification — showIcon · showBody · showActions combinations</p>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'flex-start' }}>
-          <CardContent variant="notification" status="info" heading="All visible" count={4} />
-          <CardContent variant="notification" status="info" heading="No icon" count={4} showIcon={false} />
-          <CardContent variant="notification" status="info" heading="No body" count={4} showBody={false} />
-          <CardContent variant="notification" status="info" heading="No actions" showActions={false} />
-          <CardContent variant="notification" status="info" heading="Heading only" showIcon={false} showBody={false} showActions={false} />
-          <CardContent variant="notification" status="info" heading="Icon + heading" showBody={false} showActions={false} />
-        </div>
-      </div>
-      {/* Image toggles */}
-      <div>
-        <p style={sectionLabel}>Image — showImage · showBody · showActions · showRating combinations</p>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'flex-start' }}>
-          <CardContent variant="image" heading="All visible" rating={4} ratingCount={128} />
-          <CardContent variant="image" heading="No image" rating={4} ratingCount={128} showImage={false} />
-          <CardContent variant="image" heading="No body" rating={4} ratingCount={128} showBody={false} />
-          <CardContent variant="image" heading="No actions" rating={4} ratingCount={128} showActions={false} />
-          <CardContent variant="image" heading="No rating" showRating={false} />
-          <CardContent variant="image" heading="Heading only" showImage={false} showBody={false} showActions={false} showRating={false} />
-        </div>
-      </div>
-    </div>
-  ),
-  parameters: { controls: { disable: true } },
-};
-
-/* ── Dismiss Button ──────────────────────────────────────────────────────── */
-
-export const DismissButton: Story = {
-  name: 'Dismiss Button',
-  render: () => (
-    <div style={gridWrap}>
-      {ALL_STATUSES.map((status) => (
-        <CardContent
-          key={status}
-          variant="notification"
-          status={status}
-          size="default"
-          heading={`${status} — dismissible`}
-          count={4}
-          showDismiss={true}
-        />
-      ))}
-    </div>
-  ),
-  parameters: { controls: { disable: true } },
-};
-
-/* ── Dismiss + All Sizes ─────────────────────────────────────────────────── */
-
-export const DismissAllSizes: Story = {
-  name: 'Dismiss / All Sizes',
-  render: () => (
-    <div style={gridWrap}>
-      {ALL_SIZES.map((size) => (
-        <CardContent
-          key={size}
-          variant="notification"
-          status="default"
-          size={size}
-          heading="With dismiss"
-          showDismiss={true}
-          count={4}
-        />
-      ))}
-    </div>
-  ),
-  parameters: { controls: { disable: true } },
-};
-
-/* ── ButtonGroup Variants ────────────────────────────────────────────────── */
-
-export const ButtonGroupVariants: Story = {
-  name: 'ButtonGroup Variants',
-  render: () => (
-    <div style={gridWrap}>
-      {(['primary', 'secondary', 'tertiary', 'ghost'] as const).map((bgVariant) => (
-        <CardContent
-          key={bgVariant}
-          variant="notification"
-          status="info"
-          heading={`${bgVariant} buttons`}
-          body="ButtonGroup variant demonstration."
-          count={4}
-          buttonGroupVariant={bgVariant}
-        />
-      ))}
-    </div>
-  ),
-  parameters: { controls: { disable: true } },
-};
-
-/* ── ButtonGroup Joined Layout ───────────────────────────────────────────── */
-
-export const ButtonGroupJoined: Story = {
-  name: 'ButtonGroup / Joined Layout',
-  render: () => (
-    <div style={gridWrap}>
-      <CardContent variant="notification" status="info" heading="Joined layout" count={4} buttonGroupLayout="joined" buttonGroupCount={4} />
-      <CardContent variant="image" heading="Joined layout" rating={4} ratingCount={128} buttonGroupLayout="joined" buttonGroupCount={4} />
-    </div>
-  ),
-  parameters: { controls: { disable: true } },
-};
-
-/* ── Full 9-Status × Toggle Matrix ───────────────────────────────────────── */
-
-export const FullToggleMatrix: Story = {
-  name: 'Full Toggle Matrix',
-  render: () => {
-    const toggleCombos = [
-      { label: 'All on', showIcon: true, showBody: true, showActions: true, showDismiss: false },
-      { label: 'No icon', showIcon: false, showBody: true, showActions: true, showDismiss: false },
-      { label: 'No body', showIcon: true, showBody: false, showActions: true, showDismiss: false },
-      { label: 'No actions', showIcon: true, showBody: true, showActions: false, showDismiss: false },
-      { label: 'With dismiss', showIcon: true, showBody: true, showActions: true, showDismiss: true },
-      { label: 'Minimal', showIcon: false, showBody: false, showActions: false, showDismiss: true },
-    ];
-    return (
-      <div style={{ ...gridWrap, flexDirection: 'column', gap: 'var(--global-spacing-sizing-32px)' }}>
-        {ALL_STATUSES.map((status) => (
-          <div key={status}>
-            <p style={sectionLabel}>{status}</p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'flex-start' }}>
-              {toggleCombos.map(({ label, ...toggles }) => (
-                <CardContent
-                  key={label}
-                  variant="notification"
-                  status={status}
-                  size="default"
-                  heading={label}
-                  count={4}
-                  {...toggles}
-                />
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-    );
-  },
-  parameters: { controls: { disable: true } },
 };

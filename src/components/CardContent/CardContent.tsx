@@ -21,29 +21,24 @@ export type CardContentSize = 'small' | 'default' | 'large';
 export interface CardContentProps {
   /**
    * Layout variant.
-   * - `notification` — status icon, heading, body text, ButtonGroup + count badge
+   * - `notification` — alert banner: leading icon, title + description, dismiss
    * - `image`        — image area, heading, body text, ButtonGroup, rating
    */
   variant?: CardContentVariant;
   /**
-   * Status / colour type used by the `notification` variant to set icon,
-   * heading colour, background tint, and border accent.
+   * Status / colour type used by the `notification` variant to set icon
+   * colour, heading colour, and dismiss button colour.
    *
    * Options: `error` | `warning` | `success` | `info` | `default` |
    * `light-gray` | `navy` | `purple` | `white`
    */
   status?: CardContentStatus;
-  /** Controls card width, padding, icon sizes, and typography scale */
+  /** Controls icon sizes and typography scale */
   size?: CardContentSize;
   /** Card heading / title */
   heading?: string;
   /** Card body / description text */
   body?: string;
-  /**
-   * Badge count shown next to the ButtonGroup in `notification` cards.
-   * Pass `undefined` / omit to hide the badge.
-   */
-  count?: number;
   /**
    * Image URL for the `image` variant.
    * Falls back to a grey placeholder when omitted.
@@ -56,76 +51,48 @@ export interface CardContentProps {
   /** Numeric rating count shown next to the stars */
   ratingCount?: number;
   /**
-   * Card layout alignment (notification variant only).
-   * - `vertical`   — icon stacked above text and buttons (default)
-   * - `horizontal` — icon on left, text + buttons on right (compact)
-   * @default 'vertical'
-   */
-  alignment?: 'vertical' | 'horizontal';
-  /**
-   * ButtonGroup button type.
-   * - `label` — icon + text label + trailing arrow (default)
-   * - `icon`  — square icon-only buttons
+   * ButtonGroup button type (image variant only).
    * @default 'label'
    */
   buttonGroupType?: 'icon' | 'label';
-  /**
-   * ButtonGroup visual variant.
-   * @default 'primary'
-   */
+  /** @default 'primary' */
   buttonGroupVariant?: ButtonGroupVariant;
-  /**
-   * ButtonGroup special style (label type only).
-   * - `default` — solid filled
-   * - `alt`     — tinted/outlined
-   * @default 'default'
-   */
+  /** @default 'default' */
   buttonGroupSpecial?: ButtonGroupSpecial;
-  /**
-   * ButtonGroup layout.
-   * @default 'separate'
-   */
+  /** @default 'separate' */
   buttonGroupLayout?: ButtonGroupLayout;
-  /**
-   * Number of buttons to render in the ButtonGroup.
-   * @default 2
-   */
+  /** @default 2 */
   buttonGroupCount?: number;
-  /**
-   * Per-button configuration for the ButtonGroup.
-   * When provided, its length overrides `buttonGroupCount`.
-   */
+  /** Per-button configuration */
   buttonGroupButtons?: ButtonGroupItemConfig[];
-  /** Disable all buttons in the ButtonGroup */
+  /** Disable all buttons */
   buttonGroupDisabled?: boolean;
   /**
-   * Whether to render a visible border around the card.
-   * When `false`, only the status accent colour (notification) or default
-   * border is suppressed — the card shell retains its other styles.
+   * Whether to render a visible border around the alert / card.
    * @default true
    */
   border?: boolean;
   /**
-   * Show / hide the leading status icon (notification variant only).
-   * Follows the Alert component's `leading-icon` pattern.
+   * Show / hide the leading status icon (notification variant).
+   * Maps to Figma `leading-icon` property.
    * @default true
    */
   showIcon?: boolean;
   /**
    * Show / hide the body / description text.
-   * Follows the Alert component's `subtext` pattern.
+   * Maps to Figma `subtext` property.
    * @default true
    */
   showBody?: boolean;
   /**
-   * Show / hide the ButtonGroup actions area.
+   * Show / hide the ButtonGroup actions area (image variant only).
    * @default true
    */
   showActions?: boolean;
   /**
-   * Show a trailing dismiss / close button (notification variant only).
-   * Follows the Alert component's `trailing-icon` pattern.
-   * @default false
+   * Show a trailing dismiss / close button (notification variant).
+   * Maps to Figma `trailing-icon` property.
+   * @default true
    */
   showDismiss?: boolean;
   /** Callback fired when dismiss button is clicked */
@@ -263,49 +230,40 @@ const ImagePlaceholder: React.FC = () => (
 const StarRating: React.FC<{ rating: number; size?: number }> = ({
   rating,
   size = 12,
-}) => {
-  return (
-    <span className={styles['card-content__stars']} aria-label={`${rating} out of 5 stars`}>
-      {Array.from({ length: 5 }, (_, i) => {
-        const filled = i + 1 <= rating;
-        const half = !filled && i + 0.5 <= rating;
-        return (
-          <svg
-            key={i}
-            width={size}
-            height={size}
-            viewBox="0 0 24 24"
-            fill="none"
-            aria-hidden="true"
-          >
-            {half ? (
-              <>
-                <defs>
-                  <linearGradient id={`half-${i}`}>
-                    <stop offset="50%" stopColor="currentColor" className={styles['star-filled']} />
-                    <stop offset="50%" stopColor="currentColor" className={styles['star-empty']} />
-                  </linearGradient>
-                </defs>
-                <path
-                  d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
-                  fill={`url(#half-${i})`}
-                />
-              </>
-            ) : (
+}) => (
+  <span className={styles['card-content__stars']} aria-label={`${rating} out of 5 stars`}>
+    {Array.from({ length: 5 }, (_, i) => {
+      const filled = i + 1 <= rating;
+      const half = !filled && i + 0.5 <= rating;
+      return (
+        <svg key={i} width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          {half ? (
+            <>
+              <defs>
+                <linearGradient id={`half-${i}`}>
+                  <stop offset="50%" stopColor="currentColor" className={styles['star-filled']} />
+                  <stop offset="50%" stopColor="currentColor" className={styles['star-empty']} />
+                </linearGradient>
+              </defs>
               <path
                 d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
-                className={filled ? styles['star-filled'] : styles['star-empty']}
-                fill="currentColor"
+                fill={`url(#half-${i})`}
               />
-            )}
-          </svg>
-        );
-      })}
-    </span>
-  );
-};
+            </>
+          ) : (
+            <path
+              d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+              className={filled ? styles['star-filled'] : styles['star-empty']}
+              fill="currentColor"
+            />
+          )}
+        </svg>
+      );
+    })}
+  </span>
+);
 
-/* ── Size mapping: CardContent size → ButtonGroup size ────────────────────── */
+/* ── Size mapping: CardContent size → ButtonGroup size (image variant) ──── */
 
 const BUTTON_GROUP_SIZE_MAP: Record<CardContentSize, 'xs' | 'sm' | 'md' | 'lg'> = {
   small:   'xs',
@@ -313,7 +271,13 @@ const BUTTON_GROUP_SIZE_MAP: Record<CardContentSize, 'xs' | 'sm' | 'md' | 'lg'> 
   large:   'md',
 };
 
-/* ── Dismiss-icon size mapping ────────────────────────────────────────────── */
+/* ── Icon size maps ───────────────────────────────────────────────────────── */
+
+const LEADING_ICON_SIZE: Record<CardContentSize, number> = {
+  small:   16,
+  default: 22,
+  large:   28,
+};
 
 const DISMISS_ICON_SIZE: Record<CardContentSize, number> = {
   small:   14,
@@ -324,36 +288,39 @@ const DISMISS_ICON_SIZE: Record<CardContentSize, number> = {
 /* ── Component ────────────────────────────────────────────────────────────── */
 
 /**
- * CardContent — Atomic content card component with two layout variants:
- * `notification` (status icon + ButtonGroup) and `image` (media + rating).
+ * CardContent — Alert banner + image card component.
  *
- * Supports **9 colour / status types** matching the Alert component's palette:
+ * **Notification variant** renders an inline alert banner matching the Figma
+ * `alert` component: a horizontal row with leading status icon (0.5 opacity),
+ * title + description text, and an optional trailing dismiss icon.
+ *
+ * **Image variant** renders a media card with image, heading, body,
+ * ButtonGroup, and star rating.
+ *
+ * Supports **9 colour / status types**:
  * `error`, `warning`, `success`, `info`, `default`, `light-gray`, `navy`,
  * `purple`, `white`.
  *
- * Sub-elements can be individually toggled with boolean props following
- * the same pattern used by the Alert component:
- * - `showIcon`    → leading status icon  (notification)
- * - `showBody`    → body / description text
- * - `showActions` → ButtonGroup row
- * - `showDismiss` → trailing close button (notification)
- * - `showRating`  → star rating row (image)
- * - `showImage`   → image area (image)
+ * Boolean toggle props (matching Figma component properties):
+ * - `showIcon`    → leading-icon   (notification)
+ * - `showBody`    → subtext        (both)
+ * - `showDismiss` → trailing-icon  (notification)
+ * - `showActions` → ButtonGroup    (image only)
+ * - `showRating`  → star rating    (image only)
+ * - `showImage`   → image area     (image only)
  *
  * Storybook location: Atoms/CardContent
  */
 export const CardContent: React.FC<CardContentProps> = ({
   variant = 'notification',
-  status = 'info',
+  status = 'default',
   size = 'default',
-  heading = 'This is a heading',
-  body = 'This is a body description providing useful context for the card content.',
-  count,
+  heading = 'This is an alert banner for the Echo app',
+  body = 'This is a description for an alert banner in the Echo app',
   imageSrc,
   imageAlt = '',
   rating = 4,
   ratingCount,
-  alignment = 'vertical',
   buttonGroupType = 'label',
   buttonGroupVariant = 'primary',
   buttonGroupSpecial = 'default',
@@ -365,94 +332,43 @@ export const CardContent: React.FC<CardContentProps> = ({
   showIcon = true,
   showBody = true,
   showActions = true,
-  showDismiss = false,
+  showDismiss = true,
   onDismiss,
   showRating = true,
   showImage = true,
   className = '',
 }) => {
-  const rootClasses = [
-    styles['card-content'],
-    styles[`size-${size}`],
-    variant === 'notification' ? styles['card-content--notification'] : styles['card-content--image'],
-    variant === 'notification' ? styles[STATUS_CSS_CLASS[status]] : '',
-    variant === 'notification' && alignment === 'horizontal' ? styles['card-content--horizontal'] : '',
-    border ? '' : styles['card-content--no-border'],
-    className,
-  ]
-    .filter(Boolean)
-    .join(' ');
-
   const StatusIcon = STATUS_ICON[status];
+  const iconSize = LEADING_ICON_SIZE[size];
+  const dismissSize = DISMISS_ICON_SIZE[size];
 
-  /* ── Icon SVG sizes (inside badge) ── */
-  const iconSizeMap: Record<CardContentSize, number> = {
-    small:   alignment === 'horizontal' ? 20 : 32,
-    default: alignment === 'horizontal' ? 28 : 48,
-    large:   alignment === 'horizontal' ? 36 : 72,
-  };
-  const iconSize = iconSizeMap[size];
-  const bgSize = BUTTON_GROUP_SIZE_MAP[size];
-
-  /* ── Status-specific default button labels ── */
-  const STATUS_BUTTON_LABELS: Record<CardContentStatus, string> = {
-    error:        'Error button',
-    warning:      'Warning button',
-    success:      'Success button',
-    info:         'Info button',
-    default:      'Action',
-    'light-gray': 'Action',
-    navy:         'Navy button',
-    purple:       'Action',
-    white:        'Action',
-  };
-
-  /* ── Default buttons: status-colored primary + ghost ── */
-  const defaultButtons: ButtonGroupItemConfig[] = [
-    {
-      label: STATUS_BUTTON_LABELS[status],
-      ariaLabel: STATUS_BUTTON_LABELS[status],
-      className: styles['card-content__primary-status-btn'],
-    },
-    {
-      label: 'Label',
-      ariaLabel: 'Secondary action',
-    },
-  ];
-
-  /* ── Notification layout ── */
+  /* ── Notification variant — Alert banner ── */
   if (variant === 'notification') {
+    const rootClasses = [
+      styles['card-content'],
+      styles[`size-${size}`],
+      styles['card-content--notification'],
+      styles[STATUS_CSS_CLASS[status]],
+      border ? styles['card-content--border'] : '',
+      className,
+    ]
+      .filter(Boolean)
+      .join(' ');
+
     return (
       <div className={rootClasses}>
-        {showIcon && (
-          <div className={styles['card-content__status-icon-wrap']}>
-            <StatusIcon size={iconSize} />
-          </div>
-        )}
         <div className={styles['card-content__content-frame']}>
+          {showIcon && (
+            <div className={styles['card-content__status-icon-wrap']}>
+              <StatusIcon size={iconSize} />
+            </div>
+          )}
           <div className={styles['card-content__body-wrap']}>
             <h3 className={styles['card-content__heading']}>{heading}</h3>
             {showBody && (
               <p className={styles['card-content__body']}>{body}</p>
             )}
           </div>
-          {showActions && (
-            <div className={styles['card-content__actions']}>
-              <ButtonGroup
-                buttonType={buttonGroupType}
-                variant={buttonGroupVariant}
-                special={buttonGroupSpecial}
-                size={bgSize}
-                layout={buttonGroupLayout}
-                count={buttonGroupCount}
-                buttons={buttonGroupButtons ?? defaultButtons}
-                disabled={buttonGroupDisabled}
-              />
-              {count !== undefined && (
-                <span className={styles['card-content__count']}>{count}</span>
-              )}
-            </div>
-          )}
         </div>
         {showDismiss && (
           <button
@@ -461,14 +377,26 @@ export const CardContent: React.FC<CardContentProps> = ({
             aria-label="Dismiss"
             onClick={onDismiss}
           >
-            <DismissIcon size={DISMISS_ICON_SIZE[size]} />
+            <DismissIcon size={dismissSize} />
           </button>
         )}
       </div>
     );
   }
 
-  /* ── Image layout ── */
+  /* ── Image variant — Media card ── */
+  const rootClasses = [
+    styles['card-content'],
+    styles[`size-${size}`],
+    styles['card-content--image'],
+    border ? '' : styles['card-content--no-border'],
+    className,
+  ]
+    .filter(Boolean)
+    .join(' ');
+
+  const bgSize = BUTTON_GROUP_SIZE_MAP[size];
+
   return (
     <div className={rootClasses}>
       {showImage && (

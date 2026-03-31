@@ -7,6 +7,16 @@ import type { CardContentStatus, CardContentSize } from './CardContent';
 
 const previewWrap: React.CSSProperties = {
   display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'stretch',
+  gap: 'var(--global-spacing-sizing-16px)',
+  padding: 'var(--global-spacing-sizing-32px)',
+  background: 'var(--global-color-neutral-gray-50)',
+  borderRadius: 'var(--global-spacing-radius-8px)',
+};
+
+const imagePreviewWrap: React.CSSProperties = {
+  display: 'flex',
   alignItems: 'flex-start',
   gap: 'var(--global-spacing-sizing-24px)',
   padding: 'var(--global-spacing-sizing-32px)',
@@ -37,24 +47,23 @@ export const CardContentDocs: React.FC = () => (
   <DocsTemplate>
     <DocsTemplate.Header
       title="CardContent"
-      subtitle="An atomic content card with two layout variants — notification (status) and image — across three sizes and nine colour types. Sub-elements are independently toggleable."
+      subtitle="An alert banner component with nine colour types across three sizes, plus an image card variant. Maps to the Figma 'alert' component."
     />
 
     <DocsTemplate.BodyText>
-      <strong>CardContent</strong> is an Atom-level card component that wraps content inside a
-      styled card shell (white background, rounded corners, drop-shadow). Two layout variants are
-      provided: <code>notification</code> for status-driven alerts across <strong>9 colour types</strong>
-      (error, warning, success, info, default, light-gray, navy, purple, white) and <code>image</code>
-      for media-led content cards with ratings. All variants scale cleanly across <em>small</em>,
+      <strong>CardContent</strong> is an Atom-level component with two layout variants.
+      The <code>notification</code> variant renders an inline <strong>alert banner</strong>:
+      a horizontal row with a leading status icon (at 50% opacity), title + description text,
+      and an optional trailing dismiss/close icon. The <code>image</code> variant provides a
+      media-led content card with ratings. Both variants support <em>small</em>,
       <em>default</em>, and <em>large</em> sizes.
     </DocsTemplate.BodyText>
 
     <DocsTemplate.BodyText>
-      Sub-elements can be individually toggled using boolean props, following the same pattern
-      as the Alert component: <code>showIcon</code> (leading status icon),
-      <code>showBody</code> (description text), <code>showActions</code> (ButtonGroup row),
-      <code>showDismiss</code> (trailing close button), <code>showRating</code> (star rating),
-      and <code>showImage</code> (image area).
+      Sub-elements map directly to Figma component properties:
+      <code>showIcon</code> = <code>leading-icon</code>,
+      <code>showBody</code> = <code>subtext</code>,
+      <code>showDismiss</code> = <code>trailing-icon</code>.
     </DocsTemplate.BodyText>
 
     {/* ── Anatomy ── */}
@@ -62,36 +71,20 @@ export const CardContentDocs: React.FC = () => (
       <DocsTemplate.Anatomy
         preview={
           <div style={previewWrap}>
-            <CardContent
-              variant="notification"
-              status="error"
-              size="default"
-              heading="Error heading"
-              body="Body description."
-              count={4}
-              showDismiss={true}
-            />
-            <CardContent
-              variant="image"
-              size="default"
-              heading="Image heading"
-              body="Body description."
-              rating={4}
-              ratingCount={128}
-            />
+            <CardContent status="default" size="large" />
+            <CardContent status="error" size="default" />
+            <CardContent variant="image" size="default" heading="Image heading" body="Body description." rating={4} ratingCount={128} />
           </div>
         }
         parts={[
-          { id: 1, name: 'Card shell', token: '--card-content-bg, --card-content-border-radius, --card-content-shadow', description: 'White background container with 6px border-radius, 0.5px border and drop-shadow.' },
-          { id: 2, name: 'Status icon (toggleable)', token: '--card-content-error-icon / --card-content-default-icon / etc.', description: 'Status-coloured SVG icon. Controlled by showIcon prop. Icon varies by status type: ✕ error, ⚠ warning, ✓ success, ℹ info/navy, ◎ default/light-gray/white, 📄 purple.' },
-          { id: 3, name: 'Image area (toggleable)', token: '--card-content-image-height-default, --card-content-image-bg', description: 'Full-width image or grey placeholder at top of image cards. Controlled by showImage prop.' },
-          { id: 4, name: 'Heading', token: '--card-content-heading-color, --card-content-heading-size-default', description: 'Primary label text. Colour inherits from the status type in notification cards.' },
-          { id: 5, name: 'Body text (toggleable)', token: '--card-content-body-color, --card-content-body-size-default', description: 'Secondary description in neutral gray. Controlled by showBody prop.' },
-          { id: 6, name: 'ButtonGroup (toggleable)', token: 'Uses ButtonGroup component tokens', description: 'Action area rendered via label-type ButtonGroup (icon + text + arrow). Controlled by showActions prop. Supports label/icon button types, separate/joined layouts, default/alt special styles, and all ButtonGroup variants.' },
-          { id: 7, name: 'Count badge', token: '--card-content-count-bg, --card-content-count-color', description: 'Optional numeric badge beside the ButtonGroup in notification cards.' },
-          { id: 8, name: 'Star rating (toggleable)', token: '--card-content-star-color, --card-content-star-empty-color', description: 'Optional 5-star rating. Controlled by showRating prop (image variant only).' },
-          { id: 9, name: 'Border', token: '--card-content-border-width, --card-content-border-color', description: 'Optional visible border and drop shadow. Set border={false} to suppress both.' },
-          { id: 10, name: 'Dismiss button (toggleable)', token: 'Inherits status icon colour', description: 'Trailing close/dismiss button positioned top-right. Controlled by showDismiss prop (notification variant). Fires onDismiss callback.' },
+          { id: 1, name: 'Leading icon (toggleable)', token: '--card-content-icon-size-*, --card-content-icon-opacity', description: 'Status-coloured SVG icon at 0.5 opacity. Controlled by showIcon prop. Icon varies by status: ✕ error, ⚠ warning, ✓ success, ℹ info/navy, ◎ default/light-gray/white, 📄 purple.' },
+          { id: 2, name: 'Title / heading', token: '--card-content-heading-size-*, --card-content-heading-weight', description: 'Primary title text coloured by status. 12px (sm), 14px (default), 16px (lg), weight 400.' },
+          { id: 3, name: 'Description / body (toggleable)', token: '--card-content-body-size-*, --card-content-body-color', description: 'Secondary description in neutral gray-700, weight 300. Controlled by showBody prop.' },
+          { id: 4, name: 'Trailing dismiss icon (toggleable)', token: '--card-content-dismiss-size-*, --card-content-dismiss-opacity', description: 'Close button at 0.5 opacity in status colour. Controlled by showDismiss prop. Fires onDismiss callback.' },
+          { id: 5, name: 'Border (toggleable)', token: '--global-spacing-stroke-1px', description: '1px solid border in the status colour. Set border={false} to hide.' },
+          { id: 6, name: 'Image area (image variant)', token: '--card-content-image-height-*', description: 'Full-width image or grey placeholder (image variant only).' },
+          { id: 7, name: 'ButtonGroup (image variant)', token: 'Uses ButtonGroup component tokens', description: 'Action buttons rendered via ButtonGroup (image variant only).' },
+          { id: 8, name: 'Star rating (image variant)', token: '--card-content-star-color', description: '5-star rating row (image variant only).' },
         ]}
       />
     </DocsTemplate.Section>
@@ -99,157 +92,118 @@ export const CardContentDocs: React.FC = () => (
     {/* ── All 9 Status Types ── */}
     <DocsTemplate.Section
       title="All 9 Status / Colour Types"
-      subtitle="Nine colour types are supported, matching the Alert component's palette. Each sets the icon, heading colour, background tint, and border accent."
+      subtitle="Each status sets the icon colour, heading colour, and dismiss colour. No background tint — the alert is transparent with status-coloured accents."
     >
-      {ALL_STATUSES.map((status) => (
-        <DocsTemplate.Subsection key={status} title={STATUS_LABELS[status]}>
+      <div style={previewWrap}>
+        {ALL_STATUSES.map((status) => (
+          <CardContent
+            key={status}
+            status={status}
+            heading={status === 'navy' ? 'This is an info alert banner for the Echo app' : 'This is an alert banner for the Echo app'}
+          />
+        ))}
+      </div>
+    </DocsTemplate.Section>
+
+    {/* ── All Sizes ── */}
+    <DocsTemplate.Section title="All Sizes" subtitle="Small (16px icon, 12px text), default (22px icon, 14/16px text), large (28px icon, 16px text).">
+      {ALL_SIZES.map((size) => (
+        <DocsTemplate.Subsection key={size} title={`${size.charAt(0).toUpperCase()}${size.slice(1)}`}>
           <div style={previewWrap}>
-            {ALL_SIZES.map((size) => (
-              <CardContent key={size} variant="notification" status={status} size={size} heading={`${STATUS_LABELS[status]} heading`} count={4} />
-            ))}
+            <CardContent status="default" size={size} border={true} />
+            <CardContent status="default" size={size} border={false} />
           </div>
         </DocsTemplate.Subsection>
       ))}
     </DocsTemplate.Section>
 
-    {/* ── Image variant — all sizes ── */}
-    <DocsTemplate.Section title="Image Variant — All Sizes" subtitle="Image cards scale across small, default, and large.">
-      <div style={previewWrap}>
-        {ALL_SIZES.map((size) => (
-          <CardContent key={size} variant="image" size={size} heading="Image heading" rating={4} ratingCount={128} />
-        ))}
-      </div>
-    </DocsTemplate.Section>
-
     {/* ── Toggleable Sub-Elements ── */}
     <DocsTemplate.Section
       title="Toggleable Sub-Elements"
-      subtitle="Each sub-element can be independently shown or hidden using boolean props, following the Alert component's pattern."
-    >
-      <DocsTemplate.Subsection title="Notification — Toggle Combinations">
-        <div style={previewWrap}>
-          <CardContent variant="notification" status="info" heading="All visible" count={4} />
-          <CardContent variant="notification" status="info" heading="No icon" count={4} showIcon={false} />
-          <CardContent variant="notification" status="info" heading="No body" count={4} showBody={false} />
-          <CardContent variant="notification" status="info" heading="No actions" showActions={false} />
-          <CardContent variant="notification" status="info" heading="Icon + heading" showBody={false} showActions={false} />
-          <CardContent variant="notification" status="info" heading="Heading only" showIcon={false} showBody={false} showActions={false} />
-        </div>
-      </DocsTemplate.Subsection>
-      <DocsTemplate.Subsection title="Image — Toggle Combinations">
-        <div style={previewWrap}>
-          <CardContent variant="image" heading="All visible" rating={4} ratingCount={128} />
-          <CardContent variant="image" heading="No image" rating={4} ratingCount={128} showImage={false} />
-          <CardContent variant="image" heading="No body" rating={4} ratingCount={128} showBody={false} />
-          <CardContent variant="image" heading="No actions" rating={4} ratingCount={128} showActions={false} />
-          <CardContent variant="image" heading="No rating" showRating={false} />
-          <CardContent variant="image" heading="Heading only" showImage={false} showBody={false} showActions={false} showRating={false} />
-        </div>
-      </DocsTemplate.Subsection>
-    </DocsTemplate.Section>
-
-    {/* ── Dismiss Button ── */}
-    <DocsTemplate.Section
-      title="Dismiss Button"
-      subtitle="Set showDismiss={true} to add a trailing close button (notification variant). The button inherits the status accent colour and fires onDismiss."
+      subtitle="Each sub-element maps to a Figma component property and can be independently toggled."
     >
       <div style={previewWrap}>
-        {ALL_STATUSES.map((status) => (
-          <CardContent key={status} variant="notification" status={status} size="default" heading={`${STATUS_LABELS[status]} — dismiss`} count={4} showDismiss={true} />
-        ))}
+        <CardContent status="default" showIcon={true} showBody={true} showDismiss={true} />
+        <CardContent status="default" showIcon={false} showBody={true} showDismiss={true} />
+        <CardContent status="default" showIcon={true} showBody={false} showDismiss={true} />
+        <CardContent status="default" showIcon={true} showBody={true} showDismiss={false} />
+        <CardContent status="default" showIcon={false} showBody={false} showDismiss={false} />
       </div>
     </DocsTemplate.Section>
 
     {/* ── Border toggle ── */}
-    <DocsTemplate.Section title="Border Variants" subtitle="border={true} renders the status-accent border and shadow; border={false} suppresses both.">
-      <DocsTemplate.Subsection title="Notification — Border True vs False">
-        <div style={previewWrap}>
-          {(['error', 'default', 'purple', 'white'] as CardContentStatus[]).map((status) => (
-            <React.Fragment key={status}>
-              <CardContent variant="notification" status={status} heading={`${STATUS_LABELS[status]} — border`} count={4} border={true} />
-              <CardContent variant="notification" status={status} heading={`${STATUS_LABELS[status]} — no border`} count={4} border={false} />
-            </React.Fragment>
-          ))}
-        </div>
-      </DocsTemplate.Subsection>
-    </DocsTemplate.Section>
-
-    {/* ── ButtonGroup Button Types ── */}
-    <DocsTemplate.Section title="ButtonGroup Button Types" subtitle="Cards use label-type buttons by default (icon + text + arrow). Set buttonGroupType='icon' for icon-only buttons.">
-      <DocsTemplate.Subsection title="Label Type (default)">
-        <div style={previewWrap}>
-          <CardContent variant="notification" status="info" heading="Label — default" count={4} buttonGroupType="label" buttonGroupSpecial="default" />
-          <CardContent variant="notification" status="info" heading="Label — alt" count={4} buttonGroupType="label" buttonGroupSpecial="alt" />
-        </div>
-      </DocsTemplate.Subsection>
-      <DocsTemplate.Subsection title="Icon Type">
-        <div style={previewWrap}>
-          <CardContent variant="notification" status="info" heading="Icon buttons" count={4} buttonGroupType="icon" />
-        </div>
-      </DocsTemplate.Subsection>
-    </DocsTemplate.Section>
-
-    {/* ── ButtonGroup variants ── */}
-    <DocsTemplate.Section title="ButtonGroup Variants" subtitle="All four ButtonGroup colour variants are supported: primary, secondary, tertiary, and ghost.">
+    <DocsTemplate.Section title="Border Variants" subtitle="border={true} renders a 1px solid border in the status colour. border={false} removes it.">
       <div style={previewWrap}>
-        {(['primary', 'secondary', 'tertiary', 'ghost'] as const).map((v) => (
-          <CardContent key={v} variant="notification" status="info" heading={`${v} buttons`} body="ButtonGroup variant demo." count={4} buttonGroupVariant={v} />
+        {(['error', 'default', 'navy', 'purple'] as CardContentStatus[]).map((status) => (
+          <React.Fragment key={status}>
+            <CardContent status={status} border={true} />
+            <CardContent status={status} border={false} />
+          </React.Fragment>
         ))}
       </div>
     </DocsTemplate.Section>
 
-    {/* ── ButtonGroup layouts ── */}
-    <DocsTemplate.Section title="ButtonGroup Layouts" subtitle="Separate (default) and joined layout modes.">
-      <div style={previewWrap}>
-        <CardContent variant="notification" status="info" heading="Separate" count={4} buttonGroupLayout="separate" />
-        <CardContent variant="notification" status="info" heading="Joined" count={4} buttonGroupLayout="joined" buttonGroupCount={4} />
-      </div>
-    </DocsTemplate.Section>
-
-    {/* ── Image with custom image ── */}
-    <DocsTemplate.Section title="Image Variant — With Custom Image" subtitle="Pass imageSrc to replace the grey placeholder.">
-      <div style={previewWrap}>
+    {/* ── Image variant ── */}
+    <DocsTemplate.Section title="Image Variant — All Sizes" subtitle="Image cards retain the card-style layout from the previous design.">
+      <div style={imagePreviewWrap}>
         {ALL_SIZES.map((size) => (
-          <CardContent key={size} variant="image" size={size} heading="Custom photo" body="Photo via imageSrc prop." rating={5} ratingCount={312} imageSrc="https://images.pexels.com/photos/1366909/pexels-photo-1366909.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop" imageAlt="Mountain landscape" />
+          <CardContent key={size} variant="image" size={size} heading="Image heading" body="Body description." rating={4} ratingCount={128} />
         ))}
       </div>
     </DocsTemplate.Section>
 
     {/* ── Design Tokens ── */}
     <DocsTemplate.Section title="Design Tokens">
-      <DocsTemplate.Subsection title="Card Shell">
+      <DocsTemplate.Subsection title="Alert Layout">
         <DocsTemplate.TokenTable
           tokens={[
-            { name: '--card-content-bg', description: 'Card background — var(--global-color-base-white)' },
-            { name: '--card-content-border-radius', description: 'Corner radius — var(--global-spacing-radius-6px)' },
-            { name: '--card-content-border-width', description: 'Border stroke — 0.5px' },
-            { name: '--card-content-border-color', description: 'Default border — var(--global-color-neutral-gray-300)' },
-            { name: '--card-content-shadow', description: 'Drop shadow — 0px 5px 10px 0px rgba(39,39,39,0.1)' },
+            { name: '--card-content-min-width', description: 'Alert minimum width — 400px' },
+            { name: '--card-content-max-width', description: 'Alert maximum width — 1920px' },
+            { name: '--card-content-outer-gap', description: 'Gap between content group and dismiss — var(--global-spacing-sizing-12px)' },
+            { name: '--card-content-inner-gap', description: 'Gap between leading icon and text — var(--global-spacing-sizing-8px)' },
+            { name: '--card-content-text-gap-sm / default / lg', description: 'Gap between title and description — 2px / 2px / 1px' },
           ]}
         />
       </DocsTemplate.Subsection>
-      <DocsTemplate.Subsection title="Status Colours (9 types)">
+      <DocsTemplate.Subsection title="Icon Sizes">
         <DocsTemplate.TokenTable
           tokens={[
-            { name: '--card-content-error-*', description: 'Error — bg, border, icon, heading tokens using status-red' },
-            { name: '--card-content-warning-*', description: 'Warning — bg, border, icon, heading tokens using status-orange' },
-            { name: '--card-content-success-*', description: 'Success — bg, border, icon, heading tokens using status-dark-green' },
-            { name: '--card-content-info-*', description: 'Info — bg, border, icon, heading tokens using status-info-blue' },
-            { name: '--card-content-default-*', description: 'Default — bg, border, icon, heading tokens using secondary-navy' },
-            { name: '--card-content-light-gray-*', description: 'Light Gray — bg, border, icon, heading tokens using neutral-gray' },
-            { name: '--card-content-navy-*', description: 'Navy — bg, border, icon, heading tokens using info-blue' },
-            { name: '--card-content-purple-*', description: 'Purple — bg, border, icon, heading tokens using status-purple' },
-            { name: '--card-content-white-*', description: 'White — bg, border, icon, heading tokens using base-white/black' },
+            { name: '--card-content-icon-size-sm', description: 'Leading icon — 16px' },
+            { name: '--card-content-icon-size-default', description: 'Leading icon — 22px' },
+            { name: '--card-content-icon-size-lg', description: 'Leading icon — 28px' },
+            { name: '--card-content-icon-opacity', description: 'Leading icon opacity — 0.5' },
+            { name: '--card-content-dismiss-size-sm', description: 'Dismiss icon — 14px' },
+            { name: '--card-content-dismiss-size-default', description: 'Dismiss icon — 16px' },
+            { name: '--card-content-dismiss-size-lg', description: 'Dismiss icon — 18px' },
+            { name: '--card-content-dismiss-opacity', description: 'Dismiss icon opacity — 0.5' },
           ]}
         />
       </DocsTemplate.Subsection>
-      <DocsTemplate.Subsection title="Sizes">
+      <DocsTemplate.Subsection title="Typography">
         <DocsTemplate.TokenTable
           tokens={[
-            { name: '--card-content-width-sm / default / lg', description: 'Card widths — 160px / 220px / 300px' },
-            { name: '--card-content-padding-sm / default / lg', description: 'Internal padding — 12px / 16px / 20px' },
-            { name: '--card-content-gap-sm / default / lg', description: 'Internal gap — 8px / 10px / 12px' },
-            { name: '--card-content-image-height-sm / default / lg', description: 'Image area heights — 80px / 110px / 150px' },
+            { name: '--card-content-heading-size-sm / default / lg', description: 'Title font sizes — label-xs (12px) / label-sm (14px) / label (16px)' },
+            { name: '--card-content-heading-weight', description: 'Title weight — var(--global-type-weight-default) (400)' },
+            { name: '--card-content-body-size-sm / default / lg', description: 'Description font sizes — label-xs (12px) / label (16px) / label (16px)' },
+            { name: '--card-content-body-weight', description: 'Description weight — var(--global-type-weight-light) (300)' },
+            { name: '--card-content-body-color', description: 'Description colour — var(--global-color-neutral-gray-700) (#374151)' },
+          ]}
+        />
+      </DocsTemplate.Subsection>
+      <DocsTemplate.Subsection title="Status Colours">
+        <DocsTemplate.TokenTable
+          tokens={[
+            { name: '--card-content-error-color', description: 'Error — var(--global-color-status-red) (#CE2031)' },
+            { name: '--card-content-warning-icon-color', description: 'Warning icon fill — var(--global-color-status-orange) (#F4A403)' },
+            { name: '--card-content-warning-color', description: 'Warning heading/dismiss — var(--global-color-status-dark-orange) (#D07C06)' },
+            { name: '--card-content-success-color', description: 'Success — var(--global-color-status-dark-green) (#227F1A)' },
+            { name: '--card-content-info-color', description: 'Info — var(--global-color-status-info-blue) (#366F97)' },
+            { name: '--card-content-default-color', description: 'Default — var(--global-color-secondary-navy) (#3A3282)' },
+            { name: '--card-content-light-gray-icon-color', description: 'Light Gray icon — var(--global-color-neutral-gray-700) (#374151)' },
+            { name: '--card-content-light-gray-color', description: 'Light Gray heading/dismiss — var(--global-color-base-black) (#1C1C1C)' },
+            { name: '--card-content-navy-color', description: 'Navy — var(--global-color-status-info-blue) (#366F97)' },
+            { name: '--card-content-purple-color', description: 'Purple — var(--global-color-status-purple) (#5D2C82)' },
+            { name: '--card-content-white-color', description: 'White — var(--global-color-base-black) (#1C1C1C)' },
           ]}
         />
       </DocsTemplate.Subsection>
@@ -259,61 +213,41 @@ export const CardContentDocs: React.FC = () => (
     <DocsTemplate.Section title="Usage">
       <DocsTemplate.CodeBlock>{`import { CardContent } from './CardContent';
 
-// Notification with label-type buttons (default)
+// Default alert banner (all elements visible)
 <CardContent
   variant="notification"
-  status="error"
+  status="default"
   size="default"
-  heading="Error heading"
-  body="Description text."
-  count={4}
+  heading="This is an alert banner for the Echo app"
+  body="This is a description for an alert banner in the Echo app"
   border={true}
-  buttonGroupType="label"
-  buttonGroupSpecial="default"
   showIcon={true}
   showBody={true}
-  showActions={true}
   showDismiss={true}
   onDismiss={() => console.log('dismissed')}
 />
 
-// Notification with alt-style label buttons
+// Warning alert — no dismiss
 <CardContent
-  variant="notification"
-  status="info"
-  heading="Alt style"
-  buttonGroupType="label"
-  buttonGroupSpecial="alt"
-  buttonGroupButtons={[{ label: 'Filter' }, { label: 'Sort' }]}
+  status="warning"
+  showDismiss={false}
 />
 
-// Minimal notification (heading only + dismiss)
+// Title-only alert
 <CardContent
-  variant="notification"
-  status="info"
-  heading="Quick notice"
+  status="error"
   showIcon={false}
   showBody={false}
-  showActions={false}
-  showDismiss={true}
+  showDismiss={false}
 />
 
-// Image card with hidden rating
+// Image card
 <CardContent
   variant="image"
   size="default"
   heading="Photo card"
   body="Description text."
   imageSrc="/photo.jpg"
-  showRating={false}
-/>
-
-// Image card without image area
-<CardContent
-  variant="image"
-  heading="Content only"
-  body="No image area displayed."
-  showImage={false}
   rating={4}
   ratingCount={128}
 />`}</DocsTemplate.CodeBlock>
@@ -322,17 +256,17 @@ export const CardContentDocs: React.FC = () => (
     {/* ── Design Principles ── */}
     <DocsTemplate.Section title="Design Principles">
       <DocsTemplate.Principles>
-        <DocsTemplate.PrincipleCard number={1} title="9 semantic colour types">
-          Matching the Alert component palette, CardContent supports error, warning, success, info, default, light-gray, navy, purple, and white — ensuring consistent colour semantics across the design system.
+        <DocsTemplate.PrincipleCard number={1} title="Inline alert pattern">
+          The notification variant is a flat, inline alert banner — not a card. It has no background, no shadow, and no border-radius. This matches the Figma alert component precisely.
         </DocsTemplate.PrincipleCard>
-        <DocsTemplate.PrincipleCard number={2} title="Toggleable sub-elements">
-          Following the Alert component pattern, each card sub-element (icon, body, actions, dismiss, rating, image) can be independently shown or hidden via boolean props, enabling flexible card configurations from a single component.
+        <DocsTemplate.PrincipleCard number={2} title="9 semantic colour types">
+          Matching the Figma colour property, nine status types are supported. Each status sets the icon fill, heading text colour, and dismiss icon colour consistently.
         </DocsTemplate.PrincipleCard>
-        <DocsTemplate.PrincipleCard number={3} title="Composable actions via ButtonGroup">
-          Card actions use the shared ButtonGroup component with label-type buttons (icon + text + arrow) by default, ensuring consistent sizing, spacing, and interaction patterns. Switch to <code>buttonGroupType="icon"</code> for icon-only buttons, or use <code>buttonGroupSpecial="alt"</code> for the tinted/outlined label style.
+        <DocsTemplate.PrincipleCard number={3} title="Figma property mapping">
+          Boolean props map directly to Figma component properties: showIcon = leading-icon, showBody = subtext, showDismiss = trailing-icon. This ensures 1:1 parity between design and code.
         </DocsTemplate.PrincipleCard>
         <DocsTemplate.PrincipleCard number={4} title="Token-driven theming">
-          All colours, spacing, typography, and decoration values reference design tokens so global theme updates propagate automatically.
+          All colours, spacing, typography, and decoration values reference design tokens from tokens.css, ensuring global theme updates propagate automatically.
         </DocsTemplate.PrincipleCard>
       </DocsTemplate.Principles>
     </DocsTemplate.Section>
