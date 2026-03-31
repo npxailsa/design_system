@@ -984,93 +984,151 @@
    COMPONENT LAYER: CardContent (Component-Specific Tokens)
    ========================================================================== */
 :root {
-  /* CardContent — alert shell */
-  --card-content-bg:                    transparent;
-  --card-content-border-radius:         0;
-  --card-content-border-width:          0;
-  --card-content-border-color:          transparent;
-  --card-content-shadow:                none;
-  --card-content-overflow:              visible;
+  /* CardContent — card shell */
+  --card-content-bg:                    var(--global-color-base-white);
+  --card-content-border-radius:         var(--global-spacing-radius-6px);
+  --card-content-border-width:          0.5px;
+  --card-content-border-color:          var(--global-color-neutral-gray-300);
+  --card-content-shadow:                0px 5px 10px 0px rgba(39, 39, 39, 0.1);
+  --card-content-overflow:              hidden;
 
-  /* CardContent — alert sizing */
-  --card-content-min-width:             400px;
-  --card-content-max-width:             1920px;
-  --card-content-outer-gap:             var(--global-spacing-sizing-12px);
-  --card-content-inner-gap:             var(--global-spacing-sizing-8px);
-  --card-content-text-gap-sm:           var(--global-spacing-sizing-2px);
-  --card-content-text-gap-default:      var(--global-spacing-sizing-2px);
-  --card-content-text-gap-lg:           var(--global-spacing-sizing-1px);
+  /* CardContent — notification sizes (small / default / large) */
+  --card-content-width-sm:              300px;
+  --card-content-width-default:         350px;
+  --card-content-width-lg:              500px;
+  --card-content-padding-sm:            var(--global-spacing-sizing-24px) var(--global-spacing-sizing-16px) var(--global-spacing-sizing-20px);
+  --card-content-padding-default:       var(--global-spacing-sizing-24px) var(--global-spacing-sizing-24px) var(--global-spacing-sizing-32px);
+  --card-content-padding-lg:            var(--global-spacing-sizing-24px) var(--global-spacing-sizing-36px) var(--global-spacing-sizing-32px);
+  --card-content-gap-sm:                var(--global-spacing-sizing-12px);
+  --card-content-gap-default:           var(--global-spacing-sizing-12px);
+  --card-content-gap-lg:                var(--global-spacing-sizing-20px);
 
-  /* CardContent — leading icon sizes (bare SVG, no badge) */
-  --card-content-icon-size-sm:          16px;
-  --card-content-icon-size-default:     22px;
-  --card-content-icon-size-lg:          28px;
-  --card-content-icon-opacity:          0.5;
+  /* CardContent — circular icon badge */
+  --card-content-icon-badge-size-sm:    var(--global-spacing-sizing-80px);
+  --card-content-icon-badge-size-default: var(--global-spacing-sizing-140px);
+  --card-content-icon-badge-size-lg:    var(--global-spacing-sizing-180px);
+  --card-content-icon-size-sm:          40px;
+  --card-content-icon-size-default:     72px;
+  --card-content-icon-size-lg:          90px;
 
-  /* CardContent — dismiss / close icon sizes */
-  --card-content-dismiss-size-sm:       14px;
-  --card-content-dismiss-size-default:  16px;
-  --card-content-dismiss-size-lg:       18px;
-  --card-content-dismiss-opacity:       0.5;
-
-  /* CardContent — typography: heading / title */
+  /* CardContent — typography: heading (H4/H3/H2 scale) */
   --card-content-heading-font:          var(--brand-font-primary);
   --card-content-heading-color:         var(--global-color-base-black);
   --card-content-heading-weight:        var(--global-type-weight-default);
-  --card-content-heading-size-sm:       var(--global-type-size-primary-label-xs);
-  --card-content-heading-size-default:  var(--global-type-size-primary-label-sm);
-  --card-content-heading-size-lg:       var(--global-type-size-primary-label);
-  --card-content-heading-lh-sm:         var(--global-type-line-height-label-xs);
-  --card-content-heading-lh-default:    var(--global-type-line-height-label-sm);
-  --card-content-heading-lh-lg:         var(--global-type-line-height-label);
+  --card-content-heading-letter-spacing-sm:      -0.25px;
+  --card-content-heading-letter-spacing-default: -0.5px;
+  --card-content-heading-letter-spacing-lg:      -1px;
+  --card-content-heading-size-sm:       var(--global-type-size-primary-heading-4);
+  --card-content-heading-size-default:  var(--global-type-size-primary-heading-3);
+  --card-content-heading-size-lg:       var(--global-type-size-primary-heading-2);
+  --card-content-heading-lh-sm:         var(--global-type-size-primary-heading-4);
+  --card-content-heading-lh-default:    var(--global-type-size-primary-heading-3);
+  --card-content-heading-lh-lg:         34px;
 
-  /* CardContent — typography: body / description */
+  /* CardContent — typography: body text */
   --card-content-body-font:             var(--brand-font-primary);
-  --card-content-body-color:            var(--global-color-neutral-gray-700);
+  --card-content-body-color:            var(--global-color-base-black);
   --card-content-body-weight:           var(--global-type-weight-light);
-  --card-content-body-size-sm:          var(--global-type-size-primary-label-xs);
+  --card-content-body-size-sm:          var(--global-type-size-primary-label-sm);
   --card-content-body-size-default:     var(--global-type-size-primary-label);
-  --card-content-body-size-lg:          var(--global-type-size-primary-label);
-  --card-content-body-lh-sm:            var(--global-type-line-height-label-xs);
-  --card-content-body-lh-default:       var(--global-type-line-height-label-sm);
-  --card-content-body-lh-lg:            var(--global-type-line-height-label);
+  --card-content-body-size-lg:          var(--global-type-size-primary-label-lg);
+  --card-content-body-lh-sm:            var(--global-type-line-height-label-sm);
+  --card-content-body-lh-default:       var(--global-type-line-height-label);
+  --card-content-body-lh-lg:            22px;
 
-  /* CardContent — image card (image variant only) */
-  --card-content-image-border-radius:   var(--global-spacing-radius-6px);
-  --card-content-image-border-width:    0.5px;
-  --card-content-image-border-color:    var(--global-color-neutral-gray-300);
-  --card-content-image-shadow:          0px 5px 10px 0px rgba(39, 39, 39, 0.1);
-  --card-content-image-width-sm:        300px;
-  --card-content-image-width-default:   350px;
-  --card-content-image-width-lg:        500px;
-  --card-content-image-padding-sm:      var(--global-spacing-sizing-16px);
-  --card-content-image-padding-default: var(--global-spacing-sizing-24px);
-  --card-content-image-padding-lg:      var(--global-spacing-sizing-32px);
-  --card-content-image-gap-sm:          var(--global-spacing-sizing-12px);
-  --card-content-image-gap-default:     var(--global-spacing-sizing-16px);
-  --card-content-image-gap-lg:          var(--global-spacing-sizing-20px);
+  /* CardContent — dismiss / close icon */
+  --card-content-dismiss-size-sm:       20px;
+  --card-content-dismiss-size-default:  24px;
+  --card-content-dismiss-size-lg:       28px;
+
+  /* CardContent — count badge */
+  --card-content-count-bg:              var(--global-color-neutral-gray-100);
+  --card-content-count-color:           var(--global-color-neutral-gray-600);
+  --card-content-count-border-radius:   var(--global-spacing-radius-full);
+  --card-content-count-font:            var(--brand-font-primary);
+
+  /* CardContent — image area */
   --card-content-image-height-sm:       140px;
   --card-content-image-height-default:  200px;
   --card-content-image-height-lg:       280px;
   --card-content-image-bg:              var(--global-color-neutral-gray-200);
 
-  /* CardContent — rating star (image variant) */
+  /* CardContent — rating star */
   --card-content-star-color:            var(--global-color-primary-yellow);
   --card-content-star-empty-color:      var(--global-color-neutral-gray-300);
   --card-content-rating-count-color:    var(--global-color-neutral-gray-500);
 
-  /* CardContent — alert status colours (icon colour = heading colour = dismiss colour) */
-  --card-content-error-color:           var(--global-color-status-red);
-  --card-content-warning-icon-color:    var(--global-color-status-orange);
-  --card-content-warning-color:         var(--global-color-status-dark-orange);
-  --card-content-success-color:         var(--global-color-status-dark-green);
-  --card-content-info-color:            var(--global-color-status-info-blue);
-  --card-content-default-color:         var(--global-color-secondary-navy);
-  --card-content-light-gray-icon-color: var(--global-color-neutral-gray-700);
-  --card-content-light-gray-color:      var(--global-color-base-black);
-  --card-content-navy-color:            var(--global-color-status-info-blue);
-  --card-content-purple-color:          var(--global-color-status-purple);
-  --card-content-white-color:           var(--global-color-base-black);
+  /* CardContent — status colours: error */
+  --card-content-error-icon:            var(--global-color-status-red);
+  --card-content-error-heading:         var(--global-color-status-red);
+  --card-content-error-bg:              var(--global-color-status-red-light);
+  --card-content-error-border:          var(--global-color-status-red);
+  --card-content-error-btn-bg:          var(--global-color-status-red);
+  --card-content-error-btn-border:      var(--global-color-status-red);
+
+  /* CardContent — status colours: warning */
+  --card-content-warning-icon:          var(--global-color-status-orange);
+  --card-content-warning-heading:       var(--global-color-status-dark-orange);
+  --card-content-warning-bg:            var(--global-color-status-orange-light);
+  --card-content-warning-border:        var(--global-color-status-orange);
+  --card-content-warning-btn-bg:        var(--global-color-status-orange);
+  --card-content-warning-btn-border:    var(--global-color-status-dark-orange);
+
+  /* CardContent — status colours: success */
+  --card-content-success-icon:          var(--global-color-status-dark-green);
+  --card-content-success-heading:       var(--global-color-status-dark-green);
+  --card-content-success-bg:            var(--global-color-status-green-light);
+  --card-content-success-border:        var(--global-color-status-dark-green);
+  --card-content-success-btn-bg:        var(--global-color-status-dark-green);
+  --card-content-success-btn-border:    var(--global-color-status-dark-green);
+
+  /* CardContent — status colours: info */
+  --card-content-info-icon:             var(--global-color-status-info-blue);
+  --card-content-info-heading:          var(--global-color-status-info-blue);
+  --card-content-info-bg:               var(--global-color-status-info-blue-light);
+  --card-content-info-border:           var(--global-color-status-info-blue);
+  --card-content-info-btn-bg:           var(--global-color-status-info-blue);
+  --card-content-info-btn-border:       var(--global-color-status-info-blue);
+
+  /* CardContent — status colours: default (navy/brand) */
+  --card-content-default-icon:          var(--global-color-secondary-navy);
+  --card-content-default-heading:       var(--global-color-secondary-navy);
+  --card-content-default-bg:            var(--global-color-neutral-gray-50);
+  --card-content-default-border:        var(--global-color-neutral-gray-300);
+  --card-content-default-btn-bg:        var(--global-color-secondary-navy);
+  --card-content-default-btn-border:    var(--global-color-secondary-navy);
+
+  /* CardContent — status colours: light-gray */
+  --card-content-light-gray-icon:       var(--global-color-neutral-gray-700);
+  --card-content-light-gray-heading:    var(--global-color-base-black);
+  --card-content-light-gray-bg:         var(--global-color-neutral-gray-50);
+  --card-content-light-gray-border:     var(--global-color-neutral-gray-300);
+  --card-content-light-gray-btn-bg:     var(--global-color-neutral-gray-700);
+  --card-content-light-gray-btn-border: var(--global-color-neutral-gray-700);
+
+  /* CardContent — status colours: navy */
+  --card-content-navy-icon:             var(--global-color-status-info-blue);
+  --card-content-navy-heading:          var(--global-color-status-info-blue);
+  --card-content-navy-bg:               var(--global-color-status-info-blue-light);
+  --card-content-navy-border:           var(--global-color-status-info-blue);
+  --card-content-navy-btn-bg:           var(--global-color-status-info-blue);
+  --card-content-navy-btn-border:       var(--global-color-status-info-blue);
+
+  /* CardContent — status colours: purple */
+  --card-content-purple-icon:           var(--global-color-status-purple);
+  --card-content-purple-heading:        var(--global-color-status-purple);
+  --card-content-purple-bg:             var(--global-color-status-purple-light);
+  --card-content-purple-border:         var(--global-color-status-purple);
+  --card-content-purple-btn-bg:         var(--global-color-status-purple);
+  --card-content-purple-btn-border:     var(--global-color-status-purple);
+
+  /* CardContent — status colours: white */
+  --card-content-white-icon:            var(--global-color-neutral-gray-700);
+  --card-content-white-heading:         var(--global-color-base-black);
+  --card-content-white-bg:              var(--global-color-base-white);
+  --card-content-white-border:          var(--global-color-neutral-gray-300);
+  --card-content-white-btn-bg:          var(--global-color-base-black);
+  --card-content-white-btn-border:      var(--global-color-neutral-gray-500);
 }
 
 /* ==========================================================================

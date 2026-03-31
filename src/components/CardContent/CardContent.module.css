@@ -2,70 +2,277 @@
    CardContent — Module CSS
    Atoms/CardContent
 
-   Notification variant = Alert banner (horizontal inline)
-   Image variant        = Media card (vertical card layout)
+   Notification variant = StatusCard (vertical card with circular icon badge)
+   Image variant        = Media card (image + heading + rating)
    ========================================================================== */
 
-/* ── Base shell ───────────────────────────────────────────────────────────── */
+/* ── Base card shell ──────────────────────────────────────────────────────── */
 
 .card-content {
-  display: flex;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: var(--card-content-bg);
+  border-radius: var(--card-content-border-radius);
+  border: var(--card-content-border-width) solid var(--card-content-border-color);
+  box-shadow: var(--card-content-shadow);
+  overflow: var(--card-content-overflow);
   box-sizing: border-box;
   font-family: var(--brand-font-primary, 'F37 Ginger', sans-serif);
+  vertical-align: top;
   position: relative;
 }
 
+/* ── Border toggle ────────────────────────────────────────────────────────── */
+
+.card-content--no-border {
+  border-color: transparent;
+  box-shadow: none;
+}
+
 /* ══════════════════════════════════════════════════════════════════════════
-   NOTIFICATION VARIANT — Alert banner
-   Layout: [leading-icon] [title + description] [trailing-close]
+   NOTIFICATION VARIANT — StatusCard
    ══════════════════════════════════════════════════════════════════════════ */
 
 .card-content--notification {
-  min-width: var(--card-content-min-width);
-  max-width: var(--card-content-max-width);
-  align-items: flex-start;
-  gap: var(--card-content-outer-gap);
-  align-self: stretch;
+  padding: var(--card-content-padding-default);
+  gap: var(--card-content-gap-default);
 }
 
-/* ── Leading status icon (bare SVG at 0.5 opacity) ────────────────────────── */
+/* ── Size variants ────────────────────────────────────────────────────────── */
+
+.size-small.card-content--notification {
+  width: var(--card-content-width-sm);
+  min-width: var(--card-content-width-sm);
+  padding: var(--card-content-padding-sm);
+  gap: var(--card-content-gap-sm);
+  border-radius: var(--global-spacing-radius-8px);
+}
+
+.size-default.card-content--notification {
+  min-width: var(--card-content-width-default);
+  width: var(--card-content-width-default);
+  padding: var(--card-content-padding-default);
+  gap: var(--card-content-gap-default);
+}
+
+.size-large.card-content--notification {
+  min-width: var(--card-content-width-lg);
+  width: var(--card-content-width-lg);
+  padding: var(--card-content-padding-lg);
+  gap: var(--card-content-gap-lg);
+  border-radius: var(--global-spacing-radius-8px);
+}
+
+/* ── Dismiss (close) button — top-right absolute ──────────────────────────── */
+
+.card-content__dismiss {
+  position: absolute;
+  top: var(--global-spacing-sizing-10px);
+  right: var(--global-spacing-sizing-10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--global-spacing-sizing-2px);
+  color: var(--global-color-neutral-gray-500);
+  opacity: 0.6;
+  transition: opacity 0.15s ease;
+}
+
+.card-content__dismiss:hover {
+  opacity: 1;
+}
+
+.card-content__dismiss:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+  border-radius: var(--global-spacing-radius-2px);
+}
+
+/* ── Status icon badge — circular coloured container ─────────────────────── */
 
 .card-content__status-icon-wrap {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  opacity: var(--card-content-icon-opacity);
+  border-radius: var(--global-spacing-radius-full);
+  color: var(--global-color-base-white);
+  width:  var(--card-content-icon-badge-size-default);
+  height: var(--card-content-icon-badge-size-default);
 }
 
-/* ── Icon + text group ────────────────────────────────────────────────────── */
+.size-small .card-content__status-icon-wrap {
+  width:  var(--card-content-icon-badge-size-sm);
+  height: var(--card-content-icon-badge-size-sm);
+}
 
-.card-content__content-frame {
+.size-large .card-content__status-icon-wrap {
+  width:  var(--card-content-icon-badge-size-lg);
+  height: var(--card-content-icon-badge-size-lg);
+}
+
+/* ── Status colour overrides ─────────────────────────────────────────────── */
+
+/* error */
+.status-error {
+  background: var(--card-content-error-bg);
+  border-color: var(--card-content-error-border);
+}
+.status-error .card-content__status-icon-wrap { background: var(--card-content-error-icon); }
+.status-error .card-content__heading          { color: var(--card-content-error-heading); }
+.status-error .card-content__dismiss          { color: var(--card-content-error-icon); }
+.status-error .card-content__primary-status-btn {
+  background: var(--card-content-error-btn-bg) !important;
+  border-color: var(--card-content-error-btn-border) !important;
+  color: var(--global-color-base-white) !important;
+}
+
+/* warning */
+.status-warning {
+  background: var(--card-content-warning-bg);
+  border-color: var(--card-content-warning-border);
+}
+.status-warning .card-content__status-icon-wrap { background: var(--card-content-warning-icon); }
+.status-warning .card-content__heading          { color: var(--card-content-warning-heading); }
+.status-warning .card-content__dismiss          { color: var(--card-content-warning-icon); }
+.status-warning .card-content__primary-status-btn {
+  background: var(--card-content-warning-btn-bg) !important;
+  border-color: var(--card-content-warning-btn-border) !important;
+  color: var(--global-color-base-white) !important;
+}
+
+/* success */
+.status-success {
+  background: var(--card-content-success-bg);
+  border-color: var(--card-content-success-border);
+}
+.status-success .card-content__status-icon-wrap { background: var(--card-content-success-icon); }
+.status-success .card-content__heading          { color: var(--card-content-success-heading); }
+.status-success .card-content__dismiss          { color: var(--card-content-success-icon); }
+.status-success .card-content__primary-status-btn {
+  background: var(--card-content-success-btn-bg) !important;
+  border-color: var(--card-content-success-btn-border) !important;
+  color: var(--global-color-base-white) !important;
+}
+
+/* info */
+.status-info {
+  background: var(--card-content-info-bg);
+  border-color: var(--card-content-info-border);
+}
+.status-info .card-content__status-icon-wrap { background: var(--card-content-info-icon); }
+.status-info .card-content__heading          { color: var(--card-content-info-heading); }
+.status-info .card-content__dismiss          { color: var(--card-content-info-icon); }
+.status-info .card-content__primary-status-btn {
+  background: var(--card-content-info-btn-bg) !important;
+  border-color: var(--card-content-info-btn-border) !important;
+  color: var(--global-color-base-white) !important;
+}
+
+/* default */
+.status-default {
+  background: var(--card-content-default-bg);
+  border-color: var(--card-content-default-border);
+}
+.status-default .card-content__status-icon-wrap { background: var(--card-content-default-icon); }
+.status-default .card-content__heading          { color: var(--card-content-default-heading); }
+.status-default .card-content__dismiss          { color: var(--card-content-default-icon); }
+.status-default .card-content__primary-status-btn {
+  background: var(--card-content-default-btn-bg) !important;
+  border-color: var(--card-content-default-btn-border) !important;
+  color: var(--global-color-base-white) !important;
+}
+
+/* light-gray */
+.status-light-gray {
+  background: var(--card-content-light-gray-bg);
+  border-color: var(--card-content-light-gray-border);
+}
+.status-light-gray .card-content__status-icon-wrap { background: var(--card-content-light-gray-icon); }
+.status-light-gray .card-content__heading          { color: var(--card-content-light-gray-heading); }
+.status-light-gray .card-content__dismiss          { color: var(--card-content-light-gray-icon); }
+.status-light-gray .card-content__primary-status-btn {
+  background: var(--card-content-light-gray-btn-bg) !important;
+  border-color: var(--card-content-light-gray-btn-border) !important;
+  color: var(--global-color-base-white) !important;
+}
+
+/* navy */
+.status-navy {
+  background: var(--card-content-navy-bg);
+  border-color: var(--card-content-navy-border);
+}
+.status-navy .card-content__status-icon-wrap { background: var(--card-content-navy-icon); }
+.status-navy .card-content__heading          { color: var(--card-content-navy-heading); }
+.status-navy .card-content__dismiss          { color: var(--card-content-navy-icon); }
+.status-navy .card-content__primary-status-btn {
+  background: var(--card-content-navy-btn-bg) !important;
+  border-color: var(--card-content-navy-btn-border) !important;
+  color: var(--global-color-base-white) !important;
+}
+
+/* purple */
+.status-purple {
+  background: var(--card-content-purple-bg);
+  border-color: var(--card-content-purple-border);
+}
+.status-purple .card-content__status-icon-wrap { background: var(--card-content-purple-icon); }
+.status-purple .card-content__heading          { color: var(--card-content-purple-heading); }
+.status-purple .card-content__dismiss          { color: var(--card-content-purple-icon); }
+.status-purple .card-content__primary-status-btn {
+  background: var(--card-content-purple-btn-bg) !important;
+  border-color: var(--card-content-purple-btn-border) !important;
+  color: var(--global-color-base-white) !important;
+}
+
+/* white */
+.status-white {
+  background: var(--card-content-white-bg);
+  border-color: var(--card-content-white-border);
+}
+.status-white .card-content__status-icon-wrap { background: var(--card-content-white-icon); }
+.status-white .card-content__heading          { color: var(--card-content-white-heading); }
+.status-white .card-content__dismiss          { color: var(--card-content-white-icon); }
+.status-white .card-content__primary-status-btn {
+  background: var(--card-content-white-btn-bg) !important;
+  border-color: var(--card-content-white-btn-border) !important;
+  color: var(--global-color-base-white) !important;
+}
+
+/* ── Notification text block ──────────────────────────────────────────────── */
+
+.card-content__text {
   display: flex;
-  align-items: flex-start;
-  gap: var(--card-content-inner-gap);
-  flex: 1;
-  min-width: 0;
+  flex-direction: column;
+  align-items: stretch;
+  align-self: stretch;
+  gap: var(--global-spacing-sizing-12px);
 }
 
-/* ── Text block (title + description) ─────────────────────────────────────── */
+.size-small .card-content__text {
+  gap: var(--global-spacing-sizing-8px);
+}
+
+.size-large .card-content__text {
+  gap: var(--global-spacing-sizing-16px);
+}
+
+/* ── Shared: body text block ──────────────────────────────────────────────── */
 
 .card-content__body-wrap {
   display: flex;
   flex-direction: column;
+  gap: var(--global-spacing-sizing-12px);
   align-items: flex-start;
-  gap: var(--card-content-text-gap-default);
+  align-self: stretch;
 }
 
-.size-small .card-content__body-wrap {
-  gap: var(--card-content-text-gap-sm);
-}
-
-.size-large .card-content__body-wrap {
-  gap: var(--card-content-text-gap-lg);
-}
-
-/* ── Heading / title ──────────────────────────────────────────────────────── */
+/* ── Heading ──────────────────────────────────────────────────────────────── */
 
 .card-content__heading {
   margin: 0;
@@ -76,20 +283,28 @@
   color: var(--card-content-heading-color);
   font-size: var(--card-content-heading-size-default);
   line-height: var(--card-content-heading-lh-default);
-  letter-spacing: var(--global-type-letter-spacing-primary-label);
+  letter-spacing: var(--card-content-heading-letter-spacing-default);
+  text-align: left;
+}
+
+/* Notification variant: center heading */
+.card-content--notification .card-content__heading {
+  text-align: center;
 }
 
 .size-small .card-content__heading {
   font-size: var(--card-content-heading-size-sm);
   line-height: var(--card-content-heading-lh-sm);
+  letter-spacing: var(--card-content-heading-letter-spacing-sm);
 }
 
 .size-large .card-content__heading {
   font-size: var(--card-content-heading-size-lg);
   line-height: var(--card-content-heading-lh-lg);
+  letter-spacing: var(--card-content-heading-letter-spacing-lg);
 }
 
-/* ── Body / description ───────────────────────────────────────────────────── */
+/* ── Body text ────────────────────────────────────────────────────────────── */
 
 .card-content__body {
   margin: 0;
@@ -113,140 +328,45 @@
   line-height: var(--card-content-body-lh-lg);
 }
 
-/* ── Dismiss / close button ───────────────────────────────────────────────── */
+/* ── Actions row ──────────────────────────────────────────────────────────── */
 
-.card-content__dismiss {
+.card-content__actions {
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--global-spacing-sizing-8px);
+  align-self: stretch;
+  flex-wrap: wrap;
+}
+
+/* ── Count badge ──────────────────────────────────────────────────────────── */
+
+.card-content__count {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  opacity: var(--card-content-dismiss-opacity);
-  transition: opacity 0.15s ease;
-  margin-left: auto;
+  background: var(--card-content-count-bg);
+  color: var(--card-content-count-color);
+  border-radius: var(--card-content-count-border-radius);
+  font-family: var(--card-content-count-font);
+  font-weight: var(--global-type-weight-default);
+  font-size: var(--global-type-size-primary-label-xs);
+  line-height: 1;
+  padding: var(--global-spacing-sizing-2px) var(--global-spacing-sizing-6px);
+  min-width: 20px;
 }
-
-.card-content__dismiss:hover {
-  opacity: 0.8;
-}
-
-.card-content__dismiss:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 2px;
-  border-radius: var(--global-spacing-radius-2px);
-}
-
-/* ══════════════════════════════════════════════════════════════════════════
-   STATUS COLOUR RULES — Sets icon fill, heading colour, dismiss colour
-   ══════════════════════════════════════════════════════════════════════════ */
-
-/* error — #CE2031 */
-.status-error .card-content__status-icon-wrap { color: var(--card-content-error-color); }
-.status-error .card-content__heading           { color: var(--card-content-error-color); }
-.status-error .card-content__dismiss           { color: var(--card-content-error-color); }
-
-/* warning — icon #F4A403, text #D07C06 */
-.status-warning .card-content__status-icon-wrap { color: var(--card-content-warning-icon-color); }
-.status-warning .card-content__heading           { color: var(--card-content-warning-color); }
-.status-warning .card-content__dismiss           { color: var(--card-content-warning-color); }
-
-/* success — #227F1A */
-.status-success .card-content__status-icon-wrap { color: var(--card-content-success-color); }
-.status-success .card-content__heading           { color: var(--card-content-success-color); }
-.status-success .card-content__dismiss           { color: var(--card-content-success-color); }
-
-/* info — #366F97 */
-.status-info .card-content__status-icon-wrap { color: var(--card-content-info-color); }
-.status-info .card-content__heading           { color: var(--card-content-info-color); }
-.status-info .card-content__dismiss           { color: var(--card-content-info-color); }
-
-/* default — #3A3282 (secondary navy) */
-.status-default .card-content__status-icon-wrap { color: var(--card-content-default-color); }
-.status-default .card-content__heading           { color: var(--card-content-default-color); }
-.status-default .card-content__dismiss           { color: var(--card-content-default-color); }
-
-/* light-gray — icon #374151, heading #1C1C1C */
-.status-light-gray .card-content__status-icon-wrap { color: var(--card-content-light-gray-icon-color); }
-.status-light-gray .card-content__heading           { color: var(--card-content-light-gray-color); }
-.status-light-gray .card-content__dismiss           { color: var(--card-content-light-gray-color); }
-
-/* navy — #366F97 */
-.status-navy .card-content__status-icon-wrap { color: var(--card-content-navy-color); }
-.status-navy .card-content__heading           { color: var(--card-content-navy-color); }
-.status-navy .card-content__dismiss           { color: var(--card-content-navy-color); }
-
-/* purple — #5D2C82 */
-.status-purple .card-content__status-icon-wrap { color: var(--card-content-purple-color); }
-.status-purple .card-content__heading           { color: var(--card-content-purple-color); }
-.status-purple .card-content__dismiss           { color: var(--card-content-purple-color); }
-
-/* white — #1C1C1C */
-.status-white .card-content__status-icon-wrap { color: var(--card-content-white-color); }
-.status-white .card-content__heading           { color: var(--card-content-white-color); }
-.status-white .card-content__dismiss           { color: var(--card-content-white-color); }
-
-/* ── Border toggle ────────────────────────────────────────────────────────── */
-/* When border=true, alert gets a 1px solid border in the status colour */
-
-.card-content--notification.card-content--border {
-  border: var(--global-spacing-stroke-1px) solid currentColor;
-}
-
-/* Use status colour for the border */
-.status-error.card-content--border           { border-color: var(--card-content-error-color); }
-.status-warning.card-content--border         { border-color: var(--card-content-warning-color); }
-.status-success.card-content--border         { border-color: var(--card-content-success-color); }
-.status-info.card-content--border            { border-color: var(--card-content-info-color); }
-.status-default.card-content--border         { border-color: var(--card-content-default-color); }
-.status-light-gray.card-content--border      { border-color: var(--card-content-light-gray-color); }
-.status-navy.card-content--border            { border-color: var(--card-content-navy-color); }
-.status-purple.card-content--border          { border-color: var(--card-content-purple-color); }
-.status-white.card-content--border           { border-color: var(--card-content-white-color); }
 
 /* ══════════════════════════════════════════════════════════════════════════
    IMAGE VARIANT — Media card
    ══════════════════════════════════════════════════════════════════════════ */
 
 .card-content--image {
-  display: inline-flex;
-  flex-direction: column;
   align-items: stretch;
   padding: 0;
-  border-radius: var(--card-content-image-border-radius);
-  border: var(--card-content-image-border-width) solid var(--card-content-image-border-color);
-  box-shadow: var(--card-content-image-shadow);
-  overflow: hidden;
-  background: var(--global-color-base-white);
-  vertical-align: top;
 }
 
-.card-content--no-border {
-  border-color: transparent;
-  box-shadow: none;
-}
-
-/* ── Size variants (image card widths) ────────────────────────────────────── */
-
-.size-small.card-content--image {
-  min-width: var(--card-content-image-width-sm);
-  width: fit-content;
-}
-
-.size-default.card-content--image {
-  min-width: var(--card-content-image-width-default);
-  width: fit-content;
-}
-
-.size-large.card-content--image {
-  min-width: var(--card-content-image-width-lg);
-  width: fit-content;
-}
-
-/* ── Image area ───────────────────────────────────────────────────────────── */
-
+/* image area */
 .card-content__image-wrap {
   width: 100%;
   height: var(--card-content-image-height-default);
@@ -283,24 +403,23 @@
   opacity: 0.6;
 }
 
-/* ── Inner content (below image) ──────────────────────────────────────────── */
-
+/* inner content (below image) */
 .card-content__inner {
   display: flex;
   flex-direction: column;
-  gap: var(--card-content-image-gap-default);
-  padding: var(--card-content-image-padding-default);
+  gap: var(--card-content-gap-default);
+  padding: var(--card-content-padding-default);
   flex: 1;
 }
 
 .size-small .card-content__inner {
-  gap: var(--card-content-image-gap-sm);
-  padding: var(--card-content-image-padding-sm);
+  gap: var(--card-content-gap-sm);
+  padding: var(--card-content-padding-sm);
 }
 
 .size-large .card-content__inner {
-  gap: var(--card-content-image-gap-lg);
-  padding: var(--card-content-image-padding-lg);
+  gap: var(--card-content-gap-lg);
+  padding: var(--card-content-padding-lg);
 }
 
 /* ── Image card: heading left-aligned ─────────────────────────────────────── */
@@ -309,14 +428,10 @@
   text-align: left;
 }
 
-/* ── Actions row (image variant only) ─────────────────────────────────────── */
+/* ── Image card: actions left-aligned ─────────────────────────────────────── */
 
-.card-content__actions {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: var(--global-spacing-sizing-8px);
-  flex-wrap: wrap;
+.card-content--image .card-content__actions {
+  justify-content: flex-start;
 }
 
 /* ── Rating ───────────────────────────────────────────────────────────────── */
