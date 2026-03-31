@@ -216,13 +216,32 @@ export const ButtonGroupDocs: React.FC = () => (
       <DocsTemplate.Subsection title="Shared">
         <DocsTemplate.TokenTable
           tokens={[
-            { name: '--btn-group-radius', description: 'Border radius — 4px' },
-            { name: '--btn-group-border-width', description: 'Outline/ghost border — 1px' },
-            { name: '--btn-group-border-width-filled', description: 'Filled variant border — 0.5px' },
-            { name: '--btn-group-gap-separate', description: 'Gap in separate layout — 6px' },
+            { name: '--btn-group-radius', description: 'Border radius — var(--global-spacing-radius-4px)' },
+            { name: '--btn-group-border-width', description: 'Outline/ghost border — var(--global-spacing-stroke-1px)' },
+            { name: '--btn-group-border-width-filled', description: 'Filled variant border — var(--global-spacing-stroke-0-5px)' },
+            { name: '--btn-group-gap-separate', description: 'Gap in separate layout — var(--global-spacing-sizing-6px)' },
             { name: '--btn-group-bg-disabled', description: 'Disabled background — var(--global-color-neutral-gray-50)' },
             { name: '--btn-group-border-disabled', description: 'Disabled border — var(--global-color-neutral-gray-200)' },
             { name: '--btn-group-color-disabled', description: 'Disabled icon/text — var(--global-color-neutral-gray-400)' },
+            { name: '--btn-group-border-width-focus', description: 'Focus border width — var(--global-spacing-stroke-2px)' },
+            { name: '--btn-group-focus-outline-color', description: 'Focus outline colour — var(--global-color-primary-blue)' },
+            { name: '--btn-group-focus-outline-width', description: 'Focus outline width — var(--global-spacing-stroke-2px)' },
+            { name: '--btn-group-focus-outline-offset', description: 'Focus outline offset — var(--global-spacing-sizing-2px)' },
+          ]}
+        />
+      </DocsTemplate.Subsection>
+
+      <DocsTemplate.Subsection title="Icon Variant Hover Shadows (separate layout)">
+        <DocsTemplate.BodyText>
+          In <code>separate</code> layout, each button receives a <code>box-shadow</code> on hover
+          matching the Primary Button hover pattern — a 2px offset shadow in the variant colour.
+        </DocsTemplate.BodyText>
+        <DocsTemplate.TokenTable
+          tokens={[
+            { name: '--btn-group-primary-shadow-hover', description: 'Primary icon hover shadow — 2px 2px blue-400' },
+            { name: '--btn-group-secondary-shadow-hover', description: 'Secondary icon hover shadow — 2px 2px sky-blue' },
+            { name: '--btn-group-tertiary-shadow-hover', description: 'Tertiary icon hover shadow — 2px 2px yellow-dark' },
+            { name: '--btn-group-ghost-shadow-hover', description: 'Ghost icon hover shadow — 2px 2px gray-300' },
           ]}
         />
       </DocsTemplate.Subsection>
@@ -230,16 +249,19 @@ export const ButtonGroupDocs: React.FC = () => (
       <DocsTemplate.Subsection title="Label Type">
         <DocsTemplate.TokenTable
           tokens={[
-            { name: '--btn-group-label-min-width', description: 'Min width for label buttons — 80px' },
-            { name: '--btn-group-label-inner-gap', description: 'Gap between icon/text/arrow — 8px' },
-            { name: '--btn-group-label-font-weight', description: 'Label text weight — light (300)' },
-            { name: '--btn-group-label-height-md', description: 'Default label button height — 44px' },
-            { name: '--btn-group-label-padding-md', description: 'Default padding — 4px 16px' },
+            { name: '--btn-group-label-min-width', description: 'Min width — var(--global-spacing-sizing-80px)' },
+            { name: '--btn-group-label-inner-gap', description: 'Gap between icon/text/arrow — var(--global-spacing-sizing-8px)' },
+            { name: '--btn-group-label-font-weight', description: 'Label text weight — var(--global-type-weight-light)' },
+            { name: '--btn-group-label-height-md', description: 'Default height — var(--global-spacing-sizing-44px)' },
+            { name: '--btn-group-label-padding-md', description: 'Default padding — 4px 16px (tokens)' },
             { name: '--btn-group-label-primary-bg', description: 'Solid primary bg — var(--global-color-primary-blue)' },
             { name: '--btn-group-label-primary-color', description: 'Solid primary text/icon — white' },
-            { name: '--btn-group-label-alt-bg', description: 'Alt bg — var(--global-color-primary-blue-blue-50) #F9F9FE' },
-            { name: '--btn-group-label-alt-border', description: 'Alt border — var(--global-color-primary-blue-blue-300) #95A0E5' },
-            { name: '--btn-group-label-alt-color', description: 'Alt text/icon — var(--global-color-secondary-blue-gray) #61607C' },
+            { name: '--btn-group-label-primary-shadow-hover', description: 'Primary label hover shadow (separate) — 2px 2px blue-400' },
+            { name: '--btn-group-label-alt-bg', description: 'Alt bg — var(--global-color-primary-blue-blue-50)' },
+            { name: '--btn-group-label-alt-border', description: 'Alt border — var(--global-color-primary-blue-blue-300)' },
+            { name: '--btn-group-label-alt-color', description: 'Alt text/icon — var(--global-color-secondary-blue-gray)' },
+            { name: '--btn-group-label-alt-shadow-hover', description: 'Alt label hover shadow (separate) — 2px 2px blue-300' },
+            { name: '--btn-group-label-alt-color-hover', description: 'Alt text colour on hover — var(--global-color-base-black)' },
           ]}
         />
       </DocsTemplate.Subsection>

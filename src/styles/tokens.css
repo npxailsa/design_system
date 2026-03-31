@@ -2016,29 +2016,40 @@
   --btn-group-primary-border:        var(--global-color-primary-blue-blue-300);
   --btn-group-primary-color:         var(--global-color-base-white);
   --btn-group-primary-bg-hover:      var(--global-color-primary-blue-blue-400);
+  --btn-group-primary-border-hover:  var(--global-color-primary-blue-blue-200);
+  --btn-group-primary-shadow-hover:  var(--global-spacing-sizing-2px) var(--global-spacing-sizing-2px) var(--global-spacing-stroke-0px) var(--global-spacing-stroke-0px) var(--global-color-primary-blue-blue-400);
 
   /* Variant: Secondary (sky-blue tint) */
   --btn-group-secondary-bg:          var(--global-color-primary-sky-blue-100);
   --btn-group-secondary-border:      var(--global-color-primary-sky-blue);
   --btn-group-secondary-color:       var(--global-color-base-black);
   --btn-group-secondary-bg-hover:    var(--global-color-primary-sky-blue-50);
+  --btn-group-secondary-shadow-hover: var(--global-spacing-sizing-2px) var(--global-spacing-sizing-2px) var(--global-spacing-stroke-0px) var(--global-spacing-stroke-0px) var(--global-color-primary-sky-blue);
 
   /* Variant: Tertiary (yellow — matches Tertiary Button) */
   --btn-group-tertiary-bg:           var(--global-color-primary-yellow-200);
   --btn-group-tertiary-border:       var(--global-color-primary-yellow-dark);
   --btn-group-tertiary-color:        var(--global-color-base-black);
   --btn-group-tertiary-bg-hover:     var(--global-color-primary-yellow-50);
+  --btn-group-tertiary-shadow-hover: var(--global-spacing-sizing-2px) var(--global-spacing-sizing-2px) var(--global-spacing-stroke-0px) var(--global-spacing-stroke-0px) var(--global-color-primary-yellow-dark);
 
   /* Variant: Ghost (outline only, white background) */
   --btn-group-ghost-bg:              var(--global-color-base-white);
   --btn-group-ghost-border:          var(--global-color-neutral-gray-500);
   --btn-group-ghost-color:           var(--global-color-base-black);
   --btn-group-ghost-bg-hover:        var(--global-color-neutral-gray-50);
+  --btn-group-ghost-shadow-hover:    var(--global-spacing-sizing-2px) var(--global-spacing-sizing-2px) var(--global-spacing-stroke-0px) var(--global-spacing-stroke-0px) var(--global-color-neutral-gray-300);
 
   /* Disabled */
   --btn-group-bg-disabled:           var(--global-color-neutral-gray-50);
   --btn-group-border-disabled:       var(--global-color-neutral-gray-200);
   --btn-group-color-disabled:        var(--global-color-neutral-gray-400);
+
+  /* Focus */
+  --btn-group-border-width-focus:    var(--global-spacing-stroke-2px);
+  --btn-group-focus-outline-color:   var(--global-color-primary-blue);
+  --btn-group-focus-outline-width:   var(--global-spacing-stroke-2px);
+  --btn-group-focus-outline-offset:  var(--global-spacing-sizing-2px);
 
   /* ── Label-type button — shared layout ── */
   --btn-group-label-min-width:       var(--global-spacing-sizing-80px);
@@ -2048,19 +2059,19 @@
   --btn-group-label-border-width:    var(--global-spacing-stroke-0-5px);
 
   /* Label sizes (height × padding) */
-  --btn-group-label-height-xs:       30px;
+  --btn-group-label-height-xs:       var(--global-spacing-sizing-30px);
   --btn-group-label-padding-xs:      var(--global-spacing-sizing-2px) var(--global-spacing-sizing-12px);
   --btn-group-label-font-size-xs:    var(--global-type-size-primary-label-xs);
 
-  --btn-group-label-height-sm:       36px;
+  --btn-group-label-height-sm:       var(--global-spacing-sizing-36px);
   --btn-group-label-padding-sm:      var(--global-spacing-sizing-4px) var(--global-spacing-sizing-12px);
   --btn-group-label-font-size-sm:    var(--global-type-size-primary-label-sm);
 
-  --btn-group-label-height-md:       44px;
+  --btn-group-label-height-md:       var(--global-spacing-sizing-44px);
   --btn-group-label-padding-md:      var(--global-spacing-sizing-4px) var(--global-spacing-sizing-16px);
   --btn-group-label-font-size-md:    var(--global-type-size-primary-label);
 
-  --btn-group-label-height-lg:       52px;
+  --btn-group-label-height-lg:       var(--global-spacing-sizing-52px);
   --btn-group-label-padding-lg:      var(--global-spacing-sizing-6px) var(--global-spacing-sizing-20px);
   --btn-group-label-font-size-lg:    var(--global-type-size-primary-label);
 
@@ -2069,18 +2080,22 @@
   --btn-group-label-primary-border:  var(--global-color-primary-blue);
   --btn-group-label-primary-color:   var(--global-color-base-white);
   --btn-group-label-primary-bg-hover: var(--global-color-primary-blue-blue-400);
+  --btn-group-label-primary-border-hover: var(--global-color-primary-blue-blue-200);
+  --btn-group-label-primary-shadow-hover: var(--global-spacing-sizing-2px) var(--global-spacing-sizing-2px) var(--global-spacing-stroke-0px) var(--global-spacing-stroke-0px) var(--global-color-primary-blue-blue-400);
 
   /* Label: Secondary solid */
   --btn-group-label-secondary-bg:    var(--global-color-primary-sky-blue-100);
   --btn-group-label-secondary-border: var(--global-color-primary-sky-blue);
   --btn-group-label-secondary-color: var(--global-color-base-black);
   --btn-group-label-secondary-bg-hover: var(--global-color-primary-sky-blue-50);
+  --btn-group-label-secondary-shadow-hover: var(--global-spacing-sizing-2px) var(--global-spacing-sizing-2px) var(--global-spacing-stroke-0px) var(--global-spacing-stroke-0px) var(--global-color-primary-sky-blue);
 
   /* Label: Ghost / outline */
   --btn-group-label-ghost-bg:        var(--global-color-base-white);
   --btn-group-label-ghost-border:    var(--global-color-neutral-gray-300);
   --btn-group-label-ghost-color:     var(--global-color-base-black);
   --btn-group-label-ghost-bg-hover:  var(--global-color-neutral-gray-50);
+  --btn-group-label-ghost-shadow-hover: var(--global-spacing-sizing-2px) var(--global-spacing-sizing-2px) var(--global-spacing-stroke-0px) var(--global-spacing-stroke-0px) var(--global-color-neutral-gray-300);
 
   /* Label: Alt / tinted (special=alt) — Figma bg #F9F9FE, border #95A0E5, text #61607C */
   --btn-group-label-alt-bg:          var(--global-color-primary-blue-blue-50);
@@ -2088,6 +2103,8 @@
   --btn-group-label-alt-border-width: var(--global-spacing-stroke-1px);
   --btn-group-label-alt-color:       var(--global-color-secondary-blue-gray);
   --btn-group-label-alt-bg-hover:    var(--global-color-primary-blue-blue-100);
+  --btn-group-label-alt-shadow-hover: var(--global-spacing-sizing-2px) var(--global-spacing-sizing-2px) var(--global-spacing-stroke-0px) var(--global-spacing-stroke-0px) var(--global-color-primary-blue-blue-300);
+  --btn-group-label-alt-color-hover: var(--global-color-base-black);
 }
 
 /* Font Loading */
