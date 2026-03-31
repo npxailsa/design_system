@@ -6,7 +6,16 @@ import styles from './CardContent.module.css';
 /* ── Types ────────────────────────────────────────────────────────────────── */
 
 export type CardContentVariant = 'notification' | 'image';
-export type CardContentStatus = 'error' | 'warning' | 'success' | 'info';
+export type CardContentStatus =
+  | 'error'
+  | 'warning'
+  | 'success'
+  | 'info'
+  | 'default'
+  | 'light-gray'
+  | 'navy'
+  | 'purple'
+  | 'white';
 export type CardContentSize = 'small' | 'default' | 'large';
 
 export interface CardContentProps {
@@ -17,8 +26,11 @@ export interface CardContentProps {
    */
   variant?: CardContentVariant;
   /**
-   * Status type used by the `notification` variant to set icon, heading colour,
-   * background tint, and border accent.
+   * Status / colour type used by the `notification` variant to set icon,
+   * heading colour, background tint, and border accent.
+   *
+   * Options: `error` | `warning` | `success` | `info` | `default` |
+   * `light-gray` | `navy` | `purple` | `white`
    */
   status?: CardContentStatus;
   /** Controls card width, padding, icon sizes, and typography scale */
@@ -72,6 +84,41 @@ export interface CardContentProps {
    * @default true
    */
   border?: boolean;
+  /**
+   * Show / hide the leading status icon (notification variant only).
+   * Follows the Alert component's `leading-icon` pattern.
+   * @default true
+   */
+  showIcon?: boolean;
+  /**
+   * Show / hide the body / description text.
+   * Follows the Alert component's `subtext` pattern.
+   * @default true
+   */
+  showBody?: boolean;
+  /**
+   * Show / hide the ButtonGroup actions area.
+   * @default true
+   */
+  showActions?: boolean;
+  /**
+   * Show a trailing dismiss / close button (notification variant only).
+   * Follows the Alert component's `trailing-icon` pattern.
+   * @default false
+   */
+  showDismiss?: boolean;
+  /** Callback fired when dismiss button is clicked */
+  onDismiss?: () => void;
+  /**
+   * Show / hide the star rating row (image variant only).
+   * @default true
+   */
+  showRating?: boolean;
+  /**
+   * Show / hide the image area (image variant only).
+   * @default true
+   */
+  showImage?: boolean;
   /** Extra CSS class on the root element */
   className?: string;
 }
@@ -79,10 +126,15 @@ export interface CardContentProps {
 /* ── Status config ────────────────────────────────────────────────────────── */
 
 const STATUS_CSS_CLASS: Record<CardContentStatus, string> = {
-  error:   'status-error',
-  warning: 'status-warning',
-  success: 'status-success',
-  info:    'status-info',
+  error:        'status-error',
+  warning:      'status-warning',
+  success:      'status-success',
+  info:         'status-info',
+  default:      'status-default',
+  'light-gray': 'status-light-gray',
+  navy:         'status-navy',
+  purple:       'status-purple',
+  white:        'status-white',
 };
 
 /* ── Status icon SVGs ─────────────────────────────────────────────────────── */
@@ -123,12 +175,48 @@ const InfoIcon: React.FC<{ size: number }> = ({ size }) => (
   </svg>
 );
 
+/** Bullseye / default icon used by `default`, `light-gray`, `white` statuses */
+const BullseyeIcon: React.FC<{ size: number }> = ({ size }) => (
+  <svg width={size} height={size} viewBox="0 0 28 28" fill="none" aria-hidden="true">
+    <path
+      d="M13.9999 2.33337C12.4678 2.33337 10.9507 2.63514 9.53528 3.22145C8.11981 3.80775 6.83369 4.66711 5.75034 5.75046C3.56242 7.93839 2.33325 10.9058 2.33325 14C2.33325 17.0942 3.56242 20.0617 5.75034 22.2496C6.83369 23.333 8.11981 24.1923 9.53528 24.7786C10.9507 25.3649 12.4678 25.6667 13.9999 25.6667C17.0941 25.6667 20.0616 24.4375 22.2495 22.2496C24.4374 20.0617 25.6666 17.0942 25.6666 14C25.6666 12.468 25.3648 10.9509 24.7785 9.5354C24.1922 8.11994 23.3328 6.83381 22.2495 5.75046C21.1661 4.66711 19.88 3.80775 18.4646 3.22145C17.0491 2.63514 15.532 2.33337 13.9999 2.33337ZM13.9999 4.66671C16.4753 4.66671 18.8492 5.65004 20.5996 7.40038C22.3499 9.15072 23.3333 11.5247 23.3333 14C23.3333 16.4754 22.3499 18.8494 20.5996 20.5997C18.8492 22.35 16.4753 23.3334 13.9999 23.3334C11.5246 23.3334 9.1506 22.35 7.40026 20.5997C5.64992 18.8494 4.66659 16.4754 4.66659 14C4.66659 11.5247 5.64992 9.15072 7.40026 7.40038C9.1506 5.65004 11.5246 4.66671 13.9999 4.66671ZM13.9999 7.00004C12.1434 7.00004 10.3629 7.73754 9.05017 9.05029C7.73742 10.363 6.99992 12.1435 6.99992 14C6.99992 15.8566 7.73742 17.637 9.05017 18.9498C10.3629 20.2625 12.1434 21 13.9999 21C15.8564 21 17.6369 20.2625 18.9497 18.9498C20.2624 17.637 20.9999 15.8566 20.9999 14C20.9999 12.1435 20.2624 10.363 18.9497 9.05029C17.6369 7.73754 15.8564 7.00004 13.9999 7.00004ZM13.9999 9.33337C15.2376 9.33337 16.4246 9.82504 17.2998 10.7002C18.1749 11.5754 18.6666 12.7624 18.6666 14C18.6666 15.2377 18.1749 16.4247 17.2998 17.2999C16.4246 18.175 15.2376 18.6667 13.9999 18.6667C12.7622 18.6667 11.5753 18.175 10.7001 17.2999C9.82492 16.4247 9.33325 15.2377 9.33325 14C9.33325 12.7624 9.82492 11.5754 10.7001 10.7002C11.5753 9.82504 12.7622 9.33337 13.9999 9.33337ZM13.9999 11.6667C13.3811 11.6667 12.7876 11.9125 12.35 12.3501C11.9124 12.7877 11.6666 13.3812 11.6666 14C11.6666 14.6189 11.9124 15.2124 12.35 15.65C12.7876 16.0875 13.3811 16.3334 13.9999 16.3334C14.6188 16.3334 15.2123 16.0875 15.6498 15.65C16.0874 15.2124 16.3333 14.6189 16.3333 14C16.3333 13.3812 16.0874 12.7877 15.6498 12.3501C15.2123 11.9125 14.6188 11.6667 13.9999 11.6667Z"
+      fill="currentColor"
+    />
+  </svg>
+);
+
+/** Document icon used by `purple` status */
+const DocumentIcon: React.FC<{ size: number }> = ({ size }) => (
+  <svg width={size} height={size} viewBox="0 0 28 28" fill="none" aria-hidden="true">
+    <path
+      d="M15.1665 10.5H21.5832L15.1665 4.08337V10.5ZM6.99984 2.33337H16.3332L23.3332 9.33337V23.3334C23.3332 23.9522 23.0873 24.5457 22.6498 24.9833C22.2122 25.4209 21.6187 25.6667 20.9998 25.6667H6.99984C5.70484 25.6667 4.6665 24.6167 4.6665 23.3334V4.66671C4.6665 3.37171 5.70484 2.33337 6.99984 2.33337ZM17.4998 21V18.6667H6.99984V21H17.4998ZM20.9998 16.3334V14H6.99984V16.3334H20.9998Z"
+      fill="currentColor"
+    />
+  </svg>
+);
+
 const STATUS_ICON: Record<CardContentStatus, React.FC<{ size: number }>> = {
-  error:   ErrorIcon,
-  warning: WarningIcon,
-  success: SuccessIcon,
-  info:    InfoIcon,
+  error:        ErrorIcon,
+  warning:      WarningIcon,
+  success:      SuccessIcon,
+  info:         InfoIcon,
+  default:      BullseyeIcon,
+  'light-gray': BullseyeIcon,
+  navy:         InfoIcon,
+  purple:       DocumentIcon,
+  white:        BullseyeIcon,
 };
+
+/* ── Dismiss / close icon ─────────────────────────────────────────────────── */
+
+const DismissIcon: React.FC<{ size: number }> = ({ size }) => (
+  <svg width={size} height={size} viewBox="0 0 18 18" fill="none" aria-hidden="true">
+    <path
+      d="M14.25 4.8075L13.1925 3.75L9 7.9425L4.8075 3.75L3.75 4.8075L7.9425 9L3.75 13.1925L4.8075 14.25L9 10.0575L13.1925 14.25L14.25 13.1925L10.0575 9L14.25 4.8075Z"
+      fill="currentColor"
+    />
+  </svg>
+);
 
 /* ── Image placeholder ────────────────────────────────────────────────────── */
 
@@ -204,14 +292,32 @@ const BUTTON_GROUP_SIZE_MAP: Record<CardContentSize, 'xs' | 'sm' | 'md' | 'lg'> 
   large:   'md',
 };
 
+/* ── Dismiss-icon size mapping ────────────────────────────────────────────── */
+
+const DISMISS_ICON_SIZE: Record<CardContentSize, number> = {
+  small:   14,
+  default: 16,
+  large:   18,
+};
+
 /* ── Component ────────────────────────────────────────────────────────────── */
 
 /**
  * CardContent — Atomic content card component with two layout variants:
  * `notification` (status icon + ButtonGroup) and `image` (media + rating).
  *
- * Actions are rendered using the **ButtonGroup** component from
- * `Atoms/Buttons/ButtonGroup`.
+ * Supports **9 colour / status types** matching the Alert component's palette:
+ * `error`, `warning`, `success`, `info`, `default`, `light-gray`, `navy`,
+ * `purple`, `white`.
+ *
+ * Sub-elements can be individually toggled with boolean props following
+ * the same pattern used by the Alert component:
+ * - `showIcon`    → leading status icon  (notification)
+ * - `showBody`    → body / description text
+ * - `showActions` → ButtonGroup row
+ * - `showDismiss` → trailing close button (notification)
+ * - `showRating`  → star rating row (image)
+ * - `showImage`   → image area (image)
  *
  * Storybook location: Atoms/CardContent
  */
@@ -232,6 +338,13 @@ export const CardContent: React.FC<CardContentProps> = ({
   buttonGroupButtons,
   buttonGroupDisabled = false,
   border = true,
+  showIcon = true,
+  showBody = true,
+  showActions = true,
+  showDismiss = false,
+  onDismiss,
+  showRating = true,
+  showImage = true,
   className = '',
 }) => {
   const rootClasses = [
@@ -258,26 +371,42 @@ export const CardContent: React.FC<CardContentProps> = ({
   if (variant === 'notification') {
     return (
       <div className={rootClasses}>
-        <div className={styles['card-content__status-icon-wrap']}>
-          <StatusIcon size={iconSize} />
-        </div>
+        {showIcon && (
+          <div className={styles['card-content__status-icon-wrap']}>
+            <StatusIcon size={iconSize} />
+          </div>
+        )}
         <div className={styles['card-content__body-wrap']}>
           <h3 className={styles['card-content__heading']}>{heading}</h3>
-          <p className={styles['card-content__body']}>{body}</p>
-        </div>
-        <div className={styles['card-content__actions']}>
-          <ButtonGroup
-            variant={buttonGroupVariant}
-            size={bgSize}
-            layout={buttonGroupLayout}
-            count={buttonGroupCount}
-            buttons={buttonGroupButtons}
-            disabled={buttonGroupDisabled}
-          />
-          {count !== undefined && (
-            <span className={styles['card-content__count']}>{count}</span>
+          {showBody && (
+            <p className={styles['card-content__body']}>{body}</p>
           )}
         </div>
+        {showActions && (
+          <div className={styles['card-content__actions']}>
+            <ButtonGroup
+              variant={buttonGroupVariant}
+              size={bgSize}
+              layout={buttonGroupLayout}
+              count={buttonGroupCount}
+              buttons={buttonGroupButtons}
+              disabled={buttonGroupDisabled}
+            />
+            {count !== undefined && (
+              <span className={styles['card-content__count']}>{count}</span>
+            )}
+          </div>
+        )}
+        {showDismiss && (
+          <button
+            type="button"
+            className={styles['card-content__dismiss']}
+            aria-label="Dismiss"
+            onClick={onDismiss}
+          >
+            <DismissIcon size={DISMISS_ICON_SIZE[size]} />
+          </button>
+        )}
       </div>
     );
   }
@@ -285,35 +414,41 @@ export const CardContent: React.FC<CardContentProps> = ({
   /* ── Image layout ── */
   return (
     <div className={rootClasses}>
-      <div className={styles['card-content__image-wrap']}>
-        {imageSrc ? (
-          <img
-            src={imageSrc}
-            alt={imageAlt}
-            className={styles['card-content__image']}
-          />
-        ) : (
-          <div className={styles['card-content__image-placeholder']}>
-            <ImagePlaceholder />
-          </div>
-        )}
-      </div>
+      {showImage && (
+        <div className={styles['card-content__image-wrap']}>
+          {imageSrc ? (
+            <img
+              src={imageSrc}
+              alt={imageAlt}
+              className={styles['card-content__image']}
+            />
+          ) : (
+            <div className={styles['card-content__image-placeholder']}>
+              <ImagePlaceholder />
+            </div>
+          )}
+        </div>
+      )}
       <div className={styles['card-content__inner']}>
         <div className={styles['card-content__body-wrap']}>
           <h3 className={styles['card-content__heading']}>{heading}</h3>
-          <p className={styles['card-content__body']}>{body}</p>
+          {showBody && (
+            <p className={styles['card-content__body']}>{body}</p>
+          )}
         </div>
-        <div className={styles['card-content__actions']}>
-          <ButtonGroup
-            variant={buttonGroupVariant}
-            size={bgSize}
-            layout={buttonGroupLayout}
-            count={buttonGroupCount}
-            buttons={buttonGroupButtons}
-            disabled={buttonGroupDisabled}
-          />
-        </div>
-        {(rating !== undefined || ratingCount !== undefined) && (
+        {showActions && (
+          <div className={styles['card-content__actions']}>
+            <ButtonGroup
+              variant={buttonGroupVariant}
+              size={bgSize}
+              layout={buttonGroupLayout}
+              count={buttonGroupCount}
+              buttons={buttonGroupButtons}
+              disabled={buttonGroupDisabled}
+            />
+          </div>
+        )}
+        {showRating && (rating !== undefined || ratingCount !== undefined) && (
           <div className={styles['card-content__rating']}>
             <StarRating rating={rating ?? 0} />
             {ratingCount !== undefined && (

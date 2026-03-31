@@ -1070,6 +1070,36 @@
   --card-content-info-heading:          var(--global-color-status-info-blue);
   --card-content-info-bg:               var(--global-color-status-info-blue-light);
   --card-content-info-border:           var(--global-color-status-info-blue);
+
+  /* CardContent — notification status colours: default (navy/brand) */
+  --card-content-default-icon:          var(--global-color-secondary-navy);
+  --card-content-default-heading:       var(--global-color-secondary-navy);
+  --card-content-default-bg:            var(--global-color-status-info-blue-light);
+  --card-content-default-border:        var(--global-color-secondary-navy-mid);
+
+  /* CardContent — notification status colours: light-gray */
+  --card-content-light-gray-icon:       var(--global-color-neutral-gray-700);
+  --card-content-light-gray-heading:    var(--global-color-base-black);
+  --card-content-light-gray-bg:         var(--global-color-neutral-gray-50);
+  --card-content-light-gray-border:     var(--global-color-neutral-gray-700);
+
+  /* CardContent — notification status colours: navy */
+  --card-content-navy-icon:             var(--global-color-status-info-blue);
+  --card-content-navy-heading:          var(--global-color-status-info-blue);
+  --card-content-navy-bg:               var(--global-color-status-info-blue-light);
+  --card-content-navy-border:           var(--global-color-status-info-blue);
+
+  /* CardContent — notification status colours: purple */
+  --card-content-purple-icon:           var(--global-color-status-purple);
+  --card-content-purple-heading:        var(--global-color-status-purple);
+  --card-content-purple-bg:             var(--global-color-status-purple-light);
+  --card-content-purple-border:         var(--global-color-status-purple);
+
+  /* CardContent — notification status colours: white */
+  --card-content-white-icon:            var(--global-color-base-black);
+  --card-content-white-heading:         var(--global-color-base-black);
+  --card-content-white-bg:              var(--global-color-base-white);
+  --card-content-white-border:          var(--global-color-neutral-gray-500);
 }
 
 /* ==========================================================================
