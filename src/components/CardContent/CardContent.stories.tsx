@@ -37,9 +37,19 @@ const meta: Meta<typeof CardContent> = {
     showDismiss: { control: 'boolean' },
     showRating: { control: 'boolean' },
     showImage: { control: 'boolean' },
+    buttonGroupType: {
+      control: 'select',
+      options: ['label', 'icon'],
+      description: 'Button type: label (icon + text + arrow) or icon (square icon-only)',
+    },
     buttonGroupVariant: {
       control: 'select',
       options: ['primary', 'secondary', 'tertiary', 'ghost'],
+    },
+    buttonGroupSpecial: {
+      control: 'select',
+      options: ['default', 'alt'],
+      description: 'Label style: default (solid) or alt (tinted/outlined)',
     },
     buttonGroupLayout: {
       control: 'select',
@@ -64,7 +74,9 @@ const meta: Meta<typeof CardContent> = {
     showDismiss: false,
     showRating: true,
     showImage: true,
+    buttonGroupType: 'label',
     buttonGroupVariant: 'primary',
+    buttonGroupSpecial: 'default',
     buttonGroupLayout: 'separate',
     buttonGroupCount: 2,
     buttonGroupDisabled: false,

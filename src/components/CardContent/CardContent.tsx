@@ -1,6 +1,6 @@
 import React from 'react';
 import { ButtonGroup } from '../ButtonGroup/ButtonGroup';
-import type { ButtonGroupVariant, ButtonGroupLayout, ButtonGroupItemConfig } from '../ButtonGroup/ButtonGroup';
+import type { ButtonGroupVariant, ButtonGroupLayout, ButtonGroupItemConfig, ButtonGroupSpecial } from '../ButtonGroup/ButtonGroup';
 import styles from './CardContent.module.css';
 
 /* ── Types ────────────────────────────────────────────────────────────────── */
@@ -56,10 +56,24 @@ export interface CardContentProps {
   /** Numeric rating count shown next to the stars */
   ratingCount?: number;
   /**
+   * ButtonGroup button type.
+   * - `label` — icon + text label + trailing arrow (default)
+   * - `icon`  — square icon-only buttons
+   * @default 'label'
+   */
+  buttonGroupType?: 'icon' | 'label';
+  /**
    * ButtonGroup visual variant.
    * @default 'primary'
    */
   buttonGroupVariant?: ButtonGroupVariant;
+  /**
+   * ButtonGroup special style (label type only).
+   * - `default` — solid filled
+   * - `alt`     — tinted/outlined
+   * @default 'default'
+   */
+  buttonGroupSpecial?: ButtonGroupSpecial;
   /**
    * ButtonGroup layout.
    * @default 'separate'
@@ -332,7 +346,9 @@ export const CardContent: React.FC<CardContentProps> = ({
   imageAlt = '',
   rating = 4,
   ratingCount,
+  buttonGroupType = 'label',
   buttonGroupVariant = 'primary',
+  buttonGroupSpecial = 'default',
   buttonGroupLayout = 'separate',
   buttonGroupCount = 2,
   buttonGroupButtons,
@@ -385,11 +401,13 @@ export const CardContent: React.FC<CardContentProps> = ({
         {showActions && (
           <div className={styles['card-content__actions']}>
             <ButtonGroup
+              buttonType={buttonGroupType}
               variant={buttonGroupVariant}
+              special={buttonGroupSpecial}
               size={bgSize}
               layout={buttonGroupLayout}
               count={buttonGroupCount}
-              buttons={buttonGroupButtons}
+              buttons={buttonGroupButtons ?? [{ label: 'Label' }, { label: 'Label' }]}
               disabled={buttonGroupDisabled}
             />
             {count !== undefined && (
@@ -439,11 +457,13 @@ export const CardContent: React.FC<CardContentProps> = ({
         {showActions && (
           <div className={styles['card-content__actions']}>
             <ButtonGroup
+              buttonType={buttonGroupType}
               variant={buttonGroupVariant}
+              special={buttonGroupSpecial}
               size={bgSize}
               layout={buttonGroupLayout}
               count={buttonGroupCount}
-              buttons={buttonGroupButtons}
+              buttons={buttonGroupButtons ?? [{ label: 'Label' }, { label: 'Label' }]}
               disabled={buttonGroupDisabled}
             />
           </div>

@@ -87,7 +87,7 @@ export const CardContentDocs: React.FC = () => (
           { id: 3, name: 'Image area (toggleable)', token: '--card-content-image-height-default, --card-content-image-bg', description: 'Full-width image or grey placeholder at top of image cards. Controlled by showImage prop.' },
           { id: 4, name: 'Heading', token: '--card-content-heading-color, --card-content-heading-size-default', description: 'Primary label text. Colour inherits from the status type in notification cards.' },
           { id: 5, name: 'Body text (toggleable)', token: '--card-content-body-color, --card-content-body-size-default', description: 'Secondary description in neutral gray. Controlled by showBody prop.' },
-          { id: 6, name: 'ButtonGroup (toggleable)', token: 'Uses ButtonGroup component tokens', description: 'Action area rendered via ButtonGroup. Controlled by showActions prop. Supports separate/joined layouts and all ButtonGroup variants.' },
+          { id: 6, name: 'ButtonGroup (toggleable)', token: 'Uses ButtonGroup component tokens', description: 'Action area rendered via label-type ButtonGroup (icon + text + arrow). Controlled by showActions prop. Supports label/icon button types, separate/joined layouts, default/alt special styles, and all ButtonGroup variants.' },
           { id: 7, name: 'Count badge', token: '--card-content-count-bg, --card-content-count-color', description: 'Optional numeric badge beside the ButtonGroup in notification cards.' },
           { id: 8, name: 'Star rating (toggleable)', token: '--card-content-star-color, --card-content-star-empty-color', description: 'Optional 5-star rating. Controlled by showRating prop (image variant only).' },
           { id: 9, name: 'Border', token: '--card-content-border-width, --card-content-border-color', description: 'Optional visible border and drop shadow. Set border={false} to suppress both.' },
@@ -174,8 +174,23 @@ export const CardContentDocs: React.FC = () => (
       </DocsTemplate.Subsection>
     </DocsTemplate.Section>
 
+    {/* ── ButtonGroup Button Types ── */}
+    <DocsTemplate.Section title="ButtonGroup Button Types" subtitle="Cards use label-type buttons by default (icon + text + arrow). Set buttonGroupType='icon' for icon-only buttons.">
+      <DocsTemplate.Subsection title="Label Type (default)">
+        <div style={previewWrap}>
+          <CardContent variant="notification" status="info" heading="Label — default" count={4} buttonGroupType="label" buttonGroupSpecial="default" />
+          <CardContent variant="notification" status="info" heading="Label — alt" count={4} buttonGroupType="label" buttonGroupSpecial="alt" />
+        </div>
+      </DocsTemplate.Subsection>
+      <DocsTemplate.Subsection title="Icon Type">
+        <div style={previewWrap}>
+          <CardContent variant="notification" status="info" heading="Icon buttons" count={4} buttonGroupType="icon" />
+        </div>
+      </DocsTemplate.Subsection>
+    </DocsTemplate.Section>
+
     {/* ── ButtonGroup variants ── */}
-    <DocsTemplate.Section title="ButtonGroup Variants" subtitle="All four ButtonGroup variants are supported: primary, secondary, tertiary, and ghost.">
+    <DocsTemplate.Section title="ButtonGroup Variants" subtitle="All four ButtonGroup colour variants are supported: primary, secondary, tertiary, and ghost.">
       <div style={previewWrap}>
         {(['primary', 'secondary', 'tertiary', 'ghost'] as const).map((v) => (
           <CardContent key={v} variant="notification" status="info" heading={`${v} buttons`} body="ButtonGroup variant demo." count={4} buttonGroupVariant={v} />
@@ -244,7 +259,7 @@ export const CardContentDocs: React.FC = () => (
     <DocsTemplate.Section title="Usage">
       <DocsTemplate.CodeBlock>{`import { CardContent } from './CardContent';
 
-// Notification with all sub-elements
+// Notification with label-type buttons (default)
 <CardContent
   variant="notification"
   status="error"
@@ -253,11 +268,23 @@ export const CardContentDocs: React.FC = () => (
   body="Description text."
   count={4}
   border={true}
+  buttonGroupType="label"
+  buttonGroupSpecial="default"
   showIcon={true}
   showBody={true}
   showActions={true}
   showDismiss={true}
   onDismiss={() => console.log('dismissed')}
+/>
+
+// Notification with alt-style label buttons
+<CardContent
+  variant="notification"
+  status="info"
+  heading="Alt style"
+  buttonGroupType="label"
+  buttonGroupSpecial="alt"
+  buttonGroupButtons={[{ label: 'Filter' }, { label: 'Sort' }]}
 />
 
 // Minimal notification (heading only + dismiss)
@@ -302,7 +329,7 @@ export const CardContentDocs: React.FC = () => (
           Following the Alert component pattern, each card sub-element (icon, body, actions, dismiss, rating, image) can be independently shown or hidden via boolean props, enabling flexible card configurations from a single component.
         </DocsTemplate.PrincipleCard>
         <DocsTemplate.PrincipleCard number={3} title="Composable actions via ButtonGroup">
-          Card actions use the shared ButtonGroup component rather than bespoke buttons, ensuring consistent sizing, spacing, and interaction patterns.
+          Card actions use the shared ButtonGroup component with label-type buttons (icon + text + arrow) by default, ensuring consistent sizing, spacing, and interaction patterns. Switch to <code>buttonGroupType="icon"</code> for icon-only buttons, or use <code>buttonGroupSpecial="alt"</code> for the tinted/outlined label style.
         </DocsTemplate.PrincipleCard>
         <DocsTemplate.PrincipleCard number={4} title="Token-driven theming">
           All colours, spacing, typography, and decoration values reference design tokens so global theme updates propagate automatically.
