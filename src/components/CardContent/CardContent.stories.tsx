@@ -37,6 +37,11 @@ const meta: Meta<typeof CardContent> = {
     showDismiss: { control: 'boolean' },
     showRating: { control: 'boolean' },
     showImage: { control: 'boolean' },
+    alignment: {
+      control: 'select',
+      options: ['vertical', 'horizontal'],
+      description: 'vertical — icon above text (default); horizontal — icon left, content right',
+    },
     buttonGroupType: {
       control: 'select',
       options: ['label', 'icon'],
@@ -74,6 +79,7 @@ const meta: Meta<typeof CardContent> = {
     showDismiss: false,
     showRating: true,
     showImage: true,
+    alignment: 'vertical',
     buttonGroupType: 'label',
     buttonGroupVariant: 'primary',
     buttonGroupSpecial: 'default',
@@ -327,6 +333,41 @@ export const AllSizesImageWithPhoto: Story = {
           ratingCount={87}
           imageSrc="https://images.pexels.com/photos/466685/pexels-photo-466685.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop"
           imageAlt="City skyline"
+        />
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+/* ── Horizontal Alignment ────────────────────────────────────────────────── */
+
+export const HorizontalAlignment: Story = {
+  name: 'Horizontal Alignment',
+  render: () => (
+    <div style={{ ...gridWrap, flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)' }}>
+      <p style={sectionLabel}>All statuses — horizontal layout (small)</p>
+      {ALL_STATUSES.slice(0, 4).map((status) => (
+        <CardContent
+          key={status}
+          variant="notification"
+          status={status}
+          size="small"
+          alignment="horizontal"
+          heading={`${status} heading`}
+          body="Body text that wraps within the card alongside the action buttons."
+        />
+      ))}
+      <p style={{ ...sectionLabel, marginTop: '16px' }}>Default size — horizontal</p>
+      {ALL_STATUSES.slice(0, 4).map((status) => (
+        <CardContent
+          key={status}
+          variant="notification"
+          status={status}
+          size="default"
+          alignment="horizontal"
+          heading={`${status} heading`}
+          body="Body text that wraps within the card alongside the action buttons."
         />
       ))}
     </div>

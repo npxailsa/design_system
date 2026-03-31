@@ -993,48 +993,53 @@
   --card-content-overflow:              hidden;
 
   /* CardContent — sizes */
-  --card-content-width-sm:              160px;
-  --card-content-width-default:         220px;
-  --card-content-width-lg:              300px;
-  --card-content-padding-sm:            var(--global-spacing-sizing-12px);
-  --card-content-padding-default:       var(--global-spacing-sizing-16px);
-  --card-content-padding-lg:            var(--global-spacing-sizing-20px);
-  --card-content-gap-sm:                var(--global-spacing-sizing-8px);
-  --card-content-gap-default:           var(--global-spacing-sizing-10px);
-  --card-content-gap-lg:                var(--global-spacing-sizing-12px);
+  --card-content-width-sm:              300px;
+  --card-content-width-default:         350px;
+  --card-content-width-lg:              500px;
+  --card-content-padding-sm:            var(--global-spacing-sizing-16px) var(--global-spacing-sizing-16px) var(--global-spacing-sizing-24px);
+  --card-content-padding-default:       var(--global-spacing-sizing-24px) var(--global-spacing-sizing-24px) var(--global-spacing-sizing-32px);
+  --card-content-padding-lg:            var(--global-spacing-sizing-32px) var(--global-spacing-sizing-32px) var(--global-spacing-sizing-40px);
+  --card-content-gap-sm:                var(--global-spacing-sizing-12px);
+  --card-content-gap-default:           var(--global-spacing-sizing-16px);
+  --card-content-gap-lg:                var(--global-spacing-sizing-20px);
 
   /* CardContent — image area */
-  --card-content-image-height-sm:       80px;
-  --card-content-image-height-default:  110px;
-  --card-content-image-height-lg:       150px;
+  --card-content-image-height-sm:       140px;
+  --card-content-image-height-default:  200px;
+  --card-content-image-height-lg:       280px;
   --card-content-image-bg:              var(--global-color-neutral-gray-200);
 
-  /* CardContent — status icon area */
-  --card-content-icon-size-sm:          32px;
-  --card-content-icon-size-default:     44px;
-  --card-content-icon-size-lg:          56px;
+  /* CardContent — status icon badge (circular container) */
+  --card-content-icon-badge-size-sm:    var(--global-spacing-sizing-64px);
+  --card-content-icon-badge-size-default: var(--global-spacing-sizing-100px);
+  --card-content-icon-badge-size-lg:    var(--global-spacing-sizing-140px);
 
-  /* CardContent — typography: heading */
+  /* CardContent — status icon SVG (inside the badge) */
+  --card-content-icon-size-sm:          32px;
+  --card-content-icon-size-default:     48px;
+  --card-content-icon-size-lg:          72px;
+
+  /* CardContent — typography: heading (H4/H3/H2 scale) */
   --card-content-heading-font:          var(--brand-font-primary);
   --card-content-heading-color:         var(--global-color-base-black);
   --card-content-heading-weight:        var(--global-type-weight-default);
-  --card-content-heading-size-sm:       var(--global-type-size-primary-label-xs);
-  --card-content-heading-size-default:  var(--global-type-size-primary-label-sm);
-  --card-content-heading-size-lg:       var(--global-type-size-primary-label);
-  --card-content-heading-lh-sm:         var(--global-type-line-height-label-xs);
-  --card-content-heading-lh-default:    var(--global-type-line-height-label-sm);
-  --card-content-heading-lh-lg:         var(--global-type-line-height-label);
+  --card-content-heading-size-sm:       var(--global-type-size-primary-heading-4);
+  --card-content-heading-size-default:  var(--global-type-size-primary-heading-3);
+  --card-content-heading-size-lg:       var(--global-type-size-primary-heading-2);
+  --card-content-heading-lh-sm:         var(--global-type-size-primary-heading-4);
+  --card-content-heading-lh-default:    var(--global-type-size-primary-heading-3);
+  --card-content-heading-lh-lg:         var(--global-type-size-primary-heading-2);
 
   /* CardContent — typography: body text */
   --card-content-body-font:             var(--brand-font-primary);
   --card-content-body-color:            var(--global-color-neutral-gray-700);
   --card-content-body-weight:           var(--global-type-weight-light);
-  --card-content-body-size-sm:          var(--global-type-size-primary-label-xs);
-  --card-content-body-size-default:     var(--global-type-size-primary-label-xs);
-  --card-content-body-size-lg:          var(--global-type-size-primary-label-sm);
-  --card-content-body-lh-sm:            var(--global-type-line-height-label-xs);
-  --card-content-body-lh-default:       var(--global-type-line-height-label-xs);
-  --card-content-body-lh-lg:            var(--global-type-line-height-label-sm);
+  --card-content-body-size-sm:          var(--global-type-size-primary-label-sm);
+  --card-content-body-size-default:     var(--global-type-size-primary-label);
+  --card-content-body-size-lg:          var(--global-type-size-primary-label-lg);
+  --card-content-body-lh-sm:            var(--global-type-line-height-label-sm);
+  --card-content-body-lh-default:       var(--global-type-line-height-label);
+  --card-content-body-lh-lg:            var(--global-type-line-height-label-lg);
 
   /* CardContent — count badge */
   --card-content-count-bg:              var(--global-color-neutral-gray-100);
@@ -1100,6 +1105,26 @@
   --card-content-white-heading:         var(--global-color-base-black);
   --card-content-white-bg:              var(--global-color-base-white);
   --card-content-white-border:          var(--global-color-neutral-gray-500);
+
+  /* CardContent — status-specific primary button colours */
+  --card-content-error-btn-bg:          var(--global-color-status-red);
+  --card-content-error-btn-border:      var(--global-color-status-red);
+  --card-content-warning-btn-bg:        var(--global-color-status-orange);
+  --card-content-warning-btn-border:    var(--global-color-status-dark-orange);
+  --card-content-success-btn-bg:        var(--global-color-status-dark-green);
+  --card-content-success-btn-border:    var(--global-color-status-dark-green);
+  --card-content-info-btn-bg:           var(--global-color-status-info-blue);
+  --card-content-info-btn-border:       var(--global-color-status-info-blue);
+  --card-content-default-btn-bg:        var(--global-color-secondary-navy);
+  --card-content-default-btn-border:    var(--global-color-secondary-navy);
+  --card-content-navy-btn-bg:           var(--global-color-status-info-blue);
+  --card-content-navy-btn-border:       var(--global-color-status-info-blue);
+  --card-content-purple-btn-bg:         var(--global-color-status-purple);
+  --card-content-purple-btn-border:     var(--global-color-status-purple);
+  --card-content-light-gray-btn-bg:     var(--global-color-neutral-gray-700);
+  --card-content-light-gray-btn-border: var(--global-color-neutral-gray-700);
+  --card-content-white-btn-bg:          var(--global-color-base-black);
+  --card-content-white-btn-border:      var(--global-color-neutral-gray-500);
 }
 
 /* ==========================================================================

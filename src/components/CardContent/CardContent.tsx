@@ -56,6 +56,13 @@ export interface CardContentProps {
   /** Numeric rating count shown next to the stars */
   ratingCount?: number;
   /**
+   * Card layout alignment (notification variant only).
+   * - `vertical`   — icon stacked above text and buttons (default)
+   * - `horizontal` — icon on left, text + buttons on right (compact)
+   * @default 'vertical'
+   */
+  alignment?: 'vertical' | 'horizontal';
+  /**
    * ButtonGroup button type.
    * - `label` — icon + text label + trailing arrow (default)
    * - `icon`  — square icon-only buttons
@@ -346,6 +353,7 @@ export const CardContent: React.FC<CardContentProps> = ({
   imageAlt = '',
   rating = 4,
   ratingCount,
+  alignment = 'vertical',
   buttonGroupType = 'label',
   buttonGroupVariant = 'primary',
   buttonGroupSpecial = 'default',
@@ -366,8 +374,9 @@ export const CardContent: React.FC<CardContentProps> = ({
   const rootClasses = [
     styles['card-content'],
     styles[`size-${size}`],
-    variant === 'notification' ? styles[`card-content--notification`] : styles['card-content--image'],
+    variant === 'notification' ? styles['card-content--notification'] : styles['card-content--image'],
     variant === 'notification' ? styles[STATUS_CSS_CLASS[status]] : '',
+    variant === 'notification' && alignment === 'horizontal' ? styles['card-content--horizontal'] : '',
     border ? '' : styles['card-content--no-border'],
     className,
   ]
@@ -375,13 +384,41 @@ export const CardContent: React.FC<CardContentProps> = ({
     .join(' ');
 
   const StatusIcon = STATUS_ICON[status];
+
+  /* ── Icon SVG sizes (inside badge) ── */
   const iconSizeMap: Record<CardContentSize, number> = {
-    small: 32,
-    default: 44,
-    large: 56,
+    small:   alignment === 'horizontal' ? 20 : 32,
+    default: alignment === 'horizontal' ? 28 : 48,
+    large:   alignment === 'horizontal' ? 36 : 72,
   };
   const iconSize = iconSizeMap[size];
   const bgSize = BUTTON_GROUP_SIZE_MAP[size];
+
+  /* ── Status-specific default button labels ── */
+  const STATUS_BUTTON_LABELS: Record<CardContentStatus, string> = {
+    error:        'Error button',
+    warning:      'Warning button',
+    success:      'Success button',
+    info:         'Info button',
+    default:      'Action',
+    'light-gray': 'Action',
+    navy:         'Navy button',
+    purple:       'Action',
+    white:        'Action',
+  };
+
+  /* ── Default buttons: status-colored primary + ghost ── */
+  const defaultButtons: ButtonGroupItemConfig[] = [
+    {
+      label: STATUS_BUTTON_LABELS[status],
+      ariaLabel: STATUS_BUTTON_LABELS[status],
+      className: styles['card-content__primary-status-btn'],
+    },
+    {
+      label: 'Label',
+      ariaLabel: 'Secondary action',
+    },
+  ];
 
   /* ── Notification layout ── */
   if (variant === 'notification') {
@@ -408,7 +445,7 @@ export const CardContent: React.FC<CardContentProps> = ({
                 size={bgSize}
                 layout={buttonGroupLayout}
                 count={buttonGroupCount}
-                buttons={buttonGroupButtons ?? [{ label: 'Label' }, { label: 'Label' }]}
+                buttons={buttonGroupButtons ?? defaultButtons}
                 disabled={buttonGroupDisabled}
               />
               {count !== undefined && (

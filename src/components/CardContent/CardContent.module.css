@@ -68,91 +68,149 @@
   background: var(--card-content-error-bg);
   border-color: var(--card-content-error-border);
 }
-.status-error .card-content__status-icon-wrap { color: var(--card-content-error-icon); }
+.status-error .card-content__status-icon-wrap { background: var(--card-content-error-icon); }
 .status-error .card-content__heading { color: var(--card-content-error-heading); }
 .status-error .card-content__dismiss { color: var(--card-content-error-icon); }
+.status-error .card-content__primary-status-btn {
+  background: var(--card-content-error-btn-bg) !important;
+  border-color: var(--card-content-error-btn-border) !important;
+  color: var(--global-color-base-white) !important;
+}
 
 /* warning */
 .status-warning {
   background: var(--card-content-warning-bg);
   border-color: var(--card-content-warning-border);
 }
-.status-warning .card-content__status-icon-wrap { color: var(--card-content-warning-icon); }
+.status-warning .card-content__status-icon-wrap { background: var(--card-content-warning-icon); }
 .status-warning .card-content__heading { color: var(--card-content-warning-heading); }
 .status-warning .card-content__dismiss { color: var(--card-content-warning-icon); }
+.status-warning .card-content__primary-status-btn {
+  background: var(--card-content-warning-btn-bg) !important;
+  border-color: var(--card-content-warning-btn-border) !important;
+  color: var(--global-color-base-white) !important;
+}
 
 /* success */
 .status-success {
   background: var(--card-content-success-bg);
   border-color: var(--card-content-success-border);
 }
-.status-success .card-content__status-icon-wrap { color: var(--card-content-success-icon); }
+.status-success .card-content__status-icon-wrap { background: var(--card-content-success-icon); }
 .status-success .card-content__heading { color: var(--card-content-success-heading); }
 .status-success .card-content__dismiss { color: var(--card-content-success-icon); }
+.status-success .card-content__primary-status-btn {
+  background: var(--card-content-success-btn-bg) !important;
+  border-color: var(--card-content-success-btn-border) !important;
+  color: var(--global-color-base-white) !important;
+}
 
 /* info */
 .status-info {
   background: var(--card-content-info-bg);
   border-color: var(--card-content-info-border);
 }
-.status-info .card-content__status-icon-wrap { color: var(--card-content-info-icon); }
+.status-info .card-content__status-icon-wrap { background: var(--card-content-info-icon); }
 .status-info .card-content__heading { color: var(--card-content-info-heading); }
 .status-info .card-content__dismiss { color: var(--card-content-info-icon); }
+.status-info .card-content__primary-status-btn {
+  background: var(--card-content-info-btn-bg) !important;
+  border-color: var(--card-content-info-btn-border) !important;
+  color: var(--global-color-base-white) !important;
+}
 
 /* default (navy / brand) */
 .status-default {
   background: var(--card-content-default-bg);
   border-color: var(--card-content-default-border);
 }
-.status-default .card-content__status-icon-wrap { color: var(--card-content-default-icon); }
+.status-default .card-content__status-icon-wrap { background: var(--card-content-default-icon); }
 .status-default .card-content__heading { color: var(--card-content-default-heading); }
 .status-default .card-content__dismiss { color: var(--card-content-default-icon); }
+.status-default .card-content__primary-status-btn {
+  background: var(--card-content-default-btn-bg) !important;
+  border-color: var(--card-content-default-btn-border) !important;
+  color: var(--global-color-base-white) !important;
+}
 
 /* light-gray */
 .status-light-gray {
   background: var(--card-content-light-gray-bg);
   border-color: var(--card-content-light-gray-border);
 }
-.status-light-gray .card-content__status-icon-wrap { color: var(--card-content-light-gray-icon); }
+.status-light-gray .card-content__status-icon-wrap { background: var(--card-content-light-gray-icon); }
 .status-light-gray .card-content__heading { color: var(--card-content-light-gray-heading); }
 .status-light-gray .card-content__dismiss { color: var(--card-content-light-gray-icon); }
+.status-light-gray .card-content__primary-status-btn {
+  background: var(--card-content-light-gray-btn-bg) !important;
+  border-color: var(--card-content-light-gray-btn-border) !important;
+  color: var(--global-color-base-white) !important;
+}
 
 /* navy */
 .status-navy {
   background: var(--card-content-navy-bg);
   border-color: var(--card-content-navy-border);
 }
-.status-navy .card-content__status-icon-wrap { color: var(--card-content-navy-icon); }
+.status-navy .card-content__status-icon-wrap { background: var(--card-content-navy-icon); }
 .status-navy .card-content__heading { color: var(--card-content-navy-heading); }
 .status-navy .card-content__dismiss { color: var(--card-content-navy-icon); }
+.status-navy .card-content__primary-status-btn {
+  background: var(--card-content-navy-btn-bg) !important;
+  border-color: var(--card-content-navy-btn-border) !important;
+  color: var(--global-color-base-white) !important;
+}
 
 /* purple */
 .status-purple {
   background: var(--card-content-purple-bg);
   border-color: var(--card-content-purple-border);
 }
-.status-purple .card-content__status-icon-wrap { color: var(--card-content-purple-icon); }
+.status-purple .card-content__status-icon-wrap { background: var(--card-content-purple-icon); }
 .status-purple .card-content__heading { color: var(--card-content-purple-heading); }
 .status-purple .card-content__dismiss { color: var(--card-content-purple-icon); }
+.status-purple .card-content__primary-status-btn {
+  background: var(--card-content-purple-btn-bg) !important;
+  border-color: var(--card-content-purple-btn-border) !important;
+  color: var(--global-color-base-white) !important;
+}
 
 /* white */
 .status-white {
   background: var(--card-content-white-bg);
   border-color: var(--card-content-white-border);
 }
-.status-white .card-content__status-icon-wrap { color: var(--card-content-white-icon); }
+.status-white .card-content__status-icon-wrap { background: var(--card-content-white-icon); }
 .status-white .card-content__heading { color: var(--card-content-white-heading); }
 .status-white .card-content__dismiss { color: var(--card-content-white-icon); }
+.status-white .card-content__primary-status-btn {
+  background: var(--card-content-white-btn-bg) !important;
+  border-color: var(--card-content-white-btn-border) !important;
+  color: var(--global-color-base-white) !important;
+}
 
-/* ── Status icon wrapper ──────────────────────────────────────────────────── */
+/* ── Status icon badge (circular coloured container) ─────────────────────── */
 
 .card-content__status-icon-wrap {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  opacity: 0.5;
   align-self: center;
+  border-radius: var(--global-spacing-radius-full);
+  color: var(--global-color-base-white);
+  width:  var(--card-content-icon-badge-size-default);
+  height: var(--card-content-icon-badge-size-default);
+}
+
+.size-small .card-content__status-icon-wrap {
+  width:  var(--card-content-icon-badge-size-sm);
+  height: var(--card-content-icon-badge-size-sm);
+}
+
+.size-large .card-content__status-icon-wrap {
+  width:  var(--card-content-icon-badge-size-lg);
+  height: var(--card-content-icon-badge-size-lg);
 }
 
 /* ── Dismiss / close button ───────────────────────────────────────────────── */
@@ -286,6 +344,17 @@
   font-size: var(--card-content-heading-size-default);
   line-height: var(--card-content-heading-lh-default);
   letter-spacing: var(--global-type-letter-spacing-primary-label);
+  text-align: center;
+}
+
+/* In horizontal layout heading returns to left-aligned */
+.card-content--horizontal .card-content__heading {
+  text-align: left;
+}
+
+/* In image cards heading is left-aligned */
+.card-content--image .card-content__heading {
+  text-align: left;
 }
 
 .size-small .card-content__heading {
@@ -319,6 +388,35 @@
 .size-large .card-content__body {
   font-size: var(--card-content-body-size-lg);
   line-height: var(--card-content-body-lh-lg);
+}
+
+/* ── Horizontal layout ────────────────────────────────────────────────────── */
+
+.card-content--horizontal {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.card-content--horizontal .card-content__status-icon-wrap {
+  width:  var(--card-content-icon-badge-size-sm);
+  height: var(--card-content-icon-badge-size-sm);
+  align-self: flex-start;
+  margin-top: var(--global-spacing-sizing-4px);
+  flex-shrink: 0;
+}
+
+.card-content--horizontal.size-default .card-content__status-icon-wrap {
+  width:  64px;
+  height: 64px;
+}
+
+.card-content--horizontal.size-large .card-content__status-icon-wrap {
+  width:  var(--card-content-icon-badge-size-default);
+  height: var(--card-content-icon-badge-size-default);
+}
+
+.card-content--horizontal .card-content__content-frame {
+  flex: 1;
 }
 
 /* ── Actions row ──────────────────────────────────────────────────────────── */

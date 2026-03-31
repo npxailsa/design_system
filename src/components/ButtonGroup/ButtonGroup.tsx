@@ -26,6 +26,8 @@ export interface ButtonGroupItemConfig {
   disabled?: boolean;
   /** Override to show loading spinner on just this button */
   loading?: boolean;
+  /** Extra CSS class name(s) added to the button element */
+  className?: string;
 }
 
 /* ── Loading spinner SVG ─────────────────────────────────────────────────── */
@@ -183,6 +185,7 @@ export const ButtonGroup: React.FC<{
           styles[`btn-group__btn--${v}`],
           positionClass(i, buttonConfigs.length),
           isDisabled ? styles['btn-group__btn--disabled'] : '',
+          cfg.className ?? '',
         ].filter(Boolean).join(' ');
 
         if (isLabel) {
