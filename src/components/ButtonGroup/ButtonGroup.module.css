@@ -1,11 +1,15 @@
 /* ==========================================================================
    ButtonGroup Component
    --------------------------------------------------------------------------
-   Icon-only square buttons arranged in a horizontal group.
+   Two button types:
+     icon  — square icon-only buttons (existing)
+     label — rectangular icon + text + arrow buttons (new from Figma)
 
    Layouts  : joined (connected, no gap) · separate (6px gap, primary+ghost pair)
    Variants : primary · secondary · tertiary · ghost
+   Special  : default (solid filled) · alt (tinted/outlined) — label type only
    Sizes    : xs · sm · md · lg
+   States   : default · hover · focused · clicked/active · disabled · loading
    Tokens   : --btn-group-* in tokens.css
    ========================================================================== */
 
@@ -49,150 +53,292 @@
   border-radius: var(--btn-group-radius);
   transition:
     background   var(--btn-group-transition-duration) var(--btn-group-transition-easing),
-    box-shadow   var(--btn-group-transition-duration) var(--btn-group-transition-easing);
+    box-shadow   var(--btn-group-transition-duration) var(--btn-group-transition-easing),
+    border-color var(--btn-group-transition-duration) var(--btn-group-transition-easing);
+  font-family: var(--brand-font-primary, 'F37 Ginger', sans-serif);
 }
 
-.btn-group__btn:hover:not(:disabled),
 .btn-group__btn:focus-visible:not(:disabled) {
-  filter:  none;
-  outline: none;
+  outline: 2px solid var(--global-color-primary-blue);
+  outline-offset: 2px;
+}
+
+.btn-group__btn:active:not(:disabled) {
+  transform: scale(0.98);
 }
 
 /* ════════════════════════════════════════════════════════════
-   SIZES
+   ICON-TYPE SIZES  (square buttons)
    ════════════════════════════════════════════════════════════ */
 
-/* Extra-small */
-.btn-group--xs .btn-group__btn {
+.btn-group--icon.btn-group--xs .btn-group__btn {
   width:      var(--btn-group-size-xs);
   height:     var(--btn-group-size-xs);
   min-width:  var(--btn-group-size-xs);
   min-height: var(--btn-group-size-xs);
 }
 
-/* Small */
-.btn-group--sm .btn-group__btn {
+.btn-group--icon.btn-group--sm .btn-group__btn {
   width:      var(--btn-group-size-sm);
   height:     var(--btn-group-size-sm);
   min-width:  var(--btn-group-size-sm);
   min-height: var(--btn-group-size-sm);
 }
 
-/* Default / Medium */
-.btn-group--md .btn-group__btn {
+.btn-group--icon.btn-group--md .btn-group__btn {
   width:      var(--btn-group-size-md);
   height:     var(--btn-group-size-md);
   min-width:  var(--btn-group-size-md);
   min-height: var(--btn-group-size-md);
 }
 
-/* Large */
-.btn-group--lg .btn-group__btn {
+.btn-group--icon.btn-group--lg .btn-group__btn {
   width:      var(--btn-group-size-lg);
   height:     var(--btn-group-size-lg);
   min-width:  var(--btn-group-size-lg);
   min-height: var(--btn-group-size-lg);
 }
 
-/* ── Icon sizing per size ── */
-.btn-group--xs .btn-group__icon {
+/* ── Icon sizing per size (icon type) ── */
+
+.btn-group--icon.btn-group--xs .btn-group__icon {
   width:     var(--btn-group-icon-size-xs) !important;
   height:    var(--btn-group-icon-size-xs) !important;
   font-size: var(--btn-group-icon-size-xs) !important;
 }
 
-.btn-group--sm .btn-group__icon {
+.btn-group--icon.btn-group--sm .btn-group__icon {
   width:     var(--btn-group-icon-size-sm) !important;
   height:    var(--btn-group-icon-size-sm) !important;
   font-size: var(--btn-group-icon-size-sm) !important;
 }
 
-.btn-group--md .btn-group__icon {
+.btn-group--icon.btn-group--md .btn-group__icon {
   width:     var(--btn-group-icon-size-md) !important;
   height:    var(--btn-group-icon-size-md) !important;
   font-size: var(--btn-group-icon-size-md) !important;
 }
 
-.btn-group--lg .btn-group__icon {
+.btn-group--icon.btn-group--lg .btn-group__icon {
   width:     var(--btn-group-icon-size-lg) !important;
   height:    var(--btn-group-icon-size-lg) !important;
   font-size: var(--btn-group-icon-size-lg) !important;
 }
 
 /* ════════════════════════════════════════════════════════════
-   COLOUR VARIANTS
+   LABEL-TYPE SIZES  (rectangular buttons)
+   ════════════════════════════════════════════════════════════ */
+
+.btn-group--label .btn-group__btn {
+  min-width: var(--btn-group-label-min-width);
+  height: auto;
+}
+
+.btn-group--label.btn-group--xs .btn-group__btn {
+  height: var(--btn-group-label-height-xs);
+  padding: var(--btn-group-label-padding-xs);
+}
+
+.btn-group--label.btn-group--sm .btn-group__btn {
+  height: var(--btn-group-label-height-sm);
+  padding: var(--btn-group-label-padding-sm);
+}
+
+.btn-group--label.btn-group--md .btn-group__btn {
+  height: var(--btn-group-label-height-md);
+  padding: var(--btn-group-label-padding-md);
+}
+
+.btn-group--label.btn-group--lg .btn-group__btn {
+  height: var(--btn-group-label-height-lg);
+  padding: var(--btn-group-label-padding-lg);
+}
+
+/* Label inner layout */
+.btn-group__label-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--btn-group-label-inner-gap);
+}
+
+.btn-group__label-text {
+  font-family: var(--brand-font-primary, 'F37 Ginger', sans-serif);
+  font-weight: var(--btn-group-label-font-weight);
+  white-space: nowrap;
+  line-height: var(--btn-group-label-line-height);
+  letter-spacing: var(--global-type-letter-spacing-primary-label);
+}
+
+/* Label font sizes per size */
+.btn-group--label.btn-group--xs .btn-group__label-text {
+  font-size: var(--btn-group-label-font-size-xs);
+}
+
+.btn-group--label.btn-group--sm .btn-group__label-text {
+  font-size: var(--btn-group-label-font-size-sm);
+}
+
+.btn-group--label.btn-group--md .btn-group__label-text {
+  font-size: var(--btn-group-label-font-size-md);
+}
+
+.btn-group--label.btn-group--lg .btn-group__label-text {
+  font-size: var(--btn-group-label-font-size-lg);
+}
+
+/* Icon size inside label buttons */
+.btn-group--label.btn-group--xs .btn-group__icon {
+  width:     var(--btn-group-icon-size-xs) !important;
+  height:    var(--btn-group-icon-size-xs) !important;
+  font-size: var(--btn-group-icon-size-xs) !important;
+}
+
+.btn-group--label.btn-group--sm .btn-group__icon {
+  width:     var(--btn-group-icon-size-sm) !important;
+  height:    var(--btn-group-icon-size-sm) !important;
+  font-size: var(--btn-group-icon-size-sm) !important;
+}
+
+.btn-group--label.btn-group--md .btn-group__icon {
+  width:     var(--btn-group-icon-size-md) !important;
+  height:    var(--btn-group-icon-size-md) !important;
+  font-size: var(--btn-group-icon-size-md) !important;
+}
+
+.btn-group--label.btn-group--lg .btn-group__icon {
+  width:     var(--btn-group-icon-size-lg) !important;
+  height:    var(--btn-group-icon-size-lg) !important;
+  font-size: var(--btn-group-icon-size-lg) !important;
+}
+
+/* ════════════════════════════════════════════════════════════
+   COLOUR VARIANTS — ICON TYPE
    ════════════════════════════════════════════════════════════ */
 
 /* ── Primary (blue filled) ── */
-.btn-group__btn--primary {
+.btn-group--icon .btn-group__btn--primary {
   background:   var(--btn-group-primary-bg);
   border-color: var(--btn-group-primary-border);
   border-width: var(--btn-group-border-width-filled);
   color:        var(--btn-group-primary-color);
 }
 
-.btn-group__btn--primary:hover:not(:disabled) {
+.btn-group--icon .btn-group__btn--primary:hover:not(:disabled) {
   background: var(--btn-group-primary-bg-hover);
 }
 
 /* ── Secondary (sky-blue tint) ── */
-.btn-group__btn--secondary {
+.btn-group--icon .btn-group__btn--secondary {
   background:   var(--btn-group-secondary-bg);
   border-color: var(--btn-group-secondary-border);
   border-width: var(--btn-group-border-width-filled);
   color:        var(--btn-group-secondary-color);
 }
 
-.btn-group__btn--secondary:hover:not(:disabled) {
+.btn-group--icon .btn-group__btn--secondary:hover:not(:disabled) {
   background: var(--btn-group-secondary-bg-hover);
 }
 
-/* ── Tertiary (yellow — matches Tertiary Button) ── */
-.btn-group__btn--tertiary {
+/* ── Tertiary (yellow) ── */
+.btn-group--icon .btn-group__btn--tertiary {
   background:   var(--btn-group-tertiary-bg);
   border-color: var(--btn-group-tertiary-border);
   border-width: var(--btn-group-border-width);
   color:        var(--btn-group-tertiary-color);
 }
 
-.btn-group__btn--tertiary:hover:not(:disabled) {
+.btn-group--icon .btn-group__btn--tertiary:hover:not(:disabled) {
   background: var(--btn-group-tertiary-bg-hover);
 }
 
 /* ── Ghost (outline only) ── */
-.btn-group__btn--ghost {
+.btn-group--icon .btn-group__btn--ghost {
   background:   var(--btn-group-ghost-bg);
   border-color: var(--btn-group-ghost-border);
   border-width: var(--btn-group-border-width);
   color:        var(--btn-group-ghost-color);
 }
 
-.btn-group__btn--ghost:hover:not(:disabled) {
+.btn-group--icon .btn-group__btn--ghost:hover:not(:disabled) {
   background: var(--btn-group-ghost-bg-hover);
+}
+
+/* ════════════════════════════════════════════════════════════
+   COLOUR VARIANTS — LABEL TYPE (special=default / solid)
+   ════════════════════════════════════════════════════════════ */
+
+.btn-group--label:not(.btn-group--alt) .btn-group__btn--primary {
+  background:   var(--btn-group-label-primary-bg);
+  border-color: var(--btn-group-label-primary-border);
+  border-width: var(--btn-group-label-border-width);
+  color:        var(--btn-group-label-primary-color);
+}
+
+.btn-group--label:not(.btn-group--alt) .btn-group__btn--primary:hover:not(:disabled) {
+  background: var(--btn-group-label-primary-bg-hover);
+}
+
+.btn-group--label:not(.btn-group--alt) .btn-group__btn--secondary {
+  background:   var(--btn-group-label-secondary-bg);
+  border-color: var(--btn-group-label-secondary-border);
+  border-width: var(--btn-group-label-border-width);
+  color:        var(--btn-group-label-secondary-color);
+}
+
+.btn-group--label:not(.btn-group--alt) .btn-group__btn--secondary:hover:not(:disabled) {
+  background: var(--btn-group-label-secondary-bg-hover);
+}
+
+.btn-group--label:not(.btn-group--alt) .btn-group__btn--ghost {
+  background:   var(--btn-group-label-ghost-bg);
+  border-color: var(--btn-group-label-ghost-border);
+  border-width: var(--btn-group-label-border-width);
+  color:        var(--btn-group-label-ghost-color);
+}
+
+.btn-group--label:not(.btn-group--alt) .btn-group__btn--ghost:hover:not(:disabled) {
+  background: var(--btn-group-label-ghost-bg-hover);
+}
+
+/* ════════════════════════════════════════════════════════════
+   SPECIAL=ALT — LABEL TYPE (tinted/outlined)
+   Based on Figma: bg=#F9F9FE, border=1px #95A0E5, color=#61607C
+   ════════════════════════════════════════════════════════════ */
+
+.btn-group--label.btn-group--alt .btn-group__btn--primary,
+.btn-group--label.btn-group--alt .btn-group__btn--secondary,
+.btn-group--label.btn-group--alt .btn-group__btn--ghost {
+  background:   var(--btn-group-label-alt-bg);
+  border-color: var(--btn-group-label-alt-border);
+  border-width: var(--btn-group-label-alt-border-width);
+  color:        var(--btn-group-label-alt-color);
+}
+
+.btn-group--label.btn-group--alt .btn-group__btn--primary:hover:not(:disabled),
+.btn-group--label.btn-group--alt .btn-group__btn--secondary:hover:not(:disabled),
+.btn-group--label.btn-group--alt .btn-group__btn--ghost:hover:not(:disabled) {
+  background: var(--btn-group-label-alt-bg-hover);
 }
 
 /* ════════════════════════════════════════════════════════════
    JOINED LAYOUT — border-radius & border merging
    ════════════════════════════════════════════════════════════ */
 
-/* Left-end: round left corners only */
 .btn-group--joined .btn-group__btn--left {
   border-radius: var(--btn-group-radius) 0 0 var(--btn-group-radius);
 }
 
-/* Middle: no radius, remove left border to avoid double line */
 .btn-group--joined .btn-group__btn--middle {
   border-radius: 0;
   border-left-width: 0;
 }
 
-/* Right-end: round right corners only, remove left border */
 .btn-group--joined .btn-group__btn--right {
   border-radius: 0 var(--btn-group-radius) var(--btn-group-radius) 0;
   border-left-width: 0;
 }
 
-/* Solo: full radius (single button in joined group) */
 .btn-group--joined .btn-group__btn--solo {
   border-radius: var(--btn-group-radius);
 }
@@ -214,10 +360,39 @@
 }
 
 /* ════════════════════════════════════════════════════════════
-   ICON
+   LOADING STATE
+   ════════════════════════════════════════════════════════════ */
+
+.btn-group--loading .btn-group__btn,
+.btn-group__btn[aria-busy="true"] {
+  cursor: wait;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.btn-group__spinner {
+  display: block;
+  flex-shrink: 0;
+  animation: btn-group-spin 0.75s linear infinite;
+  color: currentColor;
+}
+
+@keyframes btn-group-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ════════════════════════════════════════════════════════════
+   ICON / ARROW
    ════════════════════════════════════════════════════════════ */
 
 .btn-group__icon {
   display:    block;
   flex-shrink: 0;
+}
+
+.btn-group__arrow {
+  display:    block;
+  flex-shrink: 0;
+  color: currentColor;
 }

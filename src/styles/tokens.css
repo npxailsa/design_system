@@ -2039,6 +2039,55 @@
   --btn-group-bg-disabled:           var(--global-color-neutral-gray-50);
   --btn-group-border-disabled:       var(--global-color-neutral-gray-200);
   --btn-group-color-disabled:        var(--global-color-neutral-gray-400);
+
+  /* ── Label-type button — shared layout ── */
+  --btn-group-label-min-width:       var(--global-spacing-sizing-80px);
+  --btn-group-label-inner-gap:       var(--global-spacing-sizing-8px);
+  --btn-group-label-font-weight:     var(--global-type-weight-light);
+  --btn-group-label-line-height:     var(--global-type-line-height-label);
+  --btn-group-label-border-width:    var(--global-spacing-stroke-0-5px);
+
+  /* Label sizes (height × padding) */
+  --btn-group-label-height-xs:       30px;
+  --btn-group-label-padding-xs:      var(--global-spacing-sizing-2px) var(--global-spacing-sizing-12px);
+  --btn-group-label-font-size-xs:    var(--global-type-size-primary-label-xs);
+
+  --btn-group-label-height-sm:       36px;
+  --btn-group-label-padding-sm:      var(--global-spacing-sizing-4px) var(--global-spacing-sizing-12px);
+  --btn-group-label-font-size-sm:    var(--global-type-size-primary-label-sm);
+
+  --btn-group-label-height-md:       44px;
+  --btn-group-label-padding-md:      var(--global-spacing-sizing-4px) var(--global-spacing-sizing-16px);
+  --btn-group-label-font-size-md:    var(--global-type-size-primary-label);
+
+  --btn-group-label-height-lg:       52px;
+  --btn-group-label-padding-lg:      var(--global-spacing-sizing-6px) var(--global-spacing-sizing-20px);
+  --btn-group-label-font-size-lg:    var(--global-type-size-primary-label);
+
+  /* Label: Primary solid (special=default) — matches Figma #3776CE */
+  --btn-group-label-primary-bg:      var(--global-color-primary-blue);
+  --btn-group-label-primary-border:  var(--global-color-primary-blue);
+  --btn-group-label-primary-color:   var(--global-color-base-white);
+  --btn-group-label-primary-bg-hover: var(--global-color-primary-blue-blue-400);
+
+  /* Label: Secondary solid */
+  --btn-group-label-secondary-bg:    var(--global-color-primary-sky-blue-100);
+  --btn-group-label-secondary-border: var(--global-color-primary-sky-blue);
+  --btn-group-label-secondary-color: var(--global-color-base-black);
+  --btn-group-label-secondary-bg-hover: var(--global-color-primary-sky-blue-50);
+
+  /* Label: Ghost / outline */
+  --btn-group-label-ghost-bg:        var(--global-color-base-white);
+  --btn-group-label-ghost-border:    var(--global-color-neutral-gray-300);
+  --btn-group-label-ghost-color:     var(--global-color-base-black);
+  --btn-group-label-ghost-bg-hover:  var(--global-color-neutral-gray-50);
+
+  /* Label: Alt / tinted (special=alt) — Figma bg #F9F9FE, border #95A0E5, text #61607C */
+  --btn-group-label-alt-bg:          var(--global-color-primary-blue-blue-50);
+  --btn-group-label-alt-border:      var(--global-color-primary-blue-blue-300);
+  --btn-group-label-alt-border-width: var(--global-spacing-stroke-1px);
+  --btn-group-label-alt-color:       var(--global-color-secondary-blue-gray);
+  --btn-group-label-alt-bg-hover:    var(--global-color-primary-blue-blue-100);
 }
 
 /* Font Loading */
