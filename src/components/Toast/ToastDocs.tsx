@@ -41,7 +41,7 @@ export const ToastDocs: React.FC = () => {
         <DocsTemplate.Anatomy
           preview={
             <img
-              src="https://cdn.builder.io/api/v1/image/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2F84c4366c9c4546ca8d1e757a3ddc8fff"
+              src="https://cdn.builder.io/api/v1/image/assets%2Fc7a3c3953c0a4f43bcdc32733cba23f5%2Fb7b701962caf4a2e97d8bef1cbc55803"
               alt="Toast component anatomy diagram with numbered callouts"
               style={{ width: '100%', height: 'auto' }}
             />
