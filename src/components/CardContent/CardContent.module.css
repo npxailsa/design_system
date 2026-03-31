@@ -29,15 +29,18 @@
 /* ── Size variants ────────────────────────────────────────────────────────── */
 
 .size-small {
-  width: var(--card-content-width-sm);
+  min-width: var(--card-content-width-sm);
+  width: fit-content;
 }
 
 .size-default {
-  width: var(--card-content-width-default);
+  min-width: var(--card-content-width-default);
+  width: fit-content;
 }
 
 .size-large {
-  width: var(--card-content-width-lg);
+  min-width: var(--card-content-width-lg);
+  width: fit-content;
 }
 
 /* ── Notification layout ──────────────────────────────────────────────────── */
