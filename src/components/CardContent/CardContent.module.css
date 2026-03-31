@@ -18,6 +18,13 @@
   vertical-align: top;
 }
 
+/* ── Border toggle ────────────────────────────────────────────────────────── */
+
+.card-content--no-border {
+  border-color: transparent;
+  box-shadow: none;
+}
+
 /* ── Size variants ────────────────────────────────────────────────────────── */
 
 .size-small {

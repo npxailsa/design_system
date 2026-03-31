@@ -65,6 +65,13 @@ export interface CardContentProps {
   buttonGroupButtons?: ButtonGroupItemConfig[];
   /** Disable all buttons in the ButtonGroup */
   buttonGroupDisabled?: boolean;
+  /**
+   * Whether to render a visible border around the card.
+   * When `false`, only the status accent colour (notification) or default
+   * border is suppressed — the card shell retains its other styles.
+   * @default true
+   */
+  border?: boolean;
   /** Extra CSS class on the root element */
   className?: string;
 }
@@ -224,6 +231,7 @@ export const CardContent: React.FC<CardContentProps> = ({
   buttonGroupCount = 2,
   buttonGroupButtons,
   buttonGroupDisabled = false,
+  border = true,
   className = '',
 }) => {
   const rootClasses = [
@@ -231,6 +239,7 @@ export const CardContent: React.FC<CardContentProps> = ({
     styles[`size-${size}`],
     variant === 'notification' ? styles[`card-content--notification`] : styles['card-content--image'],
     variant === 'notification' ? styles[STATUS_CSS_CLASS[status]] : '',
+    border ? '' : styles['card-content--no-border'],
     className,
   ]
     .filter(Boolean)

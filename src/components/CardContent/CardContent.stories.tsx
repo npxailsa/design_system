@@ -36,6 +36,7 @@ const meta: Meta<typeof CardContent> = {
     imageAlt: { control: 'text' },
     rating: { control: { type: 'number', min: 0, max: 5, step: 0.5 } },
     ratingCount: { control: 'number' },
+    border: { control: 'boolean' },
     buttonGroupVariant: {
       control: 'select',
       options: ['primary', 'secondary', 'tertiary', 'ghost'],
@@ -56,6 +57,7 @@ const meta: Meta<typeof CardContent> = {
     count: 4,
     rating: 4,
     ratingCount: 128,
+    border: true,
     buttonGroupVariant: 'primary',
     buttonGroupLayout: 'separate',
     buttonGroupCount: 2,
@@ -89,6 +91,8 @@ export const NotificationError: Story = {
     status: 'error',
     heading: 'This is an error heading',
     body: 'This is a body description providing useful context for the notification.',
+    count: 4,
+    border: true,
   },
 };
 
@@ -101,6 +105,8 @@ export const NotificationWarning: Story = {
     status: 'warning',
     heading: 'This is a warning heading',
     body: 'This is a body description providing useful context for the notification.',
+    count: 4,
+    border: true,
   },
 };
 
@@ -113,6 +119,8 @@ export const NotificationSuccess: Story = {
     status: 'success',
     heading: 'This is a success heading',
     body: 'This is a body description providing useful context for the notification.',
+    count: 4,
+    border: true,
   },
 };
 
@@ -125,6 +133,8 @@ export const NotificationInfo: Story = {
     status: 'info',
     heading: 'This is an info heading',
     body: 'This is a body description providing useful context for the notification.',
+    count: 4,
+    border: true,
   },
 };
 
@@ -139,6 +149,7 @@ export const ImageCard: Story = {
     body: 'This is a body description providing useful context for the card content.',
     rating: 4,
     ratingCount: 128,
+    border: true,
   },
 };
 
@@ -153,6 +164,7 @@ export const ImageCardWithPhoto: Story = {
     body: 'Discover pristine beaches and coastal adventures.',
     rating: 5,
     ratingCount: 543,
+    border: true,
     imageSrc:
       'https://images.pexels.com/photos/1032650/pexels-photo-1032650.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop',
     imageAlt: 'Ocean beach',
@@ -186,8 +198,8 @@ export const AllStatusTypes: Story = {
       ))}
     </div>
   ),
-  args: { size: 'default' },
-  parameters: { controls: { include: ['size', 'buttonGroupVariant', 'buttonGroupLayout'] } },
+  args: { size: 'default', border: true },
+  parameters: { controls: { include: ['size', 'border', 'buttonGroupVariant', 'buttonGroupLayout'] } },
 };
 
 /* ── All Sizes — Notification ────────────────────────────────────────────── */
@@ -220,8 +232,9 @@ export const AllSizesNotification: Story = {
     heading: 'This is an info heading',
     body: 'This is a body description providing useful context.',
     count: 4,
+    border: true,
   },
-  parameters: { controls: { include: ['status', 'buttonGroupVariant', 'buttonGroupLayout'] } },
+  parameters: { controls: { include: ['status', 'border', 'buttonGroupVariant', 'buttonGroupLayout'] } },
 };
 
 /* ── All Sizes — Image ───────────────────────────────────────────────────── */
@@ -254,10 +267,70 @@ export const AllSizesImage: Story = {
     body: 'This is a body description providing useful context.',
     rating: 4,
     ratingCount: 128,
+    border: true,
   },
 };
 
-/* ── All Status Types × All Sizes ────────────────────────────────────────── */
+/* ── Border — With vs Without ────────────────────────────────────────────── */
+
+export const BorderVariants: Story = {
+  name: 'Border / With vs Without',
+  render: () => (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--global-spacing-sizing-32px)',
+        padding: 'var(--global-spacing-sizing-32px)',
+        background: 'var(--global-color-neutral-gray-50)',
+      }}
+    >
+      {/* Notification — with/without border */}
+      <div>
+        <p style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '12px', color: 'var(--global-color-neutral-gray-600)', marginBottom: '12px' }}>
+          Notification — Border: True (left) vs Border: False (right)
+        </p>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', alignItems: 'flex-start' }}>
+          {ALL_STATUSES.map((status) => (
+            <React.Fragment key={status}>
+              <CardContent
+                variant="notification"
+                status={status}
+                size="default"
+                heading={`${status.charAt(0).toUpperCase() + status.slice(1)} — with border`}
+                body="This is a body description."
+                count={4}
+                border={true}
+              />
+              <CardContent
+                variant="notification"
+                status={status}
+                size="default"
+                heading={`${status.charAt(0).toUpperCase() + status.slice(1)} — no border`}
+                body="This is a body description."
+                count={4}
+                border={false}
+              />
+            </React.Fragment>
+          ))}
+        </div>
+      </div>
+      {/* Image — with/without border */}
+      <div>
+        <p style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '12px', color: 'var(--global-color-neutral-gray-600)', marginBottom: '12px' }}>
+          Image — Border: True (left) vs Border: False (right)
+        </p>
+        <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
+          <CardContent variant="image" size="default" heading="With border" body="Card with visible border and shadow." rating={4} ratingCount={128} border={true} />
+          <CardContent variant="image" size="default" heading="No border" body="Card with border suppressed." rating={4} ratingCount={128} border={false} />
+        </div>
+      </div>
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+/* ── All Status Types × All Sizes × Both Borders ─────────────────────────── */
 
 export const AllStatusesAllSizes: Story = {
   name: 'All Statuses × All Sizes',
@@ -272,20 +345,81 @@ export const AllStatusesAllSizes: Story = {
       }}
     >
       {ALL_STATUSES.map((status) => (
-        <div key={status} style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', alignItems: 'flex-start' }}>
-          {ALL_SIZES.map((size) => (
-            <CardContent
-              key={size}
-              variant="notification"
-              status={status}
-              size={size}
-              heading={`This is an ${status} heading`}
-              body="This is a body description providing useful context."
-              count={4}
-            />
-          ))}
+        <div key={status}>
+          <p style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--global-color-neutral-gray-500)', marginBottom: '8px' }}>
+            {status} — small · default · large (border) | small · default · large (no border)
+          </p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'flex-start' }}>
+            {ALL_SIZES.map((size) => (
+              <CardContent
+                key={`${size}-border`}
+                variant="notification"
+                status={status}
+                size={size}
+                heading={`This is an ${status} heading`}
+                body="This is a body description providing useful context."
+                count={4}
+                border={true}
+              />
+            ))}
+            {ALL_SIZES.map((size) => (
+              <CardContent
+                key={`${size}-noborder`}
+                variant="notification"
+                status={status}
+                size={size}
+                heading={`This is an ${status} heading`}
+                body="This is a body description providing useful context."
+                count={4}
+                border={false}
+              />
+            ))}
+          </div>
         </div>
       ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+/* ── Image — All Sizes × Both Borders ────────────────────────────────────── */
+
+export const AllSizesImageBorderMatrix: Story = {
+  name: 'All Sizes / Image × Border Matrix',
+  render: () => (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--global-spacing-sizing-32px)',
+        padding: 'var(--global-spacing-sizing-32px)',
+        background: 'var(--global-color-neutral-gray-50)',
+      }}
+    >
+      {(['true', 'false'] as const).map((borderStr) => {
+        const hasBorder = borderStr === 'true';
+        return (
+          <div key={borderStr}>
+            <p style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--global-color-neutral-gray-500)', marginBottom: '8px' }}>
+              Image — Border: {hasBorder ? 'True' : 'False'}
+            </p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'flex-start' }}>
+              {ALL_SIZES.map((size) => (
+                <CardContent
+                  key={size}
+                  variant="image"
+                  size={size}
+                  heading="This is a heading"
+                  body="This is a body description providing useful context for the card."
+                  rating={4}
+                  ratingCount={128}
+                  border={hasBorder}
+                />
+              ))}
+            </div>
+          </div>
+        );
+      })}
     </div>
   ),
   parameters: { controls: { disable: true } },
@@ -315,6 +449,7 @@ export const AllSizesImageWithPhoto: Story = {
           body="This is a body description providing useful context for the card."
           rating={4.5}
           ratingCount={87}
+          border={true}
           imageSrc="https://images.pexels.com/photos/466685/pexels-photo-466685.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop"
           imageAlt="City skyline"
         />
@@ -348,6 +483,7 @@ export const ButtonGroupVariants: Story = {
           heading={`${bgVariant} buttons`}
           body="ButtonGroup variant demonstration."
           count={4}
+          border={true}
           buttonGroupVariant={bgVariant}
           buttonGroupLayout="separate"
         />
@@ -379,6 +515,7 @@ export const ButtonGroupJoined: Story = {
         heading="Joined layout"
         body="ButtonGroup with joined layout (4 buttons)."
         count={4}
+        border={true}
         buttonGroupLayout="joined"
         buttonGroupCount={4}
       />
@@ -389,6 +526,7 @@ export const ButtonGroupJoined: Story = {
         body="Image card with joined ButtonGroup."
         rating={4}
         ratingCount={128}
+        border={true}
         buttonGroupLayout="joined"
         buttonGroupCount={4}
       />

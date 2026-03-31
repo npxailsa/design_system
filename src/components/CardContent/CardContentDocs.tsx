@@ -126,6 +126,12 @@ export const CardContentDocs: React.FC = () => (
             token: '--card-content-star-color, --card-content-star-empty-color',
             description: 'Optional 5-star rating with an optional numeric count.',
           },
+          {
+            id: 9,
+            name: 'Border',
+            token: '--card-content-border-width, --card-content-border-color',
+            description: 'Optional visible border (0.5px stroke) and drop shadow. Set border={false} to suppress both, producing a flat borderless card.',
+          },
         ]}
       />
     </DocsTemplate.Section>
@@ -192,6 +198,92 @@ export const CardContentDocs: React.FC = () => (
           />
         ))}
       </div>
+    </DocsTemplate.Section>
+
+    {/* ── Border toggle ── */}
+    <DocsTemplate.Section
+      title="Border Variants — With vs Without"
+      subtitle="The border prop controls the card's outline and drop shadow. Border: True renders the status-accent border; Border: False suppresses it for a flat, ghost-like appearance."
+    >
+      <DocsTemplate.Subsection title="Notification — Border: True">
+        <div style={previewWrap}>
+          {ALL_STATUSES.map((status) => (
+            <CardContent
+              key={status}
+              variant="notification"
+              status={status}
+              size="default"
+              heading={`${status.charAt(0).toUpperCase() + status.slice(1)} — with border`}
+              body="This is a body description providing useful context."
+              count={4}
+              border={true}
+            />
+          ))}
+        </div>
+      </DocsTemplate.Subsection>
+      <DocsTemplate.Subsection title="Notification — Border: False">
+        <div style={previewWrap}>
+          {ALL_STATUSES.map((status) => (
+            <CardContent
+              key={status}
+              variant="notification"
+              status={status}
+              size="default"
+              heading={`${status.charAt(0).toUpperCase() + status.slice(1)} — no border`}
+              body="This is a body description providing useful context."
+              count={4}
+              border={false}
+            />
+          ))}
+        </div>
+      </DocsTemplate.Subsection>
+      <DocsTemplate.Subsection title="Image — Border: True vs False">
+        <div style={previewWrap}>
+          {ALL_SIZES.map((size) => (
+            <CardContent key={`${size}-b`} variant="image" size={size} heading="With border" body="Bordered card with drop shadow." rating={4} ratingCount={128} border={true} />
+          ))}
+          {ALL_SIZES.map((size) => (
+            <CardContent key={`${size}-nb`} variant="image" size={size} heading="No border" body="Flat card, border suppressed." rating={4} ratingCount={128} border={false} />
+          ))}
+        </div>
+      </DocsTemplate.Subsection>
+    </DocsTemplate.Section>
+
+    {/* ── Full matrix ── */}
+    <DocsTemplate.Section
+      title="Full Variant Matrix"
+      subtitle="All 4 statuses × 3 sizes × border (True/False) — 24 notification card variants total."
+    >
+      {ALL_STATUSES.map((status) => (
+        <DocsTemplate.Subsection key={status} title={`${STATUS_LABELS[status]} — all sizes × border`}>
+          <div style={previewWrap}>
+            {ALL_SIZES.map((size) => (
+              <CardContent
+                key={`${size}-border`}
+                variant="notification"
+                status={status}
+                size={size}
+                heading={`This is an ${status} heading`}
+                body="This is a body description providing useful context."
+                count={4}
+                border={true}
+              />
+            ))}
+            {ALL_SIZES.map((size) => (
+              <CardContent
+                key={`${size}-noborder`}
+                variant="notification"
+                status={status}
+                size={size}
+                heading={`This is an ${status} heading`}
+                body="This is a body description providing useful context."
+                count={4}
+                border={false}
+              />
+            ))}
+          </div>
+        </DocsTemplate.Subsection>
+      ))}
     </DocsTemplate.Section>
 
     {/* ── ButtonGroup variants ── */}
@@ -355,7 +447,7 @@ export const CardContentDocs: React.FC = () => (
     <DocsTemplate.Section title="Usage">
       <DocsTemplate.CodeBlock>{`import { CardContent } from './CardContent';
 
-// Notification card with ButtonGroup (separate layout, primary variant)
+// Notification card — with border (default)
 <CardContent
   variant="notification"
   status="error"
@@ -363,6 +455,21 @@ export const CardContentDocs: React.FC = () => (
   heading="This is an error heading"
   body="This is a body description providing useful context."
   count={4}
+  border={true}
+  buttonGroupVariant="primary"
+  buttonGroupLayout="separate"
+  buttonGroupCount={2}
+/>
+
+// Notification card — no border (flat)
+<CardContent
+  variant="notification"
+  status="error"
+  size="default"
+  heading="This is an error heading"
+  body="This is a body description providing useful context."
+  count={4}
+  border={false}
   buttonGroupVariant="primary"
   buttonGroupLayout="separate"
   buttonGroupCount={2}
