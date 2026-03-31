@@ -392,29 +392,31 @@ export const CardContent: React.FC<CardContentProps> = ({
             <StatusIcon size={iconSize} />
           </div>
         )}
-        <div className={styles['card-content__body-wrap']}>
-          <h3 className={styles['card-content__heading']}>{heading}</h3>
-          {showBody && (
-            <p className={styles['card-content__body']}>{body}</p>
-          )}
-        </div>
-        {showActions && (
-          <div className={styles['card-content__actions']}>
-            <ButtonGroup
-              buttonType={buttonGroupType}
-              variant={buttonGroupVariant}
-              special={buttonGroupSpecial}
-              size={bgSize}
-              layout={buttonGroupLayout}
-              count={buttonGroupCount}
-              buttons={buttonGroupButtons ?? [{ label: 'Label' }, { label: 'Label' }]}
-              disabled={buttonGroupDisabled}
-            />
-            {count !== undefined && (
-              <span className={styles['card-content__count']}>{count}</span>
+        <div className={styles['card-content__content-frame']}>
+          <div className={styles['card-content__body-wrap']}>
+            <h3 className={styles['card-content__heading']}>{heading}</h3>
+            {showBody && (
+              <p className={styles['card-content__body']}>{body}</p>
             )}
           </div>
-        )}
+          {showActions && (
+            <div className={styles['card-content__actions']}>
+              <ButtonGroup
+                buttonType={buttonGroupType}
+                variant={buttonGroupVariant}
+                special={buttonGroupSpecial}
+                size={bgSize}
+                layout={buttonGroupLayout}
+                count={buttonGroupCount}
+                buttons={buttonGroupButtons ?? [{ label: 'Label' }, { label: 'Label' }]}
+                disabled={buttonGroupDisabled}
+              />
+              {count !== undefined && (
+                <span className={styles['card-content__count']}>{count}</span>
+              )}
+            </div>
+          )}
+        </div>
         {showDismiss && (
           <button
             type="button"

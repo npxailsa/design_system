@@ -46,7 +46,7 @@
 /* ── Notification layout ──────────────────────────────────────────────────── */
 
 .card-content--notification {
-  align-items: center;
+  align-items: stretch;
   padding: var(--card-content-padding-default);
   gap: var(--card-content-gap-default);
 }
@@ -152,6 +152,7 @@
   justify-content: center;
   flex-shrink: 0;
   opacity: 0.5;
+  align-self: center;
 }
 
 /* ── Dismiss / close button ───────────────────────────────────────────────── */
@@ -244,13 +245,34 @@
   padding: var(--card-content-padding-lg);
 }
 
+/* ── Content frame (wraps body + actions so text hugs the ButtonGroup) ────── */
+
+.card-content__content-frame {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--card-content-gap-default);
+  align-items: stretch;
+  align-self: center;
+  min-width: 0;
+}
+
+.size-small .card-content__content-frame {
+  gap: var(--card-content-gap-sm);
+}
+
+.size-large .card-content__content-frame {
+  gap: var(--card-content-gap-lg);
+}
+
 /* ── Shared: body text block ──────────────────────────────────────────────── */
 
 .card-content__body-wrap {
   display: flex;
   flex-direction: column;
   gap: var(--global-spacing-sizing-4px);
-  width: 100%;
+  contain: inline-size;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 /* ── Heading ──────────────────────────────────────────────────────────────── */
