@@ -27,7 +27,7 @@
 /* ── Border toggle ────────────────────────────────────────────────────────── */
 
 .card-content--no-border {
-  border-color: transparent;
+  border-color: var(--card-content-border-color-no-shadow);
   box-shadow: none;
 }
 
@@ -268,15 +268,15 @@
   flex-direction: column;
   align-items: stretch;
   align-self: stretch;
-  gap: var(--global-spacing-sizing-12px);
+  gap: var(--card-content-content-gap-default);
 }
 
 .size-small .card-content__text {
-  gap: var(--global-spacing-sizing-8px);
+  gap: var(--card-content-content-gap-sm);
 }
 
 .size-large .card-content__text {
-  gap: var(--global-spacing-sizing-16px);
+  gap: var(--card-content-content-gap-lg);
 }
 
 /* ── Shared: body text block ──────────────────────────────────────────────── */

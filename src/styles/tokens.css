@@ -989,6 +989,7 @@
   --card-content-border-radius:         var(--global-spacing-radius-6px);
   --card-content-border-width:          0.5px;
   --card-content-border-color:          var(--global-color-neutral-gray-300);
+  --card-content-border-color-no-shadow: var(--global-color-neutral-gray-400);
   --card-content-shadow:                0px 5px 10px 0px rgba(39, 39, 39, 0.1);
   --card-content-overflow:              hidden;
 
@@ -999,9 +1000,15 @@
   --card-content-padding-sm:            var(--global-spacing-sizing-24px) var(--global-spacing-sizing-16px) var(--global-spacing-sizing-20px);
   --card-content-padding-default:       var(--global-spacing-sizing-24px) var(--global-spacing-sizing-24px) var(--global-spacing-sizing-32px);
   --card-content-padding-lg:            var(--global-spacing-sizing-24px) var(--global-spacing-sizing-36px) var(--global-spacing-sizing-32px);
+  /* card gap = icon badge → content block */
   --card-content-gap-sm:                var(--global-spacing-sizing-12px);
   --card-content-gap-default:           var(--global-spacing-sizing-12px);
   --card-content-gap-lg:                var(--global-spacing-sizing-20px);
+
+  /* content gap = body/heading block → button row (per original StatusCard design) */
+  --card-content-content-gap-sm:        var(--global-spacing-sizing-24px);
+  --card-content-content-gap-default:   var(--global-spacing-sizing-32px);
+  --card-content-content-gap-lg:        var(--global-spacing-sizing-40px);
 
   /* CardContent — circular icon badge */
   --card-content-icon-badge-size-sm:    var(--global-spacing-sizing-80px);
