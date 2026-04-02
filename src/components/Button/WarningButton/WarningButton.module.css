@@ -1,0 +1,210 @@
+/* ==========================================================================
+   WarningButton Component
+   --------------------------------------------------------------------------
+   Status-specific button for warning / cautionary actions.
+   Two visual variants:
+     solid — amber (#F4A403) filled background, black text & icon, dark-orange border
+     ghost — white background, orange border, dark-orange text; hover shifts bg to orange-light
+
+   Sizes: small (34px h), default (44px h), large (56px h).
+   All values use design tokens exclusively — no hard-coded numbers.
+
+   Figma ref: size=*, type=warning, special=solid / special=alt
+   ========================================================================== */
+
+/* ── Reset ────────────────────────────────────────────────────────────────── */
+.btn-warning,
+.btn-warning * {
+  box-sizing: border-box;
+}
+
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+.btn-warning {
+  background: transparent;
+  filter: none;
+  outline: none;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--btn-gap-default);
+
+  /* Size: default */
+  min-width: var(--btn-min-width);
+  min-height: var(--btn-min-height);
+  padding: var(--btn-padding-default);
+
+  border-radius: var(--btn-border-radius);
+  font-family: var(--btn-font-family);
+  font-size: var(--btn-font-size-default);
+  line-height: var(--btn-line-height-default);
+  font-weight: var(--btn-font-weight);
+  letter-spacing: var(--btn-letter-spacing);
+
+  white-space: nowrap;
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+
+  transition:
+    background-color var(--btn-transition-duration) var(--btn-transition-easing),
+    border-color var(--btn-transition-duration) var(--btn-transition-easing),
+    border-width var(--btn-transition-duration) var(--btn-transition-easing),
+    box-shadow var(--btn-transition-duration) var(--btn-transition-easing),
+    color var(--btn-transition-duration) var(--btn-transition-easing);
+}
+
+.btn-warning:hover,
+.btn-warning:focus,
+.btn-warning:focus-visible {
+  filter: none;
+}
+
+/* ── Size: small ──────────────────────────────────────────────────────────── */
+.btn-warning--small {
+  gap: var(--btn-gap-small);
+  padding: var(--btn-padding-small);
+  font-size: var(--btn-font-size-small);
+  line-height: var(--btn-line-height-small);
+}
+
+/* ── Size: large ──────────────────────────────────────────────────────────── */
+.btn-warning--large {
+  gap: var(--btn-gap-large);
+  padding: var(--btn-padding-large);
+  font-size: var(--btn-font-size-large);
+  line-height: var(--btn-line-height-large);
+}
+
+/* ── Solid variant ────────────────────────────────────────────────────────── */
+.btn-warning--solid {
+  background: var(--btn-warning-solid-bg);
+  color: var(--btn-warning-solid-color);
+  border: var(--btn-warning-solid-border-width) solid var(--btn-warning-solid-border-color);
+}
+
+.btn-warning--solid:hover:not(:disabled):not(.btn-warning--disabled) {
+  background: var(--btn-warning-solid-bg);
+  border-width: var(--btn-warning-solid-border-width-hover);
+  border-color: var(--btn-warning-solid-border-color);
+  box-shadow: var(--btn-warning-solid-shadow-hover);
+}
+
+.btn-warning--solid:active:not(:disabled):not(.btn-warning--disabled) {
+  background: var(--btn-warning-solid-bg);
+  border-width: var(--btn-warning-solid-border-width-hover);
+  border-color: var(--btn-warning-solid-border-color);
+  box-shadow: var(--btn-warning-solid-shadow-hover);
+}
+
+.btn-warning--solid:focus-visible:not(:disabled):not(.btn-warning--disabled) {
+  outline: none;
+  border-width: var(--btn-warning-solid-border-width-focus);
+  border-color: var(--btn-warning-solid-border-color);
+  box-shadow: none;
+}
+
+.btn-warning--solid.btn-warning--loading {
+  border-width: var(--btn-warning-solid-border-width-loading);
+  cursor: wait;
+  pointer-events: none;
+}
+
+/* ── Ghost variant ────────────────────────────────────────────────────────── */
+.btn-warning--ghost {
+  background: var(--btn-warning-ghost-bg);
+  color: var(--btn-warning-ghost-color);
+  border: var(--btn-warning-ghost-border-width) solid var(--btn-warning-ghost-border-color);
+}
+
+.btn-warning--ghost:hover:not(:disabled):not(.btn-warning--disabled) {
+  background: var(--btn-warning-ghost-bg-hover);
+  border-width: var(--btn-warning-ghost-border-width-hover);
+  border-color: var(--btn-warning-ghost-border-color);
+  box-shadow: var(--btn-warning-ghost-shadow-hover);
+}
+
+.btn-warning--ghost:active:not(:disabled):not(.btn-warning--disabled) {
+  background: var(--btn-warning-ghost-bg-hover);
+  border-width: var(--btn-warning-ghost-border-width-hover);
+  border-color: var(--btn-warning-ghost-border-color);
+  box-shadow: var(--btn-warning-ghost-shadow-hover);
+}
+
+.btn-warning--ghost:focus-visible:not(:disabled):not(.btn-warning--disabled) {
+  outline: none;
+  border-width: var(--btn-warning-ghost-border-width-focus);
+  border-color: var(--btn-warning-ghost-border-color);
+  box-shadow: none;
+}
+
+.btn-warning--ghost.btn-warning--loading {
+  border-width: var(--btn-warning-ghost-border-width-loading);
+  cursor: wait;
+  pointer-events: none;
+}
+
+/* ── Disabled (both variants) ─────────────────────────────────────────────── */
+.btn-warning--disabled,
+.btn-warning:disabled {
+  background: var(--btn-warning-bg-disabled) !important;
+  color: var(--btn-warning-color-disabled) !important;
+  border-color: var(--btn-warning-border-color-disabled) !important;
+  border-width: var(--btn-warning-border-width-disabled) !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Leading icon ─────────────────────────────────────────────────────────── */
+.btn-warning__icon-leading {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── Trailing icon ────────────────────────────────────────────────────────── */
+.btn-warning__icon-trailing {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── Label ────────────────────────────────────────────────────────────────── */
+.btn-warning__label {
+  display: inline-flex;
+  align-items: center;
+  line-height: inherit;
+}
+
+/* ── Spinner ──────────────────────────────────────────────────────────────── */
+.btn-warning__spinner {
+  display: inline-block;
+  width: var(--btn-spinner-size-default);
+  height: var(--btn-spinner-size-default);
+  border: var(--btn-spinner-border-width) solid currentColor;
+  border-top-color: transparent;
+  border-radius: var(--global-spacing-radius-full);
+  animation: btn-warning-spin var(--btn-spinner-duration) linear infinite;
+  flex-shrink: 0;
+  opacity: var(--btn-spinner-opacity);
+}
+
+.btn-warning--small .btn-warning__spinner {
+  width: var(--btn-spinner-size-small);
+  height: var(--btn-spinner-size-small);
+}
+
+.btn-warning--large .btn-warning__spinner {
+  width: var(--btn-spinner-size-large);
+  height: var(--btn-spinner-size-large);
+}
+
+@keyframes btn-warning-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

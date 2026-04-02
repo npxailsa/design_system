@@ -1738,6 +1738,46 @@
   --btn-error-border-width-disabled:      var(--global-spacing-stroke-0-5px);
 
   /* ==========================================================================
+     COMPONENT: WarningButton
+     --------------------------------------------------------------------------
+     Status-specific button for warning / cautionary actions.
+     Two visual variants:
+       solid — amber (#F4A403) filled background, black text & icon
+       ghost — white background, orange border, dark-orange text & icon
+               (hover shifts bg to orange-light #FEF4DA)
+
+     Sizes: small (34px h), default (44px h), large (56px h).
+     Figma ref: size=*, type=warning, special=solid / special=alt
+     ========================================================================== */
+
+  /* WarningButton — solid variant */
+  --btn-warning-solid-bg:                   var(--global-color-status-orange);
+  --btn-warning-solid-color:                var(--global-color-base-black);
+  --btn-warning-solid-border-color:         var(--global-color-status-dark-orange);
+  --btn-warning-solid-border-width:         var(--global-spacing-stroke-1px);
+  --btn-warning-solid-border-width-hover:   var(--global-spacing-stroke-1px);
+  --btn-warning-solid-shadow-hover:         var(--global-spacing-sizing-2px) var(--global-spacing-sizing-2px) 0px 0px var(--global-color-status-dark-orange);
+  --btn-warning-solid-border-width-focus:   var(--global-spacing-stroke-2px);
+  --btn-warning-solid-border-width-loading: var(--global-spacing-stroke-1px);
+
+  /* WarningButton — ghost/alt variant */
+  --btn-warning-ghost-bg:                   var(--global-color-base-white);
+  --btn-warning-ghost-bg-hover:             var(--global-color-status-orange-light);
+  --btn-warning-ghost-color:                var(--global-color-status-dark-orange);
+  --btn-warning-ghost-border-color:         var(--global-color-status-orange);
+  --btn-warning-ghost-border-width:         var(--global-spacing-stroke-1px);
+  --btn-warning-ghost-border-width-hover:   var(--global-spacing-stroke-1px);
+  --btn-warning-ghost-shadow-hover:         var(--global-spacing-sizing-2px) var(--global-spacing-sizing-2px) 0px 0px var(--global-color-status-dark-orange);
+  --btn-warning-ghost-border-width-focus:   var(--global-spacing-stroke-2px);
+  --btn-warning-ghost-border-width-loading: var(--global-spacing-stroke-1px);
+
+  /* WarningButton — disabled (shared between solid and ghost) */
+  --btn-warning-bg-disabled:                var(--global-color-neutral-gray-100);
+  --btn-warning-color-disabled:             var(--global-color-neutral-gray-400);
+  --btn-warning-border-color-disabled:      var(--global-color-neutral-gray-400);
+  --btn-warning-border-width-disabled:      var(--global-spacing-stroke-0-5px);
+
+  /* ==========================================================================
      COMPONENT: ButtonMenu (BuildingBlocks)
      --------------------------------------------------------------------------
      A stacked vertical list of menu items used as dropdown menus or contextual

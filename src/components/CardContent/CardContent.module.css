@@ -157,10 +157,30 @@
 .status-warning .card-content__status-icon-wrap { background: var(--card-content-warning-icon); }
 .status-warning .card-content__heading          { color: var(--card-content-warning-heading); }
 .status-warning .card-content__dismiss          { color: var(--card-content-warning-icon); }
+
+/* Solid / primary warning button — amber bg, black text, dark-orange border */
 .status-warning .card-content__primary-status-btn {
-  background: var(--card-content-warning-btn-bg) !important;
-  border-color: var(--card-content-warning-btn-border) !important;
-  color: var(--global-color-base-white) !important;
+  background: var(--btn-warning-solid-bg) !important;
+  border-color: var(--btn-warning-solid-border-color) !important;
+  border-width: var(--btn-warning-solid-border-width) !important;
+  color: var(--btn-warning-solid-color) !important;
+}
+.status-warning .card-content__primary-status-btn:hover {
+  border-width: var(--btn-warning-solid-border-width-hover) !important;
+  box-shadow: var(--btn-warning-solid-shadow-hover) !important;
+}
+
+/* Ghost / secondary warning button — white bg, orange border, dark-orange text */
+.status-warning .card-content__ghost-status-btn {
+  background: var(--btn-warning-ghost-bg) !important;
+  color: var(--btn-warning-ghost-color) !important;
+  border-color: var(--btn-warning-ghost-border-color) !important;
+  border-width: var(--btn-warning-ghost-border-width) !important;
+}
+.status-warning .card-content__ghost-status-btn:hover {
+  background: var(--btn-warning-ghost-bg-hover) !important;
+  border-width: var(--btn-warning-ghost-border-width-hover) !important;
+  box-shadow: var(--btn-warning-ghost-shadow-hover) !important;
 }
 
 /* success */
