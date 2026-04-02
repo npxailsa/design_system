@@ -1689,6 +1689,54 @@
   --btn-icon-only-size-extra-small: var(--global-spacing-sizing-24px);
 
   /* ==========================================================================
+     COMPONENT: ErrorButton (StatusButton)
+     --------------------------------------------------------------------------
+     Status-specific button for error/destructive actions.
+     Two visual styles:
+       solid — filled red background, white text/icon
+       ghost — white background, red border, red text/icon
+
+     Visual spec (from Figma — type=error):
+       Solid default : bg status-red, 0.5px border status-red, white text
+       Solid hover   : bg status-red, 2px border status-red, shadow 2×2 black
+       Solid focused : bg status-red, 2px border status-red
+       Solid loading : bg status-red, 0.5px border, spinner white
+       Ghost default : bg white, 1px border status-red, red text
+       Ghost hover   : bg white, 2px border status-red, shadow 2×2 black
+       Ghost focused : bg white, 2px border status-red
+       Ghost loading : bg white, 1px border status-red, spinner red
+       Disabled (both): bg gray-100, 0.5px border gray-400, gray text
+
+     Sizes: small (34px), default (44px), large (56px).
+     ========================================================================== */
+
+  /* ErrorButton — solid variant */
+  --btn-error-solid-bg:                   var(--global-color-status-red);
+  --btn-error-solid-color:                var(--global-color-base-white);
+  --btn-error-solid-border-color:         var(--global-color-status-red);
+  --btn-error-solid-border-width:         var(--global-spacing-stroke-0-5px);
+  --btn-error-solid-border-width-hover:   var(--global-spacing-stroke-2px);
+  --btn-error-solid-shadow-hover:         var(--global-spacing-sizing-2px) var(--global-spacing-sizing-2px) 0px 0px var(--global-color-base-black);
+  --btn-error-solid-border-width-focus:   var(--global-spacing-stroke-2px);
+  --btn-error-solid-border-width-loading: var(--global-spacing-stroke-0-5px);
+
+  /* ErrorButton — ghost/alt variant */
+  --btn-error-ghost-bg:                   var(--global-color-base-white);
+  --btn-error-ghost-color:                var(--global-color-status-red);
+  --btn-error-ghost-border-color:         var(--global-color-status-red);
+  --btn-error-ghost-border-width:         var(--global-spacing-stroke-1px);
+  --btn-error-ghost-border-width-hover:   var(--global-spacing-stroke-2px);
+  --btn-error-ghost-shadow-hover:         var(--global-spacing-sizing-2px) var(--global-spacing-sizing-2px) 0px 0px var(--global-color-base-black);
+  --btn-error-ghost-border-width-focus:   var(--global-spacing-stroke-2px);
+  --btn-error-ghost-border-width-loading: var(--global-spacing-stroke-1px);
+
+  /* ErrorButton — disabled (shared between solid and ghost) */
+  --btn-error-bg-disabled:                var(--global-color-neutral-gray-100);
+  --btn-error-color-disabled:             var(--global-color-neutral-gray-400);
+  --btn-error-border-color-disabled:      var(--global-color-neutral-gray-400);
+  --btn-error-border-width-disabled:      var(--global-spacing-stroke-0-5px);
+
+  /* ==========================================================================
      COMPONENT: ButtonMenu (BuildingBlocks)
      --------------------------------------------------------------------------
      A stacked vertical list of menu items used as dropdown menus or contextual

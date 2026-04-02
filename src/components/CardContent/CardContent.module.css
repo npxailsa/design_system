@@ -129,7 +129,24 @@
 .status-error .card-content__primary-status-btn {
   background: var(--card-content-error-btn-bg) !important;
   border-color: var(--card-content-error-btn-border) !important;
+  border-width: var(--btn-error-solid-border-width) !important;
   color: var(--global-color-base-white) !important;
+}
+.status-error .card-content__primary-status-btn:hover {
+  border-width: var(--btn-error-solid-border-width-hover) !important;
+  box-shadow: var(--btn-error-solid-shadow-hover) !important;
+}
+
+/* Ghost / secondary error button */
+.status-error .card-content__ghost-status-btn {
+  background: var(--btn-error-ghost-bg) !important;
+  color: var(--btn-error-ghost-color) !important;
+  border-color: var(--btn-error-ghost-border-color) !important;
+  border-width: var(--btn-error-ghost-border-width) !important;
+}
+.status-error .card-content__ghost-status-btn:hover {
+  border-width: var(--btn-error-ghost-border-width-hover) !important;
+  box-shadow: var(--btn-error-ghost-shadow-hover) !important;
 }
 
 /* warning */

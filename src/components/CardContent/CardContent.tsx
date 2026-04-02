@@ -268,7 +268,7 @@ export const CardContent: React.FC<CardContentProps> = ({
   const dismissSize = DISMISS_SIZE_MAP[size];
   const bgSize = BUTTON_GROUP_SIZE_MAP[size];
 
-  /* ── Default buttons: status-coloured primary + ghost ── */
+  /* ── Default buttons: status-coloured primary + ghost secondary ── */
   const defaultButtons: ButtonGroupItemConfig[] = [
     {
       label: STATUS_BUTTON_LABELS[status],
@@ -278,6 +278,7 @@ export const CardContent: React.FC<CardContentProps> = ({
     {
       label: 'Label',
       ariaLabel: 'Secondary action',
+      className: styles['card-content__ghost-status-btn'],
     },
   ];
 

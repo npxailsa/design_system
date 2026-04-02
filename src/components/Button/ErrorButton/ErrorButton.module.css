@@ -1,0 +1,203 @@
+/* ==========================================================================
+   ErrorButton Component
+   --------------------------------------------------------------------------
+   Status-specific button for error / destructive actions.
+   Two visual variants:
+     solid — filled red background, white text & icon
+     ghost — white background, red border & text
+
+   Sizes: small (34px h), default (44px h), large (56px h).
+   All values use design tokens exclusively — no hard-coded numbers.
+
+   Figma ref: size=*, type=error, special=default (solid) / special=alt (ghost)
+   ========================================================================== */
+
+/* ── Reset ────────────────────────────────────────────────────────────────── */
+.btn-error,
+.btn-error * {
+  box-sizing: border-box;
+}
+
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+.btn-error {
+  /* Override any global button styles */
+  background: transparent;
+  filter: none;
+  outline: none;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--btn-gap-default);
+
+  /* Size: default */
+  min-width: var(--btn-min-width);
+  min-height: var(--btn-min-height);
+  padding: var(--btn-padding-default);
+
+  border-radius: var(--btn-border-radius);
+  font-family: var(--btn-font-family);
+  font-size: var(--btn-font-size-default);
+  line-height: var(--btn-line-height-default);
+  font-weight: var(--btn-font-weight);
+  letter-spacing: var(--btn-letter-spacing);
+
+  white-space: nowrap;
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+
+  transition:
+    background-color var(--btn-transition-duration) var(--btn-transition-easing),
+    border-color var(--btn-transition-duration) var(--btn-transition-easing),
+    border-width var(--btn-transition-duration) var(--btn-transition-easing),
+    box-shadow var(--btn-transition-duration) var(--btn-transition-easing),
+    color var(--btn-transition-duration) var(--btn-transition-easing);
+}
+
+.btn-error:hover,
+.btn-error:focus,
+.btn-error:focus-visible {
+  filter: none;
+}
+
+/* ── Size: small ──────────────────────────────────────────────────────────── */
+.btn-error--small {
+  gap: var(--btn-gap-small);
+  padding: var(--btn-padding-small);
+  font-size: var(--btn-font-size-small);
+  line-height: var(--btn-line-height-small);
+}
+
+/* ── Size: large ──────────────────────────────────────────────────────────── */
+.btn-error--large {
+  gap: var(--btn-gap-large);
+  padding: var(--btn-padding-large);
+  font-size: var(--btn-font-size-large);
+  line-height: var(--btn-line-height-large);
+}
+
+/* ── Solid variant ────────────────────────────────────────────────────────── */
+.btn-error--solid {
+  background: var(--btn-error-solid-bg);
+  color: var(--btn-error-solid-color);
+  border: var(--btn-error-solid-border-width) solid var(--btn-error-solid-border-color);
+}
+
+.btn-error--solid:hover:not(:disabled):not(.btn-error--disabled) {
+  background: var(--btn-error-solid-bg);
+  border-width: var(--btn-error-solid-border-width-hover);
+  border-color: var(--btn-error-solid-border-color);
+  box-shadow: var(--btn-error-solid-shadow-hover);
+}
+
+.btn-error--solid:active:not(:disabled):not(.btn-error--disabled) {
+  background: var(--btn-error-solid-bg);
+  border-width: var(--btn-error-solid-border-width-hover);
+  border-color: var(--btn-error-solid-border-color);
+  box-shadow: var(--btn-error-solid-shadow-hover);
+}
+
+.btn-error--solid:focus-visible:not(:disabled):not(.btn-error--disabled) {
+  outline: none;
+  border-width: var(--btn-error-solid-border-width-focus);
+  border-color: var(--btn-error-solid-border-color);
+  box-shadow: none;
+}
+
+.btn-error--solid.btn-error--loading {
+  border-width: var(--btn-error-solid-border-width-loading);
+  cursor: wait;
+  pointer-events: none;
+}
+
+/* ── Ghost variant ────────────────────────────────────────────────────────── */
+.btn-error--ghost {
+  background: var(--btn-error-ghost-bg);
+  color: var(--btn-error-ghost-color);
+  border: var(--btn-error-ghost-border-width) solid var(--btn-error-ghost-border-color);
+}
+
+.btn-error--ghost:hover:not(:disabled):not(.btn-error--disabled) {
+  background: var(--btn-error-ghost-bg);
+  border-width: var(--btn-error-ghost-border-width-hover);
+  border-color: var(--btn-error-ghost-border-color);
+  box-shadow: var(--btn-error-ghost-shadow-hover);
+}
+
+.btn-error--ghost:active:not(:disabled):not(.btn-error--disabled) {
+  background: var(--btn-error-ghost-bg);
+  border-width: var(--btn-error-ghost-border-width-hover);
+  border-color: var(--btn-error-ghost-border-color);
+  box-shadow: var(--btn-error-ghost-shadow-hover);
+}
+
+.btn-error--ghost:focus-visible:not(:disabled):not(.btn-error--disabled) {
+  outline: none;
+  border-width: var(--btn-error-ghost-border-width-focus);
+  border-color: var(--btn-error-ghost-border-color);
+  box-shadow: none;
+}
+
+.btn-error--ghost.btn-error--loading {
+  border-width: var(--btn-error-ghost-border-width-loading);
+  cursor: wait;
+  pointer-events: none;
+}
+
+/* ── Disabled (both variants) ─────────────────────────────────────────────── */
+.btn-error--disabled,
+.btn-error:disabled {
+  background: var(--btn-error-bg-disabled) !important;
+  color: var(--btn-error-color-disabled) !important;
+  border-color: var(--btn-error-border-color-disabled) !important;
+  border-width: var(--btn-error-border-width-disabled) !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Leading icon ─────────────────────────────────────────────────────────── */
+.btn-error__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── Label ────────────────────────────────────────────────────────────────── */
+.btn-error__label {
+  display: inline-flex;
+  align-items: center;
+  line-height: inherit;
+}
+
+/* ── Spinner ──────────────────────────────────────────────────────────────── */
+.btn-error__spinner {
+  display: inline-block;
+  width: var(--btn-spinner-size-default);
+  height: var(--btn-spinner-size-default);
+  border: var(--btn-spinner-border-width) solid currentColor;
+  border-top-color: transparent;
+  border-radius: var(--global-spacing-radius-full);
+  animation: btn-error-spin var(--btn-spinner-duration) linear infinite;
+  flex-shrink: 0;
+  opacity: var(--btn-spinner-opacity);
+}
+
+.btn-error--small .btn-error__spinner {
+  width: var(--btn-spinner-size-small);
+  height: var(--btn-spinner-size-small);
+}
+
+.btn-error--large .btn-error__spinner {
+  width: var(--btn-spinner-size-large);
+  height: var(--btn-spinner-size-large);
+}
+
+@keyframes btn-error-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
