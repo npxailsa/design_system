@@ -1041,12 +1041,6 @@
   --card-content-dismiss-size-default:  24px;
   --card-content-dismiss-size-lg:       28px;
 
-  /* CardContent — count badge */
-  --card-content-count-bg:              var(--global-color-neutral-gray-100);
-  --card-content-count-color:           var(--global-color-neutral-gray-600);
-  --card-content-count-border-radius:   var(--global-spacing-radius-full);
-  --card-content-count-font:            var(--brand-font-primary);
-
   /* CardContent — image area */
   --card-content-image-height-sm:       140px;
   --card-content-image-height-default:  200px;

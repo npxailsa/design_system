@@ -359,21 +359,6 @@
 
 /* ── Count badge ──────────────────────────────────────────────────────────── */
 
-.card-content__count {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--card-content-count-bg);
-  color: var(--card-content-count-color);
-  border-radius: var(--card-content-count-border-radius);
-  font-family: var(--card-content-count-font);
-  font-weight: var(--global-type-weight-default);
-  font-size: var(--global-type-size-primary-label-xs);
-  line-height: 1;
-  padding: var(--global-spacing-sizing-2px) var(--global-spacing-sizing-6px);
-  min-width: 20px;
-}
-
 /* ══════════════════════════════════════════════════════════════════════════
    IMAGE VARIANT — Media card
    ══════════════════════════════════════════════════════════════════════════ */

@@ -36,8 +36,6 @@ export interface CardContentProps {
   heading?: string;
   /** Card body / description text */
   body?: string;
-  /** Badge count shown next to the ButtonGroup. Omit to hide. */
-  count?: number;
   /** Image URL for the `image` variant. Falls back to grey placeholder. */
   imageSrc?: string;
   /** Alt text for the image */
@@ -241,7 +239,6 @@ export const CardContent: React.FC<CardContentProps> = ({
   size = 'default',
   heading = 'This is a heading',
   body = 'This is body text that can span multiple lines within the card.',
-  count,
   imageSrc,
   imageAlt = '',
   rating = 4,
@@ -334,9 +331,6 @@ export const CardContent: React.FC<CardContentProps> = ({
                 buttons={buttonGroupButtons ?? defaultButtons}
                 disabled={buttonGroupDisabled}
               />
-              {count !== undefined && (
-                <span className={styles['card-content__count']}>{count}</span>
-              )}
             </div>
           )}
         </div>

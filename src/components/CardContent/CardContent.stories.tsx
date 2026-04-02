@@ -25,7 +25,6 @@ const meta: Meta<typeof CardContent> = {
     size: { control: 'select', options: ALL_SIZES },
     heading: { control: 'text' },
     body: { control: 'text' },
-    count: { control: 'number' },
     imageSrc: { control: 'text' },
     imageAlt: { control: 'text' },
     rating: { control: { type: 'number', min: 0, max: 5, step: 0.5 } },
@@ -50,7 +49,7 @@ const meta: Meta<typeof CardContent> = {
     size: 'default',
     heading: 'This is a heading',
     body: 'This is body text that can span multiple lines within the card.',
-    count: 4,
+    
     rating: 4,
     ratingCount: 128,
     border: true,

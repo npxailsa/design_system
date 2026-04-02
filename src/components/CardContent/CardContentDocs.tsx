@@ -220,7 +220,6 @@ export const CardContentDocs: React.FC = () => (
   size="default"
   heading="This is an error heading"
   body="Body text that can span multiple lines."
-  count={4}
   border={true}
   showIcon={true}
   showBody={true}
