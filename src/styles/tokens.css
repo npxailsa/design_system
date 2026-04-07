@@ -1840,6 +1840,7 @@
   --btn-info-solid-bg:                   var(--global-color-status-info-blue);
   --btn-info-solid-color:                var(--global-color-base-white);
   --btn-info-solid-border-color:         var(--global-color-status-info-blue);
+  --btn-info-solid-border-color-hover:   var(--global-color-base-white);
   --btn-info-solid-border-width:         var(--global-spacing-stroke-1px);
   --btn-info-solid-border-width-hover:   var(--global-spacing-stroke-1px);
   --btn-info-solid-shadow-hover:         var(--global-spacing-sizing-2px) var(--global-spacing-sizing-2px) 0px 0px var(--global-color-status-info-blue);

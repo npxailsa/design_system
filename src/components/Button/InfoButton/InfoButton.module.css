@@ -89,7 +89,7 @@
   background: var(--btn-info-solid-bg);
   color: var(--btn-info-solid-color);
   border-width: var(--btn-info-solid-border-width-hover);
-  border-color: var(--btn-info-solid-border-color);
+  border-color: var(--btn-info-solid-border-color-hover);
   box-shadow: var(--btn-info-solid-shadow-hover);
 }
 
@@ -97,7 +97,7 @@
   background: var(--btn-info-solid-bg);
   color: var(--btn-info-solid-color);
   border-width: var(--btn-info-solid-border-width-hover);
-  border-color: var(--btn-info-solid-border-color);
+  border-color: var(--btn-info-solid-border-color-hover);
   box-shadow: var(--btn-info-solid-shadow-hover);
 }
 
