@@ -343,32 +343,6 @@
   border-color: var(--btn-ghost-border-color-hover) !important;
 }
 
-/* ── Non-status variants: SECONDARY CTA button (rightmost) ─────────────────── */
-/* Dark blue-gray (#304047) fill, white text — uses --btn-secondary-* tokens.  */
-
-.status-default .card-content__secondary-cta-btn,
-.status-light-gray .card-content__secondary-cta-btn,
-.status-navy .card-content__secondary-cta-btn,
-.status-purple .card-content__secondary-cta-btn,
-.status-white .card-content__secondary-cta-btn {
-  background: var(--btn-secondary-bg) !important;
-  color: var(--btn-secondary-color) !important;
-  border-color: var(--btn-secondary-border-color) !important;
-  border-width: var(--btn-secondary-border-width) !important;
-  box-shadow: none !important;
-}
-
-.status-default .card-content__secondary-cta-btn:hover,
-.status-light-gray .card-content__secondary-cta-btn:hover,
-.status-navy .card-content__secondary-cta-btn:hover,
-.status-purple .card-content__secondary-cta-btn:hover,
-.status-white .card-content__secondary-cta-btn:hover {
-  background: var(--btn-secondary-bg-hover) !important;
-  color: var(--btn-secondary-color-hover) !important;
-  border-width: var(--btn-secondary-border-width-hover) !important;
-  box-shadow: var(--btn-secondary-shadow-hover) !important;
-}
-
 /* ── Notification text block ──────────────────────────────────────────────── */
 
 .card-content__text {

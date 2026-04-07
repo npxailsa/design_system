@@ -13,18 +13,17 @@ export const TertiaryButtonDocs: React.FC = () => {
     <DocsTemplate>
       <DocsTemplate.Header
         title="Tertiary Button"
-        subtitle="Yellow/amber button for tertiary-level and supporting actions across the interface"
+        subtitle="Sky-blue button for tertiary-level and supporting actions across the interface"
       />
 
       <DocsTemplate.BodyText>
-        The <strong>Tertiary Button</strong> uses the yellow/amber colour family to create
-        a visually warm, attention-drawing button for third-level actions. It supports two
-        label variants — <em>solid</em> (yellow-200 background) and <em>alt</em>
-        (seafoam-25 / light-green background) — plus an <em>icon-only</em> mode that uses
-        the brighter yellow fill. Four sizes are available across all configurations, with
-        built-in loading and disabled states. A dark-seafoam drop shadow is applied on
-        hover and active. All styling is driven by the <code>--btn-tertiary-*</code> token
-        family with no hardcoded values.
+        The <strong>Tertiary Button</strong> uses the sky-blue colour family to create a
+        crisp, light tertiary button for third-level actions. It supports two label variants —{' '}
+        <em>solid</em> (sky-blue-50 background with a blue-400 drop shadow at rest) and{' '}
+        <em>alt</em> (white background, shadow appears only on hover) — plus an{' '}
+        <em>icon-only</em> mode that mirrors the solid default. Four sizes are available
+        across all configurations, with built-in loading and disabled states. All styling is
+        driven by the <code>--btn-tertiary-*</code> token family with no hardcoded values.
       </DocsTemplate.BodyText>
 
       {/* ── Component Anatomy ── */}
@@ -71,26 +70,26 @@ export const TertiaryButtonDocs: React.FC = () => {
             {
               id: 1,
               name: 'Container',
-              token: '--btn-border-radius (--global-spacing-radius-4px)\n--btn-tertiary-bg (--global-color-primary-yellow-200 / #FDEEC7)\n--btn-tertiary-border-color (--global-color-primary-yellow-dark / #E8A317)\n--btn-tertiary-border-width (--global-spacing-stroke-1px)\n--btn-padding-{size}',
-              description: 'Outer button shell. Corner radius: 4px. Solid: yellow-200 bg (#FDEEC7), 1px border. Alt: seafoam-25 bg. Icon-only: yellow (#F9C846) bg. Hover: border thickens to 2px + dark-seafoam drop shadow.',
+              token: '--btn-border-radius (--global-spacing-radius-6px)\n--btn-tertiary-bg (--brand-sky-blue-50 / #CCF0FB)\n--btn-tertiary-border-color (--brand-sky-blue / #00B2EB)\n--btn-tertiary-border-width (--global-spacing-stroke-1px)\n--btn-tertiary-shadow (2px 2px 0px 0px --global-color-primary-blue-blue-400)\n--btn-padding-{size}',
+              description: 'Outer button shell. Corner radius: 6px. Solid: sky-blue-50 bg (#CCF0FB), 1px sky-blue border, blue-400 shadow at default. Alt: white bg, no shadow at default. Hover: solid widens border to 2px; alt adds shadow + bg tints to #F4FCFF.',
             },
             {
               id: 2,
               name: 'Leading Icon',
-              token: '--btn-icon-size-{size} (14px / 16px / 18px)\n--btn-tertiary-color (--global-color-base-black)',
-              description: 'Optional icon preceding the label. Dark charcoal fill. Controlled by showLeadingIcon + leadingIcon props.',
+              token: '--btn-icon-size-{size} (14px / 16px / 18px)\n--btn-tertiary-color (--brand-sky-blue-dark / #026281)',
+              description: 'Optional icon preceding the label. Dark sky-blue fill (#026281). On alt hover, inherits the black text colour. Controlled by showLeadingIcon + leadingIcon props.',
             },
             {
               id: 3,
               name: 'Trailing Icon',
-              token: '--btn-icon-size-{size} (14px / 16px / 18px)\n--btn-tertiary-color (--global-color-base-black)',
-              description: 'Optional icon after the label. Dark charcoal fill. Controlled by showTrailingIcon + trailingIcon props.',
+              token: '--btn-icon-size-{size} (14px / 16px / 18px)\n--btn-tertiary-color (--brand-sky-blue-dark / #026281)',
+              description: 'Optional icon after the label. Dark sky-blue fill (#026281). On alt hover, inherits the black text colour. Controlled by showTrailingIcon + trailingIcon props.',
             },
             {
               id: 4,
               name: 'Label',
-              token: '--btn-font-family (--brand-font-primary)\n--btn-font-size-{size}\n--btn-font-weight (--global-type-weight-light)\n--btn-tertiary-color (--global-color-base-black)',
-              description: 'Button text. Uses F37 Ginger Pro Light. Colour: black (#1C1C1C) across all interactive states.',
+              token: '--btn-font-family (--brand-font-primary)\n--btn-font-size-{size}\n--btn-font-weight (--global-type-weight-light)\n--btn-tertiary-color (--brand-sky-blue-dark / #026281)\n--btn-tertiary-alt-color-hover (--global-color-base-black / #1C1C1C)',
+              description: 'Button text. Uses F37 Ginger Pro Light. Colour: dark sky-blue (#026281). On alt hover, changes to black (#1C1C1C) via --btn-tertiary-alt-color-hover.',
             },
           ]}
         />
@@ -106,8 +105,9 @@ export const TertiaryButtonDocs: React.FC = () => {
 
         <DocsTemplate.Subsection title="Solid">
           <DocsTemplate.BodyText>
-            Yellow-200 (#FDEEC7) background with dark-yellow border (#E8A317). Shifts to
-            yellow-50 (#FEFAED) on hover and pressed. The default variant.
+            Sky-blue-50 (#CCF0FB) background with a sky-blue border (#00B2EB) and a blue-400
+            drop shadow (2×2px) at the default state. On hover, only the border widens to 2px —
+            the background and shadow remain unchanged. The default variant.
           </DocsTemplate.BodyText>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px) 0' }}>
             <TertiaryButton variant="solid" label="Label" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} />
@@ -119,7 +119,9 @@ export const TertiaryButtonDocs: React.FC = () => {
 
         <DocsTemplate.Subsection title="Alt">
           <DocsTemplate.BodyText>
-            Seafoam-25 (#F9FCFA) background with dark-yellow border. Shifts to yellow-50 (#FEFAED) on hover and pressed.
+            White (#FFFFFF) background with a sky-blue border (#00B2EB), no shadow at rest.
+            On hover, the background shifts to a very light sky-blue (#F4FCFF), a blue-400
+            drop shadow appears, and the text turns black (#1C1C1C). Border stays 1px.
           </DocsTemplate.BodyText>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px) 0' }}>
             <TertiaryButton variant="alt" label="Label" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} />
@@ -131,9 +133,9 @@ export const TertiaryButtonDocs: React.FC = () => {
 
         <DocsTemplate.Subsection title="Icon Only">
           <DocsTemplate.BodyText>
-            Brighter yellow (#F9C846) background — the full-strength yellow signal that this is
-            an action, with the same dark-yellow border and dark-seafoam hover shadow. Shifts to
-            yellow-50 (#FEFAED) on hover and pressed.
+            Sky-blue-50 (#CCF0FB) background — identical to the solid default, including the
+            blue-400 drop shadow. The icon-only variant does not change visually on hover;
+            it retains its default appearance across all interactive states.
           </DocsTemplate.BodyText>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px) 0', alignItems: 'center' }}>
             <TertiaryButton iconOnly leadingIcon={PersonIcon} size="extra-small" ariaLabel="User" />
@@ -205,7 +207,8 @@ export const TertiaryButtonDocs: React.FC = () => {
       <DocsTemplate.Section title="States">
         <DocsTemplate.Subsection title="Default">
           <DocsTemplate.BodyText>
-            Resting state. Solid: yellow-200 (#FDEEC7), 1px dark-yellow border. Alt: seafoam-25 (#F9FCFA).
+            Resting state. Solid: sky-blue-50 (#CCF0FB) background, 1px sky-blue border,
+            blue-400 drop shadow. Alt: white (#FFFFFF) background, 1px sky-blue border, no shadow.
           </DocsTemplate.BodyText>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-12px) 0' }}>
             <TertiaryButton label="Solid" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} />
@@ -230,7 +233,8 @@ export const TertiaryButtonDocs: React.FC = () => {
         <DocsTemplate.Subsection title="Disabled">
           <DocsTemplate.BodyText>
             Disabled state uses explicit gray colours — no opacity reduction. Background:
-            gray-50 (#F9FAFB), border: gray-200 (#E5E7EB), text: gray-300 (#D2D5DA).
+            gray-100 (#F3F4F6), border: 2px solid gray-400 (#9CA3AF), text: gray-400 (#9CA3AF).
+            All three variants (solid, alt, icon-only) share the same disabled treatment.
           </DocsTemplate.BodyText>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-12px) 0' }}>
             <TertiaryButton label="Label" disabled />
@@ -262,20 +266,21 @@ export const TertiaryButtonDocs: React.FC = () => {
 
       <DocsTemplate.TokenTable
         title="Design Tokens — Tertiary Colour Tokens"
-        description="Yellow/amber colour tokens specific to the Tertiary Button:"
+        description="Sky-blue colour tokens specific to the Tertiary Button:"
         tokens={[
-          { name: '--btn-tertiary-bg', description: 'Solid background — --global-color-primary-yellow-200 (#FDEEC7)' },
-          { name: '--btn-tertiary-bg-hover', description: 'Solid hover/pressed background — --global-color-primary-yellow-50 (#FEFAED)' },
-          { name: '--btn-tertiary-alt-bg', description: 'Alt background — --global-color-primary-seafoam-25 (#F9FCFA)' },
-          { name: '--btn-tertiary-alt-bg-hover', description: 'Alt hover/pressed background — --global-color-primary-yellow-50 (#FEFAED)' },
-          { name: '--btn-tertiary-icon-only-bg', description: 'Icon-only background — --global-color-primary-yellow (#F9C846)' },
-          { name: '--btn-tertiary-icon-only-bg-hover', description: 'Icon-only hover/pressed background — --global-color-primary-yellow-50 (#FEFAED)' },
-          { name: '--btn-tertiary-color', description: 'Text / icon colour — --global-color-base-black (#1C1C1C)' },
-          { name: '--btn-tertiary-border-color', description: 'Border colour — --global-color-primary-yellow-dark (#E8A317)' },
-          { name: '--btn-tertiary-shadow-hover', description: 'Hover shadow — 2px 2px 0 0 --global-color-primary-seafoam-extra-dark (#384C40)' },
-          { name: '--btn-tertiary-bg-disabled', description: 'Disabled bg — --global-color-neutral-gray-50 (#F9FAFB)' },
-          { name: '--btn-tertiary-color-disabled', description: 'Disabled text — --global-color-neutral-gray-300 (#D2D5DA)' },
-          { name: '--btn-tertiary-border-color-disabled', description: 'Disabled border — --global-color-neutral-gray-200 (#E5E7EB)' },
+          { name: '--btn-tertiary-bg', description: 'Solid background (default + hover) — --brand-sky-blue-50 (#CCF0FB)' },
+          { name: '--btn-tertiary-color', description: 'Text / icon colour — --brand-sky-blue-dark (#026281)' },
+          { name: '--btn-tertiary-border-color', description: 'Border colour (all states) — --brand-sky-blue (#00B2EB)' },
+          { name: '--btn-tertiary-shadow', description: 'Drop shadow at default state (solid + icon-only) — 2px 2px 0px 0px --global-color-primary-blue-blue-400 (#6171DF)' },
+          { name: '--btn-tertiary-shadow-hover', description: 'Drop shadow on hover (alt variant) — 2px 2px 0px 0px --global-color-primary-blue-blue-400 (#6171DF)' },
+          { name: '--btn-tertiary-alt-bg', description: 'Alt default background — --global-color-base-white (#FFFFFF)' },
+          { name: '--btn-tertiary-alt-bg-hover', description: 'Alt hover/active background — --global-color-primary-sky-blue-50 (#F4FCFF)' },
+          { name: '--btn-tertiary-alt-color-hover', description: 'Alt hover/active text colour — --global-color-base-black (#1C1C1C)' },
+          { name: '--btn-tertiary-icon-only-bg', description: 'Icon-only background — --brand-sky-blue-50 (#CCF0FB)' },
+          { name: '--btn-tertiary-bg-disabled', description: 'Disabled background (all variants) — --global-color-neutral-gray-100 (#F3F4F6)' },
+          { name: '--btn-tertiary-color-disabled', description: 'Disabled text/icon — --global-color-neutral-gray-400 (#9CA3AF)' },
+          { name: '--btn-tertiary-border-color-disabled', description: 'Disabled border — --global-color-neutral-gray-400 (#9CA3AF)' },
+          { name: '--btn-tertiary-border-width-disabled', description: 'Disabled border width (all variants) — --global-spacing-stroke-2px (2px)' },
         ]}
       />
 
@@ -326,9 +331,10 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
           The icon-only variant uses the brighter yellow fill to stand out without needing
           a label. Always supply an <code>ariaLabel</code> for accessibility.
         </DocsTemplate.PrincipleCard>
-        <DocsTemplate.PrincipleCard number={3} title="Yellow draws attention — use sparingly">
-          The amber/yellow colour is visually warm and attention-drawing. Reserve it for
-          genuinely tertiary actions and avoid saturating a page with too many tertiary buttons.
+        <DocsTemplate.PrincipleCard number={3} title="Sky-blue signals supporting actions">
+          The sky-blue palette is lighter than the primary blue, signalling a supporting
+          role. Reserve it for genuinely tertiary actions and avoid saturating a page with
+          too many tertiary buttons alongside the primary hierarchy.
         </DocsTemplate.PrincipleCard>
       </DocsTemplate.Principles>
 

@@ -265,42 +265,20 @@ export const CardContent: React.FC<CardContentProps> = ({
   const dismissSize = DISMISS_SIZE_MAP[size];
   const bgSize = BUTTON_GROUP_SIZE_MAP[size];
 
-  /* ── Button layout depends on status type ── */
-  // Status variants (error/warning/success/info): 2 buttons — primary-status | ghost-status
-  // Non-status variants (default/light-gray/navy/purple/white): 3 buttons —
-  //   brand-blue primary | ghost | secondary (dark blue-gray)
-  const isStatusVariant = (['error', 'warning', 'success', 'info'] as CardContentStatus[]).includes(status);
-
-  const defaultButtons: ButtonGroupItemConfig[] = isStatusVariant
-    ? [
-        {
-          label: STATUS_BUTTON_LABELS[status],
-          ariaLabel: STATUS_BUTTON_LABELS[status],
-          className: styles['card-content__primary-status-btn'],
-        },
-        {
-          label: 'Label',
-          ariaLabel: 'Secondary action',
-          className: styles['card-content__ghost-status-btn'],
-        },
-      ]
-    : [
-        {
-          label: STATUS_BUTTON_LABELS[status],
-          ariaLabel: STATUS_BUTTON_LABELS[status],
-          className: styles['card-content__primary-status-btn'],
-        },
-        {
-          label: 'Label',
-          ariaLabel: 'Ghost action',
-          className: styles['card-content__ghost-status-btn'],
-        },
-        {
-          label: 'Label',
-          ariaLabel: 'Secondary action',
-          className: styles['card-content__secondary-cta-btn'],
-        },
-      ];
+  /* ── Button layout: 2 buttons for all variants ── */
+  // All variants: primary-status btn (left) | ghost-status btn (right)
+  const defaultButtons: ButtonGroupItemConfig[] = [
+    {
+      label: STATUS_BUTTON_LABELS[status],
+      ariaLabel: STATUS_BUTTON_LABELS[status],
+      className: styles['card-content__primary-status-btn'],
+    },
+    {
+      label: 'Label',
+      ariaLabel: 'Secondary action',
+      className: styles['card-content__ghost-status-btn'],
+    },
+  ];
 
   /* ── Notification variant ── */
   if (variant === 'notification') {

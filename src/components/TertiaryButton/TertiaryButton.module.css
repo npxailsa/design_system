@@ -1,20 +1,23 @@
 /* ==========================================================================
    Tertiary Button Component
    --------------------------------------------------------------------------
-   Yellow/amber colour scheme for tertiary-level actions. Uses design tokens
+   Sky-blue colour scheme for tertiary-level actions. Uses design tokens
    exclusively — no hardcoded values.
 
-   Variants: solid (yellow-200 bg), alt (seafoam-25 bg), icon-only (yellow bg)
+   Variants: solid (sky-blue-50 bg + shadow at default), alt (white bg, shadow on hover),
+             icon-only (sky-blue-50 bg + shadow at default, no hover change)
    Sizes: extra-small, small, default, large
    States: default, hover, active, focus-visible, disabled, loading
 
    Key specs (from Figma):
-     - border-radius: 4px (--btn-border-radius)
-     - base border: 1px solid yellow-dark (#E8A317)
-     - hover border: 2px, shadow: 2×2 dark-seafoam (#384C40)
-     - focus (small): 3px; focus (default/large): 2px
-     - icon-only: brighter yellow (#F9C846) background
-     - alt: seafoam-25 (#F9FCFA) background, seafoam-50 on hover
+     - border-radius: 6px (--btn-border-radius)
+     - base border: 1px solid sky-blue (#00B2EB)
+     - solid default: sky-blue-50 bg + blue-400 drop shadow (2×2)
+     - solid hover: 2px border (bg + shadow unchanged)
+     - alt default: white bg, 1px border, no shadow
+     - alt hover: sky-blue-25 bg (#F4FCFF), shadow appears, text → black
+     - icon-only: solid default styling (shadow included), no change on hover
+     - disabled: gray-100 bg (#F3F4F6), gray-400 text/border (#9CA3AF), 2px border
    ========================================================================== */
 
 /* ── Reset ── */
@@ -94,64 +97,65 @@
   min-height: var(--global-spacing-sizing-52px);
 }
 
-/* ── Solid variant (yellow-200 bg) ── */
+/* ── Solid variant (sky-blue-50 bg, shadow at default) ── */
 .btn--solid {
   background: var(--btn-tertiary-bg);
+  box-shadow: var(--btn-tertiary-shadow);
 }
 
+/* Hover / active: only border-width increases; bg and shadow stay the same */
 .btn--solid:hover:not(:disabled):not(.btn--disabled) {
-  background: var(--btn-tertiary-bg-hover);
   border-width: var(--btn-tertiary-border-width-hover);
-  box-shadow: var(--btn-tertiary-shadow-hover);
 }
 
 .btn--solid:active:not(:disabled):not(.btn--disabled) {
-  background: var(--btn-tertiary-bg-hover);
   border-width: var(--btn-tertiary-border-width-hover);
-  box-shadow: var(--btn-tertiary-shadow-hover);
 }
 
-/* Focus: default & large sizes → 2px border */
+/* Focus: 2px border, shadow remains */
 .btn--solid.btn--default:focus-visible:not(:disabled):not(.btn--disabled),
 .btn--solid.btn--large:focus-visible:not(:disabled):not(.btn--disabled),
 .btn--solid.btn--extra-small:focus-visible:not(:disabled):not(.btn--disabled) {
   outline: none;
   border-width: var(--btn-tertiary-border-width-focus);
-  box-shadow: none;
 }
 
 /* Focus: small → 3px border */
 .btn--solid.btn--small:focus-visible:not(:disabled):not(.btn--disabled) {
   outline: none;
   border-width: var(--btn-tertiary-border-width-focus-sm);
-  box-shadow: none;
 }
 
-/* ── Alt variant (seafoam-25 bg) ── */
+/* ── Alt variant (white bg, shadow appears on hover) ── */
 .btn--alt {
   background: var(--btn-tertiary-alt-bg);
 }
 
+/* Alt hover / active: bg changes, shadow appears, color turns black. Border stays 1px. */
 .btn--alt:hover:not(:disabled):not(.btn--disabled) {
   background: var(--btn-tertiary-alt-bg-hover);
+  color: var(--btn-tertiary-alt-color-hover);
   box-shadow: var(--btn-tertiary-shadow-hover);
 }
 
 .btn--alt:active:not(:disabled):not(.btn--disabled) {
   background: var(--btn-tertiary-alt-bg-hover);
+  color: var(--btn-tertiary-alt-color-hover);
   box-shadow: var(--btn-tertiary-shadow-hover);
 }
 
 .btn--alt:focus-visible:not(:disabled):not(.btn--disabled) {
   outline: none;
-  background: var(--btn-tertiary-alt-bg);
+  background: var(--btn-tertiary-alt-bg-hover);
+  color: var(--btn-tertiary-alt-color-hover);
   border-width: var(--btn-tertiary-border-width-focus);
-  box-shadow: none;
+  box-shadow: var(--btn-tertiary-shadow-hover);
 }
 
-/* ── Icon-only variant (brighter yellow bg) ── */
+/* ── Icon-only variant (same sky-blue-50 bg + shadow as solid default) ── */
 .btn--icon-only {
   background: var(--btn-tertiary-icon-only-bg);
+  box-shadow: var(--btn-tertiary-shadow);
   width: var(--btn-icon-only-size-default);
   height: var(--btn-icon-only-size-default);
   min-width: unset;
@@ -176,22 +180,10 @@
   min-height: unset;
 }
 
-.btn--icon-only:hover:not(:disabled):not(.btn--disabled) {
-  background: var(--btn-tertiary-icon-only-bg-hover);
-  border-width: var(--btn-tertiary-border-width-hover);
-  box-shadow: var(--btn-tertiary-shadow-hover);
-}
-
-.btn--icon-only:active:not(:disabled):not(.btn--disabled) {
-  background: var(--btn-tertiary-icon-only-bg-hover);
-  border-width: var(--btn-tertiary-border-width-hover);
-  box-shadow: var(--btn-tertiary-shadow-hover);
-}
-
+/* Icon-only hover/active: no visual change (stays same as default per Figma) */
 .btn--icon-only:focus-visible:not(:disabled):not(.btn--disabled) {
   outline: none;
   border-width: var(--btn-tertiary-border-width-focus);
-  box-shadow: none;
 }
 
 /* ── Disabled (all variants) ── */
@@ -200,7 +192,7 @@
   background: var(--btn-tertiary-bg-disabled) !important;
   color: var(--btn-tertiary-color-disabled) !important;
   border-color: var(--btn-tertiary-border-color-disabled) !important;
-  border-width: var(--btn-tertiary-border-width) !important;
+  border-width: var(--btn-tertiary-border-width-disabled) !important;
   box-shadow: none !important;
   opacity: 1 !important;
   cursor: not-allowed;

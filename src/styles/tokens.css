@@ -1621,33 +1621,34 @@
      ========================================================================== */
 
   /* Tertiary Button — solid variant */
-  --btn-tertiary-bg: var(--global-color-primary-yellow-200);
-  --btn-tertiary-bg-hover: var(--global-color-primary-yellow-50);
-  --btn-tertiary-color: var(--global-color-base-black);
-  --btn-tertiary-border-color: var(--global-color-primary-yellow-dark);
-  --btn-tertiary-border-width: var(--global-spacing-stroke-1px);
-  --btn-tertiary-border-width-hover: var(--global-spacing-stroke-2px);
-  --btn-tertiary-border-width-focus-sm: var(--global-spacing-stroke-3px);
-  --btn-tertiary-border-width-focus: var(--global-spacing-stroke-2px);
-  --btn-tertiary-shadow-hover: var(--global-spacing-sizing-2px) var(--global-spacing-sizing-2px) var(--global-spacing-stroke-0px) var(--global-spacing-stroke-0px) var(--global-color-primary-seafoam-extra-dark);
+  --btn-tertiary-bg:                        var(--brand-sky-blue-50);                                                    /* #CCF0FB */
+  --btn-tertiary-color:                     var(--brand-sky-blue-dark);                                                  /* #026281 */
+  --btn-tertiary-border-color:              var(--brand-sky-blue);                                                       /* #00B2EB */
+  --btn-tertiary-border-width:              var(--global-spacing-stroke-1px);
+  --btn-tertiary-border-width-hover:        var(--global-spacing-stroke-2px);
+  --btn-tertiary-border-width-focus-sm:     var(--global-spacing-stroke-3px);
+  --btn-tertiary-border-width-focus:        var(--global-spacing-stroke-2px);
+  --btn-tertiary-border-width-disabled:     var(--global-spacing-stroke-2px);
+  --btn-tertiary-shadow:                    2px 2px 0px 0px var(--global-color-primary-blue-blue-400);                   /* default + hover */
+  --btn-tertiary-shadow-hover:              2px 2px 0px 0px var(--global-color-primary-blue-blue-400);
 
-  /* Tertiary Button — alt variant (seafoam-25 bg) */
-  --btn-tertiary-alt-bg: var(--global-color-primary-seafoam-25);
-  --btn-tertiary-alt-bg-hover: var(--global-color-primary-yellow-50);
+  /* Tertiary Button — alt variant (white bg, sky-blue border) */
+  --btn-tertiary-alt-bg:                    var(--global-color-base-white);                                              /* #FFFFFF */
+  --btn-tertiary-alt-bg-hover:              var(--global-color-primary-sky-blue-50);                                     /* #F4FCFF */
+  --btn-tertiary-alt-color-hover:           var(--global-color-base-black);                                              /* #1C1C1C */
 
-  /* Tertiary Button — icon-only variant (brighter yellow bg) */
-  --btn-tertiary-icon-only-bg: var(--global-color-primary-yellow);
-  --btn-tertiary-icon-only-bg-hover: var(--global-color-primary-yellow-50);
+  /* Tertiary Button — icon-only variant (same sky-blue-50 bg as solid) */
+  --btn-tertiary-icon-only-bg:              var(--brand-sky-blue-50);                                                    /* #CCF0FB */
 
-  /* Tertiary Button — disabled (same gray scheme as other buttons) */
-  --btn-tertiary-bg-disabled: var(--global-color-neutral-gray-50);
-  --btn-tertiary-color-disabled: var(--global-color-neutral-gray-300);
-  --btn-tertiary-border-color-disabled: var(--global-color-neutral-gray-200);
+  /* Tertiary Button — disabled (gray-100 bg, gray-400 text/border, 2px border) */
+  --btn-tertiary-bg-disabled:               var(--global-color-neutral-gray-100);                                        /* #F3F4F6 */
+  --btn-tertiary-color-disabled:            var(--global-color-neutral-gray-400);                                        /* #9CA3AF */
+  --btn-tertiary-border-color-disabled:     var(--global-color-neutral-gray-400);                                        /* #9CA3AF */
 
   /* Tertiary Button — extra-small size */
-  --btn-tertiary-padding-xs: var(--global-spacing-sizing-2px) var(--global-spacing-sizing-4px);
-  --btn-tertiary-gap-xs: var(--global-spacing-sizing-6px);
-  --btn-tertiary-icon-only-size-xs: var(--global-spacing-sizing-28px);
+  --btn-tertiary-padding-xs:                var(--global-spacing-sizing-2px) var(--global-spacing-sizing-4px);
+  --btn-tertiary-gap-xs:                    var(--global-spacing-sizing-6px);
+  --btn-tertiary-icon-only-size-xs:         var(--global-spacing-sizing-28px);
 
   /* ==========================================================================
      COMPONENT: Ghost Button
