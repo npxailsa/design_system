@@ -1559,36 +1559,48 @@
   /* ==========================================================================
      COMPONENT: Secondary Button
      --------------------------------------------------------------------------
-     Sky-blue colour scheme for secondary actions. Shares layout/typography
+     Blue-gray colour scheme for secondary actions. Shares layout/typography
      tokens with the base Button (--btn-*) but uses its own colour family.
-     Variants: solid (default), alt (white bg), icon-only, split.
+
+     Solid: dark blue-gray (#304047) fill, white text, dark-blue-gray (#182024) border.
+            Hover: mid blue-gray (#758084) bg, 2px border, 2×2px black drop shadow.
+     Alt:   white bg, blue-gray (#304047) border & text.
+            Hover: blue-gray-50 (#D6D9DA) bg, 2px border, 2×2px black drop shadow,
+                   text darkens to black (#1C1C1C).
+     Disabled (both): gray-100 bg, gray-400 text & border.
      Sizes: extra-small, small, default, large.
+     Figma ref: type=secondary, special=solid / special=alt
      ========================================================================== */
 
-  /* Secondary Button — solid variant (default) */
-  --btn-secondary-bg: var(--brand-sky-blue-50);
-  --btn-secondary-bg-hover: var(--global-color-primary-sky-blue-25);
-  --btn-secondary-bg-active: var(--global-color-primary-sky-blue-25);
-  --btn-secondary-color: var(--global-color-secondary-blue-gray);
-  --btn-secondary-color-hover: var(--global-color-base-black);
-  --btn-secondary-border-color: var(--brand-sky-blue);
-  --btn-secondary-border-width: var(--global-spacing-stroke-0-5px);
-  --btn-secondary-shadow-hover: var(--global-spacing-sizing-2px) var(--global-spacing-sizing-2px) var(--global-spacing-stroke-0px) var(--global-spacing-stroke-0px) var(--global-color-primary-sky-blue);
+  /* Secondary Button — solid variant */
+  --btn-secondary-bg:                  var(--brand-secondary);                  /* #304047 */
+  --btn-secondary-bg-hover:            var(--brand-secondary-300);              /* #758084 */
+  --btn-secondary-bg-active:           var(--brand-secondary-300);              /* #758084 */
+  --btn-secondary-color:               var(--global-color-base-white);          /* #FFFFFF */
+  --btn-secondary-color-hover:         var(--global-color-base-white);          /* stays white on hover */
+  --btn-secondary-border-color:        var(--brand-secondary-dark);             /* #182024 */
+  --btn-secondary-border-width:        var(--global-spacing-stroke-1px);        /* 1px */
+  --btn-secondary-border-width-hover:  var(--global-spacing-stroke-2px);        /* 2px on hover/active */
+  --btn-secondary-shadow-hover:        var(--global-spacing-sizing-2px) var(--global-spacing-sizing-2px) 0px 0px var(--global-color-base-black);
 
-  /* Secondary Button — alt variant (white bg) */
-  --btn-secondary-alt-bg: var(--global-color-base-white);
-  --btn-secondary-alt-bg-hover: var(--global-color-primary-sky-blue-25);
+  /* Secondary Button — alt variant (white bg, blue-gray text/border) */
+  --btn-secondary-alt-bg:              var(--global-color-base-white);          /* #FFFFFF */
+  --btn-secondary-alt-bg-hover:        var(--brand-secondary-50);               /* #D6D9DA */
+  --btn-secondary-alt-color:           var(--brand-secondary);                  /* #304047 */
+  --btn-secondary-alt-color-hover:     var(--global-color-base-black);          /* #1C1C1C */
+  --btn-secondary-alt-border-color:    var(--brand-secondary);                  /* #304047 */
+  --btn-secondary-alt-shadow-hover:    var(--global-spacing-sizing-2px) var(--global-spacing-sizing-2px) 0px 0px var(--global-color-base-black);
 
   /* Secondary Button — icon-only hover bg */
-  --btn-secondary-icon-only-bg-hover: var(--global-color-primary-sky-blue-50);
+  --btn-secondary-icon-only-bg-hover:  var(--brand-secondary-300);              /* #758084 */
 
-  /* Secondary Button — disabled */
-  --btn-secondary-bg-disabled: var(--global-color-neutral-gray-50);
-  --btn-secondary-color-disabled: var(--global-color-neutral-gray-300);
-  --btn-secondary-border-color-disabled: var(--global-color-neutral-gray-200);
+  /* Secondary Button — disabled (shared between solid and alt) */
+  --btn-secondary-bg-disabled:         var(--global-color-neutral-gray-100);    /* #F3F4F6 */
+  --btn-secondary-color-disabled:      var(--global-color-neutral-gray-400);    /* #9CA3AF */
+  --btn-secondary-border-color-disabled: var(--global-color-neutral-gray-400);  /* #9CA3AF */
 
-  /* Secondary Button — focus */
-  --btn-secondary-border-width-focus: var(--global-spacing-stroke-2px);
+  /* Secondary Button — focus (same appearance as default — no width change) */
+  --btn-secondary-border-width-focus:  var(--global-spacing-stroke-1px);        /* 1px, matches default */
 
   /* Secondary Button — sizes: extra-small */
   --btn-secondary-padding-xs: var(--global-spacing-sizing-2px) var(--global-spacing-sizing-4px);

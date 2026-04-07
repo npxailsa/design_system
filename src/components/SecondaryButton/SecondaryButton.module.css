@@ -1,19 +1,17 @@
 /* ==========================================================================
    Secondary Button Component
    --------------------------------------------------------------------------
-   Sky-blue colour scheme for secondary/supporting actions. Uses design tokens
-   exclusively — no hardcoded values.
+   Blue-gray colour scheme for secondary/supporting actions.
 
-   Variants: solid (sky-blue-50 bg), alt (white bg)
-   Sizes: extra-small, small, default, large
-   States: default, hover, active, focus-visible, disabled, loading
+   Solid: dark blue-gray (#304047) bg, white text, dark-blue-gray (#182024) border.
+          Hover: mid blue-gray (#758084) bg, 2px border, 2×2px black drop shadow.
+   Alt:   white bg, blue-gray (#304047) border & text.
+          Hover: blue-gray-50 (#D6D9DA) bg, 2px border, 2×2px black drop shadow,
+                 text darkens to black (#1C1C1C).
+   Disabled: gray-100 bg, gray-400 text & border (both variants).
 
-   Key specs (from Figma):
-     - border-radius: 4px (--btn-border-radius)
-     - border: 0.5px default / 1px hover / 2px focused & disabled
-     - font-weight: 300 light
-     - colours: sky-blue family (--btn-secondary-*)
-     - hover shadow: 2px 2px 0 0 sky-blue
+   Sizes: extra-small, small, default, large.
+   All values use design tokens — no hard-coded numbers.
    ========================================================================== */
 
 /* ── Reset ── */
@@ -24,9 +22,7 @@
 
 /* ── Base ── */
 .btn {
-  /* Reset global button styles (src/index.css sets blue bg/color/filter on all <button>) */
   background: transparent;
-  color: var(--btn-secondary-color);
   filter: none;
   outline: none;
   display: inline-flex;
@@ -50,15 +46,15 @@
   transition:
     background-color var(--btn-transition-duration) var(--btn-transition-easing),
     border-color var(--btn-transition-duration) var(--btn-transition-easing),
+    border-width var(--btn-transition-duration) var(--btn-transition-easing),
     box-shadow var(--btn-transition-duration) var(--btn-transition-easing),
     color var(--btn-transition-duration) var(--btn-transition-easing);
 }
 
-/* Override global button:hover / button:focus that sets blue border-color */
+/* Suppress global button:hover / button:focus blue overrides */
 .btn:hover,
 .btn:focus,
 .btn:focus-visible {
-  border-color: var(--btn-secondary-border-color);
   filter: none;
 }
 
@@ -90,7 +86,7 @@
   min-height: var(--global-spacing-sizing-52px);
 }
 
-/* ── Solid variant (sky-blue-50 bg) ── */
+/* ── Solid variant — dark blue-gray bg, white text ── */
 .btn--solid {
   background: var(--btn-secondary-bg);
   color: var(--btn-secondary-color);
@@ -99,47 +95,57 @@
 .btn--solid:hover:not(:disabled):not(.btn--disabled) {
   background: var(--btn-secondary-bg-hover);
   color: var(--btn-secondary-color-hover);
-  border-width: var(--btn-border-width-default);
+  border-width: var(--btn-secondary-border-width-hover);
+  border-color: var(--btn-secondary-border-color);
   box-shadow: var(--btn-secondary-shadow-hover);
 }
 
 .btn--solid:active:not(:disabled):not(.btn--disabled) {
   background: var(--btn-secondary-bg-active);
   color: var(--btn-secondary-color-hover);
-  border-width: var(--btn-border-width-default);
+  border-width: var(--btn-secondary-border-width-hover);
+  border-color: var(--btn-secondary-border-color);
   box-shadow: var(--btn-secondary-shadow-hover);
 }
 
 .btn--solid:focus-visible:not(:disabled):not(.btn--disabled) {
   outline: none;
+  background: var(--btn-secondary-bg);
+  color: var(--btn-secondary-color);
   border-width: var(--btn-secondary-border-width-focus);
+  border-color: var(--btn-secondary-border-color);
   box-shadow: none;
 }
 
-/* ── Alt variant (white bg) ── */
+/* ── Alt variant — white bg, blue-gray border & text ── */
 .btn--alt {
   background: var(--btn-secondary-alt-bg);
-  color: var(--btn-secondary-color);
+  color: var(--btn-secondary-alt-color);
+  border-color: var(--btn-secondary-alt-border-color);
 }
 
 .btn--alt:hover:not(:disabled):not(.btn--disabled) {
   background: var(--btn-secondary-alt-bg-hover);
-  color: var(--btn-secondary-color-hover);
-  border-width: var(--btn-border-width-default);
-  box-shadow: var(--btn-secondary-shadow-hover);
+  color: var(--btn-secondary-alt-color-hover);
+  border-width: var(--btn-secondary-border-width-hover);
+  border-color: var(--btn-secondary-alt-border-color);
+  box-shadow: var(--btn-secondary-alt-shadow-hover);
 }
 
 .btn--alt:active:not(:disabled):not(.btn--disabled) {
   background: var(--btn-secondary-alt-bg-hover);
-  color: var(--btn-secondary-color-hover);
-  border-width: var(--btn-border-width-default);
-  box-shadow: var(--btn-secondary-shadow-hover);
+  color: var(--btn-secondary-alt-color-hover);
+  border-width: var(--btn-secondary-border-width-hover);
+  border-color: var(--btn-secondary-alt-border-color);
+  box-shadow: var(--btn-secondary-alt-shadow-hover);
 }
 
 .btn--alt:focus-visible:not(:disabled):not(.btn--disabled) {
   outline: none;
   background: var(--btn-secondary-alt-bg);
+  color: var(--btn-secondary-alt-color);
   border-width: var(--btn-secondary-border-width-focus);
+  border-color: var(--btn-secondary-alt-border-color);
   box-shadow: none;
 }
 
@@ -149,7 +155,7 @@
   background: var(--btn-secondary-bg-disabled) !important;
   color: var(--btn-secondary-color-disabled) !important;
   border-color: var(--btn-secondary-border-color-disabled) !important;
-  border-width: var(--btn-border-width-disabled) !important;
+  border-width: var(--btn-secondary-border-width) !important;
   box-shadow: none !important;
   opacity: 1 !important;
   cursor: not-allowed;
@@ -158,7 +164,7 @@
 
 /* ── Loading ── */
 .btn--loading {
-  border-width: var(--btn-border-width-loading);
+  border-width: var(--btn-secondary-border-width);
   cursor: wait;
   pointer-events: none;
 }
@@ -189,7 +195,6 @@
   min-height: unset;
 }
 
-/* Icon-only hover uses sky-blue-50 bg */
 .btn--icon-only:hover:not(:disabled):not(.btn--disabled) {
   background: var(--btn-secondary-icon-only-bg-hover);
 }
