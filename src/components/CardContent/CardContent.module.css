@@ -228,10 +228,30 @@
 .status-info .card-content__status-icon-wrap { background: var(--card-content-info-icon); }
 .status-info .card-content__heading          { color: var(--card-content-info-heading); }
 .status-info .card-content__dismiss          { color: var(--card-content-info-icon); }
+
+/* Solid / primary info button — info-blue bg, white text */
 .status-info .card-content__primary-status-btn {
-  background: var(--card-content-info-btn-bg) !important;
-  border-color: var(--card-content-info-btn-border) !important;
-  color: var(--global-color-base-white) !important;
+  background: var(--btn-info-solid-bg) !important;
+  border-color: var(--btn-info-solid-border-color) !important;
+  border-width: var(--btn-info-solid-border-width) !important;
+  color: var(--btn-info-solid-color) !important;
+}
+.status-info .card-content__primary-status-btn:hover {
+  border-width: var(--btn-info-solid-border-width-hover) !important;
+  box-shadow: var(--btn-info-solid-shadow-hover) !important;
+}
+
+/* Ghost / secondary info button — white bg, info-blue border & text */
+.status-info .card-content__ghost-status-btn {
+  background: var(--btn-info-ghost-bg) !important;
+  color: var(--btn-info-ghost-color) !important;
+  border-color: var(--btn-info-ghost-border-color) !important;
+  border-width: var(--btn-info-ghost-border-width) !important;
+}
+.status-info .card-content__ghost-status-btn:hover {
+  background: var(--btn-info-ghost-bg-hover) !important;
+  border-width: var(--btn-info-ghost-border-width-hover) !important;
+  box-shadow: var(--btn-info-ghost-shadow-hover) !important;
 }
 
 /* default */

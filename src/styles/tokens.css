@@ -1823,6 +1823,47 @@
   --btn-success-border-width-disabled:      var(--global-spacing-stroke-0-5px);
 
   /* ==========================================================================
+     COMPONENT: InfoButton
+     --------------------------------------------------------------------------
+     Status-specific button for info / informational actions.
+     Two visual variants:
+       solid — info-blue (#366F97) filled background, white text & icon
+               Hover: same bg, adds 2×2px info-blue drop shadow
+       ghost — white background, info-blue border & text
+               Hover: shifts bg to info-blue-light (#F5FCFF) + shadow
+
+     Sizes: small (34px h), default (44px h), large (56px h).
+     Figma ref: size=*, type=default/primary, special=default (solid) / special=alt (ghost)
+     ========================================================================== */
+
+  /* InfoButton — solid variant */
+  --btn-info-solid-bg:                   var(--global-color-status-info-blue);
+  --btn-info-solid-color:                var(--global-color-base-white);
+  --btn-info-solid-border-color:         var(--global-color-status-info-blue);
+  --btn-info-solid-border-width:         var(--global-spacing-stroke-1px);
+  --btn-info-solid-border-width-hover:   var(--global-spacing-stroke-1px);
+  --btn-info-solid-shadow-hover:         var(--global-spacing-sizing-2px) var(--global-spacing-sizing-2px) 0px 0px var(--global-color-status-info-blue);
+  --btn-info-solid-border-width-focus:   var(--global-spacing-stroke-2px);
+  --btn-info-solid-border-width-loading: var(--global-spacing-stroke-1px);
+
+  /* InfoButton — ghost/alt variant */
+  --btn-info-ghost-bg:                   var(--global-color-base-white);
+  --btn-info-ghost-bg-hover:             var(--global-color-status-info-blue-light);
+  --btn-info-ghost-color:                var(--global-color-status-info-blue);
+  --btn-info-ghost-border-color:         var(--global-color-status-info-blue);
+  --btn-info-ghost-border-width:         var(--global-spacing-stroke-1px);
+  --btn-info-ghost-border-width-hover:   var(--global-spacing-stroke-1px);
+  --btn-info-ghost-shadow-hover:         var(--global-spacing-sizing-2px) var(--global-spacing-sizing-2px) 0px 0px var(--global-color-status-info-blue);
+  --btn-info-ghost-border-width-focus:   var(--global-spacing-stroke-2px);
+  --btn-info-ghost-border-width-loading: var(--global-spacing-stroke-1px);
+
+  /* InfoButton — disabled (shared between solid and ghost) */
+  --btn-info-bg-disabled:                var(--global-color-neutral-gray-100);
+  --btn-info-color-disabled:             var(--global-color-neutral-gray-400);
+  --btn-info-border-color-disabled:      var(--global-color-neutral-gray-400);
+  --btn-info-border-width-disabled:      var(--global-spacing-stroke-0-5px);
+
+  /* ==========================================================================
      COMPONENT: ButtonMenu (BuildingBlocks)
      --------------------------------------------------------------------------
      A stacked vertical list of menu items used as dropdown menus or contextual
