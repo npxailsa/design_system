@@ -149,17 +149,23 @@
   box-shadow: none;
 }
 
-/* ── Disabled (both variants) ── */
+/* ── Disabled — solid & base ── */
 .btn--disabled,
 .btn:disabled {
   background: var(--btn-secondary-bg-disabled) !important;
   color: var(--btn-secondary-color-disabled) !important;
   border-color: var(--btn-secondary-border-color-disabled) !important;
-  border-width: var(--btn-secondary-border-width) !important;
+  border-width: var(--btn-secondary-border-width-disabled) !important;
   box-shadow: none !important;
   opacity: 1 !important;
   cursor: not-allowed;
   pointer-events: none;
+}
+
+/* ── Disabled — alt variant uses 2px border (Figma spec) ── */
+.btn--alt.btn--disabled,
+.btn--alt:disabled {
+  border-width: var(--btn-secondary-alt-border-width-disabled) !important;
 }
 
 /* ── Loading ── */
@@ -195,8 +201,12 @@
   min-height: unset;
 }
 
+/* Icon-only hover mirrors solid hover: mid blue-gray bg, 2px border, black drop shadow */
 .btn--icon-only:hover:not(:disabled):not(.btn--disabled) {
-  background: var(--btn-secondary-icon-only-bg-hover);
+  background: var(--btn-secondary-bg-hover);
+  border-width: var(--btn-secondary-border-width-hover);
+  border-color: var(--btn-secondary-border-color);
+  box-shadow: var(--btn-secondary-shadow-hover);
 }
 
 .btn--icon-only:focus-visible:not(:disabled):not(.btn--disabled) {

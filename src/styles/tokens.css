@@ -1567,7 +1567,8 @@
      Alt:   white bg, blue-gray (#304047) border & text.
             Hover: blue-gray-50 (#D6D9DA) bg, 2px border, 2×2px black drop shadow,
                    text darkens to black (#1C1C1C).
-     Disabled (both): gray-100 bg, gray-400 text & border.
+     Disabled solid: gray-100 bg, gray-400 text & border, 1px border.
+     Disabled alt:   gray-100 bg, gray-400 text & border, 2px border (Figma spec).
      Sizes: extra-small, small, default, large.
      Figma ref: type=secondary, special=solid / special=alt
      ========================================================================== */
@@ -1594,10 +1595,12 @@
   /* Secondary Button — icon-only hover bg */
   --btn-secondary-icon-only-bg-hover:  var(--brand-secondary-300);              /* #758084 */
 
-  /* Secondary Button — disabled (shared between solid and alt) */
-  --btn-secondary-bg-disabled:         var(--global-color-neutral-gray-100);    /* #F3F4F6 */
-  --btn-secondary-color-disabled:      var(--global-color-neutral-gray-400);    /* #9CA3AF */
-  --btn-secondary-border-color-disabled: var(--global-color-neutral-gray-400);  /* #9CA3AF */
+  /* Secondary Button — disabled */
+  --btn-secondary-bg-disabled:               var(--global-color-neutral-gray-100);    /* #F3F4F6 */
+  --btn-secondary-color-disabled:            var(--global-color-neutral-gray-400);    /* #9CA3AF */
+  --btn-secondary-border-color-disabled:     var(--global-color-neutral-gray-400);    /* #9CA3AF */
+  --btn-secondary-border-width-disabled:     var(--global-spacing-stroke-1px);        /* 1px — solid & icon-only */
+  --btn-secondary-alt-border-width-disabled: var(--global-spacing-stroke-2px);        /* 2px — alt variant only (Figma spec) */
 
   /* Secondary Button — focus (same appearance as default — no width change) */
   --btn-secondary-border-width-focus:  var(--global-spacing-stroke-1px);        /* 1px, matches default */

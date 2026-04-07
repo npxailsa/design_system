@@ -290,9 +290,10 @@ export const SecondaryButtonDocs: React.FC = () => {
         tokens={[
           { name: '--btn-secondary-bg-disabled', description: 'Disabled background — --global-color-neutral-gray-100 (#F3F4F6)' },
           { name: '--btn-secondary-color-disabled', description: 'Disabled text & icon — --global-color-neutral-gray-400 (#9CA3AF)' },
-          { name: '--btn-secondary-border-color-disabled', description: 'Disabled border — --global-color-neutral-gray-400 (#9CA3AF)' },
+          { name: '--btn-secondary-border-color-disabled', description: 'Disabled border colour — --global-color-neutral-gray-400 (#9CA3AF)' },
+          { name: '--btn-secondary-border-width-disabled', description: 'Disabled border width (solid & icon-only) — --global-spacing-stroke-1px (1px)' },
+          { name: '--btn-secondary-alt-border-width-disabled', description: 'Disabled border width (alt variant only) — --global-spacing-stroke-2px (2px)' },
           { name: '--btn-secondary-border-width-focus', description: 'Focus border width — --global-spacing-stroke-1px (1px, matches default)' },
-          { name: '--btn-secondary-icon-only-bg-hover', description: 'Icon-only hover bg — --brand-secondary-300 (#758084)' },
         ]}
       />
 
