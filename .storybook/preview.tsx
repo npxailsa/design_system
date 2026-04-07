@@ -3,38 +3,77 @@ import { DocsContainer } from "@storybook/addon-docs/blocks";
 import '../src/index.css';
 import React from 'react';
 
-// Suppress the ResizeObserver loop error as it is often a benign warning in Storybook
-// that can be triggered by complex layouts or many component variants.
+// ── ResizeObserver loop fix ────────────────────────────────────────────────
+// The "ResizeObserver loop completed with undelivered notifications" error is a
+// benign browser warning triggered by Storybook's complex layout re-renders.
+// The root fix is wrapping all ResizeObserver callbacks in requestAnimationFrame
+// so they never fire synchronously mid-layout. Error-event suppression below
+// acts as a second safety net for any observers we don't own.
 if (typeof window !== 'undefined') {
+  // 1. Patch ResizeObserver globally so callbacks are always deferred.
+  //    This prevents the loop from occurring in the first place.
+  if (typeof window.ResizeObserver !== 'undefined') {
+    const OriginalRO = window.ResizeObserver;
+    // @ts-ignore – replacing the global constructor
+    window.ResizeObserver = class PatchedResizeObserver extends OriginalRO {
+      constructor(callback: ResizeObserverCallback) {
+        super((entries: ResizeObserverEntry[], observer: ResizeObserver) => {
+          window.requestAnimationFrame(() => {
+            if (!Array.isArray(entries) || !entries.length) return;
+            callback(entries, observer);
+          });
+        });
+      }
+    };
+  }
+
+  // 2. Suppress console.error for any messages that still slip through.
   const originalError = window.console.error;
   window.console.error = (...args: any[]) => {
+    const msg = typeof args[0] === 'string' ? args[0] : '';
     if (
-      typeof args[0] === 'string' &&
-      args[0].includes('ResizeObserver loop completed with undelivered notifications')
+      msg.includes('ResizeObserver loop completed') ||
+      msg.includes('ResizeObserver loop limit exceeded')
     ) {
       return;
     }
     originalError.apply(window.console, args);
   };
 
-  // Suppress in the global error event (covers overlay + error boundary)
+  // 3. Stop the error from reaching Storybook's error overlay / boundary.
   window.addEventListener('error', (e) => {
     if (
-      e.message === 'ResizeObserver loop completed with undelivered notifications' ||
-      e.message === 'ResizeObserver loop limit exceeded'
+      e.message &&
+      (e.message.includes('ResizeObserver loop completed') ||
+        e.message.includes('ResizeObserver loop limit exceeded'))
     ) {
       e.stopImmediatePropagation();
       e.preventDefault();
     }
-  });
+  }, true); // capture phase — runs before Storybook's own listener
 
-  // Also suppress if it surfaces as an unhandled rejection
+  // 4. Suppress window.onerror path as well.
+  const originalOnError = window.onerror;
+  window.onerror = (message, ...rest) => {
+    if (
+      typeof message === 'string' &&
+      (message.includes('ResizeObserver loop completed') ||
+        message.includes('ResizeObserver loop limit exceeded'))
+    ) {
+      return true; // returning true suppresses the error
+    }
+    if (typeof originalOnError === 'function') {
+      return originalOnError(message, ...rest);
+    }
+    return false;
+  };
+
+  // 5. Guard against unhandled-rejection form.
   window.addEventListener('unhandledrejection', (e) => {
     if (
       e.reason &&
       typeof e.reason.message === 'string' &&
-      (e.reason.message.includes('ResizeObserver loop') ||
-        e.reason.message.includes('ResizeObserver loop limit exceeded'))
+      e.reason.message.includes('ResizeObserver loop')
     ) {
       e.preventDefault();
     }
