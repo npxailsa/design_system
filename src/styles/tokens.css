@@ -1778,6 +1778,51 @@
   --btn-warning-border-width-disabled:      var(--global-spacing-stroke-0-5px);
 
   /* ==========================================================================
+     COMPONENT: SuccessButton
+     --------------------------------------------------------------------------
+     Status-specific button for success / confirmation actions.
+     Two visual variants:
+       solid — light-green (#96F78D) filled background, black text & icon
+               Hover: flips to dark-green (#227F1A) filled, white text & icon
+       ghost — white background, dark-green border & text
+               Hover: shifts bg to green-light (#F2FFF1), 2px2px dark-green shadow
+               Focus: uses a 3px border (per Figma)
+
+     Sizes: small (34px h), default (44px h), large (56px h).
+     Figma ref: size=*, type=success, special=solid / special=alt
+     ========================================================================== */
+
+  /* SuccessButton — solid variant */
+  --btn-success-solid-bg:                   var(--global-color-status-green);
+  --btn-success-solid-color:                var(--global-color-base-black);
+  --btn-success-solid-border-color:         var(--global-color-status-dark-green);
+  --btn-success-solid-border-width:         var(--global-spacing-stroke-1px);
+  /* Hover: bg swaps to dark-green, text swaps to white */
+  --btn-success-solid-bg-hover:             var(--global-color-status-dark-green);
+  --btn-success-solid-color-hover:          var(--global-color-base-white);
+  --btn-success-solid-border-width-hover:   var(--global-spacing-stroke-1px);
+  --btn-success-solid-shadow-hover:         var(--global-spacing-sizing-2px) var(--global-spacing-sizing-2px) 0px 0px var(--global-color-status-dark-green);
+  --btn-success-solid-border-width-focus:   var(--global-spacing-stroke-2px);
+  --btn-success-solid-border-width-loading: var(--global-spacing-stroke-1px);
+
+  /* SuccessButton — ghost/alt variant */
+  --btn-success-ghost-bg:                   var(--global-color-base-white);
+  --btn-success-ghost-bg-hover:             var(--global-color-status-green-light);
+  --btn-success-ghost-color:                var(--global-color-status-dark-green);
+  --btn-success-ghost-border-color:         var(--global-color-status-dark-green);
+  --btn-success-ghost-border-width:         var(--global-spacing-stroke-1px);
+  --btn-success-ghost-border-width-hover:   var(--global-spacing-stroke-1px);
+  --btn-success-ghost-shadow-hover:         var(--global-spacing-sizing-2px) var(--global-spacing-sizing-2px) 0px 0px var(--global-color-status-dark-green);
+  --btn-success-ghost-border-width-focus:   3px; /* Figma specifies 3px for ghost focus */
+  --btn-success-ghost-border-width-loading: var(--global-spacing-stroke-1px);
+
+  /* SuccessButton — disabled (shared between solid and ghost) */
+  --btn-success-bg-disabled:                var(--global-color-neutral-gray-100);
+  --btn-success-color-disabled:             var(--global-color-neutral-gray-400);
+  --btn-success-border-color-disabled:      var(--global-color-neutral-gray-400);
+  --btn-success-border-width-disabled:      var(--global-spacing-stroke-0-5px);
+
+  /* ==========================================================================
      COMPONENT: ButtonMenu (BuildingBlocks)
      --------------------------------------------------------------------------
      A stacked vertical list of menu items used as dropdown menus or contextual

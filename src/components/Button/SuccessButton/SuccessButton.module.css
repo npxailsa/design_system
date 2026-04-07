@@ -1,0 +1,220 @@
+/* ==========================================================================
+   SuccessButton Component
+   --------------------------------------------------------------------------
+   Status-specific button for success / confirmation actions.
+   Two visual variants:
+     solid — light-green (#96F78D) filled background, black text & icon
+             Hover: background inverts to dark-green (#227F1A), text flips to white
+     ghost — white background, dark-green border & text
+             Hover: bg shifts to green-light (#F2FFF1) + 2×2px dark-green shadow
+             Focus: 3px dark-green border (per Figma spec)
+
+   Sizes: small (34px h), default (44px h), large (56px h).
+   All values use design tokens exclusively — no hard-coded numbers.
+
+   Figma ref: size=*, type=success, special=solid / special=alt
+   ========================================================================== */
+
+/* ── Reset ────────────────────────────────────────────────────────────────── */
+.btn-success,
+.btn-success * {
+  box-sizing: border-box;
+}
+
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+.btn-success {
+  background: transparent;
+  filter: none;
+  outline: none;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--btn-gap-default);
+
+  /* Size: default */
+  min-width: var(--btn-min-width);
+  min-height: var(--btn-min-height);
+  padding: var(--btn-padding-default);
+
+  border-radius: var(--btn-border-radius);
+  font-family: var(--btn-font-family);
+  font-size: var(--btn-font-size-default);
+  line-height: var(--btn-line-height-default);
+  font-weight: var(--btn-font-weight);
+  letter-spacing: var(--btn-letter-spacing);
+
+  white-space: nowrap;
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+
+  transition:
+    background-color var(--btn-transition-duration) var(--btn-transition-easing),
+    border-color var(--btn-transition-duration) var(--btn-transition-easing),
+    border-width var(--btn-transition-duration) var(--btn-transition-easing),
+    box-shadow var(--btn-transition-duration) var(--btn-transition-easing),
+    color var(--btn-transition-duration) var(--btn-transition-easing);
+}
+
+.btn-success:hover,
+.btn-success:focus,
+.btn-success:focus-visible {
+  filter: none;
+}
+
+/* ── Size: small ──────────────────────────────────────────────────────────── */
+.btn-success--small {
+  gap: var(--btn-gap-small);
+  padding: var(--btn-padding-small);
+  font-size: var(--btn-font-size-small);
+  line-height: var(--btn-line-height-small);
+}
+
+/* ── Size: large ──────────────────────────────────────────────────────────── */
+.btn-success--large {
+  gap: var(--btn-gap-large);
+  padding: var(--btn-padding-large);
+  font-size: var(--btn-font-size-large);
+  line-height: var(--btn-line-height-large);
+}
+
+/* ── Solid variant ────────────────────────────────────────────────────────── */
+.btn-success--solid {
+  background: var(--btn-success-solid-bg);
+  color: var(--btn-success-solid-color);
+  border: var(--btn-success-solid-border-width) solid var(--btn-success-solid-border-color);
+}
+
+/* Hover/Active: full bg inversion — light-green → dark-green, black → white */
+.btn-success--solid:hover:not(:disabled):not(.btn-success--disabled) {
+  background: var(--btn-success-solid-bg-hover);
+  color: var(--btn-success-solid-color-hover);
+  border-width: var(--btn-success-solid-border-width-hover);
+  border-color: var(--btn-success-solid-border-color);
+  box-shadow: var(--btn-success-solid-shadow-hover);
+}
+
+.btn-success--solid:active:not(:disabled):not(.btn-success--disabled) {
+  background: var(--btn-success-solid-bg-hover);
+  color: var(--btn-success-solid-color-hover);
+  border-width: var(--btn-success-solid-border-width-hover);
+  border-color: var(--btn-success-solid-border-color);
+  box-shadow: var(--btn-success-solid-shadow-hover);
+}
+
+.btn-success--solid:focus-visible:not(:disabled):not(.btn-success--disabled) {
+  outline: none;
+  background: var(--btn-success-solid-bg);
+  color: var(--btn-success-solid-color);
+  border-width: var(--btn-success-solid-border-width-focus);
+  border-color: var(--btn-success-solid-border-color);
+  box-shadow: none;
+}
+
+.btn-success--solid.btn-success--loading {
+  border-width: var(--btn-success-solid-border-width-loading);
+  cursor: wait;
+  pointer-events: none;
+}
+
+/* ── Ghost variant ────────────────────────────────────────────────────────── */
+.btn-success--ghost {
+  background: var(--btn-success-ghost-bg);
+  color: var(--btn-success-ghost-color);
+  border: var(--btn-success-ghost-border-width) solid var(--btn-success-ghost-border-color);
+}
+
+.btn-success--ghost:hover:not(:disabled):not(.btn-success--disabled) {
+  background: var(--btn-success-ghost-bg-hover);
+  border-width: var(--btn-success-ghost-border-width-hover);
+  border-color: var(--btn-success-ghost-border-color);
+  box-shadow: var(--btn-success-ghost-shadow-hover);
+}
+
+.btn-success--ghost:active:not(:disabled):not(.btn-success--disabled) {
+  background: var(--btn-success-ghost-bg-hover);
+  border-width: var(--btn-success-ghost-border-width-hover);
+  border-color: var(--btn-success-ghost-border-color);
+  box-shadow: var(--btn-success-ghost-shadow-hover);
+}
+
+/* Ghost focus uses 3px border per Figma */
+.btn-success--ghost:focus-visible:not(:disabled):not(.btn-success--disabled) {
+  outline: none;
+  background: var(--btn-success-ghost-bg);
+  border-width: var(--btn-success-ghost-border-width-focus);
+  border-color: var(--btn-success-ghost-border-color);
+  box-shadow: none;
+}
+
+.btn-success--ghost.btn-success--loading {
+  border-width: var(--btn-success-ghost-border-width-loading);
+  cursor: wait;
+  pointer-events: none;
+}
+
+/* ── Disabled (both variants) ─────────────────────────────────────────────── */
+.btn-success--disabled,
+.btn-success:disabled {
+  background: var(--btn-success-bg-disabled) !important;
+  color: var(--btn-success-color-disabled) !important;
+  border-color: var(--btn-success-border-color-disabled) !important;
+  border-width: var(--btn-success-border-width-disabled) !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Leading icon ─────────────────────────────────────────────────────────── */
+.btn-success__icon-leading {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── Trailing icon ────────────────────────────────────────────────────────── */
+.btn-success__icon-trailing {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── Label ────────────────────────────────────────────────────────────────── */
+.btn-success__label {
+  display: inline-flex;
+  align-items: center;
+  line-height: inherit;
+}
+
+/* ── Spinner ──────────────────────────────────────────────────────────────── */
+.btn-success__spinner {
+  display: inline-block;
+  width: var(--btn-spinner-size-default);
+  height: var(--btn-spinner-size-default);
+  border: var(--btn-spinner-border-width) solid currentColor;
+  border-top-color: transparent;
+  border-radius: var(--global-spacing-radius-full);
+  animation: btn-success-spin var(--btn-spinner-duration) linear infinite;
+  flex-shrink: 0;
+  opacity: var(--btn-spinner-opacity);
+}
+
+.btn-success--small .btn-success__spinner {
+  width: var(--btn-spinner-size-small);
+  height: var(--btn-spinner-size-small);
+}
+
+.btn-success--large .btn-success__spinner {
+  width: var(--btn-spinner-size-large);
+  height: var(--btn-spinner-size-large);
+}
+
+@keyframes btn-success-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -191,10 +191,33 @@
 .status-success .card-content__status-icon-wrap { background: var(--card-content-success-icon); }
 .status-success .card-content__heading          { color: var(--card-content-success-heading); }
 .status-success .card-content__dismiss          { color: var(--card-content-success-icon); }
+
+/* Solid / primary success button — light-green bg, black text, dark-green border */
 .status-success .card-content__primary-status-btn {
-  background: var(--card-content-success-btn-bg) !important;
-  border-color: var(--card-content-success-btn-border) !important;
-  color: var(--global-color-base-white) !important;
+  background: var(--btn-success-solid-bg) !important;
+  border-color: var(--btn-success-solid-border-color) !important;
+  border-width: var(--btn-success-solid-border-width) !important;
+  color: var(--btn-success-solid-color) !important;
+}
+/* Hover: full bg inversion — flips to dark-green, text turns white */
+.status-success .card-content__primary-status-btn:hover {
+  background: var(--btn-success-solid-bg-hover) !important;
+  color: var(--btn-success-solid-color-hover) !important;
+  border-width: var(--btn-success-solid-border-width-hover) !important;
+  box-shadow: var(--btn-success-solid-shadow-hover) !important;
+}
+
+/* Ghost / secondary success button — white bg, dark-green border & text */
+.status-success .card-content__ghost-status-btn {
+  background: var(--btn-success-ghost-bg) !important;
+  color: var(--btn-success-ghost-color) !important;
+  border-color: var(--btn-success-ghost-border-color) !important;
+  border-width: var(--btn-success-ghost-border-width) !important;
+}
+.status-success .card-content__ghost-status-btn:hover {
+  background: var(--btn-success-ghost-bg-hover) !important;
+  border-width: var(--btn-success-ghost-border-width-hover) !important;
+  box-shadow: var(--btn-success-ghost-shadow-hover) !important;
 }
 
 /* info */
