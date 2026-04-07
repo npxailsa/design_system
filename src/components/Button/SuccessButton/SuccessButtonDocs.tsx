@@ -1,441 +1,339 @@
 import React from 'react';
+import { DocsTemplate } from '../../DocsTemplate/DocsTemplate';
 import { SuccessButton } from './SuccessButton';
 
-const sectionStyle: React.CSSProperties = { marginBottom: '48px' };
-
-const headingStyle: React.CSSProperties = {
-  fontFamily: 'var(--brand-font-primary)',
-  fontSize: '22px',
-  fontWeight: 300,
-  color: 'var(--global-color-base-black)',
-  margin: '0 0 8px',
-  paddingBottom: '8px',
-  borderBottom: '1px solid var(--global-color-neutral-gray-200)',
-};
-
-const subheadingStyle: React.CSSProperties = {
-  fontFamily: 'var(--brand-font-primary)',
-  fontSize: '13px',
-  fontWeight: 300,
-  color: 'var(--global-color-neutral-gray-500)',
-  textTransform: 'uppercase' as const,
-  letterSpacing: '0.08em',
-  margin: '0 0 12px',
-};
-
-const bodyStyle: React.CSSProperties = {
-  fontFamily: 'var(--brand-font-primary)',
-  fontSize: '14px',
-  fontWeight: 300,
-  lineHeight: '22px',
-  color: 'var(--global-color-neutral-gray-700)',
-  margin: '0 0 16px',
-};
-
-const rowStyle: React.CSSProperties = {
-  display: 'flex',
-  flexWrap: 'wrap' as const,
-  alignItems: 'center',
-  gap: '12px',
-  marginBottom: '12px',
-};
-
-const labelStyle: React.CSSProperties = {
-  fontFamily: 'var(--brand-font-primary)',
-  fontSize: '11px',
-  fontWeight: 300,
-  color: 'var(--global-color-neutral-gray-400)',
-  textTransform: 'uppercase' as const,
-  letterSpacing: '0.08em',
-  minWidth: '56px',
-};
-
-const codeBlockStyle: React.CSSProperties = {
-  background: 'var(--global-color-neutral-gray-50)',
-  border: '1px solid var(--global-color-neutral-gray-200)',
-  borderRadius: 'var(--global-spacing-radius-4px)',
-  padding: '16px 20px',
-  fontFamily: 'monospace',
-  fontSize: '13px',
-  lineHeight: '1.6',
-  color: 'var(--global-color-neutral-gray-800)',
-  overflowX: 'auto' as const,
-  margin: '0 0 16px',
-  whiteSpace: 'pre' as const,
-};
-
-const tableStyle: React.CSSProperties = {
-  width: '100%',
-  borderCollapse: 'collapse' as const,
-  fontFamily: 'var(--brand-font-primary)',
-  fontSize: '13px',
-  marginBottom: '16px',
-};
-
-const thStyle: React.CSSProperties = {
-  background: 'var(--global-color-neutral-gray-50)',
-  border: '1px solid var(--global-color-neutral-gray-200)',
-  padding: '8px 12px',
-  textAlign: 'left' as const,
-  fontWeight: 400,
-  color: 'var(--global-color-neutral-gray-700)',
-};
-
-const tdStyle: React.CSSProperties = {
-  border: '1px solid var(--global-color-neutral-gray-200)',
-  padding: '8px 12px',
-  color: 'var(--global-color-neutral-gray-700)',
-  verticalAlign: 'top' as const,
-};
-
-const tdCodeStyle: React.CSSProperties = {
-  ...tdStyle,
-  fontFamily: 'monospace',
-  fontSize: '12px',
-  color: 'var(--global-color-status-dark-green)',
-};
-
-const chipStyle = (bg: string, color: string): React.CSSProperties => ({
-  display: 'inline-block',
-  padding: '2px 8px',
-  borderRadius: '3px',
-  background: bg,
-  color,
-  fontFamily: 'monospace',
-  fontSize: '11px',
-});
-
 export const SuccessButtonDocs: React.FC = () => (
-  <div
-    style={{
-      padding: '48px',
-      maxWidth: '960px',
-      margin: '0 auto',
-      fontFamily: 'var(--brand-font-primary)',
-    }}
-  >
-    {/* ── Header ──────────────────────────────────────────────────────────── */}
-    <div style={{ marginBottom: '40px' }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
-        <h1
-          style={{
-            fontFamily: 'var(--brand-font-primary)',
-            fontSize: '32px',
-            fontWeight: 300,
-            color: 'var(--global-color-base-black)',
-            margin: 0,
-          }}
-        >
-          SuccessButton
-        </h1>
-        <span style={chipStyle('var(--global-color-status-green-light)', 'var(--global-color-status-dark-green)')}>
-          Atoms / Buttons / StatusButton
-        </span>
-        <span style={chipStyle('var(--global-color-neutral-gray-100)', 'var(--global-color-neutral-gray-600)')}>
-          Stable
-        </span>
-      </div>
-      <p style={{ ...bodyStyle, margin: 0, maxWidth: '640px' }}>
-        A status-specific button for success and confirmation actions. Two visual variants:
-        <strong> solid</strong> (light-green fill, black text — primary CTA; hover inverts to
-        dark-green fill with white text) and <strong> ghost</strong> (white background,
-        dark-green border and text — secondary CTA; hover shifts bg to green-light).
-      </p>
-    </div>
+  <DocsTemplate>
+    <DocsTemplate.Header
+      title="SuccessButton"
+      subtitle="A status-specific button for success and confirmation actions within the NPX Design System"
+    />
 
-    {/* ── Anatomy ─────────────────────────────────────────────────────────── */}
-    <div style={sectionStyle}>
-      <h2 style={headingStyle}>Anatomy</h2>
-      <p style={bodyStyle}>
-        Each button renders three inline elements: a leading user icon, a text label, and a
+    <DocsTemplate.BodyText>
+      The <strong>SuccessButton</strong> is the primary CTA element used inside success-status
+      notifications and modal cards. It comes in two visual variants —{' '}
+      <strong>solid</strong> (light-green filled, black text; hover inverts to dark-green with
+      white text) and <strong>ghost</strong> (white background, dark-green border and text, with
+      a green-light hover fill) — across three sizes. All styling is token-driven with no
+      hardcoded values. The solid hover colour inversion is unique to the success status. It is
+      always paired with a <strong>CardContent</strong> of status <code>success</code>, where
+      the solid variant serves as the primary call-to-action and the ghost as the secondary.
+    </DocsTemplate.BodyText>
+
+    {/* ── Anatomy ──────────────────────────────────────────────────────────── */}
+    <DocsTemplate.Section title="Component Anatomy">
+      <DocsTemplate.BodyText>
+        Each SuccessButton renders three inline elements: a leading user icon, a text label, and a
         trailing arrow-right icon. In the loading state the leading icon is replaced by a CSS
-        spinner and the trailing icon is hidden. In the disabled state all elements are tinted grey.
-      </p>
-      <div
-        style={{
-          background: 'var(--global-color-neutral-gray-50)',
-          border: '1px solid var(--global-color-neutral-gray-200)',
-          borderRadius: 'var(--global-spacing-radius-4px)',
-          padding: '32px',
-          display: 'flex',
-          gap: '16px',
-          flexWrap: 'wrap',
-          alignItems: 'center',
-        }}
-      >
-        <SuccessButton variant="solid" size="default" label="Success button" />
-        <SuccessButton variant="ghost" size="default" label="Success button" />
-      </div>
-    </div>
+        spinner and the trailing icon is hidden.
+      </DocsTemplate.BodyText>
 
-    {/* ── Variants ────────────────────────────────────────────────────────── */}
-    <div style={sectionStyle}>
-      <h2 style={headingStyle}>Variants</h2>
+      <DocsTemplate.Subsection title="Solid">
+        <DocsTemplate.Anatomy
+          preview={
+            <div style={{ display: 'flex', gap: 'var(--global-spacing-sizing-16px)', padding: 'var(--global-spacing-sizing-24px)', background: 'var(--global-color-neutral-gray-50)', borderRadius: 'var(--global-spacing-radius-4px)', flexWrap: 'wrap', alignItems: 'center' }}>
+              <SuccessButton variant="solid" size="small" label="Success button" />
+              <SuccessButton variant="solid" size="default" label="Success button" />
+              <SuccessButton variant="solid" size="large" label="Success button" />
+            </div>
+          }
+          parts={[
+            {
+              id: 1,
+              name: 'Container',
+              token: '--btn-success-solid-bg\n--btn-success-solid-bg-hover\n--btn-success-solid-border-color\n--btn-success-solid-border-width\n--btn-border-radius',
+              description: 'Outer shell. Default fill: light-green (#96F78D). Hover inverts to dark-green (#227F1A) + 2×2px dark-green shadow. Focus: 2px border, light-green bg. Radius: 4px.',
+            },
+            {
+              id: 2,
+              name: 'Leading Icon',
+              token: '--btn-success-solid-color\n--btn-success-solid-color-hover\n--btn-icon-size-{size}',
+              description: 'User/account icon — 14px small, 16px default, 18px large. Default fill: #1C1C1C (black). Hover fill: white. Replaced by spinner in loading state.',
+            },
+            {
+              id: 3,
+              name: 'Label',
+              token: '--btn-font-family\n--btn-font-size-{size}\n--btn-success-solid-color\n--btn-success-solid-color-hover',
+              description: 'Button text. F37 Ginger Pro Light. 14/16/18px by size. Default: black. Hover: white (colour inversion unique to success).',
+            },
+            {
+              id: 4,
+              name: 'Trailing Icon',
+              token: '--btn-success-solid-color\n--btn-success-solid-color-hover\n--btn-icon-size-{size}',
+              description: 'Arrow-right icon. Same size as leading icon. Default: black. Hover: white. Hidden in loading state.',
+            },
+          ]}
+        />
+      </DocsTemplate.Subsection>
 
-      <div style={{ marginBottom: '24px' }}>
-        <p style={subheadingStyle}>Solid</p>
-        <p style={bodyStyle}>
-          Light-green (#96F78D) filled background with a dark-green (#227F1A) border and black
-          text by default. On hover the background inverts to dark-green and text/icons switch to
-          white — a unique colour flip unique to the success variant. Focus restores the
-          light-green background with a 2px border.
-        </p>
-        <div style={rowStyle}>
+      <DocsTemplate.Subsection title="Ghost">
+        <DocsTemplate.Anatomy
+          preview={
+            <div style={{ display: 'flex', gap: 'var(--global-spacing-sizing-16px)', padding: 'var(--global-spacing-sizing-24px)', background: 'var(--global-color-neutral-gray-50)', borderRadius: 'var(--global-spacing-radius-4px)', flexWrap: 'wrap', alignItems: 'center' }}>
+              <SuccessButton variant="ghost" size="small" label="Success button" />
+              <SuccessButton variant="ghost" size="default" label="Success button" />
+              <SuccessButton variant="ghost" size="large" label="Success button" />
+            </div>
+          }
+          parts={[
+            {
+              id: 1,
+              name: 'Container',
+              token: '--btn-success-ghost-bg\n--btn-success-ghost-bg-hover\n--btn-success-ghost-border-color\n--btn-success-ghost-border-width\n--btn-border-radius',
+              description: 'Outer shell. Default fill: white. Border: 1px solid dark-green. Hover shifts bg to green-light (#F2FFF1) + 2×2px dark-green shadow. Focus: 3px border (unique to success ghost). Radius: 4px.',
+            },
+            {
+              id: 2,
+              name: 'Leading Icon',
+              token: '--btn-success-ghost-color\n--btn-icon-size-{size}',
+              description: 'User/account icon. Fill: dark-green (#227F1A). 14/16/18px by size.',
+            },
+            {
+              id: 3,
+              name: 'Label',
+              token: '--btn-font-family\n--btn-font-size-{size}\n--btn-success-ghost-color',
+              description: 'Button text. F37 Ginger Pro Light. Colour: dark-green (#227F1A).',
+            },
+            {
+              id: 4,
+              name: 'Trailing Icon',
+              token: '--btn-success-ghost-color\n--btn-icon-size-{size}',
+              description: 'Arrow-right icon. Fill: dark-green (#227F1A). Hidden in loading state.',
+            },
+          ]}
+        />
+      </DocsTemplate.Subsection>
+    </DocsTemplate.Section>
+
+    {/* ── Variants ─────────────────────────────────────────────────────────── */}
+    <DocsTemplate.Section title="Variants">
+      <DocsTemplate.BodyText>
+        Two visual variants establish clear action hierarchy within success contexts. Always pair
+        <strong> solid</strong> as the primary action with <strong>ghost</strong> as the secondary.
+        The solid variant features a unique hover behaviour — the background inverts from
+        light-green to dark-green and text switches from black to white.
+      </DocsTemplate.BodyText>
+
+      <DocsTemplate.Subsection title="Solid — Primary CTA">
+        <DocsTemplate.BodyText>
+          Light-green filled background (#96F78D) with dark-green border and black text by default.
+          On hover the background inverts to dark-green (#227F1A) and text/icons flip to white —
+          unique among all StatusButton variants. Focus restores the light-green background with a
+          2px border.
+        </DocsTemplate.BodyText>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px) 0' }}>
           <SuccessButton variant="solid" size="small" label="Success button" />
           <SuccessButton variant="solid" size="default" label="Success button" />
           <SuccessButton variant="solid" size="large" label="Success button" />
         </div>
-      </div>
+      </DocsTemplate.Subsection>
 
-      <div>
-        <p style={subheadingStyle}>Ghost / Alt</p>
-        <p style={bodyStyle}>
-          White background with a 1px dark-green (#227F1A) border and dark-green text and icons.
-          On hover the background shifts to green-light (#F2FFF1) and a 2×2px dark-green drop
-          shadow is applied. Focus uses a distinctive <strong>3px</strong> border (per Figma spec,
-          wider than other status buttons).
-        </p>
-        <div style={rowStyle}>
+      <DocsTemplate.Subsection title="Ghost — Secondary CTA">
+        <DocsTemplate.BodyText>
+          White background with a 1px dark-green border and dark-green text/icons. On hover the
+          background shifts to green-light (#F2FFF1) and a 2×2px dark-green shadow is applied.
+          Focus uses a <strong>3px</strong> border — wider than all other status buttons, per the
+          Figma specification.
+        </DocsTemplate.BodyText>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px) 0' }}>
           <SuccessButton variant="ghost" size="small" label="Success button" />
           <SuccessButton variant="ghost" size="default" label="Success button" />
           <SuccessButton variant="ghost" size="large" label="Success button" />
         </div>
-      </div>
-    </div>
+      </DocsTemplate.Subsection>
+    </DocsTemplate.Section>
 
-    {/* ── Sizes ───────────────────────────────────────────────────────────── */}
-    <div style={sectionStyle}>
-      <h2 style={headingStyle}>Sizes</h2>
-      <table style={tableStyle}>
-        <thead>
-          <tr>
-            <th style={thStyle}>Size</th>
-            <th style={thStyle}>Height</th>
-            <th style={thStyle}>Padding</th>
-            <th style={thStyle}>Font size</th>
-            <th style={thStyle}>Icon size</th>
-            <th style={thStyle}>Preview</th>
-          </tr>
-        </thead>
-        <tbody>
-          {[
-            ['small',   '34px', '4px 12px', '14px', '14px'],
-            ['default', '44px', '4px 16px', '16px', '16px'],
-            ['large',   '56px', '4px 16px', '18px', '18px'],
-          ].map(([size, h, pad, fs, is]) => (
-            <tr key={size}>
-              <td style={tdCodeStyle}>{size}</td>
-              <td style={tdStyle}>{h}</td>
-              <td style={tdStyle}>{pad}</td>
-              <td style={tdStyle}>{fs}</td>
-              <td style={tdStyle}>{is}</td>
-              <td style={tdStyle}>
-                <SuccessButton
-                  variant="solid"
-                  size={size as any}
-                  label="Success button"
-                />
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    {/* ── Sizes ────────────────────────────────────────────────────────────── */}
+    <DocsTemplate.Section title="Sizes">
+      <DocsTemplate.BodyText>
+        Three sizes scale the button for different card contexts. Size is set automatically by
+        the parent <strong>CardContent</strong> via its <code>size</code> prop.
+      </DocsTemplate.BodyText>
 
-    {/* ── States ──────────────────────────────────────────────────────────── */}
-    <div style={sectionStyle}>
-      <h2 style={headingStyle}>States</h2>
-      {(['solid', 'ghost'] as const).map((variant) => (
-        <div key={variant} style={{ marginBottom: '24px' }}>
-          <p style={subheadingStyle}>{variant}</p>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            {(['small', 'default', 'large'] as const).map((size) => (
-              <div key={size} style={rowStyle}>
-                <span style={labelStyle}>{size}</span>
-                <SuccessButton variant={variant} size={size} label="Success button" />
-                <SuccessButton variant={variant} size={size} label="Success button" loading />
-                <SuccessButton variant={variant} size={size} label="Label" disabled />
+      <DocsTemplate.SizeDemo
+        rows={[
+          {
+            label: 'Small',
+            sublabel: '34px height — compact notification cards',
+            children: (
+              <div style={{ display: 'flex', gap: 'var(--global-spacing-sizing-8px)', alignItems: 'center', flexWrap: 'wrap' }}>
+                <SuccessButton variant="solid" size="small" label="Success button" />
+                <SuccessButton variant="ghost" size="small" label="Success button" />
               </div>
-            ))}
-          </div>
+            ),
+          },
+          {
+            label: 'Default',
+            sublabel: '44px height — standard notification cards',
+            children: (
+              <div style={{ display: 'flex', gap: 'var(--global-spacing-sizing-8px)', alignItems: 'center', flexWrap: 'wrap' }}>
+                <SuccessButton variant="solid" size="default" label="Success button" />
+                <SuccessButton variant="ghost" size="default" label="Success button" />
+              </div>
+            ),
+          },
+          {
+            label: 'Large',
+            sublabel: '56px height — prominent success modals',
+            children: (
+              <div style={{ display: 'flex', gap: 'var(--global-spacing-sizing-8px)', alignItems: 'center', flexWrap: 'wrap' }}>
+                <SuccessButton variant="solid" size="large" label="Success button" />
+                <SuccessButton variant="ghost" size="large" label="Success button" />
+              </div>
+            ),
+          },
+        ]}
+      />
+    </DocsTemplate.Section>
+
+    {/* ── States ───────────────────────────────────────────────────────────── */}
+    <DocsTemplate.Section title="States">
+      <DocsTemplate.Subsection title="Loading">
+        <DocsTemplate.BodyText>
+          Pass <code>loading</code> to replace the leading icon with a spinning CSS animation and
+          hide the trailing arrow icon. The button is non-interactive during loading.
+        </DocsTemplate.BodyText>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-12px) 0' }}>
+          <SuccessButton variant="solid" size="small" label="Success button" loading />
+          <SuccessButton variant="solid" size="default" label="Success button" loading />
+          <SuccessButton variant="solid" size="large" label="Success button" loading />
+          <SuccessButton variant="ghost" size="default" label="Success button" loading />
         </div>
-      ))}
-    </div>
+      </DocsTemplate.Subsection>
 
-    {/* ── Design Tokens ───────────────────────────────────────────────────── */}
-    <div style={sectionStyle}>
-      <h2 style={headingStyle}>Design Tokens</h2>
-      <p style={bodyStyle}>
-        All visual properties are driven by design tokens in{' '}
-        <code>src/styles/tokens.css</code> under <code>/* COMPONENT: SuccessButton */</code>.
-      </p>
+      <DocsTemplate.Subsection title="Disabled">
+        <DocsTemplate.BodyText>
+          Disabled state uses explicit grey tokens (no opacity reduction). Both variants share the
+          same disabled appearance: grey-100 background, grey-400 text and border at 0.5px.
+        </DocsTemplate.BodyText>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-12px) 0' }}>
+          <SuccessButton variant="solid" size="small" label="Label" disabled />
+          <SuccessButton variant="solid" size="default" label="Label" disabled />
+          <SuccessButton variant="solid" size="large" label="Label" disabled />
+          <SuccessButton variant="ghost" size="default" label="Label" disabled />
+        </div>
+      </DocsTemplate.Subsection>
+    </DocsTemplate.Section>
 
-      <p style={subheadingStyle}>Solid variant</p>
-      <table style={tableStyle}>
-        <thead>
-          <tr>
-            <th style={thStyle}>Token</th>
-            <th style={thStyle}>Value</th>
-            <th style={thStyle}>Usage</th>
-          </tr>
-        </thead>
-        <tbody>
-          {[
-            ['--btn-success-solid-bg',                 'var(--global-color-status-green) → #96F78D',      'Default background'],
-            ['--btn-success-solid-color',              'var(--global-color-base-black) → #1C1C1C',        'Default text & icon colour'],
-            ['--btn-success-solid-border-color',       'var(--global-color-status-dark-green) → #227F1A', 'Border colour (all states)'],
-            ['--btn-success-solid-border-width',       'var(--global-spacing-stroke-1px) → 1px',          'Default border width'],
-            ['--btn-success-solid-bg-hover',           'var(--global-color-status-dark-green) → #227F1A', 'Background on hover/active (colour inversion)'],
-            ['--btn-success-solid-color-hover',        'var(--global-color-base-white) → #FFFFFF',        'Text & icon colour on hover/active'],
-            ['--btn-success-solid-shadow-hover',       '2px 2px 0px 0px #227F1A',                         'Drop shadow on hover/active'],
-            ['--btn-success-solid-border-width-focus', 'var(--global-spacing-stroke-2px) → 2px',          'Border width on focus'],
-          ].map(([token, value, usage]) => (
-            <tr key={token}>
-              <td style={tdCodeStyle}>{token}</td>
-              <td style={tdStyle}><code>{value}</code></td>
-              <td style={tdStyle}>{usage}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    {/* ── Tokens ───────────────────────────────────────────────────────────── */}
+    <DocsTemplate.TokenTable
+      title="Design Tokens — Solid Variant"
+      description="Colour tokens for the solid (primary) success button — note the unique hover inversion:"
+      tokens={[
+        { name: '--btn-success-solid-bg', description: 'Default background — var(--global-color-status-green) #96F78D' },
+        { name: '--btn-success-solid-color', description: 'Default text & icon colour — var(--global-color-base-black) #1C1C1C' },
+        { name: '--btn-success-solid-border-color', description: 'Border colour (all states) — var(--global-color-status-dark-green) #227F1A' },
+        { name: '--btn-success-solid-border-width', description: 'Default border width — var(--global-spacing-stroke-1px) 1px' },
+        { name: '--btn-success-solid-bg-hover', description: 'Hover/active background (inversion) — var(--global-color-status-dark-green) #227F1A' },
+        { name: '--btn-success-solid-color-hover', description: 'Hover/active text & icon colour — var(--global-color-base-white) #FFFFFF' },
+        { name: '--btn-success-solid-shadow-hover', description: 'Drop shadow on hover/active — 2px 2px 0px 0px #227F1A (dark-green)' },
+        { name: '--btn-success-solid-border-width-focus', description: 'Focus border width — var(--global-spacing-stroke-2px) 2px' },
+      ]}
+    />
 
-      <p style={{ ...subheadingStyle, marginTop: '24px' }}>Ghost / Alt variant</p>
-      <table style={tableStyle}>
-        <thead>
-          <tr>
-            <th style={thStyle}>Token</th>
-            <th style={thStyle}>Value</th>
-            <th style={thStyle}>Usage</th>
-          </tr>
-        </thead>
-        <tbody>
-          {[
-            ['--btn-success-ghost-bg',                 'var(--global-color-base-white) → #FFFFFF',        'Default background'],
-            ['--btn-success-ghost-bg-hover',           'var(--global-color-status-green-light) → #F2FFF1','Background on hover/active'],
-            ['--btn-success-ghost-color',              'var(--global-color-status-dark-green) → #227F1A', 'Text & icon colour'],
-            ['--btn-success-ghost-border-color',       'var(--global-color-status-dark-green) → #227F1A', 'Border colour (all states)'],
-            ['--btn-success-ghost-border-width',       'var(--global-spacing-stroke-1px) → 1px',          'Default border width'],
-            ['--btn-success-ghost-shadow-hover',       '2px 2px 0px 0px #227F1A',                         'Drop shadow on hover/active'],
-            ['--btn-success-ghost-border-width-focus', '3px',                                              'Focus border width (3px per Figma — unique to success)'],
-          ].map(([token, value, usage]) => (
-            <tr key={token}>
-              <td style={tdCodeStyle}>{token}</td>
-              <td style={tdStyle}><code>{value}</code></td>
-              <td style={tdStyle}>{usage}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <DocsTemplate.TokenTable
+      title="Design Tokens — Ghost Variant"
+      description="Colour tokens for the ghost (secondary) success button — note the 3px focus border:"
+      tokens={[
+        { name: '--btn-success-ghost-bg', description: 'Default background — var(--global-color-base-white) #FFFFFF' },
+        { name: '--btn-success-ghost-bg-hover', description: 'Hover/active background — var(--global-color-status-green-light) #F2FFF1' },
+        { name: '--btn-success-ghost-color', description: 'Text & icon colour — var(--global-color-status-dark-green) #227F1A' },
+        { name: '--btn-success-ghost-border-color', description: 'Border colour — var(--global-color-status-dark-green) #227F1A' },
+        { name: '--btn-success-ghost-border-width', description: 'Default border width — var(--global-spacing-stroke-1px) 1px' },
+        { name: '--btn-success-ghost-shadow-hover', description: 'Drop shadow on hover/active — 2px 2px 0px 0px #227F1A (dark-green)' },
+        { name: '--btn-success-ghost-border-width-focus', description: 'Focus border width — 3px (wider than all other status buttons per Figma spec)' },
+      ]}
+    />
 
-      <p style={{ ...subheadingStyle, marginTop: '24px' }}>Disabled (shared)</p>
-      <table style={tableStyle}>
-        <thead>
-          <tr>
-            <th style={thStyle}>Token</th>
-            <th style={thStyle}>Value</th>
-            <th style={thStyle}>Usage</th>
-          </tr>
-        </thead>
-        <tbody>
-          {[
-            ['--btn-success-bg-disabled',           'var(--global-color-neutral-gray-100) → #F3F4F6', 'Background (disabled)'],
-            ['--btn-success-color-disabled',        'var(--global-color-neutral-gray-400) → #9CA3AF', 'Text & icon colour (disabled)'],
-            ['--btn-success-border-color-disabled', 'var(--global-color-neutral-gray-400) → #9CA3AF', 'Border colour (disabled)'],
-            ['--btn-success-border-width-disabled', 'var(--global-spacing-stroke-0-5px) → 0.5px',    'Border width (disabled)'],
-          ].map(([token, value, usage]) => (
-            <tr key={token}>
-              <td style={tdCodeStyle}>{token}</td>
-              <td style={tdStyle}><code>{value}</code></td>
-              <td style={tdStyle}>{usage}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <DocsTemplate.TokenTable
+      title="Design Tokens — Disabled (shared)"
+      description="Tokens applied to both variants in the disabled state:"
+      tokens={[
+        { name: '--btn-success-bg-disabled', description: 'Background — var(--global-color-neutral-gray-100) #F3F4F6' },
+        { name: '--btn-success-color-disabled', description: 'Text & icon colour — var(--global-color-neutral-gray-400) #9CA3AF' },
+        { name: '--btn-success-border-color-disabled', description: 'Border colour — var(--global-color-neutral-gray-400) #9CA3AF' },
+        { name: '--btn-success-border-width-disabled', description: 'Border width — var(--global-spacing-stroke-0-5px) 0.5px' },
+      ]}
+    />
 
-    {/* ── Props ───────────────────────────────────────────────────────────── */}
-    <div style={sectionStyle}>
-      <h2 style={headingStyle}>Props</h2>
-      <table style={tableStyle}>
-        <thead>
-          <tr>
-            <th style={thStyle}>Prop</th>
-            <th style={thStyle}>Type</th>
-            <th style={thStyle}>Default</th>
-            <th style={thStyle}>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          {[
-            ['label',     'string',                     '"Success button"', 'Button label text'],
-            ['variant',   "'solid' | 'ghost'",          "'solid'",          'Visual style variant'],
-            ['size',      "'small' | 'default' | 'large'", "'default'",     'Controls height, padding, font, and icon sizes'],
-            ['loading',   'boolean',                    'false',            'Replaces leading icon with spinner; disables interaction'],
-            ['disabled',  'boolean',                    'false',            'Disables all interactions and applies grey styling'],
-            ['type',      "'button' | 'submit' | 'reset'", "'button'",      'HTML button type attribute'],
-            ['onClick',   '(e) => void',                '—',               'Click handler (no-op when loading or disabled)'],
-            ['className', 'string',                     "''",              'Extra CSS class on the root element'],
-            ['ariaLabel', 'string',                     '—',               'Accessible label'],
-          ].map(([prop, type, def, desc]) => (
-            <tr key={prop}>
-              <td style={tdCodeStyle}>{prop}</td>
-              <td style={{ ...tdStyle, fontFamily: 'monospace', fontSize: '12px' }}>{type}</td>
-              <td style={{ ...tdStyle, fontFamily: 'monospace', fontSize: '12px' }}>{def}</td>
-              <td style={tdStyle}>{desc}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-
-    {/* ── Usage ───────────────────────────────────────────────────────────── */}
-    <div style={sectionStyle}>
-      <h2 style={headingStyle}>Usage</h2>
-
-      <p style={subheadingStyle}>Standalone</p>
-      <pre style={codeBlockStyle}>{`import { SuccessButton } from '@/components/Button/SuccessButton/SuccessButton';
+    {/* ── Usage ────────────────────────────────────────────────────────────── */}
+    <DocsTemplate.CodeBlock>
+      {`import { SuccessButton } from '@/components/Button/SuccessButton/SuccessButton';
 
 // Solid (primary CTA)
 <SuccessButton variant="solid" label="Success button" />
 
 // Ghost (secondary CTA)
-<SuccessButton variant="ghost" label="Success button" />`}</pre>
+<SuccessButton variant="ghost" label="Success button" />
 
-      <p style={subheadingStyle}>In a success CardContent ButtonGroup</p>
-      <pre style={codeBlockStyle}>{`<CardContent
-  variant="notification"
-  status="success"
-  heading="This is a success heading"
-  body="Your action completed successfully."
-/>`}</pre>
+// Size variants
+<SuccessButton variant="solid" size="small" label="Success button" />
+<SuccessButton variant="solid" size="large" label="Success button" />
 
-      <p style={subheadingStyle}>Important interaction note</p>
-      <p style={bodyStyle}>
-        The <strong>solid</strong> variant is unique among StatusButtons: on hover, the entire
-        background colour inverts from light-green to dark-green and the text/icons switch from
-        black to white. This makes the success solid button the most visually striking of the
-        status variants on hover. Do not suppress this transition with additional CSS overrides.
-      </p>
+// Loading state
+<SuccessButton variant="solid" label="Success button" loading />
 
-      <ul
-        style={{
-          fontFamily: 'var(--brand-font-primary)',
-          fontSize: '14px',
-          fontWeight: 300,
-          color: 'var(--global-color-neutral-gray-700)',
-          lineHeight: '24px',
-          paddingLeft: '20px',
-          margin: 0,
-        }}
-      >
-        <li>Use <strong>solid</strong> as the primary CTA in success-status modals and cards.</li>
-        <li>Use <strong>ghost</strong> as the secondary CTA alongside the solid variant.</li>
-        <li>Do not pair two solid SuccessButtons — use solid + ghost to establish hierarchy.</li>
-        <li>Do not use SuccessButton for warning or error actions — use the correct status button.</li>
-        <li>Do not override token values with hard-coded colours.</li>
-      </ul>
-    </div>
-  </div>
+// Disabled state
+<SuccessButton variant="solid" label="Label" disabled />
+
+// Inside a CardContent (tokens applied automatically via status class)
+<CardContent variant="notification" status="success" heading="Action completed" />`}
+    </DocsTemplate.CodeBlock>
+
+    {/* ── Principles ───────────────────────────────────────────────────────── */}
+    <DocsTemplate.Principles>
+      <DocsTemplate.PrincipleCard number={1} title="One solid per success context">
+        Each success notification or card should have exactly one <strong>solid</strong>{' '}
+        SuccessButton as the primary CTA. Pair it with a <strong>ghost</strong> for secondary
+        actions (e.g. "View details" or "Dismiss").
+      </DocsTemplate.PrincipleCard>
+      <DocsTemplate.PrincipleCard number={2} title="Do not suppress the hover inversion">
+        The solid variant's hover behaviour — flipping from light-green to dark-green with white
+        text — is intentional and distinctive. Do not override it with CSS or token changes. This
+        inversion is what makes success actions visually confident.
+      </DocsTemplate.PrincipleCard>
+      <DocsTemplate.PrincipleCard number={3} title="Reserve for success status only">
+        Do not use SuccessButton in error, warning, or info contexts. Each status has its own
+        dedicated button component with the correct colour tokens.
+      </DocsTemplate.PrincipleCard>
+    </DocsTemplate.Principles>
+
+    {/* ── Dos and Don'ts ───────────────────────────────────────────────────── */}
+    <DocsTemplate.DosDonts
+      doItem={{
+        icon: (
+          <div style={{ display: 'flex', gap: 'var(--global-spacing-sizing-8px)', flexWrap: 'wrap' }}>
+            <SuccessButton variant="solid" label="Success button" />
+            <SuccessButton variant="ghost" label="Success button" />
+          </div>
+        ),
+        label: 'Solid + Ghost pair',
+        description: 'Use solid as the primary action and ghost as the secondary — clear visual hierarchy within the success card.',
+      }}
+      dontItem={{
+        icon: (
+          <div style={{ display: 'flex', gap: 'var(--global-spacing-sizing-8px)', flexWrap: 'wrap' }}>
+            <SuccessButton variant="solid" label="Success button" />
+            <SuccessButton variant="solid" label="Success button" />
+          </div>
+        ),
+        label: 'Two solid buttons',
+        description: "Don't use two solid SuccessButtons side by side. It creates confusion about which action is primary.",
+      }}
+    />
+
+    {/* ── Related Links ────────────────────────────────────────────────────── */}
+    <DocsTemplate.RelatedLinks
+      links={[
+        { label: 'Figma Library', href: 'https://www.figma.com/design/rCwHMIRhV0Taymt1YRXshd/NPX---White-label-Design-System?node-id=0-1&t=SNHnnLnzBTI11xsY-1' },
+        { label: 'CardContent component', href: '/?path=/story/atoms-cardcontent--documentation' },
+        { label: 'ErrorButton', href: '/?path=/story/atoms-buttons-statusbutton-errorbutton--documentation' },
+        { label: 'WarningButton', href: '/?path=/story/atoms-buttons-statusbutton-warningbutton--documentation' },
+      ]}
+    />
+
+    <DocsTemplate.Footer />
+  </DocsTemplate>
 );
 
 export default SuccessButtonDocs;
