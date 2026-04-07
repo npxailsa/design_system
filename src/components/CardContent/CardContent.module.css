@@ -324,6 +324,32 @@
   color: var(--global-color-base-white) !important;
 }
 
+/* ── Non-status variants: ghost / secondary button ────────────────────────── */
+/* default, light-gray, navy, purple, white all use the standard Ghost Button
+   token set for their second (right-side) action.                            */
+
+.status-default .card-content__ghost-status-btn,
+.status-light-gray .card-content__ghost-status-btn,
+.status-navy .card-content__ghost-status-btn,
+.status-purple .card-content__ghost-status-btn,
+.status-white .card-content__ghost-status-btn {
+  background: var(--btn-ghost-bg) !important;
+  color: var(--btn-ghost-color) !important;
+  border-color: var(--btn-ghost-border-color) !important;
+  border-width: var(--btn-ghost-border-width-default) !important;
+  box-shadow: none !important;
+}
+
+.status-default .card-content__ghost-status-btn:hover,
+.status-light-gray .card-content__ghost-status-btn:hover,
+.status-navy .card-content__ghost-status-btn:hover,
+.status-purple .card-content__ghost-status-btn:hover,
+.status-white .card-content__ghost-status-btn:hover {
+  background: var(--btn-ghost-bg-hover) !important;
+  color: var(--btn-ghost-color-hover) !important;
+  border-color: var(--btn-ghost-border-color-hover) !important;
+}
+
 /* ── Notification text block ──────────────────────────────────────────────── */
 
 .card-content__text {
