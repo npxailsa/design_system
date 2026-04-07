@@ -45,7 +45,7 @@ export const IntroductionDocs: React.FC = () => {
 
       <DocsTemplate.RelatedLinks
         links={[
-          { label: 'Figma Library', href: 'https://figma.com' },
+          { label: 'Figma Library', href: 'https://www.figma.com/design/rCwHMIRhV0Taymt1YRXshd/NPX---White-label-Design-System?node-id=0-1&t=SNHnnLnzBTI11xsY-1' },
           { label: 'Design Guidelines', href: 'https://npxailsa.github.io/design_system' },
         ]}
       />
