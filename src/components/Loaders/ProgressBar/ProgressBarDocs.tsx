@@ -36,7 +36,7 @@ export const ProgressBarDocs: React.FC = () => (
     <DocsTemplate.Section title="Component Anatomy">
       <DocsTemplate.Anatomy
         preview={
-          <div style={{ ...stack, maxWidth: '400px' }}>
+          <div style={{ ...stack, minWidth: '200px', width: '100%', maxWidth: '400px' }}>
             <ProgressBar value={0}   size="default" />
             <ProgressBar value={50}  size="default" />
             <ProgressBar value={100} size="default" />
@@ -76,7 +76,7 @@ export const ProgressBarDocs: React.FC = () => (
       title="Size / Small"
       subtitle="4px track height. Thin, compact progress indicator for dense layouts."
     >
-      <div style={{ maxWidth: '360px', ...stack }}>
+      <div style={{ minWidth: '200px', width: '100%', maxWidth: '400px', ...stack }}>
         {ALL_VALUES.map((v) => (
           <ProgressBar key={v} value={v} size="sm" />
         ))}
@@ -88,7 +88,7 @@ export const ProgressBarDocs: React.FC = () => (
       title="Size / Default"
       subtitle="8px track height. Standard progress bar for most use cases. Label is semibold for added legibility."
     >
-      <div style={{ maxWidth: '360px', ...stack }}>
+      <div style={{ minWidth: '200px', width: '100%', maxWidth: '400px', ...stack }}>
         {ALL_VALUES.map((v) => (
           <ProgressBar key={v} value={v} size="default" />
         ))}
@@ -100,7 +100,7 @@ export const ProgressBarDocs: React.FC = () => (
       title="Size / Large"
       subtitle="16px track height. High-visibility progress indicator for prominent status displays."
     >
-      <div style={{ maxWidth: '360px', ...stack }}>
+      <div style={{ minWidth: '200px', width: '100%', maxWidth: '400px', ...stack }}>
         {ALL_VALUES.map((v) => (
           <ProgressBar key={v} value={v} size="lg" />
         ))}
@@ -112,7 +112,7 @@ export const ProgressBarDocs: React.FC = () => (
       title="Size / All (Side by Side)"
       subtitle="All three size variants at every 10% step for direct comparison."
     >
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 'var(--global-spacing-sizing-32px)', padding: 'var(--global-spacing-sizing-24px)', background: 'var(--global-color-neutral-gray-50)', borderRadius: 'var(--global-spacing-radius-8px)' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(200px, 1fr))', gap: 'var(--global-spacing-sizing-32px)', padding: 'var(--global-spacing-sizing-24px)', background: 'var(--global-color-neutral-gray-50)', borderRadius: 'var(--global-spacing-radius-8px)' }}>
         {ALL_SIZES.map((size) => (
           <div key={size} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-12px)' }}>
             {ALL_VALUES.map((v) => (
@@ -128,7 +128,7 @@ export const ProgressBarDocs: React.FC = () => (
       title="Without Label"
       subtitle="Use showLabel={false} when a label is supplied externally or space is constrained."
     >
-      <div style={{ maxWidth: '320px', ...stack }}>
+      <div style={{ minWidth: '200px', width: '100%', maxWidth: '400px', ...stack }}>
         {ALL_VALUES.map((v) => (
           <ProgressBar key={v} value={v} showLabel={false} />
         ))}
