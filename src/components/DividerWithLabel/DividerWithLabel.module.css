@@ -1,0 +1,132 @@
+/* ==========================================================================
+   DividerWithLabel Component
+   --------------------------------------------------------------------------
+   A horizontal separator line with a text label cut into it.
+   The label sits on top of the line with a white background to ensure
+   readability against any surface.
+
+   Colour:   --divider-color           → --global-color-neutral-gray-300
+   Label bg: --divider-label-bg        → --global-color-base-white
+   Label fg: --divider-label-color     → --global-color-neutral-gray-500
+   Padding:  --divider-label-padding-x → --global-spacing-sizing-12px
+
+   All values reference global design tokens only.
+   ========================================================================== */
+
+/* ── Root container ──────────────────────────────────────────────────────── */
+
+.root {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 0;
+}
+
+/*
+  The divider lines are created via ::before and ::after pseudo-elements on
+  .root. Both use border-top for the visual line, driven entirely by tokens.
+*/
+
+.root::before,
+.root::after {
+  content: '';
+  display: block;
+  height: 0;
+  border-top-color: var(--divider-color);
+  border-top-style: solid;
+  border-top-width: var(--global-spacing-stroke-1px);
+  flex-shrink: 0;
+}
+
+/* ── Label position: center (default) ───────────────────────────────────── */
+
+.root--center::before,
+.root--center::after {
+  flex: 1;
+}
+
+/* ── Label position: left ────────────────────────────────────────────────── */
+
+.root--left::before {
+  flex: 0 0 var(--global-spacing-sizing-16px);
+}
+
+.root--left::after {
+  flex: 1;
+}
+
+/* ── Label position: right ───────────────────────────────────────────────── */
+
+.root--right::before {
+  flex: 1;
+}
+
+.root--right::after {
+  flex: 0 0 var(--global-spacing-sizing-16px);
+}
+
+/* ── Line styles ─────────────────────────────────────────────────────────── */
+
+.root--line-solid::before,
+.root--line-solid::after   { border-top-style: solid; }
+
+.root--line-dashed::before,
+.root--line-dashed::after  { border-top-style: dashed; }
+
+.root--line-dotted::before,
+.root--line-dotted::after  { border-top-style: dotted; }
+
+/* ── Thickness scale ─────────────────────────────────────────────────────── */
+
+.root--thickness-0-5px::before,
+.root--thickness-0-5px::after { border-top-width: var(--global-spacing-stroke-0-5px); }
+
+.root--thickness-1px::before,
+.root--thickness-1px::after   { border-top-width: var(--global-spacing-stroke-1px); }
+
+.root--thickness-2px::before,
+.root--thickness-2px::after   { border-top-width: var(--global-spacing-stroke-2px); }
+
+.root--thickness-3px::before,
+.root--thickness-3px::after   { border-top-width: var(--global-spacing-stroke-3px); }
+
+.root--thickness-4px::before,
+.root--thickness-4px::after   { border-top-width: var(--global-spacing-stroke-4px); }
+
+.root--thickness-8px::before,
+.root--thickness-8px::after   { border-top-width: var(--global-spacing-stroke-8px); }
+
+/* ── Label ───────────────────────────────────────────────────────────────── */
+
+.label {
+  display: inline-block;
+  white-space: nowrap;
+  flex-shrink: 0;
+
+  /* White background ensures text is legible over any divider line */
+  background-color: var(--divider-label-bg);
+  color: var(--divider-label-color);
+
+  padding-left: var(--divider-label-padding-x);
+  padding-right: var(--divider-label-padding-x);
+
+  font-family: var(--font-family-secondary);
+  font-weight: var(--global-type-weight-default);
+  letter-spacing: var(--global-type-letter-spacing-label);
+  line-height: 1;
+}
+
+/* ── Label size variants ─────────────────────────────────────────────────── */
+
+.label--xs {
+  font-size: var(--global-type-size-primary-label-xs);
+}
+
+.label--sm {
+  font-size: var(--global-type-size-primary-label-sm);
+}
+
+.label--default {
+  font-size: var(--global-type-size-primary-label);
+}

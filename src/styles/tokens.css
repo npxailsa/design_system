@@ -1914,6 +1914,19 @@
   --divider-color:      var(--global-color-neutral-gray-300);
 
   /* ==========================================================================
+     COMPONENT: DividerWithLabel
+     --------------------------------------------------------------------------
+     A horizontal separator with a text label that sits on the divider line.
+     The label uses a white background to remain readable over any surface.
+
+     Figma ref: Atoms/DividerWithLabel
+     ========================================================================== */
+
+  --divider-label-bg:        var(--global-color-base-white);
+  --divider-label-color:     var(--global-color-neutral-gray-500);
+  --divider-label-padding-x: var(--global-spacing-sizing-12px);
+
+  /* ==========================================================================
      COMPONENT: ButtonMenu (BuildingBlocks)
      --------------------------------------------------------------------------
      A stacked vertical list of menu items used as dropdown menus or contextual
