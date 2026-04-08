@@ -9,17 +9,15 @@ const previewWrap: React.CSSProperties = {
   display: 'flex',
   alignItems: 'flex-start',
   gap: 'var(--global-spacing-sizing-24px)',
-  padding: 'var(--global-spacing-sizing-32px)',
+  padding: 'var(--global-spacing-sizing-24px)',
   background: 'var(--global-color-neutral-gray-50)',
   borderRadius: 'var(--global-spacing-radius-8px)',
   flexWrap: 'wrap',
 };
 
-const ALL_STATUSES: CardContentStatus[] = [
-  'error', 'warning', 'success', 'info',
-  'default', 'light-gray', 'navy', 'purple', 'white',
-];
-const ALL_SIZES: CardContentSize[] = ['small', 'default', 'large'];
+// Representative sample sets (reduce snapshot height for Chromatic)
+const SAMPLE_STATUSES: CardContentStatus[] = ['error', 'success'];
+const SAMPLE_SIZES: CardContentSize[] = ['small', 'default', 'large'];
 const STATUS_STATUSES: CardContentStatus[] = ['error', 'warning', 'success', 'info'];
 
 const STATUS_LABELS: Record<CardContentStatus, string> = {
@@ -69,7 +67,7 @@ export const CardContentDocs: React.FC = () => (
           </div>
         }
         parts={[
-          { id: 1, name: 'Card shell', token: '--card-content-bg, --card-content-border-radius, --card-content-shadow', description: 'White background card with 6px border-radius (8px for small/large), 0.5px status-coloured border and drop-shadow.' },
+          { id: 1, name: 'Card shell', token: '--card-content-bg, --card-content-border-radius, --card-content-shadow', description: 'White background card with 6px border-radius (8px for sm/lg), 0.5px status-coloured border and drop-shadow.' },
           { id: 2, name: 'Circular icon badge (vertical)', token: '--card-content-icon-badge-size-*, --card-content-error-icon / etc.', description: 'Large circular badge with status-coloured background and white SVG icon. Vertical sizes: 80px (sm), 140px (default), 180px (lg). Controlled by showIcon prop.' },
           { id: 3, name: 'Icon badge (horizontal)', token: '--global-spacing-sizing-40/60/80px', description: 'Compact square badge in horizontal layout. Sizes: 40px (sm), 60px (default), 80px (lg). Same status-coloured background and white icon.' },
           { id: 4, name: 'Heading', token: '--card-content-heading-size-*, --card-content-error-heading / etc.', description: 'Status-coloured heading. Typography: H4 24px (sm), H3 28px (default), H2 32px (lg), weight 400.' },
@@ -85,7 +83,7 @@ export const CardContentDocs: React.FC = () => (
     {/* ── Notification Layout ── */}
     <DocsTemplate.Section
       title="Notification Layout — Vertical vs Horizontal"
-      subtitle="The notification variant now supports two layout directions via the notificationLayout prop."
+      subtitle="The notification variant supports two layout directions via the notificationLayout prop."
     >
       <DocsTemplate.BodyText>
         Set <code>notificationLayout="vertical"</code> (the default) for the classic stacked
@@ -97,11 +95,11 @@ export const CardContentDocs: React.FC = () => (
 
       <DocsTemplate.Subsection title="Vertical (default)">
         <DocsTemplate.BodyText>
-          Large circular icon badge above the content. Card width is flexible — it grows with its
+          Large circular icon badge above the content. Card width is flexible — grows with its
           container. Use for standalone modal-style status cards.
         </DocsTemplate.BodyText>
         <div style={previewWrap}>
-          {STATUS_STATUSES.map((status) => (
+          {SAMPLE_STATUSES.map((status) => (
             <CardContent
               key={status}
               variant="notification"
@@ -109,7 +107,7 @@ export const CardContentDocs: React.FC = () => (
               status={status}
               size="default"
               heading={`${STATUS_LABELS[status]} heading`}
-              body="Body text that describes the status in more detail."
+              body="Body text describing the status."
               showDismiss={true}
             />
           ))}
@@ -119,11 +117,10 @@ export const CardContentDocs: React.FC = () => (
       <DocsTemplate.Subsection title="Horizontal">
         <DocsTemplate.BodyText>
           Compact icon on the left, all content to the right. Fixed widths per size:{' '}
-          400px (small), 480px (default), 560px (large). Use for notification bars, inline
-          banners, and grid-based status displays.
+          400px (small), 480px (default), 560px (large). Use for notification bars and inline banners.
         </DocsTemplate.BodyText>
         <div style={{ ...previewWrap, flexDirection: 'column' }}>
-          {STATUS_STATUSES.map((status) => (
+          {SAMPLE_STATUSES.map((status) => (
             <CardContent
               key={status}
               variant="notification"
@@ -140,71 +137,68 @@ export const CardContentDocs: React.FC = () => (
 
       <DocsTemplate.Subsection title="Horizontal — All Sizes">
         <DocsTemplate.BodyText>
-          Icon badge scales with the card size: 40px (small), 60px (default), 80px (large).
+          Icon badge scales with card size: 40px (small), 60px (default), 80px (large).
           Card width adjusts accordingly: 400px / 480px / 560px.
         </DocsTemplate.BodyText>
-        <div style={{ ...previewWrap, flexDirection: 'column', gap: 'var(--global-spacing-sizing-32px)' }}>
-          {ALL_SIZES.map((size) => (
-            <div key={size}>
-              <p style={{ margin: '0 0 var(--global-spacing-sizing-8px)', fontWeight: 600, textTransform: 'capitalize' }}>{size}</p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-12px)' }}>
-                {STATUS_STATUSES.map((status) => (
-                  <CardContent
-                    key={status}
-                    variant="notification"
-                    notificationLayout="horizontal"
-                    status={status}
-                    size={size}
-                    heading={`${STATUS_LABELS[status]} heading`}
-                    body="This is body text that can span multiple lines within the card."
-                    showDismiss={true}
-                  />
-                ))}
-              </div>
-            </div>
+        <div style={{ ...previewWrap, flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)' }}>
+          {SAMPLE_SIZES.map((size) => (
+            <CardContent
+              key={size}
+              variant="notification"
+              notificationLayout="horizontal"
+              status="info"
+              size={size}
+              heading={`Info — ${size}`}
+              body="This is body text that can span multiple lines."
+              showDismiss={true}
+            />
           ))}
         </div>
       </DocsTemplate.Subsection>
 
       <DocsTemplate.Subsection title="Side-by-Side Grid">
         <DocsTemplate.BodyText>
-          Horizontal cards pair naturally in a two-column grid, matching the status-card
-          screenshot design pattern.
+          Horizontal cards pair naturally in a two-column grid, matching the status-card design pattern.
         </DocsTemplate.BodyText>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)', padding: 'var(--global-spacing-sizing-32px)', background: 'var(--global-color-neutral-gray-50)', borderRadius: 'var(--global-spacing-radius-8px)' }}>
-          {STATUS_STATUSES.map((status) => (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)', padding: 'var(--global-spacing-sizing-24px)', background: 'var(--global-color-neutral-gray-50)', borderRadius: 'var(--global-spacing-radius-8px)' }}>
+          {SAMPLE_STATUSES.map((status) => (
             <div key={status} style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-16px)' }}>
-              <CardContent variant="notification" notificationLayout="horizontal" status={status} size="default" heading="This is a heading" body="Body text that can span multiple lines within the card." showDismiss={true} />
-              <CardContent variant="notification" notificationLayout="horizontal" status={status} size="default" heading="This is a heading" body="Body text that can span multiple lines within the card." showDismiss={true} />
+              <CardContent variant="notification" notificationLayout="horizontal" status={status} size="default" heading="This is a heading" body="Body text that can span multiple lines." showDismiss={true} />
+              <CardContent variant="notification" notificationLayout="horizontal" status={status} size="default" heading="This is a heading" body="Body text that can span multiple lines." showDismiss={true} />
             </div>
           ))}
         </div>
       </DocsTemplate.Subsection>
     </DocsTemplate.Section>
 
-    {/* ── All 9 Status Types ── */}
+    {/* ── All Status Types (2-column, compact) ── */}
     <DocsTemplate.Section
       title="All 9 Status / Colour Types"
-      subtitle="Each status type sets the icon badge background, heading colour, card background tint, and border accent. Default size shown below."
+      subtitle="Each status type sets the icon badge background, heading colour, card background tint, and border accent."
     >
       <div style={previewWrap}>
-        {ALL_STATUSES.map((status) => (
-          <CardContent key={status} variant="notification" status={status} size="default" heading={`${STATUS_LABELS[status]} heading`} />
+        {(['error', 'warning', 'success', 'info', 'default', 'light-gray', 'navy', 'purple', 'white'] as CardContentStatus[]).map((status) => (
+          <CardContent key={status} variant="notification" status={status} size="default" heading={`${STATUS_LABELS[status]} heading`} showBody={false} showActions={false} />
         ))}
       </div>
     </DocsTemplate.Section>
 
-    {/* ── All Sizes ── */}
-    <DocsTemplate.Section title="All Sizes" subtitle="Three sizes — small (80px badge, 24px heading), default (140px badge, 28px heading), large (180px badge, 32px heading).">
-      {STATUS_STATUSES.map((status) => (
-        <DocsTemplate.Subsection key={status} title={STATUS_LABELS[status]}>
-          <div style={previewWrap}>
-            {ALL_SIZES.map((size) => (
-              <CardContent key={size} variant="notification" status={status} size={size} heading={`${STATUS_LABELS[status]} heading`} />
-            ))}
-          </div>
-        </DocsTemplate.Subsection>
-      ))}
+    {/* ── Sizes ── */}
+    <DocsTemplate.Section title="All Sizes" subtitle="Three sizes — small (80px badge), default (140px badge), large (180px badge).">
+      <DocsTemplate.Subsection title="Error — small / default / large">
+        <div style={previewWrap}>
+          {SAMPLE_SIZES.map((size) => (
+            <CardContent key={size} variant="notification" status="error" size={size} heading="Error heading" showBody={false} showActions={false} />
+          ))}
+        </div>
+      </DocsTemplate.Subsection>
+      <DocsTemplate.Subsection title="Success — small / default / large">
+        <div style={previewWrap}>
+          {SAMPLE_SIZES.map((size) => (
+            <CardContent key={size} variant="notification" status="success" size={size} heading="Success heading" showBody={false} showActions={false} />
+          ))}
+        </div>
+      </DocsTemplate.Subsection>
     </DocsTemplate.Section>
 
     {/* ── Toggleable Sub-Elements ── */}
@@ -218,16 +212,12 @@ export const CardContentDocs: React.FC = () => (
           <CardContent variant="notification" status="info" heading="No icon" showIcon={false} />
           <CardContent variant="notification" status="info" heading="No body" showBody={false} />
           <CardContent variant="notification" status="info" heading="No actions" showActions={false} />
-          <CardContent variant="notification" status="info" heading="Icon + heading" showBody={false} showActions={false} />
-          <CardContent variant="notification" status="info" heading="Heading only" showIcon={false} showBody={false} showActions={false} />
         </div>
       </DocsTemplate.Subsection>
       <DocsTemplate.Subsection title="Image — Toggle Combinations">
         <div style={previewWrap}>
           <CardContent variant="image" heading="All visible" rating={4} ratingCount={128} />
           <CardContent variant="image" heading="No image" rating={4} ratingCount={128} showImage={false} />
-          <CardContent variant="image" heading="No body" rating={4} ratingCount={128} showBody={false} />
-          <CardContent variant="image" heading="No actions" rating={4} ratingCount={128} showActions={false} />
           <CardContent variant="image" heading="No rating" showRating={false} />
           <CardContent variant="image" heading="Heading only" showImage={false} showBody={false} showActions={false} showRating={false} />
         </div>
@@ -237,7 +227,7 @@ export const CardContentDocs: React.FC = () => (
     {/* ── Dismiss Button ── */}
     <DocsTemplate.Section title="Dismiss Button" subtitle="Set showDismiss={true} to add an absolute-positioned close button (top-right). Fires onDismiss callback.">
       <div style={previewWrap}>
-        {STATUS_STATUSES.map((status) => (
+        {SAMPLE_STATUSES.map((status) => (
           <CardContent key={status} variant="notification" status={status} size="default" heading={`${STATUS_LABELS[status]} — dismiss`} showDismiss={true} />
         ))}
       </div>
@@ -246,10 +236,10 @@ export const CardContentDocs: React.FC = () => (
     {/* ── Border toggle ── */}
     <DocsTemplate.Section title="Border Variants" subtitle="border={true} shows the status-coloured border + shadow; border={false} suppresses both.">
       <div style={previewWrap}>
-        {(['error', 'default', 'purple', 'white'] as CardContentStatus[]).map((status) => (
+        {(['error', 'default'] as CardContentStatus[]).map((status) => (
           <React.Fragment key={status}>
-            <CardContent variant="notification" status={status} heading={`${STATUS_LABELS[status]} — border`} border={true} />
-            <CardContent variant="notification" status={status} heading={`${STATUS_LABELS[status]} — no border`} border={false} />
+            <CardContent variant="notification" status={status} heading={`${STATUS_LABELS[status]} — border`} border={true} showBody={false} showActions={false} />
+            <CardContent variant="notification" status={status} heading={`${STATUS_LABELS[status]} — no border`} border={false} showBody={false} showActions={false} />
           </React.Fragment>
         ))}
       </div>
@@ -258,7 +248,7 @@ export const CardContentDocs: React.FC = () => (
     {/* ── Image variant ── */}
     <DocsTemplate.Section title="Image Variant — All Sizes" subtitle="Image cards use the standard card layout with an image or placeholder at top.">
       <div style={previewWrap}>
-        {ALL_SIZES.map((size) => (
+        {SAMPLE_SIZES.map((size) => (
           <CardContent key={size} variant="image" size={size} heading="This is a heading" body="Body description." rating={4} ratingCount={128} />
         ))}
       </div>
@@ -295,24 +285,14 @@ export const CardContentDocs: React.FC = () => (
           ]}
         />
       </DocsTemplate.Subsection>
-      <DocsTemplate.Subsection title="Horizontal Card Widths">
+      <DocsTemplate.Subsection title="Horizontal Card Widths &amp; Padding">
         <DocsTemplate.TokenTable
           tokens={[
             { name: '--global-spacing-sizing-400px', description: 'Horizontal card width — small (400px)' },
             { name: '--global-spacing-sizing-480px', description: 'Horizontal card width — default (480px)' },
             { name: '--global-spacing-sizing-560px', description: 'Horizontal card width — large (560px)' },
-          ]}
-        />
-      </DocsTemplate.Subsection>
-      <DocsTemplate.Subsection title="Padding & Gap — Horizontal Layout">
-        <DocsTemplate.TokenTable
-          tokens={[
-            { name: '--card-content-padding-sm', description: 'Padding — small horizontal card' },
-            { name: '--card-content-padding-default', description: 'Padding — default horizontal card' },
-            { name: '--card-content-padding-lg', description: 'Padding — large horizontal card' },
-            { name: '--global-spacing-sizing-12px', description: 'Gap between icon and content — small horizontal' },
-            { name: '--global-spacing-sizing-16px', description: 'Gap between icon and content — default horizontal' },
-            { name: '--global-spacing-sizing-20px', description: 'Gap between icon and content — large horizontal' },
+            { name: '--card-content-padding-sm / default / lg', description: 'Padding for each horizontal card size' },
+            { name: '--global-spacing-sizing-12 / 16 / 20px', description: 'Gap between icon and content — sm / default / lg' },
           ]}
         />
       </DocsTemplate.Subsection>
@@ -347,7 +327,7 @@ export const CardContentDocs: React.FC = () => (
           { name: 'variant', description: '"notification" | "image" — selects card layout type. Default: "notification".' },
           { name: 'status', description: '"error" | "warning" | "success" | "info" | "default" | "light-gray" | "navy" | "purple" | "white". Default: "default".' },
           { name: 'size', description: '"small" | "default" | "large". Default: "default".' },
-          { name: 'notificationLayout', description: '"vertical" | "horizontal" — layout direction for notification variant. "vertical" stacks icon above content (default). "horizontal" places icon to the left for a compact landscape card. Default: "vertical".' },
+          { name: 'notificationLayout', description: '"vertical" | "horizontal" — layout direction for notification variant. Default: "vertical".' },
           { name: 'heading', description: 'string — heading text displayed inside the card.' },
           { name: 'body', description: 'string — body text. Controlled by showBody prop.' },
           { name: 'border', description: 'boolean — shows the status-coloured border and shadow. Default: true.' },
@@ -394,28 +374,6 @@ export const CardContentDocs: React.FC = () => (
   showDismiss={true}
 />
 
-// Side-by-side horizontal cards
-{(['error', 'success', 'warning', 'info'] as const).map((status) => (
-  <CardContent
-    key={status}
-    variant="notification"
-    notificationLayout="horizontal"
-    status={status}
-    size="default"
-    heading="This is a heading"
-    body="Body text for this status notification."
-    showDismiss={true}
-  />
-))}
-
-// Minimal card (no body, no actions)
-<CardContent
-  status="success"
-  heading="Success!"
-  showBody={false}
-  showActions={false}
-/>
-
 // Image card
 <CardContent
   variant="image"
@@ -438,8 +396,8 @@ export const CardContentDocs: React.FC = () => (
         </DocsTemplate.PrincipleCard>
         <DocsTemplate.PrincipleCard number={2} title="Horizontal for compact inline alerts">
           Use the <strong>horizontal</strong> layout for banners, sidebars, notification
-          lists, and side-by-side comparisons. The fixed widths (400/480/560px) ensure
-          clean grid alignment at every size.
+          lists, and side-by-side comparisons. Fixed widths (400/480/560px) ensure clean
+          grid alignment at every size.
         </DocsTemplate.PrincipleCard>
         <DocsTemplate.PrincipleCard number={3} title="Toggleable sub-elements">
           Each card element — icon badge, body, actions, dismiss, rating, image — can be
@@ -447,9 +405,9 @@ export const CardContentDocs: React.FC = () => (
           without creating new component variants.
         </DocsTemplate.PrincipleCard>
         <DocsTemplate.PrincipleCard number={4} title="9 semantic colour types">
-          Nine status types provide full semantic colour coverage: error (red), warning
-          (orange), success (green), info (blue), default (navy), light-gray, navy, purple,
-          and white — each setting the badge bg, heading, tint, and border consistently.
+          Nine status types provide full semantic colour coverage: error, warning, success,
+          info, default, light-gray, navy, purple, and white — each setting the badge bg,
+          heading, tint, and border consistently.
         </DocsTemplate.PrincipleCard>
         <DocsTemplate.PrincipleCard number={5} title="Token-driven theming">
           All colours, sizes, spacing, and typography reference design tokens so global

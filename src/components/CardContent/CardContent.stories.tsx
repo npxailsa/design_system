@@ -100,7 +100,10 @@ const sectionLabel: React.CSSProperties = {
 export const Documentation: Story = {
   name: 'Documentation',
   render: () => <CardContentDocs />,
-  parameters: { controls: { disable: true } },
+  parameters: {
+    controls: { disable: true },
+    chromatic: { disableSnapshot: true },
+  },
 };
 
 /* ── Playground ─────────────────────────────────────────────────────────── */
