@@ -1,14 +1,32 @@
 {
-  "name": "design-system-v10",
+  "name": "@npxailsa/design-system",
   "version": "1.0.0",
   "description": "A React and TypeScript design system with Storybook.",
-  "private": true,
   "homepage": "https://npxailsa.github.io/design_system",
-  "dummy": "true5",
   "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./styles": "./dist/assets/index.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "restricted"
+  },
   "scripts": {
     "dev": "EDITOR=nano storybook dev -p 6006 --config-dir .storybook --ci --no-open --loglevel debug",
     "build": "NODE_OPTIONS=--max-old-space-size=4096 tsc && NODE_OPTIONS=--max-old-space-size=4096 vite build",
+    "build:lib": "tsc --noEmit && NODE_OPTIONS=--max-old-space-size=4096 vite build --config vite.lib.config.ts",
+    "typecheck": "tsc --noEmit",
     "preview": "vite preview",
     "storybook": "EDITOR=nano storybook dev -p 6006 --config-dir .storybook",
     "build-storybook": "npm run docs:generate && NODE_OPTIONS=--max-old-space-size=4096 storybook build",

@@ -1,0 +1,95 @@
+name: CI / Publish to GitHub Packages
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
+jobs:
+  # ─── Job 1: Quality Checks ──────────────────────────────────────────────────
+  ci:
+    name: Quality Checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js with GitHub Packages registry
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@npxailsa'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_PAT }}
+
+      - name: TypeScript type check
+        run: npm run typecheck
+
+      - name: Build library
+        run: npm run build:lib
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_PAT }}
+
+  # ─── Job 2: Publish (only runs if CI passes) ────────────────────────────────
+  publish:
+    name: Publish to GitHub Packages
+    needs: ci
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write   # needed to push the version bump commit and tag
+      packages: write   # needed to publish to GitHub Packages
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # Fetch full history so npm version can create a proper tag
+          fetch-depth: 0
+          token: ${{ secrets.GH_PACKAGES_PAT }}
+
+      - name: Set up Node.js with GitHub Packages registry
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@npxailsa'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_PAT }}
+
+      - name: Build library
+        run: npm run build:lib
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_PAT }}
+
+      - name: Configure git for version bump
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Bump patch version
+        # Increments patch (e.g. 1.0.0 → 1.0.1) and creates a git tag.
+        # [skip ci] prevents this commit from re-triggering the workflow.
+        run: |
+          npm version patch -m "chore: release v%s [skip ci]"
+
+      - name: Publish package to GitHub Packages
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_PAT }}
+
+      - name: Push version commit and tag
+        run: git push --follow-tags
