@@ -81,9 +81,11 @@ jobs:
           npm version patch -m "chore: release v%s [skip ci]"
 
       - name: Publish package to GitHub Packages
+        # GITHUB_TOKEN cannot write to GitHub Packages — a PAT with
+        # write:packages scope is required for npm publish.
         run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_PAT }}
 
       - name: Push version commit and tag to main
         run: git push --follow-tags
