@@ -42,7 +42,7 @@ export const SuccessButtonDocs: React.FC = () => (
               id: 1,
               name: 'Container',
               token: '--btn-success-solid-bg\n--btn-success-solid-bg-hover\n--btn-success-solid-border-color\n--btn-success-solid-border-width\n--btn-border-radius',
-              description: 'Outer shell. Default fill: light-green (#96F78D). Hover inverts to dark-green (#227F1A) + 2×2px dark-green shadow. Focus: 2px border, light-green bg. Radius: 4px.',
+              description: 'Outer shell. Default fill: light-green (#96F78D), dark-green border. Hover inverts background to dark-green (#227F1A), text to white, and border to light-green (--btn-success-solid-bg) + 2×2px dark-green shadow. Focus: 2px dark-green border, light-green bg. Radius: 4px.',
             },
             {
               id: 2,
@@ -117,9 +117,11 @@ export const SuccessButtonDocs: React.FC = () => (
       <DocsTemplate.Subsection title="Solid — Primary CTA">
         <DocsTemplate.BodyText>
           Light-green filled background (#96F78D) with dark-green border and black text by default.
-          On hover the background inverts to dark-green (#227F1A) and text/icons flip to white —
-          unique among all StatusButton variants. Focus restores the light-green background with a
-          2px border.
+          On hover the background inverts to dark-green (#227F1A), text/icons flip to white, and
+          the border colour changes to the light-green value (<code>--btn-success-solid-bg</code>)
+          — so the border harmonises with the inverted dark-green background rather than
+          contrasting against it. This is unique among all StatusButton variants. Focus restores
+          the light-green background with a 2px dark-green border.
         </DocsTemplate.BodyText>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px) 0' }}>
           <SuccessButton variant="solid" size="small" label="Success button" />
@@ -218,14 +220,15 @@ export const SuccessButtonDocs: React.FC = () => (
     {/* ── Tokens ───────────────────────────────────────────────────────────── */}
     <DocsTemplate.TokenTable
       title="Design Tokens — Solid Variant"
-      description="Colour tokens for the solid (primary) success button — note the unique hover inversion:"
+      description="Colour tokens for the solid (primary) success button — note the unique hover inversion and border colour change:"
       tokens={[
-        { name: '--btn-success-solid-bg', description: 'Default background — var(--global-color-status-green) #96F78D' },
+        { name: '--btn-success-solid-bg', description: 'Default background — var(--global-color-status-green) #96F78D. Also used as the hover border colour so the border harmonises with the inverted dark-green background.' },
         { name: '--btn-success-solid-color', description: 'Default text & icon colour — var(--global-color-base-black) #1C1C1C' },
-        { name: '--btn-success-solid-border-color', description: 'Border colour (all states) — var(--global-color-status-dark-green) #227F1A' },
+        { name: '--btn-success-solid-border-color', description: 'Default border colour — var(--global-color-status-dark-green) #227F1A' },
         { name: '--btn-success-solid-border-width', description: 'Default border width — var(--global-spacing-stroke-1px) 1px' },
         { name: '--btn-success-solid-bg-hover', description: 'Hover/active background (inversion) — var(--global-color-status-dark-green) #227F1A' },
         { name: '--btn-success-solid-color-hover', description: 'Hover/active text & icon colour — var(--global-color-base-white) #FFFFFF' },
+        { name: 'border-color on hover', description: 'Uses --btn-success-solid-bg (#96F78D light-green) on hover/active — the border colour shifts to the default bg value so it recedes against the inverted dark-green background (Solid - Primary CTA only).' },
         { name: '--btn-success-solid-shadow-hover', description: 'Drop shadow on hover/active — 2px 2px 0px 0px #227F1A (dark-green)' },
         { name: '--btn-success-solid-border-width-focus', description: 'Focus border width — var(--global-spacing-stroke-2px) 2px' },
       ]}

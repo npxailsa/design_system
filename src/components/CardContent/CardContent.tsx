@@ -7,6 +7,7 @@ import styles from './CardContent.module.css';
 
 export type CardContentVariant = 'notification' | 'image';
 export type CardContentImagePosition = 'top' | 'left' | 'right';
+export type CardContentNotificationLayout = 'vertical' | 'horizontal';
 export type CardContentStatus =
   | 'error'
   | 'warning'
@@ -75,6 +76,13 @@ export interface CardContentProps {
   showRating?: boolean;
   /** Show / hide the image area (image variant). @default true */
   showImage?: boolean;
+  /**
+   * Layout direction for the notification variant.
+   * - `vertical`   — icon above content (default)
+   * - `horizontal` — icon to the left of content (compact landscape card)
+   * @default 'vertical'
+   */
+  notificationLayout?: CardContentNotificationLayout;
   /**
    * Position of the image relative to the card content (image variant only).
    * - `top`   — image above content (default vertical layout)
@@ -218,6 +226,13 @@ const ICON_SIZE_MAP: Record<CardContentSize, number> = {
   large:   90,
 };
 
+/** Smaller icon SVG sizes used inside the horizontal notification badge */
+const ICON_SIZE_MAP_HORIZONTAL: Record<CardContentSize, number> = {
+  small:   20,
+  default: 28,
+  large:   36,
+};
+
 const DISMISS_SIZE_MAP: Record<CardContentSize, number> = {
   small:   20,
   default: 24,
@@ -269,6 +284,7 @@ export const CardContent: React.FC<CardContentProps> = ({
   showRating = true,
   showImage = true,
   imagePosition = 'top',
+  notificationLayout = 'vertical',
   className = '',
 }) => {
   const StatusIcon = STATUS_ICON[status];
@@ -293,10 +309,16 @@ export const CardContent: React.FC<CardContentProps> = ({
 
   /* ── Notification variant ── */
   if (variant === 'notification') {
+    const isHorizontal = notificationLayout === 'horizontal';
+    const notifLayoutClass = isHorizontal
+      ? styles['card-content--notification-horizontal']
+      : styles['card-content--notification'];
+    const resolvedIconSize = isHorizontal ? ICON_SIZE_MAP_HORIZONTAL[size] : iconSize;
+
     const rootClasses = [
       styles['card-content'],
       styles[`size-${size}`],
-      styles['card-content--notification'],
+      notifLayoutClass,
       styles[STATUS_CSS_CLASS[status]],
       border ? '' : styles['card-content--no-border'],
       className,
@@ -319,7 +341,7 @@ export const CardContent: React.FC<CardContentProps> = ({
 
         {showIcon && (
           <div className={styles['card-content__status-icon-wrap']}>
-            <StatusIcon size={iconSize} />
+            <StatusIcon size={resolvedIconSize} />
           </div>
         )}
 

@@ -37,6 +37,7 @@ const meta: Meta<typeof CardContent> = {
     showRating: { control: 'boolean' },
     showImage: { control: 'boolean' },
     imagePosition: { control: 'select', options: ['top', 'left', 'right'] },
+    notificationLayout: { control: 'select', options: ['vertical', 'horizontal'] },
     buttonGroupType: { control: 'select', options: ['label', 'icon'] },
     buttonGroupVariant: { control: 'select', options: ['primary', 'secondary', 'tertiary', 'ghost'] },
     buttonGroupSpecial: { control: 'select', options: ['default', 'alt'] },
@@ -151,6 +152,143 @@ export const NotificationPurple: Story = {
 export const NotificationWhite: Story = {
   name: 'Notification / White',
   args: { status: 'white', heading: 'This is a heading' },
+};
+
+/* ── Horizontal Status Cards — Individual ───────────────────────────────── */
+
+export const HorizontalStatusError: Story = {
+  name: 'Horizontal Status / Error',
+  args: {
+    variant: 'notification',
+    notificationLayout: 'horizontal',
+    status: 'error',
+    heading: 'This is a heading',
+    body: 'This is body text that can span multiple lines within the card. This is body text that can span multiple lines within the card.',
+    showDismiss: true,
+  },
+};
+
+export const HorizontalStatusSuccess: Story = {
+  name: 'Horizontal Status / Success',
+  args: {
+    variant: 'notification',
+    notificationLayout: 'horizontal',
+    status: 'success',
+    heading: 'This is a heading',
+    body: 'This is body text that can span multiple lines within the card. This is body text that can span multiple lines within the card.',
+    showDismiss: true,
+  },
+};
+
+export const HorizontalStatusWarning: Story = {
+  name: 'Horizontal Status / Warning',
+  args: {
+    variant: 'notification',
+    notificationLayout: 'horizontal',
+    status: 'warning',
+    heading: 'This is a heading',
+    body: 'This is body text that can span multiple lines within the card. This is body text that can span multiple lines within the card.',
+    showDismiss: true,
+  },
+};
+
+export const HorizontalStatusInfo: Story = {
+  name: 'Horizontal Status / Info',
+  args: {
+    variant: 'notification',
+    notificationLayout: 'horizontal',
+    status: 'info',
+    heading: 'This is a heading',
+    body: 'This is body text that can span multiple lines within the card. This is body text that can span multiple lines within the card.',
+    showDismiss: true,
+  },
+};
+
+/* ── Horizontal Status Cards — All 4 Statuses ────────────────────────────── */
+
+export const HorizontalStatusAllStatuses: Story = {
+  name: 'Horizontal Status / All Statuses',
+  render: (args) => (
+    <div style={{ ...gridWrap, flexDirection: 'column' }}>
+      {(['error', 'success', 'warning', 'info'] as const).map((status) => (
+        <CardContent
+          key={status}
+          {...args}
+          variant="notification"
+          notificationLayout="horizontal"
+          status={status}
+          heading="This is a heading"
+          body="This is body text that can span multiple lines within the card. This is body text that can span multiple lines within the card. This is body text that can span multiple lines within the card."
+          showDismiss={true}
+        />
+      ))}
+    </div>
+  ),
+  args: { size: 'default', border: true },
+  parameters: { controls: { include: ['size', 'border', 'showIcon', 'showBody', 'showActions', 'showDismiss'] } },
+};
+
+/* ── Horizontal Status Cards — Side by Side (matching screenshot) ─────────── */
+
+export const HorizontalStatusSideBySide: Story = {
+  name: 'Horizontal Status / Side by Side',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)', padding: 'var(--global-spacing-sizing-32px)', background: 'var(--global-color-neutral-gray-50)' }}>
+      {(['error', 'success', 'warning', 'info'] as const).map((status) => (
+        <div key={status} style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-16px)' }}>
+          <CardContent
+            variant="notification"
+            notificationLayout="horizontal"
+            status={status}
+            size="default"
+            heading="This is a heading"
+            body="This is body text that can span multiple lines within the card. This is body text that can span multiple lines within the card. This is body text that can span multiple lines within the card."
+            showDismiss={true}
+          />
+          <CardContent
+            variant="notification"
+            notificationLayout="horizontal"
+            status={status}
+            size="default"
+            heading="This is a heading"
+            body="This is body text that can span multiple lines within the card. This is body text that can span multiple lines within the card. This is body text that can span multiple lines within the card."
+            showDismiss={true}
+          />
+        </div>
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+/* ── Horizontal Status Cards — All Sizes ─────────────────────────────────── */
+
+export const HorizontalStatusAllSizes: Story = {
+  name: 'Horizontal Status / All Sizes',
+  render: () => (
+    <div style={{ ...gridWrap, flexDirection: 'column', gap: 'var(--global-spacing-sizing-32px)' }}>
+      {ALL_SIZES.map((size) => (
+        <div key={size}>
+          <p style={sectionLabel}>{size}</p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-12px)' }}>
+            {(['error', 'success', 'warning', 'info'] as const).map((status) => (
+              <CardContent
+                key={status}
+                variant="notification"
+                notificationLayout="horizontal"
+                status={status}
+                size={size}
+                heading="This is a heading"
+                body="This is body text that can span multiple lines within the card. This is body text that can span multiple lines within the card."
+                showDismiss={true}
+              />
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
 };
 
 /* ── All 9 Status Types ─────────────────────────────────────────────────── */

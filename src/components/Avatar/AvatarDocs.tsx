@@ -342,6 +342,15 @@ export const AvatarDocs: React.FC = () => {
         ]}
       />
 
+      <DocsTemplate.TokenTable
+        title="Design Tokens — Status Badge Positioning"
+        description="Negative offset tokens used to position the status indicator badge at the top-right corner of the avatar. These reference the global negative spacing scale — no hardcoded values are used."
+        tokens={[
+          { name: '--global-spacing-sizing-neg-2px', description: 'Badge top/right offset for x-small avatars (−2px) — pixel-precise inset from the avatar edge.' },
+          { name: '--global-spacing-sizing-neg-6px', description: 'Badge top/right offset for small, default, and large avatars (−6px) — slightly larger overlap that keeps the badge optically centred on the avatar corner.' },
+        ]}
+      />
+
       {/* ── Code ── */}
       <DocsTemplate.CodeBlock>
         {`import { Avatar } from '@/components/Avatar';

@@ -255,8 +255,8 @@ export const TagDocs: React.FC = () => {
       {/* ── Disabled State ── */}
       <DocsTemplate.Section title="Disabled State">
         <DocsTemplate.BodyText>
-          Disabled tags render at 45% opacity and block all interactions. Apply with the{' '}
-          <code>disabled</code> prop.
+          Disabled tags render at reduced opacity (<code>--global-opacity-disabled</code> = 0.45)
+          and block all interactions. Apply with the <code>disabled</code> prop.
         </DocsTemplate.BodyText>
 
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-8px)', padding: 'var(--global-spacing-sizing-16px) 0' }}>
@@ -308,6 +308,17 @@ export const TagDocs: React.FC = () => {
       </DocsTemplate.Section>
 
       {/* ── Design Tokens ── */}
+      <DocsTemplate.TokenTable
+        title="Design Tokens — Opacity"
+        description="Global opacity tokens used for interactive and disabled states:"
+        tokens={[
+          { name: '--global-opacity-disabled', description: 'Disabled state — 0.45 (45%). Applied to the whole tag when disabled prop is set.' },
+          { name: '--global-opacity-subtle', description: 'Subtle / muted visibility — 0.65 (65%). Applied to the remove icon at rest.' },
+          { name: '--global-opacity-hover', description: 'Hover state — 0.85 (85%). Applied to interactive tags on hover.' },
+          { name: '--global-opacity-dim', description: 'Strongly dimmed — 0.30 (30%). Applied to the remove icon when the tag itself is disabled.' },
+        ]}
+      />
+
       <DocsTemplate.TokenTable
         title="Design Tokens — Layout & Size"
         description="Tokens controlling dimensions, spacing, and border radius:"

@@ -40,8 +40,8 @@ export const InfoButtonDocs: React.FC = () => (
             {
               id: 1,
               name: 'Container',
-              token: '--btn-info-solid-bg\n--btn-info-solid-border-color\n--btn-info-solid-border-width\n--btn-border-radius',
-              description: 'Outer shell. Fill: color/status/info-blue (#366F97). Border: 1px solid same color. Hover adds 2×2px info-blue drop shadow. Focus uses 2px border. Radius: 4px.',
+              token: '--btn-info-solid-bg\n--btn-info-solid-border-color\n--btn-info-solid-border-color-hover\n--btn-info-solid-border-width\n--btn-border-radius',
+              description: 'Outer shell. Fill: color/status/info-blue (#366F97). Default border: 1px solid info-blue. Hover border flips to white (--btn-info-solid-border-color-hover) and adds 2×2px info-blue drop shadow. Focus uses 2px border. Radius: 4px.',
             },
             {
               id: 2,
@@ -115,8 +115,10 @@ export const InfoButtonDocs: React.FC = () => (
       <DocsTemplate.Subsection title="Solid — Primary CTA">
         <DocsTemplate.BodyText>
           Info-blue (#366F97) filled background with matching border and white text. On hover a
-          2×2px info-blue drop shadow is added; the background remains unchanged. On focus a 2px
-          border is applied with no shadow.
+          2×2px info-blue drop shadow is added and the border transitions to white
+          (<code>--btn-info-solid-border-color-hover</code>) so the border recedes against the
+          solid blue background — keeping focus on the label. On focus a 2px border is applied
+          with no shadow.
         </DocsTemplate.BodyText>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px) 0' }}>
           <InfoButton variant="solid" size="small" label="Info button" />
@@ -218,7 +220,8 @@ export const InfoButtonDocs: React.FC = () => (
       tokens={[
         { name: '--btn-info-solid-bg', description: 'Background — var(--global-color-status-info-blue) #366F97' },
         { name: '--btn-info-solid-color', description: 'Text & icon colour — var(--global-color-base-white) #FFFFFF' },
-        { name: '--btn-info-solid-border-color', description: 'Border colour (all states) — var(--global-color-status-info-blue) #366F97' },
+        { name: '--btn-info-solid-border-color', description: 'Default border colour — var(--global-color-status-info-blue) #366F97' },
+        { name: '--btn-info-solid-border-color-hover', description: 'Hover/active border colour — var(--global-color-base-white) #FFFFFF. Turns white on hover so the border blends with the icon and text, keeping the solid bg dominant.' },
         { name: '--btn-info-solid-border-width', description: 'Default border width — var(--global-spacing-stroke-1px) 1px' },
         { name: '--btn-info-solid-border-width-hover', description: 'Hover border width — var(--global-spacing-stroke-1px) 1px (unchanged)' },
         { name: '--btn-info-solid-shadow-hover', description: 'Drop shadow on hover/active — 2px 2px 0px 0px #366F97 (info-blue)' },

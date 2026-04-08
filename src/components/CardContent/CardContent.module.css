@@ -391,6 +391,68 @@
   text-align: center;
 }
 
+/* ══════════════════════════════════════════════════════════════════════════
+   HORIZONTAL NOTIFICATION VARIANT
+   Icon on the left, content (heading + body + buttons) on the right.
+   Compact landscape layout — all sizes use existing global tokens.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.card-content--notification-horizontal {
+  flex-direction: row;
+  align-items: flex-start;
+  padding: var(--card-content-padding-default);
+  gap: var(--global-spacing-sizing-16px);
+  width: var(--global-spacing-sizing-480px);
+  min-width: var(--global-spacing-sizing-480px);
+}
+
+.size-small.card-content--notification-horizontal {
+  padding: var(--card-content-padding-sm);
+  gap: var(--global-spacing-sizing-12px);
+  width: var(--global-spacing-sizing-400px);
+  min-width: var(--global-spacing-sizing-400px);
+}
+
+.size-large.card-content--notification-horizontal {
+  padding: var(--card-content-padding-lg);
+  gap: var(--global-spacing-sizing-20px);
+  width: var(--global-spacing-sizing-560px);
+  min-width: var(--global-spacing-sizing-560px);
+}
+
+/* Icon badge — smaller in horizontal mode */
+.card-content--notification-horizontal .card-content__status-icon-wrap {
+  width: var(--global-spacing-sizing-60px);
+  height: var(--global-spacing-sizing-60px);
+  flex-shrink: 0;
+}
+
+.size-small.card-content--notification-horizontal .card-content__status-icon-wrap {
+  width: var(--global-spacing-sizing-40px);
+  height: var(--global-spacing-sizing-40px);
+}
+
+.size-large.card-content--notification-horizontal .card-content__status-icon-wrap {
+  width: var(--global-spacing-sizing-80px);
+  height: var(--global-spacing-sizing-80px);
+}
+
+/* Text block fills remaining space */
+.card-content--notification-horizontal .card-content__text {
+  flex: 1;
+  min-width: var(--global-spacing-sizing-0px);
+}
+
+/* Heading is left-aligned (overrides the center default for notification) */
+.card-content--notification-horizontal .card-content__heading {
+  text-align: left;
+}
+
+/* Actions stay at end of the flex row (right-aligned) */
+.card-content--notification-horizontal .card-content__actions {
+  justify-content: flex-end;
+}
+
 .size-small .card-content__heading {
   font-size: var(--card-content-heading-size-sm);
   line-height: var(--card-content-heading-lh-sm);
