@@ -12,6 +12,8 @@ const previewWrap: React.CSSProperties = {
   padding: 'var(--global-spacing-sizing-32px)',
   background: 'var(--global-color-neutral-gray-50)',
   borderRadius: 'var(--global-spacing-radius-8px)',
+  minWidth: '200px',
+  width: '100%',
 };
 
 const row: React.CSSProperties = {
@@ -45,6 +47,8 @@ const verticalBox: React.CSSProperties = {
   padding: 'var(--global-spacing-sizing-24px)',
   background: 'var(--global-color-neutral-gray-50)',
   borderRadius: 'var(--global-spacing-radius-8px)',
+  minWidth: '200px',
+  width: '100%',
 };
 
 const ALL_LINES: DividerLine[] = ['solid', 'dashed', 'dotted'];
@@ -266,7 +270,7 @@ export const DividerDocs: React.FC = () => (
     >
       {/* In Context / Between Content Blocks */}
       <DocsTemplate.Subsection title="In Context / Between Content Blocks">
-        <div style={{ maxWidth: '480px', display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)', padding: 'var(--global-spacing-sizing-24px)', background: 'var(--global-color-base-white)', borderRadius: 'var(--global-spacing-radius-8px)', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}>
+        <div style={{ minWidth: '200px', width: '100%', maxWidth: '480px', display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)', padding: 'var(--global-spacing-sizing-24px)', background: 'var(--global-color-base-white)', borderRadius: 'var(--global-spacing-radius-8px)', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}>
           <div>
             <p style={{ margin: '0 0 var(--global-spacing-sizing-4px)', fontFamily: 'var(--font-family-primary)', fontWeight: 600, fontSize: 'var(--global-type-size-primary-label)' }}>Personal Details</p>
             <p style={{ margin: 0, fontFamily: 'var(--font-family-secondary)', fontSize: 'var(--global-type-size-primary-label-sm)', color: 'var(--global-color-neutral-gray-600)' }}>Name, email, and phone number</p>

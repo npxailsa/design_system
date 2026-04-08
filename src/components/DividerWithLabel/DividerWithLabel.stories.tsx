@@ -49,6 +49,8 @@ const previewWrap: React.CSSProperties = {
   padding: 'var(--global-spacing-sizing-32px)',
   background: 'var(--global-color-neutral-gray-50)',
   borderRadius: 'var(--global-spacing-radius-8px)',
+  minWidth: '200px',
+  width: '100%',
 };
 
 const rowLabel: React.CSSProperties = {
@@ -80,7 +82,7 @@ export const Documentation: Story = {
 export const Playground: Story = {
   name: 'Playground',
   render: (args) => (
-    <div style={{ padding: 'var(--global-spacing-sizing-32px)' }}>
+    <div style={{ padding: 'var(--global-spacing-sizing-32px)', minWidth: '200px', width: '100%' }}>
       <DividerWithLabel {...args} />
     </div>
   ),
@@ -207,7 +209,7 @@ export const ThicknessScale: Story = {
 export const InContextFormSections: Story = {
   name: 'In Context / Form Sections',
   render: () => (
-    <div style={{ maxWidth: '480px', display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-20px)', padding: 'var(--global-spacing-sizing-24px)', background: 'var(--global-color-base-white)', borderRadius: 'var(--global-spacing-radius-8px)', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}>
+    <div style={{ minWidth: '200px', width: '100%', maxWidth: '480px', display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-20px)', padding: 'var(--global-spacing-sizing-24px)', background: 'var(--global-color-base-white)', borderRadius: 'var(--global-spacing-radius-8px)', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}>
       <DividerWithLabel label="Personal Details" labelPosition="left" labelSize="xs" />
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-12px)' }}>
         <p style={{ margin: 0, fontFamily: 'var(--font-family-secondary)', fontSize: 'var(--global-type-size-primary-label-sm)', color: 'var(--global-color-neutral-gray-700)' }}>Name field</p>
@@ -225,7 +227,7 @@ export const InContextFormSections: Story = {
 export const InContextOrSeparator: Story = {
   name: 'In Context / Or Separator',
   render: () => (
-    <div style={{ maxWidth: '400px', display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-20px)', padding: 'var(--global-spacing-sizing-24px)', background: 'var(--global-color-base-white)', borderRadius: 'var(--global-spacing-radius-8px)', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}>
+    <div style={{ minWidth: '200px', width: '100%', maxWidth: '400px', display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-20px)', padding: 'var(--global-spacing-sizing-24px)', background: 'var(--global-color-base-white)', borderRadius: 'var(--global-spacing-radius-8px)', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}>
       <p style={{ margin: 0, fontFamily: 'var(--font-family-primary)', fontWeight: 600, textAlign: 'center', fontSize: 'var(--global-type-size-primary-label)' }}>Continue with Google</p>
       <DividerWithLabel label="or" labelPosition="center" labelSize="xs" />
       <p style={{ margin: 0, fontFamily: 'var(--font-family-secondary)', fontSize: 'var(--global-type-size-primary-label-sm)', color: 'var(--global-color-neutral-gray-600)', textAlign: 'center' }}>Sign in with email and password</p>

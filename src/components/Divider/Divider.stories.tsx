@@ -43,6 +43,8 @@ const gridWrap: React.CSSProperties = {
   padding: 'var(--global-spacing-sizing-32px)',
   background: 'var(--global-color-neutral-gray-50)',
   borderRadius: 'var(--global-spacing-radius-8px)',
+  minWidth: '200px',
+  width: '100%',
 };
 
 const rowStyle: React.CSSProperties = {
@@ -90,7 +92,7 @@ export const Playground: Story = {
   name: 'Playground',
   render: (args) =>
     args.alignment === 'vertical' ? (
-      <div style={{ display: 'flex', alignItems: 'center', height: 'var(--global-spacing-sizing-80px)', padding: 'var(--global-spacing-sizing-16px)', gap: 'var(--global-spacing-sizing-16px)', background: 'var(--global-color-neutral-gray-50)', borderRadius: 'var(--global-spacing-radius-8px)' }}>
+      <div style={{ display: 'flex', alignItems: 'center', height: 'var(--global-spacing-sizing-80px)', padding: 'var(--global-spacing-sizing-16px)', gap: 'var(--global-spacing-sizing-16px)', background: 'var(--global-color-neutral-gray-50)', borderRadius: 'var(--global-spacing-radius-8px)', minWidth: '200px', width: '100%' }}>
         <span style={{ fontFamily: 'var(--font-family-primary)' }}>Left content</span>
         <Divider {...args} />
         <span style={{ fontFamily: 'var(--font-family-primary)' }}>Right content</span>
@@ -224,7 +226,7 @@ export const HorizontalFullMatrix: Story = {
 export const VerticalAllStyles: Story = {
   name: 'Vertical / All Line Styles',
   render: () => (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--global-spacing-sizing-32px)', height: 'var(--global-spacing-sizing-80px)', padding: 'var(--global-spacing-sizing-24px)', background: 'var(--global-color-neutral-gray-50)', borderRadius: 'var(--global-spacing-radius-8px)' }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--global-spacing-sizing-32px)', height: 'var(--global-spacing-sizing-80px)', padding: 'var(--global-spacing-sizing-24px)', background: 'var(--global-color-neutral-gray-50)', borderRadius: 'var(--global-spacing-radius-8px)', minWidth: '200px', width: '100%' }}>
       {ALL_LINES.map((lineStyle) => (
         <React.Fragment key={lineStyle}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'var(--global-spacing-sizing-8px)' }}>
@@ -241,7 +243,7 @@ export const VerticalAllStyles: Story = {
 export const VerticalThicknessScale: Story = {
   name: 'Vertical / Thickness Scale (Solid)',
   render: () => (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--global-spacing-sizing-24px)', height: 'var(--global-spacing-sizing-80px)', padding: 'var(--global-spacing-sizing-24px)', background: 'var(--global-color-neutral-gray-50)', borderRadius: 'var(--global-spacing-radius-8px)' }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--global-spacing-sizing-24px)', height: 'var(--global-spacing-sizing-80px)', padding: 'var(--global-spacing-sizing-24px)', background: 'var(--global-color-neutral-gray-50)', borderRadius: 'var(--global-spacing-radius-8px)', minWidth: '200px', width: '100%' }}>
       {ALL_THICKNESSES.map((t) => (
         <React.Fragment key={t}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'var(--global-spacing-sizing-8px)' }}>
@@ -262,7 +264,7 @@ export const VerticalThicknessScale: Story = {
 export const BetweenContentBlocks: Story = {
   name: 'In Context / Between Content Blocks',
   render: () => (
-    <div style={{ maxWidth: '480px', display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)', padding: 'var(--global-spacing-sizing-24px)', background: 'var(--global-color-base-white)', borderRadius: 'var(--global-spacing-radius-8px)', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}>
+    <div style={{ minWidth: '200px', width: '100%', maxWidth: '480px', display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)', padding: 'var(--global-spacing-sizing-24px)', background: 'var(--global-color-base-white)', borderRadius: 'var(--global-spacing-radius-8px)', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}>
       <div>
         <p style={{ margin: '0 0 var(--global-spacing-sizing-4px)', fontFamily: 'var(--font-family-primary)', fontWeight: 600, fontSize: 'var(--global-type-size-primary-label)' }}>Personal Details</p>
         <p style={{ margin: 0, fontFamily: 'var(--font-family-secondary)', fontSize: 'var(--global-type-size-primary-label-sm)', color: 'var(--global-color-neutral-gray-600)' }}>Name, email, and phone number</p>
