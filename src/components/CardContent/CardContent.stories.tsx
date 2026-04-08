@@ -108,47 +108,47 @@ export const Playground: Story = { name: 'Playground' };
 
 export const NotificationError: Story = {
   name: 'Notification / Error',
-  args: { status: 'error', heading: 'This is an error heading', count: 4 },
+  args: { status: 'error', heading: 'This is an error heading' },
 };
 
 export const NotificationWarning: Story = {
   name: 'Notification / Warning',
-  args: { status: 'warning', heading: 'This is a warning heading', count: 4 },
+  args: { status: 'warning', heading: 'This is a warning heading' },
 };
 
 export const NotificationSuccess: Story = {
   name: 'Notification / Success',
-  args: { status: 'success', heading: 'This is an info heading', count: 4 },
+  args: { status: 'success', heading: 'This is a success heading' },
 };
 
 export const NotificationInfo: Story = {
   name: 'Notification / Info',
-  args: { status: 'info', heading: 'This is an info heading', count: 4 },
+  args: { status: 'info', heading: 'This is an info heading' },
 };
 
 export const NotificationDefault: Story = {
   name: 'Notification / Default',
-  args: { status: 'default', heading: 'This is a heading', count: 4 },
+  args: { status: 'default', heading: 'This is a heading' },
 };
 
 export const NotificationLightGray: Story = {
   name: 'Notification / Light Gray',
-  args: { status: 'light-gray', heading: 'This is a heading', count: 4 },
+  args: { status: 'light-gray', heading: 'This is a heading' },
 };
 
 export const NotificationNavy: Story = {
   name: 'Notification / Navy',
-  args: { status: 'navy', heading: 'This is an info heading', count: 4 },
+  args: { status: 'navy', heading: 'This is an info heading' },
 };
 
 export const NotificationPurple: Story = {
   name: 'Notification / Purple',
-  args: { status: 'purple', heading: 'This is a heading', count: 4 },
+  args: { status: 'purple', heading: 'This is a heading' },
 };
 
 export const NotificationWhite: Story = {
   name: 'Notification / White',
-  args: { status: 'white', heading: 'This is a heading', count: 4 },
+  args: { status: 'white', heading: 'This is a heading' },
 };
 
 /* ── All 9 Status Types ─────────────────────────────────────────────────── */
@@ -164,7 +164,6 @@ export const AllStatusTypes: Story = {
           variant="notification"
           status={status}
           heading={`${status} heading`}
-          count={4}
         />
       ))}
     </div>
@@ -184,7 +183,7 @@ export const AllSizesNotification: Story = {
       ))}
     </div>
   ),
-  args: { status: 'info', heading: 'This is an info heading', count: 4 },
+  args: { status: 'info', heading: 'This is an info heading' },
 };
 
 /* ── All Sizes — Image ───────────────────────────────────────────────────── */
@@ -211,8 +210,8 @@ export const BorderVariants: Story = {
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', alignItems: 'flex-start' }}>
         {ALL_STATUSES.map((status) => (
           <React.Fragment key={status}>
-            <CardContent variant="notification" status={status} size="default" heading={`${status} — border`} count={4} border={true} />
-            <CardContent variant="notification" status={status} size="default" heading={`${status} — no border`} count={4} border={false} />
+            <CardContent variant="notification" status={status} size="default" heading={`${status} — border`} border={true} />
+            <CardContent variant="notification" status={status} size="default" heading={`${status} — no border`} border={false} />
           </React.Fragment>
         ))}
       </div>
@@ -239,10 +238,10 @@ export const AllStatusesAllSizes: Story = {
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'flex-start' }}>
             {ALL_SIZES.map((size) => (
-              <CardContent key={`${size}-b`} variant="notification" status={status} size={size} heading={`${status} heading`} count={4} border={true} />
+              <CardContent key={`${size}-b`} variant="notification" status={status} size={size} heading={`${status} heading`} border={true} />
             ))}
             {ALL_SIZES.map((size) => (
-              <CardContent key={`${size}-nb`} variant="notification" status={status} size={size} heading={`${status} heading`} count={4} border={false} />
+              <CardContent key={`${size}-nb`} variant="notification" status={status} size={size} heading={`${status} heading`} border={false} />
             ))}
           </div>
         </div>
@@ -261,9 +260,9 @@ export const ToggleableElements: Story = {
       <div>
         <p style={sectionLabel}>Notification — showIcon · showBody · showActions combinations</p>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'flex-start' }}>
-          <CardContent variant="notification" status="info" heading="All visible" count={4} />
-          <CardContent variant="notification" status="info" heading="No icon" count={4} showIcon={false} />
-          <CardContent variant="notification" status="info" heading="No body" count={4} showBody={false} />
+          <CardContent variant="notification" status="info" heading="All visible" />
+          <CardContent variant="notification" status="info" heading="No icon" showIcon={false} />
+          <CardContent variant="notification" status="info" heading="No body" showBody={false} />
           <CardContent variant="notification" status="info" heading="No actions" showActions={false} />
           <CardContent variant="notification" status="info" heading="Icon + heading" showBody={false} showActions={false} />
           <CardContent variant="notification" status="info" heading="Heading only" showIcon={false} showBody={false} showActions={false} />
@@ -298,7 +297,6 @@ export const DismissButton: Story = {
           status={status}
           size="default"
           heading={`${status} — dismissible`}
-          count={4}
           showDismiss={true}
         />
       ))}
@@ -363,7 +361,6 @@ export const ButtonGroupVariants: Story = {
           status="info"
           heading={`${bgVariant} buttons`}
           body="ButtonGroup variant demonstration."
-          count={4}
           buttonGroupVariant={bgVariant}
         />
       ))}
@@ -398,7 +395,6 @@ export const FullToggleMatrix: Story = {
                   status={status}
                   size="default"
                   heading={label}
-                  count={4}
                   {...toggles}
                 />
               ))}
