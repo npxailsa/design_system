@@ -36,6 +36,7 @@ const meta: Meta<typeof CardContent> = {
     showDismiss: { control: 'boolean' },
     showRating: { control: 'boolean' },
     showImage: { control: 'boolean' },
+    imagePosition: { control: 'select', options: ['top', 'left', 'right'] },
     buttonGroupType: { control: 'select', options: ['label', 'icon'] },
     buttonGroupVariant: { control: 'select', options: ['primary', 'secondary', 'tertiary', 'ghost'] },
     buttonGroupSpecial: { control: 'select', options: ['default', 'alt'] },
@@ -59,6 +60,7 @@ const meta: Meta<typeof CardContent> = {
     showDismiss: false,
     showRating: true,
     showImage: true,
+    imagePosition: 'top',
     buttonGroupType: 'label',
     buttonGroupVariant: 'primary',
     buttonGroupSpecial: 'default',
@@ -616,6 +618,196 @@ export const ImageCardPhotoGalleryAllSizes: Story = {
           </div>
         </div>
       ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+/* ── Horizontal Image Cards — Image Left ────────────────────────────────── */
+
+export const ImageCardHorizontalLeft: Story = {
+  name: 'Image Card / Horizontal Left',
+  args: {
+    variant: 'image',
+    imagePosition: 'left',
+    size: 'default',
+    heading: 'Mountain Adventures',
+    body: 'Experience breathtaking peaks and alpine trails across the world.',
+    rating: 4.5,
+    ratingCount: 312,
+    imageSrc: 'https://images.pexels.com/photos/618833/pexels-photo-618833.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+    imageAlt: 'Mountain landscape',
+  },
+  parameters: { controls: { include: ['size', 'heading', 'body', 'rating', 'ratingCount', 'border', 'showBody', 'showActions', 'showRating', 'showImage'] } },
+};
+
+export const ImageCardHorizontalRight: Story = {
+  name: 'Image Card / Horizontal Right',
+  args: {
+    variant: 'image',
+    imagePosition: 'right',
+    size: 'default',
+    heading: 'Ocean Escapes',
+    body: 'Discover pristine beaches and coastal adventures in warm tropical waters.',
+    rating: 5,
+    ratingCount: 543,
+    imageSrc: 'https://images.pexels.com/photos/1032650/pexels-photo-1032650.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+    imageAlt: 'Ocean beach',
+  },
+  parameters: { controls: { include: ['size', 'heading', 'body', 'rating', 'ratingCount', 'border', 'showBody', 'showActions', 'showRating', 'showImage'] } },
+};
+
+/* ── Horizontal Image Cards — All Sizes ─────────────────────────────────── */
+
+export const ImageCardHorizontalAllSizes: Story = {
+  name: 'Image Card / Horizontal All Sizes',
+  render: () => (
+    <div style={{ ...gridWrap, flexDirection: 'column', gap: 'var(--global-spacing-sizing-32px)' }}>
+      {(['left', 'right'] as const).map((pos) => (
+        <div key={pos}>
+          <p style={sectionLabel}>Image {pos} — small · default · large</p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)' }}>
+            {ALL_SIZES.map((size) => (
+              <CardContent
+                key={`${pos}-${size}`}
+                variant="image"
+                imagePosition={pos}
+                size={size}
+                heading="This is a heading"
+                body="This is body text that can span multiple lines within the card."
+                rating={4}
+                ratingCount={128}
+                imageSrc="https://images.pexels.com/photos/618833/pexels-photo-618833.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
+                imageAlt="Mountain landscape"
+              />
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+/* ── Horizontal Image Cards — Photo Gallery ─────────────────────────────── */
+
+export const ImageCardHorizontalPhotoGallery: Story = {
+  name: 'Image Card / Horizontal Photo Gallery',
+  render: () => {
+    const cards = [
+      {
+        heading: 'Mountain Adventures',
+        body: 'Experience breathtaking peaks and alpine trails across stunning landscapes.',
+        rating: 4.5,
+        ratingCount: 312,
+        imageSrc: 'https://images.pexels.com/photos/618833/pexels-photo-618833.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+        imageAlt: 'Mountain landscape',
+        imagePosition: 'left' as const,
+      },
+      {
+        heading: 'Ocean Escapes',
+        body: 'Discover pristine beaches and coastal adventures in warm tropical waters.',
+        rating: 5,
+        ratingCount: 543,
+        imageSrc: 'https://images.pexels.com/photos/1032650/pexels-photo-1032650.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+        imageAlt: 'Ocean beach',
+        imagePosition: 'right' as const,
+      },
+      {
+        heading: 'City Exploration',
+        body: 'Uncover the hidden gems and vibrant culture of urban landscapes.',
+        rating: 4,
+        ratingCount: 187,
+        imageSrc: 'https://images.pexels.com/photos/466685/pexels-photo-466685.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+        imageAlt: 'City skyline',
+        imagePosition: 'left' as const,
+      },
+      {
+        heading: 'Forest Retreats',
+        body: 'Reconnect with nature in ancient woodland settings far from the city.',
+        rating: 4.5,
+        ratingCount: 94,
+        imageSrc: 'https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+        imageAlt: 'Forest path',
+        imagePosition: 'right' as const,
+      },
+    ];
+    return (
+      <div style={{ ...gridWrap, flexDirection: 'column' }}>
+        {cards.map((card) => (
+          <CardContent
+            key={card.heading}
+            variant="image"
+            size="default"
+            {...card}
+          />
+        ))}
+      </div>
+    );
+  },
+  parameters: { controls: { disable: true } },
+};
+
+/* ── Horizontal Image Cards — Border Variants ───────────────────────────── */
+
+export const ImageCardHorizontalBorderVariants: Story = {
+  name: 'Image Card / Horizontal Border Variants',
+  render: () => (
+    <div style={{ ...gridWrap, flexDirection: 'column', gap: 'var(--global-spacing-sizing-32px)' }}>
+      <p style={sectionLabel}>Image Left — With / Without Border</p>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-12px)' }}>
+        <CardContent
+          variant="image"
+          imagePosition="left"
+          size="default"
+          heading="With border"
+          body="This card has a visible border and drop shadow."
+          rating={4}
+          ratingCount={128}
+          imageSrc="https://images.pexels.com/photos/466685/pexels-photo-466685.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
+          imageAlt="City skyline"
+          border={true}
+        />
+        <CardContent
+          variant="image"
+          imagePosition="left"
+          size="default"
+          heading="Without border"
+          body="This card has no border and no drop shadow."
+          rating={4}
+          ratingCount={128}
+          imageSrc="https://images.pexels.com/photos/466685/pexels-photo-466685.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
+          imageAlt="City skyline"
+          border={false}
+        />
+      </div>
+      <p style={sectionLabel}>Image Right — With / Without Border</p>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-12px)' }}>
+        <CardContent
+          variant="image"
+          imagePosition="right"
+          size="default"
+          heading="With border"
+          body="This card has a visible border and drop shadow."
+          rating={4}
+          ratingCount={128}
+          imageSrc="https://images.pexels.com/photos/618833/pexels-photo-618833.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
+          imageAlt="Mountain landscape"
+          border={true}
+        />
+        <CardContent
+          variant="image"
+          imagePosition="right"
+          size="default"
+          heading="Without border"
+          body="This card has no border and no drop shadow."
+          rating={4}
+          ratingCount={128}
+          imageSrc="https://images.pexels.com/photos/618833/pexels-photo-618833.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop"
+          imageAlt="Mountain landscape"
+          border={false}
+        />
+      </div>
     </div>
   ),
   parameters: { controls: { disable: true } },

@@ -526,6 +526,14 @@
                 "$type": "float",
                 "$value": -4
               },
+              "-6px": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$description": "Negative offset for pixel-precise badge and overlay positioning on larger avatar sizes.",
+                "$type": "float",
+                "$value": -6
+              },
               "-8px": {
                 "$scopes": [
                   "ALL_SCOPES"
@@ -1372,10 +1380,48 @@
                   "$value": 0.20000000298023224
                 }
               }
+            },
+          "opacity": {
+            "muted": {
+              "$scopes": ["ALL_SCOPES"],
+              "$description": "Muted state opacity — used for placeholder icons and partially visible elements.",
+              "$type": "float",
+              "$value": 0.6
+            },
+            "subtle": {
+              "$scopes": ["ALL_SCOPES"],
+              "$description": "Subtle state opacity — used for remove buttons and secondary interactive elements in their resting state.",
+              "$type": "float",
+              "$value": 0.65
+            },
+            "hover": {
+              "$scopes": ["ALL_SCOPES"],
+              "$description": "Hover state opacity — applied to interactive elements on hover when opacity is the transition mechanism.",
+              "$type": "float",
+              "$value": 0.85
+            },
+            "disabled": {
+              "$scopes": ["ALL_SCOPES"],
+              "$description": "Disabled state opacity — applied to non-interactive disabled elements.",
+              "$type": "float",
+              "$value": 0.45
+            },
+            "dim": {
+              "$scopes": ["ALL_SCOPES"],
+              "$description": "Dim state opacity — used for deeply suppressed elements such as disabled remove buttons.",
+              "$type": "float",
+              "$value": 0.3
+            },
+            "full": {
+              "$scopes": ["ALL_SCOPES"],
+              "$description": "Full opacity — element is fully visible.",
+              "$type": "float",
+              "$value": 1
             }
           }
         }
       }
     }
   }
+}
 ]

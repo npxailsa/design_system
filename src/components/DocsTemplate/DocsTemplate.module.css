@@ -21,7 +21,7 @@
 .docs-content {
   display: flex;
   flex-direction: column;
-  gap: var(--global-spacing-sizing-18px, 18px);
+  gap: var(--global-spacing-sizing-18px);
   align-items: flex-start;
   justify-content: flex-start;
   width: 944px;
@@ -295,7 +295,7 @@
   padding: var(--global-spacing-sizing-24px);
   display: flex;
   flex-direction: row;
-  gap: var(--global-spacing-sizing-10px, 10px);
+  gap: var(--global-spacing-sizing-10px);
   align-items: center;
   justify-content: flex-start;
   align-self: stretch;
@@ -330,10 +330,10 @@
 .dos-donts-card {
   background: var(--global-color-base-white);
   border: var(--global-spacing-stroke-1px) solid var(--color-primary-blue-gray-blue-gray-50);
-  padding: var(--global-spacing-sizing-16px) 0 0 0;
+  padding: var(--global-spacing-sizing-16px) var(--global-spacing-sizing-0px) var(--global-spacing-sizing-0px) var(--global-spacing-sizing-0px);
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: var(--global-spacing-sizing-0px);
   align-items: center;
   justify-content: flex-start;
   flex: 1;
@@ -451,7 +451,7 @@
   color: var(--color-primary-blue-blue);
   font-family: var(--font-family-secondary);
   font-size: var(--global-type-size-secondary-body-lg);
-  line-height: 26px;
+  line-height: var(--global-type-line-height-subtitle);
   letter-spacing: var(--global-type-letter-spacing-secondary-body-lg);
   font-weight: var(--global-type-weight-default);
   text-decoration: underline;
@@ -522,7 +522,7 @@
    ========================================================================== */
 .icon-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(var(--global-spacing-sizing-80px), 1fr));
   gap: var(--global-spacing-sizing-16px);
   align-self: stretch;
   padding: var(--global-spacing-sizing-16px) 0;
@@ -635,7 +635,7 @@
 .anatomy-parts {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: var(--global-spacing-sizing-0px);
   align-self: stretch;
   border: var(--global-spacing-stroke-1px) solid var(--color-primary-blue-gray-blue-gray-50);
   border-radius: var(--global-spacing-radius-8px);
@@ -653,11 +653,11 @@
 
 .anatomy-parts-header span {
   font-family: var(--font-family-primary);
-  font-size: var(--global-type-size-primary-label-xs, 12px);
+  font-size: var(--global-type-size-primary-label-xs);
   font-weight: var(--global-type-weight-bold);
   color: var(--color-primary-blue-gray-blue-gray);
   text-transform: uppercase;
-  letter-spacing: 0.07em;
+  letter-spacing: var(--global-type-letter-spacing-primary-label-xs);
 }
 
 .anatomy-part-row {
@@ -678,17 +678,17 @@
 }
 
 .anatomy-part-row:nth-child(even) {
-  background: var(--color-primary-blue-blue-50, #f0f4ff);
+  background: var(--color-primary-blue-blue-50);
 }
 
 .anatomy-part-badge {
   width: var(--global-spacing-sizing-22px);
   height: var(--global-spacing-sizing-22px);
   border-radius: var(--global-spacing-radius-full);
-  background: var(--color-primary-blue-blue, #3a6cff);
+  background: var(--color-primary-blue-blue);
   color: var(--global-color-base-white);
-  font-size: 11px;
-  font-weight: 700;
+  font-size: var(--global-type-size-primary-label-xs);
+  font-weight: var(--global-type-weight-bold);
   font-family: var(--font-family-secondary);
   display: flex;
   align-items: center;
@@ -699,25 +699,25 @@
 
 .anatomy-part-name {
   font-family: var(--font-family-primary);
-  font-size: var(--global-type-size-secondary-body, 14px);
+  font-size: var(--global-type-size-secondary-body);
   font-weight: var(--global-type-weight-bold);
   color: var(--global-color-base-black);
-  line-height: 1.5;
+  line-height: var(--global-type-line-height-body);
 }
 
 .anatomy-part-token {
   font-family: monospace, sans-serif;
-  font-size: 11px;
-  color: var(--color-primary-blue-blue, #3a6cff);
-  line-height: 1.6;
+  font-size: var(--global-type-size-primary-label-xs);
+  color: var(--color-primary-blue-blue);
+  line-height: var(--global-type-line-height-body-sm);
   word-break: break-word;
 }
 
 .anatomy-part-description {
   font-family: var(--font-family-secondary);
-  font-size: var(--global-type-size-secondary-body-sm, 13px);
+  font-size: var(--global-type-size-secondary-body-sm);
   color: var(--color-primary-blue-gray-blue-gray-300);
-  line-height: 1.5;
+  line-height: var(--global-type-line-height-body);
 }
 
 @media (max-width: 600px) {

@@ -19,7 +19,7 @@
   box-shadow: var(--card-content-shadow);
   overflow: var(--card-content-overflow);
   box-sizing: border-box;
-  font-family: var(--brand-font-primary, 'F37 Ginger', sans-serif);
+  font-family: var(--font-family-primary);
   vertical-align: top;
   position: relative;
 }
@@ -79,8 +79,8 @@
   cursor: pointer;
   padding: var(--global-spacing-sizing-2px);
   color: var(--global-color-neutral-gray-500);
-  opacity: 0.6;
-  transition: opacity 0.15s ease;
+  opacity: var(--global-opacity-muted);
+  transition: opacity var(--global-animation-duration-fast) var(--global-animation-easing-default);
 }
 
 .card-content__dismiss:hover {
@@ -88,8 +88,8 @@
 }
 
 .card-content__dismiss:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 2px;
+  outline: var(--global-spacing-stroke-2px) solid currentColor;
+  outline-offset: var(--global-spacing-sizing-2px);
   border-radius: var(--global-spacing-radius-2px);
 }
 
@@ -518,6 +518,102 @@
   justify-content: flex-start;
 }
 
+/* ══════════════════════════════════════════════════════════════════════════
+   HORIZONTAL IMAGE VARIANTS — image-left / image-right
+   Card width is always >= 2× card height (landscape rectangle enforced).
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* Shared horizontal shell */
+.card-content--image-left,
+.card-content--image-right {
+  flex-direction: row;
+  align-items: stretch;
+  padding: var(--global-spacing-sizing-0px);
+  width: var(--card-content-horizontal-width-default);
+  min-width: var(--card-content-horizontal-width-default);
+}
+
+.size-small.card-content--image-left,
+.size-small.card-content--image-right {
+  width: var(--card-content-horizontal-width-sm);
+  min-width: var(--card-content-horizontal-width-sm);
+}
+
+.size-large.card-content--image-left,
+.size-large.card-content--image-right {
+  width: var(--card-content-horizontal-width-lg);
+  min-width: var(--card-content-horizontal-width-lg);
+}
+
+/* Horizontal image wrap — fixed width, stretches to card height */
+.card-content--image-left .card-content__image-wrap,
+.card-content--image-right .card-content__image-wrap {
+  width: var(--card-content-horizontal-image-width-default);
+  height: unset;
+  flex-shrink: 0;
+}
+
+.size-small.card-content--image-left .card-content__image-wrap,
+.size-small.card-content--image-right .card-content__image-wrap {
+  width: var(--card-content-horizontal-image-width-sm);
+}
+
+.size-large.card-content--image-left .card-content__image-wrap,
+.size-large.card-content--image-right .card-content__image-wrap {
+  width: var(--card-content-horizontal-image-width-lg);
+}
+
+/* Image — fills the full wrap area in horizontal mode */
+.card-content--image-left .card-content__image,
+.card-content--image-right .card-content__image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-content--image-left .card-content__image-placeholder,
+.card-content--image-right .card-content__image-placeholder {
+  height: 100%;
+}
+
+/* Image LEFT — image first, content second */
+.card-content--image-left .card-content__image-wrap {
+  order: 0;
+  border-radius: var(--card-content-border-radius) var(--global-spacing-radius-0px) var(--global-spacing-radius-0px) var(--card-content-border-radius);
+}
+
+.card-content--image-left .card-content__inner {
+  order: 1;
+}
+
+/* Image RIGHT — content first, image second */
+.card-content--image-right .card-content__image-wrap {
+  order: 1;
+  border-radius: var(--global-spacing-radius-0px) var(--card-content-border-radius) var(--card-content-border-radius) var(--global-spacing-radius-0px);
+}
+
+.card-content--image-right .card-content__inner {
+  order: 0;
+}
+
+/* Inner content in horizontal mode — fills remaining space, left-aligned */
+.card-content--image-left .card-content__inner,
+.card-content--image-right .card-content__inner {
+  flex: 1;
+  min-width: var(--global-spacing-sizing-0px);
+}
+
+/* Headings and actions stay left-aligned in horizontal mode */
+.card-content--image-left .card-content__heading,
+.card-content--image-right .card-content__heading {
+  text-align: left;
+}
+
+.card-content--image-left .card-content__actions,
+.card-content--image-right .card-content__actions {
+  justify-content: flex-start;
+}
+
 /* ── Rating ───────────────────────────────────────────────────────────────── */
 
 .card-content__rating {
@@ -530,7 +626,7 @@
 .card-content__stars {
   display: inline-flex;
   flex-direction: row;
-  gap: 1px;
+  gap: var(--global-spacing-sizing-1px);
 }
 
 .star-filled {
@@ -542,7 +638,7 @@
 }
 
 .card-content__rating-count {
-  font-family: var(--brand-font-primary, 'F37 Ginger', sans-serif);
+  font-family: var(--font-family-primary);
   font-weight: var(--global-type-weight-light);
   font-size: var(--global-type-size-primary-label-xs);
   color: var(--card-content-rating-count-color);

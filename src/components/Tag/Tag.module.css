@@ -187,7 +187,7 @@
 }
 
 .tag--interactive:hover {
-  opacity: 0.85;
+  opacity: var(--global-opacity-hover);
 }
 
 .tag--interactive:focus-visible {
@@ -198,7 +198,7 @@
 /* ── Disabled ── */
 
 .tag--disabled {
-  opacity: 0.45;
+  opacity: var(--global-opacity-disabled);
   cursor: not-allowed;
   pointer-events: none;
 }
@@ -289,7 +289,7 @@
   background: none;
   cursor: pointer;
   color: inherit;
-  opacity: 0.65;
+  opacity: var(--global-opacity-subtle);
   border-radius: var(--global-spacing-radius-full);
   flex-shrink: 0;
   transition: opacity var(--tag-transition-duration) var(--tag-transition-easing);
@@ -308,7 +308,7 @@
 
 .tag__remove:disabled {
   cursor: not-allowed;
-  opacity: 0.3;
+  opacity: var(--global-opacity-dim);
 }
 
 .tag--small .tag__remove {

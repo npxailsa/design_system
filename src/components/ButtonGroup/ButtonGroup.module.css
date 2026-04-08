@@ -31,7 +31,7 @@
    ════════════════════════════════════════════════════════════ */
 
 .btn-group--joined {
-  gap: 0;
+  gap: var(--global-spacing-sizing-0px);
 }
 
 .btn-group--separate {
@@ -57,7 +57,7 @@
     box-shadow   var(--btn-group-transition-duration) var(--btn-group-transition-easing),
     border-color var(--btn-group-transition-duration) var(--btn-group-transition-easing),
     color        var(--btn-group-transition-duration) var(--btn-group-transition-easing);
-  font-family: var(--brand-font-primary, 'F37 Ginger', sans-serif);
+  font-family: var(--font-family-primary);
 }
 
 .btn-group__btn:focus-visible:not(:disabled) {
@@ -162,7 +162,7 @@
 }
 
 .btn-group__label-text {
-  font-family: var(--brand-font-primary, 'F37 Ginger', sans-serif);
+  font-family: var(--font-family-primary);
   font-weight: var(--btn-group-label-font-weight);
   white-space: nowrap;
   line-height: var(--btn-group-label-line-height);

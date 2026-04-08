@@ -18,7 +18,7 @@
 
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: var(--global-spacing-sizing-0px);
   align-items: flex-start;
   justify-content: flex-start;
 
@@ -26,7 +26,7 @@
   width: var(--card-size-sm);
   height: var(--card-size-sm);
   min-width: var(--card-size-sm);
-  min-height: 20px;
+  min-height: var(--global-spacing-sizing-20px);
 
   padding: var(--card-padding-sm);
   position: relative;

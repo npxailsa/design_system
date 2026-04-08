@@ -6,6 +6,7 @@ import styles from './CardContent.module.css';
 /* ── Types ────────────────────────────────────────────────────────────────── */
 
 export type CardContentVariant = 'notification' | 'image';
+export type CardContentImagePosition = 'top' | 'left' | 'right';
 export type CardContentStatus =
   | 'error'
   | 'warning'
@@ -74,6 +75,15 @@ export interface CardContentProps {
   showRating?: boolean;
   /** Show / hide the image area (image variant). @default true */
   showImage?: boolean;
+  /**
+   * Position of the image relative to the card content (image variant only).
+   * - `top`   — image above content (default vertical layout)
+   * - `left`  — image to the left of content (horizontal rectangle layout)
+   * - `right` — image to the right of content (horizontal rectangle layout)
+   * Horizontal variants always maintain a width >= 2× height ratio.
+   * @default 'top'
+   */
+  imagePosition?: CardContentImagePosition;
   /** Extra CSS class on the root element */
   className?: string;
 }
@@ -258,6 +268,7 @@ export const CardContent: React.FC<CardContentProps> = ({
   onDismiss,
   showRating = true,
   showImage = true,
+  imagePosition = 'top',
   className = '',
 }) => {
   const StatusIcon = STATUS_ICON[status];
@@ -340,10 +351,17 @@ export const CardContent: React.FC<CardContentProps> = ({
   }
 
   /* ── Image variant ── */
+  const imageVariantClass =
+    imagePosition === 'left'
+      ? styles['card-content--image-left']
+      : imagePosition === 'right'
+        ? styles['card-content--image-right']
+        : styles['card-content--image'];
+
   const rootClasses = [
     styles['card-content'],
     styles[`size-${size}`],
-    styles['card-content--image'],
+    imageVariantClass,
     border ? '' : styles['card-content--no-border'],
     className,
   ]

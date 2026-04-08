@@ -165,53 +165,53 @@
 .badge {
   position: absolute !important;
   /* Default position (size-default) */
-  top: -4px !important;
-  right: -4px !important;
+  top: var(--global-spacing-sizing-neg-4px) !important;
+  right: var(--global-spacing-sizing-neg-4px) !important;
 }
 
 /* Adjust badge offset per size so it sits neatly on the corner */
 .size-x-small .badge {
-  top: -3px !important;
-  right: -3px !important;
+  top: var(--global-spacing-sizing-neg-2px) !important;
+  right: var(--global-spacing-sizing-neg-2px) !important;
 }
 
 .size-small .badge {
-  top: -3px !important;
-  right: -3px !important;
+  top: var(--global-spacing-sizing-neg-2px) !important;
+  right: var(--global-spacing-sizing-neg-2px) !important;
 }
 
 .size-default .badge {
-  top: -4px !important;
-  right: -4px !important;
+  top: var(--global-spacing-sizing-neg-4px) !important;
+  right: var(--global-spacing-sizing-neg-4px) !important;
 }
 
 .size-large .badge {
-  top: -5px !important;
-  right: -5px !important;
+  top: var(--global-spacing-sizing-neg-6px) !important;
+  right: var(--global-spacing-sizing-neg-6px) !important;
 }
 
 /* Circle shape: badge sits on the curved border edge */
 .shape-circle .badge {
-  top: 1px !important;
-  right: 1px !important;
+  top: var(--global-spacing-sizing-1px) !important;
+  right: var(--global-spacing-sizing-1px) !important;
 }
 
 .shape-circle.size-x-small .badge {
-  top: 0px !important;
-  right: 0px !important;
+  top: var(--global-spacing-sizing-0px) !important;
+  right: var(--global-spacing-sizing-0px) !important;
 }
 
 .shape-circle.size-small .badge {
-  top: 0px !important;
-  right: 0px !important;
+  top: var(--global-spacing-sizing-0px) !important;
+  right: var(--global-spacing-sizing-0px) !important;
 }
 
 .shape-circle.size-default .badge {
-  top: 1px !important;
-  right: 1px !important;
+  top: var(--global-spacing-sizing-1px) !important;
+  right: var(--global-spacing-sizing-1px) !important;
 }
 
 .shape-circle.size-large .badge {
-  top: 1px !important;
-  right: 1px !important;
+  top: var(--global-spacing-sizing-1px) !important;
+  right: var(--global-spacing-sizing-1px) !important;
 }

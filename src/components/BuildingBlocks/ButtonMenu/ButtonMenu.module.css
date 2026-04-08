@@ -19,7 +19,7 @@
 .buttonMenu {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: var(--global-spacing-sizing-0px);
   align-items: stretch;
   width: var(--btn-menu-width-default);
   min-width: var(--btn-menu-min-width);

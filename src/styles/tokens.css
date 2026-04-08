@@ -145,6 +145,7 @@
   /* Negative Sizing */
   --global-spacing-sizing-neg-2px: -2px;
   --global-spacing-sizing-neg-4px: -4px;
+  --global-spacing-sizing-neg-6px: -6px;
   --global-spacing-sizing-neg-8px: -8px;
   --global-spacing-sizing-neg-12px: -12px;
   --global-spacing-sizing-neg-16px: -16px;
@@ -211,7 +212,10 @@
      GLOBAL LAYER: Opacity
      ========================================================================== */
   --global-opacity-muted: 0.6;
+  --global-opacity-subtle: 0.65;
+  --global-opacity-hover: 0.85;
   --global-opacity-disabled: 0.45;
+  --global-opacity-dim: 0.3;
   --global-opacity-full: 1;
 
   /* ==========================================================================
@@ -1053,6 +1057,18 @@
   --card-content-image-height-default:  200px;
   --card-content-image-height-lg:       280px;
   --card-content-image-bg:              var(--global-color-neutral-gray-200);
+
+  /* CardContent — horizontal image variant (image-left / image-right)
+     Rule: card width must always be >= 2× card height
+     Small: 400px wide, image 140px wide  → ~2.5–3:1 ratio
+     Default: 560px wide, image 200px wide → ~2.7–3.2:1 ratio
+     Large: 640px wide, image 240px wide  → ~2.6–3.1:1 ratio         */
+  --card-content-horizontal-width-sm:           var(--global-spacing-sizing-400px);
+  --card-content-horizontal-width-default:      var(--global-spacing-sizing-560px);
+  --card-content-horizontal-width-lg:           var(--global-spacing-sizing-640px);
+  --card-content-horizontal-image-width-sm:     var(--global-spacing-sizing-140px);
+  --card-content-horizontal-image-width-default: var(--global-spacing-sizing-200px);
+  --card-content-horizontal-image-width-lg:     var(--global-spacing-sizing-240px);
 
   /* CardContent — rating star */
   --card-content-star-color:            var(--global-color-primary-yellow);
