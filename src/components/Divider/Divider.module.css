@@ -8,114 +8,94 @@
      line      — solid | dashed | dotted
      thickness — 0-5px | 1px | 2px | 3px | 4px | 8px
 
-   All colour, spacing, and stroke values reference global design tokens.
+   Color:      --divider-color     → --global-color-neutral-gray-300 (#d2d5da)
+   Thickness:  --global-spacing-stroke-* tokens from tokens.css
+
+   All colour and stroke values reference global design tokens only.
+   No hardcoded pixel values or inline styles are used in this module.
    ========================================================================== */
-
-/* ── Component tokens ────────────────────────────────────────────────────── */
-
-:root {
-  --divider-color:            var(--global-color-neutral-gray-300);
-  --divider-thickness:        var(--global-spacing-stroke-1px);
-  --divider-transition:       border-color var(--global-animation-duration-fast) var(--global-animation-easing-default);
-}
 
 /* ── Reset ───────────────────────────────────────────────────────────────── */
 
-.divider,
-.divider * {
-  box-sizing: border-box;
-}
-
-/* ── Base ────────────────────────────────────────────────────────────────── */
-
 .divider {
+  box-sizing: border-box;
   display: block;
   border: none;
   background: none;
-  margin: var(--global-spacing-sizing-0px);
-  padding: var(--global-spacing-sizing-0px);
+  margin: 0;
+  padding: 0;
   flex-shrink: 0;
-  transition: var(--divider-transition);
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
    ALIGNMENT: Horizontal
-   Spans the full width of its container.
+   Spans the full width of its container; height is driven by border-top-width.
    ══════════════════════════════════════════════════════════════════════════ */
 
 .divider--horizontal {
-  display: block;
   width: 100%;
-  height: var(--global-spacing-sizing-0px);
+  height: 0;
   border-top-color: var(--divider-color);
-  border-top-style: solid;          /* overridden by line modifiers below */
-  border-top-width: var(--divider-thickness);
+  border-top-style: solid;
+  border-top-width: var(--global-spacing-stroke-1px);   /* default; overridden by thickness modifiers */
+  border-right: none;
+  border-bottom: none;
+  border-left: none;
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
    ALIGNMENT: Vertical
    Spans the full height of its flex/grid container.
+   Achieved via align-self: stretch on a zero-width block with a left border.
    ══════════════════════════════════════════════════════════════════════════ */
 
 .divider--vertical {
-  display: inline-block;
-  width: var(--global-spacing-sizing-0px);
-  height: 100%;
+  display: block;
+  width: 0;
+  height: auto;
   align-self: stretch;
   border-left-color: var(--divider-color);
-  border-left-style: solid;         /* overridden by line modifiers below */
-  border-left-width: var(--divider-thickness);
-}
-
-/* ══════════════════════════════════════════════════════════════════════════
-   LINE STYLE
-   ══════════════════════════════════════════════════════════════════════════ */
-
-/* Solid — default, no override needed but explicit for clarity */
-.divider--solid.divider--horizontal {
-  border-top-style: solid;
-}
-
-.divider--solid.divider--vertical {
   border-left-style: solid;
-}
-
-/* Dashed */
-.divider--dashed.divider--horizontal {
-  border-top-style: dashed;
-}
-
-.divider--dashed.divider--vertical {
-  border-left-style: dashed;
-}
-
-/* Dotted */
-.divider--dotted.divider--horizontal {
-  border-top-style: dotted;
-}
-
-.divider--dotted.divider--vertical {
-  border-left-style: dotted;
+  border-left-width: var(--global-spacing-stroke-1px);  /* default; overridden by thickness modifiers */
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
-   THICKNESS — Horizontal border-top-width
+   LINE STYLE — Horizontal
    ══════════════════════════════════════════════════════════════════════════ */
 
-.divider--horizontal.divider--0-5px  { border-top-width: var(--global-spacing-stroke-0-5px); }
-.divider--horizontal.divider--1px    { border-top-width: var(--global-spacing-stroke-1px); }
-.divider--horizontal.divider--2px    { border-top-width: var(--global-spacing-stroke-2px); }
-.divider--horizontal.divider--3px    { border-top-width: var(--global-spacing-stroke-3px); }
-.divider--horizontal.divider--4px    { border-top-width: var(--global-spacing-stroke-4px); }
-.divider--horizontal.divider--8px    { border-top-width: var(--global-spacing-stroke-8px); }
+.divider--solid.divider--horizontal   { border-top-style: solid; }
+.divider--dashed.divider--horizontal  { border-top-style: dashed; }
+.divider--dotted.divider--horizontal  { border-top-style: dotted; }
 
 /* ══════════════════════════════════════════════════════════════════════════
-   THICKNESS — Vertical border-left-width
+   LINE STYLE — Vertical
    ══════════════════════════════════════════════════════════════════════════ */
 
-.divider--vertical.divider--0-5px    { border-left-width: var(--global-spacing-stroke-0-5px); }
-.divider--vertical.divider--1px      { border-left-width: var(--global-spacing-stroke-1px); }
-.divider--vertical.divider--2px      { border-left-width: var(--global-spacing-stroke-2px); }
-.divider--vertical.divider--3px      { border-left-width: var(--global-spacing-stroke-3px); }
-.divider--vertical.divider--4px      { border-left-width: var(--global-spacing-stroke-4px); }
-.divider--vertical.divider--8px      { border-left-width: var(--global-spacing-stroke-8px); }
+.divider--solid.divider--vertical     { border-left-style: solid; }
+.divider--dashed.divider--vertical    { border-left-style: dashed; }
+.divider--dotted.divider--vertical    { border-left-style: dotted; }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   THICKNESS — Horizontal (border-top-width via stroke tokens)
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.divider--horizontal.divider--0-5px { border-top-width: var(--global-spacing-stroke-0-5px); }
+.divider--horizontal.divider--1px   { border-top-width: var(--global-spacing-stroke-1px); }
+.divider--horizontal.divider--2px   { border-top-width: var(--global-spacing-stroke-2px); }
+.divider--horizontal.divider--3px   { border-top-width: var(--global-spacing-stroke-3px); }
+.divider--horizontal.divider--4px   { border-top-width: var(--global-spacing-stroke-4px); }
+.divider--horizontal.divider--8px   { border-top-width: var(--global-spacing-stroke-8px); }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   THICKNESS — Vertical (border-left-width via stroke tokens)
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.divider--vertical.divider--0-5px   { border-left-width: var(--global-spacing-stroke-0-5px); }
+.divider--vertical.divider--1px     { border-left-width: var(--global-spacing-stroke-1px); }
+.divider--vertical.divider--2px     { border-left-width: var(--global-spacing-stroke-2px); }
+.divider--vertical.divider--3px     { border-left-width: var(--global-spacing-stroke-3px); }
+.divider--vertical.divider--4px     { border-left-width: var(--global-spacing-stroke-4px); }
+.divider--vertical.divider--8px     { border-left-width: var(--global-spacing-stroke-8px); }
