@@ -1,7 +1,8 @@
 import React from 'react';
 import { DocsTemplate } from '../DocsTemplate/DocsTemplate';
 import { AvatarWithText } from './AvatarWithText';
-import type { AvatarSize, AvatarWithTextVariant } from './AvatarWithText';
+import type { AvatarSize } from './Avatar';
+import type { AvatarWithTextVariant } from './AvatarWithText';
 
 const DEMO_PHOTO_WOMAN =
   'https://images.pexels.com/photos/35721587/pexels-photo-35721587.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop';

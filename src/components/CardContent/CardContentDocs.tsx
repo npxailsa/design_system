@@ -63,7 +63,7 @@ export const CardContentDocs: React.FC = () => (
       <DocsTemplate.Anatomy
         preview={
           <div style={previewWrap}>
-            <CardContent variant="notification" status="error" size="default" heading="Error heading" body="Body description." count={4} showDismiss={true} />
+            <CardContent variant="notification" status="error" size="default" heading="Error heading" body="Body description." showDismiss={true} />
             <CardContent variant="image" size="default" heading="Image heading" body="Body description." rating={4} ratingCount={128} />
           </div>
         }
@@ -73,8 +73,7 @@ export const CardContentDocs: React.FC = () => (
           { id: 3, name: 'Heading', token: '--card-content-heading-size-*, --card-content-error-heading / etc.', description: 'Status-coloured heading. Typography: H4 24px (sm), H3 28px (default), H2 32px (lg), weight 400.' },
           { id: 4, name: 'Body text', token: '--card-content-body-size-*, --card-content-body-color', description: 'Body text in black, weight 300. 14px/16px (sm), 16px/20px (default), 18px/22px (lg). Controlled by showBody prop.' },
           { id: 5, name: 'ButtonGroup', token: 'Uses ButtonGroup component tokens', description: 'Status-coloured primary button + ghost secondary. Uses the existing ButtonGroup component. Controlled by showActions prop.' },
-          { id: 6, name: 'Count badge', token: '--card-content-count-bg, --card-content-count-color', description: 'Optional numeric badge beside the ButtonGroup. Pass the count prop to show.' },
-          { id: 7, name: 'Dismiss button', token: 'Inherits status colour', description: 'Absolute-positioned close button top-right. Controlled by showDismiss prop. Fires onDismiss callback.' },
+          { id: 6, name: 'Dismiss button', token: 'Inherits status colour', description: 'Absolute-positioned close button top-right. Controlled by showDismiss prop. Fires onDismiss callback.' },
           { id: 8, name: 'Image area', token: '--card-content-image-height-*', description: 'Full-width image or grey placeholder at top of image cards. Controlled by showImage prop.' },
           { id: 9, name: 'Star rating', token: '--card-content-star-color, --card-content-star-empty-color', description: 'Optional 5-star rating row (image variant). Controlled by showRating prop.' },
         ]}
@@ -88,7 +87,7 @@ export const CardContentDocs: React.FC = () => (
     >
       <div style={previewWrap}>
         {ALL_STATUSES.map((status) => (
-          <CardContent key={status} variant="notification" status={status} size="default" heading={`${STATUS_LABELS[status]} heading`} count={4} />
+          <CardContent key={status} variant="notification" status={status} size="default" heading={`${STATUS_LABELS[status]} heading`} />
         ))}
       </div>
     </DocsTemplate.Section>
@@ -99,7 +98,7 @@ export const CardContentDocs: React.FC = () => (
         <DocsTemplate.Subsection key={status} title={STATUS_LABELS[status]}>
           <div style={previewWrap}>
             {ALL_SIZES.map((size) => (
-              <CardContent key={size} variant="notification" status={status} size={size} heading={`${STATUS_LABELS[status]} heading`} count={4} />
+              <CardContent key={size} variant="notification" status={status} size={size} heading={`${STATUS_LABELS[status]} heading`} />
             ))}
           </div>
         </DocsTemplate.Subsection>
@@ -113,9 +112,9 @@ export const CardContentDocs: React.FC = () => (
     >
       <DocsTemplate.Subsection title="Notification — Toggle Combinations">
         <div style={previewWrap}>
-          <CardContent variant="notification" status="info" heading="All visible" count={4} />
-          <CardContent variant="notification" status="info" heading="No icon" count={4} showIcon={false} />
-          <CardContent variant="notification" status="info" heading="No body" count={4} showBody={false} />
+          <CardContent variant="notification" status="info" heading="All visible" />
+          <CardContent variant="notification" status="info" heading="No icon" showIcon={false} />
+          <CardContent variant="notification" status="info" heading="No body" showBody={false} />
           <CardContent variant="notification" status="info" heading="No actions" showActions={false} />
           <CardContent variant="notification" status="info" heading="Icon + heading" showBody={false} showActions={false} />
           <CardContent variant="notification" status="info" heading="Heading only" showIcon={false} showBody={false} showActions={false} />
@@ -137,7 +136,7 @@ export const CardContentDocs: React.FC = () => (
     <DocsTemplate.Section title="Dismiss Button" subtitle="Set showDismiss={true} to add an absolute-positioned close button (top-right). Fires onDismiss callback.">
       <div style={previewWrap}>
         {ALL_STATUSES.slice(0, 4).map((status) => (
-          <CardContent key={status} variant="notification" status={status} size="default" heading={`${STATUS_LABELS[status]} — dismiss`} count={4} showDismiss={true} />
+          <CardContent key={status} variant="notification" status={status} size="default" heading={`${STATUS_LABELS[status]} — dismiss`} showDismiss={true} />
         ))}
       </div>
     </DocsTemplate.Section>
@@ -147,8 +146,8 @@ export const CardContentDocs: React.FC = () => (
       <div style={previewWrap}>
         {(['error', 'default', 'purple', 'white'] as CardContentStatus[]).map((status) => (
           <React.Fragment key={status}>
-            <CardContent variant="notification" status={status} heading={`${STATUS_LABELS[status]} — border`} count={4} border={true} />
-            <CardContent variant="notification" status={status} heading={`${STATUS_LABELS[status]} — no border`} count={4} border={false} />
+            <CardContent variant="notification" status={status} heading={`${STATUS_LABELS[status]} — border`} border={true} />
+            <CardContent variant="notification" status={status} heading={`${STATUS_LABELS[status]} — no border`} border={false} />
           </React.Fragment>
         ))}
       </div>
@@ -238,7 +237,7 @@ export const CardContentDocs: React.FC = () => (
 
 // All statuses, default size
 {['error', 'warning', 'success', 'info'].map((status) => (
-  <CardContent key={status} status={status} heading={\`\${status} heading\`} count={4} />
+  <CardContent key={status} status={status} heading={\`\${status} heading\`} />
 ))}
 
 // Image card

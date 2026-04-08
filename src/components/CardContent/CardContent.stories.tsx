@@ -348,6 +348,279 @@ export const AllSizesImageWithPhoto: Story = {
   parameters: { controls: { disable: true } },
 };
 
+/* ── Image Card — No Rating ──────────────────────────────────────────────── */
+
+export const ImageCardNoRating: Story = {
+  name: 'Image Card / No Rating',
+  args: {
+    variant: 'image',
+    size: 'default',
+    heading: 'This is a heading',
+    body: 'This is body text that can span multiple lines within the card. This is body text that can span multiple lines within the card.',
+    showRating: false,
+  },
+};
+
+/* ── Image Card — No Body ────────────────────────────────────────────────── */
+
+export const ImageCardNoBody: Story = {
+  name: 'Image Card / No Body',
+  args: {
+    variant: 'image',
+    size: 'default',
+    heading: 'This is a heading',
+    showBody: false,
+    rating: 4,
+    ratingCount: 128,
+  },
+};
+
+/* ── Image Card — No Actions ─────────────────────────────────────────────── */
+
+export const ImageCardNoActions: Story = {
+  name: 'Image Card / No Actions',
+  args: {
+    variant: 'image',
+    size: 'default',
+    heading: 'This is a heading',
+    showActions: false,
+    rating: 4,
+    ratingCount: 128,
+  },
+};
+
+/* ── Image Card — No Image ───────────────────────────────────────────────── */
+
+export const ImageCardNoImage: Story = {
+  name: 'Image Card / No Image',
+  args: {
+    variant: 'image',
+    size: 'default',
+    heading: 'This is a heading',
+    showImage: false,
+    rating: 4,
+    ratingCount: 128,
+  },
+};
+
+/* ── Image Card — All Sizes / Placeholder ─────────────────────────────────── */
+
+export const ImageCardAllSizes: Story = {
+  name: 'Image Card / All Sizes',
+  render: () => (
+    <div style={gridWrap}>
+      {ALL_SIZES.map((size) => (
+        <CardContent
+          key={size}
+          variant="image"
+          size={size}
+          heading="This is a heading"
+          body="This is body text that can span multiple lines within the card. This is body text that can span multiple lines within the card."
+          rating={4}
+          ratingCount={128}
+        />
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+/* ── Image Card — All Sizes / Border True vs False ────────────────────────── */
+
+export const ImageCardBorderVariants: Story = {
+  name: 'Image Card / Border Variants',
+  render: () => (
+    <div style={{ ...gridWrap, flexDirection: 'column', gap: 'var(--global-spacing-sizing-32px)' }}>
+      <p style={sectionLabel}>With Border</p>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', alignItems: 'flex-start' }}>
+        {ALL_SIZES.map((size) => (
+          <CardContent
+            key={size}
+            variant="image"
+            size={size}
+            heading="This is a heading"
+            body="This is body text that can span multiple lines within the card."
+            rating={4}
+            ratingCount={128}
+            border={true}
+          />
+        ))}
+      </div>
+      <p style={sectionLabel}>Without Border</p>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', alignItems: 'flex-start' }}>
+        {ALL_SIZES.map((size) => (
+          <CardContent
+            key={size}
+            variant="image"
+            size={size}
+            heading="This is a heading"
+            body="This is body text that can span multiple lines within the card."
+            rating={4}
+            ratingCount={128}
+            border={false}
+          />
+        ))}
+      </div>
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+/* ── Image Card — Toggle Matrix ───────────────────────────────────────────── */
+
+export const ImageCardToggleMatrix: Story = {
+  name: 'Image Card / Toggle Matrix',
+  render: () => {
+    const imageCombos = [
+      { label: 'All visible', showImage: true, showBody: true, showActions: true, showRating: true },
+      { label: 'No image', showImage: false, showBody: true, showActions: true, showRating: true },
+      { label: 'No body', showImage: true, showBody: false, showActions: true, showRating: true },
+      { label: 'No actions', showImage: true, showBody: true, showActions: false, showRating: true },
+      { label: 'No rating', showImage: true, showBody: true, showActions: true, showRating: false },
+      { label: 'Minimal', showImage: false, showBody: false, showActions: false, showRating: false },
+    ];
+    return (
+      <div style={gridWrap}>
+        {imageCombos.map(({ label, ...toggles }) => (
+          <CardContent
+            key={label}
+            variant="image"
+            size="default"
+            heading={label}
+            body="This is body text that can span multiple lines within the card. This is body text."
+            rating={4}
+            ratingCount={128}
+            {...toggles}
+          />
+        ))}
+      </div>
+    );
+  },
+  parameters: { controls: { disable: true } },
+};
+
+/* ── Image Card — Real Photo Gallery ─────────────────────────────────────── */
+
+export const ImageCardPhotoGallery: Story = {
+  name: 'Image Card / Photo Gallery',
+  render: () => {
+    const cards = [
+      {
+        heading: 'Mountain Adventures',
+        body: 'Experience breathtaking peaks and alpine trails.',
+        rating: 4.5,
+        ratingCount: 312,
+        imageSrc: 'https://images.pexels.com/photos/618833/pexels-photo-618833.jpeg?auto=compress&cs=tinysrgb&w=400&h=220&fit=crop',
+        imageAlt: 'Mountain landscape',
+      },
+      {
+        heading: 'Ocean Escapes',
+        body: 'Discover pristine beaches and coastal adventures.',
+        rating: 5,
+        ratingCount: 543,
+        imageSrc: 'https://images.pexels.com/photos/1032650/pexels-photo-1032650.jpeg?auto=compress&cs=tinysrgb&w=400&h=220&fit=crop',
+        imageAlt: 'Ocean beach',
+      },
+      {
+        heading: 'City Exploration',
+        body: 'Uncover the hidden gems of urban landscapes.',
+        rating: 4,
+        ratingCount: 187,
+        imageSrc: 'https://images.pexels.com/photos/466685/pexels-photo-466685.jpeg?auto=compress&cs=tinysrgb&w=400&h=220&fit=crop',
+        imageAlt: 'City skyline',
+      },
+      {
+        heading: 'Forest Retreats',
+        body: 'Reconnect with nature in ancient woodland settings.',
+        rating: 4.5,
+        ratingCount: 94,
+        imageSrc: 'https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&w=400&h=220&fit=crop',
+        imageAlt: 'Forest path',
+      },
+      {
+        heading: 'Desert Journeys',
+        body: 'Explore vast dunes and arid landscapes at sunrise.',
+        rating: 3.5,
+        ratingCount: 76,
+        imageSrc: 'https://images.pexels.com/photos/847393/pexels-photo-847393.jpeg?auto=compress&cs=tinysrgb&w=400&h=220&fit=crop',
+        imageAlt: 'Desert sand dunes',
+      },
+      {
+        heading: 'Arctic Expeditions',
+        body: 'Witness the northern lights and icy tundra vistas.',
+        rating: 5,
+        ratingCount: 228,
+        imageSrc: 'https://images.pexels.com/photos/1366909/pexels-photo-1366909.jpeg?auto=compress&cs=tinysrgb&w=400&h=220&fit=crop',
+        imageAlt: 'Arctic ice and sky',
+      },
+    ];
+    return (
+      <div style={gridWrap}>
+        {cards.map((card) => (
+          <CardContent
+            key={card.heading}
+            variant="image"
+            size="default"
+            {...card}
+          />
+        ))}
+      </div>
+    );
+  },
+  parameters: { controls: { disable: true } },
+};
+
+/* ── Image Card — All Sizes / Photo Gallery ───────────────────────────────── */
+
+export const ImageCardPhotoGalleryAllSizes: Story = {
+  name: 'Image Card / Photo Gallery All Sizes',
+  render: () => (
+    <div style={{ ...gridWrap, flexDirection: 'column', gap: 'var(--global-spacing-sizing-32px)' }}>
+      {ALL_SIZES.map((size) => (
+        <div key={size}>
+          <p style={sectionLabel}>{size}</p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', alignItems: 'flex-start' }}>
+            {[
+              {
+                heading: 'Mountain Adventures',
+                body: 'Experience breathtaking peaks and alpine trails.',
+                rating: 4.5,
+                ratingCount: 312,
+                imageSrc: 'https://images.pexels.com/photos/618833/pexels-photo-618833.jpeg?auto=compress&cs=tinysrgb&w=400&h=220&fit=crop',
+                imageAlt: 'Mountain landscape',
+              },
+              {
+                heading: 'Ocean Escapes',
+                body: 'Discover pristine beaches and coastal adventures.',
+                rating: 5,
+                ratingCount: 543,
+                imageSrc: 'https://images.pexels.com/photos/1032650/pexels-photo-1032650.jpeg?auto=compress&cs=tinysrgb&w=400&h=220&fit=crop',
+                imageAlt: 'Ocean beach',
+              },
+              {
+                heading: 'City Exploration',
+                body: 'Uncover the hidden gems of urban landscapes.',
+                rating: 4,
+                ratingCount: 187,
+                imageSrc: 'https://images.pexels.com/photos/466685/pexels-photo-466685.jpeg?auto=compress&cs=tinysrgb&w=400&h=220&fit=crop',
+                imageAlt: 'City skyline',
+              },
+            ].map((card) => (
+              <CardContent
+                key={card.heading}
+                variant="image"
+                size={size}
+                {...card}
+              />
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
 /* ── ButtonGroup Variants ────────────────────────────────────────────────── */
 
 export const ButtonGroupVariants: Story = {

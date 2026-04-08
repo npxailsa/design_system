@@ -19,7 +19,7 @@ export { default as SplitButton } from './components/SplitButton/SplitButton';
 export { default as Tag } from './components/Tag/Tag';
 export { default as TertiaryButton } from './components/TertiaryButton/TertiaryButton';
 export { default as Toast } from './components/Toast/Toast';
-export { ToastContext } from './components/Toast/ToastContext';
+export { ToastProvider, useToast } from './components/Toast/ToastContext';
 
 // Status Buttons
 export { default as ErrorButton } from './components/Button/ErrorButton/ErrorButton';
