@@ -1927,6 +1927,31 @@
   --divider-label-padding-x: var(--global-spacing-sizing-12px);
 
   /* ==========================================================================
+     COMPONENT: ProgressBar
+     --------------------------------------------------------------------------
+     A horizontal bar indicator that fills left-to-right based on a value (0–100).
+     At 0% a dot indicator is shown in place of the fill.
+
+     Figma ref: Atoms/Loaders/ProgressBar
+     ========================================================================== */
+
+  /* Colours */
+  --progress-track-bg:    var(--global-color-neutral-gray-200);
+  --progress-fill-bg:     var(--global-color-primary-sky-blue);
+  --progress-dot-bg:      var(--global-color-primary-sky-blue);
+  --progress-label-color: var(--global-color-neutral-gray-700);
+
+  /* Track heights — size scale */
+  --progress-track-height-sm:      var(--global-spacing-sizing-4px);
+  --progress-track-height-default: var(--global-spacing-sizing-8px);
+  --progress-track-height-lg:      var(--global-spacing-sizing-16px);
+
+  /* Dot sizes — size scale */
+  --progress-dot-size-sm:      6px;
+  --progress-dot-size-default: var(--global-spacing-sizing-10px);
+  --progress-dot-size-lg:      var(--global-spacing-sizing-20px);
+
+  /* ==========================================================================
      COMPONENT: ButtonMenu (BuildingBlocks)
      --------------------------------------------------------------------------
      A stacked vertical list of menu items used as dropdown menus or contextual

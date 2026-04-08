@@ -1,0 +1,122 @@
+/* ==========================================================================
+   ProgressBar Component
+   --------------------------------------------------------------------------
+   A horizontal progress indicator with a filled bar on a light track.
+
+   Track bg:   --progress-track-bg  → --global-color-neutral-gray-200
+   Fill bg:    --progress-fill-bg   → --global-color-primary-sky-blue (#0ba7ea)
+   Dot bg:     --progress-dot-bg    → --global-color-primary-sky-blue
+   Label:      --progress-label-color → --global-color-neutral-gray-700
+
+   Size scale:
+     sm      → 4px track height  / 6px dot
+     default → 8px track height  / 10px dot
+     lg      → 16px track height / 20px dot
+
+   All values reference global design tokens only.
+   ========================================================================== */
+
+/* ── Root container ──────────────────────────────────────────────────────── */
+
+.root {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--global-spacing-sizing-8px);
+  width: 100%;
+}
+
+/* ── Track ───────────────────────────────────────────────────────────────── */
+
+.track {
+  position: relative;
+  flex: 1;
+  background-color: var(--progress-track-bg);
+  border-radius: var(--global-spacing-radius-full);
+  overflow: visible; /* allow dot to slightly overflow at 0% */
+  display: flex;
+  align-items: center;
+}
+
+/* ── Fill bar ────────────────────────────────────────────────────────────── */
+
+.fill {
+  height: 100%;
+  background-color: var(--progress-fill-bg);
+  border-radius: var(--global-spacing-radius-full);
+  transition: width var(--global-animation-duration-default) var(--global-animation-easing-default);
+}
+
+/* ── Dot indicator (shown at 0%) ─────────────────────────────────────────── */
+
+.dot {
+  display: block;
+  border-radius: 50%;
+  background-color: var(--progress-dot-bg);
+  flex-shrink: 0;
+}
+
+/* ── Label ───────────────────────────────────────────────────────────────── */
+
+.label {
+  flex-shrink: 0;
+  font-family: var(--font-family-secondary);
+  color: var(--progress-label-color);
+  letter-spacing: var(--global-type-letter-spacing-primary-label);
+  line-height: 1;
+  /* min-width ensures labels align in vertical stacks */
+  min-width: 3ch;
+  text-align: right;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   SIZE VARIANTS
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Small (sm) ─────────────────────────────────────────────────────────── */
+
+.root--sm .track {
+  height: var(--progress-track-height-sm);
+}
+
+.root--sm .dot {
+  width: var(--progress-dot-size-sm);
+  height: var(--progress-dot-size-sm);
+}
+
+.root--sm .label {
+  font-size: var(--global-type-size-primary-label-xs);
+  font-weight: var(--global-type-weight-default);
+}
+
+/* ── Default ────────────────────────────────────────────────────────────── */
+
+.root--default .track {
+  height: var(--progress-track-height-default);
+}
+
+.root--default .dot {
+  width: var(--progress-dot-size-default);
+  height: var(--progress-dot-size-default);
+}
+
+.root--default .label {
+  font-size: var(--global-type-size-primary-label-sm);
+  font-weight: var(--global-type-weight-semibold);
+}
+
+/* ── Large (lg) ─────────────────────────────────────────────────────────── */
+
+.root--lg .track {
+  height: var(--progress-track-height-lg);
+}
+
+.root--lg .dot {
+  width: var(--progress-dot-size-lg);
+  height: var(--progress-dot-size-lg);
+}
+
+.root--lg .label {
+  font-size: var(--global-type-size-primary-label);
+  font-weight: var(--global-type-weight-default);
+}
