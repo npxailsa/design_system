@@ -1897,6 +1897,23 @@
   --btn-info-border-width-disabled:      var(--global-spacing-stroke-0-5px);
 
   /* ==========================================================================
+     COMPONENT: Divider
+     --------------------------------------------------------------------------
+     A horizontal or vertical separator line available in three line styles
+     (solid, dashed, dotted) and six thickness steps.
+
+     Visual spec:
+       Color     : neutral-gray-300 (#D2D5DA) — neutral, unobtrusive separator
+       Alignment : horizontal (border-top) | vertical (border-left)
+       Line      : solid | dashed | dotted
+       Thickness : 0.5px | 1px | 2px | 3px | 4px | 8px
+
+     Figma ref: Atoms/Divider
+     ========================================================================== */
+
+  --divider-color:      var(--global-color-neutral-gray-300);
+
+  /* ==========================================================================
      COMPONENT: ButtonMenu (BuildingBlocks)
      --------------------------------------------------------------------------
      A stacked vertical list of menu items used as dropdown menus or contextual

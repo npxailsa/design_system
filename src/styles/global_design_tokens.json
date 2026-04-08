@@ -1419,6 +1419,16 @@
               "$value": 1
             }
           }
+        },
+        "component": {
+          "divider": {
+            "color": {
+              "$scopes": ["ALL_SCOPES"],
+              "$description": "Divider line colour — references neutral-gray-300 (#D2D5DA). Used for all horizontal and vertical divider variants.",
+              "$type": "color",
+              "$value": "{color.neutral.gray.300}"
+            }
+          }
         }
       }
     }
