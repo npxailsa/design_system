@@ -1,6 +1,6 @@
 {
   "name": "@npxailsa/design-system",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A React and TypeScript design system with Storybook.",
   "homepage": "https://npxailsa.github.io/design_system",
   "type": "module",
@@ -74,6 +74,5 @@
     "vitest": "4.1.0",
     "yaml": "^2.8.2"
   },
-  "overrides": {
-  }
+  "overrides": {}
 }
