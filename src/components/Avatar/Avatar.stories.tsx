@@ -66,6 +66,10 @@ type Story = StoryObj<typeof Avatar>;
 export const Documentation: Story = {
   name: 'Documentation',
   render: () => <AvatarDocs />,
+  parameters: {
+    controls: { disable: true },
+    chromatic: { disableSnapshot: true },
+  },
 };
 
 /* ── Playground ── */

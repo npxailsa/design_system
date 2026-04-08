@@ -51,7 +51,7 @@ type Story = StoryObj<typeof FilterSortButton>;
 export const Documentation: Story = {
   name: 'Documentation',
   render: () => <FilterSortButtonDocs />,
-  parameters: { docs: { page: () => <FilterSortButtonDocs /> } },
+  parameters: { docs: { page: () => <FilterSortButtonDocs /> }, controls: { disable: true }, chromatic: { disableSnapshot: true } },
 };
 
 /* ── All Variants × All Sizes grid ── */

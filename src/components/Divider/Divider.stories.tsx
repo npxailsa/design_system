@@ -77,6 +77,7 @@ export const Documentation: Story = {
   tags: ['!autodocs'],
   parameters: {
     docs: { page: () => <DividerDocs /> },
+    chromatic: { disableSnapshot: true },
   },
   render: () => <DividerDocs />,
 };

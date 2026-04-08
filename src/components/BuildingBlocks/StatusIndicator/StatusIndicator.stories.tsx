@@ -46,6 +46,8 @@ export const Documentation: Story = {
   name: 'Documentation',
   parameters: {
     docs: { page: () => <StatusIndicatorDocs /> },
+    controls: { disable: true },
+    chromatic: { disableSnapshot: true },
   },
   render: () => <StatusIndicatorDocs />,
 };

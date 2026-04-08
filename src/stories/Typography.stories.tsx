@@ -98,6 +98,7 @@ export const Documentation: Story = {
   parameters: {
     controls: { disable: true },
     actions: { disable: true },
+    chromatic: { disableSnapshot: true },
   },
 };
 

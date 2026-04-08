@@ -74,6 +74,7 @@ export const Documentation: Story = {
     layout: 'fullscreen',
     controls: { disable: true },
     actions: { disable: true },
+    chromatic: { disableSnapshot: true },
   },
 };
 

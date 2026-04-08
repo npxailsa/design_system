@@ -40,6 +40,10 @@ type Story = StoryObj<typeof Card>;
 export const Documentation: Story = {
   name: 'Documentation',
   render: () => <CardDocs />,
+  parameters: {
+    controls: { disable: true },
+    chromatic: { disableSnapshot: true },
+  },
 };
 
 /* ── Playground ── */

@@ -90,7 +90,7 @@ type Story = StoryObj<typeof ButtonGroup>;
 export const Documentation: Story = {
   name: 'Documentation',
   render: () => <ButtonGroupDocs />,
-  parameters: { docs: { page: () => <ButtonGroupDocs /> }, controls: { disable: true } },
+  parameters: { docs: { page: () => <ButtonGroupDocs /> }, controls: { disable: true }, chromatic: { disableSnapshot: true } },
 };
 
 /* ── Playground ── */
