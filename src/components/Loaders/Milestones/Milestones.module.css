@@ -1,0 +1,120 @@
+/* ==========================================================================
+   Milestones Component
+   --------------------------------------------------------------------------
+   A milestone dot progress indicator — a horizontal row of circular dots
+   that fill left-to-right based on a numeric value (0–100).
+
+   Inactive dot bg:  --milestones-dot-inactive-bg → --global-color-neutral-gray-300
+   Active dot bg:    --milestones-dot-active-bg   → --global-color-primary-sky-blue (#0ba7ea)
+   Label:            --milestones-label-color      → --global-color-neutral-gray-700
+
+   Size scale (dot diameter / gap):
+     sm      → 8px  / 4px
+     default → 12px / 6px
+     lg      → 20px / 8px
+
+   All values reference global design tokens only.
+   ========================================================================== */
+
+/* ── Root container ──────────────────────────────────────────────────────── */
+
+.root {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--global-spacing-sizing-8px);
+  width: 100%;
+}
+
+/* ── Dots track ──────────────────────────────────────────────────────────── */
+
+.track {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+/* ── Individual dot ──────────────────────────────────────────────────────── */
+
+.dot {
+  display: block;
+  border-radius: var(--global-spacing-radius-full);
+  flex-shrink: 0;
+  transition:
+    background-color var(--global-animation-duration-default, 200ms) var(--global-animation-easing-default, ease),
+    border-color     var(--global-animation-duration-default, 200ms) var(--global-animation-easing-default, ease);
+}
+
+/* ── Dot states ──────────────────────────────────────────────────────────── */
+
+.dot--active {
+  background-color: var(--milestones-dot-active-bg);
+}
+
+.dot--inactive {
+  background-color: var(--milestones-dot-inactive-bg);
+}
+
+/* ── Label ───────────────────────────────────────────────────────────────── */
+
+.label {
+  flex-shrink: 0;
+  font-family: var(--font-family-secondary);
+  color: var(--milestones-label-color);
+  letter-spacing: var(--global-type-letter-spacing-primary-label);
+  line-height: 1;
+  min-width: 3ch;
+  text-align: right;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   SIZE VARIANTS
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Small (sm) ─────────────────────────────────────────────────────────── */
+
+.root--sm .track {
+  gap: var(--milestones-gap-sm);
+}
+
+.root--sm .dot {
+  width: var(--progress-dot-size-sm);
+  height: var(--progress-dot-size-sm);
+}
+
+.root--sm .label {
+  font-size: var(--global-type-size-primary-label-xs);
+  font-weight: var(--global-type-weight-default);
+}
+
+/* ── Default ────────────────────────────────────────────────────────────── */
+
+.root--default .track {
+  gap: var(--milestones-gap-default);
+}
+
+.root--default .dot {
+  width: var(--progress-dot-size-default);
+  height: var(--progress-dot-size-default);
+}
+
+.root--default .label {
+  font-size: var(--global-type-size-primary-label-sm);
+  font-weight: var(--global-type-weight-semibold);
+}
+
+/* ── Large (lg) ─────────────────────────────────────────────────────────── */
+
+.root--lg .track {
+  gap: var(--milestones-gap-lg);
+}
+
+.root--lg .dot {
+  width: var(--progress-dot-size-lg);
+  height: var(--progress-dot-size-lg);
+}
+
+.root--lg .label {
+  font-size: var(--global-type-size-primary-label);
+  font-weight: var(--global-type-weight-default);
+}

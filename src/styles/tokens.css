@@ -2430,6 +2430,29 @@
   --progress-dot-pending-border: var(--global-color-neutral-gray-300);
 }
 
+/* ==========================================================================
+   COMPONENT LAYER: Milestones (Atoms/Loaders/Milestones)
+   ========================================================================== */
+:root {
+  /* Dot gap between milestone dots — size scale */
+  --milestones-gap-sm:      var(--global-spacing-sizing-4px);
+  --milestones-gap-default: var(--global-spacing-sizing-6px);
+  --milestones-gap-lg:      var(--global-spacing-sizing-8px);
+
+  /* Label */
+  --milestones-label-color: var(--global-color-neutral-gray-700);
+
+  /* Inactive dot (unfilled milestone) */
+  --milestones-dot-inactive-bg: var(--global-color-neutral-gray-300);
+
+  /* Active dot (completed milestone) */
+  --milestones-dot-active-bg: var(--global-color-primary-sky-blue);
+
+  /* Outline dot (zero-state — hollow ring) */
+  --milestones-dot-outline-bg:     transparent;
+  --milestones-dot-outline-border: var(--global-color-neutral-gray-300);
+}
+
 /* Font Loading */
 @font-face {
   font-family: 'F37 Ginger Pro';
