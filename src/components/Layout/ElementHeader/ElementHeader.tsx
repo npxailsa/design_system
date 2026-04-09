@@ -60,8 +60,8 @@ const ChevronRight: React.FC<{ className?: string }> = ({ className }) => (
   </svg>
 );
 
-/** Person / account icon — leading icon for the Back button */
-const AccountIcon: React.FC<{ className?: string }> = ({ className }) => (
+/** Arrow-left icon — leading icon for the Back button */
+const ArrowLeftIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg
     className={className}
     viewBox="0 0 16 16"
@@ -71,24 +71,7 @@ const AccountIcon: React.FC<{ className?: string }> = ({ className }) => (
     focusable="false"
   >
     <path
-      d="M7.99935 2.66663C8.70659 2.66663 9.38487 2.94758 9.88497 3.44767C10.3851 3.94777 10.666 4.62605 10.666 5.33329C10.666 6.04054 10.3851 6.71881 9.88497 7.21891C9.38487 7.71901 8.70659 7.99996 7.99935 7.99996C7.29211 7.99996 6.61383 7.71901 6.11373 7.21891C5.61363 6.71881 5.33268 6.04054 5.33268 5.33329C5.33268 4.62605 5.61363 3.94777 6.11373 3.44767C6.61383 2.94758 7.29211 2.66663 7.99935 2.66663ZM7.99935 9.33329C10.946 9.33329 13.3327 10.5266 13.3327 12V13.3333H2.66602V12C2.66602 10.5266 5.05268 9.33329 7.99935 9.33329Z"
-      fill="currentColor"
-    />
-  </svg>
-);
-
-/** Arrow-right icon — trailing icon for the Back button */
-const ArrowRightIcon: React.FC<{ className?: string }> = ({ className }) => (
-  <svg
-    className={className}
-    viewBox="0 0 16 16"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    aria-hidden="true"
-    focusable="false"
-  >
-    <path
-      d="M2.66602 7.3333V8.66664H10.666L6.99935 12.3333L7.94602 13.28L13.226 7.99997L7.94602 2.71997L6.99935 3.66664L10.666 7.3333H2.66602Z"
+      d="M13.334 7.3333V8.66664H5.334L9.00065 12.3333L8.054 13.28L2.774 7.99997L8.054 2.71997L9.00065 3.66664L5.334 7.3333H13.334Z"
       fill="currentColor"
     />
   </svg>
@@ -173,10 +156,8 @@ export const ElementHeader: React.FC<ElementHeaderProps> = ({
           variant="link"
           label={backLabel}
           size={toGhostSize[size]}
-          leadingIcon={AccountIcon}
+          leadingIcon={ArrowLeftIcon}
           showLeadingIcon
-          trailingIcon={ArrowRightIcon}
-          showTrailingIcon
           onClick={onBack}
         />
       )}
