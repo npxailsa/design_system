@@ -28,12 +28,6 @@ const previewWrap: React.CSSProperties = {
   borderRadius: 'var(--global-spacing-radius-8px)',
 };
 
-const rowWrap: React.CSSProperties = {
-  display: 'flex',
-  flexDirection: 'column',
-  gap: 'var(--global-spacing-sizing-12px)',
-};
-
 export const BreadcrumbsDocs: React.FC = () => (
   <DocsTemplate>
     <DocsTemplate.Header
@@ -43,12 +37,11 @@ export const BreadcrumbsDocs: React.FC = () => (
 
     <DocsTemplate.BodyText>
       The <strong>Breadcrumbs</strong> component renders an ordered list of navigation
-      links that reflect the current page's position within the site hierarchy. All
-      preceding items are interactive links; the last item is the current page and is
-      rendered as non-interactive bold text with an <code>aria-current="page"</code>{' '}
-      attribute. Three size variants — <em>Small</em>, <em>Default</em>, and{' '}
-      <em>Large</em> — map directly to design tokens for font size, separator size, and
-      item gap.
+      links reflecting the current page's position within the site hierarchy. All
+      preceding items are interactive links; the last item is the current page — rendered
+      as non-interactive bold text with <code>aria-current="page"</code>. Three size
+      variants — <em>Small</em>, <em>Default</em>, and <em>Large</em> — map directly to
+      design tokens for font size, separator size, and item gap.
     </DocsTemplate.BodyText>
 
     {/* ── Anatomy ── */}
@@ -71,9 +64,9 @@ export const BreadcrumbsDocs: React.FC = () => (
             id: 2,
             name: 'Link Crumb',
             token:
-              '--breadcrumbs-link-color\n--breadcrumbs-link-hover\n--breadcrumbs-link-weight (400)',
+              '--breadcrumbs-link-color\n--breadcrumbs-link-hover\n--breadcrumbs-link-weight',
             description:
-              'Each non-current item rendered as an anchor or button. Colour and hover state are token-driven. Provides underline on hover.',
+              'Each non-current item rendered as an anchor or button. Colour and hover state are token-driven.',
           },
           {
             id: 3,
@@ -87,9 +80,9 @@ export const BreadcrumbsDocs: React.FC = () => (
             id: 4,
             name: 'Current Crumb',
             token:
-              '--breadcrumbs-current-color\n--breadcrumbs-current-weight (700)',
+              '--breadcrumbs-current-color\n--breadcrumbs-current-weight',
             description:
-              'The last item — the active/current page. Rendered in bold, dark text. Carries aria-current="page" for accessibility.',
+              'The last item — the active/current page. Rendered in bold, dark text with aria-current="page".',
           },
         ]}
       />
@@ -98,40 +91,42 @@ export const BreadcrumbsDocs: React.FC = () => (
     {/* ── Size Variants ── */}
     <DocsTemplate.Section title="Size Variants">
       <DocsTemplate.BodyText>
-        Three sizes are available. Each maps to a specific type size, separator icon
-        size, and gap token. Choose the size that best fits the surrounding typographic
-        hierarchy.
+        Three sizes are available. Each maps to a specific type size, separator icon size,
+        and gap token. Choose the size that best fits the surrounding typographic hierarchy.
       </DocsTemplate.BodyText>
 
-      <div style={rowWrap}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-20px)' }}>
         {ALL_SIZES.map((size) => (
-          <DocsTemplate.Example
-            key={size}
-            label={SIZE_LABELS[size]}
-            preview={
-              <div style={previewWrap}>
-                <Breadcrumbs items={EXAMPLE_ITEMS} size={size} />
-              </div>
-            }
-          />
+          <div key={size}>
+            <p style={{
+              margin: '0 0 var(--global-spacing-sizing-8px)',
+              fontFamily: 'var(--font-family-primary)',
+              fontSize: 'var(--global-type-size-primary-label-xs)',
+              color: 'var(--global-color-neutral-gray-500)',
+              fontWeight: 'var(--global-type-weight-medium)' as React.CSSProperties['fontWeight'],
+            }}>
+              {SIZE_LABELS[size]}
+            </p>
+            <div style={previewWrap}>
+              <Breadcrumbs items={EXAMPLE_ITEMS} size={size} />
+            </div>
+          </div>
         ))}
       </div>
     </DocsTemplate.Section>
 
     {/* ── All Sizes Side-by-Side ── */}
     <DocsTemplate.Section title="All Sizes — Side by Side">
-      <div style={{ ...previewWrap, flexDirection: 'column', gap: 'var(--global-spacing-sizing-20px)' }}>
+      <div style={{ ...previewWrap, gap: 'var(--global-spacing-sizing-20px)' }}>
         {ALL_SIZES.map((size) => (
           <div key={size} style={{ display: 'flex', alignItems: 'center', gap: 'var(--global-spacing-sizing-16px)' }}>
-            <span
-              style={{
-                width: '60px',
-                flexShrink: 0,
-                fontSize: 'var(--global-type-size-primary-label-xs)',
-                color: 'var(--global-color-neutral-gray-500)',
-                fontFamily: 'var(--font-family-primary)',
-              }}
-            >
+            <span style={{
+              width: '56px',
+              flexShrink: 0,
+              fontSize: '11px',
+              color: 'var(--global-color-neutral-gray-400)',
+              fontFamily: 'var(--font-family-primary)',
+            }}>
               {SIZE_LABELS[size]}
             </span>
             <Breadcrumbs items={EXAMPLE_ITEMS} size={size} />
@@ -140,11 +135,11 @@ export const BreadcrumbsDocs: React.FC = () => (
       </div>
     </DocsTemplate.Section>
 
-    {/* ── Single link + current ── */}
+    {/* ── Two-level trail ── */}
     <DocsTemplate.Section title="Two-Level Trail">
       <DocsTemplate.BodyText>
-        A minimal trail with one ancestor link and the current page. This is the most
-        common pattern for first-level page navigation.
+        A minimal trail with one ancestor link and the current page — the most common
+        pattern for first-level page navigation.
       </DocsTemplate.BodyText>
       <div style={previewWrap}>
         <Breadcrumbs items={SINGLE_LINK} size="default" />
@@ -155,174 +150,79 @@ export const BreadcrumbsDocs: React.FC = () => (
     <DocsTemplate.Section title="Design Tokens">
       <DocsTemplate.TokenTable
         tokens={[
-          {
-            token: '--breadcrumbs-font-family',
-            value: 'var(--font-family-primary)',
-            description: 'Typeface used for all breadcrumb text.',
-          },
-          {
-            token: '--breadcrumbs-letter-spacing',
-            value: 'var(--global-type-letter-spacing-primary-label)',
-            description: 'Letter spacing applied to all text nodes.',
-          },
-          {
-            token: '--breadcrumbs-font-size-sm',
-            value: 'var(--global-type-size-primary-label-xs) — 12px',
-            description: 'Font size for the small size variant.',
-          },
-          {
-            token: '--breadcrumbs-font-size-default',
-            value: 'var(--global-type-size-primary-label-sm) — 14px',
-            description: 'Font size for the default size variant.',
-          },
-          {
-            token: '--breadcrumbs-font-size-lg',
-            value: 'var(--global-type-size-primary-label) — 16px',
-            description: 'Font size for the large size variant.',
-          },
-          {
-            token: '--breadcrumbs-gap-sm',
-            value: 'var(--global-spacing-sizing-4px)',
-            description: 'Gap between items and separator for small.',
-          },
-          {
-            token: '--breadcrumbs-gap-default',
-            value: 'var(--global-spacing-sizing-6px)',
-            description: 'Gap between items and separator for default.',
-          },
-          {
-            token: '--breadcrumbs-gap-lg',
-            value: 'var(--global-spacing-sizing-8px)',
-            description: 'Gap between items and separator for large.',
-          },
-          {
-            token: '--breadcrumbs-separator-size-sm',
-            value: 'var(--global-spacing-sizing-10px)',
-            description: 'Chevron icon size for small.',
-          },
-          {
-            token: '--breadcrumbs-separator-size-default',
-            value: 'var(--global-spacing-sizing-12px)',
-            description: 'Chevron icon size for default.',
-          },
-          {
-            token: '--breadcrumbs-separator-size-lg',
-            value: 'var(--global-spacing-sizing-14px)',
-            description: 'Chevron icon size for large.',
-          },
-          {
-            token: '--breadcrumbs-link-color',
-            value: 'var(--global-color-neutral-gray-500)',
-            description: 'Colour for inactive/link crumbs.',
-          },
-          {
-            token: '--breadcrumbs-link-hover',
-            value: 'var(--global-color-neutral-gray-700)',
-            description: 'Colour for link crumbs on hover.',
-          },
-          {
-            token: '--breadcrumbs-separator-color',
-            value: 'var(--global-color-neutral-gray-400)',
-            description: 'Colour of the chevron separator.',
-          },
-          {
-            token: '--breadcrumbs-current-color',
-            value: 'var(--global-color-base-black)',
-            description: 'Colour of the current/active page crumb.',
-          },
-          {
-            token: '--breadcrumbs-link-weight',
-            value: 'var(--global-type-weight-default) — 400',
-            description: 'Font weight for link crumbs.',
-          },
-          {
-            token: '--breadcrumbs-current-weight',
-            value: 'var(--global-type-weight-bold) — 700',
-            description: 'Font weight for the current page crumb.',
-          },
+          { name: '--breadcrumbs-font-family', description: 'Typeface used for all breadcrumb text. Resolves to var(--font-family-primary).' },
+          { name: '--breadcrumbs-letter-spacing', description: 'Letter spacing applied to all text nodes. Resolves to var(--global-type-letter-spacing-primary-label).' },
+          { name: '--breadcrumbs-font-size-sm', description: 'Font size for the small variant — 12px via var(--global-type-size-primary-label-xs).' },
+          { name: '--breadcrumbs-font-size-default', description: 'Font size for the default variant — 14px via var(--global-type-size-primary-label-sm).' },
+          { name: '--breadcrumbs-font-size-lg', description: 'Font size for the large variant — 16px via var(--global-type-size-primary-label).' },
+          { name: '--breadcrumbs-gap-sm', description: 'Gap between items and separator for small — 4px.' },
+          { name: '--breadcrumbs-gap-default', description: 'Gap between items and separator for default — 6px.' },
+          { name: '--breadcrumbs-gap-lg', description: 'Gap between items and separator for large — 8px.' },
+          { name: '--breadcrumbs-separator-size-sm', description: 'Chevron icon size for small — 10px.' },
+          { name: '--breadcrumbs-separator-size-default', description: 'Chevron icon size for default — 12px.' },
+          { name: '--breadcrumbs-separator-size-lg', description: 'Chevron icon size for large — 14px.' },
+          { name: '--breadcrumbs-link-color', description: 'Colour for inactive/link crumbs — var(--global-color-neutral-gray-500).' },
+          { name: '--breadcrumbs-link-hover', description: 'Colour for link crumbs on hover — var(--global-color-neutral-gray-700).' },
+          { name: '--breadcrumbs-separator-color', description: 'Colour of the chevron separator — var(--global-color-neutral-gray-400).' },
+          { name: '--breadcrumbs-current-color', description: 'Colour of the current/active page crumb — var(--global-color-base-black).' },
+          { name: '--breadcrumbs-link-weight', description: 'Font weight for link crumbs — 400 (var(--global-type-weight-default)).' },
+          { name: '--breadcrumbs-current-weight', description: 'Font weight for the current page crumb — 700 (var(--global-type-weight-bold)).' },
         ]}
       />
     </DocsTemplate.Section>
 
     {/* ── Props ── */}
     <DocsTemplate.Section title="Props">
-      <DocsTemplate.PropsTable
-        props={[
-          {
-            name: 'items',
-            type: 'BreadcrumbItem[]',
-            default: '—',
-            required: true,
-            description:
-              'Ordered array of breadcrumb items. The last entry is always the current page. Each item may have label, href, and/or onClick.',
-          },
-          {
-            name: 'size',
-            type: '"sm" | "default" | "lg"',
-            default: '"default"',
-            required: false,
-            description: 'Controls font size, separator size, and item gap.',
-          },
-          {
-            name: 'ariaLabel',
-            type: 'string',
-            default: '"Breadcrumb"',
-            required: false,
-            description:
-              'Accessible label applied to the wrapping <nav> landmark element.',
-          },
-          {
-            name: 'className',
-            type: 'string',
-            default: '""',
-            required: false,
-            description: 'Additional CSS class applied to the root element.',
-          },
+      <DocsTemplate.BodyText>
+        The <code>Breadcrumbs</code> component accepts the following props:
+      </DocsTemplate.BodyText>
+      <DocsTemplate.BulletList
+        items={[
+          <><strong>items</strong> <em>(BreadcrumbItem[], required)</em> — Ordered array of crumb objects. The last entry is always the current page. Each item accepts <code>label</code>, optional <code>href</code>, and optional <code>onClick</code>.</>,
+          <><strong>size</strong> <em>("sm" | "default" | "lg", default: "default")</em> — Controls font size, separator icon size, and gap between items.</>,
+          <><strong>ariaLabel</strong> <em>(string, default: "Breadcrumb")</em> — Accessible label applied to the wrapping &lt;nav&gt; landmark element.</>,
+          <><strong>className</strong> <em>(string, default: "")</em> — Additional CSS class applied to the root element.</>,
         ]}
       />
     </DocsTemplate.Section>
 
     {/* ── Usage ── */}
     <DocsTemplate.Section title="Usage">
-      <DocsTemplate.Do
-        items={[
-          'Place breadcrumbs at the top of a page, above the page title.',
-          'Keep labels concise — use single nouns or short noun phrases.',
-          'Always include the current page as the last non-linked item.',
-          'Use href for traditional navigation; use onClick for SPA routing without href.',
-          'Choose a size consistent with surrounding typographic hierarchy.',
-        ]}
-      />
-      <DocsTemplate.Dont
-        items={[
-          'Do not link the current page item — it should be static text.',
-          'Do not use breadcrumbs for flat navigation structures with no hierarchy.',
-          'Do not exceed 5–6 levels; collapse middle levels if the trail is very deep.',
-          'Do not mix sizes within the same trail.',
-          'Do not use breadcrumbs as a replacement for primary navigation.',
-        ]}
+      <DocsTemplate.DosDonts
+        doItem={{
+          icon: <Breadcrumbs items={EXAMPLE_ITEMS} size="default" />,
+          label: 'Do',
+          description: 'Place breadcrumbs at the top of a page above the title. Keep labels concise and always include the current page as non-interactive bold text.',
+        }}
+        dontItem={{
+          icon: <Breadcrumbs items={[{ label: 'Reports', href: '#' }]} size="default" />,
+          label: "Don't",
+          description: "Don't link the current page item, don't use breadcrumbs for flat navigation, and don't exceed 5–6 levels without collapsing.",
+        }}
       />
     </DocsTemplate.Section>
 
     {/* ── Design Principles ── */}
     <DocsTemplate.Section title="Design Principles">
-      <DocsTemplate.BodyText>
-        <strong>Hierarchy first.</strong> Breadcrumbs exist to communicate depth, not
-        to duplicate a side-nav. Only render them when there are two or more levels of
-        hierarchy above the current page.
-      </DocsTemplate.BodyText>
-      <DocsTemplate.BodyText>
-        <strong>Accessible by default.</strong> The component wraps content in a{' '}
-        <code>&lt;nav&gt;</code> landmark and applies <code>aria-current="page"</code>{' '}
-        to the current item. Separators are hidden from assistive technology via{' '}
-        <code>aria-hidden="true"</code>.
-      </DocsTemplate.BodyText>
-      <DocsTemplate.BodyText>
-        <strong>Token-driven.</strong> Every visual attribute — colour, weight, size,
-        gap — is driven by a design token, ensuring global updates to the system
-        propagate automatically. Never override these values with hard-coded styles.
-      </DocsTemplate.BodyText>
+      <DocsTemplate.Principles>
+        <DocsTemplate.PrincipleCard number={1} title="Hierarchy first">
+          Breadcrumbs exist to communicate depth, not to duplicate a side-nav. Only
+          render them when there are two or more levels of hierarchy above the current page.
+        </DocsTemplate.PrincipleCard>
+        <DocsTemplate.PrincipleCard number={2} title="Accessible by default">
+          The component wraps content in a nav landmark and applies aria-current="page"
+          to the current item. Separators are hidden from assistive technology via
+          aria-hidden="true".
+        </DocsTemplate.PrincipleCard>
+        <DocsTemplate.PrincipleCard number={3} title="Token-driven">
+          Every visual attribute — colour, weight, size, gap — is driven by a design
+          token, ensuring global updates to the system propagate automatically. Never
+          override these values with hard-coded styles.
+        </DocsTemplate.PrincipleCard>
+      </DocsTemplate.Principles>
     </DocsTemplate.Section>
+
+    <DocsTemplate.Footer />
   </DocsTemplate>
 );
 
