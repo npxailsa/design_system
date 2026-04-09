@@ -1,244 +1,145 @@
 /* =============================================================================
-   Tabs — Foundation / BuildingBlocks
+   Tabs — Foundation / BuildingBlocks / Tabs
    Tokens: src/styles/tokens.css  →  --tab-*
+
+   Structure of each tab item:
+   ┌───────────────────────────────┐
+   │ [icon] Tab label [→] [badge] │  ← tab-label-row (flex row)
+   ├───────────────────────────────┤  ← tab-spacer (4px)
+   │━━━━━━━━━━━━━━━━━━━━━━━━━━━━━│  ← tab-line (2px underline indicator)
+   └───────────────────────────────┘
+
+   For contained/dark-contained: no spacer or line — just a bordered box.
    ============================================================================= */
 
-/* ── Tab list container ── */
-.tabs {
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  gap: var(--tab-gap);
-  flex-wrap: wrap;
-}
-
-/* Underline variant adds a base line under all tabs */
-.tabs-variant-underline {
-  border-bottom: var(--tab-underline-track-width) solid var(--tab-underline-track-color);
-  gap: var(--global-spacing-sizing-0px);
-}
-
-/* Pill variant: no track underline */
-.tabs-variant-pill {
-  border-bottom: none;
-  gap: var(--tab-gap);
-}
-
-/* ── Base Tab button ── */
-.tab {
+/* ── Strip container ── */
+.tabs-strip {
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--tab-inner-gap);
-  padding: var(--tab-padding-v) var(--tab-padding-h);
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  position: relative;
-  white-space: nowrap;
-  font-family: var(--tab-font-family);
-  font-weight: var(--tab-font-weight);
-  letter-spacing: var(--tab-letter-spacing);
-  color: var(--tab-color);
-  border-radius: var(--global-spacing-radius-0px);
-  transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
-  text-decoration: none;
-  outline: none;
-  box-sizing: border-box;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0;
 }
 
-.tab:focus-visible {
+.strip-type-contained,
+.strip-type-dark-contained {
+  gap: var(--tab-contained-strip-gap);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BASE TAB ITEM
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.bb-tab {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+  outline: none;
+  text-decoration: none;
+  transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease;
+  gap: 0;
+}
+
+.bb-tab:focus-visible {
   outline: 2px solid var(--tab-focus-ring-color);
   outline-offset: 2px;
 }
 
-/* ── Size variants ── */
-.size-small {
-  min-height: var(--tab-height-sm);
-  font-size: var(--tab-font-size-sm);
-  line-height: var(--tab-line-height-sm);
-  padding: var(--tab-padding-v-sm) var(--tab-padding-h-sm);
-  gap: var(--tab-inner-gap-sm);
-}
-
-.size-default {
-  min-height: var(--tab-height-default);
-  font-size: var(--tab-font-size-default);
-  line-height: var(--tab-line-height-default);
-  padding: var(--tab-padding-v-default) var(--tab-padding-h-default);
-  gap: var(--tab-inner-gap-default);
-}
-
-.size-large {
-  min-height: var(--tab-height-lg);
-  font-size: var(--tab-font-size-lg);
-  line-height: var(--tab-line-height-lg);
-  padding: var(--tab-padding-v-lg) var(--tab-padding-h-lg);
-  gap: var(--tab-inner-gap-lg);
+.bb-tab.state-disabled {
+  cursor: not-allowed;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   UNDERLINE VARIANT
+   LABEL ROW (for underline tabs: default, secondary)
    ═══════════════════════════════════════════════════════════════════════════ */
 
-.variant-underline {
-  border-radius: var(--global-spacing-radius-0px);
-  background: transparent;
-  border: none;
-  color: var(--tab-underline-color-default);
-  border-bottom: var(--tab-underline-indicator-width) solid transparent;
-  margin-bottom: calc(-1 * var(--tab-underline-track-width));
+/* Outer label row: holds the inner label + the badge side-by-side */
+.tab-label-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--tab-label-badge-gap);
+  padding: 0 var(--tab-label-padding-right) 0 var(--tab-label-padding-left);
 }
 
-.variant-underline:hover:not(.disabled) {
-  color: var(--tab-underline-color-hover);
-  border-bottom-color: var(--tab-underline-indicator-color-hover);
-  background: transparent;
+/* Inner label: icon + text + trailing icon */
+.tab-label-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--tab-inner-gap);
+  padding: var(--tab-label-v-padding) var(--tab-label-h-padding);
 }
 
-.variant-underline.active {
-  color: var(--tab-underline-color-active);
-  border-bottom-color: var(--tab-underline-indicator-color-active);
-  font-weight: var(--tab-font-weight-active);
+/* ── Spacer ── */
+.tab-spacer {
+  height: var(--tab-spacer-height);
+  align-self: stretch;
+  flex-shrink: 0;
 }
 
-.variant-underline.disabled {
-  color: var(--tab-underline-color-disabled);
-  cursor: not-allowed;
-  opacity: var(--tab-disabled-opacity);
+/* ── Underline indicator line ── */
+.tab-line {
+  margin-top: calc(-1 * var(--tab-line-overlap));
+  border-top: var(--tab-line-width) solid var(--tab-line-color-default);
+  align-self: stretch;
+  height: 0;
+  flex-shrink: 0;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   PILL VARIANT — APPEARANCE: DEFAULT (outlined / alt blue)
+   CONTENT ROW (for contained, dark-contained)
    ═══════════════════════════════════════════════════════════════════════════ */
 
-.variant-pill.appearance-default {
-  border-radius: var(--tab-pill-radius);
-  border: var(--tab-pill-border-width) solid var(--tab-pill-default-border);
-  background: var(--tab-pill-default-bg);
-  color: var(--tab-pill-default-color);
-}
-
-.variant-pill.appearance-default:hover:not(.disabled) {
-  background: var(--tab-pill-default-bg-hover);
-  border-color: var(--tab-pill-default-border-hover);
-  color: var(--tab-pill-default-color-hover);
-  box-shadow: var(--tab-pill-default-shadow-hover);
-}
-
-.variant-pill.appearance-default.active {
-  background: var(--tab-pill-default-bg-active);
-  border-color: var(--tab-pill-default-border-active);
-  color: var(--tab-pill-default-color-active);
-  box-shadow: var(--tab-pill-default-shadow-active);
-}
-
-.variant-pill.appearance-default.disabled {
-  cursor: not-allowed;
-  opacity: var(--tab-disabled-opacity);
-  background: var(--tab-pill-default-bg-disabled);
-  border-color: var(--tab-pill-default-border-disabled);
-  color: var(--tab-pill-default-color-disabled);
+.tab-content-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--tab-inner-gap);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   PILL VARIANT — APPEARANCE: ALT (light bordered blue-tint)
+   ICONS
    ═══════════════════════════════════════════════════════════════════════════ */
 
-.variant-pill.appearance-alt {
-  border-radius: var(--tab-pill-radius);
-  border: var(--tab-pill-border-width) solid var(--tab-pill-alt-border);
-  background: var(--tab-pill-alt-bg);
-  color: var(--tab-pill-alt-color);
-}
-
-.variant-pill.appearance-alt:hover:not(.disabled) {
-  background: var(--tab-pill-alt-bg-hover);
-  border-color: var(--tab-pill-alt-border-hover);
-  color: var(--tab-pill-alt-color-hover);
-  box-shadow: var(--tab-pill-alt-shadow-hover);
-}
-
-.variant-pill.appearance-alt.active {
-  background: var(--tab-pill-alt-bg-active);
-  border-color: var(--tab-pill-alt-border-active);
-  color: var(--tab-pill-alt-color-active);
-  box-shadow: var(--tab-pill-alt-shadow-active);
-}
-
-.variant-pill.appearance-alt.disabled {
-  cursor: not-allowed;
-  opacity: var(--tab-disabled-opacity);
-  background: var(--tab-pill-alt-bg-disabled);
-  border-color: var(--tab-pill-alt-border-disabled);
-  color: var(--tab-pill-alt-color-disabled);
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   PILL VARIANT — APPEARANCE: DARK (navy/charcoal filled)
-   ═══════════════════════════════════════════════════════════════════════════ */
-
-.variant-pill.appearance-dark {
-  border-radius: var(--tab-pill-radius);
-  border: var(--tab-pill-border-width) solid var(--tab-pill-dark-border);
-  background: var(--tab-pill-dark-bg);
-  color: var(--tab-pill-dark-color);
-}
-
-.variant-pill.appearance-dark:hover:not(.disabled) {
-  background: var(--tab-pill-dark-bg-hover);
-  border-color: var(--tab-pill-dark-border-hover);
-  color: var(--tab-pill-dark-color-hover);
-  box-shadow: var(--tab-pill-dark-shadow-hover);
-}
-
-.variant-pill.appearance-dark.active {
-  background: var(--tab-pill-dark-bg-active);
-  border-color: var(--tab-pill-dark-border-active);
-  color: var(--tab-pill-dark-color-active);
-}
-
-.variant-pill.appearance-dark.disabled {
-  cursor: not-allowed;
-  opacity: var(--tab-disabled-opacity);
-  background: var(--tab-pill-dark-bg-disabled);
-  border-color: var(--tab-pill-dark-border-disabled);
-  color: var(--tab-pill-dark-color-disabled);
-}
-
-/* ── Icon sizing by tab size ── */
 .tab-icon,
 .tab-trailing-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  width: var(--tab-icon-size);
+  height: var(--tab-icon-size);
+  opacity: var(--tab-icon-opacity);
 }
 
-.size-small .tab-icon svg,
-.size-small .tab-trailing-icon svg {
-  width: var(--tab-icon-size-sm);
-  height: var(--tab-icon-size-sm);
+/* ═══════════════════════════════════════════════════════════════════════════
+   TEXT LABEL
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.tab-text {
+  font-family: var(--tab-font-family);
+  font-size: var(--tab-font-size);
+  font-weight: var(--tab-font-weight);
+  line-height: var(--tab-line-height);
+  letter-spacing: var(--tab-letter-spacing);
+  color: var(--tab-text-color);
+  white-space: nowrap;
 }
 
-.size-default .tab-icon svg,
-.size-default .tab-trailing-icon svg {
-  width: var(--tab-icon-size-default);
-  height: var(--tab-icon-size-default);
-}
+/* ═══════════════════════════════════════════════════════════════════════════
+   BADGE
+   ═══════════════════════════════════════════════════════════════════════════ */
 
-.size-large .tab-icon svg,
-.size-large .tab-trailing-icon svg {
-  width: var(--tab-icon-size-lg);
-  height: var(--tab-icon-size-lg);
-}
-
-/* ── Label ── */
-.tab-label {
-  flex: 0 1 auto;
-}
-
-/* ── Badge ── */
 .tab-badge {
   display: inline-flex;
   align-items: center;
@@ -250,38 +151,228 @@
   font-size: var(--tab-badge-font-size);
   font-weight: var(--tab-badge-font-weight);
   line-height: 1;
-  padding: var(--tab-badge-padding-v) var(--tab-badge-padding-h);
-  min-width: var(--tab-badge-min-size);
-  height: var(--tab-badge-min-size);
+  min-width: var(--tab-badge-size);
+  height: var(--tab-badge-size);
+  padding: 0 var(--tab-badge-padding-h);
+  flex-shrink: 0;
 }
 
-/* Badge colour adapts per variant/appearance */
-.variant-underline .tab-badge {
-  background: var(--tab-badge-underline-bg);
-  color: var(--tab-badge-underline-color);
+/* ═══════════════════════════════════════════════════════════════════════════
+   SIZE VARIANTS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.size-small {
+  --tab-icon-size:          var(--tab-icon-size-sm);
+  --tab-font-size:          var(--tab-font-size-sm);
+  --tab-line-height:        var(--tab-line-height-sm);
+  --tab-label-v-padding:    var(--tab-label-v-padding-sm);
+  --tab-label-h-padding:    var(--tab-label-h-padding-sm);
+  --tab-label-padding-left:  var(--tab-label-pl-sm);
+  --tab-label-padding-right: var(--tab-label-pr-sm);
+  --tab-inner-gap:          var(--tab-inner-gap-sm);
+  --tab-badge-size:         var(--tab-badge-size-sm);
+  --tab-badge-font-size:    var(--tab-badge-fs-sm);
 }
 
-.variant-pill.appearance-default .tab-badge {
-  background: var(--tab-badge-pill-default-bg);
-  color: var(--tab-badge-pill-default-color);
+.size-default {
+  --tab-icon-size:          var(--tab-icon-size-default);
+  --tab-font-size:          var(--tab-font-size-default);
+  --tab-line-height:        var(--tab-line-height-default);
+  --tab-label-v-padding:    var(--tab-label-v-padding-default);
+  --tab-label-h-padding:    var(--tab-label-h-padding-default);
+  --tab-label-padding-left:  var(--tab-label-pl-default);
+  --tab-label-padding-right: var(--tab-label-pr-default);
+  --tab-inner-gap:          var(--tab-inner-gap-default);
+  --tab-badge-size:         var(--tab-badge-size-default);
+  --tab-badge-font-size:    var(--tab-badge-fs-default);
 }
 
-.variant-pill.appearance-default.active .tab-badge {
-  background: var(--tab-badge-pill-active-bg);
-  color: var(--tab-badge-pill-active-color);
+.size-large {
+  --tab-icon-size:          var(--tab-icon-size-lg);
+  --tab-font-size:          var(--tab-font-size-lg);
+  --tab-line-height:        var(--tab-line-height-lg);
+  --tab-label-v-padding:    var(--tab-label-v-padding-lg);
+  --tab-label-h-padding:    var(--tab-label-h-padding-lg);
+  --tab-label-padding-left:  var(--tab-label-pl-lg);
+  --tab-label-padding-right: var(--tab-label-pr-lg);
+  --tab-inner-gap:          var(--tab-inner-gap-lg);
+  --tab-badge-size:         var(--tab-badge-size-lg);
+  --tab-badge-font-size:    var(--tab-badge-fs-lg);
 }
 
-.variant-pill.appearance-alt .tab-badge {
-  background: var(--tab-badge-pill-alt-bg);
-  color: var(--tab-badge-pill-alt-color);
+/* ═══════════════════════════════════════════════════════════════════════════
+   TYPE: DEFAULT (underline, blue active)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.type-default {
+  --tab-text-color:     var(--tab-default-text);
+  --tab-icon-opacity:   var(--tab-default-icon-opacity);
+  --tab-badge-bg:       var(--tab-default-badge-bg);
+  --tab-badge-color:    var(--tab-default-badge-color);
+  --tab-line-color-default: var(--tab-underline-track-color);
 }
 
-.variant-pill.appearance-alt.active .tab-badge {
-  background: var(--tab-badge-pill-active-bg);
-  color: var(--tab-badge-pill-active-color);
+.type-default:hover:not(.state-disabled),
+.type-default:hover:not([aria-disabled="true"]) {
+  --tab-text-color:     var(--tab-default-text-hover);
+  --tab-icon-opacity:   var(--tab-default-icon-opacity-hover);
+  --tab-badge-bg:       var(--tab-default-badge-bg-hover);
+  --tab-badge-color:    var(--tab-default-badge-color-hover);
 }
 
-.variant-pill.appearance-dark .tab-badge {
-  background: var(--tab-badge-pill-dark-bg);
-  color: var(--tab-badge-pill-dark-color);
+.type-default:hover:not(.state-disabled) .tab-line,
+.type-default:hover:not([aria-disabled="true"]) .tab-line {
+  border-top-color: var(--tab-default-line-hover);
+}
+
+.type-default.state-active {
+  --tab-text-color:     var(--tab-default-text-active);
+  --tab-badge-bg:       var(--tab-default-badge-bg-active);
+  --tab-badge-color:    var(--tab-default-badge-color-active);
+}
+
+.type-default.state-active .tab-line {
+  border-top-color: var(--tab-default-line-active);
+}
+
+.type-default.state-disabled {
+  --tab-text-color:     var(--tab-default-text-disabled);
+  --tab-icon-opacity:   var(--tab-disabled-icon-opacity);
+  --tab-badge-bg:       var(--tab-default-badge-bg-disabled);
+  --tab-badge-color:    var(--tab-default-badge-color-disabled);
+}
+
+.type-default.state-disabled .tab-line {
+  border-top-color: var(--tab-underline-track-color);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TYPE: SECONDARY (underline, dark blue-gray active)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.type-secondary {
+  --tab-text-color:     var(--tab-secondary-text);
+  --tab-icon-opacity:   var(--tab-default-icon-opacity);
+  --tab-badge-bg:       var(--tab-secondary-badge-bg);
+  --tab-badge-color:    var(--tab-secondary-badge-color);
+  --tab-line-color-default: var(--tab-underline-track-color);
+}
+
+.type-secondary:hover:not(.state-disabled) {
+  --tab-text-color:     var(--tab-secondary-text-hover);
+  --tab-badge-bg:       var(--tab-secondary-badge-bg-hover);
+  --tab-badge-color:    var(--tab-secondary-badge-color-hover);
+}
+
+.type-secondary:hover:not(.state-disabled) .tab-line {
+  border-top-color: var(--tab-secondary-line-hover);
+}
+
+.type-secondary.state-active {
+  --tab-text-color:     var(--tab-secondary-text-active);
+  --tab-badge-bg:       var(--tab-secondary-badge-bg-active);
+  --tab-badge-color:    var(--tab-secondary-badge-color-active);
+}
+
+.type-secondary.state-active .tab-line {
+  border-top-color: var(--tab-secondary-line-active);
+}
+
+.type-secondary.state-disabled {
+  --tab-text-color:     var(--tab-secondary-text-disabled);
+  --tab-icon-opacity:   var(--tab-disabled-icon-opacity);
+  --tab-badge-bg:       var(--tab-secondary-badge-bg-disabled);
+}
+
+.type-secondary.state-disabled .tab-line {
+  border-top-color: var(--tab-secondary-line-disabled);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TYPE: CONTAINED (bordered box, light theme)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.type-contained {
+  border-radius: var(--tab-contained-radius);
+  border: var(--tab-contained-border-width) solid var(--tab-contained-border-default);
+  background: var(--tab-contained-bg-default);
+  padding: var(--tab-contained-padding-v) var(--tab-contained-padding-h);
+  gap: var(--tab-contained-inner-gap);
+
+  --tab-text-color:     var(--tab-contained-text-default);
+  --tab-icon-opacity:   var(--tab-default-icon-opacity);
+  --tab-badge-bg:       var(--tab-contained-badge-bg-default);
+  --tab-badge-color:    var(--tab-contained-badge-color-default);
+}
+
+.type-contained:hover:not(.state-disabled) {
+  background: var(--tab-contained-bg-hover);
+  border-color: var(--tab-contained-border-hover);
+
+  --tab-text-color:     var(--tab-contained-text-hover);
+  --tab-badge-bg:       var(--tab-contained-badge-bg-hover);
+  --tab-badge-color:    var(--tab-contained-badge-color-hover);
+}
+
+.type-contained.state-active {
+  background: var(--tab-contained-bg-active);
+  border-color: var(--tab-contained-border-active);
+
+  --tab-text-color:     var(--tab-contained-text-active);
+  --tab-badge-bg:       var(--tab-contained-badge-bg-active);
+  --tab-badge-color:    var(--tab-contained-badge-color-active);
+}
+
+.type-contained.state-disabled {
+  background: var(--tab-contained-bg-disabled);
+  border-color: var(--tab-contained-border-disabled);
+
+  --tab-text-color:     var(--tab-contained-text-disabled);
+  --tab-icon-opacity:   var(--tab-disabled-icon-opacity);
+  --tab-badge-bg:       var(--tab-contained-badge-bg-disabled);
+  --tab-badge-color:    var(--tab-contained-badge-color-disabled);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TYPE: DARK-CONTAINED (bordered box, dark/navy theme)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.type-dark-contained {
+  border-radius: var(--tab-contained-radius);
+  border: var(--tab-contained-border-width) solid var(--tab-dark-border-default);
+  background: var(--tab-dark-bg-default);
+  padding: var(--tab-contained-padding-v) var(--tab-contained-padding-h);
+  gap: var(--tab-contained-inner-gap);
+
+  --tab-text-color:     var(--tab-dark-text-default);
+  --tab-icon-opacity:   var(--tab-dark-icon-opacity);
+  --tab-badge-bg:       var(--tab-dark-badge-bg-default);
+  --tab-badge-color:    var(--tab-dark-badge-color-default);
+}
+
+.type-dark-contained:hover:not(.state-disabled) {
+  background: var(--tab-dark-bg-hover);
+  border-color: var(--tab-dark-border-hover);
+
+  --tab-text-color:     var(--tab-dark-text-hover);
+  --tab-badge-bg:       var(--tab-dark-badge-bg-hover);
+  --tab-badge-color:    var(--tab-dark-badge-color-hover);
+}
+
+.type-dark-contained.state-active {
+  background: var(--tab-dark-bg-active);
+  border-color: var(--tab-dark-border-active);
+
+  --tab-text-color:     var(--tab-dark-text-active);
+  --tab-badge-bg:       var(--tab-dark-badge-bg-active);
+  --tab-badge-color:    var(--tab-dark-badge-color-active);
+}
+
+.type-dark-contained.state-disabled {
+  opacity: var(--tab-disabled-icon-opacity);
+  cursor: not-allowed;
+
+  --tab-text-color:     var(--tab-dark-text-disabled);
+  --tab-badge-bg:       var(--tab-dark-badge-bg-disabled);
+  --tab-badge-color:    var(--tab-dark-badge-color-disabled);
 }

@@ -2541,145 +2541,177 @@
 /* ==========================================================================
    COMPONENT LAYER: Tabs (Foundation / BuildingBlocks / Tabs)
    --------------------------------------------------------------------------
-   Three sizes (small, default, large), two variants (underline, pill),
-   and three pill appearances (default/outlined, alt/blue-tint, dark/navy).
+   Single tab item structure:
+     [label-row: icon + text + trailing icon + badge]
+     [spacer: 4px]
+     [line: 2px underline indicator]  ← underline types only
+
+   For contained / dark-contained types: bordered box with content row.
+
+   Types: default · secondary · contained · dark-contained
+   Sizes: small · default · large
+   States: default · hover · active · disabled
    ========================================================================== */
 :root {
   /* ── Tabs — common typography ── */
   --tab-font-family:      var(--brand-font-primary);
   --tab-font-weight:      var(--global-type-weight-light);
-  --tab-font-weight-active: var(--global-type-weight-default);
   --tab-letter-spacing:   var(--global-type-letter-spacing-primary-label);
-  --tab-disabled-opacity: 0.45;
   --tab-focus-ring-color: var(--global-color-primary-blue-blue-400);
 
   /* ── Tabs — size scale: small ── */
-  --tab-height-sm:         var(--global-spacing-sizing-34px, 34px);
-  --tab-font-size-sm:      var(--global-type-size-primary-label-xs);
-  --tab-line-height-sm:    var(--global-type-line-height-label-xs);
-  --tab-padding-v-sm:      var(--global-spacing-sizing-4px);
-  --tab-padding-h-sm:      var(--global-spacing-sizing-12px);
-  --tab-inner-gap-sm:      var(--global-spacing-sizing-4px);
-  --tab-icon-size-sm:      var(--global-spacing-sizing-14px);
+  --tab-font-size-sm:         var(--global-type-size-primary-label-xs);
+  --tab-line-height-sm:       var(--global-type-line-height-label-xs);
+  --tab-icon-size-sm:         var(--global-spacing-sizing-14px);
+  --tab-inner-gap-sm:         var(--global-spacing-sizing-4px);
+  --tab-label-v-padding-sm:   var(--global-spacing-sizing-4px);
+  --tab-label-h-padding-sm:   var(--global-spacing-sizing-4px);
+  --tab-label-pl-sm:          var(--global-spacing-sizing-8px);
+  --tab-label-pr-sm:          var(--global-spacing-sizing-12px);
+  --tab-badge-size-sm:        var(--global-spacing-sizing-16px);
+  --tab-badge-fs-sm:          var(--global-type-size-primary-label-xxs);
 
   /* ── Tabs — size scale: default ── */
-  --tab-height-default:       var(--global-spacing-sizing-44px);
-  --tab-font-size-default:    var(--global-type-size-primary-label);
-  --tab-line-height-default:  var(--global-type-line-height-label);
-  --tab-padding-v-default:    var(--global-spacing-sizing-4px);
-  --tab-padding-h-default:    var(--global-spacing-sizing-16px);
-  --tab-inner-gap-default:    var(--global-spacing-sizing-8px);
-  --tab-icon-size-default:    var(--global-spacing-sizing-16px);
+  --tab-font-size-default:      var(--global-type-size-primary-label);
+  --tab-line-height-default:    var(--global-type-line-height-label);
+  --tab-icon-size-default:      var(--global-spacing-sizing-16px);
+  --tab-inner-gap-default:      var(--global-spacing-sizing-8px);
+  --tab-label-v-padding-default: var(--global-spacing-sizing-4px);
+  --tab-label-h-padding-default: var(--global-spacing-sizing-4px);
+  --tab-label-pl-default:       var(--global-spacing-sizing-8px);
+  --tab-label-pr-default:       var(--global-spacing-sizing-12px);
+  --tab-badge-size-default:     var(--global-spacing-sizing-18px);
+  --tab-badge-fs-default:       var(--global-type-size-primary-label-xs);
 
   /* ── Tabs — size scale: large ── */
-  --tab-height-lg:        var(--global-spacing-sizing-56px);
-  --tab-font-size-lg:     var(--global-type-size-primary-label-lg);
-  --tab-line-height-lg:   var(--global-type-line-height-label-lg);
-  --tab-padding-v-lg:     var(--global-spacing-sizing-8px);
-  --tab-padding-h-lg:     var(--global-spacing-sizing-16px);
-  --tab-inner-gap-lg:     var(--global-spacing-sizing-8px);
-  --tab-icon-size-lg:     var(--global-spacing-sizing-16px);
+  --tab-font-size-lg:         var(--global-type-size-primary-label-lg);
+  --tab-line-height-lg:       var(--global-type-line-height-label-lg);
+  --tab-icon-size-lg:         var(--global-spacing-sizing-18px);
+  --tab-inner-gap-lg:         var(--global-spacing-sizing-8px);
+  --tab-label-v-padding-lg:   var(--global-spacing-sizing-8px);
+  --tab-label-h-padding-lg:   var(--global-spacing-sizing-4px);
+  --tab-label-pl-lg:          var(--global-spacing-sizing-12px);
+  --tab-label-pr-lg:          var(--global-spacing-sizing-16px);
+  --tab-badge-size-lg:        var(--global-spacing-sizing-20px);
+  --tab-badge-fs-lg:          var(--global-type-size-primary-label-xs);
 
-  /* ── Tabs — list container ── */
-  --tab-gap:              var(--global-spacing-sizing-8px);
-
-  /* ── Tabs — pill shape ── */
-  --tab-pill-radius:      var(--global-spacing-radius-4px);
-  --tab-pill-border-width: var(--global-spacing-stroke-1px);
-
-  /* ── Tabs — underline variant ── */
-  --tab-underline-track-width:         var(--global-spacing-stroke-1px);
-  --tab-underline-track-color:         var(--global-color-neutral-gray-200);
-  --tab-underline-indicator-width:     2px;
-  --tab-underline-indicator-color-hover:  var(--global-color-primary-blue-blue-300);
-  --tab-underline-indicator-color-active: var(--global-color-primary-blue-blue-400);
-  --tab-underline-color-default:       var(--global-color-secondary-blue-gray);
-  --tab-underline-color-hover:         var(--global-color-base-black);
-  --tab-underline-color-active:        var(--global-color-base-black);
-  --tab-underline-color-disabled:      var(--global-color-neutral-gray-400);
-
-  /* ── Tabs — pill default (blue-outlined) ── */
-  --tab-pill-default-bg:              var(--global-color-primary-blue-blue-50);
-  --tab-pill-default-border:          var(--global-color-primary-blue-blue-300);
-  --tab-pill-default-color:           var(--global-color-secondary-blue-gray);
-
-  --tab-pill-default-bg-hover:        var(--global-color-primary-blue-blue-100);
-  --tab-pill-default-border-hover:    var(--global-color-primary-blue-blue-300);
-  --tab-pill-default-color-hover:     var(--global-color-base-black);
-  --tab-pill-default-shadow-hover:    2px 2px 0px 0px var(--global-color-primary-blue-blue-400);
-
-  --tab-pill-default-bg-active:       var(--global-color-primary-blue-blue-400);
-  --tab-pill-default-border-active:   var(--global-color-primary-blue-blue-400);
-  --tab-pill-default-color-active:    var(--global-color-base-white);
-  --tab-pill-default-shadow-active:   2px 2px 0px 0px var(--global-color-primary-blue-blue-500);
-
-  --tab-pill-default-bg-disabled:     var(--global-color-neutral-gray-50);
-  --tab-pill-default-border-disabled: var(--global-color-neutral-gray-200);
-  --tab-pill-default-color-disabled:  var(--global-color-neutral-gray-400);
-
-  /* ── Tabs — pill alt (lighter blue tint, used from Figma special=alt) ── */
-  --tab-pill-alt-bg:              var(--global-color-primary-blue-blue-50);
-  --tab-pill-alt-border:          var(--global-color-primary-blue-blue-300);
-  --tab-pill-alt-color:           var(--global-color-secondary-blue-gray);
-
-  --tab-pill-alt-bg-hover:        var(--global-color-primary-blue-blue-100);
-  --tab-pill-alt-border-hover:    var(--global-color-primary-blue-blue-300);
-  --tab-pill-alt-color-hover:     var(--global-color-base-black);
-  --tab-pill-alt-shadow-hover:    2px 2px 0px 0px var(--global-color-primary-blue-blue-400);
-
-  --tab-pill-alt-bg-active:       var(--global-color-primary-blue-blue-500);
-  --tab-pill-alt-border-active:   var(--global-color-primary-blue-blue-500);
-  --tab-pill-alt-color-active:    var(--global-color-base-white);
-  --tab-pill-alt-shadow-active:   none;
-
-  --tab-pill-alt-bg-disabled:     var(--global-color-neutral-gray-100);
-  --tab-pill-alt-border-disabled: var(--global-color-neutral-gray-200);
-  --tab-pill-alt-color-disabled:  var(--global-color-neutral-gray-400);
-
-  /* ── Tabs — pill dark (navy/charcoal filled) ── */
-  --tab-pill-dark-bg:              var(--global-color-neutral-gray-800);
-  --tab-pill-dark-border:          var(--global-color-neutral-gray-700);
-  --tab-pill-dark-color:           var(--global-color-neutral-gray-300);
-
-  --tab-pill-dark-bg-hover:        var(--global-color-neutral-gray-700);
-  --tab-pill-dark-border-hover:    var(--global-color-neutral-gray-600);
-  --tab-pill-dark-color-hover:     var(--global-color-base-white);
-  --tab-pill-dark-shadow-hover:    2px 2px 0px 0px var(--global-color-neutral-gray-600);
-
-  --tab-pill-dark-bg-active:       var(--global-color-neutral-gray-900);
-  --tab-pill-dark-border-active:   var(--global-color-neutral-gray-800);
-  --tab-pill-dark-color-active:    var(--global-color-base-white);
-
-  --tab-pill-dark-bg-disabled:     var(--global-color-neutral-gray-800);
-  --tab-pill-dark-border-disabled: var(--global-color-neutral-gray-700);
-  --tab-pill-dark-color-disabled:  var(--global-color-neutral-gray-600);
-
-  /* ── Tabs — badge ── */
-  --tab-badge-bg:               var(--global-color-primary-blue-blue-400);
-  --tab-badge-color:            var(--global-color-base-white);
-  --tab-badge-font-size:        var(--global-type-size-primary-label-xs);
+  /* ── Tabs — shared structural tokens ── */
+  --tab-label-badge-gap:        var(--global-spacing-sizing-4px);
+  --tab-spacer-height:          var(--global-spacing-sizing-4px);
+  --tab-line-width:             var(--global-spacing-stroke-2px);
+  --tab-line-overlap:           var(--global-spacing-stroke-2px);
+  --tab-underline-track-color:  var(--global-color-neutral-gray-200);
   --tab-badge-font-weight:      var(--global-type-weight-default);
-  --tab-badge-padding-v:        var(--global-spacing-sizing-2px);
   --tab-badge-padding-h:        var(--global-spacing-sizing-4px);
-  --tab-badge-min-size:         var(--global-spacing-sizing-18px);
+  --tab-default-icon-opacity:   0.6;
+  --tab-dark-icon-opacity:      0.7;
+  --tab-disabled-icon-opacity:  0.45;
 
-  /* Badge — underline variant */
-  --tab-badge-underline-bg:     var(--global-color-primary-sky-blue);
-  --tab-badge-underline-color:  var(--global-color-base-white);
+  /* ── Contained tab shape ── */
+  --tab-contained-radius:       var(--global-spacing-radius-6px);
+  --tab-contained-border-width: var(--global-spacing-stroke-1px);
+  --tab-contained-padding-v:    var(--global-spacing-sizing-8px);
+  --tab-contained-padding-h:    var(--global-spacing-sizing-12px);
+  --tab-contained-inner-gap:    var(--global-spacing-sizing-10px);
+  --tab-contained-strip-gap:    var(--global-spacing-sizing-8px);
 
-  /* Badge — pill default/alt */
-  --tab-badge-pill-default-bg:    var(--global-color-primary-blue-blue-400);
-  --tab-badge-pill-default-color: var(--global-color-base-white);
-  --tab-badge-pill-alt-bg:        var(--global-color-primary-blue-blue-400);
-  --tab-badge-pill-alt-color:     var(--global-color-base-white);
+  /* ════════════════════════════════════════
+     TYPE: default (underline, blue active)
+     ════════════════════════════════════════ */
+  --tab-default-text:                   var(--global-color-secondary-blue-gray);
+  --tab-default-text-hover:             var(--global-color-base-black);
+  --tab-default-text-active:            var(--global-color-base-black);
+  --tab-default-text-disabled:          var(--global-color-neutral-gray-400);
 
-  /* Badge — active pill */
-  --tab-badge-pill-active-bg:    var(--global-color-base-white);
-  --tab-badge-pill-active-color: var(--global-color-primary-blue-blue-500);
+  --tab-default-line-hover:             var(--global-color-primary-blue-blue-400);
+  --tab-default-line-active:            var(--global-color-primary-sky-blue);
 
-  /* Badge — dark pill */
-  --tab-badge-pill-dark-bg:    var(--global-color-base-black);
-  --tab-badge-pill-dark-color: var(--global-color-base-white);
+  /* default badge — sky-blue tinted circle */
+  --tab-default-badge-bg:               var(--global-color-primary-sky-blue-100);
+  --tab-default-badge-color:            var(--global-color-secondary-navy);
+  --tab-default-badge-bg-hover:         var(--global-color-primary-sky-blue-100);
+  --tab-default-badge-color-hover:      var(--global-color-secondary-navy);
+  --tab-default-badge-bg-active:        var(--global-color-primary-sky-blue-100);
+  --tab-default-badge-color-active:     var(--global-color-secondary-navy);
+  --tab-default-badge-bg-disabled:      var(--global-color-neutral-gray-200);
+  --tab-default-badge-color-disabled:   var(--global-color-neutral-gray-400);
+
+  /* ════════════════════════════════════════
+     TYPE: secondary (underline, dark active)
+     ════════════════════════════════════════ */
+  --tab-secondary-text:                 var(--global-color-secondary-blue-gray);
+  --tab-secondary-text-hover:           var(--global-color-base-black);
+  --tab-secondary-text-active:          var(--global-color-base-black);
+  --tab-secondary-text-disabled:        var(--global-color-neutral-gray-400);
+
+  --tab-secondary-line-hover:           var(--global-color-neutral-gray-300);
+  --tab-secondary-line-active:          var(--global-color-neutral-gray-800);
+  --tab-secondary-line-disabled:        var(--global-color-neutral-gray-300);
+
+  /* secondary badge — black/dark filled circle */
+  --tab-secondary-badge-bg:             var(--global-color-primary-sky-blue);
+  --tab-secondary-badge-color:          var(--global-color-base-white);
+  --tab-secondary-badge-bg-hover:       var(--global-color-base-black);
+  --tab-secondary-badge-color-hover:    var(--global-color-base-white);
+  --tab-secondary-badge-bg-active:      var(--global-color-base-black);
+  --tab-secondary-badge-color-active:   var(--global-color-base-white);
+  --tab-secondary-badge-bg-disabled:    var(--global-color-neutral-gray-300);
+
+  /* ════════════════════════════════════════
+     TYPE: contained (bordered box, light)
+     ════════════════════════════════════════ */
+  --tab-contained-bg-default:           var(--global-color-base-white);
+  --tab-contained-border-default:       var(--global-color-primary-blue-blue-400);
+  --tab-contained-text-default:         var(--global-color-secondary-blue-gray);
+
+  --tab-contained-bg-hover:             var(--global-color-primary-blue-blue-400);
+  --tab-contained-border-hover:         var(--global-color-primary-blue-blue-400);
+  --tab-contained-text-hover:           var(--global-color-base-white);
+
+  --tab-contained-bg-active:            var(--global-color-primary-blue-blue-500);
+  --tab-contained-border-active:        var(--global-color-primary-blue-blue-500);
+  --tab-contained-text-active:          var(--global-color-base-white);
+
+  --tab-contained-bg-disabled:          var(--global-color-neutral-gray-100);
+  --tab-contained-border-disabled:      var(--global-color-neutral-gray-200);
+  --tab-contained-text-disabled:        var(--global-color-neutral-gray-400);
+
+  /* contained badge */
+  --tab-contained-badge-bg-default:     var(--global-color-primary-sky-blue-100);
+  --tab-contained-badge-color-default:  var(--global-color-secondary-navy);
+  --tab-contained-badge-bg-hover:       var(--global-color-primary-sky-blue-100);
+  --tab-contained-badge-color-hover:    var(--global-color-secondary-navy);
+  --tab-contained-badge-bg-active:      var(--global-color-primary-sky-blue-100);
+  --tab-contained-badge-color-active:   var(--global-color-secondary-navy);
+  --tab-contained-badge-bg-disabled:    var(--global-color-neutral-gray-200);
+  --tab-contained-badge-color-disabled: var(--global-color-neutral-gray-500);
+
+  /* ════════════════════════════════════════
+     TYPE: dark-contained (navy filled)
+     ════════════════════════════════════════ */
+  --tab-dark-bg-default:                var(--global-color-neutral-gray-700);
+  --tab-dark-border-default:            var(--global-color-neutral-gray-800);
+  --tab-dark-text-default:              var(--global-color-neutral-gray-200);
+
+  --tab-dark-bg-hover:                  var(--global-color-neutral-gray-600);
+  --tab-dark-border-hover:              var(--global-color-neutral-gray-700);
+  --tab-dark-text-hover:                var(--global-color-base-white);
+
+  --tab-dark-bg-active:                 var(--global-color-neutral-gray-900);
+  --tab-dark-border-active:             var(--global-color-neutral-gray-800);
+  --tab-dark-text-active:               var(--global-color-base-white);
+
+  --tab-dark-text-disabled:             var(--global-color-neutral-gray-500);
+
+  /* dark badge */
+  --tab-dark-badge-bg-default:          var(--global-color-neutral-gray-600);
+  --tab-dark-badge-color-default:       var(--global-color-neutral-gray-200);
+  --tab-dark-badge-bg-hover:            var(--global-color-neutral-gray-800);
+  --tab-dark-badge-color-hover:         var(--global-color-neutral-gray-200);
+  --tab-dark-badge-bg-active:           var(--global-color-primary-sky-blue-100);
+  --tab-dark-badge-color-active:        var(--global-color-secondary-navy);
+  --tab-dark-badge-bg-disabled:         var(--global-color-neutral-gray-700);
+  --tab-dark-badge-color-disabled:      var(--global-color-neutral-gray-500);
 }
 
 /* Font Loading */

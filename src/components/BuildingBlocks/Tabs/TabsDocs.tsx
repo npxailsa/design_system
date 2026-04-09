@@ -5,43 +5,35 @@ import type { TabItem } from './Tabs';
 
 // ─── Sample data ─────────────────────────────────────────────────────────────
 
-const SAMPLE_TABS: TabItem[] = [
+const SAMPLE_ITEMS: TabItem[] = [
   { id: 'tab1', label: 'Tab label', count: 7 },
   { id: 'tab2', label: 'Tab label', count: 7 },
   { id: 'tab3', label: 'Tab label', count: 7 },
   { id: 'tab4', label: 'Tab label', count: 7, disabled: true },
 ];
 
-const DROPDOWN_TABS: TabItem[] = [
+const DROPDOWN_ITEMS: TabItem[] = [
   { id: 'tab1', label: 'Tab label', count: 7 },
   { id: 'tab2', label: 'Tab label', count: 7, dropdown: true },
   { id: 'tab3', label: 'Tab label', count: 7, dropdown: true },
   { id: 'tab4', label: 'Tab label', count: 7, disabled: true },
 ];
 
-// ─── Helper wrapper ───────────────────────────────────────────────────────────
+// ─── Wrapper styles ───────────────────────────────────────────────────────────
 
-const previewRow: React.CSSProperties = {
+const previewWrap: React.CSSProperties = {
   display: 'flex',
   flexDirection: 'column',
-  gap: 'var(--global-spacing-sizing-24px)',
+  gap: 'var(--global-spacing-sizing-16px)',
   padding: 'var(--global-spacing-sizing-24px)',
   background: 'var(--global-color-neutral-gray-50)',
   borderRadius: 'var(--global-spacing-radius-8px)',
 };
 
-const darkRow: React.CSSProperties = {
-  ...previewRow,
+const darkWrap: React.CSSProperties = {
+  ...previewWrap,
   background: 'var(--global-color-neutral-gray-800)',
 };
-
-// ─── Anatomy preview component ────────────────────────────────────────────────
-
-const AnatomyPreview: React.FC = () => (
-  <div style={{ padding: '24px 0' }}>
-    <Tabs tabs={SAMPLE_TABS.slice(0, 1)} size="default" variant="pill" appearance="default" activeTab="tab1" />
-  </div>
-);
 
 // ─── Docs component ───────────────────────────────────────────────────────────
 
@@ -49,25 +41,31 @@ export const TabsDocs: React.FC = () => (
   <DocsTemplate>
     <DocsTemplate.Header
       title="Tabs"
-      subtitle="Navigation tabs supporting underline and pill variants, three sizes, and multiple color appearances."
+      subtitle="Navigation tabs with underline or contained variants, three sizes, and optional badge counts."
     />
 
     <DocsTemplate.BodyText>
-      The <strong>Tabs</strong> component provides a standard tab navigation pattern. It supports
-      two visual variants — an <strong>underline</strong> style for inline or page-level navigation,
-      and a <strong>pill</strong> style for grouped actions or section switching. Each tab can display
-      an optional leading icon, trailing icon or dropdown indicator, and a numeric badge count.
+      The <strong>Tabs</strong> component is a horizontal navigation strip. Each tab item is
+      structured as a column — a label row (leading icon + label text + trailing icon + badge),
+      a small spacer, and an underline indicator line (for underline types). Clicking a tab marks
+      it as active and calls the <code>onTabChange</code> callback.
     </DocsTemplate.BodyText>
 
     {/* ── Anatomy ── */}
     <DocsTemplate.Section title="Anatomy">
       <DocsTemplate.Anatomy
-        preview={<AnatomyPreview />}
+        preview={
+          <div style={{ padding: '24px 0' }}>
+            <Tabs items={[{ id: 't', label: 'Tab label', count: 7 }]} type="default" size="default" activeId="t" />
+          </div>
+        }
         parts={[
-          { id: 1, name: 'Leading icon', token: '--tab-icon-size-default', description: 'Optional 16 × 16 icon placed before the label.' },
-          { id: 2, name: 'Label', token: '--tab-font-size-default, --tab-font-family', description: 'Short, descriptive text identifying the tab panel.' },
-          { id: 3, name: 'Trailing icon', token: '--tab-icon-size-default', description: 'Arrow-right (navigation) or chevron-down (dropdown trigger).' },
-          { id: 4, name: 'Badge', token: '--tab-badge-bg, --tab-badge-color', description: 'Circular numeric indicator showing counts or notifications.' },
+          { id: 1, name: 'Leading icon', token: '--tab-icon-size-default', description: 'Optional 16 × 16 account icon placed before the label text.' },
+          { id: 2, name: 'Label text', token: '--tab-font-size-default, --tab-font-family', description: 'Short descriptive label identifying the tab panel.' },
+          { id: 3, name: 'Trailing icon', token: '--tab-icon-size-default', description: 'Arrow-right for navigation, or chevron-down for dropdown tabs.' },
+          { id: 4, name: 'Badge', token: '--tab-default-badge-bg', description: 'Circular count indicator. Only shown when count is provided and showBadge is true.' },
+          { id: 5, name: 'Spacer', token: '--tab-spacer-height', description: '4px gap between the label row and the underline indicator.' },
+          { id: 6, name: 'Line', token: '--tab-line-width, --tab-underline-track-color', description: '2px underline at the base of each tab item. Changes color when active or hovered.' },
         ]}
       />
     </DocsTemplate.Section>
@@ -75,94 +73,90 @@ export const TabsDocs: React.FC = () => (
     {/* ── Sizes ── */}
     <DocsTemplate.Section title="Sizes">
       <DocsTemplate.BodyText>
-        Three sizes are available — <strong>small</strong>, <strong>default</strong>, and <strong>large</strong>. 
-        Size controls the tab height, font size, and inner padding.
+        Three sizes — <strong>small</strong>, <strong>default</strong>, and <strong>large</strong>. 
+        Size scales the font, icons, badge, and internal padding.
       </DocsTemplate.BodyText>
       <DocsTemplate.SizeDemo
         rows={[
           {
             label: 'Small',
-            children: (
-              <Tabs tabs={SAMPLE_TABS} size="small" variant="pill" appearance="default" activeTab="tab1" />
-            ),
+            children: <Tabs items={SAMPLE_ITEMS} type="default" size="small" activeId="tab2" />,
           },
           {
             label: 'Default',
-            children: (
-              <Tabs tabs={SAMPLE_TABS} size="default" variant="pill" appearance="default" activeTab="tab1" />
-            ),
+            children: <Tabs items={SAMPLE_ITEMS} type="default" size="default" activeId="tab2" />,
           },
           {
             label: 'Large',
-            children: (
-              <Tabs tabs={SAMPLE_TABS} size="large" variant="pill" appearance="default" activeTab="tab1" />
-            ),
+            children: <Tabs items={SAMPLE_ITEMS} type="default" size="large" activeId="tab2" />,
           },
         ]}
       />
     </DocsTemplate.Section>
 
-    {/* ── Variants ── */}
-    <DocsTemplate.Section title="Variants">
-      <DocsTemplate.Subsection title="Underline">
+    {/* ── Types ── */}
+    <DocsTemplate.Section title="Types">
+      <DocsTemplate.Subsection title="Default (underline, blue indicator)">
         <DocsTemplate.BodyText>
-          The underline variant shows a subtle bottom indicator on the active tab. Used for primary
-          page-level navigation where visual weight should remain minimal.
+          The default type renders an underline indicator at the bottom of each tab. The active
+          tab displays a blue indicator line. Used for primary page-level navigation.
         </DocsTemplate.BodyText>
-        <div style={previewRow}>
-          <Tabs tabs={SAMPLE_TABS} size="small" variant="underline" activeTab="tab1" />
-          <Tabs tabs={SAMPLE_TABS} size="default" variant="underline" activeTab="tab2" />
-          <Tabs tabs={SAMPLE_TABS} size="large" variant="underline" activeTab="tab3" />
+        <div style={previewWrap}>
+          <Tabs items={SAMPLE_ITEMS} type="default" size="small" activeId="tab2" />
+          <Tabs items={SAMPLE_ITEMS} type="default" size="default" activeId="tab2" />
+          <Tabs items={SAMPLE_ITEMS} type="default" size="large" activeId="tab2" />
         </div>
       </DocsTemplate.Subsection>
 
-      <DocsTemplate.Subsection title="Pill — Default (Blue outlined)">
+      <DocsTemplate.Subsection title="Secondary (underline, dark indicator)">
         <DocsTemplate.BodyText>
-          The pill default appearance renders each tab with a blue border and very light blue
-          background. Active state fills the tab with a solid blue. Suitable for light backgrounds.
+          The secondary type uses a dark charcoal underline for the active state, alongside a
+          sky-blue badge for the default state. Suitable for secondary navigation contexts.
         </DocsTemplate.BodyText>
-        <div style={previewRow}>
-          <Tabs tabs={SAMPLE_TABS} size="small" variant="pill" appearance="default" activeTab="tab1" />
-          <Tabs tabs={SAMPLE_TABS} size="default" variant="pill" appearance="default" activeTab="tab2" />
-          <Tabs tabs={SAMPLE_TABS} size="large" variant="pill" appearance="default" activeTab="tab3" />
+        <div style={previewWrap}>
+          <Tabs items={SAMPLE_ITEMS} type="secondary" size="small" activeId="tab2" />
+          <Tabs items={SAMPLE_ITEMS} type="secondary" size="default" activeId="tab2" />
+          <Tabs items={SAMPLE_ITEMS} type="secondary" size="large" activeId="tab2" />
         </div>
       </DocsTemplate.Subsection>
 
-      <DocsTemplate.Subsection title="Pill — Alt (Light blue tint)">
+      <DocsTemplate.Subsection title="Contained (bordered box, light theme)">
         <DocsTemplate.BodyText>
-          The alt appearance is a slightly more saturated blue-tint variant, ideal for use on
-          white or off-white surfaces where stronger contrast is needed.
+          Each tab is enclosed in a rounded bordered box. Inactive tabs show a white background
+          with a blue border. The active state fills the box with solid blue. Hover transitions
+          to a filled state. Use for section switching on light backgrounds.
         </DocsTemplate.BodyText>
-        <div style={previewRow}>
-          <Tabs tabs={SAMPLE_TABS} size="small" variant="pill" appearance="alt" activeTab="tab1" />
-          <Tabs tabs={SAMPLE_TABS} size="default" variant="pill" appearance="alt" activeTab="tab2" />
-          <Tabs tabs={SAMPLE_TABS} size="large" variant="pill" appearance="alt" activeTab="tab3" />
+        <div style={previewWrap}>
+          <Tabs items={SAMPLE_ITEMS} type="contained" size="small" activeId="tab2" />
+          <Tabs items={SAMPLE_ITEMS} type="contained" size="default" activeId="tab2" />
+          <Tabs items={SAMPLE_ITEMS} type="contained" size="large" activeId="tab2" />
         </div>
       </DocsTemplate.Subsection>
 
-      <DocsTemplate.Subsection title="Pill — Dark (Navy / charcoal)">
+      <DocsTemplate.Subsection title="Dark Contained (bordered box, dark theme)">
         <DocsTemplate.BodyText>
-          The dark appearance is designed for use on dark or navy backgrounds. Tabs render with a
-          charcoal fill, and the active tab uses a deeper shade.
+          The dark-contained variant uses a navy/charcoal fill for all states. Designed for use
+          on dark backgrounds such as navy headers or dark sidebars.
         </DocsTemplate.BodyText>
-        <div style={darkRow}>
-          <Tabs tabs={SAMPLE_TABS} size="small" variant="pill" appearance="dark" activeTab="tab1" />
-          <Tabs tabs={SAMPLE_TABS} size="default" variant="pill" appearance="dark" activeTab="tab2" />
-          <Tabs tabs={SAMPLE_TABS} size="large" variant="pill" appearance="dark" activeTab="tab3" />
+        <div style={darkWrap}>
+          <Tabs items={SAMPLE_ITEMS} type="dark-contained" size="small" activeId="tab2" />
+          <Tabs items={SAMPLE_ITEMS} type="dark-contained" size="default" activeId="tab2" />
+          <Tabs items={SAMPLE_ITEMS} type="dark-contained" size="large" activeId="tab2" />
         </div>
       </DocsTemplate.Subsection>
     </DocsTemplate.Section>
 
-    {/* ── Dropdown tabs ── */}
+    {/* ── Dropdown ── */}
     <DocsTemplate.Section title="Dropdown indicator">
       <DocsTemplate.BodyText>
-        Individual tabs can show a <strong>chevron-down</strong> icon instead of the arrow-right,
-        signaling that the tab triggers a dropdown or sub-menu. Set <code>dropdown: true</code> on
-        the individual tab item.
+        Individual tabs can show a <strong>chevron-down</strong> icon instead of the arrow-right by
+        setting <code>dropdown: true</code> on the tab item. This signals that the tab opens a
+        sub-menu or dropdown panel rather than navigating to a new section.
       </DocsTemplate.BodyText>
-      <div style={previewRow}>
-        <Tabs tabs={DROPDOWN_TABS} size="default" variant="underline" activeTab="tab1" />
-        <Tabs tabs={DROPDOWN_TABS} size="default" variant="pill" appearance="default" activeTab="tab1" />
+      <div style={previewWrap}>
+        <Tabs items={DROPDOWN_ITEMS} type="default" size="default" activeId="tab1" />
+        <Tabs items={DROPDOWN_ITEMS} type="secondary" size="default" activeId="tab1" />
+        <Tabs items={DROPDOWN_ITEMS} type="contained" size="default" activeId="tab1" />
       </div>
     </DocsTemplate.Section>
 
@@ -170,12 +164,12 @@ export const TabsDocs: React.FC = () => (
     <DocsTemplate.Section title="Usage guidelines">
       <DocsTemplate.DosDonts
         doItem={{
-          icon: <Tabs tabs={[{ id: 't1', label: 'Overview', count: 3 }, { id: 't2', label: 'Details' }]} size="default" variant="pill" appearance="default" activeTab="t1" />,
-          description: 'Use clear, concise labels. Limit each row to 6 or fewer tabs with a shared visual style.',
+          icon: <Tabs items={[{ id: 't1', label: 'Overview', count: 3 }, { id: 't2', label: 'Details' }]} type="default" size="default" activeId="t1" />,
+          description: 'Use clear, short labels. Keep the active state clearly distinguished with the underline indicator or filled state.',
         }}
         dontItem={{
-          icon: <Tabs tabs={[{ id: 't1', label: 'Overview' }, { id: 't2', label: 'Details' }]} size="default" variant="underline" activeTab="t1" />,
-          description: "Don't mix underline and pill tab styles in the same navigation context.",
+          icon: <Tabs items={[{ id: 't1', label: 'Overview' }, { id: 't2', label: 'Details' }]} type="contained" size="default" activeId="t1" />,
+          description: "Don't mix underline and contained tab types in the same navigation context.",
         }}
       />
     </DocsTemplate.Section>
@@ -185,16 +179,16 @@ export const TabsDocs: React.FC = () => (
       <DocsTemplate.Principles>
         <DocsTemplate.PrincipleCard number={1} title="Clarity">
           Each tab label must immediately communicate the content behind it. Avoid vague labels
-          like "More" or "Other" without disambiguation.
+          like "More" or "Other" without additional context.
         </DocsTemplate.PrincipleCard>
         <DocsTemplate.PrincipleCard number={2} title="Consistency">
-          All tabs within a single group must share the same size, variant, and appearance.
-          Mixing visual styles within a tab list breaks visual hierarchy.
+          All tabs in a strip must share the same type, size, and badge visibility.
+          Never mix types within a single navigation row.
         </DocsTemplate.PrincipleCard>
         <DocsTemplate.PrincipleCard number={3} title="Accessibility">
-          The component uses semantic <code>role="tablist"</code> and <code>role="tab"</code>
-          with <code>aria-selected</code> and <code>aria-disabled</code> attributes. Always pair
-          tabs with their associated panel content using <code>aria-controls</code>.
+          The strip uses <code>role="tablist"</code> and each item uses <code>role="tab"</code>
+          with <code>aria-selected</code> and <code>aria-disabled</code> attributes. Pair tabs
+          with visible panel content.
         </DocsTemplate.PrincipleCard>
       </DocsTemplate.Principles>
     </DocsTemplate.Section>
@@ -203,31 +197,27 @@ export const TabsDocs: React.FC = () => (
     <DocsTemplate.Section title="Design tokens">
       <DocsTemplate.TokenTable
         tokens={[
-          { name: '--tab-font-family', description: 'Font family used across all tab labels.' },
-          { name: '--tab-font-weight', description: 'Default (inactive) font weight.' },
-          { name: '--tab-font-weight-active', description: 'Font weight for the active/selected tab.' },
-          { name: '--tab-letter-spacing', description: 'Letter spacing applied to all tab labels.' },
-          { name: '--tab-disabled-opacity', description: 'Opacity applied to disabled tab items (0.45).' },
-          { name: '--tab-height-sm', description: 'Minimum height for the small tab size.' },
-          { name: '--tab-height-default', description: 'Minimum height for the default tab size.' },
-          { name: '--tab-height-lg', description: 'Minimum height for the large tab size.' },
-          { name: '--tab-font-size-sm', description: 'Font size for the small tab (maps to label-xs).' },
-          { name: '--tab-font-size-default', description: 'Font size for the default tab (maps to label).' },
-          { name: '--tab-font-size-lg', description: 'Font size for the large tab (maps to label-lg).' },
-          { name: '--tab-padding-h-default', description: 'Horizontal padding for default size tab.' },
-          { name: '--tab-padding-v-default', description: 'Vertical padding for default size tab.' },
-          { name: '--tab-inner-gap-default', description: 'Gap between icon, label, and badge.' },
-          { name: '--tab-pill-radius', description: 'Border-radius for pill variant tabs (4px).' },
-          { name: '--tab-pill-border-width', description: 'Border width for pill tabs (1px).' },
-          { name: '--tab-underline-track-color', description: 'Color of the base line in underline variant.' },
-          { name: '--tab-underline-indicator-color-active', description: 'Color of the underline indicator when active.' },
-          { name: '--tab-pill-default-bg', description: 'Background for default pill tab (inactive).' },
-          { name: '--tab-pill-default-border', description: 'Border color for default pill tab.' },
-          { name: '--tab-pill-default-bg-active', description: 'Background for default pill tab (active).' },
-          { name: '--tab-pill-dark-bg', description: 'Background for dark-appearance pill tab.' },
-          { name: '--tab-badge-bg', description: 'Default badge background color.' },
-          { name: '--tab-badge-color', description: 'Default badge text/icon color.' },
-          { name: '--tab-badge-min-size', description: 'Minimum size (width and height) of the badge.' },
+          { name: '--tab-font-family', description: 'Font family for all tab labels.' },
+          { name: '--tab-font-weight', description: 'Font weight for inactive tab labels (light/300).' },
+          { name: '--tab-letter-spacing', description: 'Letter spacing applied to all tab text.' },
+          { name: '--tab-font-size-sm / -default / -lg', description: 'Font size per size scale.' },
+          { name: '--tab-line-height-sm / -default / -lg', description: 'Line height per size scale.' },
+          { name: '--tab-icon-size-sm / -default / -lg', description: 'Leading and trailing icon dimensions per size.' },
+          { name: '--tab-inner-gap-sm / -default / -lg', description: 'Gap between icon, label text, and trailing icon.' },
+          { name: '--tab-label-pl-default / pr-default', description: 'Left and right outer padding of the label row.' },
+          { name: '--tab-spacer-height', description: 'Vertical gap between the label row and the underline indicator (4px).' },
+          { name: '--tab-line-width', description: 'Thickness of the underline indicator line (2px).' },
+          { name: '--tab-underline-track-color', description: 'Default (inactive) underline line color — gray-200.' },
+          { name: '--tab-default-line-active', description: 'Active underline indicator color for type=default (sky-blue).' },
+          { name: '--tab-secondary-line-active', description: 'Active underline indicator color for type=secondary (dark).' },
+          { name: '--tab-contained-bg-default', description: 'Background for contained tab in default/inactive state.' },
+          { name: '--tab-contained-border-default', description: 'Border color for contained tab (inactive).' },
+          { name: '--tab-contained-bg-active', description: 'Background for contained tab in active state (solid blue).' },
+          { name: '--tab-dark-bg-default', description: 'Background for dark-contained tab in default state.' },
+          { name: '--tab-default-badge-bg', description: 'Badge background for type=default tabs (sky-blue tint).' },
+          { name: '--tab-secondary-badge-bg', description: 'Badge background for type=secondary tabs (sky-blue).' },
+          { name: '--tab-contained-radius', description: 'Border-radius of contained tab boxes (6px).' },
+          { name: '--tab-badge-size-default', description: 'Minimum width and height of the badge circle.' },
           { name: '--tab-focus-ring-color', description: 'Outline color shown on keyboard focus.' },
         ]}
       />

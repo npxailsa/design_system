@@ -3,53 +3,56 @@ import styles from './Tabs.module.css';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
-export type TabsSize = 'small' | 'default' | 'large';
-export type TabsVariant = 'underline' | 'pill';
-export type TabsAppearance = 'default' | 'alt' | 'dark';
+export type TabSize = 'small' | 'default' | 'large';
+
+/**
+ * Type controls the visual style of the tab:
+ * - `default` — underline indicator, blue on active
+ * - `secondary` — underline indicator, dark on active
+ * - `contained` — bordered box (light theme)
+ * - `dark-contained` — bordered box (dark/navy theme)
+ */
+export type TabType = 'default' | 'secondary' | 'contained' | 'dark-contained';
 
 export interface TabItem {
-  /** Unique identifier for the tab */
+  /** Unique identifier */
   id: string;
-  /** Text label displayed on the tab */
+  /** Tab label text */
   label: string;
-  /** Optional badge count number (shown in a circular badge) */
+  /** Optional badge count displayed as a notification bubble */
   count?: number;
-  /** Whether the tab item is disabled */
+  /** Whether the tab is disabled */
   disabled?: boolean;
-  /** Whether this tab has a dropdown indicator instead of an arrow */
+  /** Show chevron-down icon instead of arrow-right */
   dropdown?: boolean;
-  /** Custom leading icon component */
-  leadingIcon?: React.ElementType;
 }
 
 export interface TabsProps {
   /** Array of tab items to render */
-  tabs: TabItem[];
-  /** Currently active tab id */
-  activeTab?: string;
-  /** Callback when a tab is clicked */
+  items: TabItem[];
+  /** ID of the currently active tab */
+  activeId?: string;
+  /** Callback when a tab is selected */
   onTabChange?: (id: string) => void;
-  /** Visual size of the tabs */
-  size?: TabsSize;
-  /** Underline style vs pill/bordered style */
-  variant?: TabsVariant;
-  /** Color appearance: default (outlined/underline), alt (blue tinted pill), dark (navy filled) */
-  appearance?: TabsAppearance;
-  /** Whether to show a leading icon on each tab */
+  /** Visual variant style */
+  type?: TabType;
+  /** Size scale */
+  size?: TabSize;
+  /** Whether to show the badge/count on each tab */
+  showBadge?: boolean;
+  /** Whether to show the leading icon (person/account icon) */
   showLeadingIcon?: boolean;
-  /** Whether to show a trailing icon (arrow) on each tab */
+  /** Whether to show the trailing icon (arrow or chevron) */
   showTrailingIcon?: boolean;
   /** Extra CSS class on the root element */
   className?: string;
 }
 
-// ─── Icons ───────────────────────────────────────────────────────────────────
+// ─── SVG Icons ────────────────────────────────────────────────────────────────
 
 const AccountIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg
     className={className}
-    width="16"
-    height="16"
     viewBox="0 0 16 16"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -66,8 +69,6 @@ const AccountIcon: React.FC<{ className?: string }> = ({ className }) => (
 const ArrowRightIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg
     className={className}
-    width="16"
-    height="16"
     viewBox="0 0 16 16"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -84,8 +85,6 @@ const ArrowRightIcon: React.FC<{ className?: string }> = ({ className }) => (
 const ChevronDownIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg
     className={className}
-    width="16"
-    height="16"
     viewBox="0 0 16 16"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -102,38 +101,38 @@ const ChevronDownIcon: React.FC<{ className?: string }> = ({ className }) => (
   </svg>
 );
 
-// ─── Sub-component: Tab button ────────────────────────────────────────────────
+// ─── Individual Tab Item ──────────────────────────────────────────────────────
 
-interface TabButtonProps {
+interface SingleTabProps {
   item: TabItem;
   isActive: boolean;
-  size: TabsSize;
-  variant: TabsVariant;
-  appearance: TabsAppearance;
+  type: TabType;
+  size: TabSize;
+  showBadge: boolean;
   showLeadingIcon: boolean;
   showTrailingIcon: boolean;
   onClick: (id: string) => void;
 }
 
-const TabButton: React.FC<TabButtonProps> = ({
+const SingleTab: React.FC<SingleTabProps> = ({
   item,
   isActive,
+  type,
   size,
-  variant,
-  appearance,
+  showBadge,
   showLeadingIcon,
   showTrailingIcon,
   onClick,
 }) => {
-  const LeadingIconComponent = item.leadingIcon ?? AccountIcon;
+  const isContained = type === 'contained' || type === 'dark-contained';
+  const isUnderline = !isContained;
 
   const rootClasses = [
-    styles.tab,
+    styles['bb-tab'],
+    styles[`type-${type}`],
     styles[`size-${size}`],
-    styles[`variant-${variant}`],
-    styles[`appearance-${appearance}`],
-    isActive ? styles.active : '',
-    item.disabled ? styles.disabled : '',
+    isActive ? styles['state-active'] : styles['state-default'],
+    item.disabled ? styles['state-disabled'] : '',
   ]
     .filter(Boolean)
     .join(' ');
@@ -148,79 +147,103 @@ const TabButton: React.FC<TabButtonProps> = ({
       className={rootClasses}
       onClick={() => !item.disabled && onClick(item.id)}
     >
-      {showLeadingIcon && (
-        <span className={styles['tab-icon']}>
-          <LeadingIconComponent />
-        </span>
+      {/* ── Underline tab: tabLabel row ── */}
+      {isUnderline && (
+        <>
+          <div className={styles['tab-label-row']}>
+            <div className={styles['tab-label-inner']}>
+              {showLeadingIcon && (
+                <AccountIcon className={styles['tab-icon']} />
+              )}
+              <span className={styles['tab-text']}>{item.label}</span>
+              {showTrailingIcon && (
+                item.dropdown
+                  ? <ChevronDownIcon className={styles['tab-trailing-icon']} />
+                  : <ArrowRightIcon className={styles['tab-trailing-icon']} />
+              )}
+            </div>
+            {showBadge && item.count !== undefined && (
+              <span className={styles['tab-badge']}>{item.count}</span>
+            )}
+          </div>
+          <div className={styles['tab-spacer']} />
+          <div className={styles['tab-line']} />
+        </>
       )}
 
-      <span className={styles['tab-label']}>{item.label}</span>
-
-      {showTrailingIcon && (
-        <span className={styles['tab-trailing-icon']}>
-          {item.dropdown ? <ChevronDownIcon /> : <ArrowRightIcon />}
-        </span>
-      )}
-
-      {item.count !== undefined && (
-        <span className={styles['tab-badge']}>{item.count}</span>
+      {/* ── Contained tab: single content row ── */}
+      {isContained && (
+        <div className={styles['tab-content-row']}>
+          {showLeadingIcon && (
+            <AccountIcon className={styles['tab-icon']} />
+          )}
+          <span className={styles['tab-text']}>{item.label}</span>
+          {showTrailingIcon && (
+            item.dropdown
+              ? <ChevronDownIcon className={styles['tab-trailing-icon']} />
+              : <ArrowRightIcon className={styles['tab-trailing-icon']} />
+          )}
+          {showBadge && item.count !== undefined && (
+            <span className={styles['tab-badge']}>{item.count}</span>
+          )}
+        </div>
       )}
     </button>
   );
 };
 
-// ─── Main Tabs component ──────────────────────────────────────────────────────
+// ─── Tabs Container ───────────────────────────────────────────────────────────
 
 /**
- * Tabs — A flexible tab navigation component supporting underline and pill
- * variants, three sizes, and multiple appearance modes (default, alt, dark).
+ * Tabs — A tab navigation strip built from individual tab items.
+ * Each item is a column of: label-row | spacer | underline indicator.
+ * For contained types, the item is a bordered box.
  *
  * Location: Foundation/BuildingBlocks/Tabs
  */
 export const Tabs: React.FC<TabsProps> = ({
-  tabs,
-  activeTab,
+  items,
+  activeId,
   onTabChange,
+  type = 'default',
   size = 'default',
-  variant = 'underline',
-  appearance = 'default',
+  showBadge = true,
   showLeadingIcon = true,
   showTrailingIcon = true,
   className = '',
 }) => {
   const [internalActive, setInternalActive] = useState<string>(
-    activeTab ?? tabs[0]?.id ?? ''
+    activeId ?? items[0]?.id ?? ''
   );
 
-  const currentActive = activeTab ?? internalActive;
+  const current = activeId ?? internalActive;
 
-  const handleTabChange = (id: string) => {
+  const handleChange = (id: string) => {
     setInternalActive(id);
     onTabChange?.(id);
   };
 
-  const listClasses = [
-    styles.tabs,
-    styles[`tabs-variant-${variant}`],
-    styles[`tabs-appearance-${appearance}`],
+  const stripClasses = [
+    styles['tabs-strip'],
+    styles[`strip-type-${type}`],
     className,
   ]
     .filter(Boolean)
     .join(' ');
 
   return (
-    <div role="tablist" aria-orientation="horizontal" className={listClasses}>
-      {tabs.map((tab) => (
-        <TabButton
-          key={tab.id}
-          item={tab}
-          isActive={currentActive === tab.id}
+    <div role="tablist" aria-orientation="horizontal" className={stripClasses}>
+      {items.map((item) => (
+        <SingleTab
+          key={item.id}
+          item={item}
+          isActive={current === item.id}
+          type={type}
           size={size}
-          variant={variant}
-          appearance={appearance}
+          showBadge={showBadge}
           showLeadingIcon={showLeadingIcon}
           showTrailingIcon={showTrailingIcon}
-          onClick={handleTabChange}
+          onClick={handleChange}
         />
       ))}
     </div>
