@@ -2458,6 +2458,45 @@
   --milestones-dot-outline-border: var(--global-color-neutral-gray-300);
 }
 
+/* ==========================================================================
+   COMPONENT LAYER: Breadcrumbs (Foundation/BuildingBlocks/Breadcrumbs)
+   ========================================================================== */
+:root {
+  /* Font */
+  --breadcrumbs-font-family:      var(--font-family-primary);
+  --breadcrumbs-letter-spacing:   var(--global-type-letter-spacing-primary-label);
+
+  /* Font sizes — size scale */
+  --breadcrumbs-font-size-sm:      var(--global-type-size-primary-label-xs);
+  --breadcrumbs-font-size-default: var(--global-type-size-primary-label-sm);
+  --breadcrumbs-font-size-lg:      var(--global-type-size-primary-label);
+
+  /* Line heights — size scale */
+  --breadcrumbs-line-height-sm:      var(--global-type-line-height-label-xs);
+  --breadcrumbs-line-height-default: var(--global-type-line-height-label-sm);
+  --breadcrumbs-line-height-lg:      var(--global-type-line-height-label);
+
+  /* Gap between items (label + separator) */
+  --breadcrumbs-gap-sm:      var(--global-spacing-sizing-4px);
+  --breadcrumbs-gap-default: var(--global-spacing-sizing-6px);
+  --breadcrumbs-gap-lg:      var(--global-spacing-sizing-8px);
+
+  /* Separator icon size — size scale */
+  --breadcrumbs-separator-size-sm:      var(--global-spacing-sizing-10px);
+  --breadcrumbs-separator-size-default: var(--global-spacing-sizing-12px);
+  --breadcrumbs-separator-size-lg:      var(--global-spacing-sizing-14px);
+
+  /* Colors */
+  --breadcrumbs-link-color:      var(--global-color-neutral-gray-500);
+  --breadcrumbs-link-hover:      var(--global-color-neutral-gray-700);
+  --breadcrumbs-separator-color: var(--global-color-neutral-gray-400);
+  --breadcrumbs-current-color:   var(--global-color-base-black);
+
+  /* Weights */
+  --breadcrumbs-link-weight:    var(--global-type-weight-default);
+  --breadcrumbs-current-weight: var(--global-type-weight-bold);
+}
+
 /* Font Loading */
 @font-face {
   font-family: 'F37 Ginger Pro';

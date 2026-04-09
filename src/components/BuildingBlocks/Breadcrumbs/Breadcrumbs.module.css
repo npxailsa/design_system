@@ -1,0 +1,103 @@
+/* ==========================================================================
+   Breadcrumbs — Foundation/BuildingBlocks/Breadcrumbs
+   Token-driven, three-size breadcrumb trail.
+   ========================================================================== */
+
+/* ── Root / Nav ── */
+.root {
+  box-sizing: border-box;
+  display: inline-flex;
+}
+
+/* ── Ordered list ── */
+.list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: var(--breadcrumbs-gap, var(--breadcrumbs-gap-default));
+}
+
+/* ── Individual item ── */
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--breadcrumbs-gap, var(--breadcrumbs-gap-default));
+}
+
+/* ── Separator icon ── */
+.separator {
+  flex-shrink: 0;
+  width: var(--breadcrumbs-separator-size, var(--breadcrumbs-separator-size-default));
+  height: var(--breadcrumbs-separator-size, var(--breadcrumbs-separator-size-default));
+  color: var(--breadcrumbs-separator-color);
+}
+
+/* ── Link crumb (anchor or button) ── */
+.link {
+  font-family: var(--breadcrumbs-font-family);
+  font-size: var(--breadcrumbs-font-size, var(--breadcrumbs-font-size-default));
+  font-weight: var(--breadcrumbs-link-weight);
+  line-height: var(--breadcrumbs-line-height, var(--breadcrumbs-line-height-default));
+  letter-spacing: var(--breadcrumbs-letter-spacing);
+  color: var(--breadcrumbs-link-color);
+  text-decoration: none;
+  transition: color var(--global-animation-duration-fast) var(--global-animation-easing-default);
+  white-space: nowrap;
+}
+
+.link:hover {
+  color: var(--breadcrumbs-link-hover);
+  text-decoration: underline;
+}
+
+/* Reset button styles for SPA-routing crumbs */
+.linkButton {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+/* ── Current (last) crumb ── */
+.current {
+  font-family: var(--breadcrumbs-font-family);
+  font-size: var(--breadcrumbs-font-size, var(--breadcrumbs-font-size-default));
+  font-weight: var(--breadcrumbs-current-weight);
+  line-height: var(--breadcrumbs-line-height, var(--breadcrumbs-line-height-default));
+  letter-spacing: var(--breadcrumbs-letter-spacing);
+  color: var(--breadcrumbs-current-color);
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   Size Variants
+   Each size sets CSS custom properties consumed by .list / .item / .link etc.
+   ========================================================================== */
+
+/* Small */
+.root--sm {
+  --breadcrumbs-font-size:      var(--breadcrumbs-font-size-sm);
+  --breadcrumbs-line-height:    var(--breadcrumbs-line-height-sm);
+  --breadcrumbs-gap:            var(--breadcrumbs-gap-sm);
+  --breadcrumbs-separator-size: var(--breadcrumbs-separator-size-sm);
+}
+
+/* Default */
+.root--default {
+  --breadcrumbs-font-size:      var(--breadcrumbs-font-size-default);
+  --breadcrumbs-line-height:    var(--breadcrumbs-line-height-default);
+  --breadcrumbs-gap:            var(--breadcrumbs-gap-default);
+  --breadcrumbs-separator-size: var(--breadcrumbs-separator-size-default);
+}
+
+/* Large */
+.root--lg {
+  --breadcrumbs-font-size:      var(--breadcrumbs-font-size-lg);
+  --breadcrumbs-line-height:    var(--breadcrumbs-line-height-lg);
+  --breadcrumbs-gap:            var(--breadcrumbs-gap-lg);
+  --breadcrumbs-separator-size: var(--breadcrumbs-separator-size-lg);
+}
