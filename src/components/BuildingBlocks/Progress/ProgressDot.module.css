@@ -1,0 +1,53 @@
+/* ==========================================================================
+   ProgressDot — Building Block for progress / step indicators
+   ========================================================================== */
+
+.dot {
+  display: inline-block;
+  flex-shrink: 0;
+  border-radius: var(--global-spacing-radius-full);
+  border-style: solid;
+  box-sizing: border-box;
+}
+
+/* ── Sizes ──────────────────────────────────────────────────────────────── */
+
+.dot--sm {
+  width: var(--progress-dot-size-sm);
+  height: var(--progress-dot-size-sm);
+  border-width: var(--progress-dot-border-sm);
+}
+
+.dot--default {
+  width: var(--progress-dot-size-default);
+  height: var(--progress-dot-size-default);
+  border-width: var(--progress-dot-border-default);
+}
+
+.dot--lg {
+  width: var(--progress-dot-size-lg);
+  height: var(--progress-dot-size-lg);
+  border-width: var(--progress-dot-border-lg);
+}
+
+/* ── States ─────────────────────────────────────────────────────────────── */
+
+.dot--inactive {
+  background-color: var(--progress-dot-inactive-bg);
+  border-color: var(--progress-dot-inactive-border);
+}
+
+.dot--active {
+  background-color: var(--progress-dot-active-bg);
+  border-color: var(--progress-dot-active-border);
+}
+
+.dot--error {
+  background-color: var(--progress-dot-error-bg);
+  border-color: var(--progress-dot-error-border);
+}
+
+.dot--pending {
+  background-color: var(--progress-dot-pending-bg);
+  border-color: var(--progress-dot-pending-border);
+}

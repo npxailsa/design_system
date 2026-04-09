@@ -6,6 +6,8 @@ export { DividerWithLabel } from './components/DividerWithLabel/DividerWithLabel
 export type { DividerWithLabelProps, DividerWithLabelPosition, DividerWithLabelSize } from './components/DividerWithLabel/DividerWithLabel';
 export { ProgressBar } from './components/Loaders/ProgressBar/ProgressBar';
 export type { ProgressBarProps, ProgressBarSize } from './components/Loaders/ProgressBar/ProgressBar';
+export { ProgressDot } from './components/BuildingBlocks/Progress/ProgressDot';
+export type { ProgressDotProps, ProgressDotState, ProgressDotSize } from './components/BuildingBlocks/Progress/ProgressDot';
 export { default as AccordionAlt } from './components/AccordionAlt/AccordionAlt';
 export { default as Alert } from './components/Alert/Alert';
 export { default as AutoSaveTagButton } from './components/AutoSaveTagButton/AutoSaveTagButton';

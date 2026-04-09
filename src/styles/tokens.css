@@ -2399,6 +2399,37 @@
   --btn-group-label-alt-color-hover: var(--global-color-base-black);
 }
 
+/* ==========================================================================
+   COMPONENT LAYER: ProgressDot (Building Block — Foundation/BuildingBlocks/Progress)
+   ========================================================================== */
+:root {
+  /* Dot sizes */
+  --progress-dot-size-sm:      var(--global-spacing-sizing-8px);
+  --progress-dot-size-default: var(--global-spacing-sizing-12px);
+  --progress-dot-size-lg:      var(--global-spacing-sizing-20px);
+
+  /* Border widths per size */
+  --progress-dot-border-sm:      var(--global-spacing-stroke-1px);
+  --progress-dot-border-default: var(--global-spacing-stroke-2px);
+  --progress-dot-border-lg:      var(--global-spacing-stroke-2px);
+
+  /* State: inactive (default — gray filled) */
+  --progress-dot-inactive-bg:     var(--global-color-neutral-gray-400);
+  --progress-dot-inactive-border: transparent;
+
+  /* State: active (sky-blue filled) */
+  --progress-dot-active-bg:     var(--global-color-primary-sky-blue);
+  --progress-dot-active-border: transparent;
+
+  /* State: error (red outline only) */
+  --progress-dot-error-bg:     var(--global-color-base-white);
+  --progress-dot-error-border: var(--global-color-status-red);
+
+  /* State: pending (very light gray outline) */
+  --progress-dot-pending-bg:     var(--global-color-neutral-gray-100);
+  --progress-dot-pending-border: var(--global-color-neutral-gray-300);
+}
+
 /* Font Loading */
 @font-face {
   font-family: 'F37 Ginger Pro';
