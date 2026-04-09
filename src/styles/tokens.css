@@ -2497,6 +2497,80 @@
   --breadcrumbs-current-weight: var(--global-type-weight-bold);
 }
 
+/* ==========================================================================
+   COMPONENT LAYER: ElementHeader (Atoms / Layout / ElementHeader)
+   ========================================================================== */
+:root {
+  /* ElementHeader — stack gap between sections */
+  --element-header-gap-sm:      var(--global-spacing-sizing-6px);
+  --element-header-gap-default: var(--global-spacing-sizing-8px);
+  --element-header-gap-lg:      var(--global-spacing-sizing-12px);
+
+  /* ElementHeader — breadcrumb typography */
+  --element-header-breadcrumb-font-size-sm:       var(--global-type-size-primary-label-xs);
+  --element-header-breadcrumb-font-size-default:  var(--global-type-size-primary-label-sm);
+  --element-header-breadcrumb-font-size-lg:       var(--global-type-size-primary-label);
+
+  --element-header-breadcrumb-line-height-sm:      var(--global-type-line-height-label-xs);
+  --element-header-breadcrumb-line-height-default: var(--global-type-line-height-label-sm);
+  --element-header-breadcrumb-line-height-lg:      var(--global-type-line-height-label);
+
+  /* ElementHeader — breadcrumb separator sizing */
+  --element-header-breadcrumb-sep-size-sm:      var(--global-spacing-sizing-10px);
+  --element-header-breadcrumb-sep-size-default: var(--global-spacing-sizing-12px);
+  --element-header-breadcrumb-sep-size-lg:      var(--global-spacing-sizing-14px);
+
+  /* ElementHeader — breadcrumb item gap */
+  --element-header-breadcrumb-gap-sm:      var(--global-spacing-sizing-4px);
+  --element-header-breadcrumb-gap-default: var(--global-spacing-sizing-6px);
+  --element-header-breadcrumb-gap-lg:      var(--global-spacing-sizing-8px);
+
+  /* ElementHeader — back button typography */
+  --element-header-back-font-size-sm:      var(--global-type-size-primary-label-xs);
+  --element-header-back-font-size-default: var(--global-type-size-primary-label-sm);
+  --element-header-back-font-size-lg:      var(--global-type-size-primary-label);
+
+  --element-header-back-line-height-sm:      var(--global-type-line-height-label-xs);
+  --element-header-back-line-height-default: var(--global-type-line-height-label-sm);
+  --element-header-back-line-height-lg:      var(--global-type-line-height-label);
+
+  /* ElementHeader — back button icon sizing */
+  --element-header-back-icon-size-sm:      var(--global-spacing-sizing-12px);
+  --element-header-back-icon-size-default: var(--global-spacing-sizing-14px);
+  --element-header-back-icon-size-lg:      var(--global-spacing-sizing-16px);
+
+  /* ElementHeader — back button padding */
+  --element-header-back-padding-x-sm:      var(--global-spacing-sizing-10px);
+  --element-header-back-padding-x-default: var(--global-spacing-sizing-12px);
+  --element-header-back-padding-x-lg:      var(--global-spacing-sizing-16px);
+  --element-header-back-padding-y:         var(--global-spacing-sizing-4px);
+
+  /* ElementHeader — back button internal gap */
+  --element-header-back-gap-sm:      var(--global-spacing-sizing-4px);
+  --element-header-back-gap-default: var(--global-spacing-sizing-6px);
+  --element-header-back-gap-lg:      var(--global-spacing-sizing-8px);
+
+  /* ElementHeader — back button colours */
+  --element-header-back-bg:            var(--global-color-primary-blue-blue-50);
+  --element-header-back-border:        var(--global-color-primary-blue-blue-300);
+  --element-header-back-color:         var(--global-color-secondary-blue-gray);
+  --element-header-back-bg-hover:      var(--global-color-primary-blue-blue-100);
+  --element-header-back-shadow-hover:  var(--global-color-primary-blue-blue-400);
+  --element-header-back-color-hover:   var(--global-color-base-black);
+
+  /* ElementHeader — title typography */
+  --element-header-title-font-size-sm:      var(--global-type-size-primary-label-lg);
+  --element-header-title-font-size-default: var(--global-type-size-primary-heading-5);
+  --element-header-title-font-size-lg:      var(--global-type-size-primary-heading-4);
+
+  --element-header-title-line-height-sm:      var(--global-type-line-height-label-lg);
+  --element-header-title-line-height-default: var(--global-type-line-height-heading-5);
+  --element-header-title-line-height-lg:      var(--global-type-line-height-heading-4);
+
+  /* ElementHeader — title colour */
+  --element-header-title-color: var(--global-color-secondary-navy);
+}
+
 /* Font Loading */
 @font-face {
   font-family: 'F37 Ginger Pro';

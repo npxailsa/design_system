@@ -1,0 +1,201 @@
+/* ==========================================================================
+   ElementHeader — Atoms / Layout / ElementHeader
+   ========================================================================== */
+
+.root {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--element-header-gap, var(--global-spacing-sizing-8px));
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   Size variants
+   -------------------------------------------------------------------------- */
+
+.root--sm {
+  --element-header-gap:                   var(--global-spacing-sizing-6px);
+  --element-header-breadcrumb-font-size:  var(--global-type-size-primary-label-xs);
+  --element-header-breadcrumb-line-height: var(--global-type-line-height-label-xs);
+  --element-header-breadcrumb-sep-size:   var(--global-spacing-sizing-10px);
+  --element-header-breadcrumb-gap:        var(--global-spacing-sizing-4px);
+  --element-header-back-font-size:        var(--global-type-size-primary-label-xs);
+  --element-header-back-line-height:      var(--global-type-line-height-label-xs);
+  --element-header-back-icon-size:        var(--global-spacing-sizing-12px);
+  --element-header-back-padding-x:        var(--global-spacing-sizing-10px);
+  --element-header-back-padding-y:        var(--global-spacing-sizing-4px);
+  --element-header-back-gap:              var(--global-spacing-sizing-4px);
+  --element-header-title-font-size:       var(--global-type-size-primary-label-lg);
+  --element-header-title-line-height:     var(--global-type-line-height-label-lg);
+}
+
+.root--default {
+  --element-header-gap:                   var(--global-spacing-sizing-8px);
+  --element-header-breadcrumb-font-size:  var(--global-type-size-primary-label-sm);
+  --element-header-breadcrumb-line-height: var(--global-type-line-height-label-sm);
+  --element-header-breadcrumb-sep-size:   var(--global-spacing-sizing-12px);
+  --element-header-breadcrumb-gap:        var(--global-spacing-sizing-6px);
+  --element-header-back-font-size:        var(--global-type-size-primary-label-sm);
+  --element-header-back-line-height:      var(--global-type-line-height-label-sm);
+  --element-header-back-icon-size:        var(--global-spacing-sizing-14px);
+  --element-header-back-padding-x:        var(--global-spacing-sizing-12px);
+  --element-header-back-padding-y:        var(--global-spacing-sizing-4px);
+  --element-header-back-gap:              var(--global-spacing-sizing-6px);
+  --element-header-title-font-size:       var(--global-type-size-primary-heading-5);
+  --element-header-title-line-height:     var(--global-type-line-height-heading-5);
+}
+
+.root--lg {
+  --element-header-gap:                   var(--global-spacing-sizing-12px);
+  --element-header-breadcrumb-font-size:  var(--global-type-size-primary-label);
+  --element-header-breadcrumb-line-height: var(--global-type-line-height-label);
+  --element-header-breadcrumb-sep-size:   var(--global-spacing-sizing-14px);
+  --element-header-breadcrumb-gap:        var(--global-spacing-sizing-8px);
+  --element-header-back-font-size:        var(--global-type-size-primary-label);
+  --element-header-back-line-height:      var(--global-type-line-height-label);
+  --element-header-back-icon-size:        var(--global-spacing-sizing-16px);
+  --element-header-back-padding-x:        var(--global-spacing-sizing-16px);
+  --element-header-back-padding-y:        var(--global-spacing-sizing-4px);
+  --element-header-back-gap:              var(--global-spacing-sizing-8px);
+  --element-header-title-font-size:       var(--global-type-size-primary-heading-4);
+  --element-header-title-line-height:     var(--global-type-line-height-heading-4);
+}
+
+/* --------------------------------------------------------------------------
+   Breadcrumb trail
+   -------------------------------------------------------------------------- */
+
+.breadcrumbs {
+  box-sizing: border-box;
+}
+
+.breadcrumbList {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: var(--element-header-breadcrumb-gap, var(--global-spacing-sizing-6px));
+}
+
+.breadcrumbItem {
+  display: flex;
+  align-items: center;
+  gap: var(--element-header-breadcrumb-gap, var(--global-spacing-sizing-6px));
+}
+
+.breadcrumbSeparator {
+  flex-shrink: 0;
+  width: var(--element-header-breadcrumb-sep-size, var(--global-spacing-sizing-12px));
+  height: var(--element-header-breadcrumb-sep-size, var(--global-spacing-sizing-12px));
+  color: var(--global-color-neutral-gray-400);
+}
+
+.breadcrumbLink {
+  font-family: var(--font-family-primary);
+  font-size: var(--element-header-breadcrumb-font-size, var(--global-type-size-primary-label-sm));
+  font-weight: var(--global-type-weight-default);
+  line-height: var(--element-header-breadcrumb-line-height, var(--global-type-line-height-label-sm));
+  letter-spacing: var(--global-type-letter-spacing-primary-label-sm);
+  color: var(--global-color-neutral-gray-500);
+  text-decoration: none;
+  transition: color var(--global-animation-duration-fast) var(--global-animation-easing-default);
+}
+
+.breadcrumbLink:hover {
+  color: var(--global-color-neutral-gray-700);
+}
+
+/* Unstyled button-as-link */
+.breadcrumbLinkButton {
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.breadcrumbCurrent {
+  font-family: var(--font-family-primary);
+  font-size: var(--element-header-breadcrumb-font-size, var(--global-type-size-primary-label-sm));
+  font-weight: var(--global-type-weight-bold);
+  line-height: var(--element-header-breadcrumb-line-height, var(--global-type-line-height-label-sm));
+  letter-spacing: var(--global-type-letter-spacing-primary-label-sm);
+  color: var(--global-color-base-black);
+}
+
+/* --------------------------------------------------------------------------
+   Back button
+   -------------------------------------------------------------------------- */
+
+.backButton {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--element-header-back-gap, var(--global-spacing-sizing-6px));
+  padding:
+    var(--element-header-back-padding-y, var(--global-spacing-sizing-4px))
+    var(--element-header-back-padding-x, var(--global-spacing-sizing-12px));
+  border-radius: var(--global-spacing-radius-4px);
+  border: var(--global-spacing-stroke-1px) solid var(--global-color-primary-blue-blue-300);
+  background: var(--global-color-primary-blue-blue-50);
+  color: var(--global-color-secondary-blue-gray);
+  font-family: var(--font-family-primary);
+  font-size: var(--element-header-back-font-size, var(--global-type-size-primary-label-sm));
+  font-weight: var(--global-type-weight-light);
+  line-height: var(--element-header-back-line-height, var(--global-type-line-height-label-sm));
+  letter-spacing: var(--global-type-letter-spacing-primary-label);
+  cursor: pointer;
+  appearance: none;
+  text-decoration: none;
+  transition:
+    background var(--global-animation-duration-fast) var(--global-animation-easing-default),
+    box-shadow var(--global-animation-duration-fast) var(--global-animation-easing-default),
+    color var(--global-animation-duration-fast) var(--global-animation-easing-default);
+}
+
+.backButton:hover {
+  background: var(--global-color-primary-blue-blue-100);
+  box-shadow: 2px 2px 0 0 var(--global-color-primary-blue-blue-400);
+  color: var(--global-color-base-black);
+}
+
+.backButton:active {
+  background: var(--global-color-primary-blue-blue-100);
+  box-shadow: 2px 2px 0 0 var(--global-color-primary-blue-blue-400);
+  color: var(--global-color-base-black);
+}
+
+.backButton:focus-visible {
+  outline: var(--global-spacing-stroke-2px) solid var(--global-color-primary-blue-blue-400);
+  outline-offset: var(--global-spacing-sizing-2px);
+}
+
+.backButtonIcon {
+  flex-shrink: 0;
+  width: var(--element-header-back-icon-size, var(--global-spacing-sizing-14px));
+  height: var(--element-header-back-icon-size, var(--global-spacing-sizing-14px));
+}
+
+.backButtonLabel {
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   Title
+   -------------------------------------------------------------------------- */
+
+.title {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family-primary);
+  font-size: var(--element-header-title-font-size, var(--global-type-size-primary-heading-5));
+  font-weight: var(--global-type-weight-default);
+  line-height: var(--element-header-title-line-height, var(--global-type-line-height-heading-5));
+  letter-spacing: var(--global-type-letter-spacing-primary-heading-5);
+  color: var(--global-color-secondary-navy);
+}
