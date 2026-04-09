@@ -1,0 +1,287 @@
+/* =============================================================================
+   Tabs — Foundation / BuildingBlocks
+   Tokens: src/styles/tokens.css  →  --tab-*
+   ============================================================================= */
+
+/* ── Tab list container ── */
+.tabs {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: var(--tab-gap);
+  flex-wrap: wrap;
+}
+
+/* Underline variant adds a base line under all tabs */
+.tabs-variant-underline {
+  border-bottom: var(--tab-underline-track-width) solid var(--tab-underline-track-color);
+  gap: var(--global-spacing-sizing-0px);
+}
+
+/* Pill variant: no track underline */
+.tabs-variant-pill {
+  border-bottom: none;
+  gap: var(--tab-gap);
+}
+
+/* ── Base Tab button ── */
+.tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--tab-inner-gap);
+  padding: var(--tab-padding-v) var(--tab-padding-h);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap;
+  font-family: var(--tab-font-family);
+  font-weight: var(--tab-font-weight);
+  letter-spacing: var(--tab-letter-spacing);
+  color: var(--tab-color);
+  border-radius: var(--global-spacing-radius-0px);
+  transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
+  text-decoration: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.tab:focus-visible {
+  outline: 2px solid var(--tab-focus-ring-color);
+  outline-offset: 2px;
+}
+
+/* ── Size variants ── */
+.size-small {
+  min-height: var(--tab-height-sm);
+  font-size: var(--tab-font-size-sm);
+  line-height: var(--tab-line-height-sm);
+  padding: var(--tab-padding-v-sm) var(--tab-padding-h-sm);
+  gap: var(--tab-inner-gap-sm);
+}
+
+.size-default {
+  min-height: var(--tab-height-default);
+  font-size: var(--tab-font-size-default);
+  line-height: var(--tab-line-height-default);
+  padding: var(--tab-padding-v-default) var(--tab-padding-h-default);
+  gap: var(--tab-inner-gap-default);
+}
+
+.size-large {
+  min-height: var(--tab-height-lg);
+  font-size: var(--tab-font-size-lg);
+  line-height: var(--tab-line-height-lg);
+  padding: var(--tab-padding-v-lg) var(--tab-padding-h-lg);
+  gap: var(--tab-inner-gap-lg);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   UNDERLINE VARIANT
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.variant-underline {
+  border-radius: var(--global-spacing-radius-0px);
+  background: transparent;
+  border: none;
+  color: var(--tab-underline-color-default);
+  border-bottom: var(--tab-underline-indicator-width) solid transparent;
+  margin-bottom: calc(-1 * var(--tab-underline-track-width));
+}
+
+.variant-underline:hover:not(.disabled) {
+  color: var(--tab-underline-color-hover);
+  border-bottom-color: var(--tab-underline-indicator-color-hover);
+  background: transparent;
+}
+
+.variant-underline.active {
+  color: var(--tab-underline-color-active);
+  border-bottom-color: var(--tab-underline-indicator-color-active);
+  font-weight: var(--tab-font-weight-active);
+}
+
+.variant-underline.disabled {
+  color: var(--tab-underline-color-disabled);
+  cursor: not-allowed;
+  opacity: var(--tab-disabled-opacity);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PILL VARIANT — APPEARANCE: DEFAULT (outlined / alt blue)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.variant-pill.appearance-default {
+  border-radius: var(--tab-pill-radius);
+  border: var(--tab-pill-border-width) solid var(--tab-pill-default-border);
+  background: var(--tab-pill-default-bg);
+  color: var(--tab-pill-default-color);
+}
+
+.variant-pill.appearance-default:hover:not(.disabled) {
+  background: var(--tab-pill-default-bg-hover);
+  border-color: var(--tab-pill-default-border-hover);
+  color: var(--tab-pill-default-color-hover);
+  box-shadow: var(--tab-pill-default-shadow-hover);
+}
+
+.variant-pill.appearance-default.active {
+  background: var(--tab-pill-default-bg-active);
+  border-color: var(--tab-pill-default-border-active);
+  color: var(--tab-pill-default-color-active);
+  box-shadow: var(--tab-pill-default-shadow-active);
+}
+
+.variant-pill.appearance-default.disabled {
+  cursor: not-allowed;
+  opacity: var(--tab-disabled-opacity);
+  background: var(--tab-pill-default-bg-disabled);
+  border-color: var(--tab-pill-default-border-disabled);
+  color: var(--tab-pill-default-color-disabled);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PILL VARIANT — APPEARANCE: ALT (light bordered blue-tint)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.variant-pill.appearance-alt {
+  border-radius: var(--tab-pill-radius);
+  border: var(--tab-pill-border-width) solid var(--tab-pill-alt-border);
+  background: var(--tab-pill-alt-bg);
+  color: var(--tab-pill-alt-color);
+}
+
+.variant-pill.appearance-alt:hover:not(.disabled) {
+  background: var(--tab-pill-alt-bg-hover);
+  border-color: var(--tab-pill-alt-border-hover);
+  color: var(--tab-pill-alt-color-hover);
+  box-shadow: var(--tab-pill-alt-shadow-hover);
+}
+
+.variant-pill.appearance-alt.active {
+  background: var(--tab-pill-alt-bg-active);
+  border-color: var(--tab-pill-alt-border-active);
+  color: var(--tab-pill-alt-color-active);
+  box-shadow: var(--tab-pill-alt-shadow-active);
+}
+
+.variant-pill.appearance-alt.disabled {
+  cursor: not-allowed;
+  opacity: var(--tab-disabled-opacity);
+  background: var(--tab-pill-alt-bg-disabled);
+  border-color: var(--tab-pill-alt-border-disabled);
+  color: var(--tab-pill-alt-color-disabled);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PILL VARIANT — APPEARANCE: DARK (navy/charcoal filled)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.variant-pill.appearance-dark {
+  border-radius: var(--tab-pill-radius);
+  border: var(--tab-pill-border-width) solid var(--tab-pill-dark-border);
+  background: var(--tab-pill-dark-bg);
+  color: var(--tab-pill-dark-color);
+}
+
+.variant-pill.appearance-dark:hover:not(.disabled) {
+  background: var(--tab-pill-dark-bg-hover);
+  border-color: var(--tab-pill-dark-border-hover);
+  color: var(--tab-pill-dark-color-hover);
+  box-shadow: var(--tab-pill-dark-shadow-hover);
+}
+
+.variant-pill.appearance-dark.active {
+  background: var(--tab-pill-dark-bg-active);
+  border-color: var(--tab-pill-dark-border-active);
+  color: var(--tab-pill-dark-color-active);
+}
+
+.variant-pill.appearance-dark.disabled {
+  cursor: not-allowed;
+  opacity: var(--tab-disabled-opacity);
+  background: var(--tab-pill-dark-bg-disabled);
+  border-color: var(--tab-pill-dark-border-disabled);
+  color: var(--tab-pill-dark-color-disabled);
+}
+
+/* ── Icon sizing by tab size ── */
+.tab-icon,
+.tab-trailing-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.size-small .tab-icon svg,
+.size-small .tab-trailing-icon svg {
+  width: var(--tab-icon-size-sm);
+  height: var(--tab-icon-size-sm);
+}
+
+.size-default .tab-icon svg,
+.size-default .tab-trailing-icon svg {
+  width: var(--tab-icon-size-default);
+  height: var(--tab-icon-size-default);
+}
+
+.size-large .tab-icon svg,
+.size-large .tab-trailing-icon svg {
+  width: var(--tab-icon-size-lg);
+  height: var(--tab-icon-size-lg);
+}
+
+/* ── Label ── */
+.tab-label {
+  flex: 0 1 auto;
+}
+
+/* ── Badge ── */
+.tab-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--global-spacing-radius-full);
+  background: var(--tab-badge-bg);
+  color: var(--tab-badge-color);
+  font-family: var(--tab-font-family);
+  font-size: var(--tab-badge-font-size);
+  font-weight: var(--tab-badge-font-weight);
+  line-height: 1;
+  padding: var(--tab-badge-padding-v) var(--tab-badge-padding-h);
+  min-width: var(--tab-badge-min-size);
+  height: var(--tab-badge-min-size);
+}
+
+/* Badge colour adapts per variant/appearance */
+.variant-underline .tab-badge {
+  background: var(--tab-badge-underline-bg);
+  color: var(--tab-badge-underline-color);
+}
+
+.variant-pill.appearance-default .tab-badge {
+  background: var(--tab-badge-pill-default-bg);
+  color: var(--tab-badge-pill-default-color);
+}
+
+.variant-pill.appearance-default.active .tab-badge {
+  background: var(--tab-badge-pill-active-bg);
+  color: var(--tab-badge-pill-active-color);
+}
+
+.variant-pill.appearance-alt .tab-badge {
+  background: var(--tab-badge-pill-alt-bg);
+  color: var(--tab-badge-pill-alt-color);
+}
+
+.variant-pill.appearance-alt.active .tab-badge {
+  background: var(--tab-badge-pill-active-bg);
+  color: var(--tab-badge-pill-active-color);
+}
+
+.variant-pill.appearance-dark .tab-badge {
+  background: var(--tab-badge-pill-dark-bg);
+  color: var(--tab-badge-pill-dark-color);
+}
