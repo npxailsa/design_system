@@ -8,10 +8,10 @@
    Active dot bg:    --milestones-dot-active-bg   → --global-color-primary-sky-blue (#0ba7ea)
    Label:            --milestones-label-color      → --global-color-neutral-gray-700
 
-   Size scale (dot diameter / gap):
-     sm      → 8px  / 4px
-     default → 12px / 6px
-     lg      → 20px / 8px
+   Size scale (dot diameter / inter-dot gap / track-label gap):
+     sm      → 8px  / 4px  / 4px
+     default → 12px / 6px  / 8px
+     lg      → 20px / 8px  / 16px
 
    All values reference global design tokens only.
    ========================================================================== */
@@ -22,7 +22,8 @@
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  gap: var(--global-spacing-sizing-8px);
+  /* Track-to-label gap is set per-size below (4px–16px range) */
+  gap: var(--milestones-label-gap, var(--global-spacing-sizing-8px));
   width: 100%;
 }
 
@@ -73,6 +74,10 @@
 
 /* ── Small (sm) ─────────────────────────────────────────────────────────── */
 
+.root--sm {
+  --milestones-label-gap: var(--milestones-label-gap-sm);
+}
+
 .root--sm .track {
   gap: var(--milestones-gap-sm);
 }
@@ -89,6 +94,10 @@
 
 /* ── Default ────────────────────────────────────────────────────────────── */
 
+.root--default {
+  --milestones-label-gap: var(--milestones-label-gap-default);
+}
+
 .root--default .track {
   gap: var(--milestones-gap-default);
 }
@@ -104,6 +113,10 @@
 }
 
 /* ── Large (lg) ─────────────────────────────────────────────────────────── */
+
+.root--lg {
+  --milestones-label-gap: var(--milestones-label-gap-lg);
+}
 
 .root--lg .track {
   gap: var(--milestones-gap-lg);

@@ -2434,10 +2434,15 @@
    COMPONENT LAYER: Milestones (Atoms/Loaders/Milestones)
    ========================================================================== */
 :root {
-  /* Dot gap between milestone dots — size scale */
+  /* Inter-dot gap (between dots in the track) — size scale */
   --milestones-gap-sm:      var(--global-spacing-sizing-4px);
   --milestones-gap-default: var(--global-spacing-sizing-6px);
   --milestones-gap-lg:      var(--global-spacing-sizing-8px);
+
+  /* Track-to-label gap (between dot track and percentage text) — min 4px / max 16px */
+  --milestones-label-gap-sm:      var(--global-spacing-sizing-4px);
+  --milestones-label-gap-default: var(--global-spacing-sizing-8px);
+  --milestones-label-gap-lg:      var(--global-spacing-sizing-16px);
 
   /* Label */
   --milestones-label-color: var(--global-color-neutral-gray-700);
