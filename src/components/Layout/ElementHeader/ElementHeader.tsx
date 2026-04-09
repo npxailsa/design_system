@@ -1,4 +1,6 @@
 import React from 'react';
+import { GhostButton } from '../../GhostButton/GhostButton';
+import type { GhostButtonSize } from '../../GhostButton/GhostButton';
 import styles from './ElementHeader.module.css';
 
 export type ElementHeaderSize = 'sm' | 'default' | 'lg';
@@ -31,6 +33,13 @@ export interface ElementHeaderProps {
   breadcrumbAriaLabel?: string;
 }
 
+/** Maps ElementHeader size to GhostButton size */
+const toGhostSize: Record<ElementHeaderSize, GhostButtonSize> = {
+  sm: 'small',
+  default: 'default',
+  lg: 'large',
+};
+
 /** Chevron-right separator used in the breadcrumb trail */
 const ChevronRight: React.FC<{ className?: string }> = ({ className }) => (
   <svg
@@ -51,7 +60,7 @@ const ChevronRight: React.FC<{ className?: string }> = ({ className }) => (
   </svg>
 );
 
-/** Person / account icon used in the Back button */
+/** Person / account icon — leading icon for the Back button */
 const AccountIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg
     className={className}
@@ -68,7 +77,7 @@ const AccountIcon: React.FC<{ className?: string }> = ({ className }) => (
   </svg>
 );
 
-/** Arrow-right icon used as the trailing icon on the Back button */
+/** Arrow-right icon — trailing icon for the Back button */
 const ArrowRightIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg
     className={className}
@@ -89,7 +98,8 @@ const ArrowRightIcon: React.FC<{ className?: string }> = ({ className }) => (
  * ElementHeader — Atoms / Layout / ElementHeader
  *
  * A structured page-header layout block that combines a breadcrumb trail,
- * a contextual Back button, and a prominent element/page title.
+ * a contextual Back button (using GhostButton link variant), and a prominent
+ * element/page title.
  *
  * Three size variants are available: `sm`, `default`, and `lg`.
  */
@@ -157,17 +167,18 @@ export const ElementHeader: React.FC<ElementHeaderProps> = ({
         </nav>
       )}
 
-      {/* Back button */}
+      {/* Back button — GhostButton link variant */}
       {showBack && (
-        <button
-          type="button"
-          className={styles.backButton}
+        <GhostButton
+          variant="link"
+          label={backLabel}
+          size={toGhostSize[size]}
+          leadingIcon={AccountIcon}
+          showLeadingIcon
+          trailingIcon={ArrowRightIcon}
+          showTrailingIcon
           onClick={onBack}
-        >
-          <AccountIcon className={styles.backButtonIcon} />
-          <span className={styles.backButtonLabel}>{backLabel}</span>
-          <ArrowRightIcon className={styles.backButtonIcon} />
-        </button>
+        />
       )}
 
       {/* Page / element title */}
