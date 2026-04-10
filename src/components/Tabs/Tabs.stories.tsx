@@ -43,9 +43,6 @@ const meta: Meta<typeof Tabs> = {
   title: 'Atoms/Tabs',
   component: Tabs,
   parameters: {
-    docs: {
-      page: () => <TabsDocs />,
-    },
     layout: 'padded',
   },
   argTypes: {
@@ -73,8 +70,11 @@ type Story = StoryObj<typeof Tabs>;
 // ─── 1. Documentation ─────────────────────────────────────────────────────────
 export const Documentation: Story = {
   name: 'Documentation',
+  render: () => <TabsDocs />,
   parameters: {
-    docs: { page: () => <TabsDocs /> },
+    controls: { disable: true },
+    actions: { disable: true },
+    layout: 'fullscreen',
   },
 };
 
