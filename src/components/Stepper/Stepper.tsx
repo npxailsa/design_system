@@ -59,21 +59,30 @@ export interface StepperProps {
 /**
  * Determine the connector line state based on adjacent step states.
  *
- * Rules (matching Figma design):
- * - Left complete + right complete → complete (blue)
- * - Left complete + right active  → complete (already passed this segment)
- * - Left complete + right default → to-do (dark-gray, upcoming)
- * - Otherwise                     → disabled (light-gray)
+ * Three line states from the Figma design:
+ *
+ *  complete  (blue)       — the segment between two completed steps, or between a
+ *                           complete step and the current active step.
+ *  to-do     (dark gray)  — the segment is on the upcoming / not-yet-reached path.
+ *                           Used between default steps, or between the active step
+ *                           and any default steps ahead.
+ *  disabled  (light gray) — one or both adjacent steps are explicitly disabled.
  */
 function resolveLineState(
   leftState: StepperStepState,
   rightState: StepperStepState,
 ): StepperLineState {
-  if (leftState === 'complete') {
-    if (rightState === 'complete' || rightState === 'active') return 'complete';
-    if (rightState === 'default') return 'to-do';
+  // Either side is disabled → disabled line
+  if (leftState === 'disabled' || rightState === 'disabled') return 'disabled';
+
+  // Completed segment
+  if (leftState === 'complete' && (rightState === 'complete' || rightState === 'active')) {
+    return 'complete';
   }
-  return 'disabled';
+
+  // All remaining combinations (default↔default, active↔default, complete↔default)
+  // are part of the upcoming/to-do path.
+  return 'to-do';
 }
 
 /* ── Component ───────────────────────────────────────────────────────────── */

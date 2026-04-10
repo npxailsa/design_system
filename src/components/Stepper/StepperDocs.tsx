@@ -113,10 +113,10 @@ const StepperDocs: React.FC = () => (
       </DocsTemplate.BodyText>
       <DocsTemplate.BulletList
         items={[
-          'default — outlined circle with light border; not yet reached',
-          'active — outlined circle with navy border and text; current step',
-          'complete — filled navy circle with white checkmark; step done',
-          'disabled — outlined circle with faded border; step not available',
+          'default — outlined circle with light border; not yet reached. Adjacent connectors show as to-do (dark gray).',
+          'active — outlined circle with navy border and text; current step. Connectors behind it are complete (blue), connectors ahead are to-do (dark gray).',
+          'complete — filled navy circle with white checkmark; step done. Connectors between complete steps are complete (blue).',
+          'disabled — outlined circle with faded border; step not available. Adjacent connectors show as disabled (light gray).',
         ]}
       />
 
