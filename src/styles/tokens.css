@@ -845,13 +845,13 @@
   --stepper-connector-thickness-default: var(--global-spacing-stroke-2px);
   --stepper-connector-thickness-large:   var(--global-spacing-stroke-4px);
 
-  /* Colors */
+  /* Colors — mapped to Figma design tokens */
+  /* default  = neutral-gray-300 (#d2d5da): pending/upcoming connector line  */
+  /* complete = secondary-navy   (#3a3282): completed flow segment            */
+  /* disabled = neutral-gray-200 (#e5e7eb): faded/unavailable connector line */
   --stepper-connector-color-default:  var(--global-color-neutral-gray-300);
   --stepper-connector-color-complete: var(--global-color-secondary-navy);
   --stepper-connector-color-disabled: var(--global-color-neutral-gray-200);
-
-  /* Opacity */
-  --stepper-connector-opacity-disabled: 0.4;
 
   /* Dashes — gap between dashes (for dashed type) */
   --stepper-connector-dash-gap: var(--global-spacing-sizing-4px);

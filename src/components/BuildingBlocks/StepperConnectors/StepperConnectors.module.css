@@ -120,5 +120,4 @@
 
 .connector--state-disabled {
   border-color: var(--stepper-connector-color-disabled);
-  opacity: var(--stepper-connector-opacity-disabled);
 }

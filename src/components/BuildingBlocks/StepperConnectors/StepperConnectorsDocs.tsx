@@ -25,7 +25,7 @@ export const StepperConnectorsDocs: React.FC = () => (
   <DocsTemplate>
     <DocsTemplate.Header
       title="StepperConnectors"
-      subtitle="A thin line segment that visually connects two adjacent step indicators in a stepper. Supports solid, dashed, and dotted line styles across default, active, complete, and disabled states."
+      subtitle="A thin line segment that visually connects two adjacent step indicators in a stepper. Supports solid, dashed, and dotted line styles across default, complete, and disabled states."
     />
 
     <DocsTemplate.Section title="Overview">
@@ -211,9 +211,9 @@ export const StepperConnectorsDocs: React.FC = () => (
           { name: '--stepper-connector-thickness-small', description: 'Line thickness — small (1px)' },
           { name: '--stepper-connector-thickness-default', description: 'Line thickness — default (2px)' },
           { name: '--stepper-connector-thickness-large', description: 'Line thickness — large (4px)' },
-          { name: '--stepper-connector-color-default', description: 'Line colour for default/inactive state (--global-color-neutral-gray-300)' },
-          { name: '--stepper-connector-color-complete', description: 'Line colour for complete state (--global-color-secondary-navy)' },
-          { name: '--stepper-connector-color-disabled', description: 'Line colour for disabled state (--global-color-neutral-gray-200)' },
+          { name: '--stepper-connector-color-default', description: 'Line colour for default/pending state → var(--global-color-neutral-gray-300) = #d2d5da' },
+          { name: '--stepper-connector-color-complete', description: 'Line colour for completed state → var(--global-color-secondary-navy) = #3a3282' },
+          { name: '--stepper-connector-color-disabled', description: 'Line colour for disabled state → var(--global-color-neutral-gray-200) = #e5e7eb' },
           { name: '--stepper-connector-length-small', description: 'Minimum connector length — small (24px)' },
           { name: '--stepper-connector-length-default', description: 'Minimum connector length — default (32px)' },
           { name: '--stepper-connector-length-large', description: 'Minimum connector length — large (48px)' },

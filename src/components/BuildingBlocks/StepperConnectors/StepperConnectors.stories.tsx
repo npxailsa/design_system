@@ -14,44 +14,57 @@ const ALL_TYPES: StepperConnectorType[] = ['solid', 'dashed', 'dotted'];
 const ALL_STATES: StepperConnectorState[] = ['default', 'complete', 'disabled'];
 const ALL_SIZES: StepperConnectorSize[] = ['small', 'default', 'large'];
 
+/**
+ * Fixed demo widths for each size, in pixels.
+ * These match the proportional widths visible in the Figma design matrix
+ * (small ≈ 1x, default ≈ 2x, large ≈ 3.5x).
+ */
+const SIZE_WIDTHS: Record<StepperConnectorSize, number> = {
+  small: 80,
+  default: 180,
+  large: 300,
+};
+
 /* ── Shared style helpers ────────────────────────────────────────────────── */
 
 const LABEL_STYLE: React.CSSProperties = {
   fontSize: 10,
   fontWeight: 600,
-  color: '#61607C',
+  color: 'var(--global-color-secondary-blue-gray)', /* #61607c */
   textTransform: 'uppercase',
   letterSpacing: '0.08em',
-  marginBottom: 6,
-  whiteSpace: 'nowrap',
 };
 
-const SECTION_TITLE: React.CSSProperties = {
+const TYPE_TITLE: React.CSSProperties = {
   fontSize: 12,
   fontWeight: 700,
-  color: '#374151',
+  color: 'var(--global-color-neutral-gray-700)', /* #374151 */
   textTransform: 'capitalize',
-  marginBottom: 8,
+  marginBottom: 4,
 };
 
 const CARD: React.CSSProperties = {
-  background: '#f9fafb',
-  border: '1px solid #e5e7eb',
+  background: 'var(--global-color-neutral-gray-50)', /* #f9fafb */
+  border: '1px solid var(--global-color-neutral-gray-200)',
   borderRadius: 6,
-  padding: '12px 16px',
+  overflow: 'hidden',
 };
 
-/* Helper: horizontal connector row with fixed length for visibility */
-const ConnectorRow: React.FC<{
-  type: StepperConnectorType;
-  state: StepperConnectorState;
-  size: StepperConnectorSize;
-  length?: number;
-}> = ({ type, state, size, length = 120 }) => (
-  <div style={{ display: 'flex', alignItems: 'center', width: length }}>
-    <StepperConnectors type={type} state={state} size={size} />
-  </div>
-);
+const HEADER_CELL: React.CSSProperties = {
+  background: 'var(--global-color-neutral-gray-100)', /* #f3f4f6 */
+  padding: '6px 12px',
+  fontSize: 10,
+  fontWeight: 700,
+  color: 'var(--global-color-neutral-gray-700)', /* #374151 */
+  textTransform: 'uppercase',
+  letterSpacing: '0.07em',
+  textAlign: 'center' as const,
+  borderBottom: '1px solid var(--global-color-neutral-gray-200)',
+  borderLeft: '1px solid var(--global-color-neutral-gray-200)',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+};
 
 /* ── Meta ────────────────────────────────────────────────────────────────── */
 
@@ -75,7 +88,7 @@ const meta: Meta<typeof StepperConnectors> = {
     size: {
       control: 'select',
       options: ALL_SIZES,
-      description: 'Thickness of the line',
+      description: 'Thickness and minimum length of the line',
     },
     orientation: {
       control: 'select',
@@ -91,11 +104,75 @@ const meta: Meta<typeof StepperConnectors> = {
     size: 'default',
     orientation: 'horizontal',
   },
-  // Note: StepperConnectors has no 'active' state — only default, complete, disabled
 };
 
 export default meta;
 type Story = StoryObj<typeof StepperConnectors>;
+
+/* ── Reusable design-matrix block ────────────────────────────────────────── */
+
+/**
+ * Renders a 3-column (size) grid for a given type, showing all states.
+ * Columns: small | default | large — each connector is in a fixed-width cell.
+ */
+const TypeMatrix: React.FC<{ type: StepperConnectorType }> = ({ type }) => {
+  // Column widths: label col + one col per size
+  const gridCols = `80px ${ALL_SIZES.map((s) => `${SIZE_WIDTHS[s]}px`).join(' ')}`;
+
+  return (
+    <div style={CARD}>
+      {/* Header row */}
+      <div style={{ display: 'grid', gridTemplateColumns: gridCols }}>
+        <div style={{ ...HEADER_CELL, borderLeft: 'none', background: 'var(--global-color-neutral-gray-100)' }} />
+        {ALL_SIZES.map((size) => (
+          <div key={size} style={HEADER_CELL}>
+            {size}
+          </div>
+        ))}
+      </div>
+
+      {/* One data row per state */}
+      {ALL_STATES.map((state, sIdx) => (
+        <div
+          key={state}
+          style={{
+            display: 'grid',
+            gridTemplateColumns: gridCols,
+            borderTop: sIdx > 0 ? '1px solid var(--global-color-neutral-gray-200)' : undefined,
+            background: sIdx % 2 === 0 ? 'var(--global-color-base-white)' : 'var(--global-color-neutral-gray-50)',
+          }}
+        >
+          {/* State label */}
+          <div
+            style={{
+              padding: '14px 12px',
+              display: 'flex',
+              alignItems: 'center',
+              ...LABEL_STYLE,
+            }}
+          >
+            {state}
+          </div>
+
+          {/* One cell per size */}
+          {ALL_SIZES.map((size) => (
+            <div
+              key={size}
+              style={{
+                borderLeft: '1px solid var(--global-color-neutral-gray-200)',
+                padding: '14px 0',
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
+              <StepperConnectors type={type} state={state} size={size} />
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+};
 
 /* ── 1. Documentation ────────────────────────────────────────────────────── */
 export const Documentation: Story = {
@@ -119,10 +196,10 @@ export const Playground: Story = {
         flexDirection: args.orientation === 'vertical' ? 'column' : 'row',
         gap: 16,
         padding: 24,
-        background: '#f9fafb',
+        background: 'var(--global-color-neutral-gray-50)',
         borderRadius: 6,
         minHeight: args.orientation === 'vertical' ? 160 : undefined,
-        minWidth: args.orientation === 'horizontal' ? 240 : undefined,
+        width: args.orientation === 'horizontal' ? SIZE_WIDTHS[args.size ?? 'default'] : undefined,
       }}
     >
       <StepperConnectors {...args} />
@@ -135,20 +212,9 @@ export const TypeSolid: Story = {
   name: 'Type / Solid',
   parameters: { controls: { disable: true } },
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-      {ALL_SIZES.map((size) => (
-        <div key={size}>
-          <div style={LABEL_STYLE}>Size: {size}</div>
-          <div style={{ ...CARD, display: 'flex', gap: 32, alignItems: 'center' }}>
-            {ALL_STATES.map((state) => (
-              <div key={state} style={{ display: 'flex', flexDirection: 'column', gap: 4, alignItems: 'center' }}>
-                <ConnectorRow type="solid" state={state} size={size} />
-                <span style={{ ...LABEL_STYLE, marginBottom: 0 }}>{state}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+      <div style={TYPE_TITLE}>Solid</div>
+      <TypeMatrix type="solid" />
     </div>
   ),
 };
@@ -158,20 +224,9 @@ export const TypeDashed: Story = {
   name: 'Type / Dashed',
   parameters: { controls: { disable: true } },
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-      {ALL_SIZES.map((size) => (
-        <div key={size}>
-          <div style={LABEL_STYLE}>Size: {size}</div>
-          <div style={{ ...CARD, display: 'flex', gap: 32, alignItems: 'center' }}>
-            {ALL_STATES.map((state) => (
-              <div key={state} style={{ display: 'flex', flexDirection: 'column', gap: 4, alignItems: 'center' }}>
-                <ConnectorRow type="dashed" state={state} size={size} />
-                <span style={{ ...LABEL_STYLE, marginBottom: 0 }}>{state}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+      <div style={TYPE_TITLE}>Dashed</div>
+      <TypeMatrix type="dashed" />
     </div>
   ),
 };
@@ -181,20 +236,9 @@ export const TypeDotted: Story = {
   name: 'Type / Dotted',
   parameters: { controls: { disable: true } },
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-      {ALL_SIZES.map((size) => (
-        <div key={size}>
-          <div style={LABEL_STYLE}>Size: {size}</div>
-          <div style={{ ...CARD, display: 'flex', gap: 32, alignItems: 'center' }}>
-            {ALL_STATES.map((state) => (
-              <div key={state} style={{ display: 'flex', flexDirection: 'column', gap: 4, alignItems: 'center' }}>
-                <ConnectorRow type="dotted" state={state} size={size} />
-                <span style={{ ...LABEL_STYLE, marginBottom: 0 }}>{state}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+      <div style={TYPE_TITLE}>Dotted</div>
+      <TypeMatrix type="dotted" />
     </div>
   ),
 };
@@ -203,23 +247,46 @@ export const TypeDotted: Story = {
 export const States: Story = {
   name: 'States',
   parameters: { controls: { disable: true } },
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-      {ALL_STATES.map((state) => (
-        <div key={state}>
-          <div style={LABEL_STYLE}>State: {state}</div>
-          <div style={{ ...CARD, display: 'flex', gap: 32, alignItems: 'center' }}>
-            {ALL_TYPES.map((type) => (
-              <div key={type} style={{ display: 'flex', flexDirection: 'column', gap: 4, alignItems: 'center' }}>
-                <ConnectorRow type={type} state={state} size="default" />
-                <span style={{ ...LABEL_STYLE, marginBottom: 0 }}>{type}</span>
+  render: () => {
+    const gridCols = `80px ${ALL_SIZES.map((s) => `${SIZE_WIDTHS[s]}px`).join(' ')}`;
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+        {ALL_STATES.map((state) => (
+          <div key={state} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+            <div style={TYPE_TITLE}>State: {state}</div>
+            <div style={CARD}>
+              {/* Header */}
+              <div style={{ display: 'grid', gridTemplateColumns: gridCols }}>
+                <div style={{ ...HEADER_CELL, borderLeft: 'none', background: 'var(--global-color-neutral-gray-100)' }} />
+                {ALL_SIZES.map((size) => (
+                  <div key={size} style={HEADER_CELL}>{size}</div>
+                ))}
               </div>
-            ))}
+              {/* Type rows */}
+              {ALL_TYPES.map((type, tIdx) => (
+                <div
+                  key={type}
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: gridCols,
+                    borderTop: tIdx > 0 ? '1px solid var(--global-color-neutral-gray-200)' : undefined,
+                    background: tIdx % 2 === 0 ? 'var(--global-color-base-white)' : 'var(--global-color-neutral-gray-50)',
+                  }}
+                >
+                  <div style={{ padding: '14px 12px', display: 'flex', alignItems: 'center', ...LABEL_STYLE }}>{type}</div>
+                  {ALL_SIZES.map((size) => (
+                    <div key={size} style={{ borderLeft: '1px solid var(--global-color-neutral-gray-200)', padding: '14px 0', display: 'flex', alignItems: 'center' }}>
+                      <StepperConnectors type={type} state={state} size={size} />
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
-  ),
+        ))}
+      </div>
+    );
+  },
 };
 
 /* ── 7. Sizes ────────────────────────────────────────────────────────────── */
@@ -229,13 +296,26 @@ export const Sizes: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
       {ALL_SIZES.map((size) => (
-        <div key={size}>
-          <div style={LABEL_STYLE}>Size: {size}</div>
-          <div style={{ ...CARD, display: 'flex', gap: 32, alignItems: 'center' }}>
+        <div key={size} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+          <div style={TYPE_TITLE}>Size: {size}</div>
+          <div
+            style={{
+              ...CARD,
+              display: 'flex',
+              gap: 24,
+              padding: '16px 12px',
+              alignItems: 'center',
+            }}
+          >
             {ALL_TYPES.map((type) => (
-              <div key={type} style={{ display: 'flex', flexDirection: 'column', gap: 4, alignItems: 'center' }}>
-                <ConnectorRow type={type} state="default" size={size} length={160} />
-                <span style={{ ...LABEL_STYLE, marginBottom: 0 }}>{type}</span>
+              <div
+                key={type}
+                style={{ display: 'flex', flexDirection: 'column', gap: 6, alignItems: 'flex-start' }}
+              >
+                <span style={LABEL_STYLE}>{type}</span>
+                <div style={{ width: SIZE_WIDTHS[size], display: 'flex' }}>
+                  <StepperConnectors type={type} state="default" size={size} />
+                </div>
               </div>
             ))}
           </div>
@@ -252,13 +332,13 @@ export const OrientationVertical: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
       {ALL_STATES.map((state) => (
-        <div key={state}>
-          <div style={LABEL_STYLE}>State: {state}</div>
-          <div style={{ ...CARD, display: 'flex', gap: 40, alignItems: 'flex-start' }}>
+        <div key={state} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+          <div style={TYPE_TITLE}>State: {state}</div>
+          <div style={{ ...CARD, display: 'flex', gap: 32, padding: '16px 20px', alignItems: 'flex-start' }}>
             {ALL_TYPES.map((type) => (
               <div key={type} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
                 <span style={LABEL_STYLE}>{type}</span>
-                <div style={{ display: 'flex', alignItems: 'center', height: 80 }}>
+                <div style={{ height: 80, display: 'flex', alignItems: 'center' }}>
                   <StepperConnectors type={type} state={state} orientation="vertical" />
                 </div>
               </div>
@@ -276,104 +356,30 @@ export const FullDesignMatrix: Story = {
   parameters: { layout: 'padded', controls: { disable: true } },
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
-      {/* Header note */}
-      <div style={{ fontSize: 11, color: '#6d7280', fontStyle: 'italic' }}>
-        Rows: type (solid / dashed / dotted) &nbsp;·&nbsp; Columns: size (small / default / large) &nbsp;·&nbsp; Groups: state
+      {/* Horizontal — all types */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+        {ALL_TYPES.map((type) => (
+          <div key={type} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+            <div style={TYPE_TITLE}>{type}</div>
+            <TypeMatrix type={type} />
+          </div>
+        ))}
       </div>
 
-      {ALL_STATES.map((state) => (
-        <div key={state}>
-          <div style={SECTION_TITLE}>State: {state}</div>
-
-          {/* Table grid: row = type, col = size */}
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '80px repeat(3, 1fr)',
-              gap: 0,
-              border: '1px solid #e5e7eb',
-              borderRadius: 8,
-              overflow: 'hidden',
-            }}
-          >
-            {/* Header row */}
-            <div style={{ background: '#f3f4f6', padding: '8px 12px', borderBottom: '1px solid #e5e7eb' }} />
-            {ALL_SIZES.map((size) => (
-              <div
-                key={size}
-                style={{
-                  background: '#f3f4f6',
-                  padding: '8px 12px',
-                  borderBottom: '1px solid #e5e7eb',
-                  borderLeft: '1px solid #e5e7eb',
-                  fontSize: 11,
-                  fontWeight: 700,
-                  color: '#374151',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.07em',
-                  textAlign: 'center',
-                }}
-              >
-                {size}
-              </div>
-            ))}
-
-            {/* Data rows */}
-            {ALL_TYPES.map((type, tIdx) => (
-              <React.Fragment key={type}>
-                {/* Row label */}
-                <div
-                  style={{
-                    padding: '14px 12px',
-                    background: tIdx % 2 === 0 ? '#fafafa' : '#ffffff',
-                    borderTop: tIdx > 0 ? '1px solid #e5e7eb' : undefined,
-                    fontSize: 11,
-                    fontWeight: 700,
-                    color: '#374151',
-                    textTransform: 'capitalize',
-                    display: 'flex',
-                    alignItems: 'center',
-                  }}
-                >
-                  {type}
-                </div>
-
-                {/* Cells: one per size */}
-                {ALL_SIZES.map((size) => (
-                  <div
-                    key={size}
-                    style={{
-                      padding: '14px 16px',
-                      background: tIdx % 2 === 0 ? '#fafafa' : '#ffffff',
-                      borderTop: tIdx > 0 ? '1px solid #e5e7eb' : undefined,
-                      borderLeft: '1px solid #e5e7eb',
-                      display: 'flex',
-                      alignItems: 'center',
-                    }}
-                  >
-                    <StepperConnectors type={type} state={state} size={size} />
-                  </div>
-                ))}
-              </React.Fragment>
-            ))}
-          </div>
-        </div>
-      ))}
-
-      {/* Vertical orientation section */}
+      {/* Vertical orientation */}
       <div>
-        <div style={SECTION_TITLE}>Orientation: Vertical — all types × sizes</div>
-        <div style={{ ...CARD, display: 'flex', gap: 48, alignItems: 'flex-start', flexWrap: 'wrap' }}>
+        <div style={{ ...TYPE_TITLE, marginBottom: 12 }}>Vertical orientation</div>
+        <div style={{ display: 'flex', gap: 40, flexWrap: 'wrap' as const }}>
           {ALL_TYPES.map((type) => (
             <div key={type} style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-              <div style={LABEL_STYLE}>{type}</div>
-              <div style={{ display: 'flex', gap: 16, alignItems: 'flex-end' }}>
-                {ALL_SIZES.map((size) => (
-                  <div key={size} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
+              <span style={LABEL_STYLE}>{type}</span>
+              <div style={{ display: 'flex', gap: 20, alignItems: 'flex-end' }}>
+                {ALL_STATES.map((state) => (
+                  <div key={state} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
                     <div style={{ height: 80, display: 'flex', alignItems: 'center' }}>
-                    <StepperConnectors type={type} state="complete" size={size} orientation="vertical" />
-                  </div>
-                    <span style={{ ...LABEL_STYLE, marginBottom: 0 }}>{size}</span>
+                      <StepperConnectors type={type} state={state} orientation="vertical" />
+                    </div>
+                    <span style={{ ...LABEL_STYLE, whiteSpace: 'nowrap' as const }}>{state}</span>
                   </div>
                 ))}
               </div>
