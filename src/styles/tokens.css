@@ -837,6 +837,60 @@
 }
 
 /* ==========================================================================
+   COMPONENT LAYER: StepperSteps (Component-Specific Tokens)
+   ========================================================================== */
+:root {
+  /* Circle sizes */
+  --stepper-steps-size-small:    var(--global-spacing-sizing-24px);
+  --stepper-steps-size-default:  var(--global-spacing-sizing-36px);
+  --stepper-steps-size-large:    var(--global-spacing-sizing-48px);
+
+  /* Border */
+  --stepper-steps-border-width:  var(--global-spacing-stroke-2px);
+  --stepper-steps-border-radius: var(--global-spacing-radius-full);
+
+  /* Default (future/inactive) step */
+  --stepper-steps-default-bg:     var(--global-color-base-white);
+  --stepper-steps-default-border: var(--global-color-neutral-gray-300);
+  --stepper-steps-default-text:   var(--global-color-neutral-gray-500);
+
+  /* Active (current) step */
+  --stepper-steps-active-bg:     var(--global-color-base-white);
+  --stepper-steps-active-border: var(--global-color-secondary-navy);
+  --stepper-steps-active-text:   var(--global-color-secondary-navy);
+
+  /* Complete step */
+  --stepper-steps-complete-bg:     var(--global-color-secondary-navy);
+  --stepper-steps-complete-border: var(--global-color-secondary-navy);
+  --stepper-steps-complete-icon:   var(--global-color-base-white);
+
+  /* Typography */
+  --stepper-steps-font-family:          var(--brand-font-primary);
+  --stepper-steps-number-weight:        var(--global-type-weight-default);
+  --stepper-steps-label-weight:         var(--global-type-weight-light);
+  --stepper-steps-label-color:          var(--global-color-neutral-gray-700);
+  --stepper-steps-label-color-active:   var(--global-color-base-black);
+
+  /* Number font sizes */
+  --stepper-steps-number-size-small:    var(--global-type-size-primary-label-xxs);
+  --stepper-steps-number-size-default:  var(--global-type-size-primary-label-xs);
+  --stepper-steps-number-size-large:    var(--global-type-size-primary-label-sm);
+
+  /* Label font sizes */
+  --stepper-steps-label-size-small:     var(--global-type-size-primary-label-xxs);
+  --stepper-steps-label-size-default:   var(--global-type-size-primary-label-xs);
+  --stepper-steps-label-size-large:     var(--global-type-size-primary-label-sm);
+
+  /* Gap between circle and label */
+  --stepper-steps-gap-small:   var(--global-spacing-sizing-4px);
+  --stepper-steps-gap-default: var(--global-spacing-sizing-6px);
+  --stepper-steps-gap-large:   var(--global-spacing-sizing-8px);
+
+  /* Gap between steps in a strip */
+  --stepper-steps-item-gap: var(--global-spacing-sizing-8px);
+}
+
+/* ==========================================================================
    COMPONENT LAYER: Avatar (Component-Specific Tokens)
    ========================================================================== */
 :root {

@@ -1,0 +1,112 @@
+/* ============================================================
+   StepperSteps — numbered step indicator strip
+   ============================================================ */
+
+/* ── Strip ─────────────────────────────────────────────────── */
+.strip {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--stepper-steps-item-gap);
+  flex-wrap: wrap;
+}
+
+/* ── Single step ────────────────────────────────────────────── */
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.step--small  { gap: var(--stepper-steps-gap-small); }
+.step--default { gap: var(--stepper-steps-gap-default); }
+.step--large  { gap: var(--stepper-steps-gap-large); }
+
+/* ── Circle ─────────────────────────────────────────────────── */
+.circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--stepper-steps-border-radius);
+  border-style: solid;
+  border-width: var(--stepper-steps-border-width);
+  flex-shrink: 0;
+  font-family: var(--stepper-steps-font-family);
+  font-weight: var(--stepper-steps-number-weight);
+  line-height: 1;
+  letter-spacing: 0.05em;
+}
+
+.circle--small {
+  width: var(--stepper-steps-size-small);
+  height: var(--stepper-steps-size-small);
+  font-size: var(--stepper-steps-number-size-small);
+}
+
+.circle--default {
+  width: var(--stepper-steps-size-default);
+  height: var(--stepper-steps-size-default);
+  font-size: var(--stepper-steps-number-size-default);
+}
+
+.circle--large {
+  width: var(--stepper-steps-size-large);
+  height: var(--stepper-steps-size-large);
+  font-size: var(--stepper-steps-number-size-large);
+}
+
+/* State: default */
+.circle--state-default {
+  background-color: var(--stepper-steps-default-bg);
+  border-color: var(--stepper-steps-default-border);
+  color: var(--stepper-steps-default-text);
+}
+
+/* State: active */
+.circle--state-active {
+  background-color: var(--stepper-steps-active-bg);
+  border-color: var(--stepper-steps-active-border);
+  color: var(--stepper-steps-active-text);
+}
+
+/* State: complete */
+.circle--state-complete {
+  background-color: var(--stepper-steps-complete-bg);
+  border-color: var(--stepper-steps-complete-border);
+  color: var(--stepper-steps-complete-icon);
+}
+
+/* State: disabled */
+.circle--state-disabled {
+  background-color: var(--stepper-steps-default-bg);
+  border-color: var(--global-color-neutral-gray-200);
+  color: var(--global-color-neutral-gray-300);
+  cursor: not-allowed;
+}
+
+/* ── Checkmark icon inside complete circle ───────────────────── */
+.checkIcon {
+  display: block;
+  color: var(--stepper-steps-complete-icon);
+}
+
+/* ── Label ──────────────────────────────────────────────────── */
+.label {
+  font-family: var(--stepper-steps-font-family);
+  font-weight: var(--stepper-steps-label-weight);
+  color: var(--stepper-steps-label-color);
+  text-align: center;
+  line-height: 1.2;
+}
+
+.label--small   { font-size: var(--stepper-steps-label-size-small); }
+.label--default { font-size: var(--stepper-steps-label-size-default); }
+.label--large   { font-size: var(--stepper-steps-label-size-large); }
+
+.label--active, .label--complete {
+  color: var(--stepper-steps-label-color-active);
+}
+
+.label--disabled {
+  color: var(--global-color-neutral-gray-300);
+}
