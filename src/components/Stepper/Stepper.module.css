@@ -1,0 +1,53 @@
+/* ============================================================
+   Stepper — atomic horizontal stepper
+   Composes StepperSteps + StepperLines from BuildingBlocks
+   ============================================================ */
+
+/* ── Outer row ──────────────────────────────────────────────── */
+.stepper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* ── Step (circle + label) ──────────────────────────────────── */
+.stepWrapper {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/**
+ * Override inline-flex on StepperSteps strip so the strip
+ * does not introduce extra horizontal gaps in this layout.
+ */
+.stepItem {
+  display: flex !important;
+}
+
+/* ── Connector line ─────────────────────────────────────────── */
+
+/*
+ * The lineWrapper needs to shift down so the line sits at the
+ * vertical centre of the circles. Each size has a different
+ * circle diameter (24 / 36 / 48 px → centre = 12 / 18 / 24 px).
+ * We use data-size on the wrapper and size-specific padding-top.
+ */
+.lineWrapper {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  align-self: flex-start;
+}
+
+/* Size-specific vertical offsets: half the circle height */
+.lineWrapper--small   { padding-top: var(--stepper-steps-size-small,   24px); padding-top: calc(var(--stepper-steps-size-small,   24px) / 2); }
+.lineWrapper--default { padding-top: var(--stepper-steps-size-default, 36px); padding-top: calc(var(--stepper-steps-size-default, 36px) / 2); }
+.lineWrapper--large   { padding-top: var(--stepper-steps-size-large,   48px); padding-top: calc(var(--stepper-steps-size-large,   48px) / 2); }
+
+/* The actual line element inherits flex: 1 1 auto from StepperLines */
+.line {
+  flex: 1 1 auto;
+}
