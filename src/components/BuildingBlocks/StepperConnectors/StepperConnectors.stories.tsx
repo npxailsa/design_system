@@ -11,7 +11,7 @@ import type {
 /* ── Constants ───────────────────────────────────────────────────────────── */
 
 const ALL_TYPES: StepperConnectorType[] = ['solid', 'dashed', 'dotted'];
-const ALL_STATES: StepperConnectorState[] = ['default', 'active', 'complete', 'disabled'];
+const ALL_STATES: StepperConnectorState[] = ['default', 'complete', 'disabled'];
 const ALL_SIZES: StepperConnectorSize[] = ['small', 'default', 'large'];
 
 /* ── Shared style helpers ────────────────────────────────────────────────── */
@@ -91,6 +91,7 @@ const meta: Meta<typeof StepperConnectors> = {
     size: 'default',
     orientation: 'horizontal',
   },
+  // Note: StepperConnectors has no 'active' state — only default, complete, disabled
 };
 
 export default meta;
@@ -370,8 +371,8 @@ export const FullDesignMatrix: Story = {
                 {ALL_SIZES.map((size) => (
                   <div key={size} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
                     <div style={{ height: 80, display: 'flex', alignItems: 'center' }}>
-                      <StepperConnectors type={type} state="active" size={size} orientation="vertical" />
-                    </div>
+                    <StepperConnectors type={type} state="complete" size={size} orientation="vertical" />
+                  </div>
                     <span style={{ ...LABEL_STYLE, marginBottom: 0 }}>{size}</span>
                   </div>
                 ))}

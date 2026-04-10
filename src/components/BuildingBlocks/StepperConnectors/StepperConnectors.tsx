@@ -7,7 +7,7 @@ import styles from './StepperConnectors.module.css';
 export type StepperConnectorType = 'solid' | 'dashed' | 'dotted';
 
 /** Semantic / visual state */
-export type StepperConnectorState = 'default' | 'active' | 'complete' | 'disabled';
+export type StepperConnectorState = 'default' | 'complete' | 'disabled';
 
 /** Thickness of the connector line */
 export type StepperConnectorSize = 'small' | 'default' | 'large';

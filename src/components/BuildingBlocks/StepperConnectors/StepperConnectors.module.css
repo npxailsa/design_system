@@ -114,10 +114,6 @@
   border-color: var(--stepper-connector-color-default);
 }
 
-.connector--state-active {
-  border-color: var(--stepper-connector-color-active);
-}
-
 .connector--state-complete {
   border-color: var(--stepper-connector-color-complete);
 }

@@ -847,7 +847,6 @@
 
   /* Colors */
   --stepper-connector-color-default:  var(--global-color-neutral-gray-300);
-  --stepper-connector-color-active:   var(--global-color-secondary-navy);
   --stepper-connector-color-complete: var(--global-color-secondary-navy);
   --stepper-connector-color-disabled: var(--global-color-neutral-gray-200);
 

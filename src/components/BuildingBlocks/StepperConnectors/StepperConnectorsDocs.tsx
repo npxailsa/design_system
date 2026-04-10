@@ -42,8 +42,8 @@ export const StepperConnectorsDocs: React.FC = () => (
         preview={
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: 16, background: 'var(--global-color-neutral-gray-50)', borderRadius: 8 }}>
             <StepperConnectors type="solid" state="complete" size="default" />
-            <StepperConnectors type="dashed" state="active" size="default" />
-            <StepperConnectors type="dotted" state="default" size="default" />
+            <StepperConnectors type="dashed" state="default" size="default" />
+            <StepperConnectors type="dotted" state="disabled" size="default" />
           </div>
         }
         parts={[
@@ -62,7 +62,7 @@ export const StepperConnectorsDocs: React.FC = () => (
           {
             id: 3,
             name: 'State colour',
-            token: '--stepper-connector-color-default / active / complete / disabled',
+            token: '--stepper-connector-color-default / complete / disabled',
             description: 'Communicates the progress state of the segment between two steps.',
           },
         ]}
@@ -72,12 +72,11 @@ export const StepperConnectorsDocs: React.FC = () => (
     <DocsTemplate.Section title="Types">
       <DocsTemplate.Subsection title="Solid">
         <DocsTemplate.BodyText>
-          A continuous solid line. Use for the primary connector style — the most visually clear.
-        </DocsTemplate.BodyText>
+        A continuous solid line. Use for the primary connector style — the most visually clear.
+      </DocsTemplate.BodyText>
         <div style={row}>
           <div style={connectorWrap}>
             <StepperConnectors type="solid" state="default" />
-            <StepperConnectors type="solid" state="active" />
             <StepperConnectors type="solid" state="complete" />
             <StepperConnectors type="solid" state="disabled" />
           </div>
@@ -91,7 +90,6 @@ export const StepperConnectorsDocs: React.FC = () => (
         <div style={row}>
           <div style={connectorWrap}>
             <StepperConnectors type="dashed" state="default" />
-            <StepperConnectors type="dashed" state="active" />
             <StepperConnectors type="dashed" state="complete" />
             <StepperConnectors type="dashed" state="disabled" />
           </div>
@@ -105,7 +103,6 @@ export const StepperConnectorsDocs: React.FC = () => (
         <div style={row}>
           <div style={connectorWrap}>
             <StepperConnectors type="dotted" state="default" />
-            <StepperConnectors type="dotted" state="active" />
             <StepperConnectors type="dotted" state="complete" />
             <StepperConnectors type="dotted" state="disabled" />
           </div>
@@ -123,16 +120,6 @@ export const StepperConnectorsDocs: React.FC = () => (
                 <StepperConnectors type="solid" state="default" />
                 <StepperConnectors type="dashed" state="default" />
                 <StepperConnectors type="dotted" state="default" />
-              </div>
-            ),
-          },
-          {
-            label: 'Active',
-            children: (
-              <div style={connectorWrap}>
-                <StepperConnectors type="solid" state="active" />
-                <StepperConnectors type="dashed" state="active" />
-                <StepperConnectors type="dotted" state="active" />
               </div>
             ),
           },
@@ -168,8 +155,8 @@ export const StepperConnectorsDocs: React.FC = () => (
             children: (
               <div style={connectorWrap}>
                 <StepperConnectors type="solid" state="default" size="small" />
-                <StepperConnectors type="dashed" state="active" size="small" />
-                <StepperConnectors type="dotted" state="complete" size="small" />
+                <StepperConnectors type="dashed" state="complete" size="small" />
+                <StepperConnectors type="dotted" state="disabled" size="small" />
               </div>
             ),
           },
@@ -178,8 +165,8 @@ export const StepperConnectorsDocs: React.FC = () => (
             children: (
               <div style={connectorWrap}>
                 <StepperConnectors type="solid" state="default" size="default" />
-                <StepperConnectors type="dashed" state="active" size="default" />
-                <StepperConnectors type="dotted" state="complete" size="default" />
+                <StepperConnectors type="dashed" state="complete" size="default" />
+                <StepperConnectors type="dotted" state="disabled" size="default" />
               </div>
             ),
           },
@@ -188,8 +175,8 @@ export const StepperConnectorsDocs: React.FC = () => (
             children: (
               <div style={connectorWrap}>
                 <StepperConnectors type="solid" state="default" size="large" />
-                <StepperConnectors type="dashed" state="active" size="large" />
-                <StepperConnectors type="dotted" state="complete" size="large" />
+                <StepperConnectors type="dashed" state="complete" size="large" />
+                <StepperConnectors type="dotted" state="disabled" size="large" />
               </div>
             ),
           },
@@ -201,8 +188,8 @@ export const StepperConnectorsDocs: React.FC = () => (
       <DocsTemplate.Subsection title="Horizontal">
         <div style={connectorWrap}>
           <StepperConnectors type="solid" state="complete" orientation="horizontal" />
-          <StepperConnectors type="dashed" state="active" orientation="horizontal" />
-          <StepperConnectors type="dotted" state="default" orientation="horizontal" />
+          <StepperConnectors type="dashed" state="default" orientation="horizontal" />
+          <StepperConnectors type="dotted" state="disabled" orientation="horizontal" />
         </div>
       </DocsTemplate.Subsection>
 
@@ -212,8 +199,8 @@ export const StepperConnectorsDocs: React.FC = () => (
         </DocsTemplate.BodyText>
         <div style={{ display: 'flex', gap: 32, padding: 16 }}>
           <StepperConnectors type="solid" state="complete" orientation="vertical" />
-          <StepperConnectors type="dashed" state="active" orientation="vertical" />
-          <StepperConnectors type="dotted" state="default" orientation="vertical" />
+          <StepperConnectors type="dashed" state="default" orientation="vertical" />
+          <StepperConnectors type="dotted" state="disabled" orientation="vertical" />
         </div>
       </DocsTemplate.Subsection>
     </DocsTemplate.Section>
@@ -225,7 +212,6 @@ export const StepperConnectorsDocs: React.FC = () => (
           { name: '--stepper-connector-thickness-default', description: 'Line thickness — default (2px)' },
           { name: '--stepper-connector-thickness-large', description: 'Line thickness — large (4px)' },
           { name: '--stepper-connector-color-default', description: 'Line colour for default/inactive state (--global-color-neutral-gray-300)' },
-          { name: '--stepper-connector-color-active', description: 'Line colour for active state (--global-color-secondary-navy)' },
           { name: '--stepper-connector-color-complete', description: 'Line colour for complete state (--global-color-secondary-navy)' },
           { name: '--stepper-connector-color-disabled', description: 'Line colour for disabled state (--global-color-neutral-gray-200)' },
           { name: '--stepper-connector-length-small', description: 'Minimum connector length — small (24px)' },
@@ -238,8 +224,9 @@ export const StepperConnectorsDocs: React.FC = () => (
     <DocsTemplate.Section title="Usage Principles">
       <DocsTemplate.Principles>
         <DocsTemplate.PrincipleCard number={1} title="Match connector state to adjacent steps">
-          A connector between a complete step and an active step should use the "complete" state.
-          A connector between two future/default steps should use "default".
+          A connector between two completed steps should use the "complete" state.
+          A connector between two upcoming steps should use "default".
+          A connector in a disabled flow section should use "disabled".
         </DocsTemplate.PrincipleCard>
         <DocsTemplate.PrincipleCard number={2} title="Consistent type across a strip">
           Don't mix solid, dashed, and dotted connectors within a single stepper strip unless each
@@ -258,7 +245,7 @@ export const StepperConnectorsDocs: React.FC = () => (
           icon: (
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: 16, background: 'var(--global-color-neutral-gray-50)', borderRadius: 8 }}>
               <StepperConnectors type="solid" state="complete" />
-              <StepperConnectors type="solid" state="active" />
+              <StepperConnectors type="solid" state="disabled" />
               <StepperConnectors type="solid" state="default" />
             </div>
           ),
@@ -268,7 +255,7 @@ export const StepperConnectorsDocs: React.FC = () => (
           icon: (
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: 16, background: 'var(--global-color-neutral-gray-50)', borderRadius: 8 }}>
               <StepperConnectors type="solid" state="complete" />
-              <StepperConnectors type="dashed" state="active" />
+              <StepperConnectors type="dashed" state="disabled" />
               <StepperConnectors type="dotted" state="default" />
             </div>
           ),
