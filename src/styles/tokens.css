@@ -837,32 +837,21 @@
 }
 
 /* ==========================================================================
-   COMPONENT LAYER: StepperConnectors (Component-Specific Tokens)
+   COMPONENT LAYER: StepperLines (Component-Specific Tokens)
    ========================================================================== */
 :root {
-  /* Line thickness (height for horizontal, width for vertical) */
-  --stepper-connector-thickness-small:   var(--global-spacing-stroke-1px);
-  --stepper-connector-thickness-default: var(--global-spacing-stroke-2px);
-  --stepper-connector-thickness-large:   var(--global-spacing-stroke-4px);
+  /* State colours — sourced from zip design file vars.css */
+  /* disabled = neutral-gray-300 (#d2d5da) — maps to --color-neutral-gray-gray-300 */
+  /* to-do    = neutral-gray-700 (#374151) — closest to --color-primary-blue-gray-blue-gray (#304047) */
+  /* complete = brand-primary    (#3776ce) — exact match for --color-primary-blue-blue */
+  --stepper-lines-color-disabled: var(--global-color-neutral-gray-300);
+  --stepper-lines-color-todo:     var(--global-color-neutral-gray-700);
+  --stepper-lines-color-complete: var(--brand-primary);
 
-  /* Colors — mapped to Figma design tokens */
-  /* default  = neutral-gray-300 (#d2d5da): pending/upcoming connector line  */
-  /* complete = secondary-navy   (#3a3282): completed flow segment            */
-  /* disabled = neutral-gray-200 (#e5e7eb): faded/unavailable connector line */
-  --stepper-connector-color-default:  var(--global-color-neutral-gray-300);
-  --stepper-connector-color-complete: var(--global-color-secondary-navy);
-  --stepper-connector-color-disabled: var(--global-color-neutral-gray-200);
-
-  /* Dashes — gap between dashes (for dashed type) */
-  --stepper-connector-dash-gap: var(--global-spacing-sizing-4px);
-
-  /* Dots — gap between dots (for dotted type) */
-  --stepper-connector-dot-gap: var(--global-spacing-sizing-2px);
-
-  /* Default length (flex stretches in practice) */
-  --stepper-connector-length-small:   var(--global-spacing-sizing-24px);
-  --stepper-connector-length-default: var(--global-spacing-sizing-32px);
-  --stepper-connector-length-large:   var(--global-spacing-sizing-48px);
+  /* Stroke thicknesses */
+  --stepper-lines-stroke-1px: var(--global-spacing-stroke-1px);
+  --stepper-lines-stroke-2px: var(--global-spacing-stroke-2px);
+  --stepper-lines-stroke-3px: var(--global-spacing-stroke-3px);
 }
 
 /* ==========================================================================
