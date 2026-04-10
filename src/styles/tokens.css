@@ -837,6 +837,33 @@
 }
 
 /* ==========================================================================
+   COMPONENT LAYER: StepperConnectors (Component-Specific Tokens)
+   ========================================================================== */
+:root {
+  /* Line thickness (height for horizontal, width for vertical) */
+  --stepper-connector-thickness-small:   var(--global-spacing-stroke-1px);
+  --stepper-connector-thickness-default: var(--global-spacing-stroke-2px);
+  --stepper-connector-thickness-large:   var(--global-spacing-stroke-4px);
+
+  /* Colors */
+  --stepper-connector-color-default:  var(--global-color-neutral-gray-300);
+  --stepper-connector-color-active:   var(--global-color-secondary-navy);
+  --stepper-connector-color-complete: var(--global-color-secondary-navy);
+  --stepper-connector-color-disabled: var(--global-color-neutral-gray-200);
+
+  /* Dashes — gap between dashes (for dashed type) */
+  --stepper-connector-dash-gap: var(--global-spacing-sizing-4px);
+
+  /* Dots — gap between dots (for dotted type) */
+  --stepper-connector-dot-gap: var(--global-spacing-sizing-2px);
+
+  /* Default length (flex stretches in practice) */
+  --stepper-connector-length-small:   var(--global-spacing-sizing-24px);
+  --stepper-connector-length-default: var(--global-spacing-sizing-32px);
+  --stepper-connector-length-large:   var(--global-spacing-sizing-48px);
+}
+
+/* ==========================================================================
    COMPONENT LAYER: StepperSteps (Component-Specific Tokens)
    ========================================================================== */
 :root {

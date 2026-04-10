@@ -1,0 +1,127 @@
+/* ============================================================
+   StepperConnectors — the line segment that joins two steps
+   ============================================================ */
+
+/* ── Base connector ─────────────────────────────────────────── */
+.connector {
+  display: block;
+  flex-shrink: 0;
+  /* Each type overrides the border */
+  border: none;
+}
+
+/* ── Horizontal orientation ─────────────────────────────────── */
+.connector--horizontal {
+  height: 0; /* height comes from border-top */
+  width: 100%;
+  min-width: var(--stepper-connector-length-default);
+}
+
+.connector--horizontal.connector--size-small {
+  min-width: var(--stepper-connector-length-small);
+}
+
+.connector--horizontal.connector--size-large {
+  min-width: var(--stepper-connector-length-large);
+}
+
+/* ── Vertical orientation ───────────────────────────────────── */
+.connector--vertical {
+  width: 0; /* width comes from border-left */
+  height: 100%;
+  min-height: var(--stepper-connector-length-default);
+}
+
+.connector--vertical.connector--size-small {
+  min-height: var(--stepper-connector-length-small);
+}
+
+.connector--vertical.connector--size-large {
+  min-height: var(--stepper-connector-length-large);
+}
+
+/* ── Thickness ──────────────────────────────────────────────── */
+/* Applied via border width on the relevant side */
+
+/* Solid */
+.connector--solid.connector--horizontal {
+  border-top-style: solid;
+  border-top-width: var(--stepper-connector-thickness-default);
+}
+.connector--solid.connector--horizontal.connector--size-small {
+  border-top-width: var(--stepper-connector-thickness-small);
+}
+.connector--solid.connector--horizontal.connector--size-large {
+  border-top-width: var(--stepper-connector-thickness-large);
+}
+.connector--solid.connector--vertical {
+  border-left-style: solid;
+  border-left-width: var(--stepper-connector-thickness-default);
+}
+.connector--solid.connector--vertical.connector--size-small {
+  border-left-width: var(--stepper-connector-thickness-small);
+}
+.connector--solid.connector--vertical.connector--size-large {
+  border-left-width: var(--stepper-connector-thickness-large);
+}
+
+/* Dashed */
+.connector--dashed.connector--horizontal {
+  border-top-style: dashed;
+  border-top-width: var(--stepper-connector-thickness-default);
+}
+.connector--dashed.connector--horizontal.connector--size-small {
+  border-top-width: var(--stepper-connector-thickness-small);
+}
+.connector--dashed.connector--horizontal.connector--size-large {
+  border-top-width: var(--stepper-connector-thickness-large);
+}
+.connector--dashed.connector--vertical {
+  border-left-style: dashed;
+  border-left-width: var(--stepper-connector-thickness-default);
+}
+.connector--dashed.connector--vertical.connector--size-small {
+  border-left-width: var(--stepper-connector-thickness-small);
+}
+.connector--dashed.connector--vertical.connector--size-large {
+  border-left-width: var(--stepper-connector-thickness-large);
+}
+
+/* Dotted */
+.connector--dotted.connector--horizontal {
+  border-top-style: dotted;
+  border-top-width: var(--stepper-connector-thickness-default);
+}
+.connector--dotted.connector--horizontal.connector--size-small {
+  border-top-width: var(--stepper-connector-thickness-small);
+}
+.connector--dotted.connector--horizontal.connector--size-large {
+  border-top-width: var(--stepper-connector-thickness-large);
+}
+.connector--dotted.connector--vertical {
+  border-left-style: dotted;
+  border-left-width: var(--stepper-connector-thickness-default);
+}
+.connector--dotted.connector--vertical.connector--size-small {
+  border-left-width: var(--stepper-connector-thickness-small);
+}
+.connector--dotted.connector--vertical.connector--size-large {
+  border-left-width: var(--stepper-connector-thickness-large);
+}
+
+/* ── States ─────────────────────────────────────────────────── */
+.connector--state-default {
+  border-color: var(--stepper-connector-color-default);
+}
+
+.connector--state-active {
+  border-color: var(--stepper-connector-color-active);
+}
+
+.connector--state-complete {
+  border-color: var(--stepper-connector-color-complete);
+}
+
+.connector--state-disabled {
+  border-color: var(--stepper-connector-color-disabled);
+}
