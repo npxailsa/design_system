@@ -86,7 +86,7 @@ jobs:
         # write:packages scope is required for npm publish.
         run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_PAT }}
+          NODE_AUTH_TOKEN: ${{ secrets.SYNC_PAT }}
 
       - name: Push version commit and tag to main
         run: git push --follow-tags
