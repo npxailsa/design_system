@@ -851,6 +851,9 @@
   --stepper-connector-color-complete: var(--global-color-secondary-navy);
   --stepper-connector-color-disabled: var(--global-color-neutral-gray-200);
 
+  /* Opacity */
+  --stepper-connector-opacity-disabled: 0.4;
+
   /* Dashes — gap between dashes (for dashed type) */
   --stepper-connector-dash-gap: var(--global-spacing-sizing-4px);
 
