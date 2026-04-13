@@ -1,5 +1,15 @@
 name: Chromatic
 
+# IMPORTANT: Only trigger on `push`.
+# TurboSnap is NOT compatible with `pull_request` (or its variations such as
+# `pull_request_target`, `pull_request_review`, etc.).
+#
+# `pull_request` workflows run against an ephemeral merge commit that does not
+# exist in Git history. Chromatic cannot locate earlier builds for that commit,
+# so TurboSnap would compare against the wrong set of changed files —
+# producing unpredictable snapshots and potential missed regressions.
+#
+# Ref: https://www.chromatic.com/docs/turbosnap/#github-pull_request-triggers
 on:
   push:
 
