@@ -2789,6 +2789,87 @@
   --tab-dark-badge-color-active:        var(--global-color-secondary-navy);
   --tab-dark-badge-bg-disabled:         var(--global-color-neutral-gray-700);
   --tab-dark-badge-color-disabled:      var(--global-color-neutral-gray-500);
+
+  /* ══════════════════════════════════════════════════════════
+     SimpleField — text input component
+     Sizes: small (32px) | default (40px) | large (48px)
+     States: default | focused | error | warning | success | disabled
+     ══════════════════════════════════════════════════════════ */
+
+  /* Layout */
+  --simple-field-height-small:          var(--global-spacing-sizing-32px);
+  --simple-field-height-default:        var(--global-spacing-sizing-40px);
+  --simple-field-height-large:          var(--global-spacing-sizing-48px);
+  --simple-field-border-radius:         var(--global-spacing-radius-4px);
+  --simple-field-border-width:          var(--global-spacing-stroke-0-5px);
+  --simple-field-gap:                   var(--global-spacing-sizing-8px);
+  --simple-field-padding-x-small:       var(--global-spacing-sizing-8px);
+  --simple-field-padding-x-default:     var(--global-spacing-sizing-12px);
+  --simple-field-padding-x-large:       var(--global-spacing-sizing-16px);
+
+  /* Icon sizes */
+  --simple-field-icon-size-small:       var(--global-spacing-sizing-14px);
+  --simple-field-icon-size-default:     var(--global-spacing-sizing-16px);
+  --simple-field-icon-size-large:       var(--global-spacing-sizing-18px);
+
+  /* Typography */
+  --simple-field-label-font:            var(--brand-font-primary);
+  --simple-field-label-size:            var(--global-type-size-primary-label-xs);
+  --simple-field-label-weight:          var(--global-type-weight-default);
+  --simple-field-label-line-height:     var(--global-type-line-height-label-xs);
+  --simple-field-label-color:           var(--global-color-neutral-gray-700);
+  --simple-field-input-font:            var(--brand-font-secondary);
+  --simple-field-input-size-small:      var(--global-type-size-primary-label-sm);
+  --simple-field-input-size-default:    var(--global-type-size-primary-label);
+  --simple-field-input-size-large:      var(--global-type-size-primary-label-lg);
+  --simple-field-input-weight:          var(--global-type-weight-light);
+
+  /* Colors — default state */
+  --simple-field-bg:                    var(--global-color-base-white);
+  --simple-field-border-color:          var(--global-color-neutral-gray-300);
+  --simple-field-text-color:            var(--global-color-base-black);
+  --simple-field-placeholder-color:     var(--global-color-neutral-gray-400);
+  --simple-field-icon-color:            var(--global-color-neutral-gray-500);
+  --simple-field-clear-color:           var(--global-color-neutral-gray-400);
+
+  /* Colors — focused */
+  --simple-field-border-color-focus:    var(--brand-primary);
+  --simple-field-icon-color-focus:      var(--brand-primary);
+
+  /* Colors — error */
+  --simple-field-border-color-error:    var(--global-color-status-red);
+  --simple-field-helper-color-error:    var(--global-color-status-red);
+  --simple-field-icon-color-error:      var(--global-color-status-red);
+
+  /* Colors — warning */
+  --simple-field-border-color-warning:  var(--global-color-status-dark-orange);
+  --simple-field-helper-color-warning:  var(--global-color-status-dark-orange);
+  --simple-field-icon-color-warning:    var(--global-color-status-dark-orange);
+
+  /* Colors — success */
+  --simple-field-border-color-success:  var(--global-color-status-dark-green);
+  --simple-field-helper-color-success:  var(--global-color-status-dark-green);
+  --simple-field-icon-color-success:    var(--global-color-status-dark-green);
+
+  /* Colors — disabled */
+  --simple-field-bg-disabled:           var(--global-color-neutral-gray-100);
+  --simple-field-border-color-disabled: var(--global-color-neutral-gray-200);
+  --simple-field-text-color-disabled:   var(--global-color-neutral-gray-400);
+
+  /* Helper text */
+  --simple-field-helper-font:           var(--brand-font-secondary);
+  --simple-field-helper-size:           var(--global-type-size-primary-label-xs);
+  --simple-field-helper-line-height:    var(--global-type-line-height-label-xs);
+  --simple-field-helper-color:          var(--global-color-neutral-gray-500);
+  --simple-field-helper-gap:            var(--global-spacing-sizing-4px);
+
+  /* Tag chip (inside field) */
+  --simple-field-tag-bg:                var(--global-color-primary-blue-blue-100);
+  --simple-field-tag-color:             var(--global-color-secondary-navy);
+  --simple-field-tag-border-radius:     var(--global-spacing-radius-4px);
+  --simple-field-tag-font:              var(--brand-font-secondary);
+  --simple-field-tag-font-size:         var(--global-type-size-primary-label-xs);
+  --simple-field-tag-padding:           2px var(--global-spacing-sizing-6px);
 }
 
 /* Font Loading */

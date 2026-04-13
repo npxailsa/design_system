@@ -1,0 +1,245 @@
+/* ============================================================
+   SimpleField — single-line text input
+   MUI Foundation: InputBase (@mui/material)
+   Tokens: --simple-field-* from tokens.css
+   ============================================================ */
+
+/* ── Root wrapper ───────────────────────────────────────────── */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--simple-field-helper-gap);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ── Label ──────────────────────────────────────────────────── */
+.label {
+  font-family: var(--simple-field-label-font);
+  font-size: var(--simple-field-label-size);
+  font-weight: var(--simple-field-label-weight);
+  line-height: var(--simple-field-label-line-height);
+  color: var(--simple-field-label-color);
+  letter-spacing: var(--global-type-letter-spacing-primary-label-xs);
+  cursor: default;
+  user-select: none;
+}
+
+/* ── Control row (border box) ───────────────────────────────── */
+.control {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--simple-field-gap);
+  width: 100%;
+  background: var(--simple-field-bg);
+  border: var(--simple-field-border-width) solid var(--simple-field-border-color);
+  border-radius: var(--simple-field-border-radius);
+  box-sizing: border-box;
+  cursor: text;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+  flex-wrap: wrap;
+}
+
+/* Focus-within — applied when the inner input is focused */
+.control:focus-within {
+  border-color: var(--simple-field-border-color-focus);
+  outline: none;
+}
+
+/* ── Size variants ──────────────────────────────────────────── */
+.control--small {
+  min-height: var(--simple-field-height-small);
+  padding: 0 var(--simple-field-padding-x-small);
+}
+
+.control--default {
+  min-height: var(--simple-field-height-default);
+  padding: 0 var(--simple-field-padding-x-default);
+}
+
+.control--large {
+  min-height: var(--simple-field-height-large);
+  padding: 0 var(--simple-field-padding-x-large);
+}
+
+/* ── State variants ─────────────────────────────────────────── */
+.control--error {
+  border-color: var(--simple-field-border-color-error);
+}
+
+.control--error:focus-within {
+  border-color: var(--simple-field-border-color-error);
+}
+
+.control--warning {
+  border-color: var(--simple-field-border-color-warning);
+}
+
+.control--warning:focus-within {
+  border-color: var(--simple-field-border-color-warning);
+}
+
+.control--success {
+  border-color: var(--simple-field-border-color-success);
+}
+
+.control--success:focus-within {
+  border-color: var(--simple-field-border-color-success);
+}
+
+.control--disabled {
+  background: var(--simple-field-bg-disabled);
+  border-color: var(--simple-field-border-color-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Leading icon ───────────────────────────────────────────── */
+.leadingIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--simple-field-icon-color);
+  flex-shrink: 0;
+}
+
+.control--error .leadingIcon   { color: var(--simple-field-icon-color-error); }
+.control--warning .leadingIcon { color: var(--simple-field-icon-color-warning); }
+.control--success .leadingIcon { color: var(--simple-field-icon-color-success); }
+.control--disabled .leadingIcon { color: var(--simple-field-text-color-disabled); }
+
+.control:focus-within .leadingIcon {
+  color: var(--simple-field-icon-color-focus);
+}
+/* State icons always win over focus */
+.control--error:focus-within .leadingIcon   { color: var(--simple-field-icon-color-error); }
+.control--warning:focus-within .leadingIcon { color: var(--simple-field-icon-color-warning); }
+.control--success:focus-within .leadingIcon { color: var(--simple-field-icon-color-success); }
+
+/* Icon sizing by field size */
+.field--small  .iconSvg { font-size: var(--simple-field-icon-size-small) !important; width: var(--simple-field-icon-size-small); height: var(--simple-field-icon-size-small); }
+.field--default .iconSvg { font-size: var(--simple-field-icon-size-default) !important; width: var(--simple-field-icon-size-default); height: var(--simple-field-icon-size-default); }
+.field--large  .iconSvg { font-size: var(--simple-field-icon-size-large) !important; width: var(--simple-field-icon-size-large); height: var(--simple-field-icon-size-large); }
+
+/* ── MUI InputBase overrides ────────────────────────────────── */
+.inputRoot {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex !important;
+  align-items: center;
+  /* Remove all MUI InputBase padding — our control row handles it */
+  padding: 0 !important;
+}
+
+.nativeInput {
+  font-family: var(--simple-field-input-font) !important;
+  font-weight: var(--simple-field-input-weight) !important;
+  color: var(--simple-field-text-color) !important;
+  padding: 0 !important;
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  flex: 1 1 auto;
+  min-width: 60px;
+}
+
+.nativeInput::placeholder {
+  color: var(--simple-field-placeholder-color);
+  opacity: 1;
+}
+
+.field--disabled .nativeInput {
+  color: var(--simple-field-text-color-disabled) !important;
+  cursor: not-allowed;
+}
+
+/* Typography per size */
+.field--small  .nativeInput { font-size: var(--simple-field-input-size-small); }
+.field--default .nativeInput { font-size: var(--simple-field-input-size-default); }
+.field--large  .nativeInput { font-size: var(--simple-field-input-size-large); }
+
+/* ── Clear button ───────────────────────────────────────────── */
+.clearBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--simple-field-clear-color);
+  line-height: 0;
+  transition: color 0.15s ease;
+}
+
+.clearBtn:hover {
+  color: var(--simple-field-text-color);
+}
+
+.clearIcon {
+  width: var(--simple-field-icon-size-default) !important;
+  height: var(--simple-field-icon-size-default) !important;
+  font-size: var(--simple-field-icon-size-default) !important;
+}
+
+/* ── Tag chips ──────────────────────────────────────────────── */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--global-spacing-sizing-4px);
+  background: var(--simple-field-tag-bg);
+  color: var(--simple-field-tag-color);
+  border-radius: var(--simple-field-tag-border-radius);
+  padding: var(--simple-field-tag-padding);
+  font-family: var(--simple-field-tag-font);
+  font-size: var(--simple-field-tag-font-size);
+  font-weight: var(--global-type-weight-default);
+  line-height: 1.4;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.tagLabel {
+  line-height: inherit;
+}
+
+.tagRemove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.7;
+  line-height: 0;
+}
+
+.tagRemove:hover {
+  opacity: 1;
+}
+
+.tagRemoveIcon {
+  width: 10px !important;
+  height: 10px !important;
+  font-size: 10px !important;
+}
+
+/* ── Helper / status text ───────────────────────────────────── */
+.helper {
+  font-family: var(--simple-field-helper-font);
+  font-size: var(--simple-field-helper-size);
+  line-height: var(--simple-field-helper-line-height);
+  color: var(--simple-field-helper-color);
+  letter-spacing: var(--global-type-letter-spacing-secondary-body-sm, -0.15px);
+}
+
+.helper--error   { color: var(--simple-field-helper-color-error); }
+.helper--warning { color: var(--simple-field-helper-color-warning); }
+.helper--success { color: var(--simple-field-helper-color-success); }
