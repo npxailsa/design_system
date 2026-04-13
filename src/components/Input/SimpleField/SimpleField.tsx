@@ -1,4 +1,4 @@
-import React, { useId, useRef } from 'react';
+import React, { useId, useRef, useState, useEffect, useCallback } from 'react';
 import InputBase from '@mui/material/InputBase';
 import CloseIcon from '@mui/icons-material/Close';
 import type { SvgIconComponent } from '@mui/icons-material';
@@ -56,6 +56,23 @@ export interface SimpleFieldProps {
    * @default 'blue'
    */
   tagColour?: React.ComponentProps<typeof Tag>['colour'];
+  /**
+   * Pool of suggestion strings to search against when the user types.
+   * Activates the tag-search / autocomplete pattern.
+   * Already-selected tag labels are automatically excluded.
+   */
+  suggestions?: string[];
+  /**
+   * Called when the user selects a suggestion from the dropdown.
+   * The parent should add the value to `tags` and clear the `value` prop.
+   */
+  onSuggestionSelect?: (value: string) => void;
+  /**
+   * Human-readable name of what is being searched (shown in the empty state).
+   * e.g. "location", "tag", "parameter"
+   * @default 'option'
+   */
+  suggestionsLabel?: string;
   /** Disables the field */
   disabled?: boolean;
   /** HTML input type */
@@ -81,11 +98,15 @@ export interface SimpleFieldProps {
  *
  * **Sizes**: small (32 px) | default (40 px) | large (48 px)
  * **States**: default | error | warning | success | disabled
+ *
+ * **Tag search**: supply `suggestions` + `onSuggestionSelect` to enable
+ * the autocomplete dropdown — the input becomes a search box that filters
+ * the suggestion list as the user types, selecting adds a Tag chip.
  */
 export const SimpleField: React.FC<SimpleFieldProps> = ({
   label,
   placeholder,
-  value,
+  value = '',
   onChange,
   size = 'default',
   state = 'default',
@@ -96,6 +117,9 @@ export const SimpleField: React.FC<SimpleFieldProps> = ({
   tags,
   onTagRemove,
   tagColour = 'blue',
+  suggestions,
+  onSuggestionSelect,
+  suggestionsLabel = 'option',
   disabled = false,
   type = 'text',
   id: idProp,
@@ -104,11 +128,98 @@ export const SimpleField: React.FC<SimpleFieldProps> = ({
   ariaLabel,
 }) => {
   const generatedId = useId();
+  const listboxId = `${generatedId}-listbox`;
   const inputId = idProp ?? generatedId;
   const inputRef = useRef<HTMLInputElement>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
 
+  /* ── Dropdown state ── */
+  const [isOpen, setIsOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(-1);
+
+  /* Build filtered suggestion list */
+  const selectedLabels = new Set((tags ?? []).map((t) => t.label.toLowerCase()));
+  const query = value.toLowerCase().trim();
+  const filtered: string[] = suggestions
+    ? suggestions.filter(
+        (s) =>
+          s.toLowerCase().includes(query) &&
+          !selectedLabels.has(s.toLowerCase()),
+      )
+    : [];
+
+  const hasSuggestions = !!suggestions;
+  const showDropdown = hasSuggestions && isOpen && !disabled;
+
+  /* ── Close on outside click ── */
+  useEffect(() => {
+    if (!isOpen) return;
+    const handlePointerDown = (e: PointerEvent) => {
+      if (rootRef.current && !rootRef.current.contains(e.target as Node)) {
+        setIsOpen(false);
+        setActiveIndex(-1);
+      }
+    };
+    document.addEventListener('pointerdown', handlePointerDown);
+    return () => document.removeEventListener('pointerdown', handlePointerDown);
+  }, [isOpen]);
+
+  /* ── Select a suggestion ── */
+  const selectSuggestion = useCallback(
+    (suggestion: string) => {
+      onSuggestionSelect?.(suggestion);
+      setIsOpen(false);
+      setActiveIndex(-1);
+      inputRef.current?.focus();
+    },
+    [onSuggestionSelect],
+  );
+
+  /* ── Keyboard handler ── */
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (!hasSuggestions) return;
+
+    switch (e.key) {
+      case 'ArrowDown':
+        e.preventDefault();
+        setIsOpen(true);
+        setActiveIndex((i) => Math.min(i + 1, filtered.length - 1));
+        break;
+      case 'ArrowUp':
+        e.preventDefault();
+        setActiveIndex((i) => Math.max(i - 1, -1));
+        break;
+      case 'Enter':
+        if (isOpen && activeIndex >= 0 && filtered[activeIndex]) {
+          e.preventDefault();
+          selectSuggestion(filtered[activeIndex]);
+        }
+        break;
+      case 'Escape':
+        setIsOpen(false);
+        setActiveIndex(-1);
+        break;
+      case 'Backspace':
+        // Remove the last tag when the input is empty
+        if (!value && tags && tags.length > 0 && onTagRemove) {
+          onTagRemove(tags[tags.length - 1].id);
+        }
+        break;
+      default:
+        break;
+    }
+  };
+
+  /* ── Open on input change ── */
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChange?.(e);
+    setIsOpen(true);
+    setActiveIndex(-1);
+  };
+
+  /* ── Derived flags ── */
   const hasTags = tags && tags.length > 0;
-  const showClear = clearable && !disabled && value && value.length > 0 && !hasTags;
+  const showClear = clearable && !disabled && value && value.length > 0;
 
   /* ── Class names ── */
   const rootCls = [
@@ -126,12 +237,13 @@ export const SimpleField: React.FC<SimpleFieldProps> = ({
     styles[`control--${size}`],
     styles[`control--${state}`],
     disabled && styles['control--disabled'],
+    showDropdown && styles['control--open'],
   ]
     .filter(Boolean)
     .join(' ');
 
   return (
-    <div className={rootCls}>
+    <div ref={rootRef} className={rootCls}>
       {/* ── Label ── */}
       {label && (
         <label htmlFor={inputId} className={styles.label}>
@@ -153,46 +265,57 @@ export const SimpleField: React.FC<SimpleFieldProps> = ({
           </span>
         )}
 
-        {/* Inline tag chips — rendered using the design system Tag component */}
-        {hasTags &&
-          tags!.map((tag) => (
-            <Tag
-              key={tag.id}
-              label={tag.label}
-              size={size as TagSize}
-              colour={tagColour}
-              variant="filled"
-              showRemove={!!onTagRemove && !disabled}
-              onRemove={
-                onTagRemove
-                  ? () => onTagRemove(tag.id)
-                  : undefined
-              }
-              disabled={disabled}
-            />
-          ))}
+        {/* Scrollable row: tags + input — never expands the control height */}
+        <div className={styles.tagScrollArea}>
+          {/* Inline tag chips — rendered using the design system Tag component */}
+          {hasTags &&
+            tags!.map((tag) => (
+              <Tag
+                key={tag.id}
+                label={tag.label}
+                size={size as TagSize}
+                colour={tagColour}
+                variant="filled"
+                showRemove={!!onTagRemove && !disabled}
+                onRemove={
+                  onTagRemove ? () => onTagRemove(tag.id) : undefined
+                }
+                disabled={disabled}
+              />
+            ))}
 
-        {/* MUI InputBase — the low-level accessible primitive */}
-        <InputBase
-          id={inputId}
-          inputRef={inputRef}
-          value={value}
-          onChange={onChange}
-          placeholder={hasTags ? undefined : placeholder}
-          disabled={disabled}
-          type={type}
-          name={name}
-          inputProps={{
-            'aria-label': ariaLabel,
-            className: styles.nativeInput,
-          }}
-          classes={{
-            root: styles.inputRoot,
-            input: styles.nativeInput,
-          }}
-        />
+          {/* MUI InputBase — the low-level accessible primitive */}
+          <InputBase
+            id={inputId}
+            inputRef={inputRef}
+            value={value}
+            onChange={handleChange}
+            onFocus={() => {
+              if (hasSuggestions && value.length > 0) setIsOpen(true);
+            }}
+            onKeyDown={handleKeyDown}
+            placeholder={hasTags ? undefined : placeholder}
+            disabled={disabled}
+            type={type}
+            name={name}
+            inputProps={{
+              'aria-label': ariaLabel,
+              'aria-autocomplete': hasSuggestions ? 'list' : undefined,
+              'aria-expanded': hasSuggestions ? isOpen : undefined,
+              'aria-controls': hasSuggestions ? listboxId : undefined,
+              'aria-activedescendant':
+                activeIndex >= 0 ? `${listboxId}-opt-${activeIndex}` : undefined,
+              role: hasSuggestions ? 'combobox' : undefined,
+              className: styles.nativeInput,
+            }}
+            classes={{
+              root: styles.inputRoot,
+              input: styles.nativeInput,
+            }}
+          />
+        </div>
 
-        {/* Clear button */}
+        {/* Clear button — pinned outside scroll area so it's always visible */}
         {showClear && (
           <button
             type="button"
@@ -200,6 +323,7 @@ export const SimpleField: React.FC<SimpleFieldProps> = ({
             onClick={(e) => {
               e.stopPropagation();
               onClear?.();
+              setIsOpen(false);
             }}
             aria-label="Clear input"
             tabIndex={-1}
@@ -208,6 +332,44 @@ export const SimpleField: React.FC<SimpleFieldProps> = ({
           </button>
         )}
       </div>
+
+      {/* ── Suggestion dropdown ── */}
+      {showDropdown && (
+        <ul
+          id={listboxId}
+          role="listbox"
+          aria-label={`${suggestionsLabel} suggestions`}
+          className={styles.dropdown}
+        >
+          {filtered.length > 0 ? (
+            filtered.map((s, i) => (
+              <li
+                key={s}
+                id={`${listboxId}-opt-${i}`}
+                role="option"
+                aria-selected={i === activeIndex}
+                className={[
+                  styles.dropdownOption,
+                  i === activeIndex && styles['dropdownOption--active'],
+                ]
+                  .filter(Boolean)
+                  .join(' ')}
+                onPointerDown={(e) => {
+                  // Prevent blur before click fires
+                  e.preventDefault();
+                  selectSuggestion(s);
+                }}
+              >
+                {s}
+              </li>
+            ))
+          ) : (
+            <li className={styles.dropdownEmpty} aria-disabled="true">
+              No matching {suggestionsLabel}
+            </li>
+          )}
+        </ul>
+      )}
 
       {/* ── Helper / status text ── */}
       {helperText && (

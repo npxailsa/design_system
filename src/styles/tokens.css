@@ -2870,6 +2870,20 @@
   --simple-field-tag-font:              var(--brand-font-secondary);
   --simple-field-tag-font-size:         var(--global-type-size-primary-label-xs);
   --simple-field-tag-padding:           2px var(--global-spacing-sizing-6px);
+
+  /* Suggestion dropdown */
+  --simple-field-dropdown-bg:           var(--global-color-base-white);
+  --simple-field-dropdown-border:       var(--global-color-neutral-gray-200);
+  --simple-field-dropdown-radius:       var(--global-spacing-radius-6px);
+  --simple-field-dropdown-shadow:       var(--shadow-shadow-sm-box-shadow);
+  --simple-field-dropdown-option-hover: var(--global-color-neutral-gray-50);
+  --simple-field-dropdown-option-active:var(--global-color-primary-blue-blue-100);
+  --simple-field-dropdown-option-color: var(--global-color-base-black);
+  --simple-field-dropdown-option-font:  var(--brand-font-secondary);
+  --simple-field-dropdown-option-size:  var(--global-type-size-primary-label-sm);
+  --simple-field-dropdown-empty-color:  var(--global-color-neutral-gray-400);
+  --simple-field-dropdown-padding-y:    var(--global-spacing-sizing-4px);
+  --simple-field-dropdown-option-pad:   var(--global-spacing-sizing-8px) var(--global-spacing-sizing-12px);
 }
 
 /* Font Loading */

@@ -40,7 +40,9 @@
   transition:
     border-color 0.15s ease,
     box-shadow 0.15s ease;
-  flex-wrap: wrap;
+  /* Fixed height — never grows beyond the declared size */
+  flex-wrap: nowrap;
+  overflow: hidden;
 }
 
 /* Focus-within — applied when the inner input is focused.
@@ -52,19 +54,22 @@
   outline: none;
 }
 
-/* ── Size variants ──────────────────────────────────────────── */
+/* ── Size variants — fixed height, no vertical growth ──────── */
 .control--small {
-  min-height: var(--simple-field-height-small);
+  height: var(--simple-field-height-small);
+  max-height: var(--simple-field-height-small);
   padding: 0 var(--simple-field-padding-x-small);
 }
 
 .control--default {
-  min-height: var(--simple-field-height-default);
+  height: var(--simple-field-height-default);
+  max-height: var(--simple-field-height-default);
   padding: 0 var(--simple-field-padding-x-default);
 }
 
 .control--large {
-  min-height: var(--simple-field-height-large);
+  height: var(--simple-field-height-large);
+  max-height: var(--simple-field-height-large);
   padding: 0 var(--simple-field-padding-x-large);
 }
 
@@ -130,6 +135,26 @@
 .field--default .iconSvg { font-size: var(--simple-field-icon-size-default) !important; width: var(--simple-field-icon-size-default); height: var(--simple-field-icon-size-default); }
 .field--large  .iconSvg { font-size: var(--simple-field-icon-size-large) !important; width: var(--simple-field-icon-size-large); height: var(--simple-field-icon-size-large); }
 
+/* ── Tag + input scroll area ─────────────────────────────────
+   Wraps tag chips and the native input in a single scrollable
+   row so they never push the control taller than its fixed height.
+ ────────────────────────────────────────────────────────────── */
+.tagScrollArea {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--simple-field-gap);
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  /* Hide scrollbar visually but keep it functional */
+  scrollbar-width: none;
+}
+.tagScrollArea::-webkit-scrollbar {
+  display: none;
+}
+
 /* ── MUI InputBase overrides ────────────────────────────────── */
 .inputRoot {
   flex: 1 1 auto;
@@ -191,6 +216,67 @@
   width: var(--simple-field-icon-size-default) !important;
   height: var(--simple-field-icon-size-default) !important;
   font-size: var(--simple-field-icon-size-default) !important;
+}
+
+/* ── Suggestion dropdown ────────────────────────────────────── */
+
+/*
+ * The dropdown is a sibling of the control row inside .field.
+ * It is full-width and sits directly below the control via normal
+ * block flow, elevated with box-shadow.
+ */
+.dropdown {
+  list-style: none;
+  margin: calc(var(--global-spacing-sizing-2px) * -1) 0 0 0;
+  padding: var(--simple-field-dropdown-padding-y) 0;
+  background: var(--simple-field-dropdown-bg);
+  border: var(--simple-field-border-width) solid var(--simple-field-dropdown-border);
+  border-top: none;
+  border-radius: 0 0 var(--simple-field-dropdown-radius) var(--simple-field-dropdown-radius);
+  box-shadow: var(--simple-field-dropdown-shadow);
+  max-height: 220px;
+  overflow-y: auto;
+  z-index: 10;
+  /* Clip the top border so it meets the control cleanly */
+  position: relative;
+}
+
+/* When dropdown is open, square off the control's bottom corners */
+.control--open {
+  border-radius: var(--simple-field-border-radius) var(--simple-field-border-radius) 0 0;
+}
+
+.dropdownOption {
+  display: flex;
+  align-items: center;
+  padding: var(--simple-field-dropdown-option-pad);
+  font-family: var(--simple-field-dropdown-option-font);
+  font-size: var(--simple-field-dropdown-option-size);
+  font-weight: var(--global-type-weight-light);
+  color: var(--simple-field-dropdown-option-color);
+  cursor: pointer;
+  transition: background 0.1s ease;
+  user-select: none;
+}
+
+.dropdownOption:hover {
+  background: var(--simple-field-dropdown-option-hover);
+}
+
+.dropdownOption--active {
+  background: var(--simple-field-dropdown-option-active);
+}
+
+.dropdownEmpty {
+  display: flex;
+  align-items: center;
+  padding: var(--simple-field-dropdown-option-pad);
+  font-family: var(--simple-field-dropdown-option-font);
+  font-size: var(--simple-field-dropdown-option-size);
+  color: var(--simple-field-dropdown-empty-color);
+  font-style: italic;
+  pointer-events: none;
+  user-select: none;
 }
 
 /* ── Helper / status text ───────────────────────────────────── */

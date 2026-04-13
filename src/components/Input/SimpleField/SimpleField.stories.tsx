@@ -150,32 +150,129 @@ export const Success: Story = {
   parameters: { controls: { disable: true } },
 };
 
-/* 8 — Tag Input */
+/* ── Sample data sets for tag-search demos ── */
+const LOCATION_SUGGESTIONS = [
+  'Auckland', 'Wellington', 'Christchurch', 'Hamilton', 'Tauranga',
+  'Dunedin', 'Palmerston North', 'Nelson', 'Rotorua', 'Napier',
+  'New Plymouth', 'Invercargill', 'Whanganui', 'Gisborne', 'Blenheim',
+];
+
+const TAG_SUGGESTIONS = [
+  'Urgent', 'Review required', 'Approved', 'On hold', 'Draft',
+  'Pending', 'In progress', 'Complete', 'Archived', 'High priority',
+  'Low priority', 'Escalated', 'Blocked', 'Resolved', 'Closed',
+];
+
+const PARAMETER_SUGGESTIONS = [
+  'Revenue', 'Operating cost', 'Net profit', 'EBITDA', 'Headcount',
+  'Customer count', 'Churn rate', 'Conversion rate', 'Retention rate',
+  'Average order value', 'NPS score', 'Response time', 'Uptime',
+];
+
+/* 8 — Tag Input (with search) */
 export const TagInput: Story = {
   name: 'Tag Input',
   render: () => {
-    const TagDemo = ({ size }: { size: 'small' | 'default' | 'large' }) => {
-      const [val, setVal] = useState('');
-      const [tags, setTags] = useState([{ id: 1, label: 'Label →' }]);
+    const TagSearch = ({
+      size,
+      label,
+      suggestions,
+      suggestionsLabel,
+      initialTags,
+    }: {
+      size: 'small' | 'default' | 'large';
+      label: string;
+      suggestions: string[];
+      suggestionsLabel: string;
+      initialTags?: Array<{ id: number; label: string }>;
+    }) => {
+      const [query, setQuery] = useState('');
+      const [tags, setTags] = useState(initialTags ?? []);
+      const nextId = React.useRef(100);
+
+      const handleSelect = (value: string) => {
+        setTags((t) => [...t, { id: nextId.current++, label: value }]);
+        setQuery('');
+      };
+
       return (
         <SimpleField
-          label="Input name"
-          value={val}
-          onChange={(e) => setVal(e.target.value)}
-          leadingIcon={StarOutlineIcon}
+          label={label}
+          placeholder={`Search ${suggestionsLabel}…`}
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          onClear={() => setQuery('')}
+          clearable
+          leadingIcon={SearchIcon}
           size={size}
           tags={tags}
           onTagRemove={(id) => setTags((t) => t.filter((x) => x.id !== id))}
+          suggestions={suggestions}
+          onSuggestionSelect={handleSelect}
+          suggestionsLabel={suggestionsLabel}
+        />
+      );
+    };
+
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-24px)', maxWidth: 400 }}>
+        <div style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase' as const, color: 'var(--global-color-neutral-gray-500)' }}>
+          Locations
+        </div>
+        <TagSearch size="default" label="Filter by location" suggestions={LOCATION_SUGGESTIONS} suggestionsLabel="location" initialTags={[{ id: 1, label: 'Auckland' }]} />
+
+        <div style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase' as const, color: 'var(--global-color-neutral-gray-500)', marginTop: 'var(--global-spacing-sizing-8px)' }}>
+          Tags
+        </div>
+        <TagSearch size="default" label="Filter by tag" suggestions={TAG_SUGGESTIONS} suggestionsLabel="tag" />
+
+        <div style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase' as const, color: 'var(--global-color-neutral-gray-500)', marginTop: 'var(--global-spacing-sizing-8px)' }}>
+          Parameters
+        </div>
+        <TagSearch size="default" label="Filter by parameter" suggestions={PARAMETER_SUGGESTIONS} suggestionsLabel="parameter" />
+      </div>
+    );
+  },
+  parameters: { controls: { disable: true } },
+};
+
+/* 8b — Tag Input — all sizes */
+export const TagInputSizes: Story = {
+  name: 'Tag Input — Sizes',
+  render: () => {
+    const TagSearch = ({ size }: { size: 'small' | 'default' | 'large' }) => {
+      const [query, setQuery] = useState('');
+      const [tags, setTags] = useState<Array<{ id: number; label: string }>>([]);
+      const nextId = React.useRef(1);
+      return (
+        <SimpleField
+          label="Filter by location"
+          placeholder="Search location…"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          onClear={() => setQuery('')}
           clearable
-          onClear={() => setVal('')}
+          leadingIcon={SearchIcon}
+          size={size}
+          tags={tags}
+          onTagRemove={(id) => setTags((t) => t.filter((x) => x.id !== id))}
+          suggestions={LOCATION_SUGGESTIONS}
+          onSuggestionSelect={(v) => {
+            setTags((t) => [...t, { id: nextId.current++, label: v }]);
+            setQuery('');
+          }}
+          suggestionsLabel="location"
         />
       );
     };
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)', maxWidth: 360 }}>
-        <TagDemo size="small" />
-        <TagDemo size="default" />
-        <TagDemo size="large" />
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-20px)', maxWidth: 400 }}>
+        {(['small', 'default', 'large'] as const).map((s) => (
+          <div key={s}>
+            <div style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase' as const, color: 'var(--global-color-neutral-gray-400)', marginBottom: 'var(--global-spacing-sizing-6px)' }}>{s}</div>
+            <TagSearch size={s} />
+          </div>
+        ))}
       </div>
     );
   },

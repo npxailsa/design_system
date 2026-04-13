@@ -1,10 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { DocsTemplate } from '../../DocsTemplate/DocsTemplate';
 import { SimpleField } from './SimpleField';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 import SearchIcon from '@mui/icons-material/Search';
-import StarOutlineIcon from '@mui/icons-material/StarOutline';
+
+/* ── Sample suggestions ── */
+const LOCATION_SUGGESTIONS = [
+  'Auckland', 'Wellington', 'Christchurch', 'Hamilton', 'Tauranga',
+  'Dunedin', 'Palmerston North', 'Nelson', 'Rotorua', 'Napier',
+];
+
+const TAG_SUGGESTIONS = [
+  'Urgent', 'Review required', 'Approved', 'On hold', 'Draft',
+  'Pending', 'In progress', 'Complete', 'Archived', 'High priority',
+];
+
+/* ── Tag search demo ── */
+const TagSearchDemo: React.FC<{
+  label: string;
+  suggestions: string[];
+  suggestionsLabel: string;
+  size?: any;
+}> = ({ label, suggestions, suggestionsLabel, size = 'default' }) => {
+  const [query, setQuery] = useState('');
+  const [tags, setTags] = useState<Array<{ id: number; label: string }>>([]);
+  const nextId = useRef(1);
+  return (
+    <SimpleField
+      label={label}
+      placeholder={`Search ${suggestionsLabel}…`}
+      value={query}
+      onChange={(e) => setQuery(e.target.value)}
+      onClear={() => setQuery('')}
+      clearable
+      leadingIcon={SearchIcon}
+      size={size}
+      tags={tags}
+      onTagRemove={(id) => setTags((t) => t.filter((x) => x.id !== id))}
+      suggestions={suggestions}
+      onSuggestionSelect={(v) => {
+        setTags((t) => [...t, { id: nextId.current++, label: v }]);
+        setQuery('');
+      }}
+      suggestionsLabel={suggestionsLabel}
+    />
+  );
+};
 
 /* ── Live demo wrapper ── */
 const LiveDemo: React.FC<{ label?: string; state?: any; helperText?: string; size?: any }> = ({
@@ -178,15 +220,55 @@ import { Tag } from '../Tag/Tag'; // used for inline tag chips`}
     {/* ── Tag input ── */}
     <DocsTemplate.Section title="Tag Input">
       <DocsTemplate.BodyText>
-        Inline tag chips are rendered inside the control row when the <code>tags</code> prop
-        is supplied. Each chip includes an optional remove button backed by{' '}
-        <code>onTagRemove</code>.
+        Inline tag chips from the design system <strong>Tag</strong> component are rendered
+        inside the control row when the <code>tags</code> prop is supplied. Each chip includes
+        a remove button backed by <code>onTagRemove</code>. Backspace on an empty input
+        removes the last tag.
       </DocsTemplate.BodyText>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-12px)', maxWidth: 360 }}>
-        <TagDemo size="small" />
-        <TagDemo size="default" />
-        <TagDemo size="large" />
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-12px)', maxWidth: 400 }}>
+        <TagSearchDemo label="Filter by location" suggestions={LOCATION_SUGGESTIONS} suggestionsLabel="location" size="small" />
+        <TagSearchDemo label="Filter by location" suggestions={LOCATION_SUGGESTIONS} suggestionsLabel="location" size="default" />
+        <TagSearchDemo label="Filter by location" suggestions={LOCATION_SUGGESTIONS} suggestionsLabel="location" size="large" />
       </div>
+    </DocsTemplate.Section>
+
+    {/* ── Tag Search / Autocomplete ── */}
+    <DocsTemplate.Section title="Tag Search (Autocomplete)">
+      <DocsTemplate.BodyText>
+        Supply a <code>suggestions</code> array and an <code>onSuggestionSelect</code> callback
+        to activate the autocomplete mode. As the user types, the dropdown filters the suggestion
+        pool — excluding already-selected tags — and shows matching results. Selecting an item
+        adds a Tag chip and clears the input. The <code>suggestionsLabel</code> prop names what
+        is being searched (shown in the empty-state message).
+      </DocsTemplate.BodyText>
+      <DocsTemplate.CodeBlock>
+        {`<SimpleField
+  label="Filter by location"
+  placeholder="Search location…"
+  value={query}
+  onChange={(e) => setQuery(e.target.value)}
+  onClear={() => setQuery('')}
+  clearable
+  leadingIcon={SearchIcon}
+  tags={tags}
+  onTagRemove={(id) => setTags(t => t.filter(x => x.id !== id))}
+  suggestions={LOCATION_SUGGESTIONS}
+  onSuggestionSelect={(value) => {
+    setTags(t => [...t, { id: Date.now(), label: value }]);
+    setQuery('');
+  }}
+  suggestionsLabel="location"
+/>`}
+      </DocsTemplate.CodeBlock>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-20px)', maxWidth: 400 }}>
+        <TagSearchDemo label="Filter by location" suggestions={LOCATION_SUGGESTIONS} suggestionsLabel="location" />
+        <TagSearchDemo label="Filter by tag" suggestions={TAG_SUGGESTIONS} suggestionsLabel="tag" />
+      </div>
+      <DocsTemplate.BodyText>
+        <strong>Keyboard support</strong>: <kbd>↓</kbd> / <kbd>↑</kbd> to navigate the list,
+        <kbd>Enter</kbd> to select, <kbd>Escape</kbd> to dismiss, and{' '}
+        <kbd>Backspace</kbd> on an empty input removes the last tag.
+      </DocsTemplate.BodyText>
     </DocsTemplate.Section>
 
     {/* ── Design Tokens ── */}
@@ -215,6 +297,13 @@ import { Tag } from '../Tag/Tag'; // used for inline tag chips`}
           { name: '--simple-field-helper-color-success', description: 'Success helper text colour — status-dark-green' },
           { name: '--simple-field-tag-bg', description: 'Tag chip background — primary-blue-blue-100' },
           { name: '--simple-field-tag-color', description: 'Tag chip text colour — secondary-navy' },
+          { name: '--simple-field-dropdown-bg', description: 'Suggestion dropdown background — white' },
+          { name: '--simple-field-dropdown-border', description: 'Dropdown border colour — neutral-gray-200' },
+          { name: '--simple-field-dropdown-radius', description: 'Dropdown corner radius — 6 px (--global-spacing-radius-6px)' },
+          { name: '--simple-field-dropdown-shadow', description: 'Dropdown elevation — shadow-sm-box-shadow' },
+          { name: '--simple-field-dropdown-option-hover', description: 'Hovered option background — neutral-gray-50' },
+          { name: '--simple-field-dropdown-option-active', description: 'Keyboard-active option background — primary-blue-blue-100' },
+          { name: '--simple-field-dropdown-empty-color', description: 'Empty-state text colour — neutral-gray-400' },
         ]}
       />
     </DocsTemplate.Section>
@@ -239,6 +328,12 @@ import { Tag } from '../Tag/Tag'; // used for inline tag chips`}
       <DocsTemplate.PrincipleCard number={4} title="Clearable for long-form inputs">
         Enable <code>clearable</code> for search fields and long free-text inputs. Avoid it for
         short, required fields (e.g. username / password) where clearing is disruptive.
+      </DocsTemplate.PrincipleCard>
+      <DocsTemplate.PrincipleCard number={5} title="Name what you are searching">
+        Always set <code>suggestionsLabel</code> to a plain noun describing the search
+        target — <em>location</em>, <em>tag</em>, <em>parameter</em>. This noun appears in the
+        empty-state message (&ldquo;No matching location&rdquo;) and the listbox
+        <code>aria-label</code> for screen readers.
       </DocsTemplate.PrincipleCard>
     </DocsTemplate.Section>
   </DocsTemplate>
