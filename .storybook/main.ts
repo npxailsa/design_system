@@ -68,14 +68,6 @@ const config: StorybookConfig = {
       transformMixedEsModules: true,
     };
 
-    // Allow all hosts so the Storybook preview loads correctly when the dev
-    // server is proxied through an external domain (e.g. Builder.io, Gitpod,
-    // Codespaces, Chromatic, etc.).
-    // Vite 6.2+ tightened allowedHosts security by default — without this,
-    // the proxy host is rejected and the preview iframe shows a blank page.
-    config.server = config.server || {};
-    config.server.allowedHosts = 'all';
-
     if (process.env.STORYBOOK_BASE_PATH) {
       config.base = process.env.STORYBOOK_BASE_PATH;
     }

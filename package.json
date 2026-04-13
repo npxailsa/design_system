@@ -23,7 +23,7 @@
     "access": "restricted"
   },
   "scripts": {
-    "dev": "EDITOR=nano storybook dev -p 6006 --config-dir .storybook --ci --no-open --loglevel debug",
+    "dev": "EDITOR=nano storybook dev -p 6006 --host 0.0.0.0 --config-dir .storybook --ci --no-open --loglevel debug",
     "build": "NODE_OPTIONS=--max-old-space-size=4096 tsc && NODE_OPTIONS=--max-old-space-size=4096 vite build",
     "build:lib": "tsc --noEmit && NODE_OPTIONS=--max-old-space-size=4096 vite build --config vite.lib.config.ts",
     "typecheck": "tsc --noEmit",
