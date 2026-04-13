@@ -29,7 +29,7 @@
   align-items: center;
   justify-content: center;
   min-width: var(--btn-min-width);
-  min-height: var(--btn-min-height);
+  height: var(--btn-height);
   gap: var(--btn-gap-default);
   padding: var(--btn-padding-default);
   border-radius: var(--btn-border-radius);
@@ -60,6 +60,7 @@
 
 /* ── Sizes ── */
 .btn--small {
+  height: var(--btn-height-small);
   gap: var(--btn-gap-small);
   padding: var(--btn-padding-small);
   font-size: var(--btn-font-size-small);
@@ -67,10 +68,22 @@
 }
 
 .btn--large {
+  height: var(--btn-height-large);
   gap: var(--btn-gap-large);
   padding: var(--btn-padding-large);
   font-size: var(--btn-font-size-large);
   line-height: var(--btn-line-height-large);
+}
+
+.btn--extra-small {
+  height: var(--btn-height-extra-small);
+  min-width: unset;
+  gap: var(--btn-gap-extra-small);
+  padding: var(--btn-padding-extra-small);
+  font-size: var(--btn-font-size-extra-small);
+  font-weight: var(--btn-font-weight-extra-small);
+  line-height: var(--btn-line-height-extra-small);
+  letter-spacing: var(--btn-letter-spacing-extra-small);
 }
 
 /* ── Filled variant ── */
@@ -168,11 +181,15 @@
   width: var(--btn-icon-only-size-default);
   height: var(--btn-icon-only-size-default);
   min-width: unset;
-  min-height: unset;
   aspect-ratio: 1 / 1;
   flex-shrink: 0;
   padding: 0;
   border-radius: var(--btn-border-radius);
+}
+
+.btn--icon-only.btn--extra-small {
+  width: var(--btn-icon-only-size-extra-small);
+  height: var(--btn-icon-only-size-extra-small);
 }
 
 .btn--icon-only.btn--small {
@@ -202,6 +219,12 @@
   width: var(--btn-icon-size-default) !important;
   height: var(--btn-icon-size-default) !important;
   font-size: var(--btn-icon-size-default) !important;
+}
+
+.btn--extra-small .btn__icon-svg {
+  width: var(--btn-icon-size-extra-small) !important;
+  height: var(--btn-icon-size-extra-small) !important;
+  font-size: var(--btn-icon-size-extra-small) !important;
 }
 
 .btn--small .btn__icon-svg {
@@ -234,6 +257,11 @@
   animation: btn-spin var(--btn-spinner-duration) linear infinite;
   flex-shrink: 0;
   opacity: var(--btn-spinner-opacity);
+}
+
+.btn--extra-small .btn__spinner {
+  width: var(--btn-spinner-size-small);
+  height: var(--btn-spinner-size-small);
 }
 
 .btn--small .btn__spinner {

@@ -3,7 +3,7 @@ import ButtonBase from '@mui/material/ButtonBase';
 import styles from './Button.module.css';
 
 export type ButtonVariant = 'filled' | 'outline';
-export type ButtonSize = 'small' | 'default' | 'large';
+export type ButtonSize = 'extra-small' | 'small' | 'default' | 'large';
 export type ButtonType = 'button' | 'submit' | 'reset';
 
 export interface ButtonProps {

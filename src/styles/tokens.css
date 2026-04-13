@@ -1572,7 +1572,10 @@
 :root {
   /* Button — layout */
   --btn-min-width: var(--global-spacing-sizing-80px);
-  --btn-min-height: var(--global-spacing-sizing-42px);
+  --btn-height: var(--global-spacing-sizing-44px);
+  --btn-height-small: 34px;
+  --btn-height-large: var(--global-spacing-sizing-52px);
+  --btn-height-extra-small: var(--global-spacing-sizing-28px);
   --btn-border-radius: var(--global-spacing-radius-4px);
   --btn-font-family: var(--brand-font-primary);
   --btn-letter-spacing: var(--global-type-letter-spacing-primary-label);
@@ -1587,15 +1590,15 @@
   --btn-border-width-loading: var(--global-spacing-stroke-0-5px);
 
   /* Button — sizes: small */
-  --btn-padding-small: var(--global-spacing-sizing-8px) var(--global-spacing-sizing-12px);
+  --btn-padding-small: var(--global-spacing-sizing-4px) var(--global-spacing-sizing-12px);
   --btn-font-size-small: var(--global-type-size-primary-label-sm);
   --btn-line-height-small: var(--global-type-line-height-label-sm);
-  --btn-gap-small: var(--global-spacing-sizing-6px);
+  --btn-gap-small: var(--global-spacing-sizing-8px);
   --btn-icon-size-small: var(--global-spacing-sizing-14px);
-  --btn-icon-only-size-small: var(--global-spacing-sizing-36px);
+  --btn-icon-only-size-small: 34px;
 
   /* Button — sizes: default */
-  --btn-padding-default: var(--global-spacing-sizing-12px) var(--global-spacing-sizing-16px);
+  --btn-padding-default: var(--global-spacing-sizing-8px) var(--global-spacing-sizing-16px);
   --btn-font-size-default: var(--global-type-size-primary-label);
   --btn-line-height-default: var(--global-type-line-height-label);
   --btn-gap-default: var(--global-spacing-sizing-8px);
@@ -1603,10 +1606,10 @@
   --btn-icon-only-size-default: var(--global-spacing-sizing-44px);
 
   /* Button — sizes: large */
-  --btn-padding-large: var(--global-spacing-sizing-16px) var(--global-spacing-sizing-20px);
+  --btn-padding-large: var(--global-spacing-sizing-12px) var(--global-spacing-sizing-16px);
   --btn-font-size-large: var(--global-type-size-primary-label-lg);
   --btn-line-height-large: var(--global-type-line-height-label-lg);
-  --btn-gap-large: var(--global-spacing-sizing-10px);
+  --btn-gap-large: var(--global-spacing-sizing-8px);
   --btn-icon-size-large: var(--global-spacing-sizing-18px);
   --btn-icon-only-size-large: var(--global-spacing-sizing-52px);
 
@@ -1787,11 +1790,13 @@
 
   /* Button — extra-small size */
   --btn-padding-extra-small: var(--global-spacing-sizing-4px) var(--global-spacing-sizing-8px);
-  --btn-font-size-extra-small: var(--global-type-size-primary-label-xs);
-  --btn-line-height-extra-small: var(--global-type-line-height-label-xs);
-  --btn-gap-extra-small: var(--global-spacing-sizing-4px);
-  --btn-icon-size-extra-small: var(--global-spacing-sizing-12px);
-  --btn-icon-only-size-extra-small: var(--global-spacing-sizing-24px);
+  --btn-font-size-extra-small: var(--global-type-size-primary-footnote);
+  --btn-line-height-extra-small: var(--global-type-line-height-footnote);
+  --btn-letter-spacing-extra-small: var(--global-type-letter-spacing-primary-footnote);
+  --btn-font-weight-extra-small: var(--global-type-weight-default);
+  --btn-gap-extra-small: var(--global-spacing-sizing-6px);
+  --btn-icon-size-extra-small: var(--global-spacing-sizing-14px);
+  --btn-icon-only-size-extra-small: var(--global-spacing-sizing-28px); /* 28px fixed height */
 
   /* ==========================================================================
      COMPONENT: ErrorButton (StatusButton)

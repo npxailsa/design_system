@@ -1,6 +1,7 @@
 import { Preview } from "@storybook/react-vite";
 import { DocsContainer } from "@storybook/addon-docs/blocks";
 import { setupMonaco } from 'storybook-addon-code-editor';
+import { StyledEngineProvider } from '@mui/material';
 import '../src/index.css';
 import React from 'react';
 
@@ -129,6 +130,18 @@ const Footer = () => (
 );
 
 const preview: Preview = {
+  /*
+   * StyledEngineProvider injectFirst ensures MUI's Emotion styles are injected
+   * into the <head> BEFORE our custom design-system CSS (src/index.css and
+   * tokens.css). This means our tokens/component overrides always win.
+   */
+  decorators: [
+    (Story) => (
+      <StyledEngineProvider injectFirst>
+        <Story />
+      </StyledEngineProvider>
+    ),
+  ],
   parameters: {
     options: {
       storySort: {

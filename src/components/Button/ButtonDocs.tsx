@@ -17,9 +17,10 @@ export const ButtonDocs: React.FC = () => {
 
       <DocsTemplate.BodyText>
         The <strong>Button</strong> component is the core action element of the design system. It
-        supports two visual variants — <em>filled</em> and <em>outline</em> — across three sizes,
-        with optional leading and trailing icons, an icon-only mode, and built-in loading and
-        disabled states. All styling is driven by the token system with no hardcoded values.
+        supports two visual variants — <em>filled</em> and <em>outline</em> — across four sizes
+        (extra-small, small, default, large), with optional leading and trailing icons, an icon-only
+        mode, and built-in loading and disabled states. All styling is driven by the token system
+        with no hardcoded values.
       </DocsTemplate.BodyText>
 
       {/* ── Component Anatomy ── */}
@@ -135,15 +136,26 @@ export const ButtonDocs: React.FC = () => {
       {/* ── Sizes ── */}
       <DocsTemplate.Section title="Sizes">
         <DocsTemplate.BodyText>
-          Three sizes scale the button for different density contexts. All sizes support both
-          variants and all optional elements.
+          Four sizes scale the button for different density contexts. All sizes support both
+          variants and all optional elements. All sizes use F37 Ginger Pro as the brand typeface.
         </DocsTemplate.BodyText>
 
         <DocsTemplate.SizeDemo
           rows={[
             {
+              label: 'Extra Small',
+              sublabel: 'Compact inline controls, badges, split-button dropdowns — fixed height 28px',
+              children: (
+                <div style={{ display: 'flex', gap: 'var(--global-spacing-sizing-8px)', alignItems: 'center' }}>
+                  <Button size="extra-small" label="Label" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} />
+                  <Button size="extra-small" variant="outline" label="Label" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} />
+                  <Button size="extra-small" iconOnly leadingIcon={PersonIcon} ariaLabel="User" />
+                </div>
+              ),
+            },
+            {
               label: 'Small',
-              sublabel: 'Dense toolbars, inline actions',
+              sublabel: 'Dense toolbars, inline actions — fixed height 34px',
               children: (
                 <div style={{ display: 'flex', gap: 'var(--global-spacing-sizing-8px)', alignItems: 'center' }}>
                   <Button size="small" label="Label" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} />
@@ -154,7 +166,7 @@ export const ButtonDocs: React.FC = () => {
             },
             {
               label: 'Default',
-              sublabel: 'Standard use across the interface',
+              sublabel: 'Standard use across the interface — fixed height 44px',
               children: (
                 <div style={{ display: 'flex', gap: 'var(--global-spacing-sizing-8px)', alignItems: 'center' }}>
                   <Button size="default" label="Label" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} />
@@ -165,7 +177,7 @@ export const ButtonDocs: React.FC = () => {
             },
             {
               label: 'Large',
-              sublabel: 'Hero calls-to-action, prominent forms',
+              sublabel: 'Hero calls-to-action, prominent forms — fixed height 52px',
               children: (
                 <div style={{ display: 'flex', gap: 'var(--global-spacing-sizing-8px)', alignItems: 'center' }}>
                   <Button size="large" label="Label" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} />
@@ -252,13 +264,19 @@ export const ButtonDocs: React.FC = () => {
           { name: '--btn-border-width-focus', description: 'Focus state border (2px) — uses --global-spacing-stroke-2px' },
           { name: '--btn-border-width-disabled', description: 'Disabled state border (2px) — uses --global-spacing-stroke-2px' },
           { name: '--btn-border-width-loading', description: 'Loading state border (0.5px) — uses --global-spacing-stroke-0-5px' },
-          { name: '--btn-padding-small', description: 'Small padding — 8px vertical / 12px horizontal (equal top & bottom)' },
-          { name: '--btn-padding-default', description: 'Default padding — 12px vertical / 16px horizontal (equal top & bottom)' },
-          { name: '--btn-padding-large', description: 'Large padding — 16px vertical / 20px horizontal (equal top & bottom)' },
-          { name: '--btn-gap-small', description: 'Gap between elements — small (6px)' },
+          { name: '--btn-height-extra-small', description: 'Extra-small fixed height (28px) — uses --global-spacing-sizing-28px' },
+          { name: '--btn-height', description: 'Default fixed height (44px) — uses --global-spacing-sizing-44px' },
+          { name: '--btn-height-small', description: 'Small fixed height (34px)' },
+          { name: '--btn-height-large', description: 'Large fixed height (52px) — uses --global-spacing-sizing-52px' },
+          { name: '--btn-padding-extra-small', description: 'Extra-small padding — 4px vertical / 8px horizontal' },
+          { name: '--btn-padding-small', description: 'Small padding — 4px vertical / 12px horizontal' },
+          { name: '--btn-padding-default', description: 'Default padding — 8px vertical / 16px horizontal' },
+          { name: '--btn-padding-large', description: 'Large padding — 12px vertical / 16px horizontal' },
+          { name: '--btn-gap-extra-small', description: 'Gap between elements — extra-small (6px)' },
+          { name: '--btn-gap-small', description: 'Gap between elements — small (8px)' },
           { name: '--btn-gap-default', description: 'Gap between elements — default (8px)' },
-          { name: '--btn-gap-large', description: 'Gap between elements — large (10px)' },
-          { name: '--btn-icon-only-size-{size}', description: 'Icon-only button dimensions (36px / 44px / 52px)' },
+          { name: '--btn-gap-large', description: 'Gap between elements — large (8px)' },
+          { name: '--btn-icon-only-size-{size}', description: 'Icon-only button dimensions (28px XS / 30px small / 42px default / 52px large)' },
           { name: '--btn-transition-duration', description: 'Transition speed — --global-animation-duration-fast (160ms)' },
           { name: '--btn-transition-easing', description: 'Transition curve — --global-animation-easing-default (ease)' },
         ]}
@@ -268,12 +286,16 @@ export const ButtonDocs: React.FC = () => {
         title="Design Tokens — Typography"
         description="Tokens controlling text and icon appearance:"
         tokens={[
-          { name: '--btn-font-family', description: 'Font family — F37 Ginger Pro (--brand-font-primary)' },
-          { name: '--btn-font-weight', description: 'Font weight — 300 light (--global-type-weight-light)' },
-          { name: '--btn-letter-spacing', description: 'Letter spacing (0.15px) — --global-type-letter-spacing-primary-label' },
+          { name: '--btn-font-family', description: 'Font family for all sizes — F37 Ginger Pro (--brand-font-primary)' },
+          { name: '--btn-font-weight', description: 'Font weight for small/default/large — 300 light (--global-type-weight-light)' },
+          { name: '--btn-font-weight-extra-small', description: 'Font weight for extra-small — 400 regular (--global-type-weight-default)' },
+          { name: '--btn-letter-spacing', description: 'Letter spacing for small/default/large (0.15px) — --global-type-letter-spacing-primary-label' },
+          { name: '--btn-letter-spacing-extra-small', description: 'Letter spacing for extra-small (0.2px) — --global-type-letter-spacing-primary-footnote' },
+          { name: '--btn-font-size-extra-small', description: 'Extra-small font size (13px) — --global-type-size-primary-footnote' },
           { name: '--btn-font-size-small', description: 'Small font size (14px) — --global-type-size-primary-label-sm' },
           { name: '--btn-font-size-default', description: 'Default font size (16px) — --global-type-size-primary-label' },
           { name: '--btn-font-size-large', description: 'Large font size (18px) — --global-type-size-primary-label-lg' },
+          { name: '--btn-icon-size-extra-small', description: 'Extra-small icon size (14px) — --global-spacing-sizing-14px' },
           { name: '--btn-icon-size-small', description: 'Small icon size (14px) — --global-spacing-sizing-14px' },
           { name: '--btn-icon-size-default', description: 'Default icon size (16px) — --global-spacing-sizing-16px' },
           { name: '--btn-icon-size-large', description: 'Large icon size (18px) — --global-spacing-sizing-18px' },
@@ -357,7 +379,8 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
           action. Use <strong>outline</strong> for secondary actions alongside it.
         </DocsTemplate.PrincipleCard>
         <DocsTemplate.PrincipleCard number={2} title="Match size to context">
-          Use <strong>small</strong> in dense toolbars and inline controls, <strong>default</strong>
+          Use <strong>extra-small</strong> for compact inline elements and split-button dropdowns,
+          <strong>small</strong> in dense toolbars and inline controls, <strong>default</strong>
           for the majority of interface actions, and <strong>large</strong> for hero or prominent
           call-to-action sections.
         </DocsTemplate.PrincipleCard>

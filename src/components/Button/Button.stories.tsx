@@ -24,7 +24,7 @@ const meta: Meta<typeof Button> = {
     },
     size: {
       control: 'select',
-      options: ['small', 'default', 'large'],
+      options: ['extra-small', 'small', 'default', 'large'],
     },
     label: { control: 'text' },
     leadingIcon: {
@@ -102,11 +102,12 @@ export const Variants: Story = {
 };
 
 /**
- * All three sizes.
+ * All four sizes.
  */
 export const Sizes: Story = {
   render: () => (
     <div style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '16px' }}>
+      <Button size="extra-small" label="XS" />
       <Button size="small" label="Small" />
       <Button size="default" label="Default" />
       <Button size="large" label="Large" />
@@ -121,6 +122,7 @@ export const Sizes: Story = {
 export const WithLeadingIcon: Story = {
   render: () => (
     <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '12px', padding: '16px' }}>
+      <Button label="Button w/ leading icon" showLeadingIcon leadingIcon={PersonIcon} size="extra-small" />
       <Button label="Button w/ leading icon" showLeadingIcon leadingIcon={PersonIcon} size="small" />
       <Button label="Button w/ leading icon" showLeadingIcon leadingIcon={PersonIcon} />
       <Button label="Button w/ leading icon" showLeadingIcon leadingIcon={PersonIcon} size="large" />
@@ -235,9 +237,11 @@ export const AllVariants: Story = {
             {variant}
           </span>
           <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '10px' }}>
+            <Button variant={variant} label="XS" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} size="extra-small" />
             <Button variant={variant} label="Label" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} size="small" />
             <Button variant={variant} label="Label" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} />
             <Button variant={variant} label="Label" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} size="large" />
+            <Button variant={variant} iconOnly leadingIcon={PersonIcon} size="extra-small" ariaLabel="User" />
             <Button variant={variant} iconOnly leadingIcon={PersonIcon} ariaLabel="User" />
             <Button variant={variant} label="Disabled" disabled />
             <Button variant={variant} label="Loading" loading />
