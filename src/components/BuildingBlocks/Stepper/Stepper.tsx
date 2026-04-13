@@ -2,6 +2,8 @@ import React from 'react';
 import styles from './Stepper.module.css';
 import { StatusIcon } from '../StatusIcon/StatusIcon';
 import type { StatusIconType, StatusIconSize, StatusIconState } from '../StatusIcon/StatusIcon';
+import { StepperLines } from '../StepperLines/StepperLines';
+import type { StepperLineState } from '../StepperLines/StepperLines';
 
 export type StepperOrientation = 'horizontal' | 'vertical';
 
@@ -27,6 +29,13 @@ export interface StepperProps {
   orientation?: StepperOrientation;
   /** Additional CSS class */
   className?: string;
+}
+
+/** Map a step's progress state to a StepperLines colour state. */
+function resolveLineState(left: StepItem, right: StepItem): StepperLineState {
+  if (left.state === 'disabled' || right.state === 'disabled') return 'disabled';
+  if (left.step === 'past' && (right.step === 'past' || right.step === 'current')) return 'complete';
+  return 'to-do';
 }
 
 export const Stepper: React.FC<StepperProps> = ({
@@ -73,7 +82,13 @@ export const Stepper: React.FC<StepperProps> = ({
                 [orientation === 'horizontal' ? 'marginTop' : 'marginLeft']:
                   circleSize / 2 - 1,
               }}
-            />
+            >
+              <StepperLines
+                type="solid"
+                stroke="1-px"
+                state={resolveLineState(stepItem, steps[index + 1])}
+              />
+            </div>
           )}
         </React.Fragment>
       ))}

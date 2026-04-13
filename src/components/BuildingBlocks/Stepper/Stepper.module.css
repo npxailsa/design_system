@@ -11,20 +11,19 @@
   flex-direction: column;
 }
 
+/* Connector wrapper — holds the StepperLines child */
 .connector {
-  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  align-self: flex-start;
 }
 
 .connector--horizontal {
-  width: var(--global-spacing-sizing-32px);
-  height: var(--stepper-connector-width);
-  background-color: var(--stepper-connector-color);
-  align-self: flex-start;
+  flex: 1 1 auto;
+  min-width: var(--global-spacing-sizing-32px);
 }
 
 .connector--vertical {
-  height: var(--global-spacing-sizing-32px);
-  width: var(--stepper-connector-width);
-  background-color: var(--stepper-connector-color);
-  align-self: flex-start;
+  flex-direction: column;
+  min-height: var(--global-spacing-sizing-32px);
 }

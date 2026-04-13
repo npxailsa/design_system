@@ -37,7 +37,7 @@ const meta: Meta<typeof Stepper> = {
     size: 'default',
     showLabel: true,
     lineType: 'solid',
-    lineStroke: '2-px',
+    lineStroke: '1-px',
   },
 };
 

@@ -92,7 +92,7 @@ export const Stepper: React.FC<StepperProps> = ({
   size = 'default',
   showLabel = true,
   lineType = 'solid',
-  lineStroke = '2-px',
+  lineStroke = '1-px',
   className,
 }) => {
   if (!steps || steps.length === 0) return null;
