@@ -4,16 +4,22 @@ import { setupMonaco } from 'storybook-addon-code-editor';
 import '../src/index.css';
 import React from 'react';
 
-setupMonaco({
-  onMonacoLoad(monaco) {
-    monaco.editor.defineTheme('npx-dark', {
-      base: 'vs-dark',
-      inherit: true,
-      rules: [],
-      colors: {},
-    });
-  },
-});
+// Configure Monaco editor theme when it loads.
+// Wrapped defensively so any Monaco load failure doesn't crash the preview.
+try {
+  setupMonaco({
+    onMonacoLoad(monaco) {
+      monaco.editor.defineTheme('npx-dark', {
+        base: 'vs-dark',
+        inherit: true,
+        rules: [],
+        colors: {},
+      });
+    },
+  });
+} catch {
+  // Monaco not yet available — this is fine for non-code-editor stories.
+}
 
 // ── ResizeObserver loop fix ────────────────────────────────────────────────
 // The "ResizeObserver loop completed with undelivered notifications" error is a
