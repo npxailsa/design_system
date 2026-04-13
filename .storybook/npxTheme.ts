@@ -18,13 +18,20 @@ import { create } from 'storybook/theming';
  *   White           → --global-color-base-white             (#ffffff)
  *   Radius-sm       → --global-spacing-radius-sm            (4px)
  */
+
+// STORYBOOK_BASE_PATH is injected at build time by Vite/the Storybook builder.
+// Locally it is undefined (→ '/'), on GitHub Pages it is '/design_system/'.
+// We strip any trailing slash so we can safely concatenate the asset path.
+const base = (process.env.STORYBOOK_BASE_PATH ?? '/').replace(/\/$/, '');
+const logoUrl = `${base}/npx-ds-logo.png`;
+
 export const npxTheme = create({
   base: 'light',
 
   // ── Brand ──────────────────────────────────────────────────────────────────
   brandTitle: 'NPX Design System',
   brandUrl: 'https://npxinnovation.github.io/design_system',
-  brandImage: '/npx-ds-logo.png',
+  brandImage: logoUrl,
   brandTarget: '_self',
 
   // ── Typography ─────────────────────────────────────────────────────────────
