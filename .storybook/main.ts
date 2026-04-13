@@ -1,4 +1,9 @@
 import type { StorybookConfig } from '@storybook/react-vite';
+import { getCodeEditorStaticDirs } from 'storybook-addon-code-editor/getStaticDirs';
+import { fileURLToPath } from 'url';
+
+// __filename is not available in ESM scope — derive it from import.meta.url
+const __filename = fileURLToPath(import.meta.url);
 
 const config: StorybookConfig = {
   "stories": [
@@ -11,11 +16,16 @@ const config: StorybookConfig = {
     "@storybook/addon-links",
     "@storybook/addon-storysource",
     "@storybook/addon-themes",
-    "@storybook/addon-vitest"
+    "@storybook/addon-vitest",
+    "storybook-addon-code-editor"
   ],
-  "framework": "@storybook/react-vite",
+  "framework": {
+    name: "@storybook/react-vite",
+    options: {},
+  },
   "staticDirs": [
-    "../public"
+    "../public",
+    ...getCodeEditorStaticDirs(__filename),
   ],
   async viteFinal(config) {
     process.env.EDITOR = 'nano';

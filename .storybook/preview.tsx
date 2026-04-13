@@ -1,7 +1,19 @@
 import { Preview } from "@storybook/react-vite";
 import { DocsContainer } from "@storybook/addon-docs/blocks";
+import { setupMonaco } from 'storybook-addon-code-editor';
 import '../src/index.css';
 import React from 'react';
+
+setupMonaco({
+  onMonacoLoad(monaco) {
+    monaco.editor.defineTheme('npx-dark', {
+      base: 'vs-dark',
+      inherit: true,
+      rules: [],
+      colors: {},
+    });
+  },
+});
 
 // ── ResizeObserver loop fix ────────────────────────────────────────────────
 // The "ResizeObserver loop completed with undelivered notifications" error is a
