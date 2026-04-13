@@ -180,6 +180,9 @@
   width: var(--btn-icon-only-size-default);
   height: var(--btn-icon-only-size-default);
   min-width: unset;
+  min-height: unset;
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
   padding: var(--global-spacing-sizing-4px);
   border-radius: var(--btn-border-radius);
 }
@@ -192,13 +195,11 @@
 .btn--icon-only.btn--small {
   width: var(--btn-icon-only-size-small);
   height: var(--btn-icon-only-size-small);
-  min-height: unset;
 }
 
 .btn--icon-only.btn--large {
   width: var(--btn-icon-only-size-large);
   height: var(--btn-icon-only-size-large);
-  min-height: unset;
 }
 
 /* Icon-only hover mirrors solid hover: mid blue-gray bg, 2px border, black drop shadow */

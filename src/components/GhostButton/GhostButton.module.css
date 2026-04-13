@@ -227,6 +227,8 @@
   height: var(--btn-icon-only-size-default);
   min-width: unset;
   min-height: unset;
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
   padding: 0;
   border-radius: var(--btn-border-radius);
 }
