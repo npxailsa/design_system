@@ -1,0 +1,68 @@
+import { Meta, Controls, Canvas, Story } from "@storybook/addon-docs/blocks";
+import * as LabelStories from "./Label.stories";
+
+<Meta of={LabelStories} title="Foundation/Label" />
+
+# Label
+
+[Detailed overview of the Label component, its purpose, and key features.]
+
+## Design Tokens
+
+We use the following tokens to render our labels:
+
+| Token Name | Description |
+| :--- | :--- |
+| `--label-text-color` | Primary text color |
+
+## Principles
+
+Follow these common design principles by using labels in a cohesive, useful, and legible way.
+
+**Design for universal understanding**
+[Explanation]
+
+**Balance simplicity and detail to create legibility**
+[Explanation]
+
+**Maintain visual harmony**
+[Explanation]
+
+**Use labels intentionally**
+[Explanation]
+
+## Using the Component
+
+```tsx
+import { Label } from './Label';
+
+const MyComponent = () => (
+  <Label />
+);
+```
+
+The component accepts the following props:
+
+<Controls />
+
+## Visual Style
+
+[Visual variations, filled/outline etc.]
+
+### Do
+
+[Best practices for visual style]
+
+### Don't
+
+[Anti-patterns for visual style]
+
+## Size and spacing
+
+[Size variants, padding rules]
+
+<Canvas of={LabelStories.Default} />
+
+## Contribution
+
+[Guidelines for adding or requesting new variations/elements.]

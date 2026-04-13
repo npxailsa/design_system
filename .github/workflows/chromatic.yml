@@ -24,9 +24,28 @@ jobs:
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
 
+      - name: Build Storybook
+        run: npm run build-storybook
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+
+      - name: Verify preview-stats.json exists (required for TurboSnap)
+        run: |
+          STATS_FILE="storybook-static/preview-stats.json"
+          if [ -f "$STATS_FILE" ]; then
+            echo "✅ Success: $STATS_FILE found. Chromatic can proceed with TurboSnap."
+          else
+            echo "❌ Error: $STATS_FILE not found. This will prevent TurboSnap from functioning."
+            echo "Check your build script to ensure the --stats-json flag is correctly configured."
+            exit 1
+          fi
+
       - name: Run Chromatic
         uses: chromaui/action@latest
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          storybookBuildDir: storybook-static
           exitZeroOnChanges: true
           onlyChanged: true
+          externals: |
+            public/typefaces/**

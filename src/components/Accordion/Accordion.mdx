@@ -1,0 +1,68 @@
+import { Meta, Controls, Canvas, Story } from "@storybook/addon-docs/blocks";
+import * as AccordionStories from "./Accordion.stories";
+
+<Meta of={AccordionStories} title="Foundation/Accordion" />
+
+# Accordion
+
+[Detailed overview of the Accordion component, its purpose, and key features.]
+
+## Design Tokens
+
+We use the following tokens to render our accordions:
+
+| Token Name | Description |
+| :--- | :--- |
+| `--accordion-text-color` | Primary text color |
+
+## Principles
+
+Follow these common design principles by using accordions in a cohesive, useful, and legible way.
+
+**Design for universal understanding**
+[Explanation]
+
+**Balance simplicity and detail to create legibility**
+[Explanation]
+
+**Maintain visual harmony**
+[Explanation]
+
+**Use accordions intentionally**
+[Explanation]
+
+## Using the Component
+
+```tsx
+import { Accordion } from './Accordion';
+
+const MyComponent = () => (
+  <Accordion />
+);
+```
+
+The component accepts the following props:
+
+<Controls />
+
+## Visual Style
+
+[Visual variations, filled/outline etc.]
+
+### Do
+
+[Best practices for visual style]
+
+### Don't
+
+[Anti-patterns for visual style]
+
+## Size and spacing
+
+[Size variants, padding rules]
+
+<Canvas of={AccordionStories.Default} />
+
+## Contribution
+
+[Guidelines for adding or requesting new variations/elements.]

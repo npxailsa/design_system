@@ -1,0 +1,68 @@
+import { Meta, Controls, Canvas, Story } from "@storybook/addon-docs/blocks";
+import * as IconStories from "./Icon.stories";
+
+<Meta of={IconStories} title="Foundation/Icon" />
+
+# Icon
+
+[Detailed overview of the Icon component, its purpose, and key features.]
+
+## Design Tokens
+
+We use the following tokens to render our icons:
+
+| Token Name | Description |
+| :--- | :--- |
+| `--icon-text-color` | Primary text color |
+
+## Principles
+
+Follow these common design principles by using icons in a cohesive, useful, and legible way.
+
+**Design for universal understanding**
+[Explanation]
+
+**Balance simplicity and detail to create legibility**
+[Explanation]
+
+**Maintain visual harmony**
+[Explanation]
+
+**Use icons intentionally**
+[Explanation]
+
+## Using the Component
+
+```tsx
+import { Icon } from './Icon';
+
+const MyComponent = () => (
+  <Icon />
+);
+```
+
+The component accepts the following props:
+
+<Controls />
+
+## Visual Style
+
+[Visual variations, filled/outline etc.]
+
+### Do
+
+[Best practices for visual style]
+
+### Don't
+
+[Anti-patterns for visual style]
+
+## Size and spacing
+
+[Size variants, padding rules]
+
+<Canvas of={IconStories.Default} />
+
+## Contribution
+
+[Guidelines for adding or requesting new variations/elements.]
