@@ -25,6 +25,21 @@ export const SecondaryButtonDocs: React.FC = () => {
         token family with no hardcoded values.
       </DocsTemplate.BodyText>
 
+      {/* ── MUI Foundation ── */}
+      <DocsTemplate.Section title="MUI Foundation">
+        <DocsTemplate.BodyText>
+          Built on MUI's <strong>ButtonBase</strong> — the same accessible, zero-style primitive
+          used by every button in the design system. <code>ButtonBase</code> provides keyboard
+          activation, accessible <code>role="button"</code> semantics, and supports any root
+          element via the <code>component</code> prop. All Secondary Button styles (blue-gray
+          palette, border, padding, size) are layered on top via CSS Modules and the{' '}
+          <code>--btn-secondary-*</code> token family.
+        </DocsTemplate.BodyText>
+        <DocsTemplate.CodeBlock>
+          {`// MUI base import\nimport ButtonBase from '@mui/material/ButtonBase';\n\n// Root element of SecondaryButton:\n<ButtonBase component="button" className={styles['secondary-btn']} disabled={disabled} onClick={onClick}>`}
+        </DocsTemplate.CodeBlock>
+      </DocsTemplate.Section>
+
       {/* ── Component Anatomy ── */}
       <DocsTemplate.Section title="Component Anatomy">
         <DocsTemplate.BodyText>

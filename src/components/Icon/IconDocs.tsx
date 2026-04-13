@@ -54,6 +54,23 @@ export const IconDocs: React.FC = () => {
         create a harmonious app expression of NPX&rsquo;s broader design language.
       </DocsTemplate.BodyText>
 
+      {/* ── MUI Foundation ── */}
+      <DocsTemplate.Section title="MUI Foundation">
+        <DocsTemplate.BodyText>
+          The <strong>Icon</strong> wrapper component is built on MUI's{' '}
+          <strong>SvgIconProps</strong> interface from <code>@mui/material/SvgIcon</code>.
+          The <code>Icon</code> component accepts any MUI SvgIcon element type as its{' '}
+          <code>icon</code> prop and passes down size, colour, and <code>aria-hidden</code>{' '}
+          attributes. All icons in the design system are sourced from{' '}
+          <code>@mui/icons-material</code> — the official MUI icon set. This ensures
+          consistent SVG rendering, proper <code>role="img"</code> semantics, and seamless
+          scaling with the <code>--icon-size-*</code> token family via CSS Modules.
+        </DocsTemplate.BodyText>
+        <DocsTemplate.CodeBlock>
+          {`// MUI base interface\nimport { SvgIconProps } from '@mui/material/SvgIcon';\n\n// All icons from MUI icons library:\nimport HomeIcon from '@mui/icons-material/Home';\nimport SettingsIcon from '@mui/icons-material/Settings';\n// ... any icon from @mui/icons-material\n\n// Usage via Icon wrapper:\n<Icon icon={HomeIcon} size="default" aria-hidden />\n\n// Or directly in components:\n<HomeIcon className={styles['btn__icon-svg']} />`}
+        </DocsTemplate.CodeBlock>
+      </DocsTemplate.Section>
+
       <DocsTemplate.TokenTable
         title="Design Tokens"
         description="We use the following tokens to render our icons:"

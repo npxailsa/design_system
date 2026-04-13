@@ -47,6 +47,21 @@ export const ButtonGroupDocs: React.FC = () => (
       and action triggers that benefit from explicit labels.
     </DocsTemplate.BodyText>
 
+    {/* ── MUI Foundation ── */}
+    <DocsTemplate.Section title="MUI Foundation">
+      <DocsTemplate.BodyText>
+        Built on MUI's <strong>ButtonBase</strong> — every individual button within the group
+        is a <code>ButtonBase</code> element, ensuring consistent keyboard interaction, accessible
+        focus handling, and disabled support across all buttons in the cluster. MUI icons from{' '}
+        <code>@mui/icons-material</code> are used for the leading icons in label-type groups and
+        the icon-only slots. No MUI layout container (ButtonGroup) is used — the joined/separate
+        layout is implemented via CSS Modules and flex, giving full control over spacing and borders.
+      </DocsTemplate.BodyText>
+      <DocsTemplate.CodeBlock>
+        {`// MUI base imports\nimport ButtonBase from '@mui/material/ButtonBase';\nimport PersonIcon from '@mui/icons-material/Person'; // example icon\n\n// Each button in the group:\n<ButtonBase component="button" className={styles['btn-group__item']} onClick={onClick}>\n  <PersonIcon />\n</ButtonBase>`}
+      </DocsTemplate.CodeBlock>
+    </DocsTemplate.Section>
+
     {/* ── Anatomy ── */}
     <DocsTemplate.Section title="Component Anatomy">
       <DocsTemplate.Anatomy

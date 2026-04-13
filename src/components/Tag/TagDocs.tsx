@@ -75,6 +75,23 @@ export const TagDocs: React.FC = () => {
         selected/active state.
       </DocsTemplate.BodyText>
 
+      {/* ── MUI Foundation ── */}
+      <DocsTemplate.Section title="MUI Foundation">
+        <DocsTemplate.BodyText>
+          The Tag component uses MUI's <strong>ButtonBase</strong> for the interactive{' '}
+          <strong>remove (dismiss) button</strong> — the small × icon that appears when a Tag is
+          removable. <code>ButtonBase</code> gives the dismiss button keyboard activation,
+          accessible focus, and proper click semantics without any visual style. MUI icons from{' '}
+          <code>@mui/icons-material</code> are accepted as the optional{' '}
+          <code>leadingIcon</code> prop. The Tag container itself is a plain{' '}
+          <code>&lt;span&gt;</code> element. All colour, pill shape, size, and state styles are
+          applied via CSS Modules and the <code>--tag-*</code> token family.
+        </DocsTemplate.BodyText>
+        <DocsTemplate.CodeBlock>
+          {`// MUI base import (remove button only)\nimport ButtonBase from '@mui/material/ButtonBase';\n\n// Leading icon example:\nimport CheckIcon from '@mui/icons-material/Check';\n<Tag leadingIcon={CheckIcon} label="Approved" />\n\n// Remove button inside the Tag:\n{showRemove && (\n  <ButtonBase component="button" className={styles['tag__remove']} onClick={onRemove} aria-label="Remove">\n    {/* × SVG */}\n  </ButtonBase>\n)}`}
+        </DocsTemplate.CodeBlock>
+      </DocsTemplate.Section>
+
       {/* ── Component Anatomy ── */}
       <DocsTemplate.Section title="Component Anatomy">
         <DocsTemplate.BodyText>

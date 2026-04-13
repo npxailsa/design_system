@@ -48,6 +48,21 @@ export const FilterSortButtonDocs: React.FC = () => {
         instant visual context, while the label communicates the action clearly.
       </DocsTemplate.BodyText>
 
+      {/* ── MUI Foundation ── */}
+      <DocsTemplate.Section title="MUI Foundation">
+        <DocsTemplate.BodyText>
+          Built on MUI's <strong>ButtonBase</strong> — the accessible primitive that provides
+          keyboard activation, native <code>&lt;button&gt;</code> semantics, and disabled
+          propagation. MUI's <strong>PersonIcon</strong> from <code>@mui/icons-material</code>{' '}
+          is used as the default leading icon. All four visual variants (primary, secondary,
+          tertiary, ghost) and four sizes are applied purely via CSS Modules and the{' '}
+          <code>--btn-filter-*</code> token family.
+        </DocsTemplate.BodyText>
+        <DocsTemplate.CodeBlock>
+          {`// MUI base imports\nimport ButtonBase from '@mui/material/ButtonBase';\nimport PersonIcon from '@mui/icons-material/Person'; // default leading icon\n\n// Root element:\n<ButtonBase component="button" className={styles['filter-sort-btn']} disabled={disabled} onClick={onClick}>\n  <PersonIcon className={styles['filter-sort-btn__icon']} />\n  <span className={styles['filter-sort-btn__label']}>{label}</span>\n</ButtonBase>`}
+        </DocsTemplate.CodeBlock>
+      </DocsTemplate.Section>
+
       {/* ── Anatomy ── */}
       <DocsTemplate.Section title="Component Anatomy">
         <DocsTemplate.BodyText>

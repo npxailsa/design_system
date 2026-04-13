@@ -19,6 +19,20 @@ export const ErrorButtonDocs: React.FC = () => (
       variant serves as the primary call-to-action and the ghost variant as the secondary.
     </DocsTemplate.BodyText>
 
+    {/* ── MUI Foundation ───────────────────────────────────────────────────── */}
+    <DocsTemplate.Section title="MUI Foundation">
+      <DocsTemplate.BodyText>
+        Built on MUI's <strong>ButtonBase</strong> — the accessible, zero-style primitive shared
+        across all button types in the design system. <code>ButtonBase</code> handles keyboard
+        activation, disabled state propagation, and native <code>&lt;button&gt;</code> semantics.
+        ErrorButton's red palette, border mechanics, and state transitions are applied entirely
+        via CSS Modules and the <code>--btn-error-*</code> token family.
+      </DocsTemplate.BodyText>
+      <DocsTemplate.CodeBlock>
+        {`// MUI base import\nimport ButtonBase from '@mui/material/ButtonBase';\n\n// Root element of ErrorButton:\n<ButtonBase component="button" className={styles['error-btn']} disabled={disabled} onClick={onClick}>`}
+      </DocsTemplate.CodeBlock>
+    </DocsTemplate.Section>
+
     {/* ── Anatomy ──────────────────────────────────────────────────────────── */}
     <DocsTemplate.Section title="Component Anatomy">
       <DocsTemplate.BodyText>

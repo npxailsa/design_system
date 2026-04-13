@@ -64,6 +64,22 @@ export const AutoSaveTagButtonDocs: React.FC = () => {
         lifecycle.
       </DocsTemplate.BodyText>
 
+      {/* ── MUI Foundation ── */}
+      <DocsTemplate.Section title="MUI Foundation">
+        <DocsTemplate.BodyText>
+          Built on MUI's <strong>ButtonBase</strong> for the interactive pill button element.{' '}
+          <code>ButtonBase</code> provides keyboard activation, disabled propagation, and accessible
+          semantics without any visual style. MUI's <strong>SaveOutlinedIcon</strong> from{' '}
+          <code>@mui/icons-material/SaveOutlined</code> is used as the floppy-disk save icon
+          across all states. The timestamp tag below is a static element with no MUI dependency.
+          All colour, border-radius, and state styling is applied via CSS Modules and the{' '}
+          <code>--auto-save-*</code> token family.
+        </DocsTemplate.BodyText>
+        <DocsTemplate.CodeBlock>
+          {`// MUI base imports\nimport ButtonBase from '@mui/material/ButtonBase';\nimport SaveOutlinedIcon from '@mui/icons-material/SaveOutlined';\n\n// Root element:\n<ButtonBase component="button" className={styles['auto-save-btn']} disabled={disabled} onClick={onClick}>\n  <SaveOutlinedIcon />\n  <span>{label}</span>\n</ButtonBase>`}
+        </DocsTemplate.CodeBlock>
+      </DocsTemplate.Section>
+
       {/* ── Anatomy ── */}
       <DocsTemplate.Section title="Component Anatomy">
         <DocsTemplate.BodyText>

@@ -32,6 +32,21 @@ export const ProgressBarDocs: React.FC = () => (
       label weight. All colours and dimensions are fully token-driven.
     </DocsTemplate.BodyText>
 
+    {/* ── MUI Foundation ── */}
+    <DocsTemplate.Section title="MUI Foundation">
+      <DocsTemplate.BodyText>
+        ProgressBar is a <strong>pure React component</strong> with no MUI base. It renders
+        as two nested <code>&lt;div&gt;</code> elements — the outer track and the inner fill —
+        driven entirely by CSS Modules and the <code>--progress-bar-*</code> token family.
+        No MUI component is imported; this keeps the loader lightweight and free from MUI
+        style interference. The dot indicator at 0% is an inline <code>&lt;span&gt;</code>
+        with CSS positioning.
+      </DocsTemplate.BodyText>
+      <DocsTemplate.CodeBlock>
+        {`// No MUI base import required\n// ProgressBar renders as:\n<div className={styles['progress-bar']} data-size={size} role="progressbar"\n  aria-valuenow={value} aria-valuemin={0} aria-valuemax={100}>\n  <div className={styles['progress-bar__fill']} style={{ width: \`\${value}%\` }} />\n  {showLabel && <span className={styles['progress-bar__label']}>{value}%</span>}\n</div>`}
+      </DocsTemplate.CodeBlock>
+    </DocsTemplate.Section>
+
     {/* ── Anatomy ── */}
     <DocsTemplate.Section title="Component Anatomy">
       <DocsTemplate.Anatomy

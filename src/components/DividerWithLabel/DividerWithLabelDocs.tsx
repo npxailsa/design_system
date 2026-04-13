@@ -53,6 +53,22 @@ export const DividerWithLabelDocs: React.FC = () => (
       colour, and stroke values are driven by global design tokens.
     </DocsTemplate.BodyText>
 
+    {/* ── MUI Foundation ── */}
+    <DocsTemplate.Section title="MUI Foundation">
+      <DocsTemplate.BodyText>
+        Built on MUI's <strong>Divider</strong> component (<code>@mui/material/Divider</code>)
+        with the <code>children</code> slot used to embed the label. MUI's Divider natively
+        supports a text child — it wraps it in a <code>&lt;span&gt;</code> and uses a flex
+        layout with pseudo-elements to render the lines on either side. The{' '}
+        <code>textAlign</code> prop maps to our <code>position</code> variant (left / center /
+        right). All line colour, stroke thickness, label typography, and background are applied
+        via CSS Modules and the <code>--divider-*</code> token family.
+      </DocsTemplate.BodyText>
+      <DocsTemplate.CodeBlock>
+        {`// MUI base import\nimport MuiDivider from '@mui/material/Divider';\n\n// DividerWithLabel uses the children slot:\n<MuiDivider\n  textAlign={positionToMuiAlign(position)} // 'left' | 'center' | 'right'\n  className={styles['divider-with-label']}\n  data-line={line}\n  data-thickness={thickness}\n>\n  <span className={styles['divider-with-label__text']}>{label}</span>\n</MuiDivider>`}
+      </DocsTemplate.CodeBlock>
+    </DocsTemplate.Section>
+
     {/* ── Anatomy ── */}
     <DocsTemplate.Section title="Component Anatomy">
       <DocsTemplate.Anatomy

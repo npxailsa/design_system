@@ -132,6 +132,24 @@ export const ButtonMenuItemDocs = (): JSX.Element => (
       </p>
     </div>
 
+    {/* ── MUI Foundation ── */}
+    <div style={{ marginBottom: 'var(--global-spacing-sizing-32px)' }}>
+      <h2 style={sectionTitle}>MUI Foundation</h2>
+      <p style={sectionDesc}>
+        Built on MUI's <strong>ButtonBase</strong> (<code style={codePill}>@mui/material/ButtonBase</code>).{' '}
+        <code style={codePill}>ButtonBase</code> provides keyboard activation (Enter / Space), accessible{' '}
+        <code style={codePill}>role="button"</code> semantics, disabled propagation, and a clean click
+        target with no visual style of its own. MUI icons from{' '}
+        <code style={codePill}>@mui/icons-material</code> are supported as the optional{' '}
+        <code style={codePill}>leadingIcon</code> and <code style={codePill}>trailingIcon</code> props.
+        All colour, border, padding, and position-specific corner-radius values are applied via CSS
+        Modules and the <code style={codePill}>--btn-menu-item-*</code> token family.
+      </p>
+      <pre style={{ background: 'var(--global-color-neutral-gray-50)', borderRadius: 'var(--global-spacing-radius-6px)', padding: 'var(--global-spacing-sizing-16px)', fontFamily: 'monospace', fontSize: '13px', overflowX: 'auto' }}>
+        {`// MUI base import\nimport ButtonBase from '@mui/material/ButtonBase';\nimport EditIcon from '@mui/icons-material/Edit'; // optional leading icon\n\n// Root element:\n<ButtonBase component="button" className={styles['btn-menu-item']}\n  data-position={position} disabled={disabled} onClick={onClick}>`}
+      </pre>
+    </div>
+
     <hr style={divider} />
 
     {/* ── States ── */}

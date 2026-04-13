@@ -23,6 +23,21 @@ export const ButtonDocs: React.FC = () => {
         with no hardcoded values.
       </DocsTemplate.BodyText>
 
+      {/* ── MUI Foundation ── */}
+      <DocsTemplate.Section title="MUI Foundation">
+        <DocsTemplate.BodyText>
+          Built on MUI's <strong>ButtonBase</strong> — the low-level accessible primitive that
+          every button in this design system shares. <code>ButtonBase</code> provides native{' '}
+          <code>&lt;button&gt;</code> semantics, keyboard interaction (Enter / Space activation),
+          and polymorphic rendering via the <code>component</code> prop, with no visual styles of
+          its own. All colour, padding, border, typography, and state styles are applied on top
+          through CSS Modules and design tokens, so MUI updates never override the NPX visual layer.
+        </DocsTemplate.BodyText>
+        <DocsTemplate.CodeBlock>
+          {`// MUI base import\nimport ButtonBase from '@mui/material/ButtonBase';\n\n// Used as the root element — renders a native <button>:\n<ButtonBase component="button" className={styles.btn} disabled={disabled} onClick={onClick}>`}
+        </DocsTemplate.CodeBlock>
+      </DocsTemplate.Section>
+
       {/* ── Component Anatomy ── */}
       <DocsTemplate.Section title="Component Anatomy">
         <DocsTemplate.BodyText>

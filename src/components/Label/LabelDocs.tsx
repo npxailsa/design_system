@@ -16,6 +16,23 @@ export const LabelDocs: React.FC = () => {
         weight, alignment, and state.
       </DocsTemplate.BodyText>
 
+      {/* ── MUI Foundation ── */}
+      <DocsTemplate.Section title="MUI Foundation">
+        <DocsTemplate.BodyText>
+          The Label component itself has <strong>no MUI layout base</strong> — it renders as
+          a plain <code>&lt;span&gt;</code> / <code>&lt;div&gt;</code> flex container. However,
+          it uses MUI icons from <code>@mui/icons-material</code> extensively: the{' '}
+          <strong>PersonIcon</strong> appears as the default leading icon, the{' '}
+          <strong>ArrowForwardIcon</strong> as the trailing action icon, and the{' '}
+          <strong>KeyboardArrowDownIcon</strong> as the dropdown chevron. All sizing, spacing,
+          and state tokens are from the <code>--label-*</code> token family applied via CSS
+          Modules.
+        </DocsTemplate.BodyText>
+        <DocsTemplate.CodeBlock>
+          {`// MUI icon imports used in Label\nimport PersonIcon from '@mui/icons-material/Person';          // leading\nimport ArrowForwardIcon from '@mui/icons-material/ArrowForward'; // trailing\nimport KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'; // dropdown\n\n// Label renders as:\n<span className={styles.label}>\n  {showLeadingIcon && <PersonIcon className={styles['label__icon']} />}\n  <span className={styles['label__text']}>{children}</span>\n  {trailingIcon && <ArrowForwardIcon className={styles['label__icon']} />}\n</span>`}
+        </DocsTemplate.CodeBlock>
+      </DocsTemplate.Section>
+
       {/* ── Component Anatomy ── */}
       <DocsTemplate.Section title="Component Anatomy">
         <DocsTemplate.BodyText>

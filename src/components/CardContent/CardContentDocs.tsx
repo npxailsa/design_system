@@ -57,6 +57,23 @@ export const CardContentDocs: React.FC = () => (
       <code>showImage</code>).
     </DocsTemplate.BodyText>
 
+    {/* ── MUI Foundation ── */}
+    <DocsTemplate.Section title="MUI Foundation">
+      <DocsTemplate.BodyText>
+        Built on MUI's <strong>ButtonBase</strong> for the interactive action area. The{' '}
+        <strong>dismiss button</strong> (close ×) is a <code>ButtonBase</code> element,
+        ensuring accessible keyboard activation and semantics. The card shell, layout
+        zones, heading, body text, and icon badge are plain <code>&lt;div&gt;</code> /
+        semantic HTML elements. The <strong>ButtonGroup</strong> and status-specific buttons
+        (ErrorButton, SuccessButton, etc.) embedded in the card are also built on{' '}
+        <code>ButtonBase</code>. All card styles — status colour, padding, border, shadow —
+        are driven by CSS Modules and the <code>--card-content-*</code> token family.
+      </DocsTemplate.BodyText>
+      <DocsTemplate.CodeBlock>
+        {`// MUI base import (dismiss button only)\nimport ButtonBase from '@mui/material/ButtonBase';\n\n// Dismiss button inside the card:\n{showDismiss && (\n  <ButtonBase component="button" className={styles['card-content__dismiss']} onClick={onDismiss}>\n    {/* × close icon SVG */}\n  </ButtonBase>\n)}`}
+      </DocsTemplate.CodeBlock>
+    </DocsTemplate.Section>
+
     {/* ── Anatomy ── */}
     <DocsTemplate.Section title="Component Anatomy">
       <DocsTemplate.Anatomy

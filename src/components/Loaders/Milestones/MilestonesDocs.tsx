@@ -32,6 +32,20 @@ export const MilestonesDocs: React.FC = () => (
       diameter and spacing. All colours and dimensions are fully token-driven.
     </DocsTemplate.BodyText>
 
+    {/* ── MUI Foundation ── */}
+    <DocsTemplate.Section title="MUI Foundation">
+      <DocsTemplate.BodyText>
+        Milestones is a <strong>pure React component</strong> with no MUI base. It renders a
+        flex row of <code>&lt;span&gt;</code> dots — filled dots for completed steps, outlined
+        for remaining — driven entirely by CSS Modules and the <code>--milestones-*</code> token
+        family. No MUI component is imported; this keeps the loader minimal and interference-free.
+        The optional percentage label is a plain <code>&lt;span&gt;</code>.
+      </DocsTemplate.BodyText>
+      <DocsTemplate.CodeBlock>
+        {`// No MUI base import required\n// Milestones renders as:\n<div className={styles.milestones} data-size={size}>\n  {dots.map((filled, i) => (\n    <span key={i} className={styles['milestones__dot']} data-filled={filled} />\n  ))}\n  {showLabel && <span className={styles['milestones__label']}>{value}%</span>}\n</div>`}
+      </DocsTemplate.CodeBlock>
+    </DocsTemplate.Section>
+
     {/* ── Anatomy ── */}
     <DocsTemplate.Section title="Component Anatomy">
       <DocsTemplate.Anatomy

@@ -30,6 +30,22 @@ export const ButtonMenuDocs: React.FC = () => {
         <code>BuildingBlocks/Button/menu</code> Figma pattern.
       </DocsTemplate.BodyText>
 
+      {/* ── MUI Foundation ── */}
+      <DocsTemplate.Section title="MUI Foundation">
+        <DocsTemplate.BodyText>
+          The ButtonMenu is a composition of <strong>ButtonMenuItem</strong> building blocks,
+          each built on MUI's <strong>ButtonBase</strong>. The outer menu container is a plain{' '}
+          <code>&lt;div&gt;</code> flex column; no MUI layout container is used, giving full
+          control over borders, corner radii, and shadow via CSS Modules and the{' '}
+          <code>--btn-menu-*</code> token family. MUI icons from{' '}
+          <code>@mui/icons-material</code> are used as the optional <code>leadingIcon</code>{' '}
+          and <code>trailingIcon</code> props on each row.
+        </DocsTemplate.BodyText>
+        <DocsTemplate.CodeBlock>
+          {`// MUI base import (per row, via ButtonMenuItem)\nimport ButtonBase from '@mui/material/ButtonBase';\nimport EditIcon from '@mui/icons-material/Edit';\nimport ChevronRightIcon from '@mui/icons-material/ChevronRight';\n\n// Usage:\n<ButtonMenu\n  items={[\n    { label: 'Edit', leadingIcon: EditIcon },\n    { label: 'More', trailingIcon: ChevronRightIcon },\n  ]}\n  size="default"\n/>`}
+        </DocsTemplate.CodeBlock>
+      </DocsTemplate.Section>
+
       {/* ── Anatomy ── */}
       <DocsTemplate.Section title="Component Anatomy">
         <DocsTemplate.BodyText>

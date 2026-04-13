@@ -29,6 +29,22 @@ export const AlertDocs: React.FC = () => {
         close button, and description subtext.
       </DocsTemplate.BodyText>
 
+      {/* ── MUI Foundation ── */}
+      <DocsTemplate.Section title="MUI Foundation">
+        <DocsTemplate.BodyText>
+          The Alert component uses MUI's <strong>ButtonBase</strong> as the root element for the
+          trailing <strong>close (dismiss) button</strong>. The close trigger must be keyboard
+          accessible and properly focusable — <code>ButtonBase</code> provides that without
+          adding any visual style. The Alert container itself is a plain <code>&lt;div&gt;</code>;
+          only the interactive close icon wraps a <code>ButtonBase</code>. All colour themes,
+          borders, padding, and typography are applied via CSS Modules and the{' '}
+          <code>--alert-*</code> token family.
+        </DocsTemplate.BodyText>
+        <DocsTemplate.CodeBlock>
+          {`// MUI base import (close button only)\nimport ButtonBase from '@mui/material/ButtonBase';\n\n// Dismiss button inside the Alert:\n{showTrailingIcon && (\n  <ButtonBase component="button" className={styles['alert__close']} onClick={onClose} aria-label="Dismiss">\n    {/* close SVG icon */}\n  </ButtonBase>\n)}`}
+        </DocsTemplate.CodeBlock>
+      </DocsTemplate.Section>
+
       {/* ── Component Anatomy ── */}
       <DocsTemplate.Section title="Component Anatomy">
         <DocsTemplate.BodyText>

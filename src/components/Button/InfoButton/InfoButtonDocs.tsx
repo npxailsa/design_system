@@ -19,6 +19,20 @@ export const InfoButtonDocs: React.FC = () => (
       serves as the primary call-to-action and the ghost as the secondary.
     </DocsTemplate.BodyText>
 
+    {/* ── MUI Foundation ───────────────────────────────────────────────────── */}
+    <DocsTemplate.Section title="MUI Foundation">
+      <DocsTemplate.BodyText>
+        Built on MUI's <strong>ButtonBase</strong> — the shared accessible primitive for the entire
+        button family. <code>ButtonBase</code> provides keyboard activation (Enter / Space),
+        native <code>&lt;button&gt;</code> semantics, and disabled propagation. InfoButton's
+        info-blue palette, border behaviour, and hover fill are applied via CSS Modules and the{' '}
+        <code>--btn-info-*</code> token family.
+      </DocsTemplate.BodyText>
+      <DocsTemplate.CodeBlock>
+        {`// MUI base import\nimport ButtonBase from '@mui/material/ButtonBase';\n\n// Root element of InfoButton:\n<ButtonBase component="button" className={styles['info-btn']} disabled={disabled} onClick={onClick}>`}
+      </DocsTemplate.CodeBlock>
+    </DocsTemplate.Section>
+
     {/* ── Anatomy ──────────────────────────────────────────────────────────── */}
     <DocsTemplate.Section title="Component Anatomy">
       <DocsTemplate.BodyText>

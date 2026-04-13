@@ -62,6 +62,21 @@ const StepperDocs: React.FC = () => (
       subtitle="A horizontal progress indicator that guides users through a multi-step workflow. Composes StepperSteps and StepperLines building blocks to show numbered circles connected by progress lines."
     />
 
+    {/* MUI Foundation */}
+    <DocsTemplate.Section title="MUI Foundation">
+      <DocsTemplate.BodyText>
+        The Stepper is a <strong>pure React composition component</strong> with no MUI base of its
+        own. It delegates all rendering to two building blocks — <strong>StepperSteps</strong> and{' '}
+        <strong>StepperLines</strong> — both of which are also pure React components. No MUI
+        layout or interactive primitive is imported in the Stepper, StepperSteps, or StepperLines
+        components. All colour, sizing, line style, and state transitions are driven by CSS Modules
+        and the <code>--stepper-steps-*</code> / <code>--stepper-lines-*</code> token families.
+      </DocsTemplate.BodyText>
+      <DocsTemplate.CodeBlock>
+        {`// No MUI base import required in Stepper, StepperSteps, or StepperLines\n// Stepper composes its building blocks:\nimport { StepperSteps } from '../BuildingBlocks/StepperSteps/StepperSteps';\nimport { StepperLines } from '../BuildingBlocks/StepperLines/StepperLines';\n\n// Renders as:\n<div className={styles.stepper}>\n  {steps.map((step, i) => (\n    <>\n      <StepperSteps key={step.id} step={step} size={size} />\n      {i < steps.length - 1 && <StepperLines state={connectorState(i)} lineType={lineType} />}\n    </>\n  ))}\n</div>`}
+      </DocsTemplate.CodeBlock>
+    </DocsTemplate.Section>
+
     {/* Overview */}
     <DocsTemplate.Section title="Overview">
       <DocsTemplate.BodyText>

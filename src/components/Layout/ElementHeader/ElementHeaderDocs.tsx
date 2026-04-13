@@ -33,6 +33,22 @@ export const ElementHeaderDocs: React.FC = () => (
       consistency across sizes and themes.
     </DocsTemplate.BodyText>
 
+    {/* ── MUI Foundation ── */}
+    <DocsTemplate.Section title="MUI Foundation">
+      <DocsTemplate.BodyText>
+        Uses MUI's <strong>ButtonBase</strong> for the inline tab navigation items within the
+        header bar. Each breadcrumb-style tab link that isn't rendered via the{' '}
+        <code>GhostButton</code> sub-component falls back to a <code>ButtonBase</code> element,
+        ensuring accessible keyboard interaction and focus management across all tab items.
+        The <strong>GhostButton</strong> component (used for the Back button) is itself built on{' '}
+        <code>ButtonBase</code>. All layout, spacing, typography, and colour tokens are applied
+        via CSS Modules and the shared design token system.
+      </DocsTemplate.BodyText>
+      <DocsTemplate.CodeBlock>
+        {`// MUI base imports\nimport ButtonBase from '@mui/material/ButtonBase';\n// GhostButton is also built on ButtonBase\nimport { GhostButton } from '../GhostButton/GhostButton';\n\n// Tab item fallback:\n<ButtonBase component="button" className={styles['element-header__tab']} onClick={onTabClick}>\n  {item.label}\n</ButtonBase>`}
+      </DocsTemplate.CodeBlock>
+    </DocsTemplate.Section>
+
     {/* ── Anatomy ── */}
     <DocsTemplate.Section title="Component Anatomy">
       <DocsTemplate.Anatomy

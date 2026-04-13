@@ -57,6 +57,22 @@ export const SaveDraftButtonDocs: React.FC = () => {
         palette distinguish it clearly from the primary and ghost button families.
       </DocsTemplate.BodyText>
 
+      {/* ── MUI Foundation ── */}
+      <DocsTemplate.Section title="MUI Foundation">
+        <DocsTemplate.BodyText>
+          Built on MUI's <strong>ButtonBase</strong> — the same accessible primitive used across
+          all interactive elements in the design system. <code>ButtonBase</code> provides keyboard
+          activation, disabled propagation, and <code>&lt;button&gt;</code> semantics. MUI's{' '}
+          <strong>SaveOutlinedIcon</strong> from <code>@mui/icons-material/SaveOutlined</code> is
+          used as the floppy-disk save icon. All seven visual states (default, auto-saving, saving,
+          saved, error, disabled, hidden) are implemented purely via CSS Modules and the{' '}
+          <code>--save-draft-*</code> token family.
+        </DocsTemplate.BodyText>
+        <DocsTemplate.CodeBlock>
+          {`// MUI base imports\nimport ButtonBase from '@mui/material/ButtonBase';\nimport SaveOutlinedIcon from '@mui/icons-material/SaveOutlined';\n\n// Root element:\n<ButtonBase component="button" className={styles['save-draft-btn']} disabled={disabled} onClick={onClick}>\n  <SaveOutlinedIcon className={styles['save-draft-btn__icon']} />\n  <span className={styles['save-draft-btn__label']}>{label}</span>\n</ButtonBase>`}
+        </DocsTemplate.CodeBlock>
+      </DocsTemplate.Section>
+
       {/* ── Anatomy ── */}
       <DocsTemplate.Section title="Component Anatomy">
         <DocsTemplate.BodyText>

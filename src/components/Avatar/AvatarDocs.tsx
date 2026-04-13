@@ -67,6 +67,23 @@ export const AvatarDocs: React.FC = () => {
         backgrounds, and an optional status indicator communicates presence.
       </DocsTemplate.BodyText>
 
+      {/* ── MUI Foundation ── */}
+      <DocsTemplate.Section title="MUI Foundation">
+        <DocsTemplate.BodyText>
+          Built on MUI's <strong>Avatar</strong> component (<code>@mui/material/Avatar</code>).
+          <code>MuiAvatar</code> provides accessible image-with-fallback semantics, including
+          automatic <code>alt</code> text propagation and graceful degradation when an image
+          fails to load. MUI's <strong>PersonIcon</strong> from{' '}
+          <code>@mui/icons-material/Person</code> is used as the fallback person icon in the{' '}
+          <em>empty-state</em> display type. All visual aspects — size, shape, border,
+          background colour, and status badge position — are applied via CSS Modules and the{' '}
+          <code>--avatar-*</code> token family.
+        </DocsTemplate.BodyText>
+        <DocsTemplate.CodeBlock>
+          {`// MUI base imports\nimport MuiAvatar from '@mui/material/Avatar';\nimport PersonIcon from '@mui/icons-material/Person'; // empty-state fallback\n\n// Profile photo:\n<MuiAvatar className={styles.imageWrap} src={src} alt={alt} />\n\n// Initials:\n<MuiAvatar className={styles.imageWrap}><span>{initials}</span></MuiAvatar>\n\n// Empty state (person icon fallback):\n<MuiAvatar className={styles.imageWrap}><PersonIcon /></MuiAvatar>`}
+        </DocsTemplate.CodeBlock>
+      </DocsTemplate.Section>
+
       {/* ── Anatomy ── */}
       <DocsTemplate.Section title="Component Anatomy">
         <DocsTemplate.Anatomy

@@ -51,6 +51,24 @@ export const TabsDocs: React.FC = () => (
       it as active and calls the <code>onTabChange</code> callback.
     </DocsTemplate.BodyText>
 
+    {/* ── MUI Foundation ── */}
+    <DocsTemplate.Section title="MUI Foundation">
+      <DocsTemplate.BodyText>
+        Built on MUI's <strong>Tabs</strong> and <strong>Tab</strong> components. The outer tab
+        strip uses <code>MuiTabs</code> (<code>@mui/material/Tabs</code>), which provides{' '}
+        <code>role="tablist"</code>, keyboard navigation (left/right arrow keys), active-tab
+        tracking, and accessible <code>aria-selected</code> attributes. Each individual tab item
+        is a <code>MuiTab</code> (<code>@mui/material/Tab</code>), which provides{' '}
+        <code>role="tab"</code> and proper focus management. MUI's default indicator and styling
+        are fully overridden; the NPX underline colour, contained border, dark theme, badge
+        counts, and dropdown chevron are applied via CSS Modules and the <code>--tab-*</code>{' '}
+        token family.
+      </DocsTemplate.BodyText>
+      <DocsTemplate.CodeBlock>
+        {`// MUI base imports\nimport MuiTabs from '@mui/material/Tabs';\nimport MuiTab from '@mui/material/Tab';\n\n// BuildingBlocks/Tabs:\n<MuiTabs value={activeId} onChange={(_e, v) => onTabChange(v)} className={styles.tabs}>\n  {items.map(item => (\n    <MuiTab key={item.id} value={item.id} label={item.label}\n      className={styles.tab} disabled={item.disabled} />\n  ))}\n</MuiTabs>`}
+      </DocsTemplate.CodeBlock>
+    </DocsTemplate.Section>
+
     {/* ── Anatomy ── */}
     <DocsTemplate.Section title="Anatomy">
       <DocsTemplate.Anatomy

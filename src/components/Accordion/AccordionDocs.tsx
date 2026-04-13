@@ -17,6 +17,22 @@ export const AccordionDocs: React.FC = () => {
         Optional leading icons and status indicators provide additional context at a glance.
       </DocsTemplate.BodyText>
 
+      {/* ── MUI Foundation ── */}
+      <DocsTemplate.Section title="MUI Foundation">
+        <DocsTemplate.BodyText>
+          Built on MUI's <strong>ButtonBase</strong> for the accordion <strong>header row</strong>{' '}
+          — the clickable bar that toggles the panel open or closed. <code>ButtonBase</code>{' '}
+          provides keyboard activation (Enter / Space), accessible semantics via{' '}
+          <code>aria-expanded</code> and <code>aria-controls</code>, and a full-width click
+          target with no visual style of its own. The expanding body panel is a plain{' '}
+          <code>&lt;div&gt;</code> animated with CSS height transitions. All styling is driven
+          by CSS Modules and the <code>--accordion-*</code> token family.
+        </DocsTemplate.BodyText>
+        <DocsTemplate.CodeBlock>
+          {`// MUI base import\nimport ButtonBase from '@mui/material/ButtonBase';\n\n// Accordion header trigger:\n<ButtonBase\n  component="button"\n  className={styles['accordion__header']}\n  aria-expanded={isOpen}\n  aria-controls={panelId}\n  onClick={() => setIsOpen(o => !o)}\n>`}
+        </DocsTemplate.CodeBlock>
+      </DocsTemplate.Section>
+
       {/* ── Component Anatomy ── */}
       <DocsTemplate.Section title="Component Anatomy">
         <DocsTemplate.BodyText>

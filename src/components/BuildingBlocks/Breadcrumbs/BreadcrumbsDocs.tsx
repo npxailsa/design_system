@@ -44,6 +44,24 @@ export const BreadcrumbsDocs: React.FC = () => (
       design tokens for font size, separator size, and item gap.
     </DocsTemplate.BodyText>
 
+    {/* ── MUI Foundation ── */}
+    <DocsTemplate.Section title="MUI Foundation">
+      <DocsTemplate.BodyText>
+        Built on two MUI components. The outer list container uses MUI's{' '}
+        <strong>Breadcrumbs</strong> (<code>@mui/material/Breadcrumbs</code>), which provides{' '}
+        <code>role="navigation"</code> / <code>aria-label</code> semantics, automatic separator
+        insertion, and accessible list markup. Each individual clickable link item is a{' '}
+        <strong>ButtonBase</strong> (<code>@mui/material/ButtonBase</code>), giving it keyboard
+        activation, focus styles, and full-width click target semantics. The current (non-link)
+        page item is a plain <code>&lt;span&gt;</code> with <code>aria-current="page"</code>.
+        All sizing, spacing, and colour is applied via CSS Modules and the{' '}
+        <code>--breadcrumbs-*</code> token family.
+      </DocsTemplate.BodyText>
+      <DocsTemplate.CodeBlock>
+        {`// MUI base imports\nimport MuiBreadcrumbs from '@mui/material/Breadcrumbs';\nimport ButtonBase from '@mui/material/ButtonBase';\n\n// Usage:\n<MuiBreadcrumbs className={styles.breadcrumbs} aria-label="Breadcrumb">\n  {items.map((item, i) =>\n    item.href\n      ? <ButtonBase key={i} component="a" href={item.href}>{item.label}</ButtonBase>\n      : <span key={i} aria-current="page">{item.label}</span>\n  )}\n</MuiBreadcrumbs>`}
+      </DocsTemplate.CodeBlock>
+    </DocsTemplate.Section>
+
     {/* ── Anatomy ── */}
     <DocsTemplate.Section title="Component Anatomy">
       <DocsTemplate.Anatomy

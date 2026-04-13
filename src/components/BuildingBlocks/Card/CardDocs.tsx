@@ -57,6 +57,22 @@ export const CardDocs: React.FC = () => (
       and a drop-shadow / flat-border toggle.
     </DocsTemplate.BodyText>
 
+    {/* ── MUI Foundation ── */}
+    <DocsTemplate.Section title="MUI Foundation">
+      <DocsTemplate.BodyText>
+        The Card is a <strong>pure React component</strong> with no MUI layout primitive as its
+        base. It renders as a plain <code>&lt;div&gt;</code>, giving the design system full control
+        over background, border, radius, shadow, and sizing via CSS Modules and the{' '}
+        <code>--card-*</code> token family. MUI is not used for the Card container itself —
+        this deliberate choice avoids inheriting MUI Paper or Card defaults that would conflict
+        with the NPX visual specification. MUI icons may be placed as slot content inside a Card,
+        but they are not part of the Card component API.
+      </DocsTemplate.BodyText>
+      <DocsTemplate.CodeBlock>
+        {`// No MUI base import required\n// Card renders as a plain <div>:\n<div className={styles.card} data-size={size} data-bg={bg} data-mode={mode}>\n  {children}\n</div>`}
+      </DocsTemplate.CodeBlock>
+    </DocsTemplate.Section>
+
     {/* ── Anatomy ── */}
     <DocsTemplate.Section title="Component Anatomy">
       <DocsTemplate.Anatomy

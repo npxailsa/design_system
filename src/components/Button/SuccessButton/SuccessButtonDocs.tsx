@@ -20,6 +20,21 @@ export const SuccessButtonDocs: React.FC = () => (
       the solid variant serves as the primary call-to-action and the ghost as the secondary.
     </DocsTemplate.BodyText>
 
+    {/* ── MUI Foundation ───────────────────────────────────────────────────── */}
+    <DocsTemplate.Section title="MUI Foundation">
+      <DocsTemplate.BodyText>
+        Built on MUI's <strong>ButtonBase</strong> — the accessible primitive at the base of
+        every button in the design system. <code>ButtonBase</code> contributes keyboard
+        interaction, accessible semantics, and disabled propagation without adding any visual
+        styles. SuccessButton's green palette, unique colour-inversion hover, and state
+        transitions are implemented via CSS Modules and the <code>--btn-success-*</code> token
+        family.
+      </DocsTemplate.BodyText>
+      <DocsTemplate.CodeBlock>
+        {`// MUI base import\nimport ButtonBase from '@mui/material/ButtonBase';\n\n// Root element of SuccessButton:\n<ButtonBase component="button" className={styles['success-btn']} disabled={disabled} onClick={onClick}>`}
+      </DocsTemplate.CodeBlock>
+    </DocsTemplate.Section>
+
     {/* ── Anatomy ──────────────────────────────────────────────────────────── */}
     <DocsTemplate.Section title="Component Anatomy">
       <DocsTemplate.BodyText>

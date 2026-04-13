@@ -16,6 +16,22 @@ export const PlaceholderDocs: React.FC = () => {
         variants.
       </DocsTemplate.BodyText>
 
+      {/* ── MUI Foundation ── */}
+      <DocsTemplate.Section title="MUI Foundation">
+        <DocsTemplate.BodyText>
+          The Placeholder component has <strong>no MUI layout base</strong> — it renders as plain
+          HTML elements. It uses MUI icons from <code>@mui/icons-material</code> for its icon
+          slots: <strong>AlarmIcon</strong> (clock), <strong>CancelIcon</strong> (×),{' '}
+          <strong>AddBoxIcon</strong> (+), <strong>IndeterminateCheckBoxIcon</strong> (−),
+          and <strong>KeyboardArrowDownIcon</strong> (chevron). Pass any MUI SvgIcon via the{' '}
+          <code>icon</code> prop to customise the leading icon. All sizing, colour, and opacity
+          values are driven by CSS Modules and the <code>--placeholder-*</code> token family.
+        </DocsTemplate.BodyText>
+        <DocsTemplate.CodeBlock>
+          {`// MUI icon imports used in Placeholder\nimport AlarmIcon from '@mui/icons-material/Alarm';\nimport CancelIcon from '@mui/icons-material/Cancel';\nimport AddBoxIcon from '@mui/icons-material/AddBox';\nimport IndeterminateCheckBoxIcon from '@mui/icons-material/IndeterminateCheckBox';\nimport KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';\n\n// Custom icon example:\nimport FaceIcon from '@mui/icons-material/Face';\n<Placeholder icon={FaceIcon} size="default" label="No data" />`}
+        </DocsTemplate.CodeBlock>
+      </DocsTemplate.Section>
+
       {/* ── Design Tokens ── */}
       <DocsTemplate.TokenTable
         title="Design Tokens"

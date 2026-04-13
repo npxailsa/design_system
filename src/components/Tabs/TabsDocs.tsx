@@ -44,6 +44,23 @@ export const TabsDocs: React.FC = () => (
       subtitle="Tabs organise related content into selectable sections, allowing users to switch views without leaving the page. Built on the Foundation BuildingBlocks/Tabs primitive."
     />
 
+    {/* ── MUI Foundation ── */}
+    <DocsTemplate.Section title="MUI Foundation">
+      <DocsTemplate.BodyText>
+        Built on MUI's <strong>Tabs</strong> and <strong>Tab</strong> components from{' '}
+        <code>@mui/material</code>. <code>MuiTabs</code> provides the accessible tab list container
+        with <code>role="tablist"</code>, keyboard navigation (arrow keys), and active-tab tracking.
+        Each individual tab is a <code>MuiTab</code> with <code>role="tab"</code> and proper{' '}
+        <code>aria-selected</code> / <code>aria-controls</code> attributes. MUI's scrollable tabs
+        and indicator behaviour are used as a foundation — the NPX visual layer (underline colour,
+        contained border, dark theme, count badges) is applied entirely via CSS Modules and the{' '}
+        <code>--tab-*</code> token family, overriding MUI's default indicator.
+      </DocsTemplate.BodyText>
+      <DocsTemplate.CodeBlock>
+        {`// MUI base imports\nimport MuiTabs from '@mui/material/Tabs';\nimport MuiTab from '@mui/material/Tab';\n\n// BuildingBlocks/Tabs renders:\n<MuiTabs value={activeTab} onChange={handleChange} className={styles.tabs}>\n  {items.map(item => (\n    <MuiTab key={item.id} value={item.id} label={item.label} className={styles.tab} />\n  ))}\n</MuiTabs>`}
+      </DocsTemplate.CodeBlock>
+    </DocsTemplate.Section>
+
     <DocsTemplate.Section title="Overview">
       <DocsTemplate.BodyText>
         The Tabs component renders a horizontal strip of tab items. Each tab

@@ -31,6 +31,22 @@ export const ToastDocs: React.FC = () => {
         auto-dismiss and portal rendering.
       </DocsTemplate.BodyText>
 
+      {/* ── MUI Foundation ── */}
+      <DocsTemplate.Section title="MUI Foundation">
+        <DocsTemplate.BodyText>
+          The Toast component uses MUI's <strong>ButtonBase</strong> as the root element for the
+          interactive <strong>close (dismiss) button</strong>, identical to the Alert component.{' '}
+          <code>ButtonBase</code> provides keyboard activation, accessible semantics, and click
+          handling with no visual style. The Toast container itself is a plain{' '}
+          <code>&lt;div&gt;</code> rendered via a React portal for floating overlay positioning.
+          All colour themes, border, padding, shadow, and typography are applied via CSS Modules
+          and the <code>--toast-*</code> token family.
+        </DocsTemplate.BodyText>
+        <DocsTemplate.CodeBlock>
+          {`// MUI base import (close button only)\nimport ButtonBase from '@mui/material/ButtonBase';\n\n// Dismiss button inside the Toast:\n<ButtonBase component="button" className={styles['toast__close']} onClick={onClose} aria-label="Dismiss">\n  {/* close SVG icon */}\n</ButtonBase>`}
+        </DocsTemplate.CodeBlock>
+      </DocsTemplate.Section>
+
       {/* ── Component Anatomy ── */}
       <DocsTemplate.Section title="Component Anatomy">
         <DocsTemplate.BodyText>

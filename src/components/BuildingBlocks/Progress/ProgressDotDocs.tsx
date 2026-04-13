@@ -53,6 +53,20 @@ export const ProgressDotDocs: React.FC = () => (
       <code>pending</code>) cover every step-progress use case.
     </DocsTemplate.BodyText>
 
+    {/* ── MUI Foundation ── */}
+    <DocsTemplate.Section title="MUI Foundation">
+      <DocsTemplate.BodyText>
+        The ProgressDot is a <strong>pure React component</strong> with no MUI base. It renders
+        as a plain <code>&lt;span&gt;</code> element — a simple circle whose appearance is
+        entirely controlled by CSS Modules and the <code>--progress-dot-*</code> token family.
+        No MUI component is needed for a static circular indicator; keeping it dependency-free
+        ensures zero style conflicts and maximum portability within the design system.
+      </DocsTemplate.BodyText>
+      <DocsTemplate.CodeBlock>
+        {`// No MUI base import required\n// ProgressDot renders as a plain <span>:\n<span\n  className={styles['progress-dot']}\n  data-state={state}\n  data-size={size}\n  aria-hidden="true"\n />`}
+      </DocsTemplate.CodeBlock>
+    </DocsTemplate.Section>
+
     {/* ── Anatomy ── */}
     <DocsTemplate.Section title="Component Anatomy">
       <DocsTemplate.Anatomy

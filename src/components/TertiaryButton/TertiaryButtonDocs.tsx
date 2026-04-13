@@ -26,6 +26,21 @@ export const TertiaryButtonDocs: React.FC = () => {
         driven by the <code>--btn-tertiary-*</code> token family with no hardcoded values.
       </DocsTemplate.BodyText>
 
+      {/* ── MUI Foundation ── */}
+      <DocsTemplate.Section title="MUI Foundation">
+        <DocsTemplate.BodyText>
+          Built on MUI's <strong>ButtonBase</strong>, the shared accessible primitive across the
+          entire button family. <code>ButtonBase</code> contributes keyboard interaction, disabled
+          state propagation, and polymorphic root rendering. The Tertiary Button's sky-blue drop
+          shadow, border mechanics, and two-step hover behaviour are applied purely through CSS
+          Modules and the <code>--btn-tertiary-*</code> token family — MUI contributes no visual
+          opinions.
+        </DocsTemplate.BodyText>
+        <DocsTemplate.CodeBlock>
+          {`// MUI base import\nimport ButtonBase from '@mui/material/ButtonBase';\n\n// Root element of TertiaryButton:\n<ButtonBase component="button" className={styles['tertiary-btn']} disabled={disabled} onClick={onClick}>`}
+        </DocsTemplate.CodeBlock>
+      </DocsTemplate.Section>
+
       {/* ── Component Anatomy ── */}
       <DocsTemplate.Section title="Component Anatomy">
         <DocsTemplate.BodyText>

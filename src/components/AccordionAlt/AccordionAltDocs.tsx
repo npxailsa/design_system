@@ -17,6 +17,23 @@ export const AccordionAltDocs: React.FC = () => {
         for marketing hero sections, step-by-step processes, and tagged data categories.
       </DocsTemplate.BodyText>
 
+      {/* ── MUI Foundation ── */}
+      <DocsTemplate.Section title="MUI Foundation">
+        <DocsTemplate.BodyText>
+          Built on MUI's <strong>ButtonBase</strong> for the accordion <strong>header toggle</strong>{' '}
+          — the full-width clickable bar that opens and closes each panel.{' '}
+          <code>ButtonBase</code> provides keyboard activation, accessible{' '}
+          <code>aria-expanded</code> semantics, and a clean click target without any visual
+          opinions. The decorative, numbered, and label sub-types all share this same{' '}
+          <code>ButtonBase</code> root; only the prefix element and border style differ.
+          The expanding body is a plain <code>&lt;div&gt;</code> with CSS animation. All
+          styling is applied via CSS Modules and the <code>--accordion-alt-*</code> token family.
+        </DocsTemplate.BodyText>
+        <DocsTemplate.CodeBlock>
+          {`// MUI base import\nimport ButtonBase from '@mui/material/ButtonBase';\n\n// AccordionAlt header trigger:\n<ButtonBase\n  component="button"\n  className={styles['accordion-alt__header']}\n  aria-expanded={isOpen}\n  onClick={() => setIsOpen(o => !o)}\n>`}
+        </DocsTemplate.CodeBlock>
+      </DocsTemplate.Section>
+
       {/* ── Component Anatomy ── */}
       <DocsTemplate.Section title="Component Anatomy">
         <DocsTemplate.BodyText>

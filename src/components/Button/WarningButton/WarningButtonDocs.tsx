@@ -19,6 +19,20 @@ export const WarningButtonDocs: React.FC = () => (
       serves as the primary call-to-action and the ghost variant as the secondary.
     </DocsTemplate.BodyText>
 
+    {/* ── MUI Foundation ───────────────────────────────────────────────────── */}
+    <DocsTemplate.Section title="MUI Foundation">
+      <DocsTemplate.BodyText>
+        Built on MUI's <strong>ButtonBase</strong> — the zero-style accessible primitive used by
+        every button variant in this design system. <code>ButtonBase</code> provides keyboard
+        activation, disabled propagation, and native <code>&lt;button&gt;</code> semantics.
+        WarningButton's amber palette, border, and hover behaviour are applied via CSS Modules
+        and the <code>--btn-warning-*</code> token family; MUI contributes no visual styles.
+      </DocsTemplate.BodyText>
+      <DocsTemplate.CodeBlock>
+        {`// MUI base import\nimport ButtonBase from '@mui/material/ButtonBase';\n\n// Root element of WarningButton:\n<ButtonBase component="button" className={styles['warning-btn']} disabled={disabled} onClick={onClick}>`}
+      </DocsTemplate.CodeBlock>
+    </DocsTemplate.Section>
+
     {/* ── Anatomy ──────────────────────────────────────────────────────────── */}
     <DocsTemplate.Section title="Component Anatomy">
       <DocsTemplate.BodyText>

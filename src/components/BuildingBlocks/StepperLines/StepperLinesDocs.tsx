@@ -28,6 +28,21 @@ export const StepperLinesDocs: React.FC = () => (
       subtitle="A horizontal connector line used between step indicators in a stepper. Supports solid, dashed, and dotted line styles across to-do, complete, and disabled states in three stroke thicknesses."
     />
 
+    {/* ── MUI Foundation ── */}
+    <DocsTemplate.Section title="MUI Foundation">
+      <DocsTemplate.BodyText>
+        StepperLines is a <strong>pure React component</strong> with no MUI dependency. Each line
+        renders as a plain <code>&lt;div&gt;</code> — all line style (solid, dashed, dotted),
+        stroke thickness, and state colour are applied via CSS Modules and the{' '}
+        <code>--stepper-lines-*</code> token family. No MUI component is needed for a static
+        visual connector element. StepperLines is used alongside StepperSteps (also pure React)
+        to compose the full Stepper pattern.
+      </DocsTemplate.BodyText>
+      <DocsTemplate.CodeBlock>
+        {`// No MUI base import required\n// StepperLines renders as:\n<div\n  className={styles['stepper-line']}\n  data-type={type}\n  data-state={state}\n  data-stroke={stroke}\n/>`}
+      </DocsTemplate.CodeBlock>
+    </DocsTemplate.Section>
+
     <DocsTemplate.Section title="Overview">
       <DocsTemplate.BodyText>
         StepperLines render as a single styled horizontal line that bridges adjacent step

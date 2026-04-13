@@ -36,6 +36,23 @@ export const AvatarWithTextDocs: React.FC = () => (
       sizes are supported and scale the typography proportionally.
     </DocsTemplate.BodyText>
 
+    {/* ── MUI Foundation ── */}
+    <DocsTemplate.Section title="MUI Foundation">
+      <DocsTemplate.BodyText>
+        Inherits its MUI base from the <strong>Avatar</strong> sub-component, which uses{' '}
+        MUI's <strong>MuiAvatar</strong> (<code>@mui/material/Avatar</code>). The outer
+        horizontal layout container is a plain <code>&lt;div&gt;</code> — no MUI layout
+        component is used for the text column or the overall composition. MUI's{' '}
+        <strong>PersonIcon</strong> (<code>@mui/icons-material/Person</code>) is used as the
+        empty-state fallback inside the Avatar. All spacing, typography scale, and colour
+        tokens for the text column are driven by the <code>--avatar-with-text-*</code> token
+        family.
+      </DocsTemplate.BodyText>
+      <DocsTemplate.CodeBlock>
+        {`// MUI base import (inside Avatar sub-component)\nimport MuiAvatar from '@mui/material/Avatar';\n\n// AvatarWithText renders as:\n<div className={styles['avatar-with-text']}>\n  <Avatar type={avatarType} size={size} ... /> {/* uses MuiAvatar internally */}\n  <div className={styles['avatar-with-text__labels']}>\n    <span className={styles['avatar-with-text__name']}>{name}</span>\n    {subtext && <span className={styles['avatar-with-text__subtext']}>{subtext}</span>}\n  </div>\n</div>`}
+      </DocsTemplate.CodeBlock>
+    </DocsTemplate.Section>
+
     {/* ── Anatomy ── */}
     <DocsTemplate.Section title="Component Anatomy">
       <DocsTemplate.Anatomy

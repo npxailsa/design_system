@@ -32,6 +32,22 @@ export const SplitButtonDocs: React.FC = () => {
         respective alt/outline variants.
       </DocsTemplate.BodyText>
 
+      {/* ── MUI Foundation ── */}
+      <DocsTemplate.Section title="MUI Foundation">
+        <DocsTemplate.BodyText>
+          Built on MUI's <strong>ButtonBase</strong> — used for both the primary action zone and
+          the chevron dropdown trigger. Each zone is an independent <code>ButtonBase</code>{' '}
+          element, which ensures both areas receive proper keyboard handling, accessible focus
+          management, and disabled propagation independently. MUI's{' '}
+          <strong>KeyboardArrowDownIcon</strong> from <code>@mui/icons-material</code> is used
+          as the dropdown chevron indicator. All visual styling is handled via CSS Modules and
+          design tokens; MUI contributes no colour, border, or layout opinions.
+        </DocsTemplate.BodyText>
+        <DocsTemplate.CodeBlock>
+          {`// MUI base imports\nimport ButtonBase from '@mui/material/ButtonBase';\nimport KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';\n\n// Primary action zone:\n<ButtonBase component="button" className={styles['split-btn__main']} onClick={onMainClick}>\n// Dropdown trigger zone:\n<ButtonBase component="button" className={styles['split-btn__chevron']} onClick={onChevronClick}>\n  <KeyboardArrowDownIcon />\n</ButtonBase>`}
+        </DocsTemplate.CodeBlock>
+      </DocsTemplate.Section>
+
       {/* ── Anatomy ── */}
       <DocsTemplate.Section title="Component Anatomy">
         <DocsTemplate.Anatomy

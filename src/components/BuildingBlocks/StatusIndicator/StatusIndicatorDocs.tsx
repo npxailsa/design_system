@@ -80,6 +80,22 @@ export const StatusIndicatorDocs: React.FC = () => {
         identities. Three sizes let it scale proportionally with the avatar it accompanies.
       </DocsTemplate.BodyText>
 
+      {/* ── MUI Foundation ── */}
+      <DocsTemplate.Section title="MUI Foundation">
+        <DocsTemplate.BodyText>
+          The StatusIndicator is a <strong>pure React component</strong> with no MUI base. It
+          renders as a plain <code>&lt;span&gt;</code> circle (dot statuses) or an inline{' '}
+          <code>&lt;svg&gt;</code> (verified badge), driven entirely by CSS Modules and the{' '}
+          <code>--status-indicator-*</code> token family. No MUI component is needed for a
+          static badge — this keeps the building block lightweight and free from MUI style
+          interference. It is typically composed with the <strong>Avatar</strong> component
+          (which uses MUI's <code>MuiAvatar</code>) to create presence-aware user tiles.
+        </DocsTemplate.BodyText>
+        <DocsTemplate.CodeBlock>
+          {`// No MUI base import required\n// StatusIndicator renders as:\n// Dot:     <span className={styles['status-indicator']} data-status={status} data-size={size} />\n// Verified: <svg ...> (inline checkmark SVG)`}
+        </DocsTemplate.CodeBlock>
+      </DocsTemplate.Section>
+
       {/* ── Anatomy ── */}
       <DocsTemplate.Section title="Component Anatomy">
         <DocsTemplate.BodyText>

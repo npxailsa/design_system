@@ -69,6 +69,23 @@ export const DividerDocs: React.FC = () => (
       global design tokens — no hardcoded numbers or colours are used.
     </DocsTemplate.BodyText>
 
+    {/* ── MUI Foundation ── */}
+    <DocsTemplate.Section title="MUI Foundation">
+      <DocsTemplate.BodyText>
+        Built on MUI's <strong>Divider</strong> component (<code>@mui/material/Divider</code>).{' '}
+        <code>MuiDivider</code> provides the correct accessible semantics — it renders as an{' '}
+        <code>&lt;hr&gt;</code> for horizontal dividers and as a styled{' '}
+        <code>&lt;div role="separator" aria-orientation="vertical"&gt;</code> for vertical ones.
+        This ensures screen readers correctly identify the element as a separator landmark.
+        All visual properties — line style, stroke thickness, and colour — are applied on top
+        via CSS Modules and the <code>--divider-*</code> / <code>--global-spacing-stroke-*</code>{' '}
+        token family; MUI contributes no colour or width of its own.
+      </DocsTemplate.BodyText>
+      <DocsTemplate.CodeBlock>
+        {`// MUI base import\nimport MuiDivider from '@mui/material/Divider';\n\n// Horizontal (default):\n<MuiDivider className={styles.divider} data-line={line} data-thickness={thickness} />\n\n// Vertical:\n<MuiDivider orientation="vertical" className={styles.divider} data-line={line} />`}
+      </DocsTemplate.CodeBlock>
+    </DocsTemplate.Section>
+
     {/* ── Anatomy ── */}
     <DocsTemplate.Section title="Component Anatomy">
       <DocsTemplate.Anatomy

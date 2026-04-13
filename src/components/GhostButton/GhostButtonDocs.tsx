@@ -23,6 +23,21 @@ export const GhostButtonDocs: React.FC = () => {
         and large. All styling is driven by the token system with no hardcoded values.
       </DocsTemplate.BodyText>
 
+      {/* ── MUI Foundation ── */}
+      <DocsTemplate.Section title="MUI Foundation">
+        <DocsTemplate.BodyText>
+          Built on MUI's <strong>ButtonBase</strong>, consistent with the entire NPX button
+          family. The Ghost Button's transparent “ghost” style and link variant are implemented
+          entirely in CSS Modules using the <code>--btn-ghost-*</code> and{' '}
+          <code>--btn-ghost-link-*</code> token families. <code>ButtonBase</code> provides
+          keyboard activation, accessibility semantics, and click-handling without injecting any
+          background, border, or colour of its own.
+        </DocsTemplate.BodyText>
+        <DocsTemplate.CodeBlock>
+          {`// MUI base import\nimport ButtonBase from '@mui/material/ButtonBase';\n\n// Root element of GhostButton:\n<ButtonBase component="button" className={styles['ghost-btn']} disabled={disabled} onClick={onClick}>`}
+        </DocsTemplate.CodeBlock>
+      </DocsTemplate.Section>
+
       {/* ── Component Anatomy ── */}
       <DocsTemplate.Section title="Component Anatomy">
         <DocsTemplate.BodyText>

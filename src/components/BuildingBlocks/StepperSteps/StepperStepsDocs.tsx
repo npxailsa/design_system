@@ -53,6 +53,21 @@ export const StepperStepsDocs: React.FC = () => (
       subtitle="A horizontal strip of numbered step indicators, used to communicate progress through a multi-step flow. Supports default, active, complete, and disabled states across three sizes."
     />
 
+    {/* ── MUI Foundation ── */}
+    <DocsTemplate.Section title="MUI Foundation">
+      <DocsTemplate.BodyText>
+        StepperSteps is a <strong>pure React component</strong> with no MUI base. Each step
+        circle renders as a plain <code>&lt;div&gt;</code> — the number, checkmark, and label
+        are simple text/SVG elements. No MUI component is imported; all sizing, colour, border,
+        and state transitions are driven by CSS Modules and the <code>--stepper-steps-*</code>{' '}
+        token family. Keeping the component dependency-free ensures zero style interference
+        from MUI and maximum portability as a building block.
+      </DocsTemplate.BodyText>
+      <DocsTemplate.CodeBlock>
+        {`// No MUI base import required\n// Each step circle renders as:\n<div className={styles['stepper-step']} data-state={state} data-size={size}>\n  {state === 'complete' ? <svg>/* checkmark */</svg> : <span>{zeroPadded(id)}</span>}\n  {showLabel && <span className={styles['stepper-step__label']}>{label}</span>}\n</div>`}
+      </DocsTemplate.CodeBlock>
+    </DocsTemplate.Section>
+
     <DocsTemplate.Section title="Overview">
       <DocsTemplate.BodyText>
         StepperSteps renders a row of numbered circles — each representing one step in a sequence.
