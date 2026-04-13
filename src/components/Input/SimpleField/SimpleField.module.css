@@ -55,6 +55,12 @@
 }
 
 /* ── Size variants — fixed height, no vertical growth ──────── */
+.control--extra-small {
+  height: var(--simple-field-height-extra-small);
+  max-height: var(--simple-field-height-extra-small);
+  padding: 0 var(--simple-field-padding-x-extra-small);
+}
+
 .control--small {
   height: var(--simple-field-height-small);
   max-height: var(--simple-field-height-small);
@@ -131,6 +137,7 @@
 .control--success:focus-within .leadingIcon { color: var(--simple-field-icon-color-success); }
 
 /* Icon sizing by field size */
+.field--extra-small .iconSvg { font-size: var(--simple-field-icon-size-extra-small) !important; width: var(--simple-field-icon-size-extra-small); height: var(--simple-field-icon-size-extra-small); }
 .field--small  .iconSvg { font-size: var(--simple-field-icon-size-small) !important; width: var(--simple-field-icon-size-small); height: var(--simple-field-icon-size-small); }
 .field--default .iconSvg { font-size: var(--simple-field-icon-size-default) !important; width: var(--simple-field-icon-size-default); height: var(--simple-field-icon-size-default); }
 .field--large  .iconSvg { font-size: var(--simple-field-icon-size-large) !important; width: var(--simple-field-icon-size-large); height: var(--simple-field-icon-size-large); }
@@ -189,6 +196,7 @@
 }
 
 /* Typography per size */
+.field--extra-small .nativeInput { font-size: var(--simple-field-input-size-extra-small); }
 .field--small  .nativeInput { font-size: var(--simple-field-input-size-small); }
 .field--default .nativeInput { font-size: var(--simple-field-input-size-default); }
 .field--large  .nativeInput { font-size: var(--simple-field-input-size-large); }

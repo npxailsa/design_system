@@ -8,7 +8,7 @@ import styles from './SimpleField.module.css';
 
 /* ── Types ───────────────────────────────────────────────────────────────── */
 
-export type SimpleFieldSize = 'small' | 'default' | 'large';
+export type SimpleFieldSize = 'extra-small' | 'small' | 'default' | 'large';
 export type SimpleFieldState = 'default' | 'error' | 'warning' | 'success';
 
 export interface SimpleFieldTag {

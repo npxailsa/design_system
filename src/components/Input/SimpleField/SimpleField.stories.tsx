@@ -19,7 +19,7 @@ const meta: Meta<typeof SimpleField> = {
   argTypes: {
     size: {
       control: 'select',
-      options: ['small', 'default', 'large'],
+      options: ['extra-small', 'small', 'default', 'large'],
       description: 'Height / typography size of the field',
     },
     state: {
@@ -88,6 +88,7 @@ export const Sizes: Story = {
   name: 'Sizes',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)', maxWidth: 360 }}>
+      <Controlled label="Input name" placeholder="Placeholder text" size="extra-small" leadingIcon={LockOutlinedIcon} clearable />
       <Controlled label="Input name" placeholder="Placeholder text" size="small" leadingIcon={LockOutlinedIcon} clearable />
       <Controlled label="Input name" placeholder="Placeholder text" size="default" leadingIcon={LockOutlinedIcon} clearable />
       <Controlled label="Input name" placeholder="Placeholder text" size="large" leadingIcon={LockOutlinedIcon} clearable />
@@ -297,7 +298,7 @@ export const Icons: Story = {
 export const FullDesignMatrix: Story = {
   name: 'Full Design Matrix',
   render: () => {
-    const sizes = ['small', 'default', 'large'] as const;
+    const sizes = ['extra-small', 'small', 'default', 'large'] as const;
     const states = [
       { state: 'default' as const, helperText: undefined },
       { state: 'error' as const, helperText: 'This is an error associated with the input' },

@@ -147,16 +147,19 @@ import { Tag } from '../Tag/Tag'; // used for inline tag chips`}
     {/* ── Sizes ── */}
     <DocsTemplate.Section title="Sizes">
       <DocsTemplate.BodyText>
-        Three sizes control the field height and horizontal padding. Token names follow the{' '}
-        <code>--simple-field-height-*</code> pattern.
+        Four fixed heights control the field. The control row is capped at exactly the token
+        value and cannot grow regardless of content. Token pattern: <code>--simple-field-height-*</code>.
       </DocsTemplate.BodyText>
-      <DocsTemplate.Subsection title="Small — 32 px">
+      <DocsTemplate.Subsection title="Extra Small — 28 px (--simple-field-height-extra-small)">
+        <LiveDemo size="extra-small" />
+      </DocsTemplate.Subsection>
+      <DocsTemplate.Subsection title="Small — 32 px (--simple-field-height-small)">
         <LiveDemo size="small" />
       </DocsTemplate.Subsection>
-      <DocsTemplate.Subsection title="Default — 40 px">
+      <DocsTemplate.Subsection title="Default — 44 px (--simple-field-height-default)">
         <LiveDemo size="default" />
       </DocsTemplate.Subsection>
-      <DocsTemplate.Subsection title="Large — 48 px">
+      <DocsTemplate.Subsection title="Large — 52 px (--simple-field-height-large)">
         <LiveDemo size="large" />
       </DocsTemplate.Subsection>
     </DocsTemplate.Section>
@@ -279,9 +282,10 @@ import { Tag } from '../Tag/Tag'; // used for inline tag chips`}
       </DocsTemplate.BodyText>
       <DocsTemplate.TokenTable
         tokens={[
+          { name: '--simple-field-height-extra-small', description: 'Extra-small field height — 28 px (--global-spacing-sizing-28px)' },
           { name: '--simple-field-height-small', description: 'Small field height — 32 px (--global-spacing-sizing-32px)' },
-          { name: '--simple-field-height-default', description: 'Default field height — 40 px (--global-spacing-sizing-40px)' },
-          { name: '--simple-field-height-large', description: 'Large field height — 48 px (--global-spacing-sizing-48px)' },
+          { name: '--simple-field-height-default', description: 'Default field height — 44 px (--global-spacing-sizing-44px)' },
+          { name: '--simple-field-height-large', description: 'Large field height — 52 px (--global-spacing-sizing-52px)' },
           { name: '--simple-field-border-radius', description: 'Corner radius — 4 px (--global-spacing-radius-4px)' },
           { name: '--simple-field-border-width', description: 'Border stroke — 0.5 px (--global-spacing-stroke-0-5px)' },
           { name: '--simple-field-gap', description: 'Gap between icon / input / button — 8 px' },
