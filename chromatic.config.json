@@ -4,5 +4,9 @@
   "onlyChanged": true,
   "storybookBaseDir": ".",
   "storybookConfigDir": ".storybook",
-  "buildScriptName": "build-storybook"
+  "buildScriptName": "build-storybook",
+  "untraced": [
+    "package.json",
+    "package-lock.json"
+  ]
 }

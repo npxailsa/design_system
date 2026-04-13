@@ -49,3 +49,6 @@ jobs:
           onlyChanged: true
           externals: |
             public/typefaces/**
+          untraced: |
+            package.json
+            package-lock.json
