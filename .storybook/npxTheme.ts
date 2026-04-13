@@ -23,7 +23,7 @@ export const npxTheme = create({
 
   // ── Brand ──────────────────────────────────────────────────────────────────
   brandTitle: 'NPX Design System',
-  brandUrl: 'https://npxainnovation.github.io/design_system',
+  brandUrl: 'https://npxinnovation.github.io/design_system',
   brandImage: '/npx-ds-logo.png',
   brandTarget: '_self',
 
