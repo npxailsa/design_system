@@ -1,4 +1,5 @@
 import React from 'react';
+import ButtonBase from '@mui/material/ButtonBase';
 import styles from './Toast.module.css';
 
 export type ToastSize = 'small' | 'default' | 'large';
@@ -265,7 +266,8 @@ export const Toast: React.FC<ToastProps> = ({
         </div>
       </div>
       {showTrailingIcon && (
-        <button
+        <ButtonBase
+          component="button"
           type="button"
           className={styles.toast__close}
           onClick={onClose}
@@ -283,7 +285,7 @@ export const Toast: React.FC<ToastProps> = ({
               <path d={getClosePath(sizeConfig.closeIcon)} fill={colourConfig.title} />
             </g>
           </svg>
-        </button>
+        </ButtonBase>
       )}
     </div>
   );

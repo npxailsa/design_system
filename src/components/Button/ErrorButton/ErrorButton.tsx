@@ -1,4 +1,5 @@
 import React from 'react';
+import ButtonBase from '@mui/material/ButtonBase';
 import styles from './ErrorButton.module.css';
 
 export type ErrorButtonVariant = 'solid' | 'ghost';
@@ -136,7 +137,8 @@ export const ErrorButton: React.FC<ErrorButtonProps> = ({
     .join(' ');
 
   return (
-    <button
+    <ButtonBase
+      component="button"
       type={type}
       className={classNames}
       onClick={!disabled && !loading ? onClick : undefined}
@@ -152,7 +154,7 @@ export const ErrorButton: React.FC<ErrorButtonProps> = ({
         </span>
       )}
       <span className={styles['btn-error__label']}>{label}</span>
-    </button>
+    </ButtonBase>
   );
 };
 

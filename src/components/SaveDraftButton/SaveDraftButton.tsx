@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './SaveDraftButton.module.css';
+import ButtonBase from '@mui/material/ButtonBase';
 import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined';
 
 export type SaveDraftStatus =
@@ -71,7 +72,8 @@ export const SaveDraftButton: React.FC<SaveDraftButtonProps> = ({
     .join(' ');
 
   return (
-    <button
+    <ButtonBase
+      component="button"
       type="button"
       className={classNames}
       onClick={!isDisabled ? onClick : undefined}
@@ -83,7 +85,7 @@ export const SaveDraftButton: React.FC<SaveDraftButtonProps> = ({
         <SaveOutlinedIcon className={styles['save-draft-btn__icon-svg']} />
       </span>
       <span className={styles['save-draft-btn__label']}>{resolvedLabel}</span>
-    </button>
+    </ButtonBase>
   );
 };
 

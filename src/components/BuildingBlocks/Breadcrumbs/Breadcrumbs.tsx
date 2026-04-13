@@ -1,4 +1,6 @@
 import React from 'react';
+import MuiBreadcrumbs from '@mui/material/Breadcrumbs';
+import ButtonBase from '@mui/material/ButtonBase';
 import styles from './Breadcrumbs.module.css';
 
 export type BreadcrumbsSize = 'sm' | 'default' | 'lg';
@@ -63,50 +65,48 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
     .join(' ');
 
   return (
-    <nav aria-label={ariaLabel} className={rootClass}>
-      <ol className={styles.list}>
-        {items.map((item, index) => {
-          const isLast = index === items.length - 1;
+    <MuiBreadcrumbs
+      aria-label={ariaLabel}
+      className={rootClass}
+      classes={{ ol: styles.list, li: styles.item, separator: styles.separator }}
+      separator={<ChevronRight />}
+      sx={{ '& .MuiBreadcrumbs-separator': { margin: 0 } }}
+    >
+      {items.map((item, index) => {
+        const isLast = index === items.length - 1;
 
+        /* Current page — plain bold text */
+        if (isLast) {
           return (
-            <li key={index} className={styles.item}>
-              {/* Separator — shown before every item except the first */}
-              {index > 0 && (
-                <ChevronRight className={styles.separator} />
-              )}
-
-              {/* Current page — plain bold text */}
-              {isLast ? (
-                <span
-                  className={styles.current}
-                  aria-current="page"
-                >
-                  {item.label}
-                </span>
-              ) : item.href ? (
-                /* Link crumb — anchor */
-                <a
-                  href={item.href}
-                  className={styles.link}
-                  onClick={item.onClick}
-                >
-                  {item.label}
-                </a>
-              ) : (
-                /* Link crumb — button (for SPA navigation without href) */
-                <button
-                  type="button"
-                  className={[styles.link, styles.linkButton].join(' ')}
-                  onClick={item.onClick}
-                >
-                  {item.label}
-                </button>
-              )}
-            </li>
+            <span key={index} className={styles.current} aria-current="page">
+              {item.label}
+            </span>
           );
-        })}
-      </ol>
-    </nav>
+        }
+
+        /* Link crumb — anchor */
+        if (item.href) {
+          return (
+            <a key={index} href={item.href} className={styles.link} onClick={item.onClick}>
+              {item.label}
+            </a>
+          );
+        }
+
+        /* Link crumb — button (for SPA navigation without href) */
+        return (
+          <ButtonBase
+            key={index}
+            component="button"
+            type="button"
+            className={[styles.link, styles.linkButton].join(' ')}
+            onClick={item.onClick}
+          >
+            {item.label}
+          </ButtonBase>
+        );
+      })}
+    </MuiBreadcrumbs>
   );
 };
 

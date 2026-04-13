@@ -1,4 +1,5 @@
 import React from 'react';
+import ButtonBase from '@mui/material/ButtonBase';
 import styles from './SuccessButton.module.css';
 
 export type SuccessButtonVariant = 'solid' | 'ghost';
@@ -143,7 +144,8 @@ export const SuccessButton: React.FC<SuccessButtonProps> = ({
     .join(' ');
 
   return (
-    <button
+    <ButtonBase
+      component="button"
       type={type}
       className={classNames}
       onClick={!disabled && !loading ? onClick : undefined}
@@ -164,7 +166,7 @@ export const SuccessButton: React.FC<SuccessButtonProps> = ({
           <ArrowIcon />
         </span>
       )}
-    </button>
+    </ButtonBase>
   );
 };
 

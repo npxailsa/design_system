@@ -1,4 +1,5 @@
 import React from 'react';
+import ButtonBase from '@mui/material/ButtonBase';
 import styles from './InfoButton.module.css';
 
 export type InfoButtonVariant = 'solid' | 'ghost';
@@ -141,7 +142,8 @@ export const InfoButton: React.FC<InfoButtonProps> = ({
     .join(' ');
 
   return (
-    <button
+    <ButtonBase
+      component="button"
       type={type}
       className={classNames}
       onClick={!disabled && !loading ? onClick : undefined}
@@ -162,7 +164,7 @@ export const InfoButton: React.FC<InfoButtonProps> = ({
           <ArrowIcon />
         </span>
       )}
-    </button>
+    </ButtonBase>
   );
 };
 

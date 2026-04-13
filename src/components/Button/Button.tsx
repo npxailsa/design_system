@@ -1,4 +1,5 @@
 import React from 'react';
+import ButtonBase from '@mui/material/ButtonBase';
 import styles from './Button.module.css';
 
 export type ButtonVariant = 'filled' | 'outline';
@@ -77,7 +78,8 @@ export const Button: React.FC<ButtonProps> = ({
   const showLeading = showLeadingIcon && LeadingIcon && !showSpinner;
 
   return (
-    <button
+    <ButtonBase
+      component="button"
       type={type}
       className={classNames}
       onClick={!disabled && !loading ? onClick : undefined}
@@ -115,7 +117,7 @@ export const Button: React.FC<ButtonProps> = ({
           <LeadingIcon className={styles['btn__icon-svg']} />
         </span>
       )}
-    </button>
+    </ButtonBase>
   );
 };
 

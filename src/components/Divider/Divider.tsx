@@ -1,4 +1,5 @@
 import React from 'react';
+import MuiDivider from '@mui/material/Divider';
 import styles from './Divider.module.css';
 
 /* ── Types ───────────────────────────────────────────────────────────────── */
@@ -61,11 +62,11 @@ export const Divider: React.FC<DividerProps> = ({
     .join(' ');
 
   return (
-    <div
-      role="separator"
+    <MuiDivider
+      orientation={alignment === 'vertical' ? 'vertical' : 'horizontal'}
       aria-label={ariaLabel}
-      aria-orientation={alignment}
       className={cls}
+      sx={{ borderColor: 'transparent', borderStyle: 'initial', margin: 0, flexShrink: 0 }}
     />
   );
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import ButtonBase from '@mui/material/ButtonBase';
 import PersonIcon from '@mui/icons-material/Person';
 import styles from './ButtonGroup.module.css';
 
@@ -191,8 +192,9 @@ export const ButtonGroup: React.FC<{
         if (isLabel) {
           /* ── Label button ── */
           return (
-            <button
+            <ButtonBase
               key={i}
+              component="button"
               type="button"
               className={btnClasses}
               onClick={!isDisabled && !isLoading ? cfg.onClick : undefined}
@@ -212,14 +214,15 @@ export const ButtonGroup: React.FC<{
                 <span className={styles['btn-group__label-text']}>{displayLabel}</span>
                 <ArrowRightIcon size={iconSize} />
               </span>
-            </button>
+            </ButtonBase>
           );
         }
 
         /* ── Icon-only button ── */
         return (
-          <button
+          <ButtonBase
             key={i}
+            component="button"
             type="button"
             className={btnClasses}
             onClick={!isDisabled && !isLoading ? cfg.onClick : undefined}
@@ -232,7 +235,7 @@ export const ButtonGroup: React.FC<{
             ) : (
               <PersonIcon className={styles['btn-group__icon']} aria-hidden="true" />
             )}
-          </button>
+          </ButtonBase>
         );
       })}
     </div>

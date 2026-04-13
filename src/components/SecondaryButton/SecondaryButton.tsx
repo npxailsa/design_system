@@ -1,4 +1,5 @@
 import React from 'react';
+import ButtonBase from '@mui/material/ButtonBase';
 import styles from './SecondaryButton.module.css';
 
 export type SecondaryButtonVariant = 'solid' | 'alt';
@@ -80,7 +81,8 @@ export const SecondaryButton: React.FC<SecondaryButtonProps> = ({
   const showLeading = showLeadingIcon && LeadingIcon && !showSpinner;
 
   return (
-    <button
+    <ButtonBase
+      component="button"
       type={type}
       className={classNames}
       onClick={!disabled && !loading ? onClick : undefined}
@@ -118,7 +120,7 @@ export const SecondaryButton: React.FC<SecondaryButtonProps> = ({
           <LeadingIcon className={styles['btn__icon-svg']} />
         </span>
       )}
-    </button>
+    </ButtonBase>
   );
 };
 

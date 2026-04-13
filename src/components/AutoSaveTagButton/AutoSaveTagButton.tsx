@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './AutoSaveTagButton.module.css';
+import ButtonBase from '@mui/material/ButtonBase';
 import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined';
 
 export type AutoSaveTagStatus =
@@ -85,7 +86,8 @@ export const AutoSaveTagButton: React.FC<AutoSaveTagButtonProps> = ({
 
   return (
     <div className={wrapperClasses}>
-      <button
+      <ButtonBase
+        component="button"
         type="button"
         className={btnClasses}
         onClick={!isDisabled ? onClick : undefined}
@@ -97,7 +99,7 @@ export const AutoSaveTagButton: React.FC<AutoSaveTagButtonProps> = ({
           <SaveOutlinedIcon className={styles['autosave-tag__icon-svg']} />
         </span>
         <span className={styles['autosave-tag__label']}>{resolvedLabel}</span>
-      </button>
+      </ButtonBase>
 
       {showTag && (
         <div className={tagClasses} aria-label={`Last saved: ${timestamp}`}>

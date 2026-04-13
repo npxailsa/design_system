@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import ButtonBase from '@mui/material/ButtonBase';
 import styles from './SplitButton.module.css';
 import { ButtonMenu } from '../BuildingBlocks/ButtonMenu/ButtonMenu';
 import type { ButtonMenuItem } from '../BuildingBlocks/ButtonMenu/ButtonMenu';
@@ -117,7 +118,8 @@ export const SplitButton: React.FC<SplitButtonProps> = ({
       {/* ── Button group (main + divider + trigger) ── */}
       <div className={styles.splitBtn__group}>
         {/* Main action */}
-        <button
+        <ButtonBase
+          component="button"
           type="button"
           className={styles.splitBtn__main}
           onClick={isInteractive ? onMainClick : undefined}
@@ -133,13 +135,14 @@ export const SplitButton: React.FC<SplitButtonProps> = ({
           )}
 
           <span className={styles.splitBtn__label}>{label}</span>
-        </button>
+        </ButtonBase>
 
         {/* Vertical divider */}
         <span className={styles.splitBtn__divider} aria-hidden="true" />
 
         {/* Dropdown trigger */}
-        <button
+        <ButtonBase
+          component="button"
           type="button"
           className={styles.splitBtn__trigger}
           onClick={isInteractive ? () => toggle(!isOpen) : undefined}
@@ -156,7 +159,7 @@ export const SplitButton: React.FC<SplitButtonProps> = ({
               .filter(Boolean)
               .join(' ')}
           />
-        </button>
+        </ButtonBase>
       </div>
 
       {/* ── Dropdown panel ── */}

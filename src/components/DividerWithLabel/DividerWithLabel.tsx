@@ -1,4 +1,5 @@
 import React from 'react';
+import MuiDivider from '@mui/material/Divider';
 import styles from './DividerWithLabel.module.css';
 import type { DividerLine, DividerThickness } from '../Divider/Divider';
 
@@ -77,14 +78,16 @@ export const DividerWithLabel: React.FC<DividerWithLabelProps> = ({
   const textCls = [styles.label, styles[`label--${labelSize}`]].join(' ');
 
   return (
-    <div
-      role="separator"
+    <MuiDivider
       aria-label={ariaLabel}
-      aria-orientation="horizontal"
       className={rootCls}
+      textAlign={
+        labelPosition === 'left' ? 'left' : labelPosition === 'right' ? 'right' : 'center'
+      }
+      sx={{ borderColor: 'transparent', '&::before, &::after': { borderColor: 'inherit' } }}
     >
       <span className={textCls}>{label}</span>
-    </div>
+    </MuiDivider>
   );
 };
 

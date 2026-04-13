@@ -1,4 +1,5 @@
 import React from 'react';
+import ButtonBase from '@mui/material/ButtonBase';
 import styles from './TertiaryButton.module.css';
 
 export type TertiaryButtonVariant = 'solid' | 'alt';
@@ -79,7 +80,8 @@ export const TertiaryButton: React.FC<TertiaryButtonProps> = ({
   const showLeading = showLeadingIcon && LeadingIcon && !showSpinner;
 
   return (
-    <button
+    <ButtonBase
+      component="button"
       type={type}
       className={classNames}
       onClick={!disabled && !loading ? onClick : undefined}
@@ -117,7 +119,7 @@ export const TertiaryButton: React.FC<TertiaryButtonProps> = ({
           <LeadingIcon className={styles['btn__icon-svg']} />
         </span>
       )}
-    </button>
+    </ButtonBase>
   );
 };
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ButtonBase from '@mui/material/ButtonBase';
 import styles from './Accordion.module.css';
 import { StatusIcon } from '../BuildingBlocks/StatusIcon/StatusIcon';
 
@@ -130,7 +131,8 @@ export const Accordion: React.FC<AccordionProps> = ({
       {/* Main content */}
       <div className={styles['accordion__body']}>
         {/* Heading row */}
-        <button
+        <ButtonBase
+          component="button"
           type="button"
           className={styles['accordion__trigger']}
           onClick={() => setIsOpen((prev) => !prev)}
@@ -155,7 +157,7 @@ export const Accordion: React.FC<AccordionProps> = ({
           <span className={styles['accordion__icon']}>
             <ToggleIcon size={iconSize} />
           </span>
-        </button>
+        </ButtonBase>
 
         {/* Expandable panel */}
         {isOpen && (

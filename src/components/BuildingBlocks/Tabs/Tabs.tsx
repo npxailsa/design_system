@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import MuiTabs from '@mui/material/Tabs';
+import MuiTab from '@mui/material/Tab';
 import styles from './Tabs.module.css';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -138,20 +140,59 @@ const SingleTab: React.FC<SingleTabProps> = ({
     .join(' ');
 
   return (
-    <button
-      type="button"
+    <MuiTab
       role="tab"
       aria-selected={isActive}
-      aria-disabled={item.disabled}
       disabled={item.disabled}
       className={rootClasses}
       onClick={() => !item.disabled && onClick(item.id)}
-    >
-      {/* ── Underline tab: tabLabel row ── */}
-      {isUnderline && (
+      value={item.id}
+      disableRipple={false}
+      /* Reset MUI Tab default styles — all visuals come from our CSS module */
+      sx={{
+        padding: 0,
+        minWidth: 0,
+        minHeight: 0,
+        textTransform: 'none',
+        fontFamily: 'inherit',
+        fontSize: 'inherit',
+        fontWeight: 'inherit',
+        lineHeight: 'inherit',
+        letterSpacing: 'inherit',
+        color: 'inherit',
+        opacity: 1,
+        '&.Mui-selected': { color: 'inherit' },
+        '&.Mui-disabled': { opacity: 1, color: 'inherit' },
+      }}
+      label={
         <>
-          <div className={styles['tab-label-row']}>
-            <div className={styles['tab-label-inner']}>
+          {/* ── Underline tab: tabLabel row ── */}
+          {isUnderline && (
+            <>
+              <div className={styles['tab-label-row']}>
+                <div className={styles['tab-label-inner']}>
+                  {showLeadingIcon && (
+                    <AccountIcon className={styles['tab-icon']} />
+                  )}
+                  <span className={styles['tab-text']}>{item.label}</span>
+                  {showTrailingIcon && (
+                    item.dropdown
+                      ? <ChevronDownIcon className={styles['tab-trailing-icon']} />
+                      : <ArrowRightIcon className={styles['tab-trailing-icon']} />
+                  )}
+                </div>
+                {showBadge && item.count !== undefined && (
+                  <span className={styles['tab-badge']}>{item.count}</span>
+                )}
+              </div>
+              <div className={styles['tab-spacer']} />
+              <div className={styles['tab-line']} />
+            </>
+          )}
+
+          {/* ── Contained tab: single content row ── */}
+          {isContained && (
+            <div className={styles['tab-content-row']}>
               {showLeadingIcon && (
                 <AccountIcon className={styles['tab-icon']} />
               )}
@@ -161,34 +202,14 @@ const SingleTab: React.FC<SingleTabProps> = ({
                   ? <ChevronDownIcon className={styles['tab-trailing-icon']} />
                   : <ArrowRightIcon className={styles['tab-trailing-icon']} />
               )}
+              {showBadge && item.count !== undefined && (
+                <span className={styles['tab-badge']}>{item.count}</span>
+              )}
             </div>
-            {showBadge && item.count !== undefined && (
-              <span className={styles['tab-badge']}>{item.count}</span>
-            )}
-          </div>
-          <div className={styles['tab-spacer']} />
-          <div className={styles['tab-line']} />
+          )}
         </>
-      )}
-
-      {/* ── Contained tab: single content row ── */}
-      {isContained && (
-        <div className={styles['tab-content-row']}>
-          {showLeadingIcon && (
-            <AccountIcon className={styles['tab-icon']} />
-          )}
-          <span className={styles['tab-text']}>{item.label}</span>
-          {showTrailingIcon && (
-            item.dropdown
-              ? <ChevronDownIcon className={styles['tab-trailing-icon']} />
-              : <ArrowRightIcon className={styles['tab-trailing-icon']} />
-          )}
-          {showBadge && item.count !== undefined && (
-            <span className={styles['tab-badge']}>{item.count}</span>
-          )}
-        </div>
-      )}
-    </button>
+      }
+    />
   );
 };
 
@@ -232,7 +253,17 @@ export const Tabs: React.FC<TabsProps> = ({
     .join(' ');
 
   return (
-    <div role="tablist" aria-orientation="horizontal" className={stripClasses}>
+    <MuiTabs
+      value={current}
+      aria-orientation="horizontal"
+      className={stripClasses}
+      TabIndicatorProps={{ style: { display: 'none' } }}
+      sx={{
+        minHeight: 0,
+        '& .MuiTabs-flexContainer': { gap: 0 },
+        '& .MuiTabs-scroller': { overflow: 'visible !important' },
+      }}
+    >
       {items.map((item) => (
         <SingleTab
           key={item.id}
@@ -246,7 +277,7 @@ export const Tabs: React.FC<TabsProps> = ({
           onClick={handleChange}
         />
       ))}
-    </div>
+    </MuiTabs>
   );
 };
 

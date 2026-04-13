@@ -1,4 +1,5 @@
 import React from 'react';
+import ButtonBase from '@mui/material/ButtonBase';
 import styles from './Alert.module.css';
 
 export type AlertSize = 'small' | 'default' | 'large';
@@ -353,7 +354,8 @@ export const Alert: React.FC<AlertProps> = ({
         </div>
       </div>
       {showTrailingIcon && (
-        <button
+        <ButtonBase
+          component="button"
           type="button"
           className={styles.alert__close}
           onClick={onClose}
@@ -374,7 +376,7 @@ export const Alert: React.FC<AlertProps> = ({
               />
             </g>
           </svg>
-        </button>
+        </ButtonBase>
       )}
     </div>
   );

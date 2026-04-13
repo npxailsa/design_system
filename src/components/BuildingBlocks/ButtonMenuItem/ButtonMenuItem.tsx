@@ -1,4 +1,5 @@
 import React from 'react';
+import ButtonBase from '@mui/material/ButtonBase';
 import styles from './ButtonMenuItem.module.css';
 
 export type ButtonMenuItemPosition = 'top' | 'mid' | 'bottom' | 'solo';
@@ -57,7 +58,8 @@ export const ButtonMenuItem = ({
     .join(' ');
 
   return (
-    <button
+    <ButtonBase
+      component="button"
       type="button"
       role="menuitem"
       className={cls}
@@ -77,7 +79,7 @@ export const ButtonMenuItem = ({
           <TrailingIcon className={styles['item__icon-svg']} />
         </span>
       )}
-    </button>
+    </ButtonBase>
   );
 };
 

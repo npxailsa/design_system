@@ -1,4 +1,5 @@
 import React from 'react';
+import ButtonBase from '@mui/material/ButtonBase';
 import styles from './WarningButton.module.css';
 
 export type WarningButtonVariant = 'solid' | 'ghost';
@@ -138,7 +139,8 @@ export const WarningButton: React.FC<WarningButtonProps> = ({
     .join(' ');
 
   return (
-    <button
+    <ButtonBase
+      component="button"
       type={type}
       className={classNames}
       onClick={!disabled && !loading ? onClick : undefined}
@@ -159,7 +161,7 @@ export const WarningButton: React.FC<WarningButtonProps> = ({
           <ArrowIcon />
         </span>
       )}
-    </button>
+    </ButtonBase>
   );
 };
 

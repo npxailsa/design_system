@@ -1,4 +1,5 @@
 import React from 'react';
+import ButtonBase from '@mui/material/ButtonBase';
 import { GhostButton } from '../../GhostButton/GhostButton';
 import type { GhostButtonSize } from '../../GhostButton/GhostButton';
 import styles from './ElementHeader.module.css';
@@ -132,7 +133,8 @@ export const ElementHeader: React.FC<ElementHeaderProps> = ({
                       {item.label}
                     </a>
                   ) : (
-                    <button
+                    <ButtonBase
+                      component="button"
                       type="button"
                       className={[
                         styles.breadcrumbLink,
@@ -141,7 +143,7 @@ export const ElementHeader: React.FC<ElementHeaderProps> = ({
                       onClick={item.onClick}
                     >
                       {item.label}
-                    </button>
+                    </ButtonBase>
                   )}
                 </li>
               );

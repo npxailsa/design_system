@@ -1,4 +1,5 @@
 import React from 'react';
+import ButtonBase from '@mui/material/ButtonBase';
 import { ButtonGroup } from '../ButtonGroup/ButtonGroup';
 import type { ButtonGroupVariant, ButtonGroupLayout, ButtonGroupItemConfig, ButtonGroupSpecial } from '../ButtonGroup/ButtonGroup';
 import styles from './CardContent.module.css';
@@ -329,14 +330,15 @@ export const CardContent: React.FC<CardContentProps> = ({
     return (
       <div className={rootClasses}>
         {showDismiss && (
-          <button
+          <ButtonBase
+            component="button"
             type="button"
             className={styles['card-content__dismiss']}
             aria-label="Dismiss"
             onClick={onDismiss}
           >
             <DismissIcon size={dismissSize} />
-          </button>
+          </ButtonBase>
         )}
 
         {showIcon && (

@@ -1,4 +1,5 @@
 import React from 'react';
+import ButtonBase from '@mui/material/ButtonBase';
 import styles from './Tag.module.css';
 
 export type TagSize = 'small' | 'default' | 'large';
@@ -135,7 +136,8 @@ export const Tag: React.FC<TagProps> = ({
 
       {/* Remove button */}
       {showRemove && (
-        <button
+        <ButtonBase
+          component="button"
           type="button"
           className={styles['tag__remove']}
           onClick={(e) => {
@@ -163,7 +165,7 @@ export const Tag: React.FC<TagProps> = ({
               strokeLinecap="round"
             />
           </svg>
-        </button>
+        </ButtonBase>
       )}
     </span>
   );

@@ -1,4 +1,5 @@
 import React from 'react';
+import MuiAvatar from '@mui/material/Avatar';
 import PersonIcon from '@mui/icons-material/Person';
 import { StatusIndicator } from '../BuildingBlocks/StatusIndicator/StatusIndicator';
 import styles from './Avatar.module.css';
@@ -73,22 +74,30 @@ export const Avatar: React.FC<AvatarProps> = ({
 
   return (
     <div className={rootClass} aria-label={alt} role="img">
-      {/* Photo / empty-state slot */}
+      {/* Photo / empty-state slot — backed by MUI Avatar for accessibility + image fallback */}
       {showImage && (
-        <div className={styles.imageWrap}>
-          {type === 'profile-photo' && src ? (
-            <img className={styles.photo} src={src} alt={alt} />
-          ) : (
-            <PersonIcon className={styles.personIcon} aria-hidden="true" />
-          )}
-        </div>
+        <MuiAvatar
+          className={styles.imageWrap}
+          src={type === 'profile-photo' ? src : undefined}
+          alt={alt}
+          variant="square"
+          sx={{ width: '100%', height: '100%', bgcolor: 'transparent', borderRadius: 'inherit' }}
+        >
+          <PersonIcon className={styles.personIcon} aria-hidden="true" />
+        </MuiAvatar>
       )}
 
-      {/* Initials slot */}
+      {/* Initials slot — backed by MUI Avatar */}
       {showInitials && (
-        <span className={styles.initials} aria-hidden="true">
-          {initials}
-        </span>
+        <MuiAvatar
+          className={styles.imageWrap}
+          variant="square"
+          sx={{ width: '100%', height: '100%', bgcolor: 'inherit', color: 'inherit', borderRadius: 'inherit', fontSize: 'inherit', fontFamily: 'inherit', fontWeight: 'inherit' }}
+        >
+          <span className={styles.initials} aria-hidden="true">
+            {initials}
+          </span>
+        </MuiAvatar>
       )}
 
       {/* Status badge */}

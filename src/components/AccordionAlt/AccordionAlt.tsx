@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ButtonBase from '@mui/material/ButtonBase';
 import styles from './AccordionAlt.module.css';
 
 export type AccordionAltType = 'decorative' | 'numbered' | 'label';
@@ -106,7 +107,8 @@ export const AccordionAlt: React.FC<AccordionAltProps> = ({
   return (
     <div className={rootClasses}>
       {/* Header row */}
-      <button
+      <ButtonBase
+        component="button"
         type="button"
         className={styles['accordion-alt__trigger']}
         onClick={() => setIsOpen((prev) => !prev)}
@@ -138,7 +140,7 @@ export const AccordionAlt: React.FC<AccordionAltProps> = ({
         <span className={styles['accordion-alt__toggle']}>
           <ToggleIcon size={iconSize} />
         </span>
-      </button>
+      </ButtonBase>
 
       {/* Expandable panel */}
       {isOpen && (

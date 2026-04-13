@@ -1,4 +1,5 @@
 import React from 'react';
+import ButtonBase from '@mui/material/ButtonBase';
 import PersonIcon from '@mui/icons-material/Person';
 import styles from './FilterSortButton.module.css';
 
@@ -61,7 +62,8 @@ export const FilterSortButton: React.FC<FilterSortButtonProps> = ({
     .join(' ');
 
   return (
-    <button
+    <ButtonBase
+      component="button"
       type="button"
       className={classNames}
       onClick={!disabled ? onClick : undefined}
@@ -72,7 +74,7 @@ export const FilterSortButton: React.FC<FilterSortButtonProps> = ({
         <PersonIcon className={styles['fsb__icon-svg']} />
       </span>
       <span className={styles['fsb__label']}>{label}</span>
-    </button>
+    </ButtonBase>
   );
 };
 
