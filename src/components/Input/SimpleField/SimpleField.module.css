@@ -43,9 +43,12 @@
   flex-wrap: wrap;
 }
 
-/* Focus-within — applied when the inner input is focused */
+/* Focus-within — applied when the inner input is focused.
+   Border grows from centre: 0.5px CSS border (inner half) +
+   0.5px box-shadow spread (outer half) = visually 1px, no layout shift. */
 .control:focus-within {
   border-color: var(--simple-field-border-color-focus);
+  box-shadow: 0 0 0 0.5px var(--simple-field-border-color-focus);
   outline: none;
 }
 
@@ -72,6 +75,7 @@
 
 .control--error:focus-within {
   border-color: var(--simple-field-border-color-error);
+  box-shadow: 0 0 0 0.5px var(--simple-field-border-color-error);
 }
 
 .control--warning {
@@ -80,6 +84,7 @@
 
 .control--warning:focus-within {
   border-color: var(--simple-field-border-color-warning);
+  box-shadow: 0 0 0 0.5px var(--simple-field-border-color-warning);
 }
 
 .control--success {
@@ -88,6 +93,7 @@
 
 .control--success:focus-within {
   border-color: var(--simple-field-border-color-success);
+  box-shadow: 0 0 0 0.5px var(--simple-field-border-color-success);
 }
 
 .control--disabled {
