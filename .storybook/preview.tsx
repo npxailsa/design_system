@@ -6,6 +6,36 @@ import '../src/index.css';
 import React from 'react';
 import { npxTheme } from './npxTheme';
 import { MdxCodeBlock } from './MdxCodeBlock';
+import { sb } from 'storybook/test';
+
+// ─── Automocking ─────────────────────────────────────────────────────────────
+//
+// Modules registered here are mocked globally across ALL stories in the project.
+// This is the ONLY place sb.mock() may be called — story files cannot call it.
+//
+// Builder: @storybook/react-vite (Vite) ✅ automocking is fully supported.
+//
+// Three registration modes (choose per module):
+//   • Spy-only   → sb.mock(import('pkg'), { spy: true })
+//     Keeps original behaviour; wraps exports with Vitest spy functions so
+//     play functions can assert calls (e.g. expect(createPortal).toHaveBeenCalled()).
+//
+//   • Fully mocked → sb.mock(import('pkg'))
+//     Replaces every export with a no-op Vitest mock function. The module is
+//     still evaluated (side effects run); use a mock file to prevent that.
+//
+//   • Mock file  → sb.mock(import('pkg'))  +  __mocks__/pkg.js
+//     sb.mock first checks __mocks__/ for a hand-crafted replacement.
+//     See __mocks__/README.md for conventions.
+//
+// To control behaviour in a story, use mocked() from 'storybook/test':
+//   mocked(createPortal).mockImplementation((children) => <>{children}</>);
+//
+// ─── react-dom ───────────────────────────────────────────────────────────────
+// Spy-only: preserves real createPortal (and all other react-dom APIs) so
+// portal-based components (Toast, dialogs) render correctly in the preview,
+// while giving play functions the ability to assert portal calls.
+sb.mock(import('react-dom'), { spy: true });
 
 // Configure Monaco editor theme when it loads.
 // Wrapped defensively so any Monaco load failure doesn't crash the preview.
