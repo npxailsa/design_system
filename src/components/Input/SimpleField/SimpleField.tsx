@@ -2,6 +2,8 @@ import React, { useId, useRef } from 'react';
 import InputBase from '@mui/material/InputBase';
 import CloseIcon from '@mui/icons-material/Close';
 import type { SvgIconComponent } from '@mui/icons-material';
+import { Tag } from '../../Tag/Tag';
+import type { TagSize } from '../../Tag/Tag';
 import styles from './SimpleField.module.css';
 
 /* ── Types ───────────────────────────────────────────────────────────────── */
@@ -48,6 +50,12 @@ export interface SimpleFieldProps {
   tags?: SimpleFieldTag[];
   /** Callback when a tag's remove button is clicked */
   onTagRemove?: (id: string | number) => void;
+  /**
+   * Colour variant passed to each Tag chip.
+   * Accepts any TagColour value — defaults to 'blue'.
+   * @default 'blue'
+   */
+  tagColour?: React.ComponentProps<typeof Tag>['colour'];
   /** Disables the field */
   disabled?: boolean;
   /** HTML input type */
@@ -87,6 +95,7 @@ export const SimpleField: React.FC<SimpleFieldProps> = ({
   onClear,
   tags,
   onTagRemove,
+  tagColour = 'blue',
   disabled = false,
   type = 'text',
   id: idProp,
@@ -144,25 +153,23 @@ export const SimpleField: React.FC<SimpleFieldProps> = ({
           </span>
         )}
 
-        {/* Inline tag chips */}
+        {/* Inline tag chips — rendered using the design system Tag component */}
         {hasTags &&
           tags!.map((tag) => (
-            <span key={tag.id} className={styles.tag}>
-              <span className={styles.tagLabel}>{tag.label}</span>
-              {onTagRemove && (
-                <button
-                  type="button"
-                  className={styles.tagRemove}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onTagRemove(tag.id);
-                  }}
-                  aria-label={`Remove ${tag.label}`}
-                >
-                  <CloseIcon className={styles.tagRemoveIcon} />
-                </button>
-              )}
-            </span>
+            <Tag
+              key={tag.id}
+              label={tag.label}
+              size={size as TagSize}
+              colour={tagColour}
+              variant="filled"
+              showRemove={!!onTagRemove && !disabled}
+              onRemove={
+                onTagRemove
+                  ? () => onTagRemove(tag.id)
+                  : undefined
+              }
+              disabled={disabled}
+            />
           ))}
 
         {/* MUI InputBase — the low-level accessible primitive */}

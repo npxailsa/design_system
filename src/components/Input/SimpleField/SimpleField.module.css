@@ -193,50 +193,6 @@
   font-size: var(--simple-field-icon-size-default) !important;
 }
 
-/* ── Tag chips ──────────────────────────────────────────────── */
-.tag {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--global-spacing-sizing-4px);
-  background: var(--simple-field-tag-bg);
-  color: var(--simple-field-tag-color);
-  border-radius: var(--simple-field-tag-border-radius);
-  padding: var(--simple-field-tag-padding);
-  font-family: var(--simple-field-tag-font);
-  font-size: var(--simple-field-tag-font-size);
-  font-weight: var(--global-type-weight-default);
-  line-height: 1.4;
-  flex-shrink: 0;
-  white-space: nowrap;
-}
-
-.tagLabel {
-  line-height: inherit;
-}
-
-.tagRemove {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  color: inherit;
-  opacity: 0.7;
-  line-height: 0;
-}
-
-.tagRemove:hover {
-  opacity: 1;
-}
-
-.tagRemoveIcon {
-  width: 10px !important;
-  height: 10px !important;
-  font-size: 10px !important;
-}
-
 /* ── Helper / status text ───────────────────────────────────── */
 .helper {
   font-family: var(--simple-field-helper-font);

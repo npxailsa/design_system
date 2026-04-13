@@ -78,8 +78,9 @@ const SimpleFieldDocs: React.FC = () => (
         {`// MUI base import
 import InputBase from '@mui/material/InputBase';
 
-// Design system wrapper
-import { SimpleField } from './SimpleField';`}
+// Design system wrappers
+import { SimpleField } from './SimpleField';
+import { Tag } from '../Tag/Tag'; // used for inline tag chips`}
       </DocsTemplate.CodeBlock>
     </DocsTemplate.Section>
 
@@ -94,7 +95,7 @@ import { SimpleField } from './SimpleField';`}
           { name: 'Label', description: 'Short descriptor rendered above the control row. Uses F37 Ginger Pro, 12 px, weight 400.' },
           { name: 'Leading icon (optional)', description: 'MUI SvgIcon on the left of the text area. Size scales with the field size.' },
           { name: 'Input area', description: 'MUI InputBase — the native <input> with Calibri font and transparent background.' },
-          { name: 'Inline tags (optional)', description: 'Tag chips rendered inside the control row before the text cursor.' },
+          { name: 'Inline tags (optional)', description: 'Design system Tag components rendered inside the control row. Pass the `tags` prop and an `onTagRemove` callback. Tag colour is controlled via `tagColour` (default: blue).' },
           { name: 'Clear button (optional)', description: 'Appears when clearable=true and the field has a non-empty value.' },
           { name: 'Helper text (optional)', description: 'Status message below the control. Colour is driven by the active state token.' },
         ]}
