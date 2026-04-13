@@ -82,7 +82,7 @@ export const Default: Story = {
 export const Sizes: Story = {
   render: () => (
     <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px)', flexWrap: 'wrap' }}>
-      <GhostButton size="extra-small" label="XSmall" showTrailingIcon trailingIcon={ArrowForwardIcon} />
+      <GhostButton size="extra-small" label="Extra Small" showTrailingIcon trailingIcon={ArrowForwardIcon} />
       <GhostButton size="small"       label="Small"  showTrailingIcon trailingIcon={ArrowForwardIcon} />
       <GhostButton size="default"     label="Default" showTrailingIcon trailingIcon={ArrowForwardIcon} />
       <GhostButton size="large"       label="Large"  showTrailingIcon trailingIcon={ArrowForwardIcon} />

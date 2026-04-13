@@ -107,7 +107,7 @@ export const Variants: Story = {
 export const Sizes: Story = {
   render: () => (
     <div style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '16px' }}>
-      <Button size="extra-small" label="XS" />
+      <Button size="extra-small" label="Extra Small" />
       <Button size="small" label="Small" />
       <Button size="default" label="Default" />
       <Button size="large" label="Large" />
