@@ -4,6 +4,8 @@ import { setupMonaco } from 'storybook-addon-code-editor';
 import { StyledEngineProvider } from '@mui/material';
 import '../src/index.css';
 import React from 'react';
+import { npxTheme } from './npxTheme';
+import { MdxCodeBlock } from './MdxCodeBlock';
 
 // Configure Monaco editor theme when it loads.
 // Wrapped defensively so any Monaco load failure doesn't crash the preview.
@@ -164,6 +166,13 @@ const preview: Preview = {
     },
 
     docs: {
+      theme: npxTheme,
+      // Override MDX rendered components so docs pages match the design
+      // system visual language. `code` covers both fenced code blocks
+      // (```tsx) and inline backtick code in all .mdx files.
+      components: {
+        code: MdxCodeBlock,
+      },
       // Temporarily disabling custom DocsContainer to test if it's causing the crash
       // container: (props: any) => (
       //   <DocsContainer {...props}>
