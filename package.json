@@ -32,6 +32,11 @@
     "build-storybook": "npm run docs:generate && NODE_OPTIONS=--max-old-space-size=4096 storybook build --stats-json",
     "build-storybook:gh-pages": "STORYBOOK_BASE_PATH=/design_system/ npm run docs:generate && NODE_OPTIONS=--max-old-space-size=4096 storybook build --output-dir storybook-static --stats-json && touch storybook-static/.nojekyll",
     "docs:generate": "node scripts/generate-docs.mjs",
+    "figma:generate": "node scripts/generate-figma-connect.mjs",
+    "figma:generate:force": "node scripts/generate-figma-connect.mjs --force",
+    "figma:check": "node scripts/generate-figma-connect.mjs --check",
+    "figma:publish": "npx figma connect publish",
+    "prepare": "husky",
     "chromatic": "NODE_OPTIONS=--max-old-space-size=4096 npx chromatic --project-token=chpt_44a4334f1199317 --build-script-name=build-storybook --only-changed",
     "postinstall": "node scripts/patch-storysource-compat.mjs"
   },

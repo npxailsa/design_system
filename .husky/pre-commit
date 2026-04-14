@@ -1,0 +1,9 @@
+#!/bin/sh
+# Auto-scaffold Figma Code Connect files for any new component that is missing one.
+# Newly generated .figma.tsx files are staged automatically so they travel with the commit.
+
+echo "🔗  Checking for missing Figma Code Connect files..."
+node scripts/generate-figma-connect.mjs
+
+# Stage any newly created .figma.tsx files so they are included in the commit
+git add 'src/components/**/*.figma.tsx' 2>/dev/null || true
