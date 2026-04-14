@@ -2822,10 +2822,10 @@
   --simple-field-label-line-height:     var(--global-type-line-height-label-xs);
   --simple-field-label-color:           var(--global-color-neutral-gray-700);
   --simple-field-input-font:            var(--brand-font-secondary);
-  --simple-field-input-size-extra-small:var(--global-type-size-primary-label-xxs);  /* 10 px */
-  --simple-field-input-size-small:      var(--global-type-size-primary-label-sm);   /* 14 px */
-  --simple-field-input-size-default:    var(--global-type-size-primary-label);      /* 16 px */
-  --simple-field-input-size-large:      var(--global-type-size-primary-label-lg);   /* 18 px */
+  --simple-field-input-size-extra-small:var(--global-type-size-primary-label-xs);   /* 12 px — matches 28 px height */
+  --simple-field-input-size-small:      var(--global-type-size-primary-label-sm);   /* 14 px — matches 32 px height */
+  --simple-field-input-size-default:    var(--global-type-size-primary-label);      /* 16 px — matches 44 px height */
+  --simple-field-input-size-large:      var(--global-type-size-primary-label-lg);   /* 18 px — matches 52 px height */
   --simple-field-input-weight:          var(--global-type-weight-light);
 
   /* Colors — default state */

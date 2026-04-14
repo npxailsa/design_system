@@ -84,14 +84,36 @@ export const Playground: Story = {
 };
 
 /* 3 — Sizes */
+const SIZE_META: { size: 'extra-small' | 'small' | 'default' | 'large'; label: string; height: string }[] = [
+  { size: 'extra-small', label: 'Extra Small', height: '28px' },
+  { size: 'small',       label: 'Small',       height: '32px' },
+  { size: 'default',     label: 'Default',     height: '44px' },
+  { size: 'large',       label: 'Large',       height: '52px' },
+];
+
+const SIZE_CHIP: React.CSSProperties = {
+  display: 'inline-block',
+  fontFamily: 'var(--brand-font-secondary, monospace)',
+  fontSize: '11px',
+  fontWeight: 600,
+  letterSpacing: '0.04em',
+  color: 'var(--global-color-neutral-gray-500)',
+  background: 'var(--global-color-neutral-gray-100)',
+  borderRadius: 'var(--global-spacing-radius-4px)',
+  padding: '2px var(--global-spacing-sizing-6px)',
+  marginBottom: 'var(--global-spacing-sizing-4px)',
+};
+
 export const Sizes: Story = {
   name: 'Sizes',
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)', maxWidth: 360 }}>
-      <Controlled label="Input name" placeholder="Placeholder text" size="extra-small" leadingIcon={LockOutlinedIcon} clearable />
-      <Controlled label="Input name" placeholder="Placeholder text" size="small" leadingIcon={LockOutlinedIcon} clearable />
-      <Controlled label="Input name" placeholder="Placeholder text" size="default" leadingIcon={LockOutlinedIcon} clearable />
-      <Controlled label="Input name" placeholder="Placeholder text" size="large" leadingIcon={LockOutlinedIcon} clearable />
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-20px)', maxWidth: 360 }}>
+      {SIZE_META.map(({ size, label, height }) => (
+        <div key={size}>
+          <div style={SIZE_CHIP}>{label} — {height}</div>
+          <Controlled label="Input name" placeholder="Placeholder text" size={size} leadingIcon={LockOutlinedIcon} clearable />
+        </div>
+      ))}
     </div>
   ),
   parameters: { controls: { disable: true } },
@@ -298,7 +320,6 @@ export const Icons: Story = {
 export const FullDesignMatrix: Story = {
   name: 'Full Design Matrix',
   render: () => {
-    const sizes = ['extra-small', 'small', 'default', 'large'] as const;
     const states = [
       { state: 'default' as const, helperText: undefined },
       { state: 'error' as const, helperText: 'This is an error associated with the input' },
@@ -306,7 +327,7 @@ export const FullDesignMatrix: Story = {
       { state: 'success' as const, helperText: 'This is a success associated with this input' },
     ];
 
-    const LABEL: React.CSSProperties = {
+    const SECTION_LABEL: React.CSSProperties = {
       fontFamily: 'var(--brand-font-primary, sans-serif)',
       fontSize: '11px',
       fontWeight: 600,
@@ -316,18 +337,38 @@ export const FullDesignMatrix: Story = {
       marginBottom: 'var(--global-spacing-sizing-8px)',
     };
 
+    const COL_LABEL: React.CSSProperties = {
+      fontFamily: 'var(--brand-font-primary, sans-serif)',
+      fontSize: '11px',
+      fontWeight: 600,
+      letterSpacing: '0.06em',
+      color: 'var(--global-color-neutral-gray-600)',
+      marginBottom: 'var(--global-spacing-sizing-8px)',
+    };
+
+    const HEIGHT_CHIP: React.CSSProperties = {
+      display: 'inline-block',
+      fontFamily: 'var(--brand-font-secondary, monospace)',
+      fontSize: '10px',
+      color: 'var(--global-color-neutral-gray-400)',
+      background: 'var(--global-color-neutral-gray-100)',
+      borderRadius: 'var(--global-spacing-radius-4px)',
+      padding: '1px var(--global-spacing-sizing-4px)',
+      marginLeft: 'var(--global-spacing-sizing-4px)',
+    };
+
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-40px)', maxWidth: 800 }}>
-        {/* Placeholder / Focused / Filled */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-40px)', maxWidth: 900 }}>
+        {/* Placeholder / Filled */}
         <div>
-          <div style={LABEL}>Default (placeholder, focused, filled)</div>
+          <div style={SECTION_LABEL}>Default — Placeholder &amp; Filled</div>
           <div style={{ display: 'flex', gap: 'var(--global-spacing-sizing-16px)', flexWrap: 'wrap' }}>
-            {sizes.map((size) => (
-              <div key={size} style={{ flex: '1 1 200px', display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-12px)' }}>
-                <div style={{ ...LABEL, textTransform: 'none' }}>{size}</div>
-                {/* Placeholder */}
+            {SIZE_META.map(({ size, label, height }) => (
+              <div key={size} style={{ flex: '1 1 180px', display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-12px)' }}>
+                <div style={COL_LABEL}>
+                  {label}<span style={HEIGHT_CHIP}>{height}</span>
+                </div>
                 <SimpleField label="Input name" placeholder="Placeholder text" size={size} leadingIcon={LockOutlinedIcon} clearable />
-                {/* Filled */}
                 <Controlled label="Input name" value="This is a filled input" size={size} leadingIcon={LockOutlinedIcon} clearable />
               </div>
             ))}
@@ -336,13 +377,16 @@ export const FullDesignMatrix: Story = {
 
         {/* Validation states */}
         <div>
-          <div style={LABEL}>Validation States</div>
+          <div style={SECTION_LABEL}>Validation States</div>
           <div style={{ display: 'flex', gap: 'var(--global-spacing-sizing-16px)', flexWrap: 'wrap' }}>
             {states.filter((s) => s.state !== 'default').map(({ state, helperText }) => (
-              <div key={state} style={{ flex: '1 1 200px', display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-12px)' }}>
-                <div style={{ ...LABEL, textTransform: 'none' }}>{state}</div>
-                {sizes.map((size) => (
-                  <Controlled key={size} label="Input name" value="This is a filled input" size={size} leadingIcon={LockOutlinedIcon} clearable state={state} helperText={helperText} />
+              <div key={state} style={{ flex: '1 1 180px', display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-12px)' }}>
+                <div style={{ ...COL_LABEL, textTransform: 'capitalize' }}>{state}</div>
+                {SIZE_META.map(({ size, height }) => (
+                  <div key={size}>
+                    <div style={{ ...HEIGHT_CHIP, display: 'block', marginLeft: 0, marginBottom: 'var(--global-spacing-sizing-4px)', width: 'fit-content' }}>{height}</div>
+                    <Controlled label="Input name" value="This is a filled input" size={size} leadingIcon={LockOutlinedIcon} clearable state={state} helperText={helperText} />
+                  </div>
                 ))}
               </div>
             ))}
@@ -351,10 +395,11 @@ export const FullDesignMatrix: Story = {
 
         {/* Disabled */}
         <div>
-          <div style={LABEL}>Disabled</div>
+          <div style={SECTION_LABEL}>Disabled</div>
           <div style={{ display: 'flex', gap: 'var(--global-spacing-sizing-16px)', flexWrap: 'wrap' }}>
-            {sizes.map((size) => (
-              <div key={size} style={{ flex: '1 1 200px' }}>
+            {SIZE_META.map(({ size, label, height }) => (
+              <div key={size} style={{ flex: '1 1 180px' }}>
+                <div style={COL_LABEL}>{label}<span style={HEIGHT_CHIP}>{height}</span></div>
                 <SimpleField label="Input name" placeholder="Placeholder text" size={size} leadingIcon={LockOutlinedIcon} disabled />
               </div>
             ))}
