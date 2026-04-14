@@ -1,0 +1,13 @@
+{
+  "codeConnect": {
+    "include": [
+      "src/**/*.figma.tsx",
+      "src/**/*.figma.ts"
+    ],
+    "label": "React",
+    "language": "jsx",
+    "storybook": {
+      "url": "https://npxailsa.github.io/design_system"
+    }
+  }
+}

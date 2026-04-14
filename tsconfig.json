@@ -23,7 +23,8 @@
     "jsx": "react-jsx",
     "moduleResolution": "bundler",
     "noEmit": true,
-    "allowImportingTsExtensions": true
+    "allowImportingTsExtensions": true,
+    "types": ["@figma/code-connect/figma-types"]
   },
   "include": ["src"]
 }
