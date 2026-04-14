@@ -18,7 +18,7 @@ const sampleItems = [
 ];
 
 const meta: Meta<typeof ButtonMenu> = {
-  title: 'Foundation/BuildingBlocks/Button',
+  title: 'Foundation/BuildingBlocks/ButtonMenu',
   component: ButtonMenu,
   parameters: {
     docs: {

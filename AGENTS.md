@@ -58,6 +58,56 @@ through documentation or example stories before using them.
 - Documentation stories must be the first story listed for each component/category.
 - Follow the documentation template at `.storybook` and existing `DocsTemplate.mdx` examples.
 
+### Canonical Story Order (MANDATORY for every component)
+
+Every component's `.stories.tsx` file **must** export stories in this exact order.
+Use the export names and display names exactly as shown.
+
+```tsx
+// 1. Documentation  — renders the DocsTemplate page (always first)
+export const Documentation: Story = { name: 'Documentation', ... }
+
+// 2. Playground  — fully interactive with all controls wired
+export const Playground: Story = { name: 'Playground', ... }
+
+// 3. Default  — the component in its default/resting state
+export const Default: Story = { name: 'Default', ... }
+
+// 4. Sizes  — all size variants stacked / side-by-side
+export const Sizes: Story = { name: 'Sizes', ... }
+
+// 5. Status stories  — one export per semantic state the component supports.
+//    Name them after the state: Primary, Secondary, Tertiary, Disabled, Error,
+//    Warning, Success, Loading, etc.  Only include states that apply.
+export const Primary: Story   = { name: 'Status / Primary',   ... }
+export const Secondary: Story = { name: 'Status / Secondary', ... }
+export const Tertiary: Story  = { name: 'Status / Tertiary',  ... }
+export const Disabled: Story  = { name: 'Status / Disabled',  ... }
+// …additional states as needed (Error, Warning, Success, Loading, …)
+
+// 6. ComponentBreakdown  — shows each sub-atom the component is composed of,
+//    with its design token name displayed alongside it so devs can reference it.
+//    e.g. "—button-secondary-default-default" → <SecondaryButton size="default" state="default" />
+export const ComponentBreakdown: Story = { name: 'Component Breakdown', ... }
+
+// 7. AllInteractiveStates  — hover, focus, active, disabled rendered side-by-side
+export const AllInteractiveStates: Story = { name: 'All Interactive States', ... }
+
+// 8. FullDesignMatrix  — every variant combination in one grid.
+//    Name MUST be: 'Full Design Matrix (<N> variants)'
+export const FullDesignMatrix: Story = { name: 'Full Design Matrix (## variants)', ... }
+```
+
+**Rules:**
+- Story titles (the `title:` in `meta`) must be unique across the entire codebase.
+  Never share a title between two different `.stories.tsx` files.
+- Only include status/state stories that are genuinely relevant to the component.
+  Do not add empty or placeholder stories.
+- The `ComponentBreakdown` story must display the full design token reference name
+  next to each sub-component, formatted as a monospace code label.
+- The `FullDesignMatrix` story count must reflect the actual number of unique
+  variant combinations shown in the render.
+
 ### Storybook
 - Storybook runs on port 6006 (`npm run dev`).
 - MCP server is available at `http://localhost:6006/mcp` when Storybook is running.

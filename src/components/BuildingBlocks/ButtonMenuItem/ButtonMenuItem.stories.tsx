@@ -11,7 +11,7 @@ import ArchiveIcon from '@mui/icons-material/Archive';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 const meta: Meta<typeof ButtonMenuItem> = {
-  title: 'Foundation/BuildingBlocks/Button',
+  title: 'Foundation/BuildingBlocks/ButtonMenuItem',
   component: ButtonMenuItem,
   parameters: {
     docs: {
