@@ -195,8 +195,8 @@ export const HorizontalThicknessScale: Story = {
    HORIZONTAL — ALL STYLES × ALL THICKNESSES
    ════════════════════════════════════════════════════════════════════════════ */
 
-export const HorizontalFullMatrix: Story = {
-  name: 'Horizontal / Full Matrix',
+export const FullDesignMatrix: Story = {
+  name: 'Full Design Matrix (36 variants)',
   render: () => (
     <div style={{ ...gridWrap, gap: 'var(--global-spacing-sizing-36px)' }}>
       {ALL_LINES.map((lineStyle) => (

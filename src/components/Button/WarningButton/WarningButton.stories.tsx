@@ -168,7 +168,8 @@ export const Disabled: Story = {
 /**
  * Full state matrix — all combinations of variant × size × state.
  */
-export const AllStates: Story = {
+export const FullDesignMatrix: Story = {
+  name: 'Full Design Matrix (18 variants)',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', padding: '32px' }}>
       {(['solid', 'ghost'] as const).map((variant) => (

@@ -333,7 +333,8 @@ export const NotificationBadges: Story = {
 /**
  * All sizes × all colours matrix.
  */
-export const AllVariants: Story = {
+export const FullDesignMatrix: Story = {
+  name: 'Full Design Matrix (60 variants)',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', padding: '16px' }}>
       {(['small', 'default', 'large'] as const).map((size) => (

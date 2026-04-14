@@ -208,8 +208,8 @@ export const AllSizesWithEmail: Story = {
 };
 
 /* ── Full matrix ── */
-export const AllVariantsAllSizes: Story = {
-  name: 'All Variants × All Sizes',
+export const FullDesignMatrix: Story = {
+  name: 'Full Design Matrix (48 variants)',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', padding: '16px' }}>
       {ALL_SIZES.map((size) => (

@@ -184,7 +184,8 @@ export const OptionalElements: Story = {
 };
 
 /* ── All variants grid ── */
-export const AllVariants: Story = {
+export const FullDesignMatrix: Story = {
+  name: 'Full Design Matrix (24 variants)',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', padding: '20px', maxWidth: '960px' }}>
       {/* Simple type — all sizes */}

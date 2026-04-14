@@ -244,8 +244,8 @@ export const ButtonMenuItemWithIcons: Story = {
 };
 
 /* ── Full Grid (Screenshot match) ── */
-export const ButtonMenuItemAllVariants: Story = {
-  name: 'Button Menu Item — All Variants',
+export const FullDesignMatrix: Story = {
+  name: 'Full Design Matrix (24 variants)',
   render: () => {
     const sizes: ButtonMenuItemSize[] = ['small', 'default', 'large'];
     const stateGroups = [

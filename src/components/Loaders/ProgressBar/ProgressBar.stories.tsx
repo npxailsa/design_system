@@ -113,8 +113,8 @@ export const SizeLarge: Story = {
    ALL SIZES — side by side
    ════════════════════════════════════════════════════════════════════════════ */
 
-export const AllSizes: Story = {
-  name: 'Size / All (Side by Side)',
+export const FullDesignMatrix: Story = {
+  name: 'Full Design Matrix (12 variants)',
   render: () => (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(200px, 1fr))', gap: 'var(--global-spacing-sizing-32px)', padding: 'var(--global-spacing-sizing-24px)', background: 'var(--global-color-neutral-gray-50)', borderRadius: 'var(--global-spacing-radius-8px)' }}>
       {ALL_SIZES.map((size) => (

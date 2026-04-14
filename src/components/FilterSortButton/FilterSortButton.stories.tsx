@@ -55,8 +55,8 @@ export const Documentation: Story = {
 };
 
 /* ── All Variants × All Sizes grid ── */
-export const AllVariants: Story = {
-  name: 'All Variants',
+export const FullDesignMatrix: Story = {
+  name: 'Full Design Matrix (32 variants)',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-24px)' }}>
       {ALL_LABELS.map((label) => (

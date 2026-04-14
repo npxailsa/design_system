@@ -119,7 +119,8 @@ export const DisabledState: Story = {
   parameters: { controls: { disable: true } },
 };
 
-export const AllVariants: Story = {
+export const FullDesignMatrix: Story = {
+  name: 'Full Design Matrix (72 variants)',
   render: () => {
     const types: StatusIconType[] = [
       'warning', 'error', 'complete', 'locked',

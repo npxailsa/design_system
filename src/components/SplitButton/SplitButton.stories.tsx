@@ -225,7 +225,8 @@ export const Disabled: Story = {
 /* ════════════════════════════════════════════════════════════
    ALL VARIANTS OVERVIEW
    ════════════════════════════════════════════════════════════ */
-export const AllVariants: Story = {
+export const FullDesignMatrix: Story = {
+  name: 'Full Design Matrix (24 variants)',
   render: () => {
     const variants: Array<{ buttonType: SplitButtonType; variant: SplitButtonVariant; label: string }> = [
       { buttonType: 'primary', variant: 'filled', label: 'Primary / Filled' },

@@ -113,8 +113,8 @@ export const DarkModeVariants: Story = {
 };
 
 /* ── Full matrix ── */
-export const AllSizesAllColours: Story = {
-  name: 'All Sizes × All Colours',
+export const FullDesignMatrix: Story = {
+  name: 'Full Design Matrix (33 variants)',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', padding: '16px' }}>
       {ALL_SIZES.map((size) => (

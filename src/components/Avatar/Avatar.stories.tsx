@@ -227,8 +227,8 @@ export const WithoutStatusIndicator: Story = {
 };
 
 /* ── Full grid: type × size × shape ── */
-export const AllVariants: Story = {
-  name: 'All Variants',
+export const FullDesignMatrix: Story = {
+  name: 'Full Design Matrix (64 variants)',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
       {ALL_SHAPES.map((shape) => (

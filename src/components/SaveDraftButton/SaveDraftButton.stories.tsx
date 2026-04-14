@@ -83,8 +83,8 @@ export const Disabled: Story = {
 };
 
 /* ── All States ── */
-export const AllStates: Story = {
-  name: 'All States',
+export const FullDesignMatrix: Story = {
+  name: 'Full Design Matrix (7 variants)',
   render: () => (
     <div
       style={{

@@ -227,7 +227,8 @@ const row = (content: React.ReactNode) => (
  * Complete variant matrix — all sizes, all types, all states.
  * Mirrors the full Figma Ghost Button component set.
  */
-export const AllVariants: Story = {
+export const FullDesignMatrix: Story = {
+  name: 'Full Design Matrix (36 variants)',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-28px)', padding: 'var(--global-spacing-sizing-24px)' }}>
 

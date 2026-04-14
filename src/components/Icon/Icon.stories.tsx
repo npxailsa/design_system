@@ -180,7 +180,8 @@ export const Colors: Story = {
 /**
  * A gallery of commonly used icons in our design system.
  */
-export const Gallery: Story = {
+export const FullDesignMatrix: Story = {
+  name: 'Full Design Matrix (50 icons × 7 sizes)',
   render: () => {
     const commonIcons = [
       { name: 'Home', component: HomeIcon },

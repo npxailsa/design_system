@@ -977,8 +977,8 @@ export const ButtonGroupVariants: Story = {
 
 /* ── Full 9-Status × Toggle Matrix ───────────────────────────────────────── */
 
-export const FullToggleMatrix: Story = {
-  name: 'Full Toggle Matrix',
+export const FullDesignMatrix: Story = {
+  name: 'Full Design Matrix (48 variants)',
   render: () => {
     const toggleCombos = [
       { label: 'All on', showIcon: true, showBody: true, showActions: true, showDismiss: false },

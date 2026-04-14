@@ -75,8 +75,8 @@ export const Playground: Story = {
 
 /* ── All Sizes ──────────────────────────────────────────────────────────── */
 
-export const AllSizes: Story = {
-  name: 'All Sizes',
+export const FullDesignMatrix: Story = {
+  name: 'Full Design Matrix (12 variants)',
   render: () => (
     <div
       style={{

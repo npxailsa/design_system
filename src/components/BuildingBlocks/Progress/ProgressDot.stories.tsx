@@ -204,8 +204,8 @@ export const AllSizes: Story = {
    SIZE × STATE MATRIX
    ════════════════════════════════════════════════════════════════════════════ */
 
-export const SizeStateMatrix: Story = {
-  name: 'Size × State / Full Matrix',
+export const FullDesignMatrix: Story = {
+  name: 'Full Design Matrix (12 variants)',
   render: () => (
     <div
       style={{

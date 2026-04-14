@@ -75,8 +75,8 @@ export const Offline: Story = {
 };
 
 /* ── All statuses × all sizes grid ── */
-export const AllStates: Story = {
-  name: 'All States',
+export const FullDesignMatrix: Story = {
+  name: 'Full Design Matrix (15 variants)',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
       {ALL_SIZES.map((size) => (

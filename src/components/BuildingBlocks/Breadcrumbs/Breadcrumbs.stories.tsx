@@ -85,8 +85,8 @@ export const Large: Story = {
 };
 
 /* ── Size / All Sizes Side-by-Side ── */
-export const AllSizes: Story = {
-  name: 'Size / All Sizes',
+export const FullDesignMatrix: Story = {
+  name: 'Full Design Matrix (9 variants)',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', padding: '24px' }}>
       {(['sm', 'default', 'lg'] as const).map((size) => (

@@ -224,6 +224,32 @@ export const InContextFormSections: Story = {
   parameters: { controls: { disable: true } },
 };
 
+export const FullDesignMatrix: Story = {
+  name: 'Full Design Matrix (27 variants)',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-48px)', padding: 'var(--global-spacing-sizing-24px)' }}>
+      {ALL_POSITIONS.map((pos) => (
+        <div key={pos} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-24px)' }}>
+          <span style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '11px', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase' as const, color: 'var(--global-color-neutral-gray-500)' }}>
+            Position: {pos}
+          </span>
+          {ALL_SIZES.map((size) => (
+            <div key={size} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-12px)' }}>
+              <span style={{ fontFamily: 'var(--brand-font-secondary)', fontSize: '10px', color: 'var(--global-color-neutral-gray-400)' }}>
+                Label size: {size}
+              </span>
+              {ALL_LINES.map((line) => (
+                <DividerWithLabel key={line} label="Label" labelPosition={pos} labelSize={size} line={line} thickness="1px" />
+              ))}
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
 export const InContextOrSeparator: Story = {
   name: 'In Context / Or Separator',
   render: () => (

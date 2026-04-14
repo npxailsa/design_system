@@ -174,7 +174,8 @@ export const Large: Story = {
 };
 
 /* ── All Variants ── */
-export const AllVariants: Story = {
+export const FullDesignMatrix: Story = {
+  name: 'Full Design Matrix (12 variants)',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-40px)', padding: 'var(--global-spacing-sizing-24px)' }}>
       {/* All 3 sizes */}

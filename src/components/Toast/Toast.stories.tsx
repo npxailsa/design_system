@@ -125,8 +125,8 @@ export const WithoutIcons: Story = {
 
 /* ── Full variant matrix ── */
 
-export const AllVariants: Story = {
-  name: 'Full Matrix',
+export const FullDesignMatrix: Story = {
+  name: 'Full Design Matrix (24 variants)',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-32px)' }}>
       {SIZES.map((size) => (

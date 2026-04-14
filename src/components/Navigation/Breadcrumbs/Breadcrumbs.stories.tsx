@@ -46,8 +46,8 @@ export const Playground: Story = {
 };
 
 /* ── All Sizes — matches the Figma design exactly ── */
-export const AllSizes: Story = {
-  name: 'All Sizes',
+export const FullDesignMatrix: Story = {
+  name: 'Full Design Matrix (9 variants)',
   render: () => (
     <div
       style={{

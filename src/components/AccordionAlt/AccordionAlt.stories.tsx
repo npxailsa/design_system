@@ -179,7 +179,8 @@ export const ToggleIcons: Story = {
 };
 
 /* ── All Variants grid ── */
-export const AllVariants: Story = {
+export const FullDesignMatrix: Story = {
+  name: 'Full Design Matrix (18 variants)',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', padding: '20px', maxWidth: '960px' }}>
       {/* Decorative */}
