@@ -1,0 +1,187 @@
+/* ============================================================
+   TextArea — multi-line text input
+   MUI Foundation: InputBase (multiline) from @mui/material
+   Tokens: --textarea-* from tokens.css
+   ============================================================ */
+
+/* ── Root wrapper ───────────────────────────────────────────── */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--textarea-helper-gap);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ── Label ──────────────────────────────────────────────────── */
+.label {
+  font-family: var(--textarea-label-font);
+  font-size: var(--textarea-label-size);
+  font-weight: var(--textarea-label-weight);
+  line-height: var(--textarea-label-line-height);
+  color: var(--textarea-label-color);
+  letter-spacing: var(--global-type-letter-spacing-primary-label-xs);
+  cursor: default;
+  user-select: none;
+}
+
+/* ── Control box ────────────────────────────────────────────── */
+.control {
+  position: relative;
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--textarea-bg);
+  border: var(--textarea-border-width) solid var(--textarea-border-color);
+  border-radius: var(--textarea-border-radius);
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+/* Focus-within — border doubles visually without layout shift */
+.control:focus-within {
+  border-color: var(--textarea-border-color-focus);
+  box-shadow: 0 0 0 0.5px var(--textarea-border-color-focus);
+  outline: none;
+}
+
+/* ── Size variants ── */
+.control--small {
+  min-height: var(--textarea-min-height-small);
+}
+.control--default {
+  min-height: var(--textarea-min-height-default);
+}
+.control--large {
+  min-height: var(--textarea-min-height-large);
+}
+
+/* ── State variants ─────────────────────────────────────────── */
+.control--error {
+  border-color: var(--textarea-border-color-error);
+}
+.control--error:focus-within {
+  border-color: var(--textarea-border-color-error);
+  box-shadow: 0 0 0 0.5px var(--textarea-border-color-error);
+}
+
+.control--warning {
+  border-color: var(--textarea-border-color-warning);
+}
+.control--warning:focus-within {
+  border-color: var(--textarea-border-color-warning);
+  box-shadow: 0 0 0 0.5px var(--textarea-border-color-warning);
+}
+
+.control--success {
+  border-color: var(--textarea-border-color-success);
+}
+.control--success:focus-within {
+  border-color: var(--textarea-border-color-success);
+  box-shadow: 0 0 0 0.5px var(--textarea-border-color-success);
+}
+
+.control--disabled {
+  background: var(--textarea-bg-disabled);
+  border-color: var(--textarea-border-color-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── MUI InputBase overrides ────────────────────────────────── */
+.inputRoot {
+  width: 100% !important;
+  padding: 0 !important;
+  align-items: flex-start !important;
+}
+
+/* The native <textarea> element */
+.nativeTextarea {
+  font-family: var(--textarea-input-font) !important;
+  font-weight: var(--textarea-input-weight) !important;
+  color: var(--textarea-text-color) !important;
+  background: transparent;
+  border: none !important;
+  outline: none !important;
+  width: 100%;
+  box-sizing: border-box;
+  /* resize is set inline per instance */
+  overflow: auto;
+}
+
+.nativeTextarea::placeholder {
+  color: var(--textarea-placeholder-color);
+  opacity: 1;
+}
+
+.field--disabled .nativeTextarea {
+  color: var(--textarea-text-color-disabled) !important;
+  cursor: not-allowed;
+}
+
+/* Typography & padding by size */
+.field--small .nativeTextarea {
+  font-size: var(--textarea-input-size-small);
+  line-height: var(--textarea-input-line-height-small);
+  padding: var(--textarea-padding-small);
+}
+
+.field--default .nativeTextarea {
+  font-size: var(--textarea-input-size-default);
+  line-height: var(--textarea-input-line-height-default);
+  padding: var(--textarea-padding-default);
+}
+
+.field--large .nativeTextarea {
+  font-size: var(--textarea-input-size-large);
+  line-height: var(--textarea-input-line-height-large);
+  padding: var(--textarea-padding-large);
+}
+
+/* Ensure MUI's textarea wrapper fills the control */
+.inputRoot > textarea {
+  width: 100% !important;
+}
+
+/* ── Clear button — top-right corner ───────────────────────── */
+.clearBtn {
+  position: absolute;
+  top: var(--global-spacing-sizing-6px);
+  right: var(--global-spacing-sizing-6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--textarea-clear-color);
+  line-height: 0;
+  transition: color 0.15s ease;
+  z-index: 1;
+}
+
+.clearBtn:hover {
+  color: var(--textarea-text-color);
+}
+
+.clearIcon {
+  width: var(--textarea-clear-size) !important;
+  height: var(--textarea-clear-size) !important;
+  font-size: var(--textarea-clear-size) !important;
+}
+
+/* ── Helper / status text ───────────────────────────────────── */
+.helper {
+  font-family: var(--textarea-helper-font);
+  font-size: var(--textarea-helper-size);
+  line-height: var(--textarea-helper-line-height);
+  color: var(--textarea-helper-color);
+  letter-spacing: var(--global-type-letter-spacing-secondary-body-sm, -0.15px);
+}
+
+.helper--error   { color: var(--textarea-helper-color-error); }
+.helper--warning { color: var(--textarea-helper-color-warning); }
+.helper--success { color: var(--textarea-helper-color-success); }

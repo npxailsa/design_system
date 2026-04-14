@@ -2888,6 +2888,72 @@
   --simple-field-dropdown-empty-color:  var(--global-color-neutral-gray-400);
   --simple-field-dropdown-padding-y:    var(--global-spacing-sizing-4px);
   --simple-field-dropdown-option-pad:   var(--global-spacing-sizing-8px) var(--global-spacing-sizing-12px);
+
+  /* ── TextArea component tokens ──────────────────────────────────── */
+  /* Min-heights (rows × line-height + padding) */
+  --textarea-min-height-small:          80px;
+  --textarea-min-height-default:        104px;
+  --textarea-min-height-large:          132px;
+
+  /* Padding inside the textarea control */
+  --textarea-padding-small:             var(--global-spacing-sizing-6px) var(--global-spacing-sizing-8px);
+  --textarea-padding-default:           var(--global-spacing-sizing-8px) var(--global-spacing-sizing-12px);
+  --textarea-padding-large:             var(--global-spacing-sizing-12px) var(--global-spacing-sizing-16px);
+
+  /* Typography */
+  --textarea-label-font:                var(--brand-font-primary);
+  --textarea-label-size:                var(--global-type-size-primary-label-xs);
+  --textarea-label-weight:              var(--global-type-weight-default);
+  --textarea-label-line-height:         var(--global-type-line-height-label-xs);
+  --textarea-label-color:               var(--global-color-neutral-gray-700);
+  --textarea-input-font:                var(--brand-font-secondary);
+  --textarea-input-weight:              var(--global-type-weight-light);
+  --textarea-input-size-small:          var(--global-type-size-primary-label-sm);    /* 14px */
+  --textarea-input-size-default:        var(--global-type-size-primary-label);       /* 16px */
+  --textarea-input-size-large:          var(--global-type-size-primary-label-lg);    /* 18px */
+  --textarea-input-line-height-small:   var(--global-type-line-height-label-sm);
+  --textarea-input-line-height-default: var(--global-type-line-height-label);
+  --textarea-input-line-height-large:   var(--global-type-line-height-label-lg);
+
+  /* Structure */
+  --textarea-border-radius:             var(--global-spacing-radius-4px);
+  --textarea-border-width:              var(--global-spacing-stroke-0-5px);
+  --textarea-gap:                       var(--global-spacing-sizing-4px);
+  --textarea-clear-size:                var(--global-spacing-sizing-16px);
+
+  /* Colours — default */
+  --textarea-bg:                        var(--global-color-base-white);
+  --textarea-border-color:              var(--global-color-neutral-gray-300);
+  --textarea-text-color:                var(--global-color-base-black);
+  --textarea-placeholder-color:         var(--global-color-neutral-gray-400);
+  --textarea-clear-color:               var(--global-color-neutral-gray-400);
+
+  /* Colours — focused */
+  --textarea-border-color-focus:        var(--brand-primary);
+
+  /* Colours — error */
+  --textarea-border-color-error:        var(--global-color-status-red);
+  --textarea-helper-color-error:        var(--global-color-status-red);
+
+  /* Colours — warning */
+  --textarea-border-color-warning:      var(--global-color-status-dark-orange);
+  --textarea-helper-color-warning:      var(--global-color-status-dark-orange);
+
+  /* Colours — success */
+  --textarea-border-color-success:      var(--global-color-status-dark-green);
+  --textarea-helper-color-success:      var(--global-color-status-dark-green);
+
+  /* Colours — disabled */
+  --textarea-bg-disabled:               var(--global-color-neutral-gray-100);
+  --textarea-border-color-disabled:     var(--global-color-neutral-gray-200);
+  --textarea-text-color-disabled:       var(--global-color-neutral-gray-400);
+
+  /* Helper text */
+  --textarea-helper-font:               var(--brand-font-secondary);
+  --textarea-helper-size:               var(--global-type-size-primary-label-xs);
+  --textarea-helper-line-height:        var(--global-type-line-height-label-xs);
+  --textarea-helper-color:              var(--global-color-neutral-gray-500);
+  --textarea-helper-gap:                var(--global-spacing-sizing-4px);
 }
 
 /* Font Loading */

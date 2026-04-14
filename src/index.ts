@@ -25,6 +25,8 @@ export { default as SaveDraftButton } from './components/SaveDraftButton/SaveDra
 export { default as SecondaryButton } from './components/SecondaryButton/SecondaryButton';
 export { default as SplitButton } from './components/SplitButton/SplitButton';
 export { default as Tag } from './components/Tag/Tag';
+export { TextArea } from './components/Input/TextArea/TextArea';
+export type { TextAreaProps, TextAreaSize, TextAreaState } from './components/Input/TextArea/TextArea';
 export { default as TertiaryButton } from './components/TertiaryButton/TertiaryButton';
 export { default as Toast } from './components/Toast/Toast';
 export { ToastProvider, useToast } from './components/Toast/ToastContext';
