@@ -35,7 +35,7 @@ jobs:
 
       - name: Add NPXInnovation remote
         run: |
-          git remote add npx https://x-access-token:${{ secrets.NPX_SYNC_PAT }}@github.com/NPXInnovation/design_system.git
+          git remote add npx https://x-access-token:${{ secrets.SYNC_PAT }}@github.com/NPXInnovation/design_system.git
 
       - name: Fetch NPXInnovation remote
         run: git fetch npx
