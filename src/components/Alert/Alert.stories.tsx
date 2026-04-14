@@ -94,15 +94,15 @@ const SectionHeader = ({ label }: { label: string }) => (
 /* ── Documentation ── */
 
 export const Documentation: Story = {
+  name: 'Documentation',
   render: () => <AlertDocs />,
-  parameters: {
-    controls: { disable: true },
-    actions: { disable: true },
-    chromatic: { disableSnapshot: true },
-  },
+  parameters: { controls: { disable: true }, actions: { disable: true }, chromatic: { disableSnapshot: true } },
 };
 
-/* ── Default (playground) ── */
+export const Playground: Story = {
+  name: 'Playground',
+  args: { size: 'default', colour: 'default', border: true, title: 'Alert Title', description: 'Alert description text', showLeadingIcon: true, showTrailingIcon: true, showSubtext: true },
+};
 
 export const Default: Story = {
   args: {
@@ -130,10 +130,63 @@ export const Sizes: Story = {
   ),
 };
 
-/* ── Colours (bordered) ── */
+export const StatusBordered: Story = {
+  name: 'Status / Bordered',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)' }}>
+      {COLOURS.map((colour) => <Alert key={colour} size="default" colour={colour} border />)}
+    </div>
+  ),
+};
 
+export const StatusNoBorder: Story = {
+  name: 'Status / No Border',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)' }}>
+      {COLOURS.map((colour) => <Alert key={colour} size="default" colour={colour} border={false} />)}
+    </div>
+  ),
+};
+
+export const ComponentBreakdown: Story = {
+  name: 'Component Breakdown',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', padding: '24px' }}>
+      <span style={{ fontFamily: 'var(--brand-font-primary)', fontWeight: 600, fontSize: '13px' }}>Anatomy</span>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxWidth: '600px' }}>
+        {[
+          ['Full Alert', <Alert size="default" colour="default" border title="Title" description="Description" showLeadingIcon showTrailingIcon showSubtext />, '--alert-bg / --alert-border / --alert-icon'],
+          ['Without icons', <Alert size="default" colour="warning" border title="Warning" showLeadingIcon={false} showTrailingIcon={false} />, '--alert-title-size-default'],
+          ['Subtext hidden', <Alert size="default" colour="success" border title="Success" showSubtext={false} />, '--alert-desc-size-default'],
+        ].map(([lbl, el, tok]) => (
+          <div key={lbl as string} style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+            <span style={{ fontSize: '11px', fontWeight: 600, fontFamily: 'var(--brand-font-primary)' }}>{lbl as string}</span>
+            {el as React.ReactElement}
+            <code style={{ fontSize: '10px', background: 'var(--global-color-neutral-gray-100)', padding: '2px 6px', borderRadius: '4px' }}>{tok as string}</code>
+          </div>
+        ))}
+      </div>
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const AllInteractiveStates: Story = {
+  name: 'All Interactive States',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '24px', maxWidth: '600px' }}>
+      <Alert size="default" colour="default" border title="Default" description="Resting alert state" showLeadingIcon showTrailingIcon />
+      <Alert size="default" colour="error" border title="Error" description="Something went wrong" showLeadingIcon showTrailingIcon />
+      <Alert size="default" colour="warning" border title="Warning" description="Proceed with caution" showLeadingIcon showTrailingIcon />
+      <Alert size="default" colour="success" border title="Success" description="Action completed" showLeadingIcon showTrailingIcon />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+/* (Legacy colour stories kept for reference but replaced by Status stories above) */
 export const Colours: Story = {
-  name: 'Colours (Bordered)',
+  name: 'Colours (Bordered) — legacy',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)' }}>
       <SectionHeader label="All 8 Colours — Bordered" />
@@ -158,42 +211,8 @@ export const NoBorder: Story = {
   ),
 };
 
-/* ── Without Description ── */
-
-export const WithoutDescription: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)' }}>
-      <SectionHeader label="Without Description" />
-      {COLOURS.map((colour) => (
-        <Alert key={colour} colour={colour} border showSubtext={false} />
-      ))}
-    </div>
-  ),
-};
-
-/* ── Without Icons ── */
-
-export const WithoutIcons: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)' }}>
-      <SectionHeader label="Without Leading & Trailing Icons" />
-      {COLOURS.map((colour) => (
-        <Alert
-          key={colour}
-          colour={colour}
-          border
-          showLeadingIcon={false}
-          showTrailingIcon={false}
-        />
-      ))}
-    </div>
-  ),
-};
-
-/* ── All 48 Variants ── */
-
-export const AllVariants: Story = {
-  name: 'Full Matrix (48 Variants)',
+export const FullDesignMatrix: Story = {
+  name: 'Full Design Matrix (48 variants)',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-48px)' }}>
       <div style={{ textAlign: 'center', marginBottom: 'var(--global-spacing-sizing-12px)' }}>

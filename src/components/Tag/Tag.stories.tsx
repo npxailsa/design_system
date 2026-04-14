@@ -69,18 +69,16 @@ type Story = StoryObj<typeof Tag>;
  * Full documentation page for the Tag component.
  */
 export const Documentation: Story = {
+  name: 'Documentation',
   render: () => <TagDocs />,
-  parameters: {
-    layout: 'fullscreen',
-    controls: { disable: true },
-    actions: { disable: true },
-    chromatic: { disableSnapshot: true },
-  },
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true }, chromatic: { disableSnapshot: true } },
 };
 
-/**
- * Default Tag — the most common usage.
- */
+export const Playground: Story = {
+  name: 'Playground',
+  args: { label: 'Label', colour: 'blue', size: 'default', variant: 'filled' },
+};
+
 export const Default: Story = {
   args: {
     label: 'Label',
@@ -93,6 +91,71 @@ export const Default: Story = {
 /**
  * All ten colour variants side by side (filled style).
  */
+export const StatusFilled: Story = {
+  name: 'Status / Filled Colours',
+  render: () => (
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', padding: '16px' }}>
+      {(['default', 'blue', 'seafoam', 'yellow', 'dark', 'navy', 'red', 'green', 'purple', 'info'] as const).map(c => <Tag key={c} colour={c} label={c} />)}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const StatusOutline: Story = {
+  name: 'Status / Outline Colours',
+  render: () => (
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', padding: '16px' }}>
+      {(['default', 'blue', 'seafoam', 'yellow', 'dark', 'navy', 'red', 'green', 'purple', 'info'] as const).map(c => <Tag key={c} colour={c} label={c} variant="outline" />)}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const StatusSelected: Story = {
+  name: 'Status / Selected',
+  render: () => (
+    <div style={{ display: 'flex', gap: '8px', padding: '16px', flexWrap: 'wrap' }}>
+      <Tag label="Selected" colour="blue" selected />
+      <Tag label="Not selected" colour="blue" />
+      <Tag label="Removable" colour="blue" showRemove />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const ComponentBreakdown: Story = {
+  name: 'Component Breakdown',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', padding: '24px' }}>
+      <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
+        {[['Label only', <Tag label="Label" />, '--tag-font-size-default / --tag-height-default'], ['With leading icon', <Tag label="Icon" showLeadingIcon />, '--tag-icon-size'], ['With count', <Tag label="Count" showCount count={5} />, '--tag-count-font-size'], ['Removable', <Tag label="Remove" showRemove />, '--tag-remove-size'], ['Outline', <Tag label="Outline" variant="outline" colour="blue" />, '--tag-outline-border']].map(([lbl, el, tok]) => (
+          <div key={lbl as string} style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+            <span style={{ fontSize: '11px', fontWeight: 600, fontFamily: 'var(--brand-font-primary)', color: 'var(--global-color-neutral-gray-600)' }}>{lbl as string}</span>
+            {el as React.ReactElement}
+            <code style={{ fontSize: '10px', background: 'var(--global-color-neutral-gray-100)', padding: '2px 6px', borderRadius: '4px' }}>{tok as string}</code>
+          </div>
+        ))}
+      </div>
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const AllInteractiveStates: Story = {
+  name: 'All Interactive States',
+  render: () => (
+    <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', padding: '24px', alignItems: 'center' }}>
+      <Tag label="Default" colour="blue" />
+      <Tag label="Selected" colour="blue" selected />
+      <Tag label="Removable" colour="blue" showRemove />
+      <Tag label="Disabled" colour="blue" disabled />
+      <Tag label="With count" colour="blue" showCount count={3} />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+/* Legacy stories below kept for reference */
 export const ColourVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', padding: '16px' }}>

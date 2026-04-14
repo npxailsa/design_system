@@ -44,34 +44,60 @@ type Story = StoryObj<typeof StatusIndicator>;
 /* ── Documentation ── */
 export const Documentation: Story = {
   name: 'Documentation',
-  parameters: {
-    docs: { page: () => <StatusIndicatorDocs /> },
-    controls: { disable: true },
-    chromatic: { disableSnapshot: true },
-  },
+  parameters: { docs: { page: () => <StatusIndicatorDocs /> }, controls: { disable: true }, chromatic: { disableSnapshot: true } },
   render: () => <StatusIndicatorDocs />,
 };
 
-/* ── Individual status stories ── */
-export const Online: Story = {
-  args: { status: 'online', size: 'default' },
+export const Playground: Story = { name: 'Playground', args: { status: 'online', size: 'default' } };
+
+export const Default: Story = { name: 'Default', args: { status: 'online', size: 'default' } };
+
+export const Sizes: Story = {
+  name: 'Sizes',
+  render: () => (
+    <div style={{ display: 'flex', gap: '16px', padding: '16px', alignItems: 'center' }}>
+      <StatusIndicator status="online" size="small" />
+      <StatusIndicator status="online" size="default" />
+      <StatusIndicator status="online" size="large" />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
 };
 
-export const Away: Story = {
-  args: { status: 'away', size: 'default' },
+export const StatusOnline: Story = { name: 'Status / Online', args: { status: 'online', size: 'default' } };
+export const StatusAway: Story = { name: 'Status / Away', args: { status: 'away', size: 'default' } };
+export const StatusDoNotDisturb: Story = { name: 'Status / Do Not Disturb', args: { status: 'do-not-disturb', size: 'default' } };
+export const StatusVerified: Story = { name: 'Status / Verified', args: { status: 'verified', size: 'default' } };
+export const StatusOffline: Story = { name: 'Status / Offline', args: { status: 'offline', size: 'default' } };
+
+export const ComponentBreakdown: Story = {
+  name: 'Component Breakdown',
+  render: () => (
+    <div style={{ display: 'flex', gap: '24px', padding: '24px', flexWrap: 'wrap', alignItems: 'flex-start' }}>
+      {(['online', 'away', 'do-not-disturb', 'verified', 'offline'] as const).map(status => (
+        <div key={status} style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'center' }}>
+          <StatusIndicator status={status} size="default" />
+          <span style={{ fontSize: '10px', fontFamily: 'var(--brand-font-secondary)', color: 'var(--global-color-neutral-gray-600)' }}>{status}</span>
+        </div>
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
 };
 
-export const DoNotDisturb: Story = {
-  name: 'Do Not Disturb',
-  args: { status: 'do-not-disturb', size: 'default' },
-};
-
-export const Verified: Story = {
-  args: { status: 'verified', size: 'default' },
-};
-
-export const Offline: Story = {
-  args: { status: 'offline', size: 'default' },
+export const AllInteractiveStates: Story = {
+  name: 'All Interactive States',
+  render: () => (
+    <div style={{ display: 'flex', gap: '16px', padding: '24px', flexWrap: 'wrap', alignItems: 'center' }}>
+      {(['online', 'away', 'do-not-disturb', 'verified', 'offline'] as const).map(s => (
+        <div key={s} style={{ display: 'flex', flexDirection: 'column', gap: '4px', alignItems: 'center' }}>
+          <StatusIndicator status={s} size="default" />
+          <span style={{ fontSize: '9px', color: 'var(--global-color-neutral-gray-400)', fontFamily: 'var(--brand-font-secondary)' }}>{s}</span>
+        </div>
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
 };
 
 /* ── All statuses × all sizes grid ── */

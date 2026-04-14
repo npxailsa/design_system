@@ -45,7 +45,45 @@ export const Playground: Story = {
   name: 'Playground',
 };
 
-/* ── All Sizes — matches the Figma design exactly ── */
+export const Default: Story = {
+  name: 'Default',
+};
+
+export const Sizes: Story = {
+  name: 'Sizes',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', padding: '16px' }}>
+      {(['sm', 'default', 'lg'] as const).map(size => (
+        <Breadcrumbs key={size} size={size} items={[{ label: 'Home', href: '#' }, { label: 'Finance', href: '#' }, { label: 'Reports' }]} />
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const ComponentBreakdown: Story = {
+  name: 'Component Breakdown',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', padding: '24px', maxWidth: '400px' }}>
+      <Breadcrumbs size="default" items={[{ label: 'Home', href: '#' }, { label: 'Section', href: '#' }, { label: 'Current' }]} />
+      <code style={{ fontSize: '10px', background: 'var(--global-color-neutral-gray-100)', padding: '4px 8px', borderRadius: '4px' }}>--breadcrumbs-font-size-default / --breadcrumbs-separator-color / --breadcrumbs-active-color</code>
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const AllInteractiveStates: Story = {
+  name: 'All Interactive States',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', padding: '24px' }}>
+      <Breadcrumbs size="sm" items={[{ label: 'Home', href: '#' }, { label: 'Small' }]} />
+      <Breadcrumbs size="default" items={[{ label: 'Home', href: '#' }, { label: 'Default' }]} />
+      <Breadcrumbs size="lg" items={[{ label: 'Home', href: '#' }, { label: 'Large' }]} />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
 export const FullDesignMatrix: Story = {
   name: 'Full Design Matrix (9 variants)',
   render: () => (

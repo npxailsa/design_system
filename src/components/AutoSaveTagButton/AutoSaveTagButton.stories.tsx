@@ -54,60 +54,49 @@ type Story = StoryObj<typeof AutoSaveTagButton>;
 
 /* ── Documentation (must be first) ── */
 export const Documentation: Story = {
+  name: 'Documentation',
   render: () => <AutoSaveTagButtonDocs />,
-  parameters: {
-    controls: { disable: true },
-    actions: { disable: true },
-    chromatic: { disableSnapshot: true },
-  },
+  parameters: { controls: { disable: true }, actions: { disable: true }, chromatic: { disableSnapshot: true } },
 };
 
-/* ── Default ── */
-export const Default: Story = {
-  args: { status: 'default' },
+export const Playground: Story = { name: 'Playground', args: { status: 'default', showTag: true } };
+export const Default: Story = { name: 'Default', args: { status: 'default' } };
+
+export const StatusAutoSaving: Story = { name: 'Status / Auto-saving', args: { status: 'auto-saving' } };
+export const StatusSaving: Story = { name: 'Status / Saving', args: { status: 'saving' } };
+export const StatusSaved: Story = { name: 'Status / Saved', args: { status: 'saved' } };
+export const StatusError: Story = { name: 'Status / Error', args: { status: 'error' } };
+export const StatusDisabled: Story = { name: 'Status / Disabled', args: { status: 'disabled' } };
+export const StatusFocused: Story = { name: 'Status / Focused', args: { status: 'focused' } };
+export const StatusWithoutTag: Story = { name: 'Status / Without Tag', args: { status: 'default', showTag: false } };
+
+export const ComponentBreakdown: Story = {
+  name: 'Component Breakdown',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', padding: '24px' }}>
+      {ALL_STATUSES.map(status => (
+        <div key={status} style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+          <AutoSaveTagButton status={status} showTag />
+          <code style={{ fontSize: '10px', background: 'var(--global-color-neutral-gray-100)', padding: '2px 6px', borderRadius: '4px' }}>{status}</code>
+        </div>
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
 };
 
-/* ── Auto-saving ── */
-export const AutoSaving: Story = {
-  name: 'Auto-saving',
-  args: { status: 'auto-saving' },
+export const AllInteractiveStates: Story = {
+  name: 'All Interactive States',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', padding: '24px' }}>
+      {ALL_STATUSES.map(status => (
+        <AutoSaveTagButton key={status} status={status} showTag />
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
 };
 
-/* ── Saving ── */
-export const Saving: Story = {
-  args: { status: 'saving' },
-};
-
-/* ── Saved ── */
-export const Saved: Story = {
-  args: { status: 'saved' },
-};
-
-/* ── Error ── */
-export const Error: Story = {
-  args: { status: 'error' },
-};
-
-/* ── Disabled ── */
-export const Disabled: Story = {
-  args: { status: 'disabled' },
-};
-
-/* ── Focused ── */
-export const Focused: Story = {
-  args: { status: 'focused' },
-};
-
-/* ── Without Tag ── */
-export const WithoutTag: Story = {
-  name: 'Without Tag',
-  args: {
-    status: 'default',
-    showTag: false,
-  },
-};
-
-/* ── All States ── */
 export const FullDesignMatrix: Story = {
   name: 'Full Design Matrix (7 variants)',
   render: () => (

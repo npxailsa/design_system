@@ -83,7 +83,18 @@ export const Playground: Story = {
   ),
 };
 
-/* 3 — Sizes */
+/* 3 — Default */
+export const Default: Story = {
+  name: 'Default',
+  render: (args) => (
+    <div style={{ maxWidth: 360 }}>
+      <Controlled {...args} />
+    </div>
+  ),
+  args: { label: 'Input name', placeholder: 'Placeholder text', size: 'default', state: 'default', clearable: true },
+};
+
+/* 4 — Sizes */
 const SIZE_META: { size: 'extra-small' | 'small' | 'default' | 'large'; label: string; height: string }[] = [
   { size: 'extra-small', label: 'Extra Small', height: '28px' },
   { size: 'small',       label: 'Small',       height: '32px' },
@@ -119,57 +130,73 @@ export const Sizes: Story = {
   parameters: { controls: { disable: true } },
 };
 
-/* 4 — States */
-export const States: Story = {
-  name: 'States',
+/* 5 — Status stories */
+export const StatusError: Story = {
+  name: 'Status / Error',
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-20px)', maxWidth: 360 }}>
-      <Controlled label="Input name" placeholder="Placeholder text" leadingIcon={LockOutlinedIcon} clearable state="default" />
-      <Controlled label="Input name" value="This is a filled input" leadingIcon={LockOutlinedIcon} clearable state="error" helperText="This is an error associated with the input" />
-      <Controlled label="Input name" value="This is a filled input" leadingIcon={LockOutlinedIcon} clearable state="warning" helperText="This is a warning associated with the input" />
-      <Controlled label="Input name" value="This is a filled input" leadingIcon={LockOutlinedIcon} clearable state="success" helperText="This is a success associated with this input" />
-      <SimpleField label="Input name" placeholder="Placeholder text" leadingIcon={LockOutlinedIcon} disabled />
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)', maxWidth: 360 }}>
+      {(['small', 'default', 'large'] as const).map(size => (
+        <Controlled key={size} label="Input name" value="This is a filled input" size={size} leadingIcon={LockOutlinedIcon} clearable state="error" helperText="This is an error associated with the input" />
+      ))}
     </div>
   ),
   parameters: { controls: { disable: true } },
 };
 
-/* 5 — Error */
-export const Error: Story = {
-  name: 'Error',
+export const StatusWarning: Story = {
+  name: 'Status / Warning',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)', maxWidth: 360 }}>
-      <Controlled label="Input name" value="This is a filled input" size="small" leadingIcon={LockOutlinedIcon} clearable state="error" helperText="This is an error associated with the input" />
-      <Controlled label="Input name" value="This is a filled input" size="default" leadingIcon={LockOutlinedIcon} clearable state="error" helperText="This is an error associated with the input" />
-      <Controlled label="Input name" value="This is a filled input" size="large" leadingIcon={LockOutlinedIcon} clearable state="error" helperText="This is an error associated with the input" />
+      {(['small', 'default', 'large'] as const).map(size => (
+        <Controlled key={size} label="Input name" value="This is a filled input" size={size} leadingIcon={LockOutlinedIcon} clearable state="warning" helperText="This is a warning associated with the input" />
+      ))}
     </div>
   ),
   parameters: { controls: { disable: true } },
 };
 
-/* 6 — Warning */
-export const Warning: Story = {
-  name: 'Warning',
+export const StatusSuccess: Story = {
+  name: 'Status / Success',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)', maxWidth: 360 }}>
-      <Controlled label="Input name" value="This is a filled input" size="small" leadingIcon={LockOutlinedIcon} clearable state="warning" helperText="This is a warning associated with the input" />
-      <Controlled label="Input name" value="This is a filled input" size="default" leadingIcon={LockOutlinedIcon} clearable state="warning" helperText="This is a warning associated with the input" />
-      <Controlled label="Input name" value="This is a filled input" size="large" leadingIcon={LockOutlinedIcon} clearable state="warning" helperText="This is a warning associated with the input" />
+      {(['small', 'default', 'large'] as const).map(size => (
+        <Controlled key={size} label="Input name" value="This is a filled input" size={size} leadingIcon={LockOutlinedIcon} clearable state="success" helperText="This is a success associated with this input" />
+      ))}
     </div>
   ),
   parameters: { controls: { disable: true } },
 };
 
-/* 7 — Success */
-export const Success: Story = {
-  name: 'Success',
+export const StatusDisabled: Story = {
+  name: 'Status / Disabled',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)', maxWidth: 360 }}>
-      <Controlled label="Input name" value="This is a filled input" size="small" leadingIcon={LockOutlinedIcon} clearable state="success" helperText="This is a success associated with this input" />
-      <Controlled label="Input name" value="This is a filled input" size="default" leadingIcon={LockOutlinedIcon} clearable state="success" helperText="This is a success associated with this input" />
-      <Controlled label="Input name" value="This is a filled input" size="large" leadingIcon={LockOutlinedIcon} clearable state="success" helperText="This is a success associated with this input" />
+      {(['small', 'default', 'large'] as const).map(size => (
+        <SimpleField key={size} label="Input name" placeholder="Placeholder text" size={size} leadingIcon={LockOutlinedIcon} disabled />
+      ))}
     </div>
   ),
+  parameters: { controls: { disable: true } },
+};
+
+export const StatusTagInput: Story = {
+  name: 'Status / Tag Input',
+  render: () => {
+    const TagSearch = ({ size, label, suggestions, suggestionsLabel, initialTags }: { size: 'small' | 'default' | 'large'; label: string; suggestions: string[]; suggestionsLabel: string; initialTags?: Array<{ id: number; label: string }> }) => {
+      const [query, setQuery] = useState('');
+      const [tags, setTags] = useState(initialTags ?? []);
+      const nextId = React.useRef(100);
+      const handleSelect = (value: string) => { setTags(t => [...t, { id: nextId.current++, label: value }]); setQuery(''); };
+      return <SimpleField label={label} placeholder={`Search ${suggestionsLabel}…`} value={query} onChange={e => setQuery(e.target.value)} onClear={() => setQuery('')} clearable leadingIcon={SearchIcon} size={size} tags={tags} onTagRemove={id => setTags(t => t.filter(x => x.id !== id))} suggestions={suggestions} onSuggestionSelect={handleSelect} suggestionsLabel={suggestionsLabel} />;
+    };
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-24px)', maxWidth: 400 }}>
+        <TagSearch size="default" label="Filter by location" suggestions={LOCATION_SUGGESTIONS} suggestionsLabel="location" initialTags={[{ id: 1, label: 'Auckland' }]} />
+        <TagSearch size="small" label="Filter by tag (small)" suggestions={TAG_SUGGESTIONS} suggestionsLabel="tag" />
+        <TagSearch size="large" label="Filter by param (large)" suggestions={PARAMETER_SUGGESTIONS} suggestionsLabel="parameter" />
+      </div>
+    );
+  },
   parameters: { controls: { disable: true } },
 };
 
@@ -192,9 +219,9 @@ const PARAMETER_SUGGESTIONS = [
   'Average order value', 'NPS score', 'Response time', 'Uptime',
 ];
 
-/* 8 — Tag Input (with search) */
+/* (TagInput preserved for reference below but replaced by Status / Tag Input above) */
 export const TagInput: Story = {
-  name: 'Tag Input',
+  name: 'Tag Input (legacy)',
   render: () => {
     const TagSearch = ({
       size,
@@ -302,21 +329,48 @@ export const TagInputSizes: Story = {
   parameters: { controls: { disable: true } },
 };
 
-/* 9 — Icons */
-export const Icons: Story = {
-  name: 'Icons',
+/* 6 — Component Breakdown */
+export const ComponentBreakdown: Story = {
+  name: 'Component Breakdown',
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)', maxWidth: 360 }}>
-      <Controlled label="Search" placeholder="Search…" leadingIcon={SearchIcon} clearable />
-      <Controlled label="Username" placeholder="Enter username" leadingIcon={PersonOutlinedIcon} clearable />
-      <Controlled label="Password" placeholder="Enter password" leadingIcon={LockOutlinedIcon} type="password" />
-      <Controlled label="Preview" placeholder="Enter value" leadingIcon={VisibilityOutlinedIcon} clearable />
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', padding: '24px', maxWidth: '640px' }}>
+      <span style={{ fontFamily: 'var(--brand-font-primary)', fontWeight: 600, fontSize: '13px', color: 'var(--global-color-neutral-gray-800)' }}>Anatomy</span>
+      <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
+        {[
+          ['Label only', <SimpleField label="Input name" placeholder="Placeholder" />, '--simple-field-label-size / --simple-field-label-color'],
+          ['With leading icon', <SimpleField label="With Icon" placeholder="Search" leadingIcon={SearchIcon} />, '--simple-field-icon-size-default'],
+          ['Clearable', <Controlled label="Clearable" value="Input value" clearable onClear={() => {}} />, '--simple-field-clear-color'],
+          ['Error helper', <SimpleField label="Field" placeholder="" state="error" helperText="Error message" />, '--simple-field-border-color-error / --simple-field-helper-color-error'],
+        ].map(([lbl, el, tok]) => (
+          <div key={lbl as string} style={{ display: 'flex', flexDirection: 'column', gap: '6px', minWidth: '180px' }}>
+            <span style={{ fontSize: '11px', fontWeight: 600, fontFamily: 'var(--brand-font-primary)', color: 'var(--global-color-neutral-gray-600)' }}>{lbl as string}</span>
+            {el as React.ReactElement}
+            <code style={{ fontSize: '10px', color: 'var(--global-color-neutral-gray-500)', background: 'var(--global-color-neutral-gray-100)', padding: '2px 6px', borderRadius: '4px' }}>{tok as string}</code>
+          </div>
+        ))}
+      </div>
     </div>
   ),
   parameters: { controls: { disable: true } },
 };
 
-/* 10 — Full Design Matrix */
+/* 7 — All Interactive States */
+export const AllInteractiveStates: Story = {
+  name: 'All Interactive States',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '24px', maxWidth: '400px' }}>
+      <SimpleField label="Default" placeholder="Resting state" leadingIcon={LockOutlinedIcon} />
+      <Controlled label="Filled" value="User has typed content" leadingIcon={LockOutlinedIcon} clearable />
+      <SimpleField label="Error" placeholder="" state="error" helperText="Error message" leadingIcon={LockOutlinedIcon} />
+      <SimpleField label="Warning" placeholder="" state="warning" helperText="Warning message" leadingIcon={LockOutlinedIcon} />
+      <SimpleField label="Success" placeholder="" state="success" helperText="Success message" leadingIcon={LockOutlinedIcon} />
+      <SimpleField label="Disabled" placeholder="Disabled state" leadingIcon={LockOutlinedIcon} disabled />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+/* 8 — Full Design Matrix */
 export const FullDesignMatrix: Story = {
   name: 'Full Design Matrix',
   render: () => {

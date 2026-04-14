@@ -54,7 +54,52 @@ export const Documentation: Story = {
   parameters: { docs: { page: () => <FilterSortButtonDocs /> }, controls: { disable: true }, chromatic: { disableSnapshot: true } },
 };
 
-/* ── All Variants × All Sizes grid ── */
+export const Playground: Story = { name: 'Playground' };
+
+export const Default: Story = { name: 'Default' };
+
+export const Sizes: Story = {
+  name: 'Sizes',
+  render: () => (
+    <div style={{ display: 'flex', gap: '12px', padding: '16px', flexWrap: 'wrap', alignItems: 'center' }}>
+      <FilterSortButton size="xs" label="Filter" variant="primary" />
+      <FilterSortButton size="sm" label="Filter" variant="primary" />
+      <FilterSortButton size="md" label="Filter" variant="primary" />
+      <FilterSortButton size="lg" label="Filter" variant="primary" />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const StatusPrimary: Story = { name: 'Status / Primary', args: { variant: 'primary', label: 'Filter' } };
+export const StatusSecondary: Story = { name: 'Status / Secondary', args: { variant: 'secondary', label: 'Sort' } };
+export const StatusTertiary: Story = { name: 'Status / Tertiary', args: { variant: 'tertiary', label: 'More' } };
+export const StatusGhost: Story = { name: 'Status / Ghost', args: { variant: 'ghost', label: 'Filter' } };
+export const StatusDisabled: Story = { name: 'Status / Disabled', args: { variant: 'primary', label: 'Filter', disabled: true } };
+
+export const ComponentBreakdown: Story = {
+  name: 'Component Breakdown',
+  render: () => (
+    <div style={{ display: 'flex', gap: '16px', padding: '24px', flexWrap: 'wrap' }}>
+      <FilterSortButton size="md" variant="primary" label="Filter" />
+      <FilterSortButton size="md" variant="secondary" label="Sort" />
+      <FilterSortButton size="md" variant="ghost" label="More" />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const AllInteractiveStates: Story = {
+  name: 'All Interactive States',
+  render: () => (
+    <div style={{ display: 'flex', gap: '12px', padding: '24px', flexWrap: 'wrap', alignItems: 'center' }}>
+      <FilterSortButton size="md" variant="primary" label="Default" />
+      <FilterSortButton size="md" variant="primary" label="Disabled" disabled />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
 export const FullDesignMatrix: Story = {
   name: 'Full Design Matrix (32 variants)',
   render: () => (

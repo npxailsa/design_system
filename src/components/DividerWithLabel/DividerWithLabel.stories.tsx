@@ -88,6 +88,35 @@ export const Playground: Story = {
   ),
 };
 
+export const Default: Story = {
+  name: 'Default',
+  args: { label: 'Divider Label', labelPosition: 'center', labelSize: 'sm', line: 'solid', thickness: '1px' },
+};
+
+export const ComponentBreakdown: Story = {
+  name: 'Component Breakdown',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', padding: '24px', minWidth: '200px', maxWidth: '480px' }}>
+      <DividerWithLabel label="Center" labelPosition="center" line="solid" />
+      <DividerWithLabel label="Left" labelPosition="left" line="dashed" />
+      <DividerWithLabel label="Right" labelPosition="right" line="dotted" />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const AllInteractiveStates: Story = {
+  name: 'All Interactive States',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '24px', minWidth: '200px', maxWidth: '480px' }}>
+      <DividerWithLabel label="Solid" labelPosition="center" line="solid" />
+      <DividerWithLabel label="Dashed" labelPosition="left" line="dashed" />
+      <DividerWithLabel label="Dotted" labelPosition="right" line="dotted" />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
 /* ════════════════════════════════════════════════════════════════════════════
    LABEL POSITIONS
    ════════════════════════════════════════════════════════════════════════════ */

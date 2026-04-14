@@ -106,6 +106,58 @@ export const Playground: Story = {
     ),
 };
 
+export const Default: Story = {
+  name: 'Default',
+  args: { alignment: 'horizontal', line: 'solid', thickness: '1px' },
+};
+
+export const Sizes: Story = {
+  name: 'Sizes',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', padding: '16px', minWidth: '200px' }}>
+      {(['0-5px', '1px', '2px', '3px', '4px', '8px'] as const).map(t => (
+        <div key={t}>
+          <span style={{ fontSize: '10px', color: 'var(--global-color-neutral-gray-400)', fontFamily: 'var(--brand-font-secondary)', display: 'block', marginBottom: '4px' }}>{t}</span>
+          <Divider alignment="horizontal" line="solid" thickness={t} />
+        </div>
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const StatusSolid: Story = { name: 'Status / Solid', args: { alignment: 'horizontal', line: 'solid', thickness: '1px' } };
+export const StatusDashed: Story = { name: 'Status / Dashed', args: { alignment: 'horizontal', line: 'dashed', thickness: '1px' } };
+export const StatusDotted: Story = { name: 'Status / Dotted', args: { alignment: 'horizontal', line: 'dotted', thickness: '1px' } };
+
+export const ComponentBreakdown: Story = {
+  name: 'Component Breakdown',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', padding: '24px', minWidth: '200px', maxWidth: '480px' }}>
+      {(['solid', 'dashed', 'dotted'] as const).map(line => (
+        <div key={line}>
+          <span style={{ fontSize: '11px', fontWeight: 600, fontFamily: 'var(--brand-font-primary)', color: 'var(--global-color-neutral-gray-600)', display: 'block', marginBottom: '8px' }}>{line}</span>
+          <Divider alignment="horizontal" line={line} thickness="1px" />
+          <code style={{ fontSize: '10px', background: 'var(--global-color-neutral-gray-100)', padding: '2px 6px', borderRadius: '4px', display: 'inline-block', marginTop: '4px' }}>--divider-line-{line} / --divider-thickness-1px</code>
+        </div>
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const AllInteractiveStates: Story = {
+  name: 'All Interactive States',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', padding: '24px', minWidth: '200px', maxWidth: '480px' }}>
+      <Divider alignment="horizontal" line="solid" thickness="1px" />
+      <Divider alignment="horizontal" line="dashed" thickness="2px" />
+      <Divider alignment="horizontal" line="dotted" thickness="1px" />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
 /* ════════════════════════════════════════════════════════════════════════════
    HORIZONTAL — LINE STYLES
    ════════════════════════════════════════════════════════════════════════════ */

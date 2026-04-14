@@ -69,15 +69,15 @@ const InteractiveNumberCounter = (args: Partial<PlaceholderProps>) => {
  * Full branded documentation page for the Placeholder component.
  */
 export const Documentation: Story = {
+  name: 'Documentation',
   render: () => <PlaceholderDocs />,
-  parameters: {
-    controls: { disable: true },
-    actions: { disable: true },
-    chromatic: { disableSnapshot: true },
-  },
+  parameters: { controls: { disable: true }, actions: { disable: true }, chromatic: { disableSnapshot: true } },
 };
 
-// --- Basic Stories ---
+export const Playground: Story = {
+  name: 'Playground',
+  args: { text: 'Placeholder', size: 'default', align: 'left', type: 'default', showLeadingIcon: true, showTrailingIcon: true },
+};
 
 export const Default: Story = {
   args: {
@@ -134,7 +134,8 @@ export const Alignments: Story = {
   ),
 };
 
-export const TagsSelected: Story = {
+export const StatusTagsSelected: Story = {
+  name: 'Status / Tags Selected',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-20px)' }}>
       <Placeholder 
@@ -156,7 +157,8 @@ export const TagsSelected: Story = {
   ),
 };
 
-export const NumberCounter: Story = {
+export const StatusNumberCounter: Story = {
+  name: 'Status / Number Counter',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-20px)' }}>
       <InteractiveNumberCounter text="Counter (Large)" size="large" />
@@ -235,8 +237,33 @@ const cellStyle: React.CSSProperties = {
   padding: 'var(--global-spacing-sizing-16px) var(--global-spacing-sizing-12px)',
 };
 
-export const AllVariants: Story = {
-  name: 'Full Matrix (45 variants)',
+export const ComponentBreakdown: Story = {
+  name: 'Component Breakdown',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '24px', maxWidth: '480px' }}>
+      <Placeholder type="default" text="Default type" showLeadingIcon showTrailingIcon />
+      <code style={{ fontSize: '10px', background: 'var(--global-color-neutral-gray-100)', padding: '4px 8px', borderRadius: '4px' }}>--placeholder-color / --placeholder-font-size-default</code>
+      <Placeholder type="italic" text="Italic type" showTrailingIcon2 />
+      <code style={{ fontSize: '10px', background: 'var(--global-color-neutral-gray-100)', padding: '4px 8px', borderRadius: '4px' }}>--placeholder-italic-color</code>
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const AllInteractiveStates: Story = {
+  name: 'All Interactive States',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', padding: '24px', maxWidth: '400px' }}>
+      <Placeholder type="default" text="Default state" showLeadingIcon />
+      <Placeholder type="italic" text="Italic state" />
+      <Placeholder type="tags-selected" tags={[{ label: 'Tag 1' }, { label: 'Tag 2' }]} />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const FullDesignMatrix: Story = {
+  name: 'Full Design Matrix (45 variants)',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-80px)' }}>
       <div style={{ textAlign: 'center', marginBottom: 'var(--global-spacing-sizing-20px)' }}>

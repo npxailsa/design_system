@@ -85,61 +85,75 @@ export const Playground: Story = {
   },
 };
 
-/* ── Type stories ── */
-export const EmptyState: Story = {
-  name: 'Empty State',
-  args: { type: 'empty-state', size: 'default', shape: 'square' },
-};
-
-export const ProfilePhotoEmpty: Story = {
-  name: 'Profile Photo — Empty (Icon)',
-  args: { type: 'empty-state', size: 'default', shape: 'square' },
-};
-
-export const ProfilePhotoWoman: Story = {
-  name: 'Profile Photo — Woman',
+export const Default: Story = {
+  name: 'Default',
   args: { type: 'profile-photo', size: 'default', shape: 'square', src: DEMO_PHOTO_WOMAN },
 };
 
-export const ProfilePhotoMan: Story = {
-  name: 'Profile Photo — Man',
-  args: { type: 'profile-photo', size: 'default', shape: 'square', src: DEMO_PHOTO_MAN },
+export const StatusEmptyState: Story = {
+  name: 'Status / Empty State',
+  args: { type: 'empty-state', size: 'default', shape: 'square' },
 };
 
-export const InitialLight: Story = {
-  name: 'Initial — Light',
-  args: { type: 'initial-light', size: 'default', shape: 'square', initials: 'A' },
-};
-
-export const InitialDark: Story = {
-  name: 'Initial — Dark',
-  args: { type: 'initial-dark', size: 'default', shape: 'square', initials: 'A' },
-};
-
-/* ── Shape stories ── */
-export const Square: Story = {
+export const StatusProfilePhoto: Story = {
+  name: 'Status / Profile Photo',
   args: { type: 'profile-photo', size: 'default', shape: 'square', src: DEMO_PHOTO_WOMAN },
 };
 
-export const Circle: Story = {
-  args: { type: 'profile-photo', size: 'default', shape: 'circle', src: DEMO_PHOTO_WOMAN },
+export const StatusInitial: Story = {
+  name: 'Status / Initial',
+  render: () => (
+    <div style={{ display: 'flex', gap: '12px' }}>
+      <Avatar type="initial-light" size="default" shape="square" initials="A" />
+      <Avatar type="initial-dark" size="default" shape="square" initials="A" />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
 };
 
-/* ── Border ── */
-export const WithBorder: Story = {
-  name: 'With Border',
+export const StatusWithBorder: Story = {
+  name: 'Status / With Border',
   args: { type: 'profile-photo', size: 'default', shape: 'square', border: true, src: DEMO_PHOTO_WOMAN },
 };
 
-/* ── Status badge ── */
-export const WithStatusBadge: Story = {
-  name: 'With Status Badge',
+export const StatusWithStatusBadge: Story = {
+  name: 'Status / With Status Badge',
   args: { type: 'profile-photo', size: 'default', shape: 'square', statusIcon: true, src: DEMO_PHOTO_WOMAN },
 };
 
-/* ── All sizes ── */
+export const ComponentBreakdown: Story = {
+  name: 'Component Breakdown',
+  render: () => (
+    <div style={{ display: 'flex', gap: '24px', padding: '24px', flexWrap: 'wrap' }}>
+      {[['Empty state', <Avatar type="empty-state" size="default" shape="square" />, '--avatar-size-default / --avatar-bg-empty'], ['Profile photo', <Avatar type="profile-photo" size="default" shape="square" src={DEMO_PHOTO_WOMAN} />, '--avatar-size-default'], ['Initial light', <Avatar type="initial-light" size="default" shape="square" initials="JD" />, '--avatar-initial-size-default'], ['With border', <Avatar type="profile-photo" size="default" shape="square" border src={DEMO_PHOTO_WOMAN} />, '--avatar-border'], ['With badge', <Avatar type="profile-photo" size="default" shape="square" statusIcon src={DEMO_PHOTO_WOMAN} />, '--avatar-badge-size']].map(([lbl, el, tok]) => (
+        <div key={lbl as string} style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'center' }}>
+          {el as React.ReactElement}
+          <span style={{ fontSize: '11px', fontWeight: 600, fontFamily: 'var(--brand-font-primary)', color: 'var(--global-color-neutral-gray-600)' }}>{lbl as string}</span>
+          <code style={{ fontSize: '10px', background: 'var(--global-color-neutral-gray-100)', padding: '2px 6px', borderRadius: '4px', textAlign: 'center' }}>{tok as string}</code>
+        </div>
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const AllInteractiveStates: Story = {
+  name: 'All Interactive States',
+  render: () => (
+    <div style={{ display: 'flex', gap: '16px', padding: '24px', flexWrap: 'wrap', alignItems: 'flex-end' }}>
+      <Avatar type="empty-state" size="default" shape="square" />
+      <Avatar type="profile-photo" size="default" shape="square" src={DEMO_PHOTO_WOMAN} />
+      <Avatar type="profile-photo" size="default" shape="circle" src={DEMO_PHOTO_WOMAN} />
+      <Avatar type="initial-light" size="default" shape="square" initials="JD" />
+      <Avatar type="profile-photo" size="default" shape="square" border statusIcon src={DEMO_PHOTO_WOMAN} />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+/* Legacy stories below */
 export const AllSizes: Story = {
-  name: 'All Sizes',
+  name: 'All Sizes (legacy)',
   render: () => (
     <div style={{ display: 'flex', alignItems: 'flex-end', gap: '24px', padding: '12px' }}>
       {ALL_SIZES.map((size) => (

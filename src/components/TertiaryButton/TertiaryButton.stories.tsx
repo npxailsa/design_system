@@ -67,38 +67,23 @@ type Story = StoryObj<typeof TertiaryButton>;
 /**
  * Full documentation page for the Tertiary Button component.
  */
+const ROW: React.CSSProperties = { display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px)' };
+const LBL = (t: string) => <span style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '11px', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase' as const, color: 'var(--global-color-neutral-gray-500)', display: 'block', marginBottom: '8px' }}>{t}</span>;
+
 export const Documentation: Story = {
+  name: 'Documentation',
   render: () => <TertiaryButtonDocs />,
-  parameters: {
-    layout: 'fullscreen',
-    controls: { disable: true },
-    actions: { disable: true },
-    chromatic: { disableSnapshot: true },
-  },
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true }, chromatic: { disableSnapshot: true } },
 };
 
-/**
- * Default tertiary button — solid variant with label.
- */
+export const Playground: Story = {
+  name: 'Playground',
+  args: { label: 'Label', variant: 'solid', size: 'default', showLeadingIcon: true, leadingIcon: PersonIcon, disabled: false, loading: false },
+};
+
 export const Default: Story = {
-  args: {
-    label: 'Label',
-    variant: 'solid',
-    size: 'default',
-  },
-};
-
-/**
- * Both label variants side by side.
- */
-export const Variants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px)' }}>
-      <TertiaryButton variant="solid" label="Solid" />
-      <TertiaryButton variant="alt" label="Alt" />
-    </div>
-  ),
-  parameters: { controls: { disable: true } },
+  name: 'Default',
+  args: { label: 'Label', variant: 'solid', size: 'default' },
 };
 
 /**
@@ -116,98 +101,70 @@ export const Sizes: Story = {
   parameters: { controls: { disable: true } },
 };
 
-/**
- * Buttons with a leading icon.
- */
-export const WithLeadingIcon: Story = {
+export const StatusSolid: Story = {
+  name: 'Status / Solid',
+  render: () => <div style={ROW}><TertiaryButton variant="solid" size="extra-small" label="XS" /><TertiaryButton variant="solid" size="small" label="Small" /><TertiaryButton variant="solid" size="default" label="Default" /><TertiaryButton variant="solid" size="large" label="Large" /></div>,
+  parameters: { controls: { disable: true } },
+};
+
+export const StatusAlt: Story = {
+  name: 'Status / Alt',
+  render: () => <div style={ROW}><TertiaryButton variant="alt" size="extra-small" label="XS" /><TertiaryButton variant="alt" size="small" label="Small" /><TertiaryButton variant="alt" size="default" label="Default" /><TertiaryButton variant="alt" size="large" label="Large" /></div>,
+  parameters: { controls: { disable: true } },
+};
+
+export const StatusIconOnly: Story = {
+  name: 'Status / Icon Only',
+  render: () => <div style={ROW}><TertiaryButton iconOnly leadingIcon={PersonIcon} size="extra-small" ariaLabel="User" /><TertiaryButton iconOnly leadingIcon={PersonIcon} size="small" ariaLabel="User" /><TertiaryButton iconOnly leadingIcon={PersonIcon} ariaLabel="User" /><TertiaryButton iconOnly leadingIcon={PersonIcon} size="large" ariaLabel="User" /></div>,
+  parameters: { controls: { disable: true } },
+};
+
+export const StatusLoading: Story = {
+  name: 'Status / Loading',
+  render: () => <div style={ROW}><TertiaryButton label="Loading…" loading size="small" /><TertiaryButton label="Loading…" loading /><TertiaryButton variant="alt" label="Loading…" loading /></div>,
+  parameters: { controls: { disable: true } },
+};
+
+export const StatusDisabled: Story = {
+  name: 'Status / Disabled',
+  render: () => <div style={ROW}><TertiaryButton label="Disabled" disabled /><TertiaryButton variant="alt" label="Disabled" disabled /><TertiaryButton iconOnly leadingIcon={PersonIcon} disabled ariaLabel="User" /></div>,
+  parameters: { controls: { disable: true } },
+};
+
+export const ComponentBreakdown: Story = {
+  name: 'Component Breakdown',
   render: () => (
-    <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px)' }}>
-      <TertiaryButton label="Label" showLeadingIcon leadingIcon={PersonIcon} size="extra-small" />
-      <TertiaryButton label="Label" showLeadingIcon leadingIcon={PersonIcon} size="small" />
-      <TertiaryButton label="Label" showLeadingIcon leadingIcon={PersonIcon} />
-      <TertiaryButton label="Label" showLeadingIcon leadingIcon={PersonIcon} size="large" />
+    <div style={{ display: 'flex', gap: '24px', padding: '24px', flexWrap: 'wrap' }}>
+      {[['Solid label', <TertiaryButton label="Label" />, '--btn-tertiary-bg'], ['Alt label', <TertiaryButton variant="alt" label="Alt" />, '--btn-tertiary-alt-bg'], ['Icon only', <TertiaryButton iconOnly leadingIcon={PersonIcon} ariaLabel="x" />, '--btn-tertiary-icon-only-size-default']].map(([lbl, el, tok]) => (
+        <div key={lbl as string} style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+          <span style={{ fontSize: '11px', fontWeight: 600, color: 'var(--global-color-neutral-gray-600)', fontFamily: 'var(--brand-font-primary)' }}>{lbl as string}</span>
+          {el as React.ReactElement}
+          <code style={{ fontSize: '10px', color: 'var(--global-color-neutral-gray-500)', background: 'var(--global-color-neutral-gray-100)', padding: '2px 6px', borderRadius: '4px' }}>{tok as string}</code>
+        </div>
+      ))}
     </div>
   ),
   parameters: { controls: { disable: true } },
 };
 
-/**
- * Buttons with a trailing icon.
- */
-export const WithTrailingIcon: Story = {
+export const AllInteractiveStates: Story = {
+  name: 'All Interactive States',
   render: () => (
-    <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px)' }}>
-      <TertiaryButton label="Label" showTrailingIcon trailingIcon={ArrowForwardIcon} size="extra-small" />
-      <TertiaryButton label="Label" showTrailingIcon trailingIcon={ArrowForwardIcon} size="small" />
-      <TertiaryButton label="Label" showTrailingIcon trailingIcon={ArrowForwardIcon} />
-      <TertiaryButton label="Label" showTrailingIcon trailingIcon={ArrowForwardIcon} size="large" />
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', padding: '24px' }}>
+      {LBL('Solid — states')}
+      <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+        {(['Default', 'Loading', 'Disabled'] as const).map(s => (
+          <div key={s} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
+            <TertiaryButton variant="solid" label={s} loading={s === 'Loading'} disabled={s === 'Disabled'} />
+            <span style={{ fontSize: '10px', color: 'var(--global-color-neutral-gray-400)', fontFamily: 'var(--brand-font-secondary)' }}>{s.toLowerCase()}</span>
+          </div>
+        ))}
+      </div>
     </div>
   ),
   parameters: { controls: { disable: true } },
 };
 
-/**
- * Buttons with both leading and trailing icons.
- */
-export const WithBothIcons: Story = {
-  render: () => (
-    <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px)' }}>
-      <TertiaryButton label="Label" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} size="small" />
-      <TertiaryButton label="Label" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} />
-      <TertiaryButton label="Label" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} size="large" />
-    </div>
-  ),
-  parameters: { controls: { disable: true } },
-};
-
-/**
- * Icon-only — brighter yellow fill, 4px radius.
- */
-export const IconOnly: Story = {
-  render: () => (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px)' }}>
-      <TertiaryButton iconOnly leadingIcon={PersonIcon} size="extra-small" ariaLabel="User" />
-      <TertiaryButton iconOnly leadingIcon={PersonIcon} size="small" ariaLabel="User" />
-      <TertiaryButton iconOnly leadingIcon={PersonIcon} ariaLabel="User" />
-      <TertiaryButton iconOnly leadingIcon={PersonIcon} size="large" ariaLabel="User" />
-    </div>
-  ),
-  parameters: { controls: { disable: true } },
-};
-
-/**
- * Loading state — spinner replaces the leading icon.
- */
-export const Loading: Story = {
-  render: () => (
-    <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px)' }}>
-      <TertiaryButton label="Loading…" loading size="small" />
-      <TertiaryButton label="Loading…" loading />
-      <TertiaryButton label="Loading…" loading size="large" />
-      <TertiaryButton label="Loading…" variant="alt" loading />
-    </div>
-  ),
-  parameters: { controls: { disable: true } },
-};
-
-/**
- * Disabled state.
- */
-export const Disabled: Story = {
-  render: () => (
-    <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px)' }}>
-      <TertiaryButton label="Disabled" disabled />
-      <TertiaryButton label="Disabled" variant="alt" disabled />
-      <TertiaryButton label="Disabled" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} disabled />
-      <TertiaryButton iconOnly leadingIcon={PersonIcon} disabled ariaLabel="User" />
-    </div>
-  ),
-  parameters: { controls: { disable: true } },
-};
-
-/**
- * Full variant, size, and state matrix.
- */
 export const FullDesignMatrix: Story = {
   name: 'Full Design Matrix (40 variants)',
   render: () => (

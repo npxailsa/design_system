@@ -50,18 +50,75 @@ type Story = StoryObj<typeof AccordionAlt>;
 
 /* ── Documentation ── */
 export const Documentation: Story = {
+  name: 'Documentation',
   render: () => <AccordionAltDocs />,
-  parameters: {
-    controls: { disable: true },
-    actions: { disable: true },
-    chromatic: { disableSnapshot: true },
-  },
+  parameters: { controls: { disable: true }, actions: { disable: true }, chromatic: { disableSnapshot: true } },
 };
 
-/* ── Default (interactive playground) ── */
-export const Default: Story = {};
+export const Playground: Story = { name: 'Playground' };
 
-/* ── Decorative Type ── */
+export const Default: Story = { name: 'Default' };
+
+export const StatusDecorative: Story = {
+  name: 'Status / Decorative',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '20px', maxWidth: '900px' }}>
+      <AccordionAlt type="decorative" size="default" showIcon title="Closed" />
+      <AccordionAlt type="decorative" size="default" showIcon title="Open" defaultOpen />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const StatusNumbered: Story = {
+  name: 'Status / Numbered',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '20px', maxWidth: '900px' }}>
+      <AccordionAlt type="numbered" size="default" showNumber number="01" title="Numbered closed" />
+      <AccordionAlt type="numbered" size="default" showNumber number="02" title="Numbered open" defaultOpen />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const StatusLabel: Story = {
+  name: 'Status / Label',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '20px', maxWidth: '900px' }}>
+      <AccordionAlt type="label" size="default" label="Tag" title="Label closed" />
+      <AccordionAlt type="label" size="default" label="Tag" title="Label open" defaultOpen />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const ComponentBreakdown: Story = {
+  name: 'Component Breakdown',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '24px', maxWidth: '640px' }}>
+      <AccordionAlt type="decorative" size="default" showIcon title="Decorative type" />
+      <code style={{ fontSize: '10px', background: 'var(--global-color-neutral-gray-100)', padding: '4px 8px', borderRadius: '4px' }}>--accordion-alt-icon-badge-size / --accordion-alt-title-font-size-default</code>
+      <AccordionAlt type="numbered" size="default" showNumber number="01" title="Numbered type" />
+      <code style={{ fontSize: '10px', background: 'var(--global-color-neutral-gray-100)', padding: '4px 8px', borderRadius: '4px' }}>--accordion-alt-number-font-size-default</code>
+      <AccordionAlt type="label" size="default" label="Tag" title="Label type" />
+      <code style={{ fontSize: '10px', background: 'var(--global-color-neutral-gray-100)', padding: '4px 8px', borderRadius: '4px' }}>--accordion-alt-label-font-size</code>
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const AllInteractiveStates: Story = {
+  name: 'All Interactive States',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '24px', maxWidth: '640px' }}>
+      <AccordionAlt type="decorative" size="default" showIcon title="Closed state" />
+      <AccordionAlt type="decorative" size="default" showIcon title="Open state" defaultOpen />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+/* Legacy type stories */
 export const DecorativeType: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', padding: '20px', maxWidth: '900px' }}>

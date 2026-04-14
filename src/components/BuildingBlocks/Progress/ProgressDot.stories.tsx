@@ -200,9 +200,50 @@ export const AllSizes: Story = {
   parameters: { controls: { disable: true } },
 };
 
-/* ════════════════════════════════════════════════════════════════════════════
-   SIZE × STATE MATRIX
-   ════════════════════════════════════════════════════════════════════════════ */
+export const Default: Story = { name: 'Default', args: { state: 'active', size: 'default' } };
+
+export const Sizes: Story = {
+  name: 'Sizes',
+  render: () => (
+    <div style={{ display: 'flex', gap: '16px', padding: '24px', alignItems: 'center' }}>
+      <ProgressDot state="active" size="sm" /><span style={{ fontSize: '10px', color: 'var(--global-color-neutral-gray-400)' }}>sm</span>
+      <ProgressDot state="active" size="default" /><span style={{ fontSize: '10px', color: 'var(--global-color-neutral-gray-400)' }}>default</span>
+      <ProgressDot state="active" size="lg" /><span style={{ fontSize: '10px', color: 'var(--global-color-neutral-gray-400)' }}>lg</span>
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const ComponentBreakdown: Story = {
+  name: 'Component Breakdown',
+  render: () => (
+    <div style={{ display: 'flex', gap: '24px', padding: '24px', flexWrap: 'wrap', alignItems: 'flex-start' }}>
+      {(['inactive', 'active', 'error', 'pending'] as const).map(state => (
+        <div key={state} style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'center' }}>
+          <ProgressDot state={state} size="default" />
+          <span style={{ fontSize: '11px', fontWeight: 600, fontFamily: 'var(--brand-font-primary)' }}>{state}</span>
+          <code style={{ fontSize: '9px', background: 'var(--global-color-neutral-gray-100)', padding: '2px 4px', borderRadius: '4px', textAlign: 'center' }}>--progress-dot-{state}</code>
+        </div>
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const AllInteractiveStates: Story = {
+  name: 'All Interactive States',
+  render: () => (
+    <div style={{ display: 'flex', gap: '16px', padding: '24px', alignItems: 'center' }}>
+      {(['inactive', 'active', 'error', 'pending'] as const).map(state => (
+        <div key={state} style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'center' }}>
+          <ProgressDot state={state} size="default" />
+          <span style={{ fontSize: '10px', color: 'var(--global-color-neutral-gray-400)', fontFamily: 'var(--brand-font-secondary)' }}>{state}</span>
+        </div>
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
 
 export const FullDesignMatrix: Story = {
   name: 'Full Design Matrix (12 variants)',

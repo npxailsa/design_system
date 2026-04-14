@@ -92,45 +92,59 @@ export const Playground: Story = {
   },
 };
 
-/* ── Variant stories ── */
-export const NameOnly: Story = {
-  name: 'Name Only',
-  args: {
-    variant: 'name-only',
-    size: 'default',
-    shape: 'circle',
-    avatarType: 'profile-photo',
-    name: 'Willow Quinn',
-    src: DEMO_PHOTO_WOMAN,
-  },
+export const Default: Story = {
+  name: 'Default',
+  args: { variant: 'w-subtext', size: 'default', shape: 'square', avatarType: 'profile-photo', statusIcon: true, name: 'Damon Underwood', subtext: 'Role / Title', src: DEMO_PHOTO_MAN },
 };
 
-export const WithSubtext: Story = {
-  name: 'With Subtext',
-  args: {
-    variant: 'w-subtext',
-    size: 'default',
-    shape: 'square',
-    avatarType: 'profile-photo',
-    statusIcon: true,
-    name: 'Damon Underwood',
-    subtext: 'Additional subtext (e.g role)',
-    src: DEMO_PHOTO_MAN,
-  },
+export const StatusNameOnly: Story = {
+  name: 'Status / Name Only',
+  args: { variant: 'name-only', size: 'default', shape: 'circle', avatarType: 'profile-photo', name: 'Willow Quinn', src: DEMO_PHOTO_WOMAN },
 };
 
-export const WithEmail: Story = {
-  name: 'With Email',
-  args: {
-    variant: 'default',
-    size: 'default',
-    shape: 'circle',
-    avatarType: 'profile-photo',
-    name: 'Willow Quinn',
-    email: 'willowquin@email.com',
-    src: DEMO_PHOTO_WOMAN,
-  },
+export const StatusWithSubtext: Story = {
+  name: 'Status / With Subtext',
+  args: { variant: 'w-subtext', size: 'default', shape: 'square', avatarType: 'profile-photo', statusIcon: true, name: 'Damon Underwood', subtext: 'Additional subtext (e.g role)', src: DEMO_PHOTO_MAN },
 };
+
+export const StatusWithEmail: Story = {
+  name: 'Status / With Email',
+  args: { variant: 'default', size: 'default', shape: 'circle', avatarType: 'profile-photo', name: 'Willow Quinn', email: 'willowquin@email.com', src: DEMO_PHOTO_WOMAN },
+};
+
+export const ComponentBreakdown: Story = {
+  name: 'Component Breakdown',
+  render: () => (
+    <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', padding: '24px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+        <span style={{ fontSize: '11px', fontWeight: 600, fontFamily: 'var(--brand-font-primary)' }}>Name only</span>
+        <AvatarWithText variant="name-only" size="default" shape="circle" avatarType="profile-photo" name="Willow Quinn" src={DEMO_PHOTO_WOMAN} />
+        <code style={{ fontSize: '10px', background: 'var(--global-color-neutral-gray-100)', padding: '2px 6px', borderRadius: '4px' }}>--avatar-with-text-name-size-default</code>
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+        <span style={{ fontSize: '11px', fontWeight: 600, fontFamily: 'var(--brand-font-primary)' }}>With subtext</span>
+        <AvatarWithText variant="w-subtext" size="default" shape="square" avatarType="profile-photo" statusIcon name="Damon Underwood" subtext="Role" src={DEMO_PHOTO_MAN} />
+        <code style={{ fontSize: '10px', background: 'var(--global-color-neutral-gray-100)', padding: '2px 6px', borderRadius: '4px' }}>--avatar-with-text-subtext-size-default</code>
+      </div>
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const AllInteractiveStates: Story = {
+  name: 'All Interactive States',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '24px' }}>
+      <AvatarWithText variant="name-only" size="default" shape="circle" avatarType="profile-photo" name="Name Only" src={DEMO_PHOTO_WOMAN} />
+      <AvatarWithText variant="w-subtext" size="default" shape="square" avatarType="profile-photo" statusIcon name="With Subtext" subtext="Role" src={DEMO_PHOTO_MAN} />
+      <AvatarWithText variant="default" size="default" shape="circle" avatarType="profile-photo" name="With Email" email="user@email.com" src={DEMO_PHOTO_WOMAN} />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+/* Legacy all-sizes stories */
+export const AllSizesWithSubtext_legacy = undefined; // removed — use FullDesignMatrix
 
 /* ── All sizes — with subtext ── */
 export const AllSizesWithSubtext: Story = {

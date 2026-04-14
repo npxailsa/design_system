@@ -38,15 +38,15 @@ type Story = StoryObj<typeof Toast>;
 /* ── Documentation ── */
 
 export const Documentation: Story = {
+  name: 'Documentation',
   render: () => <ToastDocs />,
-  parameters: {
-    controls: { disable: true },
-    actions: { disable: true },
-    chromatic: { disableSnapshot: true },
-  },
+  parameters: { controls: { disable: true }, actions: { disable: true }, chromatic: { disableSnapshot: true } },
 };
 
-/* ── Default (playground) ── */
+export const Playground: Story = {
+  name: 'Playground',
+  args: { colour: 'default', size: 'default', title: 'Toast Notification', description: 'Description text', showLeadingIcon: true, showTrailingIcon: true, showSubtext: true, visible: true },
+};
 
 export const Default: Story = {
   args: {
@@ -76,8 +76,8 @@ const COLOURS: ToastColour[] = [
 
 const SIZES: ToastSize[] = ['small', 'default', 'large'];
 
-export const Colours: Story = {
-  name: 'Colour Variants',
+export const StatusColours: Story = {
+  name: 'Status / Colour Variants',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-8px)', maxWidth: 'var(--global-spacing-sizing-400px)' }}>
       {COLOURS.map((colour) => (
@@ -99,28 +99,29 @@ export const Sizes: Story = {
   ),
 };
 
-/* ── Without description ── */
-
-export const WithoutDescription: Story = {
+export const ComponentBreakdown: Story = {
+  name: 'Component Breakdown',
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-8px)', maxWidth: 'var(--global-spacing-sizing-400px)' }}>
-      {COLOURS.map((colour) => (
-        <Toast key={colour} colour={colour} size="default" showSubtext={false} />
-      ))}
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '24px', maxWidth: '480px' }}>
+      <Toast colour="default" size="default" title="Full Toast" description="With all elements" showLeadingIcon showTrailingIcon showSubtext visible />
+      <code style={{ fontSize: '10px', background: 'var(--global-color-neutral-gray-100)', padding: '4px 8px', borderRadius: '4px' }}>--toast-bg / --toast-border / --toast-icon / --toast-title-size-default</code>
+      <Toast colour="error" size="default" title="No icons" showLeadingIcon={false} showTrailingIcon={false} visible />
+      <code style={{ fontSize: '10px', background: 'var(--global-color-neutral-gray-100)', padding: '4px 8px', borderRadius: '4px' }}>--toast-error-bg / --toast-error-icon</code>
     </div>
   ),
+  parameters: { controls: { disable: true } },
 };
 
-/* ── Without icons ── */
-
-export const WithoutIcons: Story = {
+export const AllInteractiveStates: Story = {
+  name: 'All Interactive States',
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-8px)', maxWidth: 'var(--global-spacing-sizing-400px)' }}>
-      {COLOURS.map((colour) => (
-        <Toast key={colour} colour={colour} size="default" showLeadingIcon={false} showTrailingIcon={false} />
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', padding: '24px', maxWidth: '480px' }}>
+      {(['default', 'success', 'warning', 'error'] as ToastColour[]).map(colour => (
+        <Toast key={colour} colour={colour} size="default" title={`${colour.charAt(0).toUpperCase() + colour.slice(1)} state`} description="Toast notification" showLeadingIcon showTrailingIcon visible />
       ))}
     </div>
   ),
+  parameters: { controls: { disable: true } },
 };
 
 /* ── Full variant matrix ── */
@@ -198,7 +199,8 @@ const LiveToastDemo = () => {
   );
 };
 
-export const Interactive: Story = {
+export const StatusInteractive: Story = {
+  name: 'Status / Interactive (Live Demo)',
   render: () => (
     <ToastProvider position="bottom-right" defaultDuration={4000}>
       <LiveToastDemo />

@@ -73,7 +73,42 @@ export const Playground: Story = {
   name: 'Playground',
 };
 
-/* ── All Sizes ──────────────────────────────────────────────────────────── */
+export const Default: Story = { name: 'Default' };
+
+export const Sizes: Story = {
+  name: 'Sizes',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', padding: '16px' }}>
+      {(['sm', 'default', 'lg'] as const).map(size => (
+        <ElementHeader key={size} size={size} title="Page Title" backLabel="Back" breadcrumbs={[{ label: 'Home', href: '#' }, { label: 'Section' }]} />
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const ComponentBreakdown: Story = {
+  name: 'Component Breakdown',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', padding: '24px', maxWidth: '600px' }}>
+      <ElementHeader size="default" title="With all elements" backLabel="Back" breadcrumbs={[{ label: 'Home', href: '#' }, { label: 'Section' }]} />
+      <code style={{ fontSize: '10px', background: 'var(--global-color-neutral-gray-100)', padding: '4px 8px', borderRadius: '4px' }}>--element-header-title-font-size-default / --breadcrumbs-font-size-default</code>
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const AllInteractiveStates: Story = {
+  name: 'All Interactive States',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', padding: '24px' }}>
+      <ElementHeader size="default" title="With Back + Breadcrumbs" backLabel="Back" breadcrumbs={[{ label: 'Home', href: '#' }, { label: 'Section' }]} />
+      <ElementHeader size="default" title="Without Back" breadcrumbs={[{ label: 'Home', href: '#' }, { label: 'Section' }]} showBack={false} />
+      <ElementHeader size="default" title="Minimal" showBack={false} breadcrumbs={[]} />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
 
 export const FullDesignMatrix: Story = {
   name: 'Full Design Matrix (12 variants)',

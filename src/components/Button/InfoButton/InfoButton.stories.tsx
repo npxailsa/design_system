@@ -51,54 +51,9 @@ export const Documentation: Story = {
 /**
  * Interactive playground — adjust all props via the Controls panel.
  */
-export const Playground: Story = {
-  args: {
-    label: 'Info button',
-    variant: 'solid',
-    size: 'default',
-    loading: false,
-    disabled: false,
-  },
-};
+export const Playground: Story = { name: 'Playground', args: { label: 'Info button', variant: 'solid', size: 'default', loading: false, disabled: false } };
 
-/**
- * Solid variant — info-blue (#366F97) background, white text and icons.
- * Hover adds a 2×2px info-blue drop shadow; background stays unchanged.
- * Use as the primary CTA in info-status CardContent cards.
- */
-export const Solid: Story = {
-  args: {
-    label: 'Info button',
-    variant: 'solid',
-    size: 'default',
-  },
-};
-
-/**
- * Ghost / alt variant — white background, info-blue border and text.
- * Hover shifts background to info-blue-light (#F5FCFF) + info-blue drop shadow.
- * Use as the secondary CTA alongside the solid variant.
- */
-export const Ghost: Story = {
-  args: {
-    label: 'Info button',
-    variant: 'ghost',
-    size: 'default',
-  },
-};
-
-/**
- * Both variants side by side — as they appear in an info CardContent ButtonGroup.
- */
-export const BothVariants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: '8px', alignItems: 'center', padding: '16px' }}>
-      <InfoButton variant="solid" label="Info button" />
-      <InfoButton variant="ghost" label="Info button" />
-    </div>
-  ),
-  parameters: { controls: { disable: true } },
-};
+export const Default: Story = { name: 'Default', args: { label: 'Info button', variant: 'solid', size: 'default' } };
 
 /**
  * All three sizes — small (34px), default (44px), large (56px).
@@ -132,39 +87,12 @@ export const Sizes: Story = {
   parameters: { layout: 'padded', controls: { disable: true } },
 };
 
-/**
- * Loading state — spinner replaces the leading icon, trailing icon hidden.
- */
-export const Loading: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: '12px', alignItems: 'center', padding: '16px', flexWrap: 'wrap' }}>
-      <InfoButton variant="solid" size="small" label="Info button" loading />
-      <InfoButton variant="solid" size="default" label="Info button" loading />
-      <InfoButton variant="solid" size="large" label="Info button" loading />
-      <InfoButton variant="ghost" size="small" label="Info button" loading />
-      <InfoButton variant="ghost" size="default" label="Info button" loading />
-      <InfoButton variant="ghost" size="large" label="Info button" loading />
-    </div>
-  ),
-  parameters: { controls: { disable: true } },
-};
-
-/**
- * Disabled state — grey background, grey text, not interactive.
- */
-export const Disabled: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: '12px', alignItems: 'center', padding: '16px', flexWrap: 'wrap' }}>
-      <InfoButton variant="solid" size="small" label="Label" disabled />
-      <InfoButton variant="solid" size="default" label="Label" disabled />
-      <InfoButton variant="solid" size="large" label="Label" disabled />
-      <InfoButton variant="ghost" size="small" label="Label" disabled />
-      <InfoButton variant="ghost" size="default" label="Label" disabled />
-      <InfoButton variant="ghost" size="large" label="Label" disabled />
-    </div>
-  ),
-  parameters: { controls: { disable: true } },
-};
+export const StatusSolid: Story = { name: 'Status / Solid', args: { label: 'Info button', variant: 'solid', size: 'default' } };
+export const StatusGhost: Story = { name: 'Status / Ghost', args: { label: 'Info button', variant: 'ghost', size: 'default' } };
+export const StatusLoading: Story = { name: 'Status / Loading', render: () => <div style={{ display: 'flex', gap: '12px', padding: '16px' }}><InfoButton variant="solid" label="Loading" loading /><InfoButton variant="ghost" label="Loading" loading /></div>, parameters: { controls: { disable: true } } };
+export const StatusDisabled: Story = { name: 'Status / Disabled', render: () => <div style={{ display: 'flex', gap: '12px', padding: '16px' }}><InfoButton variant="solid" label="Disabled" disabled /><InfoButton variant="ghost" label="Disabled" disabled /></div>, parameters: { controls: { disable: true } } };
+export const ComponentBreakdown: Story = { name: 'Component Breakdown', render: () => <div style={{ display: 'flex', gap: '16px', padding: '24px' }}><div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}><span style={{ fontSize: '11px', fontWeight: 600, fontFamily: 'var(--brand-font-primary)' }}>Solid</span><InfoButton variant="solid" label="Info button" /><code style={{ fontSize: '10px', background: 'var(--global-color-neutral-gray-100)', padding: '2px 6px', borderRadius: '4px' }}>--btn-info-solid-bg</code></div><div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}><span style={{ fontSize: '11px', fontWeight: 600, fontFamily: 'var(--brand-font-primary)' }}>Ghost</span><InfoButton variant="ghost" label="Info button" /><code style={{ fontSize: '10px', background: 'var(--global-color-neutral-gray-100)', padding: '2px 6px', borderRadius: '4px' }}>--btn-info-ghost-border</code></div></div>, parameters: { controls: { disable: true } } };
+export const AllInteractiveStates: Story = { name: 'All Interactive States', render: () => <div style={{ display: 'flex', gap: '12px', padding: '24px' }}>{(['Default', 'Loading', 'Disabled'] as const).map(s => <div key={s} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}><InfoButton variant="solid" label={s} loading={s === 'Loading'} disabled={s === 'Disabled'} /><span style={{ fontSize: '10px', color: 'var(--global-color-neutral-gray-400)', fontFamily: 'var(--brand-font-secondary)' }}>{s.toLowerCase()}</span></div>)}</div>, parameters: { controls: { disable: true } } };
 
 /**
  * Full state matrix — all combinations of variant × size × state.

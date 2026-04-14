@@ -224,6 +224,29 @@ export const LineTypes: Story = {
   parameters: { controls: { include: ['size', 'showLabel', 'lineStroke'] } },
 };
 
+export const ComponentBreakdown: Story = {
+  name: 'Component Breakdown',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', padding: '24px', maxWidth: '600px' }}>
+      <span style={{ fontFamily: 'var(--brand-font-primary)', fontWeight: 600, fontSize: '13px' }}>Sub-atoms</span>
+      <Stepper size="default" showLabel steps={[{ id: 1, label: 'Step 1', state: 'past' }, { id: 2, label: 'Step 2', state: 'current' }, { id: 3, label: 'Step 3', state: 'future' }]} />
+      <code style={{ fontSize: '10px', background: 'var(--global-color-neutral-gray-100)', padding: '4px 8px', borderRadius: '4px' }}>StepperSteps + StepperLines composite</code>
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const AllInteractiveStates: Story = {
+  name: 'All Interactive States',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', padding: '24px' }}>
+      <Stepper size="default" showLabel lineType="solid" steps={[{ id: 1, label: 'Past', state: 'past' }, { id: 2, label: 'Current', state: 'current' }, { id: 3, label: 'Future', state: 'future' }]} />
+      <Stepper size="default" showLabel lineType="dashed" steps={[{ id: 1, label: 'Past', state: 'past' }, { id: 2, label: 'Current', state: 'current' }, { id: 3, label: 'Future', state: 'future' }]} />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
 /* 7 — Full Design Matrix */
 export const FullDesignMatrix: Story = {
   name: 'Full Design Matrix',

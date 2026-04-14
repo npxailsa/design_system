@@ -70,12 +70,14 @@ type Story = StoryObj<typeof meta>;
  * Full branded documentation page for the Label component.
  */
 export const Documentation: Story = {
+  name: 'Documentation',
   render: () => <LabelDocs />,
-  parameters: {
-    controls: { disable: true },
-    actions: { disable: true },
-    chromatic: { disableSnapshot: true },
-  },
+  parameters: { controls: { disable: true }, actions: { disable: true }, chromatic: { disableSnapshot: true } },
+};
+
+export const Playground: Story = {
+  name: 'Playground',
+  args: { children: 'Label text', size: 'default', weight: 'bold', align: 'left', dropdown: false },
 };
 
 /**
@@ -210,40 +212,64 @@ export const Alignments: Story = {
 /**
  * Bold variants systematic overview
  */
-export const BoldVariants: Story = {
-  name: 'Systematic: Bold (30 variants)',
+export const StatusBold: Story = {
+  name: 'Status / Bold',
   render: () => <WeightMatrix weight="bold" />,
+  parameters: { controls: { disable: true } },
 };
 
-/**
- * Medium variants systematic overview
- */
-export const MediumVariants: Story = {
-  name: 'Systematic: Medium (30 variants)',
+export const StatusMedium: Story = {
+  name: 'Status / Medium',
   render: () => <WeightMatrix weight="medium" />,
+  parameters: { controls: { disable: true } },
 };
 
-/**
- * Light variants systematic overview
- */
-export const LightVariants: Story = {
-  name: 'Systematic: Light (30 variants)',
+export const StatusLight: Story = {
+  name: 'Status / Light',
   render: () => <WeightMatrix weight="light" />,
+  parameters: { controls: { disable: true } },
 };
 
-/**
- * Thin variants systematic overview
- */
-export const ThinVariants: Story = {
-  name: 'Systematic: Thin (30 variants)',
+export const StatusThin: Story = {
+  name: 'Status / Thin',
   render: () => <WeightMatrix weight="thin" />,
+  parameters: { controls: { disable: true } },
 };
 
-/**
- * Comprehensive overview of all 120 variants
- */
+export const ComponentBreakdown: Story = {
+  name: 'Component Breakdown',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '24px', maxWidth: '480px' }}>
+      {[['Bold default', <Label size="default" weight="bold">Bold Label</Label>, '--label-size-default / --global-type-weight-bold'], ['Medium small', <Label size="small" weight="medium">Medium Small</Label>, '--label-size-small / --global-type-weight-medium'], ['With dropdown', <Label size="default" dropdown>With Dropdown</Label>, '--label-dropdown-icon-size']].map(([lbl, el, tok]) => (
+        <div key={lbl as string} style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+          <span style={{ fontSize: '11px', fontWeight: 600, fontFamily: 'var(--brand-font-primary)', color: 'var(--global-color-neutral-gray-600)' }}>{lbl as string}</span>
+          {el as React.ReactElement}
+          <code style={{ fontSize: '10px', background: 'var(--global-color-neutral-gray-100)', padding: '2px 6px', borderRadius: '4px' }}>{tok as string}</code>
+        </div>
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const AllInteractiveStates: Story = {
+  name: 'All Interactive States',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', padding: '24px' }}>
+      {(['bold', 'medium', 'light', 'thin'] as const).map(w => (
+        <div key={w} style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
+          <span style={{ fontSize: '10px', width: '50px', color: 'var(--global-color-neutral-gray-400)', fontFamily: 'var(--brand-font-secondary)' }}>{w}</span>
+          <Label size="default" weight={w}>Sample Label</Label>
+          <Label size="default" weight={w} dropdown>With Dropdown</Label>
+        </div>
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
 export const AllVariants: Story = {
-  name: 'Full Matrix (120 variants)',
+  name: 'Full Design Matrix (120 variants)',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-80px)' }}>
       <div style={{ textAlign: 'center', marginBottom: 'var(--global-spacing-sizing-20px)' }}>

@@ -96,6 +96,39 @@ export const Documentation: Story = {
 /* ── Playground ── */
 export const Playground: Story = { name: 'Playground' };
 
+export const Default: Story = { name: 'Default', args: { variant: 'primary', size: 'md', layout: 'joined', buttonType: 'icon', count: 3 } };
+
+export const Sizes: Story = {
+  name: 'Sizes',
+  render: () => (
+    <div style={{ display: 'flex', gap: '24px', padding: '16px', flexWrap: 'wrap', alignItems: 'center' }}>
+      <ButtonGroup variant="primary" size="xs" layout="joined" count={3} buttonType="icon" />
+      <ButtonGroup variant="primary" size="sm" layout="joined" count={3} buttonType="icon" />
+      <ButtonGroup variant="primary" size="md" layout="joined" count={3} buttonType="icon" />
+      <ButtonGroup variant="primary" size="lg" layout="joined" count={3} buttonType="icon" />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const ComponentBreakdown: Story = {
+  name: 'Component Breakdown',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', padding: '24px' }}>
+      <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', alignItems: 'center' }}>
+        {(['primary', 'secondary', 'tertiary', 'ghost'] as const).map(v => (
+          <div key={v} style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'center' }}>
+            <ButtonGroup variant={v} size="md" layout="joined" count={3} buttonType="icon" />
+            <span style={{ fontSize: '10px', color: 'var(--global-color-neutral-gray-400)', fontFamily: 'var(--brand-font-secondary)' }}>{v}</span>
+          </div>
+        ))}
+      </div>
+      <code style={{ fontSize: '10px', background: 'var(--global-color-neutral-gray-100)', padding: '4px 8px', borderRadius: '4px' }}>--btn-group-size-md / --btn-group-icon-size-md</code>
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
 /* ════════════════════════════════════════════════════════════
    ICON-TYPE BUTTON GROUPS (existing icon-only)
    ════════════════════════════════════════════════════════════ */

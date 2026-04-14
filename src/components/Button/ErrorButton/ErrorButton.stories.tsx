@@ -39,63 +39,22 @@ type Story = StoryObj<typeof ErrorButton>;
  * Full documentation — design specs, token table, and usage examples.
  */
 export const Documentation: Story = {
+  name: 'Documentation',
   render: () => <ErrorButtonDocs />,
-  parameters: {
-    layout: 'fullscreen',
-    controls: { disable: true },
-    actions: { disable: true },
-    chromatic: { disableSnapshot: true },
-  },
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true }, chromatic: { disableSnapshot: true } },
 };
 
 /**
  * Interactive playground — adjust all props via the Controls panel.
  */
 export const Playground: Story = {
-  args: {
-    label: 'Error button',
-    variant: 'solid',
-    size: 'default',
-    loading: false,
-    disabled: false,
-  },
+  name: 'Playground',
+  args: { label: 'Error button', variant: 'solid', size: 'default', loading: false, disabled: false },
 };
 
-/**
- * Solid variant — filled red background, white text and icon.
- * Use as the primary CTA in error state components.
- */
-export const Solid: Story = {
-  args: {
-    label: 'Error button',
-    variant: 'solid',
-    size: 'default',
-  },
-};
-
-/**
- * Ghost / alt variant — white background, red border and text.
- * Use as the secondary CTA alongside the solid error button.
- */
-export const Ghost: Story = {
-  args: {
-    label: 'Error button',
-    variant: 'ghost',
-    size: 'default',
-  },
-};
-
-/**
- * Both variants side by side — as they appear in an error CardContent ButtonGroup.
- */
-export const BothVariants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: '8px', alignItems: 'center', padding: '16px' }}>
-      <ErrorButton variant="solid" label="Error button" />
-      <ErrorButton variant="ghost" label="Error button" />
-    </div>
-  ),
-  parameters: { controls: { disable: true } },
+export const Default: Story = {
+  name: 'Default',
+  args: { label: 'Error button', variant: 'solid', size: 'default' },
 };
 
 /**
@@ -121,9 +80,69 @@ export const Sizes: Story = {
   parameters: { layout: 'padded', controls: { disable: true } },
 };
 
-/**
- * Loading state — spinner replaces the leading icon.
- */
+export const StatusSolid: Story = {
+  name: 'Status / Solid',
+  args: { label: 'Error button', variant: 'solid', size: 'default' },
+};
+
+export const StatusGhost: Story = {
+  name: 'Status / Ghost',
+  args: { label: 'Error button', variant: 'ghost', size: 'default' },
+};
+
+export const StatusLoading: Story = {
+  name: 'Status / Loading',
+  render: () => (
+    <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', padding: '16px' }}>
+      <ErrorButton variant="solid" label="Loading" loading />
+      <ErrorButton variant="ghost" label="Loading" loading />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const StatusDisabled: Story = {
+  name: 'Status / Disabled',
+  render: () => (
+    <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', padding: '16px' }}>
+      <ErrorButton variant="solid" label="Disabled" disabled />
+      <ErrorButton variant="ghost" label="Disabled" disabled />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const ComponentBreakdown: Story = {
+  name: 'Component Breakdown',
+  render: () => (
+    <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', padding: '24px' }}>
+      {[['Solid variant', <ErrorButton variant="solid" label="Label" />, '--btn-error-solid-bg / --btn-error-solid-color'], ['Ghost variant', <ErrorButton variant="ghost" label="Label" />, '--btn-error-ghost-border / --btn-error-ghost-color']].map(([lbl, el, tok]) => (
+        <div key={lbl as string} style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+          <span style={{ fontSize: '11px', fontWeight: 600, fontFamily: 'var(--brand-font-primary)', color: 'var(--global-color-neutral-gray-600)' }}>{lbl as string}</span>
+          {el as React.ReactElement}
+          <code style={{ fontSize: '10px', background: 'var(--global-color-neutral-gray-100)', padding: '2px 6px', borderRadius: '4px', fontFamily: 'monospace', color: 'var(--global-color-neutral-gray-500)' }}>{tok as string}</code>
+        </div>
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const AllInteractiveStates: Story = {
+  name: 'All Interactive States',
+  render: () => (
+    <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', padding: '24px' }}>
+      {(['Default', 'Loading', 'Disabled'] as const).map(s => (
+        <div key={s} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
+          <ErrorButton variant="solid" label={s} loading={s === 'Loading'} disabled={s === 'Disabled'} />
+          <span style={{ fontSize: '10px', color: 'var(--global-color-neutral-gray-400)', fontFamily: 'var(--brand-font-secondary)' }}>{s.toLowerCase()}</span>
+        </div>
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
 export const Loading: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '12px', alignItems: 'center', padding: '16px' }}>
@@ -133,23 +152,6 @@ export const Loading: Story = {
       <ErrorButton variant="ghost" size="small" label="Error button" loading />
       <ErrorButton variant="ghost" size="default" label="Error button" loading />
       <ErrorButton variant="ghost" size="large" label="Error button" loading />
-    </div>
-  ),
-  parameters: { controls: { disable: true } },
-};
-
-/**
- * Disabled state — grey background, grey text, not interactive.
- */
-export const Disabled: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: '12px', alignItems: 'center', padding: '16px' }}>
-      <ErrorButton variant="solid" size="small" label="Label" disabled />
-      <ErrorButton variant="solid" size="default" label="Label" disabled />
-      <ErrorButton variant="solid" size="large" label="Label" disabled />
-      <ErrorButton variant="ghost" size="small" label="Label" disabled />
-      <ErrorButton variant="ghost" size="default" label="Label" disabled />
-      <ErrorButton variant="ghost" size="large" label="Label" disabled />
     </div>
   ),
   parameters: { controls: { disable: true } },

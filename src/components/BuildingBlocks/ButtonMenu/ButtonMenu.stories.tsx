@@ -48,12 +48,14 @@ type Story = StoryObj<typeof ButtonMenu>;
 
 /* ── Documentation (must be first) ── */
 export const Documentation: Story = {
+  name: 'Documentation',
   render: () => <ButtonMenuDocs />,
-  parameters: {
-    controls: { disable: true },
-    actions: { disable: true },
-    chromatic: { disableSnapshot: true },
-  },
+  parameters: { controls: { disable: true }, actions: { disable: true }, chromatic: { disableSnapshot: true } },
+};
+
+export const Playground: Story = {
+  name: 'Playground',
+  args: { size: 'default', items: sampleItems },
 };
 
 /* ── Default ── */
@@ -157,23 +159,31 @@ export const DisabledItems: Story = {
   parameters: { controls: { disable: true } },
 };
 
-/* ── Small Size ── */
-export const Small: Story = {
-  args: {
-    size: 'small',
-    items: sampleItems,
-  },
+export const ComponentBreakdown: Story = {
+  name: 'Component Breakdown',
+  render: () => (
+    <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '16px', maxWidth: '320px' }}>
+      <span style={{ fontFamily: 'var(--brand-font-primary)', fontWeight: 600, fontSize: '13px' }}>Anatomy</span>
+      <ButtonMenu size="default" items={sampleItems} />
+      <code style={{ fontSize: '10px', background: 'var(--global-color-neutral-gray-100)', padding: '4px 8px', borderRadius: '4px' }}>--btn-menu-font-size-default / --btn-menu-line-height-default</code>
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
 };
 
-/* ── Large Size ── */
-export const Large: Story = {
-  args: {
-    size: 'large',
-    items: sampleItems,
-  },
+export const AllInteractiveStates: Story = {
+  name: 'All Interactive States',
+  render: () => (
+    <div style={{ display: 'flex', gap: '24px', padding: '24px', flexWrap: 'wrap' }}>
+      <ButtonMenu size="small" items={sampleItems} />
+      <ButtonMenu size="default" items={sampleItems} />
+      <ButtonMenu size="large" items={sampleItems} />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
 };
 
-/* ── All Variants ── */
+/* ── Full Variant Matrix ── */
 export const FullDesignMatrix: Story = {
   name: 'Full Design Matrix (12 variants)',
   render: () => (

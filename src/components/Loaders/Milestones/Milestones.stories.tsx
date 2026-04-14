@@ -111,9 +111,46 @@ export const SizeLarge: Story = {
   parameters: { controls: { disable: true } },
 };
 
-/* ════════════════════════════════════════════════════════════════════════════
-   ALL SIZES — side by side
-   ════════════════════════════════════════════════════════════════════════════ */
+export const Default: Story = { name: 'Default', args: { value: 50, size: 'default', showLabel: true } };
+
+export const Sizes: Story = {
+  name: 'Sizes',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', padding: '16px', maxWidth: '360px' }}>
+      {(['sm', 'default', 'lg'] as const).map(size => (
+        <Milestones key={size} size={size} value={50} showLabel />
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const ComponentBreakdown: Story = {
+  name: 'Component Breakdown',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', padding: '24px', maxWidth: '360px' }}>
+      <Milestones size="default" value={33} showLabel />
+      <code style={{ fontSize: '10px', background: 'var(--global-color-neutral-gray-100)', padding: '4px 8px', borderRadius: '4px' }}>--milestones-track-height / --milestones-fill-color</code>
+      <Milestones size="default" value={66} showLabel={false} />
+      <code style={{ fontSize: '10px', background: 'var(--global-color-neutral-gray-100)', padding: '4px 8px', borderRadius: '4px' }}>Without label</code>
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const AllInteractiveStates: Story = {
+  name: 'All Interactive States',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', padding: '24px', maxWidth: '360px' }}>
+      <Milestones size="default" value={0} showLabel />
+      <Milestones size="default" value={25} showLabel />
+      <Milestones size="default" value={50} showLabel />
+      <Milestones size="default" value={75} showLabel />
+      <Milestones size="default" value={100} showLabel />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
 
 export const FullDesignMatrix: Story = {
   name: 'Full Design Matrix (12 variants)',

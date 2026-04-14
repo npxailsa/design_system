@@ -84,6 +84,29 @@ export const Large: Story = {
   },
 };
 
+export const ComponentBreakdown: Story = {
+  name: 'Component Breakdown',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '24px', maxWidth: '480px' }}>
+      <Breadcrumbs size="default" items={[{ label: 'Home', href: '#' }, { label: 'Finance', href: '#' }, { label: 'Reports' }]} />
+      <code style={{ fontSize: '10px', background: 'var(--global-color-neutral-gray-100)', padding: '4px 8px', borderRadius: '4px' }}>--breadcrumbs-font-size-default / --breadcrumbs-separator-color</code>
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const AllInteractiveStates: Story = {
+  name: 'All Interactive States',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', padding: '24px' }}>
+      {(['sm', 'default', 'lg'] as const).map(size => (
+        <Breadcrumbs key={size} size={size} items={[{ label: 'Home', href: '#' }, { label: 'Section', href: '#' }, { label: 'Current Page' }]} />
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
 /* ── Size / All Sizes Side-by-Side ── */
 export const FullDesignMatrix: Story = {
   name: 'Full Design Matrix (9 variants)',

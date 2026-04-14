@@ -48,22 +48,19 @@ type Story = StoryObj<typeof GhostButton>;
 
 /* ─────────────────────────── DOCUMENTATION ─────────────────────────── */
 
+const SROW: React.CSSProperties = { display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px)' };
+
 export const Documentation: Story = {
+  name: 'Documentation',
   render: () => <GhostButtonDocs />,
-  parameters: {
-    layout: 'fullscreen',
-    controls: { disable: true },
-    actions: { disable: true },
-    chromatic: { disableSnapshot: true },
-  },
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true }, chromatic: { disableSnapshot: true } },
 };
 
-/* ─────────────────────────── GHOST VARIANT ─────────────────────────── */
+export const Playground: Story = {
+  name: 'Playground',
+  args: { label: 'Label', variant: 'ghost', size: 'default', showLeadingIcon: true, leadingIcon: PersonIcon, showTrailingIcon: true, trailingIcon: ArrowForwardIcon, disabled: false, loading: false },
+};
 
-/**
- * Default ghost button — bordered, light blue-50 background, with leading + trailing icons.
- * Matches the Figma `special=alt` default state.
- */
 export const Default: Story = {
   args: {
     variant: 'ghost',
@@ -91,39 +88,73 @@ export const Sizes: Story = {
   parameters: { controls: { disable: true } },
 };
 
-/**
- * With both leading and trailing icons across all sizes.
- */
-export const WithLeadingIcon: Story = {
+export const StatusGhost: Story = {
+  name: 'Status / Ghost',
+  render: () => <div style={SROW}><GhostButton size="extra-small" label="XS" showTrailingIcon trailingIcon={ArrowForwardIcon} /><GhostButton size="small" label="Small" showTrailingIcon trailingIcon={ArrowForwardIcon} /><GhostButton size="default" label="Default" showTrailingIcon trailingIcon={ArrowForwardIcon} /><GhostButton size="large" label="Large" showTrailingIcon trailingIcon={ArrowForwardIcon} /></div>,
+  parameters: { controls: { disable: true } },
+};
+
+export const StatusLink: Story = {
+  name: 'Status / Link',
+  render: () => <div style={SROW}><GhostButton variant="link" size="extra-small" label="XS" showTrailingIcon trailingIcon={ArrowForwardIcon} /><GhostButton variant="link" size="small" label="Small" showTrailingIcon trailingIcon={ArrowForwardIcon} /><GhostButton variant="link" size="default" label="Default" showTrailingIcon trailingIcon={ArrowForwardIcon} /><GhostButton variant="link" size="large" label="Large" showTrailingIcon trailingIcon={ArrowForwardIcon} /></div>,
+  parameters: { controls: { disable: true } },
+};
+
+export const StatusIconOnly: Story = {
+  name: 'Status / Icon Only',
+  render: () => <div style={SROW}><GhostButton iconOnly leadingIcon={PersonIcon} size="extra-small" ariaLabel="User" /><GhostButton iconOnly leadingIcon={PersonIcon} size="small" ariaLabel="User" /><GhostButton iconOnly leadingIcon={PersonIcon} size="default" ariaLabel="User" /><GhostButton iconOnly leadingIcon={PersonIcon} size="large" ariaLabel="User" /></div>,
+  parameters: { controls: { disable: true } },
+};
+
+export const StatusIconOnlyBorderless: Story = {
+  name: 'Status / Icon Only (Borderless)',
+  render: () => <div style={SROW}><GhostButton iconOnly borderless leadingIcon={PersonIcon} size="extra-small" ariaLabel="User" /><GhostButton iconOnly borderless leadingIcon={PersonIcon} size="small" ariaLabel="User" /><GhostButton iconOnly borderless leadingIcon={PersonIcon} size="default" ariaLabel="User" /><GhostButton iconOnly borderless leadingIcon={PersonIcon} size="large" ariaLabel="User" /></div>,
+  parameters: { controls: { disable: true } },
+};
+
+export const StatusLoading: Story = {
+  name: 'Status / Loading',
+  render: () => <div style={SROW}><GhostButton label="Loading…" loading size="small" /><GhostButton label="Loading…" loading /><GhostButton variant="link" label="Loading…" loading /></div>,
+  parameters: { controls: { disable: true } },
+};
+
+export const StatusDisabled: Story = {
+  name: 'Status / Disabled',
+  render: () => <div style={SROW}><GhostButton label="Disabled" disabled /><GhostButton iconOnly leadingIcon={PersonIcon} disabled ariaLabel="User" /><GhostButton variant="link" label="Disabled link" showTrailingIcon trailingIcon={ArrowForwardIcon} disabled /></div>,
+  parameters: { controls: { disable: true } },
+};
+
+export const ComponentBreakdown: Story = {
+  name: 'Component Breakdown',
   render: () => (
-    <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px)' }}>
-      <GhostButton size="extra-small" label="Label" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} />
-      <GhostButton size="small"       label="Label" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} />
-      <GhostButton size="default"     label="Label" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} />
-      <GhostButton size="large"       label="Label" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} />
+    <div style={{ display: 'flex', gap: '24px', padding: '24px', flexWrap: 'wrap' }}>
+      {[['Ghost label', <GhostButton label="Label" showTrailingIcon trailingIcon={ArrowForwardIcon} />, '--btn-ghost-bg / --btn-ghost-border'], ['Icon only', <GhostButton iconOnly leadingIcon={PersonIcon} ariaLabel="x" />, '--btn-ghost-icon-only-size-default'], ['Borderless', <GhostButton iconOnly borderless leadingIcon={PersonIcon} ariaLabel="x" />, '--btn-ghost-borderless'], ['Link', <GhostButton variant="link" label="Link" showTrailingIcon trailingIcon={ArrowForwardIcon} />, '--btn-link-color']].map(([lbl, el, tok]) => (
+        <div key={lbl as string} style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+          <span style={{ fontSize: '11px', fontWeight: 600, color: 'var(--global-color-neutral-gray-600)', fontFamily: 'var(--brand-font-primary)' }}>{lbl as string}</span>
+          {el as React.ReactElement}
+          <code style={{ fontSize: '10px', color: 'var(--global-color-neutral-gray-500)', background: 'var(--global-color-neutral-gray-100)', padding: '2px 6px', borderRadius: '4px' }}>{tok as string}</code>
+        </div>
+      ))}
     </div>
   ),
   parameters: { controls: { disable: true } },
 };
 
-/**
- * Trailing icon only (no leading icon) across all sizes.
- */
-export const WithTrailingIcon: Story = {
+export const AllInteractiveStates: Story = {
+  name: 'All Interactive States',
   render: () => (
-    <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px)' }}>
-      <GhostButton size="extra-small" label="Label" showTrailingIcon trailingIcon={ArrowForwardIcon} />
-      <GhostButton size="small"       label="Label" showTrailingIcon trailingIcon={ArrowForwardIcon} />
-      <GhostButton size="default"     label="Label" showTrailingIcon trailingIcon={ArrowForwardIcon} />
-      <GhostButton size="large"       label="Label" showTrailingIcon trailingIcon={ArrowForwardIcon} />
+    <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', padding: '24px' }}>
+      {(['Default', 'Loading', 'Disabled'] as const).map(s => (
+        <div key={s} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
+          <GhostButton label={s} showTrailingIcon trailingIcon={ArrowForwardIcon} loading={s === 'Loading'} disabled={s === 'Disabled'} />
+          <span style={{ fontSize: '10px', color: 'var(--global-color-neutral-gray-400)', fontFamily: 'var(--brand-font-secondary)' }}>{s.toLowerCase()}</span>
+        </div>
+      ))}
     </div>
   ),
   parameters: { controls: { disable: true } },
 };
 
-/**
- * Icon-only — bordered square buttons across all sizes.
- */
 export const IconOnly: Story = {
   render: () => (
     <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px)' }}>
@@ -153,57 +184,6 @@ export const IconOnlyBorderless: Story = {
   parameters: { controls: { disable: true } },
 };
 
-/* ─────────────────────────── LINK VARIANT ─────────────────────────── */
-
-/**
- * Link variant — text link style, no border or background. Matches Figma `special=link-only`.
- */
-export const LinkVariant: Story = {
-  render: () => (
-    <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px)' }}>
-      <GhostButton variant="link" size="extra-small" label="Label" showTrailingIcon trailingIcon={ArrowForwardIcon} />
-      <GhostButton variant="link" size="small"       label="Label" showTrailingIcon trailingIcon={ArrowForwardIcon} />
-      <GhostButton variant="link" size="default"     label="Label" showTrailingIcon trailingIcon={ArrowForwardIcon} />
-      <GhostButton variant="link" size="large"       label="Label" showTrailingIcon trailingIcon={ArrowForwardIcon} />
-    </div>
-  ),
-  parameters: { controls: { disable: true } },
-};
-
-/* ─────────────────────────── STATES ─────────────────────────── */
-
-/**
- * Loading state — spinner replaces leading icon.
- */
-export const Loading: Story = {
-  render: () => (
-    <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px)' }}>
-      <GhostButton label="Loading…" loading size="extra-small" />
-      <GhostButton label="Loading…" loading size="small" />
-      <GhostButton label="Loading…" loading />
-      <GhostButton label="Loading…" loading size="large" />
-    </div>
-  ),
-  parameters: { controls: { disable: true } },
-};
-
-/**
- * Disabled state — explicit gray colours, no opacity reduction.
- */
-export const Disabled: Story = {
-  render: () => (
-    <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-12px)', padding: 'var(--global-spacing-sizing-16px)' }}>
-      <GhostButton label="Disabled" disabled />
-      <GhostButton label="Disabled" showTrailingIcon trailingIcon={ArrowForwardIcon} disabled />
-      <GhostButton label="Disabled" showLeadingIcon leadingIcon={PersonIcon} showTrailingIcon trailingIcon={ArrowForwardIcon} disabled />
-      <GhostButton iconOnly leadingIcon={PersonIcon} disabled ariaLabel="User (disabled)" />
-      <GhostButton variant="link" label="Disabled link" showTrailingIcon trailingIcon={ArrowForwardIcon} disabled />
-    </div>
-  ),
-  parameters: { controls: { disable: true } },
-};
-
-/* ─────────────────────────── FULL MATRIX ─────────────────────────── */
 
 const label = (text: string) => (
   <span style={{

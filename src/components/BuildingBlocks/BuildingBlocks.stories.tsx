@@ -50,17 +50,17 @@ export default meta;
 type Story = StoryObj<typeof StatusIcon>;
 
 export const Documentation: Story = {
+  name: 'Documentation',
   render: () => <BuildingBlocksDocs />,
-  parameters: {
-    controls: { disable: true },
-    actions: { disable: true },
-    chromatic: { disableSnapshot: true },
-  },
+  parameters: { controls: { disable: true }, actions: { disable: true }, chromatic: { disableSnapshot: true } },
 };
 
-export const Default: Story = {};
+export const Playground: Story = { name: 'Playground' };
 
-export const AllTypes: Story = {
+export const Default: Story = { name: 'Default' };
+
+export const StatusTypes: Story = {
+  name: 'Status / All Types',
   render: () => {
     const types: StatusIconType[] = [
       'warning', 'error', 'complete', 'locked',
@@ -77,7 +77,8 @@ export const AllTypes: Story = {
   parameters: { controls: { disable: true } },
 };
 
-export const AllSteps: Story = {
+export const StatusSteps: Story = {
+  name: 'Status / Step States',
   render: () => {
     const steps: StatusIconStep[] = ['future', 'current', 'past'];
     return (
@@ -105,7 +106,8 @@ export const Sizes: Story = {
   parameters: { controls: { disable: true } },
 };
 
-export const DisabledState: Story = {
+export const StatusDisabled: Story = {
+  name: 'Status / Disabled',
   render: () => {
     const steps: StatusIconStep[] = ['future', 'current', 'past'];
     return (
@@ -116,6 +118,37 @@ export const DisabledState: Story = {
       </div>
     );
   },
+  parameters: { controls: { disable: true } },
+};
+
+export const ComponentBreakdown: Story = {
+  name: 'Component Breakdown',
+  render: () => (
+    <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', padding: '24px' }}>
+      {[['Warning', 'warning'], ['Error', 'error'], ['Complete', 'complete'], ['Locked', 'locked']].map(([lbl, type]) => (
+        <div key={type} style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'center' }}>
+          <StatusIcon type={type as StatusIconType} step="current" size="default" />
+          <span style={{ fontSize: '11px', fontWeight: 600, fontFamily: 'var(--brand-font-primary)', color: 'var(--global-color-neutral-gray-600)' }}>{lbl}</span>
+          <code style={{ fontSize: '10px', background: 'var(--global-color-neutral-gray-100)', padding: '2px 6px', borderRadius: '4px' }}>--status-icon-inner-default</code>
+        </div>
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const AllInteractiveStates: Story = {
+  name: 'All Interactive States',
+  render: () => (
+    <div style={{ display: 'flex', gap: '24px', padding: '24px', flexWrap: 'wrap' }}>
+      {(['future', 'current', 'past'] as StatusIconStep[]).map(step => (
+        <div key={step} style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'center' }}>
+          <StatusIcon type="complete" step={step} size="default" />
+          <span style={{ fontSize: '10px', color: 'var(--global-color-neutral-gray-400)', fontFamily: 'var(--brand-font-secondary)' }}>{step}</span>
+        </div>
+      ))}
+    </div>
+  ),
   parameters: { controls: { disable: true } },
 };
 

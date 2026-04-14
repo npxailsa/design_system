@@ -60,18 +60,15 @@ const meta: Meta<typeof SplitButton> = {
 export default meta;
 type Story = StoryObj<typeof SplitButton>;
 
-/* ── Documentation (always first) ── */
 export const Documentation: Story = {
+  name: 'Documentation',
   render: () => <SplitButtonDocs />,
-  parameters: {
-    controls: { disable: true },
-    actions: { disable: true },
-    chromatic: { disableSnapshot: true },
-  },
+  parameters: { controls: { disable: true }, actions: { disable: true }, chromatic: { disableSnapshot: true } },
 };
 
-/* ── Default (interactive controls) ── */
-export const Default: Story = {};
+export const Playground: Story = { name: 'Playground' };
+
+export const Default: Story = { name: 'Default' };
 
 /* ════════════════════════════════════════════════════════════
    PRIMARY
@@ -225,6 +222,30 @@ export const Disabled: Story = {
 /* ════════════════════════════════════════════════════════════
    ALL VARIANTS OVERVIEW
    ════════════════════════════════════════════════════════════ */
+export const ComponentBreakdown: Story = {
+  name: 'Component Breakdown',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '24px', maxWidth: '400px' }}>
+      <SplitButton buttonType="primary" variant="filled" size="default" label="Primary Filled" menuItems={sampleMenu} />
+      <code style={{ fontSize: '10px', background: 'var(--global-color-neutral-gray-100)', padding: '4px 8px', borderRadius: '4px' }}>--btn-split-trigger-width-default / main button + dropdown trigger</code>
+      <SplitButton buttonType="ghost" variant="ghost" size="default" label="Ghost" menuItems={sampleMenu} />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const AllInteractiveStates: Story = {
+  name: 'All Interactive States',
+  render: () => (
+    <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', padding: '24px' }}>
+      <SplitButton buttonType="primary" variant="filled" size="default" label="Default" menuItems={sampleMenu} />
+      <SplitButton buttonType="primary" variant="filled" size="default" label="Loading" loading menuItems={sampleMenu} />
+      <SplitButton buttonType="primary" variant="filled" size="default" label="Disabled" disabled menuItems={sampleMenu} />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
 export const FullDesignMatrix: Story = {
   name: 'Full Design Matrix (24 variants)',
   render: () => {
