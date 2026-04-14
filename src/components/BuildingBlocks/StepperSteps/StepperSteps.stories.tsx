@@ -93,8 +93,10 @@ export const Playground: Story = {
 };
 
 /* ── 3. All sizes — default state ────────────────────────────────────────── */
-export const AllSizes: Story = {
-  name: 'All Sizes',
+export const Default: Story = { name: 'Default' };
+
+export const Sizes: Story = {
+  name: 'Sizes',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
       {ALL_SIZES.map((size) => (
@@ -112,8 +114,8 @@ export const AllSizes: Story = {
 };
 
 /* ── 4. State — Default ──────────────────────────────────────────────────── */
-export const StateDefault: Story = {
-  name: 'State / Default',
+export const StatusDefault: Story = {
+  name: 'Status / Default',
   render: () => (
     <div style={wrap}>
       <StepperSteps steps={DEFAULT_STEPS} size="default" />
@@ -122,8 +124,8 @@ export const StateDefault: Story = {
 };
 
 /* ── 5. State — Active ───────────────────────────────────────────────────── */
-export const StateActive: Story = {
-  name: 'State / Active',
+export const StatusActive: Story = {
+  name: 'Status / Active',
   render: () => (
     <div style={wrap}>
       <StepperSteps steps={ACTIVE_STEPS} size="default" />
@@ -132,8 +134,8 @@ export const StateActive: Story = {
 };
 
 /* ── 6. State — Complete ─────────────────────────────────────────────────── */
-export const StateComplete: Story = {
-  name: 'State / Complete',
+export const StatusComplete: Story = {
+  name: 'Status / Complete',
   render: () => (
     <div style={wrap}>
       <StepperSteps steps={COMPLETE_STEPS} size="default" />
@@ -142,8 +144,8 @@ export const StateComplete: Story = {
 };
 
 /* ── 7. State — Disabled ─────────────────────────────────────────────────── */
-export const StateDisabled: Story = {
-  name: 'State / Disabled',
+export const StatusDisabled: Story = {
+  name: 'Status / Disabled',
   render: () => (
     <div style={wrap}>
       <StepperSteps steps={DISABLED_STEPS} size="default" />
@@ -209,6 +211,43 @@ export const CompleteSizes: Story = {
 };
 
 /* ── 11. Full Design Matrix ──────────────────────────────────────────────── */
+export const ComponentBreakdown: Story = {
+  name: 'Component Breakdown',
+  parameters: { controls: { disable: true } },
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', padding: '24px' }}>
+      <div>
+        <p style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '13px', fontWeight: 600, color: 'var(--global-color-neutral-gray-700)', marginBottom: '8px', marginTop: 0 }}>Anatomy</p>
+        <p style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '12px', color: 'var(--global-color-neutral-gray-500)', marginBottom: '16px', marginTop: 0 }}>
+          Each step bubble: number/icon + label. States: default, active, complete, disabled.
+        </p>
+        <div style={wrap}><StepperSteps steps={MIXED_STEPS} size="default" /></div>
+      </div>
+      <div>
+        <p style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '13px', fontWeight: 600, color: 'var(--global-color-neutral-gray-700)', marginBottom: '8px', marginTop: 0 }}>Without labels</p>
+        <div style={wrap}><StepperSteps steps={MIXED_STEPS} size="default" showLabel={false} /></div>
+      </div>
+    </div>
+  ),
+};
+
+export const AllInteractiveStates: Story = {
+  name: 'All Interactive States',
+  parameters: { controls: { disable: true } },
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', padding: '24px' }}>
+      <div>
+        <p style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '12px', color: 'var(--global-color-neutral-gray-500)', marginBottom: '12px', marginTop: 0 }}>Mixed states (default journey)</p>
+        <div style={wrap}><StepperSteps steps={MIXED_STEPS} size="default" /></div>
+      </div>
+      <div>
+        <p style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '12px', color: 'var(--global-color-neutral-gray-500)', marginBottom: '12px', marginTop: 0 }}>All complete</p>
+        <div style={wrap}><StepperSteps steps={COMPLETE_STEPS} size="default" /></div>
+      </div>
+    </div>
+  ),
+};
+
 export const FullDesignMatrix: Story = {
   name: 'Full Design Matrix',
   parameters: { layout: 'padded' },

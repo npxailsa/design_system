@@ -133,8 +133,8 @@ export const ComponentBreakdown: Story = {
    ICON-TYPE BUTTON GROUPS (existing icon-only)
    ════════════════════════════════════════════════════════════ */
 
-export const AllVariants: Story = {
-  name: 'Icon / All Variants × All Sizes',
+export const StatusIconVariants: Story = {
+  name: 'Status / Icon Variants × Sizes',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-32px)' }}>
       {/* Separate (2-button pair) */}
@@ -462,7 +462,7 @@ export const FullDesignMatrix: Story = {
    STATE SHOWCASE
    ════════════════════════════════════════════════════════════ */
 
-export const AllStates: Story = {
+export const AllInteractiveStates: Story = {
   name: 'All Interactive States',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-32px)' }}>

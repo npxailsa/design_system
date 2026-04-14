@@ -196,8 +196,10 @@ export const Playground: Story = {
 };
 
 /* ── 3. Type / Solid ─────────────────────────────────────────────────────── */
+export const Default: Story = { name: 'Default' };
+
 export const TypeSolid: Story = {
-  name: 'Type / Solid',
+  name: 'Status / Solid',
   parameters: { controls: { disable: true } },
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -209,7 +211,7 @@ export const TypeSolid: Story = {
 
 /* ── 4. Type / Dashed ────────────────────────────────────────────────────── */
 export const TypeDashed: Story = {
-  name: 'Type / Dashed',
+  name: 'Status / Dashed',
   parameters: { controls: { disable: true } },
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -221,7 +223,7 @@ export const TypeDashed: Story = {
 
 /* ── 5. Type / Dotted ────────────────────────────────────────────────────── */
 export const TypeDotted: Story = {
-  name: 'Type / Dotted',
+  name: 'Status / Dotted',
   parameters: { controls: { disable: true } },
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -292,6 +294,46 @@ export const Strokes: Story = {
 };
 
 /* ── 8. Full Design Matrix ───────────────────────────────────────────────── */
+export const ComponentBreakdown: Story = {
+  name: 'Component Breakdown',
+  parameters: { controls: { disable: true } },
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', padding: '24px' }}>
+      <div>
+        <div style={TYPE_TITLE}>Anatomy: type × stroke × state</div>
+        <p style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '12px', color: 'var(--global-color-neutral-gray-500)', marginTop: '8px' }}>
+          StepperLines are horizontal connectors. Props: type (solid | dashed | dotted), stroke (1–3 px), state (disabled | to-do | complete).
+        </p>
+      </div>
+      {ALL_TYPES.map((type) => (
+        <div key={type} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <span style={{ ...LABEL_STYLE, width: '56px' }}>{type}</span>
+          <StepperLines type={type} stroke="2-px" state="to-do" />
+          <StepperLines type={type} stroke="2-px" state="complete" />
+          <StepperLines type={type} stroke="2-px" state="disabled" />
+        </div>
+      ))}
+    </div>
+  ),
+};
+
+export const AllInteractiveStates: Story = {
+  name: 'All Interactive States',
+  parameters: { controls: { disable: true } },
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '24px' }}>
+      {ALL_STATES.map((state) => (
+        <div key={state} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <span style={{ ...LABEL_STYLE, width: '72px' }}>{state}</span>
+          <StepperLines type="solid" stroke="2-px" state={state} />
+          <StepperLines type="dashed" stroke="2-px" state={state} />
+          <StepperLines type="dotted" stroke="2-px" state={state} />
+        </div>
+      ))}
+    </div>
+  ),
+};
+
 export const FullDesignMatrix: Story = {
   name: 'Full Design Matrix',
   parameters: { layout: 'padded', controls: { disable: true } },

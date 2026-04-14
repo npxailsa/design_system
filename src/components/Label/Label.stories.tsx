@@ -268,7 +268,7 @@ export const AllInteractiveStates: Story = {
   parameters: { controls: { disable: true } },
 };
 
-export const AllVariants: Story = {
+export const FullDesignMatrix: Story = {
   name: 'Full Design Matrix (120 variants)',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-80px)' }}>

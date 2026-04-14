@@ -117,6 +117,11 @@ export const Documentation: Story = {
   },
 };
 
+/** Interactive playground — adjust props via controls panel. */
+export const Playground: Story = {
+  name: 'Playground',
+};
+
 /**
  * The default icon story demonstrating the selectable icon prop.
  */
@@ -164,7 +169,8 @@ export const Sizes: Story = {
 /**
  * Demonstrates the icons using Material UI theme colors.
  */
-export const Colors: Story = {
+export const StatusColors: Story = {
+  name: 'Status / Color Variants',
   render: (args) => (
     <div style={{ display: 'flex', gap: 'var(--global-spacing-sizing-32px)', padding: 'var(--global-spacing-sizing-20px)' }}>
       <Icon {...args} color="primary" />
@@ -175,6 +181,62 @@ export const Colors: Story = {
       <Icon {...args} color="success" />
     </div>
   ),
+};
+
+/** Component breakdown — shows icon anatomy: icon + size + colour props. */
+export const ComponentBreakdown: Story = {
+  name: 'Component Breakdown',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-32px)', padding: 'var(--global-spacing-sizing-24px)' }}>
+      <div>
+        <p style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '13px', fontWeight: 600, color: 'var(--global-color-neutral-gray-700)', marginBottom: '12px', marginTop: 0 }}>
+          Anatomy
+        </p>
+        <p style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '12px', color: 'var(--global-color-neutral-gray-500)', marginBottom: '16px', marginTop: 0 }}>
+          The Icon component wraps a Material UI SvgIcon with design-system size tokens and colour tokens.
+          Props: <code>icon</code>, <code>size</code>, <code>color</code>.
+        </p>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--global-spacing-sizing-16px)' }}>
+          <Icon icon={HomeIcon} size="default" color="primary" />
+          <Icon icon={HomeIcon} size="large" color="secondary" />
+          <Icon icon={HomeIcon} size="x-large" color="error" />
+        </div>
+      </div>
+      <div>
+        <p style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '13px', fontWeight: 600, color: 'var(--global-color-neutral-gray-700)', marginBottom: '12px', marginTop: 0 }}>
+          Size token reference
+        </p>
+        <div style={{ display: 'flex', alignItems: 'flex-end', gap: 'var(--global-spacing-sizing-16px)' }}>
+          {(['2x-small', 'x-small', 'small', 'default', 'large', 'x-large', '2x-large'] as IconSize[]).map((s) => (
+            <div key={s} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
+              <Icon icon={HomeIcon} size={s} />
+              <span style={{ fontFamily: 'var(--brand-font-secondary)', fontSize: '10px', color: 'var(--global-color-neutral-gray-400)' }}>{s}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+/** All interactive states — inherit, primary, secondary, error, disabled, action. */
+export const AllInteractiveStates: Story = {
+  name: 'All Interactive States',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-24px)', padding: 'var(--global-spacing-sizing-24px)' }}>
+      {(['inherit', 'primary', 'secondary', 'error', 'warning', 'info', 'success', 'action', 'disabled'] as const).map((color) => (
+        <div key={color} style={{ display: 'flex', alignItems: 'center', gap: 'var(--global-spacing-sizing-16px)' }}>
+          <span style={{ fontFamily: 'var(--brand-font-secondary)', fontSize: '11px', color: 'var(--global-color-neutral-gray-500)', width: '72px' }}>{color}</span>
+          <Icon icon={HomeIcon} size="default" color={color} />
+          <Icon icon={SettingsIcon} size="default" color={color} />
+          <Icon icon={CheckCircleIcon} size="default" color={color} />
+          <Icon icon={WarningIcon} size="default" color={color} />
+        </div>
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
 };
 
 /**

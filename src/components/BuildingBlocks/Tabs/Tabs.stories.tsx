@@ -55,32 +55,59 @@ const meta: Meta<typeof Tabs> = {
 export default meta;
 type Story = StoryObj<typeof Tabs>;
 
-// ─── Documentation (first) ───────────────────────────────────────────────────
+const labelStyle: React.CSSProperties = {
+  fontFamily: 'var(--brand-font-primary)',
+  fontSize: '11px',
+  fontWeight: 600,
+  color: 'var(--global-color-neutral-gray-500)',
+  textTransform: 'capitalize',
+  marginBottom: '8px',
+  marginTop: 0,
+};
+
+const sectionStyle: React.CSSProperties = {
+  fontFamily: 'var(--brand-font-primary)',
+  fontSize: '13px',
+  fontWeight: 600,
+  color: 'var(--global-color-neutral-gray-700)',
+  marginBottom: '16px',
+  marginTop: 0,
+};
+
+/* 1 ─── Documentation ───────────────────────────────────────────────────────── */
 
 export const Documentation: Story = {
   name: 'Documentation',
   render: () => <TabsDocs />,
   parameters: {
     controls: { disable: true },
+    actions: { disable: true },
     chromatic: { disableSnapshot: true },
   },
 };
 
-// ─── Playground ──────────────────────────────────────────────────────────────
+/* 2 ─── Playground ────────────────────────────────────────────────────────── */
 
 export const Playground: Story = {
   name: 'Playground',
 };
 
-// ─── All sizes ───────────────────────────────────────────────────────────────
+/* 3 ─── Default ─────────────────────────────────────────────────────────── */
 
-export const AllSizes: Story = {
-  name: 'All Sizes',
+export const Default: Story = {
+  name: 'Default',
+  args: { type: 'default', size: 'default', activeId: 'tab2' },
+};
+
+/* 4 ─── Sizes ───────────────────────────────────────────────────────────── */
+
+export const Sizes: Story = {
+  name: 'Sizes',
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', padding: '16px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-32px)', padding: 'var(--global-spacing-sizing-16px)' }}>
       {ALL_SIZES.map((size) => (
         <div key={size}>
-          <p style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '11px', fontWeight: 600, color: 'var(--global-color-neutral-gray-500)', textTransform: 'capitalize', marginBottom: '8px', marginTop: 0 }}>{size}</p>
+          <p style={labelStyle}>{size}</p>
           <Tabs items={DEFAULT_ITEMS} size={size} type="default" activeId="tab2" />
         </div>
       ))}
@@ -89,109 +116,169 @@ export const AllSizes: Story = {
   parameters: { controls: { disable: true } },
 };
 
-// ─── Type: default (underline, blue) ─────────────────────────────────────────
+/* 5 ─── Status ─────────────────────────────────────────────────────────── */
 
-export const TypeDefaultSmall: Story = {
-  name: 'Default / Small',
-  args: { type: 'default', size: 'small', activeId: 'tab1' },
-};
-
-export const TypeDefaultDefault: Story = {
-  name: 'Default / Default',
-  args: { type: 'default', size: 'default', activeId: 'tab2' },
-};
-
-export const TypeDefaultLarge: Story = {
-  name: 'Default / Large',
-  args: { type: 'default', size: 'large', activeId: 'tab3' },
-};
-
-// ─── Type: secondary (underline, dark) ───────────────────────────────────────
-
-export const TypeSecondarySmall: Story = {
-  name: 'Secondary / Small',
-  args: { type: 'secondary', size: 'small', activeId: 'tab1' },
-};
-
-export const TypeSecondaryDefault: Story = {
-  name: 'Secondary / Default',
-  args: { type: 'secondary', size: 'default', activeId: 'tab2' },
-};
-
-export const TypeSecondaryLarge: Story = {
-  name: 'Secondary / Large',
-  args: { type: 'secondary', size: 'large', activeId: 'tab3' },
-};
-
-// ─── Type: contained ─────────────────────────────────────────────────────────
-
-export const TypeContainedSmall: Story = {
-  name: 'Contained / Small',
-  args: { type: 'contained', size: 'small', activeId: 'tab1' },
-};
-
-export const TypeContainedDefault: Story = {
-  name: 'Contained / Default',
-  args: { type: 'contained', size: 'default', activeId: 'tab2' },
-};
-
-export const TypeContainedLarge: Story = {
-  name: 'Contained / Large',
-  args: { type: 'contained', size: 'large', activeId: 'tab3' },
-};
-
-// ─── Type: dark-contained ────────────────────────────────────────────────────
-
-export const TypeDarkSmall: Story = {
-  name: 'Dark Contained / Small',
-  args: { type: 'dark-contained', size: 'small', activeId: 'tab1' },
-};
-
-export const TypeDarkDefault: Story = {
-  name: 'Dark Contained / Default',
-  args: { type: 'dark-contained', size: 'default', activeId: 'tab2' },
-};
-
-export const TypeDarkLarge: Story = {
-  name: 'Dark Contained / Large',
-  args: { type: 'dark-contained', size: 'large', activeId: 'tab3' },
-};
-
-// ─── With dropdown indicator ─────────────────────────────────────────────────
-
-export const WithDropdown: Story = {
-  name: 'With Dropdown indicator',
-  args: { items: DROPDOWN_ITEMS, type: 'default', activeId: 'tab1' },
-};
-
-// ─── Without badge / icons ────────────────────────────────────────────────────
-
-export const WithoutBadge: Story = {
-  name: 'Without Badge',
-  args: { showBadge: false, type: 'default', activeId: 'tab1' },
-};
-
-export const WithoutIcons: Story = {
-  name: 'Without Icons',
-  args: { showLeadingIcon: false, showTrailingIcon: false, type: 'default', activeId: 'tab1' },
-};
-
-// ─── Full design matrix ───────────────────────────────────────────────────────
-
-export const FullMatrix: Story = {
-  name: 'Full Design Matrix',
+export const StatusDefault: Story = {
+  name: 'Status / Default (Underline Blue)',
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '48px', padding: '24px' }}>
-      {/* Underline rows */}
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)', padding: 'var(--global-spacing-sizing-16px)' }}>
+      {ALL_SIZES.map((size) => (
+        <div key={size}>
+          <p style={labelStyle}>{size}</p>
+          <Tabs items={DEFAULT_ITEMS} type="default" size={size} activeId="tab2" />
+        </div>
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const StatusSecondary: Story = {
+  name: 'Status / Secondary (Underline Dark)',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)', padding: 'var(--global-spacing-sizing-16px)' }}>
+      {ALL_SIZES.map((size) => (
+        <div key={size}>
+          <p style={labelStyle}>{size}</p>
+          <Tabs items={DEFAULT_ITEMS} type="secondary" size={size} activeId="tab2" />
+        </div>
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const StatusContained: Story = {
+  name: 'Status / Contained',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)', padding: 'var(--global-spacing-sizing-16px)' }}>
+      {ALL_SIZES.map((size) => (
+        <div key={size}>
+          <p style={labelStyle}>{size}</p>
+          <Tabs items={DEFAULT_ITEMS} type="contained" size={size} activeId="tab2" />
+        </div>
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const StatusDarkContained: Story = {
+  name: 'Status / Dark Contained',
+  render: () => (
+    <div style={{ background: 'var(--global-color-neutral-gray-800)', padding: 'var(--global-spacing-sizing-24px)', borderRadius: 'var(--global-spacing-radius-8px)' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)' }}>
+        {ALL_SIZES.map((size) => (
+          <div key={size}>
+            <p style={{ ...labelStyle, color: 'var(--global-color-neutral-gray-400)' }}>{size}</p>
+            <Tabs items={DEFAULT_ITEMS} type="dark-contained" size={size} activeId="tab2" />
+          </div>
+        ))}
+      </div>
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const StatusWithDropdown: Story = {
+  name: 'Status / With Dropdown Indicator',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)', padding: 'var(--global-spacing-sizing-16px)' }}>
+      {(['default', 'secondary', 'contained'] as TabType[]).map((type) => (
+        <div key={type}>
+          <p style={labelStyle}>{type}</p>
+          <Tabs items={DROPDOWN_ITEMS} type={type} size="default" activeId="tab1" />
+        </div>
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const StatusDisabled: Story = {
+  name: 'Status / Disabled Tab',
+  args: { type: 'default', size: 'default', activeId: 'tab1' },
+};
+
+/* 6 ─── Component Breakdown ─────────────────────────────────────────────── */
+
+export const ComponentBreakdown: Story = {
+  name: 'Component Breakdown',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-32px)', padding: 'var(--global-spacing-sizing-24px)' }}>
+      <div>
+        <p style={sectionStyle}>Anatomy</p>
+        <p style={{ ...labelStyle, marginBottom: 'var(--global-spacing-sizing-16px)' }}>
+          A Tabs strip is composed of individual tab items. Each tab item may include:
+          a leading icon, a text label, a trailing icon, and an optional badge/count.
+          One tab is always active; others can be disabled.
+        </p>
+        <Tabs items={DEFAULT_ITEMS} type="default" size="default" activeId="tab2" showLeadingIcon showTrailingIcon showBadge />
+      </div>
+      <div>
+        <p style={sectionStyle}>Without badge</p>
+        <Tabs items={DEFAULT_ITEMS} type="default" size="default" activeId="tab2" showLeadingIcon showTrailingIcon showBadge={false} />
+      </div>
+      <div>
+        <p style={sectionStyle}>Without icons</p>
+        <Tabs items={DEFAULT_ITEMS} type="default" size="default" activeId="tab2" showLeadingIcon={false} showTrailingIcon={false} showBadge />
+      </div>
+      <div>
+        <p style={sectionStyle}>With dropdown indicators</p>
+        <Tabs items={DROPDOWN_ITEMS} type="default" size="default" activeId="tab1" showLeadingIcon showTrailingIcon showBadge />
+      </div>
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+/* 7 ─── All Interactive States ───────────────────────────────────────────── */
+
+export const AllInteractiveStates: Story = {
+  name: 'All Interactive States',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-32px)', padding: 'var(--global-spacing-sizing-24px)' }}>
+      <div>
+        <p style={sectionStyle}>Default (resting)</p>
+        <Tabs items={DEFAULT_ITEMS} type="default" size="default" activeId="tab1" />
+      </div>
+      <div>
+        <p style={sectionStyle}>Active tab selected</p>
+        <Tabs items={DEFAULT_ITEMS} type="default" size="default" activeId="tab2" />
+      </div>
+      <div>
+        <p style={sectionStyle}>Disabled tab present</p>
+        <Tabs items={DEFAULT_ITEMS} type="default" size="default" activeId="tab1" />
+      </div>
+      <div>
+        <p style={sectionStyle}>Contained — active</p>
+        <Tabs items={DEFAULT_ITEMS} type="contained" size="default" activeId="tab2" />
+      </div>
+      <div>
+        <p style={{ ...sectionStyle, color: 'var(--global-color-neutral-gray-200)' }}>Dark contained — active</p>
+        <div style={{ background: 'var(--global-color-neutral-gray-800)', padding: 'var(--global-spacing-sizing-16px)', borderRadius: 'var(--global-spacing-radius-8px)' }}>
+          <Tabs items={DEFAULT_ITEMS} type="dark-contained" size="default" activeId="tab2" />
+        </div>
+      </div>
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+/* 8 ─── Full Design Matrix ───────────────────────────────────────────────── */
+
+export const FullDesignMatrix: Story = {
+  name: 'Full Design Matrix (48 variants)',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-48px)', padding: 'var(--global-spacing-sizing-24px)' }}>
+      {/* Underline types */}
       {(['default', 'secondary'] as TabType[]).map((type) => (
         <div key={type}>
-          <h3 style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '13px', color: 'var(--global-color-neutral-gray-700)', marginBottom: '16px', marginTop: 0, textTransform: 'capitalize' }}>
-            Type: {type}
-          </h3>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <h3 style={sectionStyle}>Type: {type}</h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)' }}>
             {ALL_SIZES.map((size) => (
               <div key={size}>
-                <p style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '11px', color: 'var(--global-color-neutral-gray-500)', textTransform: 'capitalize', marginBottom: '6px', marginTop: 0 }}>{size}</p>
+                <p style={labelStyle}>{size}</p>
                 <Tabs items={DEFAULT_ITEMS} type={type} size={size} activeId="tab2" />
               </div>
             ))}
@@ -201,13 +288,11 @@ export const FullMatrix: Story = {
 
       {/* Contained */}
       <div>
-        <h3 style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '13px', color: 'var(--global-color-neutral-gray-700)', marginBottom: '16px', marginTop: 0 }}>
-          Type: contained
-        </h3>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        <h3 style={sectionStyle}>Type: contained</h3>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)' }}>
           {ALL_SIZES.map((size) => (
             <div key={size}>
-              <p style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '11px', color: 'var(--global-color-neutral-gray-500)', textTransform: 'capitalize', marginBottom: '6px', marginTop: 0 }}>{size}</p>
+              <p style={labelStyle}>{size}</p>
               <Tabs items={DEFAULT_ITEMS} type="contained" size={size} activeId="tab2" />
             </div>
           ))}
@@ -215,14 +300,12 @@ export const FullMatrix: Story = {
       </div>
 
       {/* Dark contained */}
-      <div style={{ background: 'var(--global-color-neutral-gray-800)', padding: '24px', borderRadius: '8px' }}>
-        <h3 style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '13px', color: 'var(--global-color-neutral-gray-200)', marginBottom: '16px', marginTop: 0 }}>
-          Type: dark-contained
-        </h3>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <div style={{ background: 'var(--global-color-neutral-gray-800)', padding: 'var(--global-spacing-sizing-24px)', borderRadius: 'var(--global-spacing-radius-8px)' }}>
+        <h3 style={{ ...sectionStyle, color: 'var(--global-color-neutral-gray-200)' }}>Type: dark-contained</h3>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)' }}>
           {ALL_SIZES.map((size) => (
             <div key={size}>
-              <p style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '11px', color: 'var(--global-color-neutral-gray-400)', textTransform: 'capitalize', marginBottom: '6px', marginTop: 0 }}>{size}</p>
+              <p style={{ ...labelStyle, color: 'var(--global-color-neutral-gray-400)' }}>{size}</p>
               <Tabs items={DEFAULT_ITEMS} type="dark-contained" size={size} activeId="tab2" />
             </div>
           ))}
@@ -231,10 +314,8 @@ export const FullMatrix: Story = {
 
       {/* Dropdown variants */}
       <div>
-        <h3 style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '13px', color: 'var(--global-color-neutral-gray-700)', marginBottom: '16px', marginTop: 0 }}>
-          With dropdown indicator
-        </h3>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        <h3 style={sectionStyle}>With dropdown indicator</h3>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-16px)' }}>
           <Tabs items={DROPDOWN_ITEMS} type="default" size="default" activeId="tab1" />
           <Tabs items={DROPDOWN_ITEMS} type="secondary" size="default" activeId="tab1" />
           <Tabs items={DROPDOWN_ITEMS} type="contained" size="default" activeId="tab1" />

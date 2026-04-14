@@ -152,7 +152,7 @@ export const AllInteractiveStates: Story = {
 };
 
 /* Legacy stories below */
-export const AllSizes: Story = {
+export const AllSizesLegacy: Story = {
   name: 'All Sizes (legacy)',
   render: () => (
     <div style={{ display: 'flex', alignItems: 'flex-end', gap: '24px', padding: '12px' }}>

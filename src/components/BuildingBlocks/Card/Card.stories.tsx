@@ -51,34 +51,48 @@ export const Playground: Story = {
   name: 'Playground',
 };
 
-/* ── Size stories ── */
-export const Small: Story = {
-  name: 'Size — Small',
-  args: { size: 'small', bg: 'default', dropShadow: true },
-};
-
 export const Default: Story = {
-  name: 'Size — Default',
+  name: 'Default',
   args: { size: 'default', bg: 'default', dropShadow: true },
 };
 
+export const Sizes: Story = {
+  name: 'Sizes',
+  render: () => (
+    <div style={{ display: 'flex', gap: 'var(--global-spacing-sizing-16px)', flexWrap: 'wrap', padding: 'var(--global-spacing-sizing-24px)', background: 'var(--global-color-neutral-gray-100)', borderRadius: 'var(--global-spacing-radius-8px)' }}>
+      {ALL_SIZES.map((size) => (
+        <div key={size} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+          <Card size={size} bg="default" dropShadow />
+          <span style={{ fontFamily: 'var(--brand-font-secondary)', fontSize: '11px', color: 'var(--global-color-neutral-gray-500)' }}>{size}</span>
+        </div>
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+/* ── Individual size stories ── */
+export const Small: Story = {
+  name: 'Size / Small',
+  args: { size: 'small', bg: 'default', dropShadow: true },
+};
+
 export const Large: Story = {
-  name: 'Size — Large',
+  name: 'Size / Large',
   args: { size: 'large', bg: 'default', dropShadow: true },
 };
 
-/* ── Shadow toggle ── */
+/* ── Status stories ── */
 export const WithShadow: Story = {
-  name: 'With Shadow',
+  name: 'Status / With Shadow',
   args: { size: 'default', bg: 'default', dropShadow: true },
 };
 
 export const FlatNoBorder: Story = {
-  name: 'Flat (No Shadow)',
+  name: 'Status / Flat (No Shadow)',
   args: { size: 'default', bg: 'default', dropShadow: false },
 };
 
-/* ── Colour stories ── */
 export const AllColoursLightShadow: Story = {
   name: 'All Colours — Light + Shadow',
   render: () => (
@@ -112,7 +126,47 @@ export const DarkModeVariants: Story = {
   ),
 };
 
-/* ── Full matrix ── */
+export const ComponentBreakdown: Story = {
+  name: 'Component Breakdown',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-32px)', padding: 'var(--global-spacing-sizing-24px)' }}>
+      <div>
+        <p style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '13px', fontWeight: 600, color: 'var(--global-color-neutral-gray-700)', marginBottom: '8px', marginTop: 0 }}>Anatomy</p>
+        <p style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '12px', color: 'var(--global-color-neutral-gray-500)', marginBottom: '16px', marginTop: 0 }}>
+          A Card is a container surface. Props: size (small | default | large), bg (colour), mode (light | dark), dropShadow (boolean).
+        </p>
+        <div style={{ display: 'flex', gap: 'var(--global-spacing-sizing-16px)' }}>
+          <Card size="default" bg="default" mode="light" dropShadow />
+          <Card size="default" bg="default" mode="light" dropShadow={false} />
+          <Card size="default" bg="sky-blue" mode="light" dropShadow />
+        </div>
+      </div>
+      <div>
+        <p style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '13px', fontWeight: 600, color: 'var(--global-color-neutral-gray-700)', marginBottom: '8px', marginTop: 0 }}>All sizes</p>
+        <div style={{ display: 'flex', gap: 'var(--global-spacing-sizing-16px)', alignItems: 'flex-start' }}>
+          {ALL_SIZES.map((size) => <Card key={size} size={size} bg="default" dropShadow />)}
+        </div>
+      </div>
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const AllInteractiveStates: Story = {
+  name: 'All Interactive States',
+  render: () => (
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--global-spacing-sizing-16px)', padding: 'var(--global-spacing-sizing-24px)', background: 'var(--global-color-neutral-gray-100)', borderRadius: 'var(--global-spacing-radius-8px)' }}>
+      <Card size="default" bg="default" mode="light" dropShadow />
+      <Card size="default" bg="default" mode="light" dropShadow={false} />
+      <Card size="default" bg="error" mode="light" dropShadow />
+      <Card size="default" bg="success" mode="light" dropShadow />
+      <Card size="default" bg="warning" mode="light" dropShadow />
+      <Card size="default" bg="info-blue" mode="light" dropShadow />
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
 export const FullDesignMatrix: Story = {
   name: 'Full Design Matrix (33 variants)',
   render: () => (

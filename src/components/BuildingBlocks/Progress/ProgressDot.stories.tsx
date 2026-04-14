@@ -113,8 +113,8 @@ export const StatePending: Story = {
   ),
 };
 
-export const AllStates: Story = {
-  name: 'State / All',
+export const AllInteractiveStates: Story = {
+  name: 'All Interactive States',
   render: () => (
     <div style={rowStyle}>
       {ALL_STATES.map((state) => (
@@ -174,8 +174,8 @@ export const SizeLarge: Story = {
   ),
 };
 
-export const AllSizes: Story = {
-  name: 'Size / All',
+export const StatusAllSizes: Story = {
+  name: 'Status / All Sizes',
   render: () => (
     <div style={{ ...rowStyle, alignItems: 'flex-end' }}>
       {ALL_SIZES.map((size) => (
