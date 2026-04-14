@@ -1,4 +1,4 @@
-import React, { useId, useRef } from 'react';
+import React, { useCallback, useId, useRef, useState } from 'react';
 import InputBase from '@mui/material/InputBase';
 import CloseIcon from '@mui/icons-material/Close';
 import styles from './TextArea.module.css';
@@ -52,10 +52,11 @@ export interface TextAreaProps {
    */
   maxRows?: number;
   /**
-   * CSS resize handle.
-   * @default 'vertical'
+   * Whether the user can drag the resize grip to change the textarea height.
+   * Disable this when the textarea is used in a fixed-height container.
+   * @default true
    */
-  resize?: 'none' | 'vertical' | 'both';
+  resizable?: boolean;
   /** HTML id — auto-generated if omitted */
   id?: string;
   /** HTML name attribute */
@@ -80,6 +81,9 @@ export interface TextAreaProps {
  *
  * All visual treatment is applied through design-token CSS Modules —
  * no hardcoded values. Tokens are prefixed with `--textarea-*`.
+ *
+ * **Resize**: a custom two-line grip is pinned to the bottom-right corner.
+ * Dragging it adjusts the control height via pointer-capture events.
  */
 export const TextArea: React.FC<TextAreaProps> = ({
   label,
@@ -94,7 +98,7 @@ export const TextArea: React.FC<TextAreaProps> = ({
   disabled = false,
   minRows = 3,
   maxRows,
-  resize = 'vertical',
+  resizable = true,
   id: idProp,
   name,
   className,
@@ -103,6 +107,40 @@ export const TextArea: React.FC<TextAreaProps> = ({
   const generatedId = useId();
   const inputId     = idProp ?? generatedId;
   const inputRef    = useRef<HTMLTextAreaElement>(null);
+  const controlRef  = useRef<HTMLDivElement>(null);
+
+  /* ── Resize state ── */
+  const MIN_HEIGHT_MAP = { small: 80, default: 104, large: 132 } as const;
+  const minHeightPx = MIN_HEIGHT_MAP[size];
+  const [userHeight, setUserHeight] = useState<number | null>(null);
+  const dragOrigin = useRef<{ y: number; h: number } | null>(null);
+
+  const handleResizePointerDown = useCallback(
+    (e: React.PointerEvent<HTMLSpanElement>) => {
+      if (disabled) return;
+      e.preventDefault();
+      // Capture so move/up fire on this element even if pointer leaves
+      (e.currentTarget as HTMLSpanElement).setPointerCapture(e.pointerId);
+      const currentH =
+        controlRef.current?.getBoundingClientRect().height ?? minHeightPx;
+      dragOrigin.current = { y: e.clientY, h: currentH };
+    },
+    [disabled, minHeightPx],
+  );
+
+  const handleResizePointerMove = useCallback(
+    (e: React.PointerEvent<HTMLSpanElement>) => {
+      if (!dragOrigin.current) return;
+      const delta   = e.clientY - dragOrigin.current.y;
+      const newH    = Math.max(minHeightPx, dragOrigin.current.h + delta);
+      setUserHeight(newH);
+    },
+    [minHeightPx],
+  );
+
+  const handleResizePointerUp = useCallback(() => {
+    dragOrigin.current = null;
+  }, []);
 
   /* ── Derived flags ── */
   const showClear = clearable && !disabled && value.length > 0;
@@ -138,7 +176,9 @@ export const TextArea: React.FC<TextAreaProps> = ({
 
       {/* ── Textarea control ── */}
       <div
+        ref={controlRef}
         className={controlCls}
+        style={userHeight !== null ? { height: userHeight, minHeight: userHeight } : undefined}
         onClick={() => {
           if (!disabled) inputRef.current?.focus();
         }}
@@ -158,13 +198,37 @@ export const TextArea: React.FC<TextAreaProps> = ({
           inputProps={{
             'aria-label': ariaLabel,
             className: styles.nativeTextarea,
-            style: { resize },
+            style: {
+              resize: 'none',
+              height: userHeight !== null ? '100%' : undefined,
+            },
           }}
           classes={{
             root:  styles.inputRoot,
             input: styles.nativeTextarea,
           }}
         />
+
+        {/* Custom resize grip — two diagonal lines, bottom-right corner */}
+        {resizable && !disabled && (
+          <span
+            className={styles.resizeGrip}
+            aria-hidden="true"
+            onPointerDown={handleResizePointerDown}
+            onPointerMove={handleResizePointerMove}
+            onPointerUp={handleResizePointerUp}
+          >
+            <svg
+              className={styles.resizeIcon}
+              viewBox="0 0 10 10"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <line x1="2" y1="9" x2="9" y2="2" strokeLinecap="round" />
+              <line x1="5" y1="9" x2="9" y2="5" strokeLinecap="round" />
+            </svg>
+          </span>
+        )}
 
         {/* Clear button — absolutely positioned in the top-right corner */}
         {showClear && (

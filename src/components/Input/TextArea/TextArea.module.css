@@ -106,8 +106,10 @@
   outline: none !important;
   width: 100%;
   box-sizing: border-box;
-  /* resize is set inline per instance */
+  resize: none; /* native handle suppressed — custom grip used instead */
   overflow: auto;
+  /* when a user height is set, textarea fills the container */
+  min-height: 0;
 }
 
 .nativeTextarea::placeholder {
@@ -139,9 +141,51 @@
   padding: var(--textarea-padding-large);
 }
 
-/* Ensure MUI's textarea wrapper fills the control */
+/* Ensure MUI's textarea wrapper fills the control both ways */
 .inputRoot > textarea {
   width: 100% !important;
+}
+
+/* When an explicit height is applied to .control, the inner MUI root
+   and the textarea must both fill it completely. */
+.control[style*="height"] .inputRoot,
+.control[style*="height"] .inputRoot textarea {
+  height: 100% !important;
+}
+
+/* ── Custom resize grip — bottom-right corner ──────────────── */
+.resizeGrip {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: var(--global-spacing-sizing-16px);
+  height: var(--global-spacing-sizing-16px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  cursor: se-resize;
+  user-select: none;
+  touch-action: none; /* required for pointer capture on mobile */
+  padding: var(--global-spacing-sizing-2px);
+  color: var(--textarea-clear-color);
+  border-radius: 0 0 var(--textarea-border-radius) 0;
+  transition: color 0.15s ease;
+  z-index: 1;
+}
+
+.resizeGrip:hover {
+  color: var(--textarea-text-color);
+}
+
+.resizeIcon {
+  width: 10px;
+  height: 10px;
+  display: block;
+  flex-shrink: 0;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  fill: none;
+  overflow: visible;
 }
 
 /* ── Clear button — top-right corner ───────────────────────── */

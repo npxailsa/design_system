@@ -22,10 +22,9 @@ const meta: Meta<typeof TextArea> = {
       options: ['default', 'error', 'warning', 'success'],
       description: 'Validation state — drives border and helper text colour',
     },
-    resize: {
-      control: 'select',
-      options: ['none', 'vertical', 'both'],
-      description: 'CSS resize handle direction',
+    resizable: {
+      control: 'boolean',
+      description: 'Show the custom resize grip at the bottom-right corner',
     },
     clearable:  { control: 'boolean' },
     disabled:   { control: 'boolean' },
@@ -43,7 +42,7 @@ const meta: Meta<typeof TextArea> = {
     clearable:   true,
     disabled:    false,
     minRows:     3,
-    resize:      'vertical',
+    resizable:   true,
   },
 };
 
