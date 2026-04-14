@@ -2,6 +2,28 @@
 
 This project is a token-driven design system built on MUI Joy UI v5, documented in Storybook 10.
 
+> **Gemini CLI users**: also read `GEMINI.md` — it contains the full Figma-to-code prompt
+> baseline that governs all code generation from Gemini CLI, Figma MCP, Builder.io CLI,
+> and GitHub CLI.
+
+## MCP Servers
+
+| Server                        | Transport | URL                               |
+|-------------------------------|-----------|-----------------------------------|
+| `npx-design-system-sb-mcp`   | HTTP      | http://localhost:6006/mcp         |
+| `figma`                       | HTTP      | https://mcp.figma.com/mcp         |
+
+## Figma MCP
+
+Use the `figma` MCP server to inspect Figma components, retrieve design specs,
+and bridge design intent to code:
+
+- Figma design system file: `rCwHMIRhV0Taymt1YRXshd` (NPX White-label Design System)
+- Authentication: requires a Figma personal access token (`FIGMA_TOKEN` env var)
+- After any component change, sync with: `npm run figma:publish`
+- To scaffold missing Code Connect files: `npm run figma:generate`
+- CI guard (fails if `.figma.tsx` missing): `npm run figma:check`
+
 ## Storybook MCP
 
 When working on UI components, always use the `npx-design-system-sb-mcp` MCP tools to access

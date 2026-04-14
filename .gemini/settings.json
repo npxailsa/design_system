@@ -1,0 +1,12 @@
+{
+  "selectedAuthType": "api-key",
+  "mcpServers": {
+    "figma": {
+      "httpUrl": "https://mcp.figma.com/mcp",
+      "headers": {}
+    },
+    "storybook": {
+      "httpUrl": "http://localhost:6006/mcp"
+    }
+  }
+}
