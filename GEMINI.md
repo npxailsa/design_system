@@ -6,6 +6,28 @@ The rules below apply to **all** code generation, regardless of which tool trigg
 
 ---
 
+## Model Configuration
+
+| Setting        | Value                      |
+|----------------|----------------------------|
+| Default model  | `gemini-3.1-pro-preview`   |
+| Fallback model | `gemini-2.5-pro`           |
+
+The default model is set in `.gemini/settings.json`. The fallback activates automatically
+when the daily quota for the primary model is exhausted — use the wrapper script:
+
+```bash
+npm run gemini        # interactive session (primary → fallback)
+npm run gemini:yolo   # --yolo autonomous mode (primary → fallback)
+sh scripts/gemini.sh -p "Your prompt"   # one-shot prompt
+```
+
+To override the model for a single session:
+
+```bash
+gemini -m gemini-2.5-pro
+```
+
 ## MCP Servers
 
 | Server     | Transport | URL                          |

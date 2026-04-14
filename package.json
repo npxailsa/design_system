@@ -36,6 +36,8 @@
     "figma:generate:force": "node scripts/generate-figma-connect.mjs --force",
     "figma:check": "node scripts/generate-figma-connect.mjs --check",
     "figma:publish": "npx figma connect publish",
+    "gemini": "sh scripts/gemini.sh",
+    "gemini:yolo": "sh scripts/gemini.sh --yolo",
     "prepare": "husky",
     "chromatic": "NODE_OPTIONS=--max-old-space-size=4096 npx chromatic --project-token=chpt_44a4334f1199317 --build-script-name=build-storybook --only-changed",
     "postinstall": "node scripts/patch-storysource-compat.mjs"

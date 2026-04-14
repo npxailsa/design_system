@@ -1,5 +1,6 @@
 {
   "selectedAuthType": "api-key",
+  "model": "gemini-3.1-pro-preview",
   "mcpServers": {
     "figma": {
       "httpUrl": "https://mcp.figma.com/mcp",
