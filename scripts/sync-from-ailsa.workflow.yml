@@ -1,0 +1,88 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# FILE: .github/workflows/sync-from-ailsa.yml
+#
+# INSTRUCTIONS: Copy this file into NPXInnovation/design_system at the path:
+#   .github/workflows/sync-from-ailsa.yml
+#
+# This workflow runs INSIDE NPXInnovation/design_system, where it has access
+# to the NPXInnovation org secret SYNC_PAT. It pulls changes from
+# npxailsa/design_system (the source of truth) and pushes them to this repo.
+#
+# npxailsa/design_system is public — no auth needed to read from it.
+# GITHUB_TOKEN is used to push to NPXInnovation/design_system (write access).
+# ─────────────────────────────────────────────────────────────────────────────
+
+name: Sync from npxailsa/design_system
+
+on:
+  schedule:
+    # Runs every hour — adjust as needed
+    - cron: '0 * * * *'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Force push (overwrites local history — use with care)'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    name: Pull main from npxailsa/design_system
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Add npxailsa remote (public repo — no auth needed)
+        run: |
+          git remote add ailsa https://github.com/npxailsa/design_system.git
+
+      - name: Fetch from npxailsa/design_system
+        run: git fetch ailsa main
+
+      - name: Check if sync is needed
+        id: diff
+        run: |
+          LOCAL_SHA=$(git rev-parse HEAD)
+          AILSA_SHA=$(git rev-parse ailsa/main)
+
+          if [ "$LOCAL_SHA" = "$AILSA_SHA" ]; then
+            echo "up_to_date=true" >> $GITHUB_OUTPUT
+            echo "✅ Already in sync (SHA: $LOCAL_SHA)"
+          else
+            echo "up_to_date=false" >> $GITHUB_OUTPUT
+            AHEAD=$(git rev-list --count ailsa/main..HEAD)
+            BEHIND=$(git rev-list --count HEAD..ailsa/main)
+            echo "🔄 This repo is $AHEAD ahead / $BEHIND behind npxailsa/design_system"
+          fi
+
+      - name: Push ailsa/main to this repo
+        if: steps.diff.outputs.up_to_date != 'true'
+        run: |
+          FORCE_FLAG=""
+          if [ "${{ github.event.inputs.force }}" = "true" ]; then
+            FORCE_FLAG="--force"
+            echo "⚠️  Force push enabled"
+          fi
+          git push origin ailsa/main:main $FORCE_FLAG
+          echo "✅ Successfully synced npxailsa/design_system → NPXInnovation/design_system"
+
+      - name: Already in sync
+        if: steps.diff.outputs.up_to_date == 'true'
+        run: echo "✅ Nothing to sync."
