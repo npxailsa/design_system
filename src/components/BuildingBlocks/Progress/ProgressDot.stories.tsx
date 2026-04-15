@@ -113,33 +113,6 @@ export const StatePending: Story = {
   ),
 };
 
-export const AllInteractiveStates: Story = {
-  name: 'All Interactive States',
-  render: () => (
-    <div style={rowStyle}>
-      {ALL_STATES.map((state) => (
-        <div
-          key={state}
-          style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'var(--global-spacing-sizing-6px)' }}
-        >
-          <ProgressDot state={state} size="default" />
-          <span
-            style={{
-              fontFamily: 'var(--font-family-secondary)',
-              fontSize: 'var(--global-type-size-primary-label-xs)',
-              color: 'var(--global-color-neutral-gray-500)',
-              textTransform: 'capitalize',
-            }}
-          >
-            {state}
-          </span>
-        </div>
-      ))}
-    </div>
-  ),
-  parameters: { controls: { disable: true } },
-};
-
 /* ════════════════════════════════════════════════════════════════════════════
    SIZES
    ════════════════════════════════════════════════════════════════════════════ */

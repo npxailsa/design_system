@@ -133,33 +133,4 @@ export const FullDesignMatrix: Story = {
   ),
 };
 
-/* ── Size comparison ── */
-export const Sizes: Story = {
-  render: () => (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-      {ALL_SIZES.map((size) => (
-        <div
-          key={size}
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '8px',
-          }}
-        >
-          <StatusIndicator status="online" size={size} />
-          <span
-            style={{
-              fontFamily: 'var(--brand-font-primary)',
-              fontSize: 'var(--global-type-size-primary-label-xs)',
-              color: 'var(--global-color-neutral-gray-600)',
-              textTransform: 'capitalize',
-            }}
-          >
-            {size}
-          </span>
-        </div>
-      ))}
-    </div>
-  ),
-};
+/* (duplicate Sizes removed — canonical Sizes story is defined above) */

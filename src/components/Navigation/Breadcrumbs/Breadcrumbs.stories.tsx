@@ -138,7 +138,7 @@ export const Small: Story = {
 };
 
 /* ── Size / Default ── */
-export const Default: Story = {
+export const SizeDefault: Story = {
   name: 'Size / Default',
   args: {
     size: 'default',
