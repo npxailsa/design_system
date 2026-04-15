@@ -1,6 +1,5 @@
 name: Sync to NPXInnovation/design_system
 
-# Triggers automatically on every push to main, or manually from the Actions tab
 on:
   push:
     branches:
@@ -22,11 +21,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Verify SYNC_PAT is configured
+        run: |
+          if [ -z "${{ secrets.SYNC_PAT }}" ]; then
+            echo "❌ SYNC_PAT secret is not set or is empty."
+            echo ""
+            echo "To fix this:"
+            echo "  1. Go to https://github.com/npxailsa/design_system/settings/secrets/actions"
+            echo "  2. Click 'New repository secret'"
+            echo "  3. Name: SYNC_PAT"
+            echo "  4. Value: a PAT with 'repo' scope that has access to NPXInnovation/design_system"
+            exit 1
+          fi
+          echo "✅ SYNC_PAT is configured"
+
       - name: Checkout full history
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Configure git identity
         run: |
@@ -35,49 +47,46 @@ jobs:
 
       - name: Add NPXInnovation remote
         run: |
-          git remote add npx https://x-access-token:${{ secrets.SYNC_PAT }}@github.com/NPXInnovation/design_system.git
+          git remote add npx https://oauth2:${{ secrets.SYNC_PAT }}@github.com/NPXInnovation/design_system.git
 
-      - name: Fetch NPXInnovation remote
-        run: git fetch npx
+      - name: Verify access to NPXInnovation/design_system
+        run: |
+          if ! git ls-remote npx HEAD > /dev/null 2>&1; then
+            echo "❌ Cannot access NPXInnovation/design_system."
+            echo ""
+            echo "Possible causes:"
+            echo "  • The SYNC_PAT token has expired"
+            echo "  • The token lacks 'repo' scope"
+            echo "  • The token owner does not have write access to NPXInnovation/design_system"
+            exit 1
+          fi
+          echo "✅ Successfully connected to NPXInnovation/design_system"
 
-      - name: Check divergence
+      - name: Check if push is needed
         id: diff
         run: |
-          # Check if NPX main exists
-          if git ls-remote --exit-code npx main >/dev/null 2>&1; then
-            AHEAD=$(git rev-list --count npx/main..HEAD)
-            BEHIND=$(git rev-list --count HEAD..npx/main)
-            echo "ahead=$AHEAD" >> $GITHUB_OUTPUT
-            echo "behind=$BEHIND" >> $GITHUB_OUTPUT
-            echo "npx_exists=true" >> $GITHUB_OUTPUT
-            echo "NPX main is $BEHIND commits ahead of this repo; this repo is $AHEAD commits ahead of NPX main"
+          NPX_SHA=$(git ls-remote npx refs/heads/main | cut -f1)
+          LOCAL_SHA=$(git rev-parse HEAD)
+
+          if [ "$NPX_SHA" = "$LOCAL_SHA" ]; then
+            echo "up_to_date=true" >> $GITHUB_OUTPUT
+            echo "✅ NPXInnovation/design_system is already up to date (SHA: $LOCAL_SHA)"
           else
-            echo "npx_exists=false" >> $GITHUB_OUTPUT
-            echo "ahead=1" >> $GITHUB_OUTPUT
-            echo "behind=0" >> $GITHUB_OUTPUT
-            echo "NPX main branch does not exist yet — will create it"
+            echo "up_to_date=false" >> $GITHUB_OUTPUT
+            echo "🔄 Push needed — local: $LOCAL_SHA | npx: ${NPX_SHA:-'(empty)'}"
           fi
 
-      - name: Merge NPX changes (if any)
-        if: steps.diff.outputs.npx_exists == 'true' && steps.diff.outputs.behind != '0'
-        run: |
-          echo "NPX has ${{ steps.diff.outputs.behind }} commits not in this repo — merging with ours strategy for auto-generated/config files..."
-          git merge npx/main \
-            --no-edit \
-            --strategy-option=ours \
-            -m "chore: merge NPXInnovation/design_system into sync baseline [skip ci]" \
-            || (echo "Merge conflict — resolve manually and re-run" && exit 1)
-
       - name: Push to NPXInnovation
-        if: steps.diff.outputs.ahead != '0' || steps.diff.outputs.npx_exists == 'false'
+        if: steps.diff.outputs.up_to_date != 'true'
         run: |
           FORCE_FLAG=""
           if [ "${{ github.event.inputs.force }}" = "true" ]; then
             FORCE_FLAG="--force"
+            echo "⚠️  Force push enabled"
           fi
           git push npx HEAD:main $FORCE_FLAG
           echo "✅ Successfully pushed to NPXInnovation/design_system:main"
 
       - name: Nothing to sync
-        if: steps.diff.outputs.ahead == '0' && steps.diff.outputs.npx_exists == 'true'
-        run: echo "✅ NPXInnovation/design_system is already up to date."
+        if: steps.diff.outputs.up_to_date == 'true'
+        run: echo "✅ Already in sync — nothing to do."
