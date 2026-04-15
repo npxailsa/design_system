@@ -33,6 +33,9 @@ const config: StorybookConfig = {
     name: "@storybook/react-vite",
     options: {},
   },
+  "features": {
+    "componentsManifest": true
+  },
   "staticDirs": [
     "../public",
     ...getCodeEditorStaticDirs(__filename),
