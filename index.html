@@ -56,171 +56,12 @@
     
     <link href="./sb-addons/links-4/manager-bundle.js" rel="modulepreload" />
     
-    <link href="./sb-addons/storysource-5/manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/onboarding-5/manager-bundle.js" rel="modulepreload" />
     
     <link href="./sb-addons/themes-6/manager-bundle.js" rel="modulepreload" />
     
     <link href="./sb-addons/vitest-7/manager-bundle.js" rel="modulepreload" />
-    
-    <link href="./sb-addons/code-editor-8/manager-bundle.js" rel="modulepreload" />
-    
-    <link href="./sb-addons/storybook-9/manager-bundle.js" rel="modulepreload" />
-      <style>
-  /* ── F37 Ginger Pro ─────────────────────────────────────────────────────── */
-  @font-face {
-    font-family: 'F37GingerPro';
-    src: url('/typefaces/f37-ginger-thin.woff') format('woff');
-    font-weight: 100;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'F37GingerPro';
-    src: url('/typefaces/f37-ginger-thin-italic.woff') format('woff');
-    font-weight: 100;
-    font-style: italic;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'F37GingerPro';
-    src: url('/typefaces/f37-ginger-light.woff') format('woff');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'F37GingerPro';
-    src: url('/typefaces/f37-ginger-light-italic.woff') format('woff');
-    font-weight: 300;
-    font-style: italic;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'F37GingerPro';
-    src: url('/typefaces/f37-ginger.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'F37GingerPro';
-    src: url('/typefaces/f37-ginger-italic.woff') format('woff');
-    font-weight: 400;
-    font-style: italic;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'F37GingerPro';
-    src: url('/typefaces/f37-ginger-bold.woff') format('woff');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'F37GingerPro';
-    src: url('/typefaces/f37-ginger-bold-italic.woff') format('woff');
-    font-weight: 700;
-    font-style: italic;
-    font-display: swap;
-  }
-
-  /* ── Calibri ────────────────────────────────────────────────────────────── */
-  @font-face {
-    font-family: 'Calibri';
-    src: url('/typefaces/Calibri_Light.woff') format('woff');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Calibri';
-    src: url('/typefaces/Calibri_Light_Italic.woff') format('woff');
-    font-weight: 300;
-    font-style: italic;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Calibri';
-    src: url('/typefaces/Calibri.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Calibri';
-    src: url('/typefaces/Calibri_Italic.woff') format('woff');
-    font-weight: 400;
-    font-style: italic;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Calibri';
-    src: url('/typefaces/Calibri_Bold.woff') format('woff');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Calibri';
-    src: url('/typefaces/Calibri_Bold_Italic.woff') format('woff');
-    font-weight: 700;
-    font-style: italic;
-    font-display: swap;
-  }
-
-[id^="hidden"], [data-parent-id^="hidden"] {
-    display: none !important;
-}
-</style>
-
-<script>
-  // Patch ResizeObserver in the manager frame so callbacks are deferred via
-  // requestAnimationFrame. This prevents "ResizeObserver loop completed with
-  // undelivered notifications" from being thrown in the first place.
-  (function () {
-    if (typeof window === 'undefined' || typeof window.ResizeObserver === 'undefined') return;
-
-    var OriginalRO = window.ResizeObserver;
-    window.ResizeObserver = function PatchedResizeObserver(callback) {
-      return new OriginalRO(function (entries, observer) {
-        window.requestAnimationFrame(function () {
-          if (!Array.isArray(entries) || !entries.length) return;
-          callback(entries, observer);
-        });
-      });
-    };
-    window.ResizeObserver.prototype = OriginalRO.prototype;
-
-    // Also suppress via error event in capture phase.
-    window.addEventListener('error', function (e) {
-      if (
-        e.message &&
-        (e.message.indexOf('ResizeObserver loop completed') !== -1 ||
-          e.message.indexOf('ResizeObserver loop limit exceeded') !== -1)
-      ) {
-        e.stopImmediatePropagation();
-        e.preventDefault();
-      }
-    }, true);
-
-    // Suppress window.onerror path.
-    var origOnError = window.onerror;
-    window.onerror = function (message) {
-      if (
-        typeof message === 'string' &&
-        (message.indexOf('ResizeObserver loop completed') !== -1 ||
-          message.indexOf('ResizeObserver loop limit exceeded') !== -1)
-      ) {
-        return true;
-      }
-      if (typeof origOnError === 'function') {
-        return origOnError.apply(this, arguments);
-      }
-      return false;
-    };
-  })();
-</script>
- 
+       
 
     <style>
       #storybook-root[hidden] {
@@ -249,8 +90,7 @@
   "backgrounds": true,
   "outline": true,
   "measure": true,
-  "sidebarOnboardingChecklist": true,
-  "componentsManifest": true
+  "sidebarOnboardingChecklist": true
 };
         
       
@@ -311,15 +151,11 @@
       
         import './sb-addons/links-4/manager-bundle.js';
       
-        import './sb-addons/storysource-5/manager-bundle.js';
+        import './sb-addons/onboarding-5/manager-bundle.js';
       
         import './sb-addons/themes-6/manager-bundle.js';
       
         import './sb-addons/vitest-7/manager-bundle.js';
-      
-        import './sb-addons/code-editor-8/manager-bundle.js';
-      
-        import './sb-addons/storybook-9/manager-bundle.js';
       
 
       import './sb-manager/runtime.js';
