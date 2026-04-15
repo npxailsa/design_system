@@ -2,6 +2,8 @@ You must ALWAYS use the available design tokens / variables instead of hard-code
 /styles)
 Ensure that a "Documentation" story is listed as the first option for each individual component and/or each individual category/section/folder. You can find the templates here: https://b13c2766f08a441c88f202b4dedd76f2-scout-rock-fqlakaar.builderio.xyz/?path=/story/foundation-docstemplate--usage-guide
 
+Code Connect template files can be found here: https://developers.figma.com/docs/code-connect/template-api
+
 RULE: When implementing the designs, ensure that each UI component has a base of MUI under it. All the provided UI elements were built from the MUI Joy UI v5 version, and we want to ensure we get the beenfits of MUI updates and interactions for our users.
 
 MUI is the base of our components. 

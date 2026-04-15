@@ -1,7 +1,21 @@
 {
   "codeConnect": {
-    "include": ["**/*.figma.ts"],
+    "parser": "react",
     "label": "React",
-    "language": "jsx"
+    "language": "tsx",
+    "include": ["src/**/*.figma.ts"],
+    "exclude": [
+      "dist/**",
+      "build/**",
+      "storybook-static/**",
+      "node_modules/**",
+      "**/*.stories.tsx",
+      "**/*.test.tsx",
+      "**/*.spec.tsx"
+    ],
+    "defaultBranch": "main",
+    "importPaths": {
+      "src/components/*": "@npxailsa/design-system"
+    }
   }
 }
