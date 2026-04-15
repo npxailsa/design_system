@@ -143,9 +143,6 @@ export const AllInteractiveStates: Story = {
   parameters: { controls: { disable: true } },
 };
 
-/* Legacy all-sizes stories */
-export const AllSizesWithSubtext_legacy = undefined; // removed — use FullDesignMatrix
-
 /* ── All sizes — with subtext ── */
 export const AllSizesWithSubtext: Story = {
   name: 'All Sizes — With Subtext',
