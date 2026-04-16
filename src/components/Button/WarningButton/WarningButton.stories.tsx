@@ -61,6 +61,11 @@ export const Playground: Story = {
   },
 };
 
+export const Default: Story = {
+  name: 'Default',
+  args: { label: 'Warning button', variant: 'solid', size: 'default' },
+};
+
 /**
  * Solid variant — amber filled (#F4A403) background, black text and icons.
  * Use as the primary CTA in warning-status CardContent cards.

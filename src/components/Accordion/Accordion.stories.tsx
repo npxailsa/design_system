@@ -55,7 +55,7 @@ export const Documentation: Story = {
 
 export const Playground: Story = {
   name: 'Playground',
-  args: { type: 'default', size: 'default', title: 'Accordion Title', description: 'Supporting description text', showLeadingIcon: true, showStatusIcon: false, showDescription: true, defaultOpen: false },
+  args: { type: 'simple', size: 'default', title: 'Accordion Title', description: 'Supporting description text', showLeadingIcon: true, showStatusIcon: false, showDescription: true, defaultOpen: false },
 };
 
 export const Default: Story = { name: 'Default' };

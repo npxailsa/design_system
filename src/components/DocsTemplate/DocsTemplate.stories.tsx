@@ -21,6 +21,19 @@ export default meta;
 type Story = StoryObj<typeof DocsTemplate>;
 
 /**
+ * Documentation — must be listed first per design system convention.
+ */
+export const Documentation: Story = {
+  name: 'Documentation',
+  render: () => <DocsTemplateDocs />,
+  parameters: {
+    controls: { disable: true },
+    actions: { disable: true },
+    chromatic: { disableSnapshot: true },
+  },
+};
+
+/**
  * Full branded documentation page for the DocsTemplate system.
  */
 export const UsageGuide: Story = {

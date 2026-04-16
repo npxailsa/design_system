@@ -55,8 +55,8 @@ export default meta;
 type Story = StoryObj<typeof ButtonMenuItem>;
 
 /* ── Documentation (must be first) ── */
-export const ButtonMenuItemDocumentation: Story = {
-  name: 'Documentation — Button Menu Item',
+export const Documentation: Story = {
+  name: 'Documentation',
   render: () => <ButtonMenuItemDocs />,
   parameters: {
     controls: { disable: true },
@@ -65,17 +65,40 @@ export const ButtonMenuItemDocumentation: Story = {
 };
 
 /* ── Default ── */
-export const ButtonMenuItemDefault: Story = {
-  name: 'Button Menu Item — Default',
+export const Playground: Story = { name: 'Playground' };
+
+export const Default: Story = {
+  name: 'Default',
   args: {
     label: 'This is the top',
     position: 'solo',
   },
 };
 
-/* ── All Positions ── */
-export const ButtonMenuItemPositions: Story = {
-  name: 'Button Menu Item — Positions',
+/* ── Sizes ── */
+export const Sizes: Story = {
+  name: 'Sizes',
+  render: () => {
+    const sizes: ButtonMenuItemSize[] = ['small', 'default', 'large'];
+    return (
+      <div style={{ display: 'flex', gap: 'var(--global-spacing-sizing-32px)', alignItems: 'flex-start', flexWrap: 'wrap', padding: 'var(--global-spacing-sizing-20px)' }}>
+        {sizes.map((size) => (
+          <div key={size} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-4px)' }}>
+            <span style={{ fontSize: 'var(--global-type-size-primary-label-xs)', color: 'var(--global-color-neutral-gray-500)', fontFamily: 'var(--brand-font-primary)', textTransform: 'capitalize', marginBottom: 'var(--global-spacing-sizing-4px)' }}>{size}</span>
+            <ButtonMenuItem label="Top" position="top" size={size} />
+            <ButtonMenuItem label="Middle" position="mid" size={size} />
+            <ButtonMenuItem label="Bottom" position="bottom" size={size} />
+          </div>
+        ))}
+      </div>
+    );
+  },
+  parameters: { controls: { disable: true } },
+};
+
+/* ── Status / Positions ── */
+export const StatusPositions: Story = {
+  name: 'Status / Positions',
   render: () => {
     const positions: ButtonMenuItemPosition[] = ['top', 'mid', 'bottom', 'solo'];
     return (
@@ -118,8 +141,8 @@ export const ButtonMenuItemPositions: Story = {
 };
 
 /* ── All States ── */
-export const ButtonMenuItemStates: Story = {
-  name: 'Button Menu Item — States',
+export const StatusStates: Story = {
+  name: 'Status / States',
   render: () => (
     <div
       style={{
@@ -165,8 +188,8 @@ export const ButtonMenuItemStates: Story = {
 };
 
 /* ── All Sizes ── */
-export const ButtonMenuItemSizes: Story = {
-  name: 'Button Menu Item — Sizes',
+export const StatusAllSizes: Story = {
+  name: 'Status / All Sizes',
   render: () => {
     const sizes: ButtonMenuItemSize[] = ['small', 'default', 'large'];
     return (
@@ -212,8 +235,47 @@ export const ButtonMenuItemSizes: Story = {
 };
 
 /* ── With Icons ── */
-export const ButtonMenuItemWithIcons: Story = {
-  name: 'Button Menu Item — With Icons',
+export const ComponentBreakdown: Story = {
+  name: 'Component Breakdown',
+  render: () => (
+    <div style={{ display: 'flex', gap: 'var(--global-spacing-sizing-32px)', alignItems: 'flex-start', flexWrap: 'wrap', padding: 'var(--global-spacing-sizing-20px)' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-4px)' }}>
+        <span style={{ fontSize: 'var(--global-type-size-primary-label-xs)', color: 'var(--global-color-neutral-gray-500)', fontFamily: 'var(--brand-font-primary)', marginBottom: 'var(--global-spacing-sizing-4px)' }}>Leading icons</span>
+        <ButtonMenuItem label="Edit" position="top" leadingIcon={EditIcon} />
+        <ButtonMenuItem label="Duplicate" position="mid" leadingIcon={ContentCopyIcon} />
+        <ButtonMenuItem label="Download" position="mid" leadingIcon={DownloadIcon} />
+        <ButtonMenuItem label="Delete" position="bottom" leadingIcon={DeleteIcon} />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-4px)' }}>
+        <span style={{ fontSize: 'var(--global-type-size-primary-label-xs)', color: 'var(--global-color-neutral-gray-500)', fontFamily: 'var(--brand-font-primary)', marginBottom: 'var(--global-spacing-sizing-4px)' }}>Trailing icon</span>
+        <ButtonMenuItem label="View options" position="top" trailingIcon={ChevronRightIcon} />
+        <ButtonMenuItem label="Sort by" position="mid" trailingIcon={ChevronRightIcon} />
+        <ButtonMenuItem label="Group by" position="bottom" trailingIcon={ChevronRightIcon} />
+      </div>
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const AllInteractiveStates: Story = {
+  name: 'All Interactive States',
+  render: () => (
+    <div style={{ display: 'flex', gap: 'var(--global-spacing-sizing-24px)', alignItems: 'flex-start', flexWrap: 'wrap', padding: 'var(--global-spacing-sizing-20px)' }}>
+      {[{ label: 'Default', props: {} }, { label: 'Selected', props: { selected: true } }, { label: 'Disabled', props: { disabled: true } }].map(({ label, props }) => (
+        <div key={label} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-4px)' }}>
+          <span style={{ fontSize: 'var(--global-type-size-primary-label-xs)', color: 'var(--global-color-neutral-gray-500)', fontFamily: 'var(--brand-font-primary)', marginBottom: 'var(--global-spacing-sizing-4px)' }}>{label}</span>
+          <ButtonMenuItem label="Top" position="top" size="default" {...props} />
+          <ButtonMenuItem label="Middle" position="mid" size="default" {...props} />
+          <ButtonMenuItem label="Bottom" position="bottom" size="default" {...props} />
+        </div>
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+export const StatusWithIcons: Story = {
+  name: 'Status / With Icons',
   render: () => (
     <div
       style={{
