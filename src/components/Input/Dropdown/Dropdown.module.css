@@ -52,9 +52,9 @@
   box-shadow: 0 0 0 0.5px var(--dropdown-border-color-focus);
 }
 
-/* Square off bottom corners when menu is open */
+/* Keep full border-radius on trigger even when open — corners stay consistently rounded */
 .trigger--open {
-  border-radius: var(--dropdown-border-radius) var(--dropdown-border-radius) 0 0;
+  border-radius: var(--dropdown-border-radius);
 }
 
 /* ── Sizes ── */
@@ -274,12 +274,12 @@
 /* ── Dropdown menu panel ────────────────────────────────────── */
 .menu {
   list-style: none;
-  margin: 0;
+  margin: var(--global-spacing-sizing-4px) 0 0;
   padding: var(--dropdown-menu-padding-y) 0;
   background: var(--dropdown-menu-bg);
   border: var(--dropdown-border-width) solid var(--dropdown-menu-border);
-  border-top: none;
-  border-radius: 0 0 var(--dropdown-menu-radius) var(--dropdown-menu-radius);
+  border-top: var(--dropdown-border-width) solid var(--dropdown-menu-border);
+  border-radius: var(--dropdown-menu-radius);
   box-shadow: var(--dropdown-menu-shadow);
   max-height: var(--dropdown-menu-max-height);
   overflow-y: auto;

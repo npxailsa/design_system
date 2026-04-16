@@ -311,7 +311,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
                 key={opt.id}
                 label={opt.label}
                 size={tagSize}
-                colour="blue"
+                colour="default"
                 variant="filled"
                 showRemove
                 onRemove={() => removeTag(opt.id)}
