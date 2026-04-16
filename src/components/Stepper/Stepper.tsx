@@ -97,40 +97,36 @@ export const Stepper: React.FC<StepperProps> = ({
   className,
 }) => {
   /**
-   * activeIndex  — which step is currently "active" (current).
-   * completedSet — indices that are shown as `complete`.
+   * activeIndex  — which step is currently shown as "active" (current).
    *
-   * On mount we seed completedSet from any steps that are already marked
-   * `complete` in the prop data so the initial visual matches the data.
+   * Completion is intentionally NOT derived from navigation order.
+   * A step is only `complete` if it was explicitly marked so in the original
+   * `steps` prop data. Clicking forward or backward never auto-promotes or
+   * auto-demotes any step — users may skip steps in any direction without
+   * implying prior steps were finished.
    */
   const [activeIndex, setActiveIndex] = React.useState<number>(() =>
     steps.findIndex((s) => s.state === 'active'),
   );
 
-  const [completedSet, setCompletedSet] = React.useState<ReadonlySet<number>>(() => {
-    const s = new Set<number>();
-    steps.forEach((step, i) => {
-      if (step.state === 'complete') s.add(i);
-    });
-    return s;
-  });
-
   if (!steps || steps.length === 0) return null;
 
   /**
-   * Compute the display state for a single step when the stepper is interactive.
+   * Display state for a single step when the stepper is interactive.
    *
-   * Priority order:
-   *  1. Disabled (from prop data) → always `disabled`
-   *  2. Currently active index   → `active`
-   *  3. In the completed set     → `complete`
-   *  4. Everything else          → `default`
+   * Priority:
+   *  1. `disabled` in prop data → always `disabled`
+   *  2. Currently active index  → `active`
+   *  3. `complete` in prop data → `complete`
+   *  4. Everything else         → `default`
+   *
+   * Completion state is never inferred from position relative to activeIndex.
    */
   const getDisplayState = (step: StepperStep, index: number): StepperStepState => {
     if (!interactive) return step.state ?? 'default';
     if (step.state === 'disabled') return 'disabled';
     if (index === activeIndex) return 'active';
-    if (completedSet.has(index)) return 'complete';
+    if (step.state === 'complete') return 'complete';
     return 'default';
   };
 
@@ -138,37 +134,6 @@ export const Stepper: React.FC<StepperProps> = ({
     if (!interactive) return;
     if (steps[clickedIdx]?.state === 'disabled') return;
     if (clickedIdx === activeIndex) return;
-
-    setCompletedSet((prev) => {
-      const next = new Set(prev);
-
-      if (clickedIdx > activeIndex && activeIndex >= 0) {
-        // ── Forward navigation ─────────────────────────────────────────────
-        // All steps from the old active up to (but not including) the new
-        // active become complete.
-        for (let i = activeIndex; i < clickedIdx; i++) {
-          if (steps[i]?.state !== 'disabled') {
-            next.add(i);
-          }
-        }
-      } else if (clickedIdx < activeIndex) {
-        // ── Backward navigation ────────────────────────────────────────────
-        // Steps between the new active and the old active that were only
-        // *dynamically* completed should revert to default. Steps that were
-        // explicitly `complete` in the original prop data are preserved.
-        for (let i = clickedIdx + 1; i <= activeIndex; i++) {
-          if (steps[i]?.state !== 'complete') {
-            next.delete(i);
-          }
-        }
-      }
-
-      // The newly active step is no longer complete — it is now `active`.
-      next.delete(clickedIdx);
-
-      return next;
-    });
-
     setActiveIndex(clickedIdx);
     onStepClick?.(clickedIdx, steps[clickedIdx]);
   };
