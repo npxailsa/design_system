@@ -26,9 +26,7 @@ export interface StepperStep {
 }
 
 export interface StepperProps {
-  /**
-   * Array of step definitions. Numbers are generated automatically.
-   */
+  /** Array of step definitions. Numbers are generated automatically. */
   steps: StepperStep[];
   /**
    * Visual size of all step circles and connector lines.
@@ -47,14 +45,20 @@ export interface StepperProps {
   lineType?: StepperLineType;
   /**
    * Stroke thickness for the connector lines.
-   * @default '2-px'
+   * @default '1-px'
    */
   lineStroke?: StepperLineStroke;
   /**
-   * When true, each step is clickable. Clicking a step sets it as the active
-   * (current) step. Only steps that were explicitly marked `complete` in the
-   * original data remain complete — no steps are auto-promoted to complete
-   * purely because they precede the clicked step.
+   * When true, each step is clickable.
+   *
+   * Navigation rules:
+   * - **Forward** (clicking a step after the current one): all steps between
+   *   the old active step and the newly clicked step are marked `complete`.
+   * - **Backward** (clicking a step before the current one): steps that were
+   *   only dynamically completed revert to `default`; steps that were
+   *   explicitly `complete` in the original data are preserved.
+   * - `disabled` steps are never interactive.
+   *
    * @default false
    */
   interactive?: boolean;
@@ -69,52 +73,15 @@ export interface StepperProps {
 
 /* ── Helpers ─────────────────────────────────────────────────── */
 
-/**
- * Determine the connector line state based on adjacent step states.
- */
 function resolveLineState(
   leftState: StepperStepState,
   rightState: StepperStepState,
 ): StepperLineState {
   if (leftState === 'disabled' || rightState === 'disabled') return 'disabled';
-
   if (leftState === 'complete' && (rightState === 'complete' || rightState === 'active')) {
     return 'complete';
   }
-
   return 'to-do';
-}
-
-/**
- * Derive the display state for a step when the stepper is interactive.
- *
- * Rules:
- * - Disabled steps are always `disabled`.
- * - The clicked (active) step is `active`.
- * - Steps *before* the active step keep their original state — a step is only
- *   shown as `complete` if it was explicitly defined as such in the data.
- * - Steps *after* the active step fall back to `default` (future / not yet reached).
- */
-function deriveDisplayState(
-  step: StepperStep,
-  index: number,
-  activeIndex: number,
-): StepperStepState {
-  const original: StepperStepState = step.state ?? 'default';
-
-  // Disabled steps are always locked
-  if (original === 'disabled') return 'disabled';
-
-  // The selected / current step
-  if (index === activeIndex) return 'active';
-
-  // Steps before the active one: only complete if they were actually complete
-  if (index < activeIndex) {
-    return original === 'complete' ? 'complete' : original;
-  }
-
-  // Steps after the active one are upcoming / not yet reached
-  return 'default';
 }
 
 /* ── Component ───────────────────────────────────────────────────────────── */
@@ -129,47 +96,98 @@ export const Stepper: React.FC<StepperProps> = ({
   onStepClick,
   className,
 }) => {
-  // Initialise activeIndex from the first step with state === 'active'
-  const initialActiveIndex = React.useMemo(
-    () => steps.findIndex((s) => s.state === 'active'),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [],
+  /**
+   * activeIndex  — which step is currently "active" (current).
+   * completedSet — indices that are shown as `complete`.
+   *
+   * On mount we seed completedSet from any steps that are already marked
+   * `complete` in the prop data so the initial visual matches the data.
+   */
+  const [activeIndex, setActiveIndex] = React.useState<number>(() =>
+    steps.findIndex((s) => s.state === 'active'),
   );
 
-  const [activeIndex, setActiveIndex] = React.useState<number>(initialActiveIndex);
+  const [completedSet, setCompletedSet] = React.useState<ReadonlySet<number>>(() => {
+    const s = new Set<number>();
+    steps.forEach((step, i) => {
+      if (step.state === 'complete') s.add(i);
+    });
+    return s;
+  });
 
   if (!steps || steps.length === 0) return null;
+
+  /**
+   * Compute the display state for a single step when the stepper is interactive.
+   *
+   * Priority order:
+   *  1. Disabled (from prop data) → always `disabled`
+   *  2. Currently active index   → `active`
+   *  3. In the completed set     → `complete`
+   *  4. Everything else          → `default`
+   */
+  const getDisplayState = (step: StepperStep, index: number): StepperStepState => {
+    if (!interactive) return step.state ?? 'default';
+    if (step.state === 'disabled') return 'disabled';
+    if (index === activeIndex) return 'active';
+    if (completedSet.has(index)) return 'complete';
+    return 'default';
+  };
+
+  const handleStepClick = (clickedIdx: number) => {
+    if (!interactive) return;
+    if (steps[clickedIdx]?.state === 'disabled') return;
+    if (clickedIdx === activeIndex) return;
+
+    setCompletedSet((prev) => {
+      const next = new Set(prev);
+
+      if (clickedIdx > activeIndex && activeIndex >= 0) {
+        // ── Forward navigation ─────────────────────────────────────────────
+        // All steps from the old active up to (but not including) the new
+        // active become complete.
+        for (let i = activeIndex; i < clickedIdx; i++) {
+          if (steps[i]?.state !== 'disabled') {
+            next.add(i);
+          }
+        }
+      } else if (clickedIdx < activeIndex) {
+        // ── Backward navigation ────────────────────────────────────────────
+        // Steps between the new active and the old active that were only
+        // *dynamically* completed should revert to default. Steps that were
+        // explicitly `complete` in the original prop data are preserved.
+        for (let i = clickedIdx + 1; i <= activeIndex; i++) {
+          if (steps[i]?.state !== 'complete') {
+            next.delete(i);
+          }
+        }
+      }
+
+      // The newly active step is no longer complete — it is now `active`.
+      next.delete(clickedIdx);
+
+      return next;
+    });
+
+    setActiveIndex(clickedIdx);
+    onStepClick?.(clickedIdx, steps[clickedIdx]);
+  };
 
   const wrapCls = [styles.stepper, className].filter(Boolean).join(' ');
   const lineWrapCls = [styles.lineWrapper, styles[`lineWrapper--${size}`]].join(' ');
 
-  const handleStepClick = (index: number) => {
-    if (!interactive) return;
-    setActiveIndex(index);
-    onStepClick?.(index, steps[index]);
-  };
-
   return (
     <div className={wrapCls} role="group" aria-label="Progress steps">
       {steps.map((step, index) => {
-        const stepState: StepperStepState = interactive
-          ? deriveDisplayState(step, index, activeIndex)
-          : (step.state ?? 'default');
-
+        const stepState = getDisplayState(step, index);
         const isLast = index === steps.length - 1;
-        const isDisabled = stepState === 'disabled';
+        const isDisabled = step.state === 'disabled';
 
-        const nextState: StepperStepState = !isLast
-          ? (interactive
-              ? deriveDisplayState(steps[index + 1], index + 1, activeIndex)
-              : (steps[index + 1].state ?? 'default'))
-          : 'default';
-
-        const lineState = resolveLineState(stepState, nextState);
+        const nextStepState = !isLast ? getDisplayState(steps[index + 1], index + 1) : 'default';
+        const lineState = resolveLineState(stepState, nextStepState);
 
         return (
           <React.Fragment key={step.id}>
-            {/* Individual step — single-element StepperSteps */}
             <div
               className={[
                 styles.stepWrapper,
@@ -206,7 +224,6 @@ export const Stepper: React.FC<StepperProps> = ({
               />
             </div>
 
-            {/* Connector between this step and the next */}
             {!isLast && (
               <div className={lineWrapCls}>
                 <StepperLines
