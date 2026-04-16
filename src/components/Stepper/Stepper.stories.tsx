@@ -32,12 +32,20 @@ const meta: Meta<typeof Stepper> = {
       options: ['1-px', '2-px', '3-px'],
       description: 'Stroke thickness of the connector line',
     },
+    interactive: {
+      control: 'boolean',
+      description:
+        'When true, each step is clickable. Clicking sets it as the current (active) step. ' +
+        'Only steps explicitly marked complete in the data remain complete — prior steps are ' +
+        'not auto-promoted.',
+    },
   },
   args: {
     size: 'default',
     showLabel: true,
     lineType: 'solid',
     lineStroke: '1-px',
+    interactive: false,
   },
 };
 
@@ -171,7 +179,57 @@ export const States: Story = {
   parameters: { controls: { include: ['size', 'showLabel', 'lineType', 'lineStroke'] } },
 };
 
-/* 4 — Sizes */
+/* 4 — Interactive */
+export const Interactive: Story = {
+  name: 'Interactive',
+  render: (args) => {
+    const [log, setLog] = React.useState<string>('Click any step to navigate');
+
+    const baseSteps: StepperStep[] = [
+      { id: 1, label: 'Account setup',  state: 'complete' },
+      { id: 2, label: 'Plan selection', state: 'complete' },
+      { id: 3, label: 'Payment',        state: 'active' },
+      { id: 4, label: 'Confirmation',   state: 'default' },
+      { id: 5, label: 'Done',           state: 'default' },
+    ];
+
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', maxWidth: '640px' }}>
+        <p style={{ margin: 0, fontSize: '13px', color: 'var(--global-color-neutral-gray-500)' }}>
+          Click any step to jump to it. Steps marked <strong>complete</strong> in the data remain
+          complete; future steps reset to <strong>default</strong>.
+        </p>
+        <Stepper
+          {...args}
+          steps={baseSteps}
+          interactive
+          onStepClick={(index, step) =>
+            setLog(`Navigated to step ${index + 1}: "${step.label}"`)
+          }
+        />
+        <p
+          style={{
+            margin: 0,
+            padding: '8px 12px',
+            background: 'var(--global-color-neutral-gray-100)',
+            borderRadius: 'var(--global-spacing-radius-sm, 4px)',
+            fontSize: '12px',
+            fontFamily: 'monospace',
+            color: 'var(--global-color-neutral-gray-700)',
+          }}
+        >
+          {log}
+        </p>
+      </div>
+    );
+  },
+  parameters: {
+    controls: { include: ['size', 'showLabel', 'lineType', 'lineStroke'] },
+    chromatic: { disableSnapshot: true },
+  },
+};
+
+/* 5 — Sizes */
 export const Sizes: Story = {
   name: 'Sizes',
   render: () => (

@@ -51,3 +51,24 @@
 .line {
   flex: 1 1 auto;
 }
+
+/* ── Interactive step wrapper ───────────────────────────────── */
+
+/**
+ * When the Stepper is in interactive mode each non-disabled step wrapper
+ * receives this class so it looks and behaves like a clickable element.
+ */
+.stepWrapperInteractive {
+  cursor: pointer;
+  border-radius: var(--global-spacing-radius-sm, 4px);
+  outline: none;
+  transition: opacity 0.15s ease;
+}
+
+.stepWrapperInteractive:hover {
+  opacity: 0.8;
+}
+
+.stepWrapperInteractive:focus-visible {
+  box-shadow: 0 0 0 2px var(--global-color-brand-primary-500, #3b82f6);
+}
