@@ -31,6 +31,7 @@ on:
 
 permissions:
   contents: write
+  workflows: write   # Required to push changes to .github/workflows/ files
 
 jobs:
   sync:

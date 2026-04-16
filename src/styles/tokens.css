@@ -2889,6 +2889,93 @@
   --simple-field-dropdown-padding-y:    var(--global-spacing-sizing-4px);
   --simple-field-dropdown-option-pad:   var(--global-spacing-sizing-8px) var(--global-spacing-sizing-12px);
 
+  /* ── Dropdown (Select) component tokens ─────────────────────────── */
+  /* Reuses SimpleField sizing/colour tokens where identical */
+  --dropdown-height-small:              var(--simple-field-height-small);
+  --dropdown-height-default:            var(--simple-field-height-default);
+  --dropdown-height-large:              var(--simple-field-height-large);
+  --dropdown-border-radius:             var(--simple-field-border-radius);
+  --dropdown-border-width:              var(--simple-field-border-width);
+  --dropdown-gap:                       var(--simple-field-gap);
+  --dropdown-padding-x-small:          var(--simple-field-padding-x-small);
+  --dropdown-padding-x-default:        var(--simple-field-padding-x-default);
+  --dropdown-padding-x-large:          var(--simple-field-padding-x-large);
+
+  /* Icon sizes */
+  --dropdown-icon-size-small:          var(--simple-field-icon-size-small);
+  --dropdown-icon-size-default:        var(--simple-field-icon-size-default);
+  --dropdown-icon-size-large:          var(--simple-field-icon-size-large);
+
+  /* Typography */
+  --dropdown-label-font:               var(--simple-field-label-font);
+  --dropdown-label-size:               var(--simple-field-label-size);
+  --dropdown-label-weight:             var(--simple-field-label-weight);
+  --dropdown-label-line-height:        var(--simple-field-label-line-height);
+  --dropdown-label-color:              var(--simple-field-label-color);
+  --dropdown-input-font:               var(--simple-field-input-font);
+  --dropdown-input-weight:             var(--simple-field-input-weight);
+  --dropdown-input-size-small:         var(--global-type-size-primary-label-sm);
+  --dropdown-input-size-default:       var(--global-type-size-primary-label);
+  --dropdown-input-size-large:         var(--global-type-size-primary-label-lg);
+
+  /* Colors — default */
+  --dropdown-bg:                       var(--simple-field-bg);
+  --dropdown-border-color:             var(--simple-field-border-color);
+  --dropdown-text-color:               var(--simple-field-text-color);
+  --dropdown-placeholder-color:        var(--simple-field-placeholder-color);
+  --dropdown-icon-color:               var(--simple-field-icon-color);
+  --dropdown-chevron-color:            var(--global-color-neutral-gray-500);
+  --dropdown-clear-color:              var(--simple-field-clear-color);
+
+  /* Colors — focused / open */
+  --dropdown-border-color-focus:       var(--simple-field-border-color-focus);
+  --dropdown-icon-color-focus:         var(--simple-field-icon-color-focus);
+
+  /* Colors — states */
+  --dropdown-border-color-error:       var(--simple-field-border-color-error);
+  --dropdown-border-color-warning:     var(--simple-field-border-color-warning);
+  --dropdown-border-color-success:     var(--simple-field-border-color-success);
+
+  /* Colors — disabled */
+  --dropdown-bg-disabled:              var(--simple-field-bg-disabled);
+  --dropdown-border-color-disabled:    var(--simple-field-border-color-disabled);
+  --dropdown-text-color-disabled:      var(--simple-field-text-color-disabled);
+
+  /* Helper text */
+  --dropdown-helper-font:              var(--simple-field-helper-font);
+  --dropdown-helper-size:              var(--simple-field-helper-size);
+  --dropdown-helper-line-height:       var(--simple-field-helper-line-height);
+  --dropdown-helper-color:             var(--simple-field-helper-color);
+  --dropdown-helper-gap:               var(--simple-field-helper-gap);
+
+  /* Dropdown menu panel */
+  --dropdown-menu-bg:                  var(--global-color-base-white);
+  --dropdown-menu-border:              var(--global-color-neutral-gray-200);
+  --dropdown-menu-radius:              var(--global-spacing-radius-6px);
+  --dropdown-menu-shadow:              var(--shadow-shadow-sm-box-shadow);
+  --dropdown-menu-max-height:          280px;
+  --dropdown-menu-padding-y:           var(--global-spacing-sizing-4px);
+
+  /* Menu item */
+  --dropdown-option-font:              var(--brand-font-secondary);
+  --dropdown-option-size-small:        var(--global-type-size-primary-label-xs);
+  --dropdown-option-size-default:      var(--global-type-size-primary-label-sm);
+  --dropdown-option-size-large:        var(--global-type-size-primary-label);
+  --dropdown-option-color:             var(--global-color-base-black);
+  --dropdown-option-color-disabled:    var(--global-color-neutral-gray-400);
+  --dropdown-option-pad-small:         var(--global-spacing-sizing-6px) var(--global-spacing-sizing-8px);
+  --dropdown-option-pad-default:       var(--global-spacing-sizing-8px) var(--global-spacing-sizing-12px);
+  --dropdown-option-pad-large:         var(--global-spacing-sizing-10px) var(--global-spacing-sizing-16px);
+  --dropdown-option-hover-bg:          var(--global-color-neutral-gray-50);
+  --dropdown-option-selected-bg:       var(--global-color-primary-sky-blue-50);
+  --dropdown-option-selected-color:    var(--brand-primary);
+  --dropdown-option-active-bg:         var(--global-color-primary-sky-blue-100);
+  --dropdown-option-radius:            var(--global-spacing-radius-4px);
+  --dropdown-empty-color:              var(--global-color-neutral-gray-400);
+
+  /* Checkbox inside multi-select option */
+  --dropdown-checkbox-color:           var(--brand-primary);
+
   /* ── TextArea component tokens ──────────────────────────────────── */
   /* Min-heights (rows × line-height + padding) */
   --textarea-min-height-small:          80px;
