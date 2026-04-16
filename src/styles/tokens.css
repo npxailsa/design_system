@@ -2171,6 +2171,111 @@
   --btn-menu-item-transition-easing:     var(--global-animation-easing-default);
 
   /* ==========================================================================
+     COMPONENT: SelectOption
+     --------------------------------------------------------------------------
+     A single list item used in select / dropdown menus. Supports plain text,
+     checkbox (multi-select), and radio (single-select) variants. Position prop
+     controls border-radius and collapsed internal borders.
+
+     Figma spec:
+       Default  : white bg, 0.5px #D2D5DA border, #1C1C1C text
+       Hover    : light blue bg (#E7E9F4)
+       Selected : brand-primary bg, white text
+       Disabled : gray-50 bg, gray-200 border, gray-300 text
+     ========================================================================== */
+
+  /* SelectOption — colours */
+  --select-option-bg:                            var(--global-color-base-white);
+  --select-option-border-color:                  var(--global-color-neutral-gray-300);
+  --select-option-border-width:                  var(--global-spacing-stroke-0-5px);
+  --select-option-color:                         var(--global-color-base-black);
+
+  --select-option-bg-hover:                      var(--global-color-primary-blue-blue-100);
+  --select-option-color-hover:                   var(--global-color-base-black);
+  --select-option-bg-active:                     var(--global-color-primary-blue-blue-200);
+
+  --select-option-bg-selected:                   var(--brand-primary);
+  --select-option-border-color-selected:         var(--brand-primary);
+  --select-option-border-width-selected:         var(--global-spacing-stroke-0-5px);
+  --select-option-color-selected:                var(--global-color-base-white);
+
+  --select-option-bg-disabled:                   var(--global-color-neutral-gray-50);
+  --select-option-border-color-disabled:         var(--global-color-neutral-gray-200);
+  --select-option-color-disabled:                var(--global-color-neutral-gray-300);
+
+  /* SelectOption — shape */
+  --select-option-radius:                        var(--global-spacing-radius-6px);
+
+  /* SelectOption — focus ring */
+  --select-option-focus-ring-width:              var(--global-spacing-stroke-2px);
+  --select-option-focus-ring-color:              var(--brand-primary);
+  --select-option-focus-ring-offset:             var(--global-spacing-sizing-2px);
+
+  /* SelectOption — sizing */
+  --select-option-min-height-sm:                 var(--global-spacing-sizing-32px);
+  --select-option-min-height:                    var(--global-spacing-sizing-40px);
+  --select-option-min-height-lg:                 var(--global-spacing-sizing-52px);
+  --select-option-min-width:                     var(--global-spacing-sizing-80px);
+
+  /* SelectOption — padding (top/bottom positions get asymmetric padding via CSS) */
+  --select-option-padding-sm:                    var(--global-spacing-sizing-6px) var(--global-spacing-sizing-12px);
+  --select-option-padding:                       var(--global-spacing-sizing-8px) var(--global-spacing-sizing-12px);
+  --select-option-padding-lg:                    var(--global-spacing-sizing-8px) var(--global-spacing-sizing-16px);
+
+  /* SelectOption — gap between children */
+  --select-option-gap:                           var(--global-spacing-sizing-8px);
+
+  /* SelectOption — typography */
+  --select-option-font-family:                   var(--brand-font-secondary);
+  --select-option-font-weight:                   var(--global-type-weight-light);
+  --select-option-font-size-sm:                  var(--global-type-size-secondary-body-sm);
+  --select-option-font-size:                     var(--global-type-size-secondary-body);
+  --select-option-font-size-lg:                  var(--global-type-size-secondary-body-lg);
+  --select-option-line-height-sm:                var(--global-type-line-height-body-sm);
+  --select-option-line-height:                   var(--global-type-line-height-body);
+  --select-option-line-height-lg:                var(--global-type-line-height-body-lg);
+  --select-option-letter-spacing:                var(--global-type-letter-spacing-secondary-body);
+
+  /* SelectOption — icons */
+  --select-option-icon-size-sm:                  var(--global-spacing-sizing-14px);
+  --select-option-icon-size:                     var(--global-spacing-sizing-16px);
+  --select-option-icon-size-lg:                  var(--global-spacing-sizing-18px);
+
+  /* SelectOption — selection indicator (checkbox / radio) */
+  --select-option-indicator-size-sm:             var(--global-spacing-sizing-14px);
+  --select-option-indicator-size:                var(--global-spacing-sizing-16px);
+  --select-option-indicator-size-lg:             var(--global-spacing-sizing-18px);
+  --select-option-indicator-border-width:        var(--global-spacing-stroke-1px);
+  --select-option-indicator-border-color:        var(--global-color-neutral-gray-300);
+  --select-option-indicator-bg:                  var(--global-color-base-white);
+  --select-option-indicator-checkbox-radius:     var(--global-spacing-radius-4px);
+  --select-option-indicator-radio-radius:        var(--global-spacing-radius-full);
+
+  /* Checked indicator */
+  --select-option-indicator-bg-checked:          var(--brand-primary);
+  --select-option-indicator-border-color-checked: var(--brand-primary);
+  --select-option-indicator-color-checked:       var(--global-color-base-white);
+  --select-option-indicator-icon-size:           10px;
+  --select-option-indicator-dot-size:            var(--global-spacing-sizing-8px);
+
+  /* Disabled indicator */
+  --select-option-indicator-bg-disabled:         var(--global-color-neutral-gray-100);
+  --select-option-indicator-border-color-disabled: var(--global-color-neutral-gray-200);
+  --select-option-indicator-color-disabled:      var(--global-color-neutral-gray-300);
+
+  /* Indicator on selected row (row has blue bg) */
+  --select-option-indicator-bg-on-selected:      rgba(255,255,255,0.15);
+  --select-option-indicator-border-color-on-selected: rgba(255,255,255,0.6);
+  --select-option-indicator-color-on-selected:   var(--global-color-base-white);
+  --select-option-indicator-bg-on-selected-checked: var(--global-color-base-white);
+  --select-option-indicator-border-color-on-selected-checked: var(--global-color-base-white);
+  --select-option-indicator-color-on-selected-checked: var(--brand-primary);
+
+  /* SelectOption — transition */
+  --select-option-transition-duration:           var(--global-animation-duration-fast);
+  --select-option-transition-easing:             var(--global-animation-easing-default);
+
+  /* ==========================================================================
      COMPONENT: SplitButton
      --------------------------------------------------------------------------
      A compound button pairing a primary action (main zone) with a chevron

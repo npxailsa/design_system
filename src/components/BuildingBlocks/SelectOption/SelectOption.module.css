@@ -1,0 +1,297 @@
+/* ==========================================================================
+   SelectOption — BuildingBlocks Component
+   --------------------------------------------------------------------------
+   A single, position-aware select option item. Used individually or stacked
+   inside a dropdown/select menu. Supports checkbox, radio, and plain-text
+   selection modes. Position prop controls border-radius and border edges so
+   a stack reads as a single panel with collapsed internal borders.
+
+   Figma spec (BuildingBlocks/SelectOption):
+     Default  : #FFF bg, 0.5px #D2D5DA border, #1C1C1C text, Calibri Light
+     Hover    : light blue bg (#E7E9F4), same text colour
+     Focus    : 2px focus ring
+     Selected : brand-primary bg (#3776CE), white text, 0.5px border
+     Disabled : gray-50 bg, gray-200 border, gray-300 text
+
+   Design tokens: see tokens.css → --select-option-*
+   ========================================================================== */
+
+/* ── Reset ── */
+.option,
+.option * {
+  box-sizing: border-box;
+}
+
+/* ── Base ── */
+.option {
+  /* Native reset */
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+
+  /* Layout */
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--select-option-gap);
+  width: 100%;
+  min-width: var(--select-option-min-width);
+  min-height: var(--select-option-min-height);
+  text-align: left;
+
+  /* Colours */
+  background-color: var(--select-option-bg);
+  color: var(--select-option-color);
+
+  /* Border */
+  border-style: solid;
+  border-color: var(--select-option-border-color);
+  border-width: var(--select-option-border-width);
+  border-radius: var(--select-option-radius);
+
+  /* Padding */
+  padding: var(--select-option-padding);
+
+  /* Typography */
+  font-family:    var(--select-option-font-family);
+  font-size:      var(--select-option-font-size);
+  line-height:    var(--select-option-line-height);
+  font-weight:    var(--select-option-font-weight);
+  letter-spacing: var(--select-option-letter-spacing);
+
+  /* Transition */
+  transition:
+    background-color var(--select-option-transition-duration) var(--select-option-transition-easing),
+    color            var(--select-option-transition-duration) var(--select-option-transition-easing),
+    border-color     var(--select-option-transition-duration) var(--select-option-transition-easing),
+    box-shadow       var(--select-option-transition-duration) var(--select-option-transition-easing);
+}
+
+/* ════════════════════════════════════════════════════════════
+   POSITION MODIFIERS
+   Controls which corners are rounded and which border edges show
+   ════════════════════════════════════════════════════════════ */
+
+.option--top {
+  border-radius: var(--select-option-radius) var(--select-option-radius) 0 0;
+  border-bottom-width: 0;
+}
+
+.option--mid {
+  border-radius: 0;
+  border-top-width: 0;
+  border-bottom-width: 0;
+}
+
+.option--bottom {
+  border-radius: 0 0 var(--select-option-radius) var(--select-option-radius);
+  border-top-width: 0;
+}
+
+.option--solo {
+  border-radius: var(--select-option-radius);
+}
+
+/* ════════════════════════════════════════════════════════════
+   INTERACTIVE STATES
+   ════════════════════════════════════════════════════════════ */
+
+/* Hover */
+.option:hover:not(:disabled):not(.option--disabled):not(.option--selected) {
+  background-color: var(--select-option-bg-hover);
+  color: var(--select-option-color-hover);
+}
+
+/* Focus-visible (keyboard navigation) */
+.option:focus-visible:not(:disabled):not(.option--disabled) {
+  outline: var(--select-option-focus-ring-width) solid var(--select-option-focus-ring-color);
+  outline-offset: var(--select-option-focus-ring-offset);
+}
+
+/* Active / pressed */
+.option:active:not(:disabled):not(.option--disabled) {
+  background-color: var(--select-option-bg-active);
+}
+
+/* Selected */
+.option--selected {
+  background-color: var(--select-option-bg-selected);
+  color:            var(--select-option-color-selected);
+  border-color:     var(--select-option-border-color-selected);
+  border-width:     var(--select-option-border-width-selected);
+}
+
+.option--selected:hover {
+  background-color: var(--select-option-bg-selected);
+  color:            var(--select-option-color-selected);
+}
+
+/* Disabled */
+.option--disabled,
+.option:disabled {
+  background-color: var(--select-option-bg-disabled);
+  color:            var(--select-option-color-disabled);
+  border-color:     var(--select-option-border-color-disabled);
+  cursor:           not-allowed;
+  pointer-events:   none;
+}
+
+/* ════════════════════════════════════════════════════════════
+   SIZE — SMALL
+   ════════════════════════════════════════════════════════════ */
+
+.option--small {
+  min-height:  var(--select-option-min-height-sm);
+  padding:     var(--select-option-padding-sm);
+  font-size:   var(--select-option-font-size-sm);
+  line-height: var(--select-option-line-height-sm);
+}
+
+.option--small .option__icon-svg {
+  width:     var(--select-option-icon-size-sm) !important;
+  height:    var(--select-option-icon-size-sm) !important;
+  font-size: var(--select-option-icon-size-sm) !important;
+}
+
+.option--small .option__indicator {
+  width:  var(--select-option-indicator-size-sm);
+  height: var(--select-option-indicator-size-sm);
+}
+
+/* ════════════════════════════════════════════════════════════
+   SIZE — LARGE
+   ════════════════════════════════════════════════════════════ */
+
+.option--large {
+  min-height:  var(--select-option-min-height-lg);
+  padding:     var(--select-option-padding-lg);
+  font-size:   var(--select-option-font-size-lg);
+  line-height: var(--select-option-line-height-lg);
+}
+
+.option--large .option__icon-svg {
+  width:     var(--select-option-icon-size-lg) !important;
+  height:    var(--select-option-icon-size-lg) !important;
+  font-size: var(--select-option-icon-size-lg) !important;
+}
+
+.option--large .option__indicator {
+  width:  var(--select-option-indicator-size-lg);
+  height: var(--select-option-indicator-size-lg);
+}
+
+/* ════════════════════════════════════════════════════════════
+   ICON SLOTS
+   ════════════════════════════════════════════════════════════ */
+
+.option__icon {
+  display:         inline-flex;
+  align-items:     center;
+  justify-content: center;
+  flex-shrink:     0;
+}
+
+.option__icon-svg {
+  width:     var(--select-option-icon-size) !important;
+  height:    var(--select-option-icon-size) !important;
+  font-size: var(--select-option-icon-size) !important;
+}
+
+.option__icon--trailing {
+  margin-left: auto;
+}
+
+/* ── Label ── */
+.option__label {
+  display:     inline-flex;
+  align-items: center;
+  line-height: inherit;
+  flex:        1;
+}
+
+/* ════════════════════════════════════════════════════════════
+   SELECTION INDICATORS (checkbox / radio)
+   ════════════════════════════════════════════════════════════ */
+
+.option__indicator {
+  display:         inline-flex;
+  align-items:     center;
+  justify-content: center;
+  flex-shrink:     0;
+  width:           var(--select-option-indicator-size);
+  height:          var(--select-option-indicator-size);
+  border-style:    solid;
+  border-width:    var(--select-option-indicator-border-width);
+  border-color:    var(--select-option-indicator-border-color);
+  background:      var(--select-option-indicator-bg);
+  transition:
+    background     var(--select-option-transition-duration) var(--select-option-transition-easing),
+    border-color   var(--select-option-transition-duration) var(--select-option-transition-easing);
+}
+
+/* Checkbox — square with radius */
+.option__indicator--checkbox {
+  border-radius: var(--select-option-indicator-checkbox-radius);
+}
+
+/* Radio — full circle */
+.option__indicator--radio {
+  border-radius: var(--select-option-indicator-radio-radius);
+}
+
+/* Checked / selected state for indicator */
+.option__indicator--checked {
+  background:   var(--select-option-indicator-bg-checked);
+  border-color: var(--select-option-indicator-border-color-checked);
+  color:        var(--select-option-indicator-color-checked);
+}
+
+/* Checkmark SVG inside checkbox */
+.option__indicator-svg {
+  width:  var(--select-option-indicator-icon-size);
+  height: var(--select-option-indicator-icon-size);
+  display: block;
+}
+
+/* Dot inside radio button */
+.option__indicator-dot {
+  width:         var(--select-option-indicator-dot-size);
+  height:        var(--select-option-indicator-dot-size);
+  border-radius: 50%;
+  background:    var(--select-option-indicator-color-checked);
+  display:       block;
+  flex-shrink:   0;
+}
+
+/* ── Disabled indicator ── */
+.option--disabled .option__indicator,
+.option:disabled .option__indicator {
+  border-color: var(--select-option-indicator-border-color-disabled);
+  background:   var(--select-option-indicator-bg-disabled);
+  color:        var(--select-option-indicator-color-disabled);
+}
+
+.option--disabled .option__indicator-dot,
+.option:disabled .option__indicator-dot {
+  background: var(--select-option-indicator-color-disabled);
+}
+
+/* ── Selected option indicator: invert colours ── */
+.option--selected .option__indicator {
+  border-color: var(--select-option-indicator-border-color-on-selected);
+  background:   var(--select-option-indicator-bg-on-selected);
+  color:        var(--select-option-indicator-color-on-selected);
+}
+
+.option--selected .option__indicator--checked {
+  border-color: var(--select-option-indicator-border-color-on-selected-checked);
+  background:   var(--select-option-indicator-bg-on-selected-checked);
+  color:        var(--select-option-indicator-color-on-selected-checked);
+}
+
+.option--selected .option__indicator-dot {
+  background: var(--select-option-indicator-color-on-selected-checked);
+}
