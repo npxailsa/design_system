@@ -1,1 +1,0 @@
-import{r as n,T as r}from"./iframe-CrOQID5z.js";import{k as o}from"./DefaultPropsProvider-sc7h-EHC.js";function s(e){return Object.keys(e).length===0}function m(e=null){const t=n.useContext(r);return!t||s(t)?e:t}const u=o();function h(e=u){return m(e)}export{h as u};
