@@ -83,7 +83,9 @@ const TOKEN = {
 const ACTIVE_BORDER =
   'var(--select-item-border-width-active, 0.5px) solid ' +
   'var(--select-item-border-color-active, #1C1C1C)';
-const ACTIVE_RADIUS = 'var(--select-item-border-radius, 4px)';
+/** Wrapper radius — checkbox uses 4px token, radio uses full (99999px) token */
+const ACTIVE_RADIUS_CHECKBOX = 'var(--select-item-border-radius, 4px)';
+const ACTIVE_RADIUS_RADIO    = 'var(--select-item-border-radius-radio, 99999px)';
 
 /** Returns true for states that should display the active outline */
 const isActiveState = (s: SelectItemState): boolean =>
@@ -216,7 +218,11 @@ export const SelectItem = ({
    */
   const wrapperStyle: React.CSSProperties =
     !disabled && isActiveState(state)
-      ? { border: ACTIVE_BORDER, borderRadius: ACTIVE_RADIUS }
+      ? {
+          border: ACTIVE_BORDER,
+          borderRadius:
+            type === 'radio' ? ACTIVE_RADIUS_RADIO : ACTIVE_RADIUS_CHECKBOX,
+        }
       : {};
 
   if (type === 'radio') {

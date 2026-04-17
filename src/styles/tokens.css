@@ -2425,7 +2425,10 @@
   /* SelectItem — selection border (selected / hover / clicked) */
   --select-item-border-color-active:  var(--global-color-base-black, #1C1C1C);
   --select-item-border-width-active:  var(--global-spacing-stroke-0-5px, 0.5px);
+  /* Default (checkbox) wrapper radius */
   --select-item-border-radius:        var(--global-spacing-radius-4px, 4px);
+  /* Radio wrapper radius — fully rounded (99999px) to match circular control */
+  --select-item-border-radius-radio:  var(--global-spacing-radius-full, 99999px);
 
   /* SelectItem — disabled */
   --select-item-disabled-opacity:     0.5;
