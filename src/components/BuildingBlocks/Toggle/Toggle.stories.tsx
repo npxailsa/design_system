@@ -4,6 +4,9 @@ import { Toggle } from './Toggle';
 import { ToggleDocs } from './ToggleDocs';
 import type { ToggleSize, ToggleVariant } from './Toggle';
 
+const ALL_VARIANTS: ToggleVariant[] = ['primary', 'blue', 'dark', 'status'];
+const ALL_SIZES: ToggleSize[] = ['large', 'default', 'small'];
+
 const meta: Meta<typeof Toggle> = {
   title: 'Foundation/BuildingBlocks/Toggles',
   component: Toggle,
@@ -14,7 +17,7 @@ const meta: Meta<typeof Toggle> = {
     checked:       { control: 'boolean' },
     disabled:      { control: 'boolean' },
     size:          { control: 'select', options: ['small', 'default', 'large'] },
-    variant:       { control: 'select', options: ['primary', 'dark'] },
+    variant:       { control: 'select', options: ALL_VARIANTS },
     label:         { control: 'text' },
     labelPosition: { control: 'select', options: ['left', 'right'] },
   },
@@ -31,21 +34,25 @@ const meta: Meta<typeof Toggle> = {
 export default meta;
 type Story = StoryObj<typeof Toggle>;
 
-/* ── 1. Documentation ── */
+/* ══════════════════════════════════════════════════════════════
+   1. DOCUMENTATION
+   ══════════════════════════════════════════════════════════════ */
 export const Documentation: Story = {
   name: 'Documentation',
   render: () => <ToggleDocs />,
   parameters: { controls: { disable: true }, actions: { disable: true }, layout: 'fullscreen' },
 };
 
-/* ── 2. Playground ── */
+/* ══════════════════════════════════════════════════════════════
+   2. PLAYGROUND
+   ══════════════════════════════════════════════════════════════ */
 export const Playground: Story = {
   name: 'Playground',
   render: (args) => {
     const Demo = () => {
       const [on, setOn] = useState(args.checked ?? false);
       return (
-        <div style={{ padding: '24px' }}>
+        <div style={{ padding: '40px 24px' }}>
           <Toggle {...args} checked={on} onChange={setOn} />
         </div>
       );
@@ -54,14 +61,16 @@ export const Playground: Story = {
   },
 };
 
-/* ── 3. Default ── */
+/* ══════════════════════════════════════════════════════════════
+   3. DEFAULT
+   ══════════════════════════════════════════════════════════════ */
 export const Default: Story = {
   name: 'Default',
   render: () => {
     const Demo = () => {
       const [on, setOn] = useState(false);
       return (
-        <div style={{ padding: '24px' }}>
+        <div style={{ padding: '40px 24px' }}>
           <Toggle checked={on} onChange={setOn} label="Toggle" />
         </div>
       );
@@ -71,18 +80,36 @@ export const Default: Story = {
   parameters: { controls: { disable: true } },
 };
 
-/* ── 4. Sizes ── */
+/* ══════════════════════════════════════════════════════════════
+   4. SIZES
+   ══════════════════════════════════════════════════════════════ */
 export const Sizes: Story = {
   name: 'Sizes',
   render: () => {
     const SizesDemo = () => {
-      const [vals, setVals] = useState<Record<ToggleSize, boolean>>({ small: false, default: true, large: false });
+      const [vals, setVals] = useState<Record<ToggleSize, boolean>>({
+        small: false, default: true, large: false,
+      });
       return (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', padding: '24px' }}>
-          {(['small', 'default', 'large'] as ToggleSize[]).map((size) => (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', padding: '40px 24px' }}>
+          {ALL_SIZES.map((size) => (
             <div key={size} style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-              <span style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '11px', fontWeight: 600, color: 'var(--global-color-neutral-gray-500)', width: '56px', textTransform: 'capitalize' }}>{size}</span>
-              <Toggle size={size} checked={vals[size]} onChange={(v) => setVals((p) => ({ ...p, [size]: v }))} label={`${size} size`} />
+              <span style={{
+                fontFamily: 'var(--brand-font-primary)',
+                fontSize: '11px',
+                fontWeight: 600,
+                color: 'var(--global-color-neutral-gray-500)',
+                width: '60px',
+                textTransform: 'capitalize',
+              }}>
+                {size}
+              </span>
+              <Toggle
+                size={size}
+                checked={vals[size]}
+                onChange={(v) => setVals((p) => ({ ...p, [size]: v }))}
+                label={`${size}`}
+              />
             </div>
           ))}
         </div>
@@ -93,14 +120,16 @@ export const Sizes: Story = {
   parameters: { controls: { disable: true } },
 };
 
-/* ── 5. Status — Primary ── */
+/* ══════════════════════════════════════════════════════════════
+   5. STATUS — PRIMARY
+   ══════════════════════════════════════════════════════════════ */
 export const StatusPrimary: Story = {
   name: 'Status — Primary',
   render: () => {
     const Demo = () => {
       const [on, setOn] = useState(false);
       return (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '24px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '40px 24px' }}>
           <Toggle variant="primary" checked={on} onChange={setOn} label={on ? 'On' : 'Off'} />
           <Toggle variant="primary" checked={true} label="On (static)" />
           <Toggle variant="primary" checked={false} label="Off (static)" />
@@ -114,29 +143,27 @@ export const StatusPrimary: Story = {
   parameters: { controls: { disable: true } },
 };
 
-/* ── 6. Status — Dark ── */
-export const StatusDark: Story = {
-  name: 'Status — Dark',
+/* ══════════════════════════════════════════════════════════════
+   6. STATUS — ALL VARIANTS
+   ══════════════════════════════════════════════════════════════ */
+export const StatusAllVariants: Story = {
+  name: 'Status — All Variants',
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '24px' }}>
-      <Toggle variant="dark" checked={true} label="On — Dark" />
-      <Toggle variant="dark" checked={false} label="Off — Dark" />
-      <Toggle variant="dark" checked={true} disabled label="On — Dark Disabled" />
-      <Toggle variant="dark" checked={false} disabled label="Off — Dark Disabled" />
-    </div>
-  ),
-  parameters: { controls: { disable: true } },
-};
-
-/* ── 7. Status — Disabled ── */
-export const StatusDisabled: Story = {
-  name: 'Status — Disabled',
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '24px' }}>
-      {(['primary', 'dark'] as ToggleVariant[]).map((variant) => (
-        <div key={variant} style={{ display: 'flex', gap: '24px' }}>
-          <Toggle variant={variant} checked={false} disabled label={`${variant} — off disabled`} />
-          <Toggle variant={variant} checked={true} disabled label={`${variant} — on disabled`} />
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', padding: '40px 24px' }}>
+      {ALL_VARIANTS.map((variant) => (
+        <div key={variant} style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
+          <span style={{
+            fontFamily: 'var(--brand-font-primary)',
+            fontSize: '11px',
+            fontWeight: 600,
+            color: 'var(--global-color-neutral-gray-500)',
+            width: '60px',
+            textTransform: 'capitalize',
+          }}>
+            {variant}
+          </span>
+          <Toggle variant={variant} checked={true} label="On" />
+          <Toggle variant={variant} checked={false} label="Off" />
         </div>
       ))}
     </div>
@@ -144,15 +171,52 @@ export const StatusDisabled: Story = {
   parameters: { controls: { disable: true } },
 };
 
-/* ── 8. All Interactive States ── */
+/* ══════════════════════════════════════════════════════════════
+   7. STATUS — DISABLED
+   ══════════════════════════════════════════════════════════════ */
+export const StatusDisabled: Story = {
+  name: 'Status — Disabled',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '40px 24px' }}>
+      {ALL_VARIANTS.map((variant) => (
+        <div key={variant} style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
+          <span style={{
+            fontFamily: 'var(--brand-font-primary)',
+            fontSize: '11px',
+            fontWeight: 600,
+            color: 'var(--global-color-neutral-gray-500)',
+            width: '60px',
+            textTransform: 'capitalize',
+          }}>
+            {variant}
+          </span>
+          <Toggle variant={variant} checked={false} disabled label="Off" />
+          <Toggle variant={variant} checked={true} disabled label="On" />
+        </div>
+      ))}
+    </div>
+  ),
+  parameters: { controls: { disable: true } },
+};
+
+/* ══════════════════════════════════════════════════════════════
+   8. ALL INTERACTIVE STATES
+   ══════════════════════════════════════════════════════════════ */
 export const AllInteractiveStates: Story = {
   name: 'All Interactive States',
   render: () => (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', padding: '24px' }}>
-      {(['primary', 'dark'] as ToggleVariant[]).map((variant) => (
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '32px', padding: '40px 24px' }}>
+      {ALL_VARIANTS.map((variant) => (
         <div key={variant}>
-          <div style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '11px', fontWeight: 600, color: 'var(--global-color-neutral-gray-500)', textTransform: 'capitalize', marginBottom: '12px' }}>
-            Variant: {variant}
+          <div style={{
+            fontFamily: 'var(--brand-font-primary)',
+            fontSize: '11px',
+            fontWeight: 600,
+            color: 'var(--global-color-neutral-gray-500)',
+            textTransform: 'capitalize',
+            marginBottom: '12px',
+          }}>
+            {variant}
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
             <Toggle variant={variant} checked={false} label="Off" />
@@ -167,41 +231,90 @@ export const AllInteractiveStates: Story = {
   parameters: { controls: { disable: true } },
 };
 
-/* ── 9. Full Design Matrix ── */
+/* ══════════════════════════════════════════════════════════════
+   9. FULL DESIGN MATRIX
+   Matches the screenshot: rows = sizes (large→small),
+   columns = variants (primary, blue, dark, status) + disabled,
+   pairs of checked / unchecked per cell
+   ══════════════════════════════════════════════════════════════ */
 export const FullDesignMatrix: Story = {
   name: 'Full Design Matrix',
   render: () => {
-    const sizes: ToggleSize[] = ['small', 'default', 'large'];
-    const variants: ToggleVariant[] = ['primary', 'dark'];
-    const states: Array<{ label: string; checked: boolean; disabled?: boolean }> = [
-      { label: 'Off', checked: false },
-      { label: 'On', checked: true },
-      { label: 'Off — Disabled', checked: false, disabled: true },
-      { label: 'On — Disabled', checked: true, disabled: true },
-    ];
+    const VARIANT_LABELS: Record<ToggleVariant, string> = {
+      primary: 'Primary',
+      blue: 'Blue',
+      dark: 'Dark',
+      status: 'Status',
+    };
+
+    const labelStyle: React.CSSProperties = {
+      fontFamily: 'var(--brand-font-primary)',
+      fontSize: '10px',
+      fontWeight: 600,
+      color: 'var(--global-color-neutral-gray-500)',
+      textTransform: 'capitalize',
+      textAlign: 'center',
+    };
+
+    const sizeLabel: React.CSSProperties = {
+      fontFamily: 'var(--brand-font-primary)',
+      fontSize: '11px',
+      color: 'var(--global-color-neutral-gray-700)',
+      textTransform: 'capitalize',
+      display: 'flex',
+      alignItems: 'center',
+    };
+
     return (
-      <div style={{ padding: '24px', overflowX: 'auto' }}>
-        {variants.map((variant) => (
-          <div key={variant} style={{ marginBottom: '40px' }}>
-            <div style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '13px', fontWeight: 600, color: 'var(--global-color-neutral-gray-700)', marginBottom: '16px', textTransform: 'capitalize' }}>
-              Variant: {variant}
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: `80px repeat(${states.length}, 1fr)`, gap: '8px', alignItems: 'center' }}>
-              <div />
-              {states.map((s) => (
-                <div key={s.label} style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '10px', fontWeight: 600, color: 'var(--global-color-neutral-gray-500)' }}>{s.label}</div>
+      <div style={{ padding: '32px 24px', overflowX: 'auto' }}>
+        {/* Grid: 6 rows × 6 cols (sizeLabel + 4 variants + 1 disabled) */}
+        {/* For each size: 2 sub-rows (checked / unchecked) */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '72px repeat(4, 96px) 96px',
+          gap: '0 16px',
+          alignItems: 'center',
+        }}>
+          {/* Header row */}
+          <div />
+          {ALL_VARIANTS.map((v) => (
+            <div key={v} style={labelStyle}>{VARIANT_LABELS[v]}</div>
+          ))}
+          <div style={labelStyle}>Disabled</div>
+
+          {/* Size rows */}
+          {ALL_SIZES.map((size, si) => (
+            <React.Fragment key={size}>
+              {/* Checked row */}
+              <div style={{ ...sizeLabel, paddingTop: si === 0 ? '20px' : '8px' }}>
+                {si === 0 ? size : ''}
+              </div>
+              {ALL_VARIANTS.map((variant) => (
+                <div key={`${size}-${variant}-on`} style={{ paddingTop: si === 0 ? '20px' : '8px', display: 'flex', justifyContent: 'center' }}>
+                  <Toggle size={size} variant={variant} checked={true} />
+                </div>
               ))}
-              {sizes.map((size) => (
-                <React.Fragment key={size}>
-                  <div style={{ fontFamily: 'var(--brand-font-primary)', fontSize: '11px', color: 'var(--global-color-neutral-gray-700)', textTransform: 'capitalize' }}>{size}</div>
-                  {states.map((s) => (
-                    <Toggle key={s.label} size={size} variant={variant} checked={s.checked} disabled={s.disabled} />
-                  ))}
-                </React.Fragment>
+              {/* Disabled checked */}
+              <div style={{ paddingTop: si === 0 ? '20px' : '8px', display: 'flex', justifyContent: 'center' }}>
+                <Toggle size={size} variant="primary" checked={true} disabled />
+              </div>
+
+              {/* Unchecked row */}
+              <div style={{ paddingBottom: '16px', display: 'flex', alignItems: 'center', paddingTop: '4px' }}>
+                {si !== 0 ? <span style={{ ...sizeLabel }}>{size}</span> : null}
+              </div>
+              {ALL_VARIANTS.map((variant) => (
+                <div key={`${size}-${variant}-off`} style={{ paddingBottom: '16px', paddingTop: '4px', display: 'flex', justifyContent: 'center' }}>
+                  <Toggle size={size} variant={variant} checked={false} />
+                </div>
               ))}
-            </div>
-          </div>
-        ))}
+              {/* Disabled unchecked */}
+              <div style={{ paddingBottom: '16px', paddingTop: '4px', display: 'flex', justifyContent: 'center' }}>
+                <Toggle size={size} variant="primary" checked={false} disabled />
+              </div>
+            </React.Fragment>
+          ))}
+        </div>
       </div>
     );
   },
