@@ -1,11 +1,10 @@
 /* ==========================================================================
    Toggle — BuildingBlocks Component
    --------------------------------------------------------------------------
-   A styled MUI Switch with design-system colours and sizes.
-   Variants: primary (sky-blue track when on) | dark (dark-blue track when on)
-   Sizes: small | default | large
+   Visual sizes are controlled entirely via explicit px values in Toggle.tsx
+   (SIZE_CONFIG) — no CSS transform scaling is used.
 
-   Design tokens: see tokens.css → --toggle-*
+   Design tokens referenced: see tokens.css → --toggle-*
    ========================================================================== */
 
 .wrapper {
@@ -35,17 +34,7 @@
   color: var(--toggle-label-color-disabled);
 }
 
-/* ── Sizes ── */
+/* ── Switch shell ── */
 .switch {
   flex-shrink: 0;
-}
-
-.wrapper--small .switch {
-  transform: scale(var(--toggle-scale-sm));
-  transform-origin: center;
-}
-
-.wrapper--large .switch {
-  transform: scale(var(--toggle-scale-lg));
-  transform-origin: center;
 }
