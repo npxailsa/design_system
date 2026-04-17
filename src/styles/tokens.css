@@ -2418,8 +2418,14 @@
 
   /* SelectItem — colours (alias global tokens) */
   --select-item-color-default:        var(--global-color-neutral-gray-500, #6D7280);
-  --select-item-color-checked:        var(--global-color-primary-blue-blue, #3776CE);
+  /* Checked / selected indicator colour — uses primary/light-blue (sky-blue) */
+  --select-item-color-checked:        var(--global-color-primary-sky-blue, #0BA7EA);
   --select-item-color-disabled:       var(--global-color-neutral-gray-300, #D2D5DA);
+
+  /* SelectItem — selection border (selected / hover / clicked) */
+  --select-item-border-color-active:  var(--global-color-base-black, #1C1C1C);
+  --select-item-border-width-active:  var(--global-spacing-stroke-0-5px, 0.5px);
+  --select-item-border-radius:        var(--global-spacing-radius-4px, 4px);
 
   /* SelectItem — disabled */
   --select-item-disabled-opacity:     0.5;

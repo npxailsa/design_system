@@ -64,14 +64,30 @@ const SIZE_PX: Record<SelectItemSize, number> = {
    variables may not resolve (e.g. snapshot tests).
 ───────────────────────────────────────────────────────────────────────── */
 const TOKEN = {
-  brand:    'var(--global-color-primary-blue-blue, #3776CE)',
-  sky:      'var(--global-color-primary-sky-blue, #00B4D8)',
+  /**
+   * Brand / checked indicator colour.
+   * Uses `--global-color-primary-sky-blue` (light-blue) per design spec —
+   * NOT the darker `--global-color-primary-blue-blue`.
+   */
+  brand:    'var(--select-item-color-checked, var(--global-color-primary-sky-blue, #0BA7EA))',
+  sky:      'var(--global-color-primary-sky-blue, #0BA7EA)',
   dark:     'var(--global-color-primary-blue-dark-blue, #191E3C)',
   white:    'var(--global-color-base-white, #FFFFFF)',
+  black:    'var(--global-color-base-black, #1C1C1C)',
   gray300:  'var(--global-color-neutral-gray-300, #D2D5DA)',
   gray400:  'var(--global-color-neutral-gray-400, #9CA3AF)',
   gray500:  'var(--global-color-neutral-gray-500, #6D7280)',
 } as const;
+
+/** Border applied to wrapper when state is selected / hover / clicked */
+const ACTIVE_BORDER =
+  'var(--select-item-border-width-active, 0.5px) solid ' +
+  'var(--select-item-border-color-active, #1C1C1C)';
+const ACTIVE_RADIUS = 'var(--select-item-border-radius, 4px)';
+
+/** Returns true for states that should display the active outline */
+const isActiveState = (s: SelectItemState): boolean =>
+  s === 'selected' || s === 'hover' || s === 'clicked' || s === 'some-selected';
 
 /* ─────────────────────────────────────────────────────────────────────────
    COLOUR LOGIC
@@ -193,10 +209,20 @@ export const SelectItem = ({
     .filter(Boolean)
     .join(' ');
 
+  /**
+   * Apply a 0.5px black/base stroke around the wrapper for selected,
+   * hover and clicked states (per design spec). Disabled state never
+   * shows the active border.
+   */
+  const wrapperStyle: React.CSSProperties =
+    !disabled && isActiveState(state)
+      ? { border: ACTIVE_BORDER, borderRadius: ACTIVE_RADIUS }
+      : {};
+
   if (type === 'radio') {
     const { sx: colourSx } = radioColours(state, disabled);
     return (
-      <span className={wrapperCls}>
+      <span className={wrapperCls} style={wrapperStyle}>
         <Radio
           checked={isChecked}
           disabled={disabled}
@@ -212,7 +238,7 @@ export const SelectItem = ({
   /* checkbox */
   const { sx: colourSx } = checkboxColours(state, disabled);
   return (
-    <span className={wrapperCls}>
+    <span className={wrapperCls} style={wrapperStyle}>
       <Checkbox
         checked={isChecked && !isIndeterminate}
         indeterminate={isIndeterminate}
