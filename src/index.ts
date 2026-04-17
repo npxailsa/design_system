@@ -43,3 +43,10 @@ export { default as ButtonMenuItem } from './components/BuildingBlocks/ButtonMen
 export { default as Card } from './components/BuildingBlocks/Card/Card';
 export { default as StatusIndicator } from './components/BuildingBlocks/StatusIndicator/StatusIndicator';
 export { default as StatusIcon } from './components/BuildingBlocks/StatusIcon/StatusIcon';
+export { SelectOption } from './components/BuildingBlocks/SelectOption/SelectOption';
+export type {
+  SelectOptionProps,
+  SelectOptionPosition,
+  SelectOptionSize,
+  SelectOptionSelectionType,
+} from './components/BuildingBlocks/SelectOption/SelectOption';
