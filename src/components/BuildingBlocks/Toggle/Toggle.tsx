@@ -175,6 +175,9 @@ export const Toggle = ({
     width:   `${trackW}px`,
     height:  `${trackH}px`,
     padding: 0,
+    /* Allow the track's outer box-shadow (border) to render outside the
+       root box without being clipped by MUI's default overflow. */
+    overflow: 'visible',
 
     /* Track: fills root, carries the pill colour and outline */
     '& .MuiSwitch-track': {

@@ -264,10 +264,17 @@ export const FullDesignMatrix: Story = {
     };
 
     const cell: React.CSSProperties = {
+      /* Generous padding so the track's 2px outer box-shadow border
+         is fully visible and never clipped by the table cell. */
+      padding:  '14px 16px',
+      overflow: 'visible',
+    };
+
+    const cellInner: React.CSSProperties = {
       display:        'flex',
       justifyContent: 'center',
       alignItems:     'center',
-      padding:        '10px 4px',
+      overflow:       'visible',
     };
 
     // 6 data rows: [size, checked]
@@ -281,8 +288,8 @@ export const FullDesignMatrix: Story = {
     ];
 
     return (
-      <div style={{ padding: '32px 24px', overflowX: 'auto' }}>
-        <table style={{ borderCollapse: 'collapse' }}>
+      <div style={{ padding: '40px 32px', overflowX: 'auto', overflowY: 'visible' }}>
+        <table style={{ borderCollapse: 'separate', borderSpacing: '4px' }}>
           <thead>
             <tr>
               {/* empty corner */}
@@ -300,23 +307,33 @@ export const FullDesignMatrix: Story = {
                 </td>
                 {/* primary */}
                 <td style={cell}>
-                  <Toggle size={size} variant="primary" checked={checked} />
+                  <div style={cellInner}>
+                    <Toggle size={size} variant="primary" checked={checked} />
+                  </div>
                 </td>
                 {/* blue */}
                 <td style={cell}>
-                  <Toggle size={size} variant="blue" checked={checked} />
+                  <div style={cellInner}>
+                    <Toggle size={size} variant="blue" checked={checked} />
+                  </div>
                 </td>
                 {/* dark */}
                 <td style={cell}>
-                  <Toggle size={size} variant="dark" checked={checked} />
+                  <div style={cellInner}>
+                    <Toggle size={size} variant="dark" checked={checked} />
+                  </div>
                 </td>
                 {/* status */}
                 <td style={cell}>
-                  <Toggle size={size} variant="status" checked={checked} />
+                  <div style={cellInner}>
+                    <Toggle size={size} variant="status" checked={checked} />
+                  </div>
                 </td>
                 {/* disabled */}
                 <td style={cell}>
-                  <Toggle size={size} variant="primary" checked={checked} disabled />
+                  <div style={cellInner}>
+                    <Toggle size={size} variant="primary" checked={checked} disabled />
+                  </div>
                 </td>
               </tr>
             ))}

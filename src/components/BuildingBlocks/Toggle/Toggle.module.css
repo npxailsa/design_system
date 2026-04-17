@@ -34,7 +34,14 @@
   color: var(--toggle-label-color-disabled);
 }
 
-/* ── Switch shell ── */
+/* ── Switch shell ──
+   Ensure the track's outer box-shadow (the variant border) is never
+   clipped by the MUI Switch root or any ancestor overflow. */
 .switch {
   flex-shrink: 0;
+  overflow:    visible;
+}
+
+.switch :global(.MuiSwitch-root) {
+  overflow: visible;
 }
