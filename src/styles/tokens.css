@@ -2400,6 +2400,31 @@
   --select-option-transition-easing:             var(--global-animation-easing-default);
 
   /* ==========================================================================
+     COMPONENT: SelectItem
+     --------------------------------------------------------------------------
+     A standalone checkbox or radio indicator used as the selection control
+     inside list rows, table rows, and select menus.
+
+     Figma spec (BuildingBlocks/SelectItem):
+       small   : 18 × 18 px
+       default : 22 × 22 px
+       large   : 26 × 26 px
+     ========================================================================== */
+
+  /* SelectItem — sizes */
+  --select-item-size-sm:              var(--global-spacing-sizing-18px,  18px);
+  --select-item-size:                 var(--global-spacing-sizing-22px,  22px);
+  --select-item-size-lg:              var(--global-spacing-sizing-26px,  26px);
+
+  /* SelectItem — colours (alias global tokens) */
+  --select-item-color-default:        var(--global-color-neutral-gray-500, #6D7280);
+  --select-item-color-checked:        var(--global-color-primary-blue-blue, #3776CE);
+  --select-item-color-disabled:       var(--global-color-neutral-gray-300, #D2D5DA);
+
+  /* SelectItem — disabled */
+  --select-item-disabled-opacity:     0.5;
+
+  /* ==========================================================================
      COMPONENT: SplitButton
      --------------------------------------------------------------------------
      A compound button pairing a primary action (main zone) with a chevron

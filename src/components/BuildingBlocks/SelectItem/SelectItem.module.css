@@ -1,0 +1,48 @@
+/* ==========================================================================
+   SelectItem — BuildingBlocks Component
+   --------------------------------------------------------------------------
+   A standalone checkbox or radio indicator used as the selection control
+   inside list rows, table rows, and select menus.
+
+   Figma spec (BuildingBlocks/SelectItem):
+     small   : 18 × 18 px
+     default : 22 × 22 px
+     large   : 26 × 26 px
+
+   States: default, selected, some-selected (indeterminate), hover, clicked
+   Types : checkbox, radio
+
+   Design tokens: see tokens.css → --select-item-*
+   ========================================================================== */
+
+.root,
+.root * {
+  box-sizing: border-box;
+}
+
+/* ── Wrapper ── */
+.root {
+  display:         inline-flex;
+  align-items:     center;
+  justify-content: center;
+  flex-shrink:     0;
+  /* Size driven by modifier classes below, but default to the MUI icon size */
+  line-height:     1;
+}
+
+/* ── Sizes ── */
+.root--small   { width: var(--select-item-size-sm,  18px); height: var(--select-item-size-sm,  18px); }
+.root--default { width: var(--select-item-size,     22px); height: var(--select-item-size,     22px); }
+.root--large   { width: var(--select-item-size-lg,  26px); height: var(--select-item-size-lg,  26px); }
+
+/* ── Hover cursor ── */
+.root:not(.root--disabled) {
+  cursor: pointer;
+}
+
+/* ── Disabled ── */
+.root--disabled {
+  cursor:         not-allowed;
+  pointer-events: none;
+  opacity:        var(--select-item-disabled-opacity, 0.5);
+}

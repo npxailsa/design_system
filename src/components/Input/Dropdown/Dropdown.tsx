@@ -4,8 +4,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { Tag } from '../../Tag/Tag';
-import { SelectOption } from '../../BuildingBlocks/SelectOption/SelectOption';
-import type { SelectOptionPosition } from '../../BuildingBlocks/SelectOption/SelectOption';
+import { MenuMultiSelect as SelectOption } from '../../BuildingBlocks/MenuMultiSelect/MenuMultiSelect';
+import type { MenuMultiSelectPosition as SelectOptionPosition } from '../../BuildingBlocks/MenuMultiSelect/MenuMultiSelect';
 import styles from './Dropdown.module.css';
 
 /* ── Types ───────────────────────────────────────────────────────────────── */

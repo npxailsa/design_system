@@ -43,13 +43,28 @@ export { default as ButtonMenuItem } from './components/BuildingBlocks/ButtonMen
 export { default as Card } from './components/BuildingBlocks/Card/Card';
 export { default as StatusIndicator } from './components/BuildingBlocks/StatusIndicator/StatusIndicator';
 export { default as StatusIcon } from './components/BuildingBlocks/StatusIcon/StatusIcon';
-export { SelectOption } from './components/BuildingBlocks/SelectOption/SelectOption';
+export { MenuMultiSelect } from './components/BuildingBlocks/MenuMultiSelect/MenuMultiSelect';
 export type {
-  SelectOptionProps,
-  SelectOptionPosition,
-  SelectOptionSize,
-  SelectOptionSelectionType,
-} from './components/BuildingBlocks/SelectOption/SelectOption';
+  MenuMultiSelectProps,
+  MenuMultiSelectPosition,
+  MenuMultiSelectSize,
+  MenuMultiSelectSelectionType,
+} from './components/BuildingBlocks/MenuMultiSelect/MenuMultiSelect';
+/** @deprecated Use MenuMultiSelect */
+export { MenuMultiSelect as SelectOption } from './components/BuildingBlocks/MenuMultiSelect/MenuMultiSelect';
+export type {
+  MenuMultiSelectProps as SelectOptionProps,
+  MenuMultiSelectPosition as SelectOptionPosition,
+  MenuMultiSelectSize as SelectOptionSize,
+  MenuMultiSelectSelectionType as SelectOptionSelectionType,
+} from './components/BuildingBlocks/MenuMultiSelect/MenuMultiSelect';
+export { SelectItem } from './components/BuildingBlocks/SelectItem/SelectItem';
+export type {
+  SelectItemProps,
+  SelectItemSize,
+  SelectItemState,
+  SelectItemType,
+} from './components/BuildingBlocks/SelectItem/SelectItem';
 export { Toggle } from './components/BuildingBlocks/Toggle/Toggle';
 export type { ToggleProps, ToggleSize, ToggleVariant } from './components/BuildingBlocks/Toggle/Toggle';
 export { SliderParts } from './components/BuildingBlocks/SliderParts/SliderParts';
