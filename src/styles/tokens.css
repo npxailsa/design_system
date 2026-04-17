@@ -2188,9 +2188,9 @@
   --toggle-track-bg-checked:        var(--global-color-primary-sky-blue);
   --toggle-track-bg-checked-blue:   var(--global-color-primary-blue-blue, #3776CE);
   --toggle-track-bg-checked-dark:   var(--global-color-primary-blue-dark-blue, #191E3C);
-  /* status variant: on=success-green, off=error-red */
-  --toggle-track-bg-status-on:      #00B359;
-  --toggle-track-bg-status-off:     #E53935;
+  /* status variant: on=lime-green (Figma), off=sky-blue (neutral unchecked) */
+  --toggle-track-bg-status-on:      #A8E063;
+  --toggle-track-bg-status-off:     var(--global-color-primary-sky-blue);
   --toggle-track-bg-disabled:       var(--global-color-neutral-gray-200);
   --toggle-track-radius:            var(--global-spacing-radius-full);
 
@@ -2198,6 +2198,7 @@
   --toggle-track-border-primary:    var(--global-color-primary-sky-blue);
   --toggle-track-border-blue:       var(--global-color-primary-blue-blue, #3776CE);
   --toggle-track-border-dark:       var(--global-color-primary-blue-dark-blue, #191E3C);
+  --toggle-track-border-status:     var(--global-color-primary-blue-dark-blue, #191E3C);
   --toggle-track-border-disabled:   var(--global-color-neutral-gray-300);
 
   /* Toggle — thumb icon colours (used in SVG data URIs in Toggle.tsx) */
