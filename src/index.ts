@@ -50,3 +50,7 @@ export type {
   SelectOptionSize,
   SelectOptionSelectionType,
 } from './components/BuildingBlocks/SelectOption/SelectOption';
+export { Toggle } from './components/BuildingBlocks/Toggle/Toggle';
+export type { ToggleProps, ToggleSize, ToggleVariant } from './components/BuildingBlocks/Toggle/Toggle';
+export { SliderParts } from './components/BuildingBlocks/SliderParts/SliderParts';
+export type { SliderPartsProps, SliderPartsSize, SliderPartsVariant } from './components/BuildingBlocks/SliderParts/SliderParts';

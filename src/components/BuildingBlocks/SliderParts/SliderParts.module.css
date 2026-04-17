@@ -1,0 +1,35 @@
+/* ==========================================================================
+   SliderParts — BuildingBlocks Component
+   --------------------------------------------------------------------------
+   A styled MUI Slider showing the individual visual parts: track, rail,
+   thumb, and endpoint marks. Variants: primary (sky-blue) | dark (navy).
+   Sizes: small | default | large.
+
+   Figma spec (slider-parts):
+     - Circular thumb dots at endpoints, labeled 0 and 1
+     - Horizontal track connecting endpoints
+     - Primary: thumb + track = sky-blue (#0BA7EA)
+     - Dark: thumb + track = dark-blue (#191E3C)
+     - Disabled: all elements gray (#D2D5DA)
+
+   Design tokens: see tokens.css → --slider-*
+   ========================================================================== */
+
+.wrapper {
+  width: 100%;
+  padding: var(--slider-wrapper-padding);
+}
+
+.wrapper--small {
+  width: var(--slider-wrapper-width-sm);
+}
+
+.wrapper--large {
+  width: var(--slider-wrapper-width-lg);
+}
+
+.wrapper--disabled {
+  opacity: var(--slider-disabled-opacity);
+  cursor: not-allowed;
+  pointer-events: none;
+}

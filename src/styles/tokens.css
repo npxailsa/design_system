@@ -2171,6 +2171,109 @@
   --btn-menu-item-transition-easing:     var(--global-animation-easing-default);
 
   /* ==========================================================================
+     COMPONENT: Toggle (Switch)
+     --------------------------------------------------------------------------
+     A binary on/off control built on MUI Switch.
+     Variants: primary (sky-blue) | dark (dark-blue/navy)
+     Sizes: small (scaled 0.75×) | default | large (scaled 1.25×)
+     ========================================================================== */
+
+  /* Toggle — track colours */
+  --toggle-track-bg:               var(--global-color-neutral-gray-300);
+  --toggle-track-bg-checked:       var(--global-color-primary-sky-blue);
+  --toggle-track-bg-checked-dark:  var(--global-color-primary-blue-dark-blue, #191E3C);
+  --toggle-track-bg-disabled:      var(--global-color-neutral-gray-200);
+  --toggle-track-radius:           var(--global-spacing-radius-full);
+
+  /* Toggle — thumb colours */
+  --toggle-thumb-bg:               var(--global-color-base-white);
+  --toggle-thumb-bg-checked:       var(--global-color-base-white);
+  --toggle-thumb-bg-checked-dark:  var(--global-color-base-white);
+  --toggle-thumb-bg-disabled:      var(--global-color-neutral-gray-300);
+  --toggle-thumb-shadow:           0 1px 3px rgba(28,28,28,0.2);
+
+  /* Toggle — focus ring */
+  --toggle-thumb-focus-ring:       rgba(11, 167, 234, 0.2);
+  --toggle-thumb-focus-ring-dark:  rgba(25, 30, 60, 0.2);
+
+  /* Toggle — sizing scale */
+  --toggle-scale-sm:               0.75;
+  --toggle-scale-lg:               1.25;
+
+  /* Toggle — label */
+  --toggle-label-gap:              var(--global-spacing-sizing-8px);
+  --toggle-label-font-size:        var(--global-type-size-secondary-body);
+  --toggle-label-line-height:      var(--global-type-line-height-body);
+  --toggle-label-color:            var(--global-color-base-black);
+  --toggle-label-color-disabled:   var(--global-color-neutral-gray-400);
+
+  /* Toggle — disabled */
+  --toggle-disabled-opacity:       0.5;
+
+  /* Toggle — transition */
+  --toggle-transition-duration:    var(--global-animation-duration-fast);
+  --toggle-transition-easing:      var(--global-animation-easing-default);
+
+  /* ==========================================================================
+     COMPONENT: SliderParts
+     --------------------------------------------------------------------------
+     Individual parts of a slider (track, rail, thumb, endpoint marks).
+     Built on MUI Slider.
+     Variants: primary (sky-blue) | dark (dark-blue/navy)
+     Sizes: small | default | large
+     ========================================================================== */
+
+  /* SliderParts — track (filled portion) */
+  --slider-track-color:          var(--global-color-primary-sky-blue);
+  --slider-track-color-dark:     var(--global-color-primary-blue-dark-blue, #191E3C);
+  --slider-track-color-disabled: var(--global-color-neutral-gray-300);
+  --slider-track-radius:         var(--global-spacing-radius-full);
+
+  /* SliderParts — rail (unfilled portion) */
+  --slider-rail-color:           var(--global-color-neutral-gray-200);
+  --slider-rail-color-disabled:  var(--global-color-neutral-gray-100);
+
+  /* SliderParts — thumb */
+  --slider-thumb-color:          var(--global-color-primary-sky-blue);
+  --slider-thumb-color-dark:     var(--global-color-primary-blue-dark-blue, #191E3C);
+  --slider-thumb-color-disabled: var(--global-color-neutral-gray-300);
+  --slider-thumb-border-width:   var(--global-spacing-stroke-2px);
+  --slider-thumb-focus-ring:     rgba(11, 167, 234, 0.2);
+  --slider-thumb-focus-ring-dark: rgba(25, 30, 60, 0.2);
+  --slider-thumb-focus-ring-size: var(--global-spacing-sizing-8px);
+
+  /* SliderParts — thumb sizes */
+  --slider-thumb-size-sm:        var(--global-spacing-sizing-8px);
+  --slider-thumb-size:           var(--global-spacing-sizing-12px);
+  --slider-thumb-size-lg:        var(--global-spacing-sizing-16px);
+
+  /* SliderParts — track heights */
+  --slider-track-height-sm:      var(--global-spacing-sizing-2px);
+  --slider-track-height:         var(--global-spacing-sizing-4px);
+  --slider-track-height-lg:      var(--global-spacing-sizing-6px);
+
+  /* SliderParts — endpoint marks */
+  --slider-mark-color:           var(--global-color-primary-sky-blue);
+  --slider-mark-color-dark:      var(--global-color-primary-blue-dark-blue, #191E3C);
+  --slider-mark-color-disabled:  var(--global-color-neutral-gray-300);
+  --slider-mark-size-sm:         var(--global-spacing-sizing-6px);
+  --slider-mark-size:            var(--global-spacing-sizing-8px);
+  --slider-mark-size-lg:         var(--global-spacing-sizing-10px);
+
+  /* SliderParts — labels */
+  --slider-mark-label-font-size:        var(--global-type-size-primary-label-xs, 11px);
+  --slider-mark-label-color:            var(--global-color-neutral-gray-500);
+  --slider-mark-label-color-disabled:   var(--global-color-neutral-gray-300);
+  --slider-mark-label-offset:           var(--global-spacing-sizing-20px);
+
+  /* SliderParts — wrapper */
+  --slider-padding:              var(--global-spacing-sizing-12px);
+  --slider-wrapper-padding:      0 var(--global-spacing-sizing-4px);
+  --slider-wrapper-width-sm:     140px;
+  --slider-wrapper-width-lg:     360px;
+  --slider-disabled-opacity:     0.5;
+
+  /* ==========================================================================
      COMPONENT: SelectOption
      --------------------------------------------------------------------------
      A single list item used in select / dropdown menus. Supports plain text,

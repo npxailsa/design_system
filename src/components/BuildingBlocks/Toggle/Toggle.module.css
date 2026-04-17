@@ -1,0 +1,51 @@
+/* ==========================================================================
+   Toggle — BuildingBlocks Component
+   --------------------------------------------------------------------------
+   A styled MUI Switch with design-system colours and sizes.
+   Variants: primary (sky-blue track when on) | dark (dark-blue track when on)
+   Sizes: small | default | large
+
+   Design tokens: see tokens.css → --toggle-*
+   ========================================================================== */
+
+.wrapper {
+  display:     inline-flex;
+  align-items: center;
+  gap:         var(--toggle-label-gap);
+  cursor:      pointer;
+  user-select: none;
+}
+
+.wrapper--disabled {
+  cursor:  not-allowed;
+  opacity: var(--toggle-disabled-opacity);
+}
+
+/* ── Label ── */
+.label {
+  font-family:    var(--brand-font-secondary);
+  font-size:      var(--toggle-label-font-size);
+  line-height:    var(--toggle-label-line-height);
+  font-weight:    var(--global-type-weight-light);
+  color:          var(--toggle-label-color);
+  letter-spacing: var(--global-type-letter-spacing-secondary-body);
+}
+
+.wrapper--disabled .label {
+  color: var(--toggle-label-color-disabled);
+}
+
+/* ── Sizes ── */
+.switch {
+  flex-shrink: 0;
+}
+
+.wrapper--small .switch {
+  transform: scale(var(--toggle-scale-sm));
+  transform-origin: center;
+}
+
+.wrapper--large .switch {
+  transform: scale(var(--toggle-scale-lg));
+  transform-origin: center;
+}

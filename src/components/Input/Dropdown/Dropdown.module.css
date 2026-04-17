@@ -272,13 +272,17 @@
 }
 
 /* ── Dropdown menu panel ────────────────────────────────────── */
+/*
+   The menu container provides shadow + overflow clipping.
+   All border, padding, and colour styling for individual items
+   is delegated to the SelectOption building block component.
+*/
 .menu {
   list-style: none;
   margin: var(--global-spacing-sizing-4px) 0 0;
-  padding: var(--dropdown-menu-padding-y) 0;
-  background: var(--dropdown-menu-bg);
-  border: var(--dropdown-border-width) solid var(--dropdown-menu-border);
-  border-top: var(--dropdown-border-width) solid var(--dropdown-menu-border);
+  padding: 0;
+  background: transparent;
+  border: none;
   border-radius: var(--dropdown-menu-radius);
   box-shadow: var(--dropdown-menu-shadow);
   max-height: var(--dropdown-menu-max-height);
@@ -289,91 +293,9 @@
   scrollbar-color: var(--global-color-neutral-gray-200) transparent;
 }
 
-.menu--small   { --_opt-pad: var(--dropdown-option-pad-small); --_opt-size: var(--dropdown-option-size-small); }
-.menu--default { --_opt-pad: var(--dropdown-option-pad-default); --_opt-size: var(--dropdown-option-size-default); }
-.menu--large   { --_opt-pad: var(--dropdown-option-pad-large); --_opt-size: var(--dropdown-option-size-large); }
-
-/* ── Menu option ────────────────────────────────────────────── */
-.option {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: var(--global-spacing-sizing-8px);
-  padding: var(--_opt-pad, var(--dropdown-option-pad-default));
-  font-family: var(--dropdown-option-font);
-  font-size: var(--_opt-size, var(--dropdown-option-size-default));
-  font-weight: var(--global-type-weight-light);
-  color: var(--dropdown-option-color);
-  cursor: pointer;
-  transition: background 0.1s ease;
-  user-select: none;
-  border-radius: var(--dropdown-option-radius);
-  margin: 1px var(--global-spacing-sizing-4px);
-}
-
-.option--selected {
-  background: var(--dropdown-option-selected-bg);
-  color: var(--dropdown-option-selected-color);
-  font-weight: var(--global-type-weight-default);
-}
-
-.option--active {
-  background: var(--dropdown-option-active-bg);
-}
-
-.option:hover:not(.option--disabled) {
-  background: var(--dropdown-option-hover-bg);
-}
-
-.option--selected:hover {
-  background: var(--dropdown-option-selected-bg);
-}
-
-.option--disabled {
-  color: var(--dropdown-option-color-disabled);
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-/* ── Option inner elements ──────────────────────────────────── */
-.option__label {
-  flex: 1 1 auto;
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.option__icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--dropdown-icon-color);
-  flex-shrink: 0;
-}
-
-.option--selected .option__icon {
-  color: var(--dropdown-option-selected-color);
-}
-
-.option__iconSvg {
-  width: var(--dropdown-icon-size-default) !important;
-  height: var(--dropdown-icon-size-default) !important;
-  font-size: var(--dropdown-icon-size-default) !important;
-}
-
-.option__checkbox {
-  flex-shrink: 0;
-  margin-left: auto;
-}
-
-.option__chevron {
-  display: flex;
-  align-items: center;
-  color: var(--dropdown-option-selected-color);
-  flex-shrink: 0;
-  margin-left: auto;
-}
+.menu--small   {}
+.menu--default {}
+.menu--large   {}
 
 /* ── Empty state ────────────────────────────────────────────── */
 .emptyState {

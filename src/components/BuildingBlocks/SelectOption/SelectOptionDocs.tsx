@@ -232,10 +232,45 @@ export const SelectOptionDocs: React.FC = () => {
         ]}
       />
 
+      {/* ── Dropdown Integration ── */}
+      <DocsTemplate.Section title="Dropdown Integration">
+        <DocsTemplate.BodyText>
+          SelectOption is the sub-component that powers the menu items inside the{' '}
+          <strong>Atoms {'>'} Input {'>'} Dropdown</strong> component. Each item in an open
+          Dropdown menu is rendered as a <code>SelectOption</code> with automatic{' '}
+          <code>position</code> assignment — the first item becomes{' '}
+          <code>top</code>, middle items become <code>mid</code>, the last item
+          becomes <code>bottom</code>, and a single-item menu uses{' '}
+          <code>solo</code>.
+        </DocsTemplate.BodyText>
+        <DocsTemplate.BodyText>
+          For single-select Dropdowns the <code>selectionType</code> is{' '}
+          <code>"none"</code> — the selected item is highlighted via the{' '}
+          <code>selected</code> prop. For multi-select Dropdowns{' '}
+          <code>selectionType="checkbox"</code> is used automatically.
+        </DocsTemplate.BodyText>
+        <DocsTemplate.Subsection title="Single-Select Menu Preview">
+          <div style={{ maxWidth: '240px', padding: 'var(--global-spacing-sizing-16px) 0', boxShadow: '0 2px 4px 0 rgba(39,39,39,0.10)', borderRadius: 'var(--select-option-radius)' }}>
+            <SelectOption label="Option A" position="top" selectionType="none" />
+            <SelectOption label="Option B" position="mid" selectionType="none" selected />
+            <SelectOption label="Option C" position="mid" selectionType="none" />
+            <SelectOption label="Option D (disabled)" position="bottom" selectionType="none" disabled />
+          </div>
+        </DocsTemplate.Subsection>
+        <DocsTemplate.Subsection title="Multi-Select (Checkbox) Menu Preview">
+          <div style={{ maxWidth: '240px', padding: 'var(--global-spacing-sizing-16px) 0', boxShadow: '0 2px 4px 0 rgba(39,39,39,0.10)', borderRadius: 'var(--select-option-radius)' }}>
+            <SelectOption label="Option A" position="top" selectionType="checkbox" />
+            <SelectOption label="Option B" position="mid" selectionType="checkbox" selected />
+            <SelectOption label="Option C" position="mid" selectionType="checkbox" selected />
+            <SelectOption label="Option D (disabled)" position="bottom" selectionType="checkbox" disabled />
+          </div>
+        </DocsTemplate.Subsection>
+      </DocsTemplate.Section>
+
       {/* ── Code Usage ── */}
       <DocsTemplate.CodeBlock>{`import { SelectOption } from './BuildingBlocks/SelectOption';
 
-// Plain text option
+// Plain text option (standalone)
 <SelectOption label="Option label" position="solo" />
 
 // Checkbox option (multi-select)
@@ -254,10 +289,18 @@ export const SelectOptionDocs: React.FC = () => {
   position="solo"
 />
 
-// Stacked menu
-<SelectOption label="First"  position="top"    selectionType="checkbox" />
-<SelectOption label="Second" position="mid"    selectionType="checkbox" selected />
-<SelectOption label="Third"  position="bottom" selectionType="checkbox" disabled />`}</DocsTemplate.CodeBlock>
+// Stacked menu panel (dropdown list)
+<div style={{ boxShadow: '0 2px 4px 0 rgba(39,39,39,0.10)' }}>
+  <SelectOption label="First"  position="top"    selectionType="checkbox" />
+  <SelectOption label="Second" position="mid"    selectionType="checkbox" selected />
+  <SelectOption label="Third"  position="bottom" selectionType="checkbox" disabled />
+</div>
+
+// Dropdown automatically maps position for each option:
+// idx === 0              → position="top"
+// 0 < idx < last        → position="mid"
+// idx === last          → position="bottom"
+// options.length === 1  → position="solo"`}</DocsTemplate.CodeBlock>
 
       {/* ── Principles ── */}
       <DocsTemplate.Principles>

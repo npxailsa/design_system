@@ -1,11 +1,11 @@
 import React, { useId, useRef, useState, useEffect, useCallback } from 'react';
 import InputBase from '@mui/material/InputBase';
-import Checkbox from '@mui/material/Checkbox';
 import CloseIcon from '@mui/icons-material/Close';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { Tag } from '../../Tag/Tag';
+import { SelectOption } from '../../BuildingBlocks/SelectOption/SelectOption';
+import type { SelectOptionPosition } from '../../BuildingBlocks/SelectOption/SelectOption';
 import styles from './Dropdown.module.css';
 
 /* ── Types ───────────────────────────────────────────────────────────────── */
@@ -391,66 +391,33 @@ export const Dropdown: React.FC<DropdownProps> = ({
               const isSelected = multiSelect
                 ? values.includes(opt.id)
                 : opt.id === value;
-              const isActive = idx === activeIndex;
-              const OptLeadingIcon = opt.leadingIcon;
-
-              const optionCls = [
-                styles.option,
-                styles[`option--${size}`],
-                isSelected && styles['option--selected'],
-                isActive && styles['option--active'],
-                opt.disabled && styles['option--disabled'],
-              ]
-                .filter(Boolean)
-                .join(' ');
+              const isSolo = filteredOptions.length === 1;
+              const isFirst = idx === 0;
+              const isLast = idx === filteredOptions.length - 1;
+              const position: SelectOptionPosition = isSolo
+                ? 'solo'
+                : isFirst
+                ? 'top'
+                : isLast
+                ? 'bottom'
+                : 'mid';
 
               return (
-                <li
-                  key={opt.id}
-                  id={`${listboxId}-opt-${idx}`}
-                  role="option"
-                  aria-selected={isSelected}
-                  aria-disabled={opt.disabled}
-                  className={optionCls}
-                  onPointerDown={(e) => {
-                    e.preventDefault();
-                    if (multiSelect) toggleOption(opt);
-                    else selectOption(opt);
-                  }}
-                  onPointerEnter={() => setActiveIndex(idx)}
-                  onPointerLeave={() => setActiveIndex(-1)}
-                >
-                  {/* Leading icon */}
-                  {OptLeadingIcon && (
-                    <span className={styles.option__icon} aria-hidden="true">
-                      <OptLeadingIcon className={styles.option__iconSvg} />
-                    </span>
-                  )}
-
-                  {/* Label */}
-                  <span className={styles.option__label}>{opt.label}</span>
-
-                  {/* Trailing: checkbox (multi) or chevron (active, keyboard nav) */}
-                  {multiSelect ? (
-                    <Checkbox
-                      checked={isSelected}
-                      disabled={opt.disabled}
-                      tabIndex={-1}
-                      className={styles.option__checkbox}
-                      size="small"
-                      sx={{
-                        padding: 0,
-                        color: 'var(--global-color-neutral-gray-300)',
-                        '&.Mui-checked': { color: 'var(--dropdown-checkbox-color)' },
-                      }}
-                    />
-                  ) : (
-                    isActive && (
-                      <span className={styles.option__chevron} aria-hidden="true">
-                        <ChevronRightIcon className={styles.option__iconSvg} />
-                      </span>
-                    )
-                  )}
+                <li key={opt.id} role="presentation" style={{ listStyle: 'none', margin: 0, padding: 0 }}>
+                  <SelectOption
+                    label={opt.label}
+                    position={position}
+                    size={size}
+                    selectionType={multiSelect ? 'checkbox' : 'none'}
+                    selected={isSelected}
+                    disabled={opt.disabled}
+                    leadingIcon={opt.leadingIcon}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      if (multiSelect) toggleOption(opt);
+                      else selectOption(opt);
+                    }}
+                  />
                 </li>
               );
             })
