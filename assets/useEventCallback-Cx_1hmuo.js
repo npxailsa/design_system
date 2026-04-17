@@ -1,1 +1,0 @@
-import{r as e}from"./iframe-Cu55oDLk.js";const n=typeof window<"u"?e.useLayoutEffect:e.useEffect;function f(t){const r=e.useRef(t);return n(()=>{r.current=t}),e.useRef((...u)=>(0,r.current)(...u)).current}export{f as a,n as u};
