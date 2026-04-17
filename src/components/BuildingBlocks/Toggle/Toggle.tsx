@@ -5,10 +5,10 @@ import styles from './Toggle.module.css';
 export type ToggleSize = 'small' | 'default' | 'large';
 /**
  * Toggle colour variants:
- * - primary  → sky-blue track at all times
- * - blue     → brand-blue (#3776CE) track at all times
- * - dark     → dark-navy (#191E3C) track at all times
- * - status   → green track when ON, pink/error track when OFF
+ * - primary  → sky-blue border; sky-blue track ON / dark-navy track OFF
+ * - blue     → brand-blue border; sky-blue track ON / dark-navy track OFF
+ * - dark     → dark-navy border; sky-blue track ON / dark-navy track OFF
+ * - status   → green track ON / red track OFF; dark-thumb icons
  */
 export type ToggleVariant = 'primary' | 'blue' | 'dark' | 'status';
 
@@ -34,35 +34,51 @@ export interface ToggleProps {
 
 /* ── SVG thumb icons ────────────────────────────────────────────────────── */
 
-/** Green circle with white checkmark — "ON" / checked state */
+/** Green circle + white checkmark — enabled ON (primary / blue / dark) */
 const CHECK_SVG = encodeURIComponent(
   `<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">` +
     `<circle cx="10" cy="10" r="9" fill="#00B359"/>` +
-    `<path d="M6 10.5l2.8 2.8 5.2-5.5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>` +
+    `<path d="M6 10.5l2.8 2.8 5.2-5.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>` +
   `</svg>`,
 );
 
-/** Red circle with white X — "OFF" / unchecked state */
+/** Red circle + white X — enabled OFF (primary / blue / dark) */
 const X_SVG = encodeURIComponent(
   `<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">` +
     `<circle cx="10" cy="10" r="9" fill="#E53935"/>` +
-    `<path d="M7 7l6 6M13 7l-6 6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>` +
+    `<path d="M7 7l6 6M13 7l-6 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>` +
   `</svg>`,
 );
 
-/** Gray circle with white checkmark — disabled checked */
+/** Dark-navy circle + white checkmark — status ON */
+const STATUS_CHECK_SVG = encodeURIComponent(
+  `<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">` +
+    `<circle cx="10" cy="10" r="9" fill="#191E3C"/>` +
+    `<path d="M6 10.5l2.8 2.8 5.2-5.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>` +
+  `</svg>`,
+);
+
+/** Dark-navy circle + red X — status OFF */
+const STATUS_X_SVG = encodeURIComponent(
+  `<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">` +
+    `<circle cx="10" cy="10" r="9" fill="#191E3C"/>` +
+    `<path d="M7 7l6 6M13 7l-6 6" stroke="#E53935" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>` +
+  `</svg>`,
+);
+
+/** Gray circle + white checkmark — disabled ON */
 const DISABLED_CHECK_SVG = encodeURIComponent(
   `<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">` +
     `<circle cx="10" cy="10" r="9" fill="#B8BEC7"/>` +
-    `<path d="M6 10.5l2.8 2.8 5.2-5.5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>` +
+    `<path d="M6 10.5l2.8 2.8 5.2-5.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>` +
   `</svg>`,
 );
 
-/** Gray circle with white X — disabled unchecked */
+/** Gray circle + white X — disabled OFF */
 const DISABLED_X_SVG = encodeURIComponent(
   `<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">` +
     `<circle cx="10" cy="10" r="9" fill="#B8BEC7"/>` +
-    `<path d="M7 7l6 6M13 7l-6 6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>` +
+    `<path d="M7 7l6 6M13 7l-6 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>` +
   `</svg>`,
 );
 
@@ -70,23 +86,43 @@ const ICON_URL = (svg: string) => `url("data:image/svg+xml,${svg}")`;
 
 /* ── Track colour helpers ───────────────────────────────────────────────── */
 
+/**
+ * Track background per variant.
+ * primary/blue/dark all share the same track logic:
+ *   ON  → bright sky-blue
+ *   OFF → dark navy
+ * status:
+ *   ON  → success green
+ *   OFF → error red
+ */
 const TRACK_COLOR: Record<ToggleVariant, { on: string; off: string }> = {
   primary: {
-    on:  'var(--toggle-track-bg-checked)',
-    off: 'var(--toggle-track-bg-checked)',
+    on:  'var(--global-color-primary-sky-blue)',
+    off: 'var(--global-color-primary-blue-dark-blue, #191E3C)',
   },
   blue: {
-    on:  'var(--toggle-track-bg-checked-blue)',
-    off: 'var(--toggle-track-bg-checked-blue)',
+    on:  'var(--global-color-primary-sky-blue)',
+    off: 'var(--global-color-primary-blue-dark-blue, #191E3C)',
   },
   dark: {
-    on:  'var(--toggle-track-bg-checked-dark)',
-    off: 'var(--toggle-track-bg-checked-dark)',
+    on:  'var(--global-color-primary-sky-blue)',
+    off: 'var(--global-color-primary-blue-dark-blue, #191E3C)',
   },
   status: {
     on:  'var(--toggle-track-bg-status-on)',
     off: 'var(--toggle-track-bg-status-off)',
   },
+};
+
+/**
+ * Track border (box-shadow outline) per variant.
+ * Acts as a visual differentiator between the three default variants.
+ */
+const TRACK_BORDER: Record<ToggleVariant, string> = {
+  primary: 'var(--global-color-primary-sky-blue)',
+  blue:    'var(--global-color-primary-blue-blue, #3776CE)',
+  dark:    'var(--global-color-primary-blue-dark-blue, #191E3C)',
+  status:  'transparent',
 };
 
 /* ── Component ──────────────────────────────────────────────────────────── */
@@ -116,57 +152,69 @@ export const Toggle = ({
     .filter(Boolean)
     .join(' ');
 
-  /* ── Thumb icon selection ── */
+  /* ── Thumb icon ── */
   const thumbIconUrl = disabled
     ? checked
       ? ICON_URL(DISABLED_CHECK_SVG)
       : ICON_URL(DISABLED_X_SVG)
+    : variant === 'status'
+    ? checked
+      ? ICON_URL(STATUS_CHECK_SVG)
+      : ICON_URL(STATUS_X_SVG)
     : checked
     ? ICON_URL(CHECK_SVG)
     : ICON_URL(X_SVG);
 
-  /* ── Track colour selection ── */
+  /* ── Track colour ── */
   const trackBg = disabled
     ? 'var(--toggle-track-bg-disabled)'
     : checked
     ? TRACK_COLOR[variant].on
     : TRACK_COLOR[variant].off;
 
+  /* ── Track border (box-shadow outline) ── */
+  const trackBorderColor = disabled
+    ? 'var(--global-color-neutral-gray-300)'
+    : TRACK_BORDER[variant];
+
   /* ── MUI size ── */
   const muiSize = size === 'large' ? 'medium' : 'small';
 
   /* ── sx overrides ── */
   const switchSx = {
-    /* Track */
+    /* ── Track ── */
     '& .MuiSwitch-track': {
-      backgroundColor: trackBg,
-      opacity: 1,
-      borderRadius: 'var(--toggle-track-radius)',
-      transition:
-        'background-color var(--toggle-transition-duration) var(--toggle-transition-easing)',
+      backgroundColor: `${trackBg} !important`,
+      opacity:         '1 !important',
+      borderRadius:    'var(--toggle-track-radius)',
+      boxShadow:       `0 0 0 2px ${trackBorderColor}`,
+      transition:      [
+        `background-color var(--toggle-transition-duration) var(--toggle-transition-easing)`,
+        `box-shadow var(--toggle-transition-duration) var(--toggle-transition-easing)`,
+      ].join(', '),
     },
-    /* Track when Mui-checked class fires (animation safe) */
-    '&.Mui-checked + .MuiSwitch-track, & .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
-      backgroundColor: TRACK_COLOR[variant].on,
-      opacity: 1,
-    },
-    /* Thumb */
+
+    /* ── Thumb ── */
     '& .MuiSwitch-thumb': {
-      backgroundColor: 'var(--toggle-thumb-bg)',
-      backgroundImage: thumbIconUrl,
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center',
-      backgroundSize: '62%',
-      boxShadow: 'var(--toggle-thumb-shadow)',
-      transition:
-        'background-color var(--toggle-transition-duration) var(--toggle-transition-easing)',
+      backgroundColor:   'var(--toggle-thumb-bg)',
+      backgroundImage:   thumbIconUrl,
+      backgroundRepeat:  'no-repeat',
+      backgroundPosition:'center',
+      backgroundSize:    '78%',
+      boxShadow:         'var(--toggle-thumb-shadow)',
+      transition: [
+        `background-image var(--toggle-transition-duration) var(--toggle-transition-easing)`,
+        `background-color var(--toggle-transition-duration) var(--toggle-transition-easing)`,
+      ].join(', '),
     },
-    /* Remove hover ripple */
+
+    /* ── SwitchBase: remove hover ripple ── */
     '& .MuiSwitch-switchBase': {
       '&:hover': { backgroundColor: 'transparent' },
     },
     '& .MuiTouchRipple-root': { display: 'none' },
-    /* Override MUI default blue on checked */
+
+    /* ── Override MUI default blue on checked ── */
     '& .MuiSwitch-switchBase.Mui-checked': {
       color: 'var(--toggle-thumb-bg)',
     },

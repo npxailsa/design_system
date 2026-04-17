@@ -233,88 +233,95 @@ export const AllInteractiveStates: Story = {
 
 /* ══════════════════════════════════════════════════════════════
    9. FULL DESIGN MATRIX
-   Matches the screenshot: rows = sizes (large→small),
-   columns = variants (primary, blue, dark, status) + disabled,
-   pairs of checked / unchecked per cell
+   Mirrors the Figma screenshot exactly:
+     Rows  (top→bottom): large ON, large OFF, default ON, default OFF,
+                         small ON, small OFF
+     Cols  (left→right): primary, blue, dark, status, disabled
    ══════════════════════════════════════════════════════════════ */
 export const FullDesignMatrix: Story = {
   name: 'Full Design Matrix',
   render: () => {
-    const VARIANT_LABELS: Record<ToggleVariant, string> = {
-      primary: 'Primary',
-      blue: 'Blue',
-      dark: 'Dark',
-      status: 'Status',
+    const COL_LABELS = ['Primary', 'Blue', 'Dark', 'Status', 'Disabled'];
+
+    const headerCell: React.CSSProperties = {
+      fontFamily:    'var(--brand-font-primary)',
+      fontSize:      '10px',
+      fontWeight:    700,
+      color:         'var(--global-color-neutral-gray-500)',
+      textTransform: 'uppercase',
+      letterSpacing: '0.6px',
+      textAlign:     'center',
+      padding:       '0 4px 8px',
     };
 
-    const labelStyle: React.CSSProperties = {
-      fontFamily: 'var(--brand-font-primary)',
-      fontSize: '10px',
-      fontWeight: 600,
-      color: 'var(--global-color-neutral-gray-500)',
-      textTransform: 'capitalize',
-      textAlign: 'center',
+    const rowLabel: React.CSSProperties = {
+      fontFamily:    'var(--brand-font-primary)',
+      fontSize:      '10px',
+      color:         'var(--global-color-neutral-gray-400)',
+      textAlign:     'right',
+      paddingRight:  '12px',
+      whiteSpace:    'nowrap',
     };
 
-    const sizeLabel: React.CSSProperties = {
-      fontFamily: 'var(--brand-font-primary)',
-      fontSize: '11px',
-      color: 'var(--global-color-neutral-gray-700)',
-      textTransform: 'capitalize',
-      display: 'flex',
-      alignItems: 'center',
+    const cell: React.CSSProperties = {
+      display:        'flex',
+      justifyContent: 'center',
+      alignItems:     'center',
+      padding:        '10px 4px',
     };
+
+    // 6 data rows: [size, checked]
+    const rows: Array<[ToggleSize, boolean]> = [
+      ['large',   true],
+      ['large',   false],
+      ['default', true],
+      ['default', false],
+      ['small',   true],
+      ['small',   false],
+    ];
 
     return (
       <div style={{ padding: '32px 24px', overflowX: 'auto' }}>
-        {/* Grid: 6 rows × 6 cols (sizeLabel + 4 variants + 1 disabled) */}
-        {/* For each size: 2 sub-rows (checked / unchecked) */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '72px repeat(4, 96px) 96px',
-          gap: '0 16px',
-          alignItems: 'center',
-        }}>
-          {/* Header row */}
-          <div />
-          {ALL_VARIANTS.map((v) => (
-            <div key={v} style={labelStyle}>{VARIANT_LABELS[v]}</div>
-          ))}
-          <div style={labelStyle}>Disabled</div>
-
-          {/* Size rows */}
-          {ALL_SIZES.map((size, si) => (
-            <React.Fragment key={size}>
-              {/* Checked row */}
-              <div style={{ ...sizeLabel, paddingTop: si === 0 ? '20px' : '8px' }}>
-                {si === 0 ? size : ''}
-              </div>
-              {ALL_VARIANTS.map((variant) => (
-                <div key={`${size}-${variant}-on`} style={{ paddingTop: si === 0 ? '20px' : '8px', display: 'flex', justifyContent: 'center' }}>
-                  <Toggle size={size} variant={variant} checked={true} />
-                </div>
+        <table style={{ borderCollapse: 'collapse' }}>
+          <thead>
+            <tr>
+              {/* empty corner */}
+              <th style={{ width: '80px' }} />
+              {COL_LABELS.map((l) => (
+                <th key={l} style={headerCell}>{l}</th>
               ))}
-              {/* Disabled checked */}
-              <div style={{ paddingTop: si === 0 ? '20px' : '8px', display: 'flex', justifyContent: 'center' }}>
-                <Toggle size={size} variant="primary" checked={true} disabled />
-              </div>
-
-              {/* Unchecked row */}
-              <div style={{ paddingBottom: '16px', display: 'flex', alignItems: 'center', paddingTop: '4px' }}>
-                {si !== 0 ? <span style={{ ...sizeLabel }}>{size}</span> : null}
-              </div>
-              {ALL_VARIANTS.map((variant) => (
-                <div key={`${size}-${variant}-off`} style={{ paddingBottom: '16px', paddingTop: '4px', display: 'flex', justifyContent: 'center' }}>
-                  <Toggle size={size} variant={variant} checked={false} />
-                </div>
-              ))}
-              {/* Disabled unchecked */}
-              <div style={{ paddingBottom: '16px', paddingTop: '4px', display: 'flex', justifyContent: 'center' }}>
-                <Toggle size={size} variant="primary" checked={false} disabled />
-              </div>
-            </React.Fragment>
-          ))}
-        </div>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map(([size, checked]) => (
+              <tr key={`${size}-${checked ? 'on' : 'off'}`}>
+                <td style={rowLabel}>
+                  {size}&nbsp;<span style={{ opacity: 0.6 }}>{checked ? '✓' : '✕'}</span>
+                </td>
+                {/* primary */}
+                <td style={cell}>
+                  <Toggle size={size} variant="primary" checked={checked} />
+                </td>
+                {/* blue */}
+                <td style={cell}>
+                  <Toggle size={size} variant="blue" checked={checked} />
+                </td>
+                {/* dark */}
+                <td style={cell}>
+                  <Toggle size={size} variant="dark" checked={checked} />
+                </td>
+                {/* status */}
+                <td style={cell}>
+                  <Toggle size={size} variant="status" checked={checked} />
+                </td>
+                {/* disabled */}
+                <td style={cell}>
+                  <Toggle size={size} variant="primary" checked={checked} disabled />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     );
   },

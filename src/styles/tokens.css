@@ -2180,17 +2180,25 @@
 
   /* Toggle — track colours */
   --toggle-track-bg:                var(--global-color-neutral-gray-300);
-  /* primary variant: sky-blue */
+  /* Shared ON colour for primary / blue / dark variants */
+  --toggle-track-bg-on:             var(--global-color-primary-sky-blue);
+  /* Shared OFF colour for primary / blue / dark variants */
+  --toggle-track-bg-off:            var(--global-color-primary-blue-dark-blue, #191E3C);
+  /* Legacy single-state aliases (kept for backward compat) */
   --toggle-track-bg-checked:        var(--global-color-primary-sky-blue);
-  /* blue variant: brand-blue */
   --toggle-track-bg-checked-blue:   var(--global-color-primary-blue-blue, #3776CE);
-  /* dark variant: navy */
   --toggle-track-bg-checked-dark:   var(--global-color-primary-blue-dark-blue, #191E3C);
-  /* status variant: on=success-green, off=error-pink */
+  /* status variant: on=success-green, off=error-red */
   --toggle-track-bg-status-on:      #00B359;
   --toggle-track-bg-status-off:     #E53935;
   --toggle-track-bg-disabled:       var(--global-color-neutral-gray-200);
   --toggle-track-radius:            var(--global-spacing-radius-full);
+
+  /* Toggle — track border (box-shadow outline, differentiates variants) */
+  --toggle-track-border-primary:    var(--global-color-primary-sky-blue);
+  --toggle-track-border-blue:       var(--global-color-primary-blue-blue, #3776CE);
+  --toggle-track-border-dark:       var(--global-color-primary-blue-dark-blue, #191E3C);
+  --toggle-track-border-disabled:   var(--global-color-neutral-gray-300);
 
   /* Toggle — thumb icon colours (used in SVG data URIs in Toggle.tsx) */
   --toggle-thumb-icon-check-fill:   #00B359;
