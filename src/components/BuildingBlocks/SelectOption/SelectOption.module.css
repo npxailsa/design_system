@@ -156,10 +156,7 @@
   font-size: var(--select-option-icon-size-sm) !important;
 }
 
-.option--small .option__indicator {
-  width:  var(--select-option-indicator-size-sm);
-  height: var(--select-option-indicator-size-sm);
-}
+/* MUI Checkbox/Radio size is controlled via the component's size prop + sx */
 
 /* ════════════════════════════════════════════════════════════
    SIZE — LARGE
@@ -178,10 +175,7 @@
   font-size: var(--select-option-icon-size-lg) !important;
 }
 
-.option--large .option__indicator {
-  width:  var(--select-option-indicator-size-lg);
-  height: var(--select-option-indicator-size-lg);
-}
+/* MUI Checkbox/Radio large size is controlled via size="medium" */
 
 /* ════════════════════════════════════════════════════════════
    ICON SLOTS
@@ -213,85 +207,26 @@
 }
 
 /* ════════════════════════════════════════════════════════════
-   SELECTION INDICATORS (checkbox / radio)
+   SELECTION INDICATORS — MUI Checkbox / Radio overrides
+   Colours are applied via sx prop in the component; these rules
+   only handle layout integration (no padding, no ripple area).
    ════════════════════════════════════════════════════════════ */
 
-.option__indicator {
-  display:         inline-flex;
-  align-items:     center;
-  justify-content: center;
-  flex-shrink:     0;
-  width:           var(--select-option-indicator-size);
-  height:          var(--select-option-indicator-size);
-  border-style:    solid;
-  border-width:    var(--select-option-indicator-border-width);
-  border-color:    var(--select-option-indicator-border-color);
-  background:      var(--select-option-indicator-bg);
-  transition:
-    background     var(--select-option-transition-duration) var(--select-option-transition-easing),
-    border-color   var(--select-option-transition-duration) var(--select-option-transition-easing);
+/* Ensure MUI Checkbox/Radio sits flush with no extra whitespace */
+.option .MuiCheckbox-root,
+.option .MuiRadio-root {
+  padding:     0;
+  flex-shrink: 0;
 }
 
-/* Checkbox — square with radius */
-.option__indicator--checkbox {
-  border-radius: var(--select-option-indicator-checkbox-radius);
+/* On a selected (blue bg) row, invert unchecked indicators to white */
+.option--selected .MuiCheckbox-root:not(.Mui-checked),
+.option--selected .MuiRadio-root:not(.Mui-checked) {
+  color: rgba(255, 255, 255, 0.7);
 }
 
-/* Radio — full circle */
-.option__indicator--radio {
-  border-radius: var(--select-option-indicator-radio-radius);
-}
-
-/* Checked / selected state for indicator */
-.option__indicator--checked {
-  background:   var(--select-option-indicator-bg-checked);
-  border-color: var(--select-option-indicator-border-color-checked);
-  color:        var(--select-option-indicator-color-checked);
-}
-
-/* Checkmark SVG inside checkbox */
-.option__indicator-svg {
-  width:  var(--select-option-indicator-icon-size);
-  height: var(--select-option-indicator-icon-size);
-  display: block;
-}
-
-/* Dot inside radio button */
-.option__indicator-dot {
-  width:         var(--select-option-indicator-dot-size);
-  height:        var(--select-option-indicator-dot-size);
-  border-radius: 50%;
-  background:    var(--select-option-indicator-color-checked);
-  display:       block;
-  flex-shrink:   0;
-}
-
-/* ── Disabled indicator ── */
-.option--disabled .option__indicator,
-.option:disabled .option__indicator {
-  border-color: var(--select-option-indicator-border-color-disabled);
-  background:   var(--select-option-indicator-bg-disabled);
-  color:        var(--select-option-indicator-color-disabled);
-}
-
-.option--disabled .option__indicator-dot,
-.option:disabled .option__indicator-dot {
-  background: var(--select-option-indicator-color-disabled);
-}
-
-/* ── Selected option indicator: invert colours ── */
-.option--selected .option__indicator {
-  border-color: var(--select-option-indicator-border-color-on-selected);
-  background:   var(--select-option-indicator-bg-on-selected);
-  color:        var(--select-option-indicator-color-on-selected);
-}
-
-.option--selected .option__indicator--checked {
-  border-color: var(--select-option-indicator-border-color-on-selected-checked);
-  background:   var(--select-option-indicator-bg-on-selected-checked);
-  color:        var(--select-option-indicator-color-on-selected-checked);
-}
-
-.option--selected .option__indicator-dot {
-  background: var(--select-option-indicator-color-on-selected-checked);
+/* Checked indicator on a selected row: white icon */
+.option--selected .MuiCheckbox-root.Mui-checked,
+.option--selected .MuiRadio-root.Mui-checked {
+  color: var(--global-color-base-white);
 }

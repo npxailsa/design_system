@@ -1,5 +1,7 @@
 import React from 'react';
 import ButtonBase from '@mui/material/ButtonBase';
+import Checkbox from '@mui/material/Checkbox';
+import Radio from '@mui/material/Radio';
 import styles from './SelectOption.module.css';
 
 export type SelectOptionPosition = 'top' | 'mid' | 'bottom' | 'solo';
@@ -26,8 +28,8 @@ export interface SelectOptionProps {
   disabled?: boolean;
   /**
    * Type of selection indicator to show alongside the label:
-   * - 'checkbox' → shows a checkbox (suitable for multi-select menus)
-   * - 'radio'    → shows a radio button (suitable for single-select menus)
+   * - 'checkbox' → MUI Checkbox (suitable for multi-select menus)
+   * - 'radio'    → MUI Radio (suitable for single-select menus)
    * - 'none'     → no indicator (plain text option)
    */
   selectionType?: SelectOptionSelectionType;
@@ -41,6 +43,38 @@ export interface SelectOptionProps {
   /** Accessible label for the option (defaults to label) */
   'aria-label'?: string;
 }
+
+// Map size prop → MUI checkbox/radio size and px value
+const SIZE_MAP: Record<SelectOptionSize, { muiSize: 'small' | 'medium'; px: number }> = {
+  small:   { muiSize: 'small',  px: 14 },
+  default: { muiSize: 'small',  px: 16 },
+  large:   { muiSize: 'medium', px: 18 },
+};
+
+// Shared sx for Checkbox / Radio so they match the Figma colours exactly
+const indicatorSx = (selected: boolean, disabled: boolean, px: number) => ({
+  padding: 0,
+  flexShrink: 0,
+  width: `${px}px`,
+  height: `${px}px`,
+  // Unchecked border: gray-300, checked/selected: brand-primary (#3776CE)
+  color: disabled
+    ? 'var(--global-color-neutral-gray-300)'
+    : selected
+    ? 'var(--brand-primary)'
+    : 'var(--global-color-neutral-gray-300)',
+  '&.Mui-checked': {
+    color: disabled ? 'var(--global-color-neutral-gray-300)' : 'var(--brand-primary)',
+  },
+  // Make the icon exactly the specified pixel size
+  '& .MuiSvgIcon-root': {
+    fontSize: `${px}px`,
+  },
+  // Remove default MUI ripple padding so icon fills the container
+  '& .MuiTouchRipple-root': {
+    display: 'none',
+  },
+});
 
 export const SelectOption = ({
   label,
@@ -57,6 +91,7 @@ export const SelectOption = ({
 }: SelectOptionProps): JSX.Element => {
   const LeadingIcon = leadingIcon;
   const TrailingIcon = trailingIcon;
+  const { muiSize, px } = SIZE_MAP[size];
 
   const cls = [
     styles.option,
@@ -89,52 +124,30 @@ export const SelectOption = ({
         </span>
       )}
 
-      {/* Selection indicator */}
+      {/* Checkbox indicator — MUI Checkbox */}
       {selectionType === 'checkbox' && (
-        <span
-          className={[
-            styles.option__indicator,
-            styles['option__indicator--checkbox'],
-            selected && styles['option__indicator--checked'],
-          ]
-            .filter(Boolean)
-            .join(' ')}
+        <Checkbox
+          checked={selected}
+          disabled={disabled}
+          size={muiSize}
+          tabIndex={-1}
+          disableRipple
           aria-hidden="true"
-        >
-          {selected && (
-            <svg
-              viewBox="0 0 14 14"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className={styles['option__indicator-svg']}
-            >
-              <path
-                d="M2.333 7L5.667 10.333L11.667 4"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          )}
-        </span>
+          sx={indicatorSx(selected, disabled, px)}
+        />
       )}
 
+      {/* Radio indicator — MUI Radio */}
       {selectionType === 'radio' && (
-        <span
-          className={[
-            styles.option__indicator,
-            styles['option__indicator--radio'],
-            selected && styles['option__indicator--checked'],
-          ]
-            .filter(Boolean)
-            .join(' ')}
+        <Radio
+          checked={selected}
+          disabled={disabled}
+          size={muiSize}
+          tabIndex={-1}
+          disableRipple
           aria-hidden="true"
-        >
-          {selected && (
-            <span className={styles['option__indicator-dot']} />
-          )}
-        </span>
+          sx={indicatorSx(selected, disabled, px)}
+        />
       )}
 
       {/* Label */}
