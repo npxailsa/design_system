@@ -2318,11 +2318,11 @@
   --select-option-color-hover:                   var(--global-color-base-black);
   --select-option-bg-active:                     var(--global-color-primary-blue-blue-200);
 
-  /* Selected: sky-blue (primary/light-blue) background with white text per Figma spec */
-  --select-option-bg-selected:                   var(--global-color-primary-sky-blue, #0BA7EA);
-  --select-option-border-color-selected:         var(--global-color-primary-sky-blue, #0BA7EA);
+  /* Selected: brand-primary-25 (#f2f7ff) background — lightest brand tint */
+  --select-option-bg-selected:                   var(--brand-primary-25);
+  --select-option-border-color-selected:         var(--global-color-neutral-gray-300);
   --select-option-border-width-selected:         var(--global-spacing-stroke-0-5px);
-  --select-option-color-selected:                var(--global-color-base-white);
+  --select-option-color-selected:                var(--global-color-base-black);
 
   --select-option-bg-disabled:                   var(--global-color-neutral-gray-50);
   --select-option-border-color-disabled:         var(--global-color-neutral-gray-200);

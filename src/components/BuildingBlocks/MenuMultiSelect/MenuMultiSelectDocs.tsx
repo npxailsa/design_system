@@ -138,11 +138,11 @@ export const MenuMultiSelectDocs: React.FC = () => {
       <DocsTemplate.Section title="Interactive States">
         <DocsTemplate.BodyText>
           MenuMultiSelect supports default, hover, focus, active, selected, and
-          disabled states. The selected state fills the row with the sky-blue
-          primary colour (<code>--global-color-primary-sky-blue</code>), turns
-          text and icons white, and shows the indicator in its checked/white
-          state on the right side of the row. Disabled options are visually
-          muted and non-interactive.
+          disabled states. The selected state applies a very light brand tint
+          (<code>--brand-primary-25</code>, <code>#f2f7ff</code>) to the row,
+          keeping text dark and showing the sky-blue indicator on the right in
+          its checked state. Disabled options are visually muted and
+          non-interactive.
         </DocsTemplate.BodyText>
         <DocsTemplate.Subsection title="State Gallery">
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--global-spacing-sizing-8px)', maxWidth: '320px', padding: 'var(--global-spacing-sizing-16px) 0' }}>
@@ -176,9 +176,9 @@ export const MenuMultiSelectDocs: React.FC = () => {
           { name: '--select-option-border-width', description: 'Default border width (0.5px)' },
           { name: '--select-option-color', description: 'Default text colour (base-black, #1C1C1C)' },
           { name: '--select-option-bg-hover', description: 'Hover background colour (blue-blue-100)' },
-          { name: '--select-option-bg-selected', description: 'Selected background colour (sky-blue, #0BA7EA)' },
-          { name: '--select-option-color-selected', description: 'Selected text colour (white, #FFFFFF)' },
-          { name: '--select-option-border-color-selected', description: 'Selected border colour (sky-blue, #0BA7EA)' },
+          { name: '--select-option-bg-selected', description: 'Selected background colour (--brand-primary-25, #f2f7ff)' },
+          { name: '--select-option-color-selected', description: 'Selected text colour (base-black, #1C1C1C)' },
+          { name: '--select-option-border-color-selected', description: 'Selected border colour (gray-300, #D2D5DA)' },
           { name: '--select-option-bg-disabled', description: 'Disabled background colour (gray-50)' },
           { name: '--select-option-color-disabled', description: 'Disabled text colour (gray-300)' },
           { name: '--select-option-radius', description: 'Corner radius for solo/top/bottom positions (6px)' },
@@ -256,10 +256,10 @@ export const MenuMultiSelectDocs: React.FC = () => {
       {/* ── Principles ── */}
       <DocsTemplate.Principles>
         <DocsTemplate.PrincipleCard number={1} title="Clear Selection State">
-          The selected state fills the row with the sky-blue primary colour and
-          inverts all content to white — giving immediate, high-contrast
-          confirmation of selection. The checkbox or radio indicator renders on
-          the right side of the row in white checked state.
+          The selected state uses <code>--brand-primary-25</code> — the
+          lightest brand tint — as its background. Text stays dark and the
+          sky-blue checkbox or radio indicator on the right provides clear
+          visual confirmation of selection without overpowering the row.
         </DocsTemplate.PrincipleCard>
         <DocsTemplate.PrincipleCard number={2} title="Accessible by Default">
           Built on MUI ButtonBase with <code>role="option"</code>,{' '}
