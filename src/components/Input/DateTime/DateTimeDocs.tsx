@@ -103,15 +103,17 @@ export const DateTimeDocs: React.FC = () => (
     {/* ── Time Input ── */}
     <DocsTemplate.Section title="Time Input">
       <DocsTemplate.BodyText>
-        When <code>type="time"</code>, the field shows a clock icon. The
-        placeholder reads <em>00 : 00 : 00 AM</em> and a set value
-        displays as <em>08 : 01 : 54 PM</em>.
+        When <code>type="time"</code>, the field shows a clock icon and an
+        extra-small AM/PM ghost button toggle. The input placeholder reads{' '}
+        <em>HH : MM : SS</em> and a set value displays in 12-hour format —
+        e.g. <em>08 : 01 : 54</em> with the AM/PM button showing the current
+        period. Clicking the button flips between AM and PM.
       </DocsTemplate.BodyText>
       <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'flex-end' }}>
-        <div style={{ width: 200 }}>
+        <div style={{ width: 240 }}>
           <TimeExample label="Time (empty)" />
         </div>
-        <div style={{ width: 200 }}>
+        <div style={{ width: 240 }}>
           <TimeExample label="Time (filled)" value="20:01:54" />
         </div>
       </div>

@@ -159,6 +159,34 @@
   margin: 0;
 }
 
+/* ── AM/PM ghost button slot (time inputs only) ─────────────────────────── */
+
+.ampmSlot {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  /* Vertical separator between input text and the toggle */
+  padding-left: var(--global-spacing-sizing-4px);
+  border-left: var(--datetime-border-width) solid var(--datetime-border-color);
+}
+
+/* Override ghost button to sit flush and compact inside the control */
+.ampmBtn {
+  /* Ensure the button doesn't grow and is vertically centred */
+  min-width: 0 !important;
+  white-space: nowrap;
+}
+
+/* Slightly dimmer separator when control is focused */
+.control--focused .ampmSlot {
+  border-left-color: var(--datetime-border-color-focus);
+}
+
+/* Disabled separator */
+.control--disabled .ampmSlot {
+  border-left-color: var(--datetime-border-color-disabled);
+}
+
 /* ── Trailing icon (calendar / clock) ────────────────────────────────────── */
 
 .trailingIcon {
