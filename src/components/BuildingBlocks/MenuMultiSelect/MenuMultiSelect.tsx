@@ -1,7 +1,6 @@
 import React from 'react';
 import ButtonBase from '@mui/material/ButtonBase';
-import Checkbox from '@mui/material/Checkbox';
-import Radio from '@mui/material/Radio';
+import SelectItem, { SelectItemSize } from '../SelectItem/SelectItem';
 import styles from './MenuMultiSelect.module.css';
 
 export type MenuMultiSelectPosition = 'top' | 'mid' | 'bottom' | 'solo';
@@ -44,34 +43,16 @@ export interface MenuMultiSelectProps {
   'aria-label'?: string;
 }
 
-// Map size prop → MUI checkbox/radio size and px value
-const SIZE_MAP: Record<MenuMultiSelectSize, { muiSize: 'small' | 'medium'; px: number }> = {
-  small:   { muiSize: 'small',  px: 14 },
-  default: { muiSize: 'small',  px: 16 },
-  large:   { muiSize: 'medium', px: 18 },
+/**
+ * Map MenuMultiSelect `size` → SelectItem `size`.
+ * SelectItem already encodes the canonical pixel sizes per design token,
+ * so we delegate visual scaling to it instead of duplicating constants.
+ */
+const SELECT_ITEM_SIZE: Record<MenuMultiSelectSize, SelectItemSize> = {
+  small:   'small',
+  default: 'default',
+  large:   'large',
 };
-
-// Shared sx for Checkbox / Radio so they match the Figma colours exactly
-const indicatorSx = (selected: boolean, disabled: boolean, px: number) => ({
-  padding: 0,
-  flexShrink: 0,
-  width: `${px}px`,
-  height: `${px}px`,
-  color: disabled
-    ? 'var(--global-color-neutral-gray-300)'
-    : selected
-    ? 'var(--brand-primary)'
-    : 'var(--global-color-neutral-gray-300)',
-  '&.Mui-checked': {
-    color: disabled ? 'var(--global-color-neutral-gray-300)' : 'var(--brand-primary)',
-  },
-  '& .MuiSvgIcon-root': {
-    fontSize: `${px}px`,
-  },
-  '& .MuiTouchRipple-root': {
-    display: 'none',
-  },
-});
 
 export const MenuMultiSelect = ({
   label,
@@ -88,7 +69,7 @@ export const MenuMultiSelect = ({
 }: MenuMultiSelectProps): JSX.Element => {
   const LeadingIcon = leadingIcon;
   const TrailingIcon = trailingIcon;
-  const { muiSize, px } = SIZE_MAP[size];
+  const selectItemSize = SELECT_ITEM_SIZE[size];
 
   const cls = [
     styles.option,
@@ -121,30 +102,22 @@ export const MenuMultiSelect = ({
         </span>
       )}
 
-      {/* Checkbox indicator — MUI Checkbox */}
-      {selectionType === 'checkbox' && (
-        <Checkbox
-          checked={selected}
-          disabled={disabled}
-          size={muiSize}
-          tabIndex={-1}
-          disableRipple
-          aria-hidden="true"
-          sx={indicatorSx(selected, disabled, px)}
-        />
-      )}
-
-      {/* Radio indicator — MUI Radio */}
-      {selectionType === 'radio' && (
-        <Radio
-          checked={selected}
-          disabled={disabled}
-          size={muiSize}
-          tabIndex={-1}
-          disableRipple
-          aria-hidden="true"
-          sx={indicatorSx(selected, disabled, px)}
-        />
+      {/*
+        Selection indicator — delegated to the SelectItem building block so
+        every menu option uses the canonical token-driven checkbox / radio.
+        The parent ButtonBase owns interaction; SelectItem here is purely
+        the visual indicator (aria-hidden, no own change handler).
+      */}
+      {(selectionType === 'checkbox' || selectionType === 'radio') && (
+        <span className={styles.option__indicator} aria-hidden="true">
+          <SelectItem
+            type={selectionType}
+            size={selectItemSize}
+            state={selected ? 'selected' : 'default'}
+            disabled={disabled}
+            aria-label={ariaLabel ?? label}
+          />
+        </span>
       )}
 
       {/* Label */}

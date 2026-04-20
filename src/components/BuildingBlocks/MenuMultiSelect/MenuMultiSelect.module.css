@@ -207,26 +207,30 @@
 }
 
 /* ════════════════════════════════════════════════════════════
-   SELECTION INDICATORS — MUI Checkbox / Radio overrides
-   Colours are applied via sx prop in the component; these rules
-   only handle layout integration (no padding, no ripple area).
+   SELECTION INDICATOR — SelectItem instance wrapper
+   The indicator is rendered by the SelectItem building block, so
+   it owns its own colour / border-radius logic via design tokens.
+   These rules only handle the layout slot inside the menu row.
    ════════════════════════════════════════════════════════════ */
 
-/* Ensure MUI Checkbox/Radio sits flush with no extra whitespace */
-.option .MuiCheckbox-root,
-.option .MuiRadio-root {
-  padding:     0;
-  flex-shrink: 0;
+.option__indicator {
+  display:         inline-flex;
+  align-items:     center;
+  justify-content: center;
+  flex-shrink:     0;
+  /* Disable pointer events so the parent ButtonBase owns interaction */
+  pointer-events:  none;
 }
 
-/* On a selected (blue bg) row, invert unchecked indicators to white */
-.option--selected .MuiCheckbox-root:not(.Mui-checked),
-.option--selected .MuiRadio-root:not(.Mui-checked) {
-  color: rgba(255, 255, 255, 0.7);
+/* On a selected (blue bg) row, invert the indicator icon colour to white
+   so the contrast with the dark selected background remains accessible.
+   We target both checkbox and radio MUI roots inside the SelectItem. */
+.option--selected .option__indicator .MuiCheckbox-root,
+.option--selected .option__indicator .MuiRadio-root {
+  color: var(--global-color-base-white) !important;
 }
 
-/* Checked indicator on a selected row: white icon */
-.option--selected .MuiCheckbox-root.Mui-checked,
-.option--selected .MuiRadio-root.Mui-checked {
-  color: var(--global-color-base-white);
+.option--selected .option__indicator .MuiCheckbox-root.Mui-checked,
+.option--selected .option__indicator .MuiRadio-root.Mui-checked {
+  color: var(--global-color-base-white) !important;
 }
