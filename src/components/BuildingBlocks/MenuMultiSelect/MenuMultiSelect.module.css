@@ -10,7 +10,7 @@
      Default  : #FFF bg, 0.5px #D2D5DA border, #1C1C1C text, Calibri Light
      Hover    : light blue bg (#E7E9F4), same text colour
      Focus    : 2px focus ring
-     Selected : brand-primary bg (#3776CE), white text, 0.5px border
+     Selected : gray-200 bg (#E5E7EB), dark text, 0.5px gray-300 border; indicator (SelectItem) shows checked state in sky-blue
      Disabled : gray-50 bg, gray-200 border, gray-300 text
 
    Design tokens: see tokens.css → --select-option-*
@@ -222,15 +222,6 @@
   pointer-events:  none;
 }
 
-/* On a selected (blue bg) row, invert the indicator icon colour to white
-   so the contrast with the dark selected background remains accessible.
-   We target both checkbox and radio MUI roots inside the SelectItem. */
-.option--selected .option__indicator .MuiCheckbox-root,
-.option--selected .option__indicator .MuiRadio-root {
-  color: var(--global-color-base-white) !important;
-}
-
-.option--selected .option__indicator .MuiCheckbox-root.Mui-checked,
-.option--selected .option__indicator .MuiRadio-root.Mui-checked {
-  color: var(--global-color-base-white) !important;
-}
+/* The indicator (SelectItem) handles its own colour via design tokens.
+   With the light-gray selected background, no colour inversion is needed —
+   the blue indicator from SelectItem remains accessible. */

@@ -2318,10 +2318,11 @@
   --select-option-color-hover:                   var(--global-color-base-black);
   --select-option-bg-active:                     var(--global-color-primary-blue-blue-200);
 
-  --select-option-bg-selected:                   var(--brand-primary);
-  --select-option-border-color-selected:         var(--brand-primary);
+  /* Selected: light-gray background with dark text; indicator shows checked state via SelectItem */
+  --select-option-bg-selected:                   var(--global-color-neutral-gray-200);
+  --select-option-border-color-selected:         var(--global-color-neutral-gray-300);
   --select-option-border-width-selected:         var(--global-spacing-stroke-0-5px);
-  --select-option-color-selected:                var(--global-color-base-white);
+  --select-option-color-selected:                var(--global-color-base-black);
 
   --select-option-bg-disabled:                   var(--global-color-neutral-gray-50);
   --select-option-border-color-disabled:         var(--global-color-neutral-gray-200);
