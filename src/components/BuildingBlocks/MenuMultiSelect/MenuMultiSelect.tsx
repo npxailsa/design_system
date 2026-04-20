@@ -102,11 +102,15 @@ export const MenuMultiSelect = ({
         </span>
       )}
 
+      {/* Label — fills available space, pushing indicator to the right */}
+      <span className={styles.option__label}>{label}</span>
+
       {/*
-        Selection indicator — delegated to the SelectItem building block so
-        every menu option uses the canonical token-driven checkbox / radio.
-        The parent ButtonBase owns interaction; SelectItem here is purely
-        the visual indicator (aria-hidden, no own change handler).
+        Selection indicator — placed AFTER the label so it renders on the
+        right side of the row, per the Figma design spec.
+        Delegated to the SelectItem building block for canonical token-driven
+        checkbox / radio rendering. The parent ButtonBase owns interaction;
+        SelectItem here is purely visual (aria-hidden, no own change handler).
       */}
       {(selectionType === 'checkbox' || selectionType === 'radio') && (
         <span className={styles.option__indicator} aria-hidden="true">
@@ -119,9 +123,6 @@ export const MenuMultiSelect = ({
           />
         </span>
       )}
-
-      {/* Label */}
-      <span className={styles.option__label}>{label}</span>
 
       {/* Trailing icon slot */}
       {TrailingIcon && (
