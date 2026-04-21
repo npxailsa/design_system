@@ -1,1 +1,0 @@
-import{r as n,T as r}from"./iframe-C-rm1-E5.js";import{m as o}from"./DefaultPropsProvider-9-Q5T7ov.js";function s(e){return Object.keys(e).length===0}function m(e=null){const t=n.useContext(r);return!t||s(t)?e:t}const u=o();function h(e=u){return m(e)}export{h as u};
