@@ -65,7 +65,6 @@ const config: StorybookConfig = {
 
     config.optimizeDeps.exclude = [
       ...(config.optimizeDeps.exclude || []),
-      '@mui/icons-material',
       '@storybook/addon-docs',
       '@storybook/addon-docs/blocks',
     ];
@@ -79,6 +78,105 @@ const config: StorybookConfig = {
       ...(config.build.commonjsOptions || {}),
       include: [/hoist-non-react-statics/, /node_modules/],
       transformMixedEsModules: true,
+    };
+
+    // ─── Chunk size warning threshold ────────────────────────────────────────
+    // Storybook's preview iframe will always include a sizeable runtime; raise
+    // the limit so the build log is not polluted with false-alarm warnings.
+    // Individual vendor splits below keep the real bundle sizes in check.
+    config.build.chunkSizeWarningLimit = 2000; // kB
+
+    // ─── Code splitting — manualChunks ───────────────────────────────────────
+    //
+    // The default Rollup output bundles everything into one iframe chunk
+    // (~4 MB). Splitting by vendor / subsystem gives the browser parallel
+    // downloads and better long-term caching (vendor code changes rarely).
+    config.build.rollupOptions = {
+      ...(config.build.rollupOptions || {}),
+      output: {
+        ...((config.build.rollupOptions as Record<string, unknown>)?.output || {}),
+        manualChunks(id: string) {
+          // ── @mui/icons-material ─────────────────────────────────────────
+          // Largest single vendor (~1 MB+). Each icon is a separate file in
+          // the package; grouping them avoids hundreds of tiny chunks while
+          // still isolating them from the rest of MUI.
+          if (id.includes('node_modules/@mui/icons-material')) {
+            return 'vendor-mui-icons';
+          }
+
+          // ── MUI core + system ───────────────────────────────────────────
+          // @mui/material, @mui/system, @mui/base, @mui/utils
+          if (
+            id.includes('node_modules/@mui/material') ||
+            id.includes('node_modules/@mui/system') ||
+            id.includes('node_modules/@mui/base') ||
+            id.includes('node_modules/@mui/utils') ||
+            id.includes('node_modules/@mui/styled-engine')
+          ) {
+            return 'vendor-mui-core';
+          }
+
+          // ── Emotion ─────────────────────────────────────────────────────
+          if (id.includes('node_modules/@emotion')) {
+            return 'vendor-emotion';
+          }
+
+          // ── React core ──────────────────────────────────────────────────
+          if (
+            id.includes('node_modules/react/') ||
+            id.includes('node_modules/react-dom/') ||
+            id.includes('node_modules/react-is/') ||
+            id.includes('node_modules/scheduler/')
+          ) {
+            return 'vendor-react';
+          }
+
+          // ── Syntax highlighting (very large) ────────────────────────────
+          if (
+            id.includes('node_modules/refractor') ||
+            id.includes('node_modules/prismjs') ||
+            id.includes('node_modules/react-syntax-highlighter')
+          ) {
+            return 'vendor-syntax';
+          }
+
+          // ── Storybook docs renderer ─────────────────────────────────────
+          if (
+            id.includes('node_modules/@storybook/addon-docs') ||
+            id.includes('node_modules/@storybook/blocks') ||
+            id.includes('storybook/internal/docs-tools')
+          ) {
+            return 'vendor-storybook-docs';
+          }
+
+          // ── Storybook test / a11y ───────────────────────────────────────
+          if (
+            id.includes('node_modules/axe-core') ||
+            id.includes('node_modules/@axe-core') ||
+            id.includes('node_modules/@storybook/addon-a11y')
+          ) {
+            return 'vendor-a11y';
+          }
+
+          // ── Storybook core runtime ──────────────────────────────────────
+          if (
+            id.includes('node_modules/@storybook') ||
+            id.includes('node_modules/storybook')
+          ) {
+            return 'vendor-storybook';
+          }
+
+          // ── General node_modules ────────────────────────────────────────
+          // Anything else in node_modules goes into a shared vendor chunk.
+          if (id.includes('node_modules/')) {
+            return 'vendor-misc';
+          }
+
+          // Application code (src/) is handled by Rollup's default entry
+          // splitting — no explicit chunk needed.
+          return undefined;
+        },
+      },
     };
 
     // ─── Rollup CJS/ESM interop fixes ────────────────────────────────────────
