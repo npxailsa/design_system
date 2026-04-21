@@ -1,5 +1,29 @@
 name: Sync to NPXInnovation/design_system
 
+# ── Why this workflow exists ───────────────────────────────────────────────────
+# npxailsa/design_system is the active development fork.
+# NPXInnovation/design_system is the canonical upstream repository.
+# This workflow mirrors source code, components, styles, and configuration from
+# npxailsa → NPXInnovation on every push to main.
+#
+# ── Why we exclude .github/workflows/ ────────────────────────────────────────
+# GitHub requires the special `workflows` OAuth scope on a PAT to push changes
+# to any .github/workflows/*.yml file.  The SYNC_PAT has `repo` scope only.
+# Attempting to push workflow changes without `workflows` scope causes:
+#
+#   "refusing to allow a GitHub App to create or update workflow … without
+#    workflows permission"
+#
+# By cloning NPXInnovation, rsyncing our source code (excluding workflows), and
+# restoring NPXInnovation's existing workflow files, we:
+#   • Keep all source code, components, tokens, scripts, and config in sync.
+#   • Never touch NPXInnovation's CI/CD setup (it can differ from ours).
+#   • Never need `workflows` permission on the SYNC_PAT.
+#
+# If you want NPXInnovation to use the SAME workflow files as this repo, update
+# the SYNC_PAT to include the `workflows` scope and switch the sync step below
+# to use a direct `git push`.
+
 on:
   push:
     branches:
@@ -7,7 +31,7 @@ on:
   workflow_dispatch:
     inputs:
       force:
-        description: 'Force push (overwrites NPX history — use with care)'
+        description: 'Force-overwrite NPXInnovation history (use with care)'
         required: false
         default: 'false'
         type: choice
@@ -15,78 +39,128 @@ on:
           - 'false'
           - 'true'
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 jobs:
   sync:
-    name: Mirror main → NPXInnovation/design_system
+    name: Mirror source → NPXInnovation/design_system
     runs-on: ubuntu-latest
 
+    # Skip automated version-bump commits so we don't flood NPXInnovation with
+    # chore commits that carry no actual code change.
+    if: |
+      !contains(github.event.head_commit.message, '[skip ci]') &&
+      !contains(github.event.head_commit.message, '[skip pages]')
+
     steps:
+      # ── Pre-flight: verify the secret is set ────────────────────────────────
       - name: Verify SYNC_PAT is configured
         run: |
           if [ -z "${{ secrets.SYNC_PAT }}" ]; then
-            echo "❌ SYNC_PAT secret is not set or is empty."
+            echo "❌ SYNC_PAT secret is not set."
             echo ""
-            echo "To fix this:"
-            echo "  1. Go to https://github.com/npxailsa/design_system/settings/secrets/actions"
-            echo "  2. Click 'New repository secret'"
-            echo "  3. Name: SYNC_PAT"
-            echo "  4. Value: a PAT with 'repo' scope that has access to NPXInnovation/design_system"
+            echo "Fix:"
+            echo "  1. Go to github.com/npxailsa/design_system → Settings → Secrets → Actions"
+            echo "  2. Add secret named SYNC_PAT"
+            echo "  3. Value: a PAT with 'repo' scope that has write access to"
+            echo "     NPXInnovation/design_system"
+            echo ""
+            echo "Note: 'workflows' scope is NOT required — this workflow excludes"
+            echo "      .github/workflows/ from the sync to avoid the permission error."
             exit 1
           fi
-          echo "✅ SYNC_PAT is configured"
+          echo "✅ SYNC_PAT is present"
 
-      - name: Checkout full history
+      # ── Checkout our full source tree ────────────────────────────────────────
+      - name: Checkout npxailsa/design_system (full history)
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          path: source
 
-      - name: Configure git identity
+      # ── Clone NPXInnovation so we can apply changes in-place ─────────────────
+      - name: Clone NPXInnovation/design_system
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git clone \
+            --depth=1 \
+            https://oauth2:${{ secrets.SYNC_PAT }}@github.com/NPXInnovation/design_system.git \
+            target
+          echo "✅ Cloned NPXInnovation/design_system"
 
-      - name: Add NPXInnovation remote
+      # ── Verify connectivity / write access ───────────────────────────────────
+      - name: Verify write access to NPXInnovation/design_system
+        working-directory: target
         run: |
-          git remote add npx https://oauth2:${{ secrets.SYNC_PAT }}@github.com/NPXInnovation/design_system.git
-
-      - name: Verify access to NPXInnovation/design_system
-        run: |
-          if ! git ls-remote npx HEAD > /dev/null 2>&1; then
-            echo "❌ Cannot access NPXInnovation/design_system."
+          # A dry-run push verifies credentials without sending data.
+          if ! git push --dry-run origin HEAD:main > /dev/null 2>&1; then
+            echo "❌ Cannot write to NPXInnovation/design_system."
             echo ""
             echo "Possible causes:"
-            echo "  • The SYNC_PAT token has expired"
-            echo "  • The token lacks 'repo' scope"
-            echo "  • The token owner does not have write access to NPXInnovation/design_system"
+            echo "  • SYNC_PAT has expired"
+            echo "  • Token owner no longer has write access to NPXInnovation/design_system"
             exit 1
           fi
-          echo "✅ Successfully connected to NPXInnovation/design_system"
+          echo "✅ Write access confirmed"
 
-      - name: Check if push is needed
-        id: diff
+      # ── Backup NPXInnovation's existing workflow files ───────────────────────
+      # We restore these after the rsync so we never overwrite NPXInnovation's
+      # CI/CD setup and never need the 'workflows' OAuth scope.
+      - name: Backup NPXInnovation workflow files
         run: |
-          NPX_SHA=$(git ls-remote npx refs/heads/main | cut -f1)
-          LOCAL_SHA=$(git rev-parse HEAD)
-
-          if [ "$NPX_SHA" = "$LOCAL_SHA" ]; then
-            echo "up_to_date=true" >> $GITHUB_OUTPUT
-            echo "✅ NPXInnovation/design_system is already up to date (SHA: $LOCAL_SHA)"
+          mkdir -p /tmp/npx-workflows
+          if [ -d target/.github/workflows ] && \
+             [ -n "$(ls -A target/.github/workflows 2>/dev/null)" ]; then
+            cp -r target/.github/workflows/. /tmp/npx-workflows/
+            echo "📂 Backed up $(ls /tmp/npx-workflows | wc -l) workflow file(s)"
           else
-            echo "up_to_date=false" >> $GITHUB_OUTPUT
-            echo "🔄 Push needed — local: $LOCAL_SHA | npx: ${NPX_SHA:-'(empty)'}"
+            echo "ℹ️  No existing workflow files in NPXInnovation — nothing to preserve"
           fi
 
-      - name: Push to NPXInnovation
-        if: steps.diff.outputs.up_to_date != 'true'
+      # ── Rsync source → target (excluding .git and .github/workflows/) ────────
+      - name: Rsync source code to target
         run: |
+          rsync \
+            --archive \
+            --delete \
+            --exclude='.git/' \
+            --exclude='.github/workflows/' \
+            source/ \
+            target/
+          echo "✅ Rsync complete"
+
+      # ── Restore NPXInnovation's workflow files ───────────────────────────────
+      - name: Restore NPXInnovation workflow files
+        run: |
+          if [ -n "$(ls -A /tmp/npx-workflows 2>/dev/null)" ]; then
+            mkdir -p target/.github/workflows
+            cp -r /tmp/npx-workflows/. target/.github/workflows/
+            echo "✅ Restored $(ls /tmp/npx-workflows | wc -l) workflow file(s)"
+          else
+            echo "ℹ️  No workflow files to restore"
+          fi
+
+      # ── Commit and push ───────────────────────────────────────────────────────
+      - name: Commit and push to NPXInnovation
+        working-directory: target
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add --all
+
+          if git diff --staged --quiet; then
+            echo "✅ NPXInnovation/design_system is already up to date — nothing to push."
+            exit 0
+          fi
+
+          SOURCE_SHA=$(cd ../source && git rev-parse --short HEAD)
           FORCE_FLAG=""
           if [ "${{ github.event.inputs.force }}" = "true" ]; then
             FORCE_FLAG="--force"
             echo "⚠️  Force push enabled"
           fi
-          git push npx HEAD:main $FORCE_FLAG
-          echo "✅ Successfully pushed to NPXInnovation/design_system:main"
 
-      - name: Nothing to sync
-        if: steps.diff.outputs.up_to_date == 'true'
-        run: echo "✅ Already in sync — nothing to do."
+          git commit -m "chore: sync from npxailsa/design_system@${SOURCE_SHA} [skip ci]"
+          git push origin main $FORCE_FLAG
+          echo "✅ Successfully pushed to NPXInnovation/design_system:main"
