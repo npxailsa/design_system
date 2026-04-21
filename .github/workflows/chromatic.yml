@@ -1,24 +1,46 @@
-name: Chromatic
+name: Chromatic Visual Tests
 
-# IMPORTANT: Only trigger on `push`.
-# TurboSnap is NOT compatible with `pull_request` (or its variations such as
-# `pull_request_target`, `pull_request_review`, etc.).
+# ── Why main-only? ────────────────────────────────────────────────────────────
+# Running Chromatic on every push to every branch drains credits rapidly.
+# Visual regression snapshots are only meaningful on the integration branch
+# (main).  Feature-branch pushes are covered by the PR review process.
 #
-# `pull_request` workflows run against an ephemeral merge commit that does not
-# exist in Git history. Chromatic cannot locate earlier builds for that commit,
-# so TurboSnap would compare against the wrong set of changed files —
-# producing unpredictable snapshots and potential missed regressions.
-#
+# ── Why NOT pull_request? ─────────────────────────────────────────────────────
+# TurboSnap is NOT compatible with `pull_request` triggers.  `pull_request`
+# workflows run against an ephemeral merge commit that does not exist in Git
+# history.  Chromatic cannot locate earlier builds for that commit, so
+# TurboSnap would compare against the wrong file set — producing unpredictable
+# snapshots and potential missed regressions.
 # Ref: https://www.chromatic.com/docs/turbosnap/#github-pull_request-triggers
+
 on:
   push:
+    branches:
+      - main
+  # Allow manual re-runs from the Actions UI when needed.
+  workflow_dispatch:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
 
 jobs:
   chromatic:
+    name: Chromatic Visual Tests
     runs-on: ubuntu-latest
+
+    # ── Non-blocking ──────────────────────────────────────────────────────────
+    # Chromatic failures (credit exhaustion, network errors, snapshot diffs)
+    # must NEVER block the GitHub Pages deployment or the package publish.
+    # continue-on-error marks this job as "neutral" on failure so downstream
+    # jobs and branch protection rules are not affected.
+    continue-on-error: true
+
+    # Skip the version-bump commits produced by ci-publish.yml — those don't
+    # contain new UI changes and would waste a snapshot credit.
+    if: |
+      !contains(github.event.head_commit.message, '[skip ci]') &&
+      !contains(github.event.head_commit.message, '[skip pages]')
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -34,27 +56,47 @@ jobs:
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
 
+      - name: Apply postinstall patches
+        run: node scripts/patch-storysource-compat.mjs
+
+      # Check whether a Chromatic project token is available before attempting
+      # to run.  If neither the repo secret nor the fallback token is set, skip
+      # gracefully instead of failing the job.
+      - name: Check Chromatic token availability
+        id: token-check
+        run: |
+          if [ -n "${{ secrets.CHROMATIC_PROJECT_TOKEN }}" ]; then
+            echo "token=secret" >> "$GITHUB_OUTPUT"
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          elif [ -n "chpt_44a4334f1199317" ]; then
+            echo "token=fallback" >> "$GITHUB_OUTPUT"
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "available=false" >> "$GITHUB_OUTPUT"
+            echo "⚠️  No Chromatic project token found — skipping visual tests."
+          fi
+
       - name: Run Chromatic
+        if: steps.token-check.outputs.available == 'true'
         uses: chromaui/action@latest
         with:
-          # Use the repository secret if set, otherwise fall back to the
-          # project token. To rotate the token, add CHROMATIC_PROJECT_TOKEN
-          # to your repository secrets (Settings → Secrets → Actions).
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN || 'chpt_44a4334f1199317' }}
           buildScriptName: build-storybook
+          # Exit 0 when there are only visual changes (not regressions).
+          # Prevents snapshot-diff noise from blocking the workflow.
           exitZeroOnChanges: true
+          # Exit 0 even when Chromatic is out of credits or unavailable.
+          # This is the key flag that makes Chromatic fully non-blocking.
+          exitOnceUploaded: true
           # TurboSnap: only snapshot stories affected by changed files.
-          # Chromatic will automatically inject --stats-json into the
-          # build-storybook command so it can trace the dependency graph.
+          # Chromatic injects --stats-json into build-storybook automatically.
           onlyChanged: true
-          # Re-test all stories if files outside the Webpack/Vite graph change
-          # (custom fonts live in public/typefaces and are not imported by JS).
+          # Re-test all stories if files outside the Vite/Rollup graph change
+          # (custom fonts in public/typefaces are not imported by JS).
           externals: |
             public/typefaces/**
-          # Ignore package control file changes — prevents a full re-test
-          # every time a dependency version is bumped.
-          # NOTE: disable TurboSnap on main if you need a safety net for
-          # dependency-driven visual regressions.
+          # Ignore lockfile/manifest changes — prevents a full re-test on
+          # every dependency version bump.
           untraced: |
             package.json
             package-lock.json

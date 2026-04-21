@@ -1,5 +1,12 @@
 name: Deploy Storybook to GitHub Pages
 
+# ── Triggers ──────────────────────────────────────────────────────────────────
+# Run on every push to main that is NOT the automated version-bump commit
+# produced by ci-publish.yml.  The "[skip pages]" token gives us a precise,
+# Pages-specific skip signal that does not interfere with other workflows.
+#
+# Also available on-demand via the Actions UI (workflow_dispatch).
+
 on:
   push:
     branches:
@@ -9,22 +16,42 @@ on:
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
 
+# ── Permissions ───────────────────────────────────────────────────────────────
+# contents:write  → peaceiris/actions-gh-pages can push to the gh-pages branch
+# pages:write     → GitHub's native Pages API (belt-and-suspenders)
+# id-token:write  → OIDC token needed by the native Pages API
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
-# Allow only one concurrent deployment
+# ── Concurrency ───────────────────────────────────────────────────────────────
+# Allow only one Pages deployment at a time.
+# cancel-in-progress: FALSE — never cancel a running build.  If two commits
+# land close together (e.g. a feature push followed by the version-bump from
+# ci-publish.yml) the second run queues behind the first rather than killing it.
 concurrency:
   group: "pages"
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build-and-deploy:
     name: Build and Deploy Storybook
     runs-on: ubuntu-latest
 
+    # Skip if this is the automated version-bump commit (contains "[skip pages]")
+    # or the generic "[skip ci]" convention.  This prevents the double-run that
+    # occurs when ci-publish.yml pushes its patch-bump commit to main.
+    if: |
+      !contains(github.event.head_commit.message, '[skip ci]') &&
+      !contains(github.event.head_commit.message, '[skip pages]')
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          # Full history lets docs-generate scripts and git-based tooling work.
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -35,8 +62,15 @@ jobs:
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
 
+      # Apply any node_modules patches (storysource compat, icons-material export, …)
+      - name: Apply postinstall patches
+        run: node scripts/patch-storysource-compat.mjs
+
       - name: Build Storybook
         run: npm run build-storybook:gh-pages
+        env:
+          # Increase Node.js heap so the Vite/Rollup build never OOMs.
+          NODE_OPTIONS: --max-old-space-size=4096
 
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v4
@@ -44,3 +78,8 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./storybook-static
           publish_branch: gh-pages
+          # Commit message shown in the gh-pages branch history.
+          commit_message: "deploy: ${{ github.event.head_commit.message }}"
+          # Keep the .nojekyll file created by build-storybook:gh-pages
+          # (prevents GitHub Pages from treating _ directories as Jekyll private).
+          keep_files: false

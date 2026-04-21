@@ -77,9 +77,11 @@ jobs:
 
       - name: Bump patch version
         # Increments patch (e.g. 1.0.0 → 1.0.1) and creates a git tag.
-        # [skip ci] prevents this commit from re-triggering the workflow.
+        # [skip ci]    → prevents ALL workflows from re-triggering on this commit.
+        # [skip pages] → belt-and-suspenders: storybook.yml also checks this token
+        #                explicitly so Pages is never re-deployed for a version bump.
         run: |
-          npm version patch -m "chore: release v%s [skip ci]"
+          npm version patch -m "chore: release v%s [skip ci] [skip pages]"
 
       - name: Publish package to GitHub Packages
         # GITHUB_TOKEN cannot write to GitHub Packages — a PAT with
