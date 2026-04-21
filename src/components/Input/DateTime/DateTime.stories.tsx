@@ -81,7 +81,7 @@ export const Default: Story = {
       <div style={{ width: 200 }}>
         <DateTime type="date" label="Date" />
       </div>
-      <div style={{ width: 200 }}>
+      <div style={{ width: 220 }}>
         <DateTime type="time" label="Time" />
       </div>
     </div>
@@ -94,14 +94,14 @@ export const Default: Story = {
 export const Sizes: Story = {
   name: 'Sizes',
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 24, maxWidth: 480 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24, maxWidth: 500 }}>
       {(['small', 'default', 'large'] as const).map((size) => (
         <div key={size} style={{ display: 'flex', gap: 16, alignItems: 'flex-end' }}>
           <div style={{ width: 200 }}>
-            <DateTime type="date" label={`Date — ${size}`} size={size} />
+            <DateTime type="date" label={`Date — ${size}`} size={size} value="2024-03-15" />
           </div>
-          <div style={{ width: 200 }}>
-            <DateTime type="time" label={`Time — ${size}`} size={size} />
+          <div style={{ width: 220 }}>
+            <DateTime type="time" label={`Time — ${size}`} size={size} value="14:30:00" />
           </div>
         </div>
       ))}
@@ -115,14 +115,11 @@ export const Sizes: Story = {
 export const States: Story = {
   name: 'States',
   render: () => {
-    const StateRow: React.FC<{
-      state: 'default' | 'error' | 'warning' | 'success';
-    }> = ({ state }) => {
-      const [dateVal, setDateVal] = useState('2000-01-01');
-      const [timeVal, setTimeVal] = useState('20:01:54');
+    const StateRow: React.FC<{ state: 'default' | 'error' | 'warning' | 'success' }> = ({ state }) => {
+      const [dateVal, setDateVal] = useState('2024-03-15');
+      const [timeVal, setTimeVal] = useState('14:30:00');
       const label = state.charAt(0).toUpperCase() + state.slice(1);
-      const helper =
-        state !== 'default' ? `${label} — helper text` : undefined;
+      const helper = state !== 'default' ? `${label} — please review this value` : undefined;
       return (
         <div style={{ display: 'flex', gap: 16, alignItems: 'flex-end' }}>
           <div style={{ width: 220 }}>
@@ -135,7 +132,7 @@ export const States: Story = {
               helperText={helper}
             />
           </div>
-          <div style={{ width: 220 }}>
+          <div style={{ width: 240 }}>
             <DateTime
               type="time"
               label={`Time — ${label}`}
@@ -150,7 +147,7 @@ export const States: Story = {
     };
 
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
         <StateRow state="default" />
         <StateRow state="error" />
         <StateRow state="warning" />
@@ -166,48 +163,58 @@ export const States: Story = {
 export const AllInputStates: Story = {
   name: 'All Input States',
   render: () => {
-    const Grid: React.FC<{ type: 'date' | 'time' }> = ({ type }) => {
+    const Grid: React.FC<{ type: 'date' | 'time'; size: 'small' | 'default' | 'large' }> = ({ type, size }) => {
       const label = type === 'date' ? 'Date' : 'Time';
-      const emptyLabel = `${label}`;
-      const filledValue = type === 'date' ? '2000-01-01' : '20:01:54';
+      const filledValue = type === 'date' ? '2024-03-15' : '14:30:00';
+      const width = type === 'date' ? 180 : 200;
 
-      const [emptyFocused, setEmptyFocused] = useState(false);
-      const [filledFocused, setFilledFocused] = useState(false);
-      const [filled, setFilled] = useState(filledValue);
-      const [filledFocusedVal, setFilledFocusedVal] = useState(filledValue);
+      const [filledVal, setFilledVal] = useState(filledValue);
 
       return (
-        <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'flex-end' }}>
-          {/* Empty default */}
-          <div style={{ width: 180 }}>
-            <DateTime type={type} label={emptyLabel} />
+        <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'flex-end' }}>
+          {/* Empty */}
+          <div style={{ width }}>
+            <DateTime type={type} label={`${label} — empty`} size={size} />
           </div>
           {/* Filled */}
-          <div style={{ width: 180 }}>
-            <DateTime type={type} label={emptyLabel} value={filled} onChange={setFilled} />
+          <div style={{ width }}>
+            <DateTime
+              type={type}
+              label={`${label} — filled`}
+              value={filledVal}
+              onChange={setFilledVal}
+              size={size}
+            />
           </div>
-          {/* Empty focused — simulated via state prop */}
-          <div style={{ width: 180 }}>
-            <DateTime type={type} label={emptyLabel} />
+          {/* Disabled empty */}
+          <div style={{ width }}>
+            <DateTime type={type} label={`${label} — disabled`} size={size} disabled />
           </div>
-          {/* Filled */}
-          <div style={{ width: 180 }}>
-            <DateTime type={type} label={emptyLabel} value={filledFocusedVal} onChange={setFilledFocusedVal} />
+          {/* Disabled filled */}
+          <div style={{ width }}>
+            <DateTime type={type} label={`${label} — disabled filled`} value={filledValue} size={size} disabled />
           </div>
         </div>
       );
     };
 
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 36 }}>
         {(['small', 'default', 'large'] as const).map((size) => (
           <div key={size}>
-            <p style={{ marginBottom: 8, fontWeight: 500, fontSize: 12, color: '#6d7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            <p style={{
+              marginBottom: 12,
+              fontWeight: 600,
+              fontSize: 11,
+              color: '#6d7280',
+              textTransform: 'uppercase',
+              letterSpacing: '0.08em',
+            }}>
               Size: {size}
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-              <Grid type="date" />
-              <Grid type="time" />
+              <Grid type="date" size={size} />
+              <Grid type="time" size={size} />
             </div>
           </div>
         ))}
@@ -224,16 +231,16 @@ export const Disabled: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'flex-end' }}>
       <div style={{ width: 200 }}>
-        <DateTime type="date" label="Date (disabled)" disabled />
+        <DateTime type="date" label="Date — disabled" disabled />
       </div>
       <div style={{ width: 200 }}>
-        <DateTime type="date" label="Date filled (disabled)" value="2000-01-01" disabled />
+        <DateTime type="date" label="Date — disabled filled" value="2024-03-15" disabled />
       </div>
-      <div style={{ width: 200 }}>
-        <DateTime type="time" label="Time (disabled)" disabled />
+      <div style={{ width: 220 }}>
+        <DateTime type="time" label="Time — disabled" disabled />
       </div>
-      <div style={{ width: 200 }}>
-        <DateTime type="time" label="Time filled (disabled)" value="20:01:54" disabled />
+      <div style={{ width: 220 }}>
+        <DateTime type="time" label="Time — disabled filled" value="14:30:00" disabled />
       </div>
     </div>
   ),

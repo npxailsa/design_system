@@ -59,6 +59,7 @@ const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN',
 /**
  * Format an ISO date string (YYYY-MM-DD) → "DD / MMM / YYYY"
  * e.g. "2001-01-01" → "01 / JAN / 2001"
+ * Returns the original string unchanged when it cannot be parsed as ISO.
  */
 function formatDateDisplay(iso: string): string {
   if (!iso) return '';
@@ -71,19 +72,47 @@ function formatDateDisplay(iso: string): string {
 }
 
 /**
- * Format a 24-hour time string (HH:mm[:ss]) → "HH : MM : SS" in 12-hour display
- * — note: does NOT include the AM/PM suffix (that is the ghost button's job).
+ * Format a 24-hour time string (HH:mm[:ss]) → "HH : MM : SS" (12-hour)
+ * Does NOT include the AM/PM suffix — that lives in the ghost button slot.
  * e.g. "14:30:02" → "02 : 30 : 02"
+ * Returns the original string when it cannot be parsed as a 24-hour time.
  */
 function formatTimeDisplay(raw: string): string {
   if (!raw) return '';
   const parts = raw.split(':');
   if (parts.length < 2) return raw;
   let hours = parseInt(parts[0], 10);
+  if (isNaN(hours)) return raw;
   const minutes = parts[1].padStart(2, '0');
   const seconds = (parts[2] || '00').substring(0, 2).padStart(2, '0');
   hours = hours % 12 || 12;
   return `${String(hours).padStart(2, '0')} : ${minutes} : ${seconds}`;
+}
+
+/**
+ * Parse user-typed "DD / MMM / YYYY" (or partial) back to ISO "YYYY-MM-DD".
+ * Returns the original text when parsing fails so the user can keep typing.
+ */
+function parseFormattedDate(text: string): string {
+  const clean = text.replace(/\s/g, '');
+  const match = clean.match(/^(\d{1,2})\/([A-Za-z]{3})\/(\d{4})$/);
+  if (!match) return text;
+  const [, d, m, y] = match;
+  const monthIndex = MONTHS.indexOf(m.toUpperCase());
+  if (monthIndex === -1) return text;
+  return `${y}-${String(monthIndex + 1).padStart(2, '0')}-${d.padStart(2, '0')}`;
+}
+
+/**
+ * Parse user-typed "HH : MM : SS" (or partial) back to 24-hour "HH:MM:SS".
+ * Returns the original text when parsing fails so the user can keep typing.
+ */
+function parseFormattedTime(text: string): string {
+  const clean = text.replace(/\s/g, '');
+  const match = clean.match(/^(\d{1,2}):(\d{1,2}):(\d{1,2})$/);
+  if (!match) return text;
+  const [, h, m, s] = match;
+  return `${h.padStart(2, '0')}:${m.padStart(2, '0')}:${s.padStart(2, '0')}`;
 }
 
 /**
@@ -94,6 +123,7 @@ function formatTimeDisplay(raw: string): string {
 function derivePeriod(raw: string): 'AM' | 'PM' {
   if (!raw) return 'AM';
   const hours = parseInt(raw.split(':')[0], 10);
+  if (isNaN(hours)) return 'AM';
   return hours >= 12 ? 'PM' : 'AM';
 }
 
@@ -105,6 +135,7 @@ function togglePeriod(raw: string, currentPeriod: 'AM' | 'PM'): string {
   if (!raw) return raw;
   const parts = raw.split(':');
   let hours = parseInt(parts[0], 10);
+  if (isNaN(hours)) return raw;
   if (currentPeriod === 'AM') {
     hours = (hours + 12) % 24;
   } else {
@@ -125,7 +156,18 @@ function togglePeriod(raw: string, currentPeriod: 'AM' | 'PM'): string {
  * design-token CSS Modules on top.
  *
  * **Date format**: DD / MMM / YYYY (e.g. 01 / JAN / 2001)
- * **Time format**: HH : MM : SS with a separate AM/PM ghost button toggle
+ * **Time format**: HH : MM : SS with a separate AM/PM ghost-button toggle
+ *
+ * ### Separator behaviour
+ * The input always renders as `type="text"`. The "/" and ":" separators are
+ * part of the formatted display string and therefore appear in a fixed position
+ * at all times — including the focused state.
+ *
+ * ### AM/PM ghost button
+ * Visible only when the input is **not** focused. Clicking it toggles the
+ * stored 24-hour value between the AM and PM halves without focusing the
+ * input. When the user focuses the input to edit, the button hides to avoid
+ * clutter — the period is encoded inside the edited HH value.
  *
  * **Types**: date | time
  * **Sizes**: small | default | large
@@ -150,33 +192,50 @@ export const DateTime: React.FC<DateTimeProps> = ({
   const inputRef = useRef<HTMLInputElement>(null);
   const [focused, setFocused] = useState(false);
 
-  /* AM/PM period — derived from value (or defaults AM when empty) */
+  /* AM/PM period — derived from the stored 24-hour value */
   const period = derivePeriod(value);
 
-  /* Placeholder text — date: DD/MMM/YYYY, time: HH:MM:SS (no period suffix) */
+  /* Placeholder — always reflects the formatted mask */
   const placeholder = type === 'date' ? 'DD / MMM / YYYY' : 'HH : MM : SS';
 
   /*
-   * Display value:
-   * - date: formatted as "DD / MMM / YYYY" when blurred, raw when focused
-   * - time: formatted as "HH : MM : SS" (12h, no period) when blurred, raw 24h when focused
+   * Display value — always formatted, regardless of focused state.
+   * This keeps the "/" and ":" separators in a fixed position at all times,
+   * including when the field is focused and the user is actively editing.
+   *
+   * When the stored value is an ISO string it is formatted via the helpers.
+   * When it is mid-type text (not yet parseable as ISO) it is shown verbatim
+   * so the user can continue typing without disruption.
    */
   const displayValue = (() => {
     if (!value) return '';
-    if (focused) return value;
     return type === 'date' ? formatDateDisplay(value) : formatTimeDisplay(value);
   })();
 
-  /* Native input type — switch to text when blurred to show formatted value */
-  const nativeType = focused ? type : 'text';
+  /*
+   * onChange handler — attempt to parse the user's typed text back to the
+   * canonical storage format (ISO date / 24-hour time).
+   * While the input is only partially filled the raw text is passed through,
+   * allowing the parent to store intermediate states without crashing.
+   */
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const text = e.target.value;
+    if (!text) {
+      onChange?.('');
+      return;
+    }
+    const parsed = type === 'date'
+      ? parseFormattedDate(text)
+      : parseFormattedTime(text);
+    onChange?.(parsed);
+  };
 
   /* ── AM/PM toggle handler ── */
   const handlePeriodToggle = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation(); // don't bubble into the control's onClick→focus
-    if (disabled) return;
-    if (value) {
-      onChange?.(togglePeriod(value, period));
-    }
+    /* Stop the click from bubbling to the control div → prevents focus */
+    e.stopPropagation();
+    if (disabled || !value) return;
+    onChange?.(togglePeriod(value, period));
   };
 
   /* ── Class names ── */
@@ -220,17 +279,21 @@ export const DateTime: React.FC<DateTimeProps> = ({
           if (!disabled) inputRef.current?.focus();
         }}
       >
-        {/* MUI InputBase — low-level accessible primitive */}
+        {/*
+         * MUI InputBase — always type="text" so the browser never injects
+         * its native date/time picker UI or reformats the value.
+         * The formatted display value provides the static "/" and ":" separators.
+         */}
         <InputBase
           id={inputId}
           inputRef={inputRef}
           value={displayValue}
-          onChange={(e) => onChange?.(e.target.value)}
+          onChange={handleChange}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
           placeholder={placeholder}
           disabled={disabled}
-          type={nativeType}
+          type="text"
           name={name}
           inputProps={{
             'aria-label': ariaLabel ?? label,
@@ -243,11 +306,17 @@ export const DateTime: React.FC<DateTimeProps> = ({
         />
 
         {/*
-         * AM/PM toggle — time inputs only.
-         * Rendered as an extra-small GhostButton inside the control row.
-         * Clicking toggles the internal 24-hour value between AM and PM halves.
+         * AM/PM toggle — time inputs only, hidden while the input is focused.
+         *
+         * Rationale: when the user is typing inside the time field they control
+         * the hour digit directly (24-hour format). Showing the AM/PM button
+         * simultaneously would be confusing. Once they tab/click away the
+         * button reappears showing the derived period for the stored value.
+         *
+         * Clicking the button toggles the stored 24-hour value between AM and PM
+         * halves (±12 hours) without focusing the input.
          */}
-        {type === 'time' && (
+        {type === 'time' && !focused && (
           <span className={styles.ampmSlot} onClick={(e) => e.stopPropagation()}>
             <GhostButton
               label={period}
