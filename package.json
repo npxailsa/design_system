@@ -36,6 +36,7 @@
     "figma:generate:force": "node scripts/generate-figma-connect.mjs --force",
     "figma:check": "node scripts/generate-figma-connect.mjs --check",
     "figma:publish": "npx figma connect publish",
+    "context:generate": "node scripts/generate-component-manifest.mjs && node scripts/generate-implementation-rules.mjs",
     "gemini": "sh scripts/gemini.sh",
     "gemini:yolo": "sh scripts/gemini.sh --yolo",
     "prepare": "husky || true",
